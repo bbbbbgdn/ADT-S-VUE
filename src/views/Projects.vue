@@ -41,12 +41,12 @@ export default {
 }
 
 .project-card {
-  filter: grayscale(100%);
-  transition: filter 0.6s ease-out;
+  /* filter: grayscale(100%); */
+  /* transition: filter 0.6s ease-out; */
 }
 
 .project-card:hover {
-  filter:grayscale(0%);
+  /* filter:grayscale(0%); */
   /* height: 50%; */
 }
 

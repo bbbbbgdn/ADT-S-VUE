@@ -36,8 +36,6 @@ export default {
   border-radius: 100rem;
   cursor: pointer;
   transition: all 0.2s;
-  /* margin-left: 3rem; */
-  /* margin-bottom: 3rem; */
 }
 
 /* Black Button */

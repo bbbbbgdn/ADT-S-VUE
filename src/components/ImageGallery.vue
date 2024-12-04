@@ -9,14 +9,45 @@
         <img :src="image.url" :alt="image.alt">
       </div>
     </div>
+      <div class="gallery-tags">
+          <ButtonBase>{{ name }}</ButtonBase>
+          <ButtonBase
+          variant="grey"
+          >{{ location }}</ButtonBase>
+          <ButtonBase
+          variant="grey"
+          >{{ date }}</ButtonBase>
+      </div>
   </div>
 </template>
 
 <script>
+import ButtonBase from './BaseButton.vue';
+
 export default {
   name: 'ImageGallery',
+  components: {
+    ButtonBase
+  },
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    location: {
+      type: String,
+      required: true
+    },
+    date: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
+      name: 'Event Name',
+      location: 'Event Location',
+      date: '5.08.23-22.10.23',
       images: [
         { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 1' },
         { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 2' },
@@ -35,12 +66,12 @@ export default {
 .gallery-container {
   width: 100%;
   overflow: hidden;
-  /* padding: 1rem 0; */
+    line-height: 0;
 }
 
 .gallery {
   display: flex;
-  /* gap: 0rem; */
+
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -55,6 +86,12 @@ export default {
 .gallery-item {
   flex: 0 0 auto;
   scroll-snap-align: start;
+}
+
+.gallery-tags {
+  display: flex;
+  gap: 3rem;
+  margin: 3rem;
 }
 
 .gallery-item img {

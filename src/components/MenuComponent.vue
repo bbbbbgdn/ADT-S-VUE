@@ -3,24 +3,25 @@
     <BaseButton 
       v-for="item in menuItems" 
       :key="item.path"
-      :outlined="true"
+      :variant="currentPath === item.path ? 'active' : 'black'"
       @click="navigateTo(item.path)"
     >
       {{ item.name }}
     </BaseButton>
 
     <BaseButton 
-    class="align-self-end"
-    :outlined="false" 
-    @click="navigateTo('/components')"
-    variant="active">
-        {components}
+      class="components-button"
+      :variant="currentPath === '/components' ? 'active' : 'black'"
+      @click="navigateTo('/components')"
+    >
+      { }
     </BaseButton>
   </nav>
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+import { ref, watch } from 'vue'
 import BaseButton from './BaseButton.vue'
 
 export default {
@@ -30,6 +31,16 @@ export default {
   },
   setup() {
     const router = useRouter()
+    const route = useRoute()
+    const currentPath = ref(route.path)
+    
+    // Watch for route changes
+    watch(
+      () => route.path,
+      (newPath) => {
+        currentPath.value = newPath
+      }
+    )
     
     const menuItems = [
       { name: 'Atelier Dasha Tsapenko', path: '/' },
@@ -46,7 +57,8 @@ export default {
 
     return {
       menuItems,
-      navigateTo
+      navigateTo,
+      currentPath
     }
   }
 }
@@ -61,8 +73,10 @@ padding: 3rem;
   gap: 3rem;
 }
 
-
-.align-self-end {
-  margin-left: auto;
+.components-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 3rem;
 }
 </style>    
