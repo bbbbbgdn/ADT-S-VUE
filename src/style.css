@@ -1,0 +1,80 @@
+:root {
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  line-height: 1.23;
+  font-weight: 670;
+
+  font-size: 1px;
+
+  color-scheme: light dark;
+  color: rgba(0, 0, 0, 1);
+  background-color: #ebebeb;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  /* margin: 0 !important; */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  /* align-items: start; */
+  /* justify-content: start; */
+  /* min-width: 320px; */
+  min-height: 100vh;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1;
+}
+
+p {
+  text-indent: 2em;
+  margin-bottom: 1em;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  font-weight: inherit;
+  background-color: #000000;
+  cursor: pointer;
+}
+button:hover {
+}
+button:focus,
+button:focus-visible {
+  /* outline: 4px auto -webkit-focus-ring-color; */
+}
+
+.card {
+  padding: 0em;
+}
+
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  width: 100%;
+  /* padding: 2rem; */
+  /* text-align: center; */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #000000;
+    background-color: #ffffff;
+  }
+}
