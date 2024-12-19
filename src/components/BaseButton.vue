@@ -4,7 +4,7 @@
     :class="[
       `button-${variant}`
     ]"
-    @click="$emit('click')"
+    @click="handleClick"
   >
     <slot></slot>
   </button>
@@ -22,9 +22,21 @@ export default {
       type: String,
       default: 'black',
       validator: (value) => ['black', 'grey', 'active'].includes(value)
+    },
+    to: {
+      type: String,
+      default: null
     }
   },
-  emits: ['click']
+  emits: ['click'],
+  methods: {
+    handleClick() {
+      if (this.to) {
+        this.$router.push(this.to);
+      }
+      this.$emit('click');
+    }
+  }
 }
 </script>
 
