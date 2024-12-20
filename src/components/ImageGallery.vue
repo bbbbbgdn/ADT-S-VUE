@@ -10,7 +10,8 @@
       </div>
     </div>
       <div class="gallery-tags">
-          <ButtonBase>{{ name }}</ButtonBase>
+
+          <ButtonBase to="/project">{{ name }}</ButtonBase>
           <ButtonBase
           variant="grey"
           >{{ location }}</ButtonBase>
