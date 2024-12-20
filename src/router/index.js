@@ -24,9 +24,9 @@ const router = createRouter({
       component: () => import('../views/Shows.vue')
     },
     {
-      path: '/project',
-      name: 'Project',
-      component: () => import('../views/Project.vue')
+      path: '/projectpage',
+      name: 'ProjectPage',
+      component: () => import('../views/ProjectPage.vue')
     },
     {
       path: '/:pathMatch(.*)*',

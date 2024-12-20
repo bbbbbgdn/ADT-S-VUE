@@ -11,7 +11,7 @@
     </div>
       <div class="gallery-tags">
 
-          <ButtonBase to="/project">{{ name }}</ButtonBase>
+          <ButtonBase to="/projectpage">{{ name }}</ButtonBase>
           <ButtonBase
           variant="grey"
           >{{ location }}</ButtonBase>
@@ -96,9 +96,10 @@ export default {
 }
 
 .gallery-item img {
-  /* width: 400px; */
+  width: auto;
   height: 400 px;
   object-fit: cover;
 }
+
 
 </style> 
