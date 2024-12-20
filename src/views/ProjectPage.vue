@@ -70,6 +70,7 @@ export default {
 .text-container {
   margin: 20px 0;
   text-align: center;
+
 }
 
 .project-page ::v-deep(.project-gallery img)  {
@@ -93,6 +94,7 @@ p {
 .text-credits  {
   font-size: 22px;
   text-align: left;
+  margin-bottom: 150px;
 }
 
 .text-columns {
@@ -118,7 +120,8 @@ p {
   justify-content: left;
   align-items: start;
   width: 100%;
-  margin: 5px;
+  padding: 1rem 5rem 7rem 3rem;
+
 }
 
 
