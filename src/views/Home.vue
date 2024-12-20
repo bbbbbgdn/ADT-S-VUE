@@ -1,6 +1,11 @@
 <template>
   <div class="home">
-    <h1>Atelier Dasha Tsapenko</h1>
+    <iframe
+      src="https://cables.gl/view/gjw3wx"
+      frameborder="0"
+      allowfullscreen
+      class="iframe-demo"
+    ></iframe>
   </div>
 </template>
 
@@ -12,15 +17,23 @@ export default {
 
 <style scoped>
 .home {
-  /* text-align: center; */
-  /* padding: 4rem 0; */
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
+.iframe-demo {
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+
+/* h1 {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-}
+} */
 </style> 
