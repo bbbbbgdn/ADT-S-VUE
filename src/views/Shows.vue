@@ -1,12 +1,13 @@
 <template>
-  <section class="shows-section">
-    <ImageGallery />
-    <ImageGallery />
-    <ImageGallery />
-    <ImageGallery />
-    <ImageGallery />
-    <ImageGallery />
-  </section>
+      <section class="shows-section">
+      <ImageGallery />
+      <ImageGallery />
+      <ImageGallery />
+      <ImageGallery />
+      <ImageGallery />
+      <ImageGallery />
+    </section>
+
 </template>
 
 <script>
