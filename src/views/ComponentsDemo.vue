@@ -2,6 +2,8 @@
   <div class="components-demo">
     <h1>Components Demo Page</h1>
 
+    <InteractiveText />
+
     <section class="demo-section">
       <h2>Project Card</h2>
       <ProjectCard 
@@ -31,6 +33,7 @@
 </template>
 
 <script>
+import InteractiveText from '../components/InteractiveText.vue'
 import BaseButton from '../components/BaseButton.vue'
 import ImageGallery from '../components/ImageGallery.vue'
 import ProjectCard from '../components/ProjectCard.vue'
@@ -42,7 +45,8 @@ export default {
     BaseButton,
     ImageGallery,
     ProjectCard,
-    MenuComponent
+    MenuComponent,
+    InteractiveText
   }
 }
 </script>
