@@ -4,18 +4,11 @@
       v-for="item in menuItems" 
       :key="item.path"
       :variant="currentPath === item.path ? 'active' : 'black'"
+      :disabled="!item.path"
       @click="navigateTo(item.path)"
     >
       {{ item.name }}
     </BaseButton>
-
-    <!-- <BaseButton 
-      class="components-button"
-      :variant="currentPath === '/components' ? 'active' : 'black'"
-      @click="navigateTo('/components')"
-    >
-      { }
-    </BaseButton> -->
   </nav>
 </template>
 
@@ -45,10 +38,10 @@ export default {
     const menuItems = [
       { name: 'Atelier Dasha Tsapenko', path: '/' },
       { name: 'Projects', path: '/projects' },
-      { name: 'Objects', path: '/objects' },
+      { name: 'Objects', path: '' },
       { name: 'Shows', path: '/shows' },
-      { name: 'Press', path: '/press' },
-      { name: 'Profile', path: '/profile' },
+      { name: 'Press', path: '' },
+      { name: 'Profile', path: '' },
     ]
 
     const navigateTo = (path) => {
