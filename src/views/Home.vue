@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <iframe
-      src="/public/main/index.html"
+      src="/main/index.html"
       frameborder="0"
       allowfullscreen
       class="iframe-demo"
