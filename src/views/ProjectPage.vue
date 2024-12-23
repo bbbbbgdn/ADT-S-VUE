@@ -1,9 +1,7 @@
 <template>
   <div class="project-page">
-    <!-- Импортированный заголовок -->
     <ImageGallery class="project-gallery-main" />
 
-    <!-- Контейнер с текстом -->
     <div class="text-container">
       <p>Millions of Ukrainians have been driven from their homes by war. The intimate relationship with their homeland
         was abruptly broken. What does that relationship consist of? What defines a home(land)? With these fundamental
@@ -34,7 +32,6 @@
       </div>
     </div>
 
-    <!-- Кнопка для перехода на другие шоу -->
     <div class="button-container">
       <BaseButton to="/shows">Other Shows</BaseButton>
     </div>
@@ -72,13 +69,14 @@ export default {
   text-align: center;
 }
 
-.project-page ::v-deep(.project-gallery img)  {
-  height: 200px;
+.project-page ::v-deep(.project-gallery img) {
+  height: 20vh;
   width: auto;
   object-fit: cover;
 }
-.project-page ::v-deep(.project-gallery-main img)  {
-  height: 750px;
+
+.project-page ::v-deep(.project-gallery-main img) {
+  height: 650rem;
   width: auto;
   object-fit: cover;
 }
@@ -88,29 +86,35 @@ p {
   text-align: left;
   line-height: 42px;
   font-weight: 670;
+  text-indent: 70rem;
+  font-weight: 600;
 }
 
-.text-credits  {
+.text-credits {
   font-size: 22px;
+  font-family: 'Saans-SemiBold', sans-serif;
+  line-height: 25px;
   text-align: left;
+  display: flex;
+  justify-content: center;
+  margin: 125rem 70rem 200rem 70rem;
+  box-sizing: border-box;
 }
 
 .text-columns {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
-  /* align-items: center; */
+  justify-content: space-between;
+  gap: 100rem; 
+  max-width: 1400px; 
+  width: 100%;
+  margin: 0 auto; 
+}
+
+.text-columns div {
+  flex: 1; 
   text-align: left;
   line-height: 24px;
-  margin-left: 20px;
-}
-.text-credits {
-  width: 100%;
-}
-.text-columns div {
-  width: 685px;
-  margin: 20px;
-  text-align: left;
 }
 
 .button-container {
@@ -118,8 +122,7 @@ p {
   justify-content: left;
   align-items: start;
   width: 100%;
-  margin: 5px;
+  padding: 3rem;
 }
-
-
 </style>
+
