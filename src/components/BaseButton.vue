@@ -4,6 +4,7 @@
     :class="[
       `button-${variant}`
     ]"
+    :disabled="disabled"
     @click="handleClick"
   >
     <slot></slot>
@@ -22,6 +23,10 @@ export default {
       type: String,
       default: 'black',
       validator: (value) => ['black', 'grey', 'active'].includes(value)
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     },
     to: {
       type: String,
@@ -56,18 +61,17 @@ export default {
   color: white;
 }
 
-/* .button-black:hover {
-  background-color: #E788FF;
-  color: black;
-} */
-
 /* Grey Button */
 .button-grey {
   background-color: #C3C3C3;
   color: rgb(0, 0, 0);
 }
 
-.button-grey:hover, .button-black:hover {
+.button-black:disabled {
+  pointer-events: none;
+}
+
+.button-grey:hover, .button-black:hover ,.button-black:disabled {
   opacity: 0.75;
 }
 
@@ -78,8 +82,4 @@ export default {
   pointer-events: none;
 }
 
-.button-active:hover {
-  /* background-color: #d065eb; */
-  /* color: white; */
-}
 </style> 
