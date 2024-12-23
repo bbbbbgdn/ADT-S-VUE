@@ -9,13 +9,13 @@
       {{ item.name }}
     </BaseButton>
 
-    <BaseButton 
+    <!-- <BaseButton 
       class="components-button"
       :variant="currentPath === '/components' ? 'active' : 'black'"
       @click="navigateTo('/components')"
     >
       { }
-    </BaseButton>
+    </BaseButton> -->
   </nav>
 </template>
 

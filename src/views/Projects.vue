@@ -36,11 +36,12 @@ export default {
   grid-template-columns: repeat(2, 1fr);  /* Creates 2 equal columns */
   width: 100%;
   min-height: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   /* height: 100%; */
 }
 
 .project-card {
+  height: 50vh;
   /* filter: grayscale(100%); */
   /* transition: filter 0.6s ease-out; */
 }
