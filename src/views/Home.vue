@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <iframe
-      src="https://cables.gl/view/gjw3wx"
+      src="/public/main/index.html"
       frameborder="0"
       allowfullscreen
       class="iframe-demo"
