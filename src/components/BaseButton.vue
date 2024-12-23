@@ -43,11 +43,11 @@ export default {
 <style scoped>
 .base-button {
   display: inline-block;
-  padding: 3rem 12rem 7rem 12rem;
+  padding: 4rem 12rem 6rem 12rem;
   white-space: nowrap;
   border-radius: 100rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all .8s;
 }
 
 /* Black Button */
@@ -56,10 +56,10 @@ export default {
   color: white;
 }
 
-.button-black:hover {
+/* .button-black:hover {
   background-color: #E788FF;
   color: black;
-}
+} */
 
 /* Grey Button */
 .button-grey {
@@ -67,18 +67,19 @@ export default {
   color: rgb(0, 0, 0);
 }
 
-.button-grey:hover {
-  opacity: 0.9;
+.button-grey:hover, .button-black:hover {
+  opacity: 0.75;
 }
 
 /* Active Button */
 .button-active {
   background-color: #E788FF;
   color: black;
+  pointer-events: none;
 }
 
 .button-active:hover {
-  background-color: #d065eb;
-  color: white;
+  /* background-color: #d065eb; */
+  /* color: white; */
 }
 </style> 
