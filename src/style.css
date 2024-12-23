@@ -1,5 +1,59 @@
+/* Regular */
+@font-face {
+  font-family: 'Saans-Regular';
+  src: url('@/assets/fonts/Saans-Regular.woff2') format('woff2'),
+       url('@/assets/fonts/Saans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Saans-Bold';
+  src: url('@/assets/fonts/Saans-Bold.woff2') format('woff2'),
+       url('@/assets/fonts/Saans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: 'Saans-SemiBold';
+  src: url('@/assets/fonts/Saans-SemiBold.woff2') format('woff2'),
+       url('@/assets/fonts/Saans-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'Saans';
+  src: url('@/assets/fonts/Saans-Medium.woff2') format('woff2'),
+       url('@/assets/fonts/Saans-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Light */
+@font-face {
+  font-family: 'Saans';
+  src: url('@/assets/fonts/Saans-Light.woff2') format('woff2'),
+       url('@/assets/fonts/Saans-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Heavy */
+@font-face {
+  font-family: 'Saans';
+  src: url('@/assets/fonts/Saans-Heavy.woff2') format('woff2'),
+       url('@/assets/fonts/Saans-Heavy.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
 :root {
-  font-family: system-ui, Helvetica, Arial, sans-serif;
+  font-family: 'Saans-SemiBold', system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.23;
   font-weight: 670;
 
@@ -31,24 +85,27 @@ body {
   /* align-items: start; */
   /* justify-content: start; */
   /* min-width: 320px; */
+  font-family: 'Saans-SemiBold', sans-serif;
   min-height: 100vh;
   background-color: #fff;
   overflow-x: hidden;
 }
 
 h1 {
+  font-family: 'Saans-SemiBold', sans-serif;
   font-size: 3em;
   line-height: 1;
 }
 
 p {
+  font-family: 'Saans-SemiBold', sans-serif;
   text-indent: 2em;
   margin-bottom: 1em;
 }
 
 button {
+  font-family: 'Saans-SemiBold', sans-serif;
   border: none;
-  font-family: inherit;
   font-weight: inherit;
   background-color: #000000;
   cursor: pointer;

@@ -2,23 +2,18 @@
   <div class="gallery-container">
     <div class="gallery" ref="gallery">
       <div 
-        v-for="(image, index) in images" 
+        v-for="(image, index) in repeatedImages" 
         :key="index" 
         class="gallery-item"
       >
         <img :src="image.url" :alt="image.alt">
       </div>
     </div>
-      <div class="gallery-tags">
-
-          <ButtonBase to="/projectpage">{{ name }}</ButtonBase>
-          <ButtonBase
-          variant="grey"
-          >{{ location }}</ButtonBase>
-          <ButtonBase
-          variant="grey"
-          >{{ date }}</ButtonBase>
-      </div>
+    <div class="gallery-tags">
+      <ButtonBase to="/projectpage">{{ name }}</ButtonBase>
+      <ButtonBase variant="grey">{{ location }}</ButtonBase>
+      <ButtonBase variant="grey">{{ date }}</ButtonBase>
+    </div>
   </div>
 </template>
 
@@ -56,8 +51,18 @@ export default {
         { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 4' },
         { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 5' },
         { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 6' },
-        { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 7' }
-      ]
+        { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 7' },
+      ],
+      repeatCount: 5 
+    }
+  },
+  computed: {
+    repeatedImages() {
+      const repeated = [];
+      for (let i = 0; i < this.repeatCount; i++) {
+        repeated.push(...this.images);
+      }
+      return repeated;
     }
   }
 }
@@ -67,12 +72,11 @@ export default {
 .gallery-container {
   width: 100%;
   overflow: hidden;
-    line-height: 0;
+  line-height: 0;
 }
 
 .gallery {
   display: flex;
-
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -89,6 +93,10 @@ export default {
   scroll-snap-align: start;
 }
 
+.gallery-item:first-of-type {
+  padding-left: 3rem;
+}
+
 .gallery-tags {
   display: flex;
   gap: 3rem;
@@ -97,9 +105,7 @@ export default {
 
 .gallery-item img {
   width: auto;
-  height: 400 px;
+  height: 400px;
   object-fit: cover;
 }
-
-
 </style> 
