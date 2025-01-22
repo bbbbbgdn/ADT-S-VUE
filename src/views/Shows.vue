@@ -1,49 +1,56 @@
-<template>
-      <section class="shows-section">
-      <ImageGallery />
-      <ImageGallery />
-      <ImageGallery />
-      <ImageGallery />
-      <ImageGallery />
-      <ImageGallery />
-    </section>
+<script setup>
+import { useStoryblokApi } from '@storyblok/vue';
+import { ref, onMounted, reactive } from 'vue';
+import ImageGallery from '../components/ImageGallery.vue';
+import { useRouter } from 'vue-router';
 
-</template>
+const storyblokApi = useStoryblokApi();
+const stories = ref([]);
+const router = useRouter();
 
-<script>
-import BaseButton from '../components/BaseButton.vue'
-import ImageGallery from '../components/ImageGallery.vue'
-import ProjectCard from '../components/ProjectCard.vue'
-import MenuComponent from '../components/MenuComponent.vue'
-
-export default {
-  name: 'ComponentsDemo',
-  components: {
-    BaseButton,
-    ImageGallery,
-    ProjectCard,
-    MenuComponent
+onMounted(async () => {
+  try {
+    const response = await storyblokApi.get('cdn/stories', {
+      starts_with: 'shows/',
+    });
+    stories.value = response.data.stories; 
+  } catch (error) {
+    console.error('Error fetching stories:', error);
   }
-}
+});
+
+const formatImages = (visuals) => {
+  return visuals.map(visual => ({
+    url: visual.filename,
+    alt: visual.alt || 'Image'
+  }));
+};
+
+
 </script>
 
+<template>
+  <div class="shows">
+    <div v-for="story in stories" :key="story.uuid">
+      <ImageGallery
+        :name="story.name"
+        :location="'test'"
+        :date="'test'"
+        :images="formatImages(story.content.visuals)"
+        :slug="story.slug"
+        :repeatCount="5"
+      />
+
+    </div>
+   
+  </div>
+</template>
+
 <style scoped>
-.components-demo {
-  /* padding: 2rem; */
+.shows {
+  padding: 20px;
 }
-
-.demo-section {
-  /* margin-bottom: 2rem; */
-  /* padding: 1rem; */
-  /* border: 1px solid #eee; */
-  /* border-radius: 8px; */
+.gallery {
+height: 50px;
 }
-
-h1 {
-  margin-bottom: 0rem;
-}
-
-h2 {
-  margin-bottom: 0rem;
-}
-</style> 
+</style>

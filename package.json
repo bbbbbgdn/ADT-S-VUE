@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@storyblok/vue": "^8.1.9",
     "vue": "^3.5.13",
     "vue-router": "4"
   },

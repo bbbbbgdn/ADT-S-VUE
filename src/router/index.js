@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -23,6 +23,12 @@ const router = createRouter({
       name: 'Shows',
       component: () => import('../views/Shows.vue')
     },
+    {  
+        path: '/shows/:slug',
+        name: 'ShowDetail',
+        component: () => import('../views/ProjectPage.vue'),
+        props: true
+    },
     {
       path: '/projectpage',
       name: 'ProjectPage',
@@ -33,6 +39,6 @@ const router = createRouter({
       redirect: '/'
     }
   ]
-})
+});
 
-export default router 
+export default router;

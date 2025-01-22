@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="gallery-tags">
-      <ButtonBase to="/projectpage">{{ name }}</ButtonBase>
+      <ButtonBase :to="`/shows/${slug}`">{{ name }}</ButtonBase>
       <ButtonBase variant="grey">{{ location }}</ButtonBase>
       <ButtonBase variant="grey">{{ date }}</ButtonBase>
     </div>
@@ -30,6 +30,10 @@ export default {
       type: String,
       required: true
     },
+    slug: {
+      type: String,
+      required: true
+    },
     location: {
       type: String,
       required: true
@@ -37,25 +41,17 @@ export default {
     date: {
       type: String,
       required: true
+    },
+    images: {
+      type: Array,
+      required: true
+    },
+    repeatCount: {
+      type: Number,
+      required: true
     }
   },
-  data() {
-    return {
-      name: 'Event Name',
-      location: 'Event Location',
-      date: '5.08.23-22.10.23',
-      images: [
-        { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 1' },
-        { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 2' },
-        { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 3' },
-        { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 4' },
-        { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 5' },
-        { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 6' },
-        { url: 'https://picsum.photos/400/300', alt: 'Gallery Image 7' },
-      ],
-      repeatCount: 5 
-    }
-  },
+
   computed: {
     repeatedImages() {
       const repeated = [];
@@ -64,6 +60,7 @@ export default {
       }
       return repeated;
     }
+    
   }
 }
 </script>
@@ -73,6 +70,7 @@ export default {
   width: 100%;
   overflow: hidden;
   line-height: 0;
+
 }
 
 .gallery {
@@ -91,6 +89,7 @@ export default {
 .gallery-item {
   flex: 0 0 auto;
   scroll-snap-align: start;
+
 }
 
 .gallery-item:first-of-type {
