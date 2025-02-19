@@ -35,8 +35,8 @@ const formatImages = (visuals) => {
     <div v-if="story">
       <ImageGallery
         :name="story.name"
-        :location="'test'"
-        :date="'test'"
+        :location="story.content.location_tag"
+        :date="story.content.date_tag"
         :slug="story.slug"
         :images="formatImages(story.content.visuals)"
         :repeatCount="1"
@@ -54,8 +54,8 @@ const formatImages = (visuals) => {
         v-for="(gallery, index) in 3"
         :key="index"
         :name="story.name"
-        :location="'test'"
-        :date="'test'"
+        :location="story.content.location_tag"
+        :date="story.content.date_tag"
         :slug="story.slug"
         :images="formatImages(story.content.visuals)"
         :repeatCount="1"
