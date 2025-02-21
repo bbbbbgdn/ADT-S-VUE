@@ -34,7 +34,7 @@ const formatImages = (visuals) => {
   <div class="project-page">
     <div v-if="story">
       <ImageGallery
-        :name="story.name"
+        :name="story.content.title_tag"
         :location="story.content.location_tag"
         :date="story.content.date_tag"
         :slug="story.slug"
