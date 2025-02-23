@@ -4,6 +4,8 @@ import { useStoryblokApi } from '@storyblok/vue';
 import { ref, onMounted } from 'vue';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
+import { renderRichText } from "@storyblok/vue";
+
 
 const route = useRoute();
 const story = ref(null);
@@ -41,11 +43,10 @@ const formatImages = (visuals, width = 800, height = 600) => {
         :images="formatImages(story.content.visuals, 800, 600)"
         :repeatCount="1"
       />
-      <div class="description">
+      <div class="description" >
         {{ story.content?.main_text || 'No Description Available' }}
       </div>
-      <div class="credits">
-        {{ story.content?.info_text || 'No Description Available' }}
+      <div class="credits" v-html="renderRichText(story.content.info_text)">
       </div>
       <div class="button-container">
         <BaseButton to="/shows">Other Shows</BaseButton>
