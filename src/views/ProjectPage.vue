@@ -22,9 +22,9 @@ onMounted(async () => {
   }
 });
 
-const formatImages = (visuals) => {
+const formatImages = (visuals, width = 800, height = 600) => {
   return visuals.map(visual => ({
-    url: visual.filename,
+    url: `${visual.filename}/m/${width}x${height}`, // Додаємо зміну розміру
     alt: visual.alt || 'Image'
   }));
 };
@@ -38,7 +38,7 @@ const formatImages = (visuals) => {
         :location="story.content.location_tag"
         :date="story.content.date_tag"
         :slug="story.slug"
-        :images="formatImages(story.content.visuals)"
+        :images="formatImages(story.content.visuals, 800, 600)"
         :repeatCount="1"
       />
       <div class="description">

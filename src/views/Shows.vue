@@ -19,9 +19,9 @@ onMounted(async () => {
   }
 });
 
-const formatImages = (visuals) => {
+const formatImages = (visuals, width = 800, height = 600) => {
   return visuals.map(visual => ({
-    url: visual.filename,
+    url: `${visual.filename}/m/${width}x${height}`, // Додаємо зміну розміру
     alt: visual.alt || 'Image'
   }));
 };
@@ -32,17 +32,17 @@ const formatImages = (visuals) => {
 <template>
   <div class="shows">
     <div v-for="story in stories" :key="story.uuid">
-      <ImageGallery
+      <ImageGallery 
+        :images="formatImages(story.content.visuals, 800, 600)"
         :name="story.name"
         :location="story.content.location_tag"
         :date="story.content.date_tag"
-        :images="formatImages(story.content.visuals)"
         :slug="story.slug"
         :repeatCount="5"
       />
 
     </div>
-   
+
   </div>
 </template>
 

@@ -53,15 +53,15 @@ export default {
   },
 
   computed: {
-    repeatedImages() {
-      const repeated = [];
-      for (let i = 0; i < this.repeatCount; i++) {
-        repeated.push(...this.images);
-      }
-      return repeated;
+  repeatedImages() {
+    const repeated = [];
+    for (let i = 0; i < this.repeatCount; i++) {
+      repeated.push(...this.images);
     }
-    
+    return repeated;
   }
+  
+}
 }
 </script>
 
