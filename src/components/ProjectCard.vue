@@ -6,7 +6,6 @@
       <div class="project-tags">
         <BaseButton>{{ projectName }}</BaseButton>
         <BaseButton variant="grey">{{ year }}</BaseButton>
-        <BaseButton>Demo Long Button</BaseButton>
       </div>
 </div>
 </template>

@@ -2,30 +2,49 @@
   <div class="projects-grid">
     <ProjectCard
       class="project-card"
-      v-for="(image, index) in projectImages"
-      :key="index"
-      :image="image"
+      v-for="(story, index) in stories"
+      :key="story.id"
+      :image="formatImage(story.content.visuals[0])"
+      :projectName="story.content.title_tag"
+      :year="story.content.date_tag"
     />
   </div>
 </template>
 
 <script>
+import { onMounted, ref } from 'vue';
 import ProjectCard from '../components/ProjectCard.vue';
+import { useStoryblokApi } from '@storyblok/vue';
 
 export default {
   name: 'Projects',
   components: {
     ProjectCard
   },
-  data() {
+  setup() {
+    const storyblokApi = useStoryblokApi();
+    const stories = ref([]);
+    
+
+    const formatImage = (visual) => {
+      return `${visual.filename}/m/800x600`; // Форматуємо зображення
+    };
+
+    onMounted(async () => {
+      try {
+        const response = await storyblokApi.get('cdn/stories', {
+          starts_with: 'shows/',
+        });
+        stories.value = response.data.stories;
+      } catch (error) {
+        console.error('Error fetching stories:', error);
+      }
+    });
+
     return {
-      projectImages: [
-        'https://picsum.photos/800/600?random=1',
-        'https://picsum.photos/800/600?random=2',
-        'https://picsum.photos/800/600?random=3',
-        'https://picsum.photos/800/600?random=4'
-      ]
-    }
+      stories,
+      formatImage
+    };
   }
 }
 </script>
