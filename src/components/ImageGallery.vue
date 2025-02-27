@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .gallery-container {
   width: 100%;
   overflow: hidden;
@@ -93,7 +93,7 @@ export default {
 }
 
 .gallery-item:first-of-type {
-  padding-left: 3rem;
+  padding-left: 1rem;
 }
 
 .gallery-tags {
@@ -104,7 +104,7 @@ export default {
 
 .gallery-item img {
   width: auto;
-  height: 400px;
+  height: 22vh;
   object-fit: cover;
 }
 </style> 

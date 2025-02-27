@@ -33,7 +33,7 @@ const formatImages = (visuals, width = 800, height = 600) => {
 </script>
 
 <template>
-  <div class="project-page">
+  <div class="show-page">
     <div v-if="story">
       <ImageGallery
         :name="story.content.title_tag"
@@ -46,7 +46,9 @@ const formatImages = (visuals, width = 800, height = 600) => {
       <div class="description" >
         {{ story.content?.main_text || 'No Description Available' }}
       </div>
-      <div class="credits" v-html="renderRichText(story.content.info_text)">
+      <div class="credits-container">
+        <div class="credits" v-html="renderRichText(story.content.info_text)">
+        </div>
       </div>
       <div class="button-container">
         <BaseButton to="/shows">Other Shows</BaseButton>
@@ -67,8 +69,8 @@ const formatImages = (visuals, width = 800, height = 600) => {
   </div>
 </template>
 
-<style scoped>
-/* .project-page {
+<style>
+/* .show-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,16 +92,22 @@ h1 {
   font-size: 30px;
 }
 
+.credits-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .credits {
   column-count: 2;
   column-gap: 20px;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
+  width: 80%;
+  text-align: left;
+  margin: 0 10px;
 }
 
 p {
-  font-size: 1rem;
+  font-size: 22rem;
   margin: 5px 0;
   text-align: justify;
 }
@@ -108,23 +116,27 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 20px 0;
+  /* margin: 20px 0; */
 }
 
 .image-container img {
   width: 200px;
-  height: 200px;
+  height: 600px;
   object-fit: cover;
   border-radius: 5px;
 }
 
-.button-container {
-  margin-top: 20px;
+.gallery-item img{
+  height: 55vh;
 }
 
-.small-gallery {
-  height: 200px; /* Установите нужную высоту */
+.button-container {
+  margin: 2rem;
+}
+
+.small-gallery img{
+  height: 22vh; 
   overflow: hidden; 
-  margin: 10px;/* Скрыть переполнение, если нужно */
+  /* margin: 10px; */
 }
 </style>
