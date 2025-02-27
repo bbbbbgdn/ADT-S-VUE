@@ -33,7 +33,7 @@ export default {
     onMounted(async () => {
       try {
         const response = await storyblokApi.get('cdn/stories', {
-          starts_with: 'shows/',
+          starts_with: 'projects/',
         });
         stories.value = response.data.stories;
       } catch (error) {

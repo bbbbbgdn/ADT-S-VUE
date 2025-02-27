@@ -26,13 +26,13 @@ const router = createRouter({
     {  
         path: '/shows/:slug',
         name: 'ShowDetail',
-        component: () => import('../views/ProjectPage.vue'),
+        component: () => import('../views/ShowPage.vue'),
         props: true
     },
     {
-      path: '/projectpage',
-      name: 'ProjectPage',
-      component: () => import('../views/ProjectPage.vue')
+      path: '/showpage',
+      name: 'ShowPage',
+      component: () => import('../views/ShowPage.vue')
     },
     {
       path: '/:pathMatch(.*)*',
