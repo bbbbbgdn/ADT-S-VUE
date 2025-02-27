@@ -10,9 +10,9 @@
       </div>
     </div>
     <div class="gallery-tags">
-      <ButtonBase :to="`/shows/${slug}`">{{ name }}</ButtonBase>
-      <ButtonBase variant="grey">{{ location }}</ButtonBase>
-      <ButtonBase variant="grey">{{ date }}</ButtonBase>
+      <ButtonBase v-if="name" :to="`/shows/${slug}`">{{ name }}</ButtonBase>
+      <ButtonBase v-if="location" variant="grey">{{ location }}</ButtonBase>
+      <ButtonBase v-if="date" variant="grey">{{ date }}</ButtonBase>
     </div>
   </div>
 </template>

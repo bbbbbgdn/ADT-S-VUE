@@ -4,7 +4,7 @@
   v-lazy-load="image"
 >
       <div class="project-tags">
-        <BaseButton>{{ projectName }}</BaseButton>
+        <BaseButton :to="`/projects/${slug}`">{{ projectName }}</BaseButton>
         <BaseButton variant="grey">{{ year }}</BaseButton>
       </div>
 </div>
@@ -40,11 +40,14 @@ export default {
       type: String,
       default: 'https://picsum.photos/800/600',
       required: true
+    },
+    slug: {
+      type: String,
+      required: true
     }
   }
 }
 </script>
-
 <style scoped>
 .project-card {
   position: relative;

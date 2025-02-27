@@ -7,6 +7,7 @@
       :image="formatImage(story.content.visuals[0])"
       :projectName="story.content.title_tag"
       :year="story.content.date_tag"
+      :slug="story.slug"
     />
   </div>
 </template>
