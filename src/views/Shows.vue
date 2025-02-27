@@ -33,7 +33,7 @@ const formatImages = (visuals, width = 800, height = 600) => {
   <div class="shows">
     <div v-for="story in stories" :key="story.uuid">
       <ImageGallery 
-        :images="formatImages(story.content.visuals, 300, 200)"
+        :images="formatImages(story.content.visuals, 800, 600)"
         :name="story.name"
         :location="story.content.location_tag"
         :date="story.content.date_tag"
