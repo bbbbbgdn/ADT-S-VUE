@@ -6,13 +6,16 @@ import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import { renderRichText } from "@storyblok/vue";
 import ProjectCard from '../components/ProjectCard.vue';
+import LoadingIndicator from '../components/LoadingIndicator.vue';
 
 const route = useRoute();
 const story = ref(null);
 const storyblokApi = useStoryblokApi();
 const projects = ref([]);
+const isLoading = ref(true);
 
 onMounted(async () => {
+    isLoading.value = true;
     try {
         const response = await storyblokApi.get(`cdn/stories/projects/${route.params.slug}`, {
             version: 'draft'
@@ -32,6 +35,11 @@ onMounted(async () => {
     } catch (error) {
         console.error('Failed to load projects:', error);
     }
+    
+    // Add a small delay to ensure smooth transition
+    setTimeout(() => {
+        isLoading.value = false;
+    }, 300);
 });
 
 const temporaryImages = [
@@ -57,34 +65,40 @@ const getProjectImage = (project) => {
 
 <template>
     <div class="project-page">
-        <div v-if="story">
-            <div class="description">
-                {{ story.content?.main_text || 'No Description Available' }}
-            </div>
-            <ImageGallery :slug="story.slug" :images="formatImages(story.content.visuals, 800, 600)" :repeatCount="1" />
-            <div class="credits-container">
-                <div class="credits">
-                    {{ story.content.info_text }}
-                </div>
-            </div>
-            <div class="button-container">
-                <BaseButton to="/projects">Other projects</BaseButton>
-            </div>
-            <div class="image-grid">
-                <div
-                    class="project-card"
-                    v-for="project in projects"
-                    :key="project.id"
-                    :style="{ backgroundImage: `url(${getProjectImage(project)})` }"
-                >
-                    <div class="project-tags">
-                        <BaseButton :to="`/projects/${project.slug}`">{{ project.content.title_tag }}</BaseButton>
-                        <BaseButton variant="grey">{{ project.content.year_tag }}</BaseButton>
+        <!-- Content area with loading state -->
+        <div class="content-area">
+            <LoadingIndicator :isLoading="isLoading" />
+            
+            <transition name="fade">
+                <div v-if="story && !isLoading" class="content-container">
+                    <div class="description">
+                        {{ story.content?.main_text || 'No Description Available' }}
+                    </div>
+                    <ImageGallery :slug="story.slug" :images="formatImages(story.content.visuals, 800, 600)" :repeatCount="1" />
+                    <div class="credits-container">
+                        <div class="credits">
+                            {{ story.content.info_text }}
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <BaseButton to="/projects">Other projects</BaseButton>
+                    </div>
+                    <div class="image-grid">
+                        <div
+                            class="project-card"
+                            v-for="project in projects"
+                            :key="project.id"
+                            :style="{ backgroundImage: `url(${getProjectImage(project)})` }"
+                        >
+                            <div class="project-tags">
+                                <BaseButton :to="`/projects/${project.slug}`">{{ project.content.title_tag }}</BaseButton>
+                                <BaseButton variant="grey">{{ project.content.year_tag }}</BaseButton>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </transition>
         </div>
-        <!-- <p v-else>Loading...</p> -->
     </div>
 </template>
 
@@ -96,6 +110,40 @@ const getProjectImage = (project) => {
   margin: 0;
   padding: 0;
 } */
+
+/* Fade transition for content */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+/* Content area that contains both loading and content */
+.content-area {
+    position: relative;
+    min-height: 80vh;
+}
+
+/* Loading styles */
+.loading-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 100;
+}
+
+.loading-text {
+    text-align: center;
+}
 
 h1 {
     font-size: 2rem;
