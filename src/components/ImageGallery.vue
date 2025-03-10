@@ -73,7 +73,7 @@ export default {
     },
     imageQuality: {
       type: Number,
-      default: 80,
+      default: 85,
       required: false
     },
     imageFormat: {
@@ -109,12 +109,12 @@ export default {
         // Request 2x resolution from Storyblok
         const transformedUrl = createImageUrl(image.url, {
           width: 0, // Auto width
-          height: heightValue * 1.5, // x height for high-DPI displays
+          height: heightValue * 2, // x height for high-DPI displays
           quality: this.imageQuality,
           format: this.imageFormat
         });
         
-        console.log(`Transformed URL for image ${index}:`, transformedUrl);
+        // console.log(`Transformed URL for image ${index}:`, transformedUrl);
         
         return {
           url: transformedUrl,
