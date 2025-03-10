@@ -5,6 +5,7 @@ import ImageGallery from '../components/ImageGallery.vue';
 import ProjectCard from '../components/ProjectCard.vue';
 import LoadingIndicator from '../components/LoadingIndicator.vue';
 import useStoryblok from '../utils/useStoryblok';
+import { watch } from 'vue';
 
 // Use our Storyblok composable
 const {
@@ -29,6 +30,27 @@ const {
 const navigateToProject = (slug) => {
   navigateTo(slug);
 };
+
+// Add this to your script section
+watch(() => stories.value, (newStories) => {
+  if (newStories && newStories.length > 0) {
+    console.log('Projects loaded:', newStories.map(p => ({
+      id: p.id,
+      title: p.content?.title_tag,
+      year_tag: p.content?.year_tag
+    })));
+    
+    // Check for empty tags and log warnings
+    newStories.forEach(project => {
+      if (!project.content?.year_tag) {
+        console.warn(`Empty year tag detected for project: ${project.id} - ${project.content?.title_tag || 'Untitled'}`);
+      }
+      if (!project.content?.title_tag) {
+        console.warn(`Empty title tag detected for project: ${project.id}`);
+      }
+    });
+  }
+}, { immediate: true });
 </script>
 
 <template>
@@ -59,8 +81,13 @@ const navigateToProject = (slug) => {
                 <ImageGallery 
                     v-if="story.content?.visuals && story.content.visuals.length > 0"
                     :slug="story.slug" 
-                    :images="formatImages(story.content.visuals, { width: 0, height: 230, quality: 70 })" 
-                    :repeatCount="1" 
+                    :images="formatImages(story.content.visuals, { width: 0, height: 690, quality: 85 })" 
+                    :repeatCount="1"
+                    :imageHeight="'690rem'"
+                    :imageQuality="85"
+                    :name="story.content?.title_tag || ''"
+                    :location="story.content?.location_tag || ''"
+                    :date="story.content?.date_tag || story.content?.year_tag || ''"
                 />
                 
                 <!-- Fallback message if no visuals -->
@@ -84,7 +111,7 @@ const navigateToProject = (slug) => {
                         :key="project.id"
                         :image="formatImage(project, { width: 400, height: 300, quality: 85 })"
                         :projectName="project.content?.title_tag || 'Untitled Project'"
-                        :year="project.content?.date_tag || project.content?.year_tag || ''"
+                        :year="project.content?.year_tag || ''"
                         :slug="project.slug"
                         :useImgTag="true"
                         @click="navigateToProject(project.slug.split('/').pop())"
@@ -179,10 +206,6 @@ p {
     height: 600px;
     object-fit: cover;
     border-radius: 5px;
-}
-
-.gallery-item img {
-    height: 55vh;
 }
 
 .button-container {

@@ -1,5 +1,6 @@
 <template>
   <button 
+    v-if="hasContent"
     class="base-button"
     :class="[
       `button-${variant}`,
@@ -39,6 +40,16 @@ export default {
     }
   },
   emits: ['click'],
+  data() {
+    return {
+      slotContent: ''
+    };
+  },
+  computed: {
+    hasContent() {
+      return this.slotContent.trim().length > 0;
+    }
+  },
   methods: {
     handleClick() {
       if (this.to) {
@@ -47,7 +58,50 @@ export default {
         return;
       }
       this.$emit('click');
+    },
+    updateSlotContent() {
+      // Get the text content of the default slot
+      const slotElement = this.$slots.default && this.$slots.default();
+      if (slotElement && slotElement.length > 0) {
+        // Extract text content from VNode
+        this.slotContent = this.getTextFromVNode(slotElement[0]);
+        
+        // Log warning if content is empty
+        if (!this.slotContent || this.slotContent.trim().length === 0) {
+          console.warn('Empty button content detected', {
+            variant: this.variant,
+            to: this.to
+          });
+        }
+      } else {
+        this.slotContent = '';
+        console.warn('Empty button content detected (no slot content)', {
+          variant: this.variant,
+          to: this.to
+        });
+      }
+    },
+    getTextFromVNode(vnode) {
+      if (!vnode) return '';
+      
+      // If it's a text node, return its content
+      if (typeof vnode.children === 'string') {
+        return vnode.children;
+      }
+      
+      // If it has children, recursively get text from them
+      if (Array.isArray(vnode.children)) {
+        return vnode.children.map(child => this.getTextFromVNode(child)).join('');
+      }
+      
+      return '';
     }
+  },
+  mounted() {
+    this.updateSlotContent();
+  },
+  updated() {
+    this.updateSlotContent();
   }
 }
 </script>

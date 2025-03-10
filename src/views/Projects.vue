@@ -6,7 +6,7 @@
       :key="story.id"
       :image="formatImage(story.content)"
       :projectName="story.content.title_tag"
-      :year="story.content.date_tag"
+      :year="story.content.year_tag"
       :slug="story.slug"
       @click="navigateToProject"
     />

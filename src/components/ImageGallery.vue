@@ -16,9 +16,9 @@
       </div>
     </div>
     <div class="gallery-tags">
-      <ButtonBase v-if="name" :to="`/shows/${slug}`" :variant="isActive ? 'active' : 'black'">{{ name }}</ButtonBase>
-      <ButtonBase v-if="location" variant="grey">{{ location }}</ButtonBase>
-      <ButtonBase v-if="date" variant="grey">{{ date }}</ButtonBase>
+      <ButtonBase v-if="name && name.trim().length > 0" :to="`/shows/${slug}`" :variant="isActive ? 'active' : 'black'">{{ name }}</ButtonBase>
+      <ButtonBase v-if="location && location.trim().length > 0" variant="grey">{{ location }}</ButtonBase>
+      <ButtonBase v-if="date && date.trim().length > 0" variant="grey">{{ date }}</ButtonBase>
     </div>
   </div>
 </template>
@@ -161,6 +161,19 @@ export default {
         }
       }
       return {}
+    }
+  },
+
+  mounted() {
+    // Check for empty tags and log warnings
+    if (!this.name || this.name.trim().length === 0) {
+      console.warn(`Empty name tag detected for gallery with slug: ${this.slug}`);
+    }
+    if (!this.location || this.location.trim().length === 0) {
+      console.warn(`Empty location tag detected for gallery with slug: ${this.slug}`);
+    }
+    if (!this.date || this.date.trim().length === 0) {
+      console.warn(`Empty date tag detected for gallery with slug: ${this.slug}`);
     }
   }
 }

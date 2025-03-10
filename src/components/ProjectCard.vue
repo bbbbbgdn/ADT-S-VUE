@@ -25,7 +25,7 @@
   <!-- Tags are always shown -->
   <div class="project-tags">
     <BaseButton :to="`/projects/${slug}`">{{ projectName }}</BaseButton>
-    <BaseButton variant="grey">{{ year }}</BaseButton>
+    <BaseButton v-if="year && year.trim().length > 0" variant="grey">{{ year }}</BaseButton>
   </div>
 </div>
 </template>
