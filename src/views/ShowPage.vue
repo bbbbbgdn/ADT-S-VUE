@@ -4,7 +4,6 @@ import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import LoadingIndicator from '../components/LoadingIndicator.vue';
 import { renderRichText } from "@storyblok/vue";
-import ProjectCard from '../components/ProjectCard.vue';
 import useStoryblok from '../utils/useStoryblok';
 
 // Use our Storyblok composable with 'show' type
@@ -74,17 +73,19 @@ const navigateToShow = (slug) => {
           <BaseButton to="/shows">Other Shows</BaseButton>
         </div>
         
-        <div v-if="otherShows && otherShows.length > 0" class="image-grid">
-          <ProjectCard
-            v-for="show in otherShows"
-            :key="show.id"
-            :image="formatImage(show, { width: 400, height: 300, quality: 85 })"
-            :projectName="show.content?.title_tag || 'Untitled Show'"
-            :year="show.content?.date_tag || ''"
-            :slug="show.slug"
-            :useImgTag="true"
-            @click="navigateToShow(show.slug.split('/').pop())"
-          />
+        <h2 class="other-shows-title">Other Shows</h2>
+        
+        <div v-if="otherShows && otherShows.length > 0" class="other-shows-container">
+          <div v-for="show in otherShows" :key="show.id">
+            <ImageGallery
+              :name="show.content?.title_tag || 'Untitled Show'"
+              :location="show.content?.location_tag || ''"
+              :date="show.content?.date_tag || ''"
+              :slug="show.slug"
+              :images="formatImages(show.content.visuals, { width: 0, height: 230, quality: 70 })"
+              :repeatCount="1"
+            />
+          </div>
         </div>
         
         <div v-else class="no-shows-message">
@@ -170,12 +171,13 @@ p {
 .other-shows-title {
   margin: 4rem 0 2rem 0;
   text-align: center;
+  font-size: 1.8rem;
 }
 
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+.other-shows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   width: 100%;
 }
 
