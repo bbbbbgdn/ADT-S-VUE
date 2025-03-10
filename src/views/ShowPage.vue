@@ -65,7 +65,7 @@ const formatImages = (visuals, width = 800, height = 600) => {
         class="small-gallery"
       />
     </div>
-    <p v-else>Loading...</p>
+    <!-- <p v-else>Loading...</p> -->
   </div>
 </template>
 

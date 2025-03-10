@@ -84,7 +84,7 @@ const getProjectImage = (project) => {
                 </div>
             </div>
         </div>
-        <p v-else>Loading...</p>
+        <!-- <p v-else>Loading...</p> -->
     </div>
 </template>
 
