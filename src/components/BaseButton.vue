@@ -51,7 +51,7 @@ export default {
   padding: 4rem 12rem 6rem 12rem;
   white-space: nowrap;
   border-radius: 100rem;
-  cursor: pointer;
+  
   transition: all .8s;
   min-height: 42.4rem;
   line-height: 1.2;
@@ -61,6 +61,7 @@ export default {
 .button-black {
   background-color: black;
   color: white;
+  cursor: pointer;
 }
 
 /* Grey Button */
