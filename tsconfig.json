@@ -11,8 +11,9 @@
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "allowJs": true,
-    "checkJs": false
+    "checkJs": false,
+    "noEmit": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/**/*.js"]
 } 
