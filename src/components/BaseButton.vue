@@ -76,7 +76,7 @@ export default {
   pointer-events: none;
 }
 
-.button-black:hover {
+.button-black:hover ,.button-black:disabled {
   opacity: 0.75;
 }
 
