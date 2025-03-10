@@ -37,7 +37,9 @@ export default {
   methods: {
     handleClick() {
       if (this.to) {
+        event.preventDefault();
         this.$router.push(this.to);
+        return;
       }
       this.$emit('click');
     }
@@ -74,7 +76,7 @@ export default {
   pointer-events: none;
 }
 
-.button-grey:hover, .button-black:hover ,.button-black:disabled {
+.button-black:hover {
   opacity: 0.75;
 }
 
