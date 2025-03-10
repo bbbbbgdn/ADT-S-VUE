@@ -57,23 +57,7 @@ export default {
       const img = new Image()
       img.src = imageUrl
       
-      // Set a timeout to handle cases where images might not load
-      const loadTimeout = setTimeout(() => {
-        // If image hasn't loaded after timeout, force progress to next image
-        if (el.classList.contains('image-loading')) {
-          console.warn(`Image loading timeout for index ${index}: ${imageUrl}`)
-          el.classList.remove('image-loading')
-          el.classList.add('image-loaded', 'image-error')
-          
-          // Move to next image to prevent blocking the queue
-          loadingQueue.currentIndex++
-          loadingQueue.observers.forEach(callback => callback(loadingQueue.currentIndex))
-        }
-      }, 5000) // 5 second timeout
-      
       img.onload = () => {
-        clearTimeout(loadTimeout)
-        
         if (el.tagName === 'IMG') {
           const imageElement = el as HTMLImageElement
           imageElement.src = imageUrl
@@ -89,7 +73,6 @@ export default {
       }
       
       img.onerror = () => {
-        clearTimeout(loadTimeout)
         console.error(`Failed to load image at index ${index}: ${imageUrl}`)
         
         el.classList.remove('image-loading')
