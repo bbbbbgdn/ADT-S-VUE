@@ -4,15 +4,18 @@ import { useStoryblokApi } from '@storyblok/vue';
 import { ref, onMounted } from 'vue';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
+import LoadingIndicator from '../components/LoadingIndicator.vue';
 import { renderRichText } from "@storyblok/vue";
 
 
 const route = useRoute();
 const story = ref(null);
+const isLoading = ref(true);
 
 const storyblokApi = useStoryblokApi();
 
 onMounted(async () => {
+  isLoading.value = true;
   try {
     const response = await storyblokApi.get(`cdn/stories/shows/${route.params.slug}`, {
       version: 'draft'
@@ -22,6 +25,11 @@ onMounted(async () => {
   } catch (error) {
     console.error('Failed to load story:', error);
   }
+  
+  // Add a small delay to ensure smooth transition
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 300);
 });
 
 const formatImages = (visuals, width = 800, height = 600) => {
@@ -34,38 +42,44 @@ const formatImages = (visuals, width = 800, height = 600) => {
 
 <template>
   <div class="show-page">
-    <div v-if="story">
-      <ImageGallery
-        :name="story.content.title_tag"
-        :location="story.content.location_tag"
-        :date="story.content.date_tag"
-        :slug="story.slug"
-        :images="formatImages(story.content.visuals, 800, 600)"
-        :repeatCount="1"
-      />
-      <div class="description" >
-        {{ story.content?.main_text || 'No Description Available' }}
-      </div>
-      <div class="credits-container">
-        <div class="credits" v-html="renderRichText(story.content.info_text)">
+    <!-- Content area with loading state -->
+    <div class="content-area">
+      <LoadingIndicator :isLoading="isLoading" />
+      
+      <transition name="fade">
+        <div v-if="story && !isLoading" class="content-container">
+          <ImageGallery
+            :name="story.content.title_tag"
+            :location="story.content.location_tag"
+            :date="story.content.date_tag"
+            :slug="story.slug"
+            :images="formatImages(story.content.visuals, 800, 600)"
+            :repeatCount="1"
+          />
+          <div class="description" >
+            {{ story.content?.main_text || 'No Description Available' }}
+          </div>
+          <div class="credits-container">
+            <div class="credits" v-html="renderRichText(story.content.info_text)">
+            </div>
+          </div>
+          <div class="button-container">
+            <BaseButton to="/shows">Other Shows</BaseButton>
+          </div>
+          <ImageGallery
+            v-for="(gallery, index) in 3"
+            :key="index"
+            :name="story.name"
+            :location="story.content.location_tag"
+            :date="story.content.date_tag"
+            :slug="story.slug"
+            :images="formatImages(story.content.visuals)"
+            :repeatCount="1"
+            class="small-gallery"
+          />
         </div>
-      </div>
-      <div class="button-container">
-        <BaseButton to="/shows">Other Shows</BaseButton>
-      </div>
-      <ImageGallery
-        v-for="(gallery, index) in 3"
-        :key="index"
-        :name="story.name"
-        :location="story.content.location_tag"
-        :date="story.content.date_tag"
-        :slug="story.slug"
-        :images="formatImages(story.content.visuals)"
-        :repeatCount="1"
-        class="small-gallery"
-      />
+      </transition>
     </div>
-    <!-- <p v-else>Loading...</p> -->
   </div>
 </template>
 
@@ -138,5 +152,20 @@ p {
   height: 22vh; 
   overflow: hidden; 
   /* margin: 10px; */
+}
+
+/* Fade transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.content-area {
+  position: relative;
+  min-height: 400px;
 }
 </style>
