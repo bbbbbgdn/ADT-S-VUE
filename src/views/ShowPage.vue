@@ -74,8 +74,6 @@ const navigateToShow = (slug) => {
           <BaseButton to="/shows">Other Shows</BaseButton>
         </div>
         
-        <h2 class="other-shows-title">Other Shows</h2>
-        
         <div v-if="otherShows && otherShows.length > 0" class="other-shows-container">
           <div v-for="show in otherShows" :key="show.id">
             <ImageGallery
@@ -167,12 +165,6 @@ p {
 
 .button-container {
   margin: 2rem;
-}
-
-.other-shows-title {
-  margin: 4rem 0 2rem 0;
-  text-align: center;
-  font-size: 1.8rem;
 }
 
 .other-shows-container {
