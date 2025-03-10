@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="gallery-tags">
-      <ButtonBase v-if="name" :to="`/shows/${slug}`">{{ name }}</ButtonBase>
+      <ButtonBase v-if="name" :to="`/shows/${slug}`" :variant="isActive ? 'active' : 'black'">{{ name }}</ButtonBase>
       <ButtonBase v-if="location" variant="grey">{{ location }}</ButtonBase>
       <ButtonBase v-if="date" variant="grey">{{ date }}</ButtonBase>
     </div>
@@ -60,6 +60,10 @@ export default {
     repeatCount: {
       type: Number,
       required: true
+    },
+    isActive: {
+      type: Boolean,
+      default: false
     },
     imageHeight: {
       type: String,

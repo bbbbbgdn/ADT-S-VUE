@@ -2,7 +2,8 @@
   <button 
     class="base-button"
     :class="[
-      `button-${variant}`
+      `button-${variant}`,
+      { 'keep-clickable': keepClickable && variant === 'active' }
     ]"
     :disabled="disabled"
     @click="handleClick"
@@ -31,6 +32,10 @@ export default {
     to: {
       type: String,
       default: null
+    },
+    keepClickable: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['click'],
@@ -87,4 +92,9 @@ export default {
   pointer-events: none;
 }
 
+/* Override for active buttons that should remain clickable */
+.keep-clickable {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
 </style> 

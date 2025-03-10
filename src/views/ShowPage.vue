@@ -55,6 +55,7 @@ const navigateToShow = (slug) => {
           :slug="story.slug"
           :images="formatImages(story.content.visuals, { width: 0, height: 230, quality: 70 })"
           :repeatCount="1"
+          :isActive="true"
         />
         
         <!-- Fallback message if no visuals -->

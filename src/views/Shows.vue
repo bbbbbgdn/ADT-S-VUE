@@ -21,7 +21,7 @@ onMounted(async () => {
 
 const formatImages = (visuals, width = 800, height = 600) => {
   return visuals.map(visual => ({
-    url: `${visual.filename}/m/${width}x${height}`, // Додаємо зміну розміру
+    url: `${visual.filename}/m/${width}x${height}`, 
     alt: visual.alt || 'Image'
   }));
 };

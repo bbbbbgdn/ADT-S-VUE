@@ -3,8 +3,9 @@
     <BaseButton 
       v-for="item in menuItems" 
       :key="item.path"
-      :variant="currentPath === item.path ? 'active' : 'black'"
+      :variant="isActive(item.path) ? 'active' : 'black'"
       :disabled="!item.path"
+      :keepClickable="isActive(item.path) && item.path !== currentPath"
       @click="navigateTo(item.path)"
     >
       {{ item.name }}
@@ -14,7 +15,7 @@
 
 <script>
 import { useRouter, useRoute } from 'vue-router'
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import BaseButton from './BaseButton.vue'
 
 export default {
@@ -48,10 +49,25 @@ export default {
       router.push(path)
     }
 
+    // Check if a menu item should be active
+    const isActive = (path) => {
+      if (!path) return false;
+      
+      // Exact match for home page
+      if (path === '/' && currentPath.value === '/') {
+        return true;
+      }
+      
+      // For other pages, check if the current path starts with the menu item path
+      // This ensures that /shows/some-show will keep the Shows menu item active
+      return path !== '/' && currentPath.value.startsWith(path);
+    }
+
     return {
       menuItems,
       navigateTo,
-      currentPath
+      currentPath,
+      isActive
     }
   }
 }
@@ -59,17 +75,16 @@ export default {
 
 <style scoped>
 .menu {
-padding: 3rem;
+  padding: 3rem;
   display: flex;
   flex-wrap: wrap;
-
   gap: 3rem;
 }
 
 .components-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 3rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 3rem;
 }
 </style>    
