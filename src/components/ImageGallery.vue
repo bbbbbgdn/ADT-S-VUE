@@ -6,7 +6,10 @@
         :key="index" 
         class="gallery-item"
       >
-        <img :src="image.url" :alt="image.alt">
+        <img 
+          v-lazy-load="image.url"
+          :alt="image.alt"
+          class="gallery-image">
       </div>
     </div>
     <div class="gallery-tags">
@@ -19,11 +22,15 @@
 
 <script>
 import ButtonBase from './BaseButton.vue';
+import lazyLoad from '../directives/lazyLoad';
 
 export default {
   name: 'ImageGallery',
   components: {
     ButtonBase
+  },
+  directives: {
+    lazyLoad
   },
   props: {
     name: {
@@ -53,15 +60,14 @@ export default {
   },
 
   computed: {
-  repeatedImages() {
-    const repeated = [];
-    for (let i = 0; i < this.repeatCount; i++) {
-      repeated.push(...this.images);
+    repeatedImages() {
+      const repeated = [];
+      for (let i = 0; i < this.repeatCount; i++) {
+        repeated.push(...this.images);
+      }
+      return repeated;
     }
-    return repeated;
   }
-  
-}
 }
 </script>
 
@@ -70,7 +76,6 @@ export default {
   width: 100%;
   overflow: hidden;
   line-height: 0;
-
 }
 
 .gallery {
@@ -89,7 +94,6 @@ export default {
 .gallery-item {
   flex: 0 0 auto;
   scroll-snap-align: start;
-
 }
 
 .gallery-item:first-of-type {
@@ -102,9 +106,19 @@ export default {
   margin: 3rem;
 }
 
-.gallery-item img {
+.gallery-image {
   width: auto;
   height: 22vh;
   object-fit: cover;
+  transition: opacity 0.8s ease-out;
+}
+
+.gallery-image.image-loading {
+  opacity: 0;
+  background-color: #f0f0f0;
+}
+
+.gallery-image.image-loaded {
+  opacity: 1;
 }
 </style> 
