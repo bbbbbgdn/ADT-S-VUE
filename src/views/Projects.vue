@@ -33,7 +33,7 @@ export default {
       if (content && content.visuals && content.visuals.length > 0) {
         return `${content.visuals[0].filename}/m/800x600`;
       }
-      return 'https://picsum.photos/800/600';
+      return '';
     };
 
     const navigateToProject = (slug) => {

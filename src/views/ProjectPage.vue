@@ -29,15 +29,6 @@ const {
 const navigateToProject = (slug) => {
   navigateTo(slug);
 };
-
-const temporaryImages = [
-  'https://picsum.photos/800/600?random=1',
-  'https://picsum.photos/800/600?random=2',
-  'https://picsum.photos/800/600?random=3',
-  'https://picsum.photos/800/600?random=4'
-];
-
-const formatTemporaryImages = temporaryImages.map(image => ({ url: image, alt: 'Image' }));
 </script>
 
 <template>

@@ -31,9 +31,9 @@
         :location="'Demo Location'"
         :date="'2023'"
         :images="[
-          { url: 'https://picsum.photos/800/600', alt: 'Demo Image 1' },
-          { url: 'https://picsum.photos/800/601', alt: 'Demo Image 2' },
-          { url: 'https://picsum.photos/800/602', alt: 'Demo Image 3' }
+          { url: '', alt: 'Demo Image 1' },
+          { url: '', alt: 'Demo Image 2' },
+          { url: '', alt: 'Demo Image 3' }
         ]"
         :repeatCount="2"
       />

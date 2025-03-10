@@ -256,13 +256,8 @@ export const formatImage = (project, options = {}) => {
  * @returns {string} - Fallback image URL
  */
 const getFallbackImageUrl = (options = {}) => {
-  const { width = 800, height = 600 } = options;
-  
-  // Add a random parameter to prevent caching issues
-  const randomSeed = Math.floor(Math.random() * 1000);
-  
-  // Use picsum.photos with specific dimensions and a random seed
-  return `https://picsum.photos/${width || 800}/${height || 600}?random=${randomSeed}`;
+  // Return empty string instead of placeholder image
+  return '';
 };
 
 /**

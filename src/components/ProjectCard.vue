@@ -58,7 +58,7 @@ export default {
     },
     image: {
       type: String,
-      default: 'https://picsum.photos/800/600',
+      default: '',
       required: true
     },
     slug: {
