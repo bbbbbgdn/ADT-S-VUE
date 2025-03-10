@@ -8,12 +8,14 @@
       :projectName="story.content.title_tag"
       :year="story.content.date_tag"
       :slug="story.slug"
+      @click="navigateToProject"
     />
   </div>
 </template>
 
 <script>
 import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import ProjectCard from '../components/ProjectCard.vue';
 import { useStoryblokApi } from '@storyblok/vue';
 
@@ -23,6 +25,7 @@ export default {
     ProjectCard
   },
   setup() {
+    const router = useRouter();
     const storyblokApi = useStoryblokApi();
     const stories = ref([]);
     
@@ -33,10 +36,15 @@ export default {
       return 'https://picsum.photos/800/600';
     };
 
+    const navigateToProject = (slug) => {
+      router.push(`/projects/${slug}`);
+    };
+
     onMounted(async () => {
       try {
         const response = await storyblokApi.get('cdn/stories', {
           starts_with: 'projects/',
+          version: 'published'
         });
         stories.value = response.data.stories;
         console.log('Projects loaded:', stories.value);
@@ -47,7 +55,8 @@ export default {
 
     return {
       stories,
-      formatImage
+      formatImage,
+      navigateToProject
     };
   }
 }

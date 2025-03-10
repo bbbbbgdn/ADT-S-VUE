@@ -1,7 +1,7 @@
 <script setup>
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useStoryblokApi } from '@storyblok/vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import { renderRichText } from "@storyblok/vue";
@@ -9,16 +9,21 @@ import ProjectCard from '../components/ProjectCard.vue';
 import LoadingIndicator from '../components/LoadingIndicator.vue';
 
 const route = useRoute();
+const router = useRouter();
 const story = ref(null);
 const storyblokApi = useStoryblokApi();
 const projects = ref([]);
 const isLoading = ref(true);
+const contentReady = ref(false);
 
-onMounted(async () => {
+// Function to load project data
+const loadProjectData = async (slug) => {
     isLoading.value = true;
+    contentReady.value = false;
+    
     try {
-        const response = await storyblokApi.get(`cdn/stories/projects/${route.params.slug}`, {
-            version: 'draft'
+        const response = await storyblokApi.get(`cdn/stories/projects/${slug}`, {
+            version: 'published'
         });
         story.value = response.data.story;
         console.log('Full Story:', story.value);
@@ -28,19 +33,41 @@ onMounted(async () => {
 
     try {
         const response = await storyblokApi.get('cdn/stories', {
-            version: 'draft',
+            version: 'published',
             starts_with: 'projects/'
         });
-        projects.value = response.data.stories;
+        projects.value = response.data.stories.filter(project => project.slug !== slug);
+        console.log('Other projects loaded:', projects.value);
     } catch (error) {
         console.error('Failed to load projects:', error);
     }
     
-    // Add a small delay to ensure smooth transition
+    // First set contentReady to true
+    contentReady.value = true;
+    
+    // Then after a small delay, hide the loading indicator
     setTimeout(() => {
         isLoading.value = false;
     }, 300);
+};
+
+// Load data when component is mounted
+onMounted(() => {
+    loadProjectData(route.params.slug);
 });
+
+// Watch for route changes to reload data when navigating between projects
+watch(
+    () => route.params.slug,
+    (newSlug, oldSlug) => {
+        if (newSlug !== oldSlug) {
+            console.log(`Route changed from ${oldSlug} to ${newSlug}, reloading data`);
+            loadProjectData(newSlug);
+            // Scroll to top when navigating to a new project
+            window.scrollTo(0, 0);
+        }
+    }
+);
 
 const temporaryImages = [
     'https://picsum.photos/800/600?random=1',
@@ -52,14 +79,23 @@ const temporaryImages = [
 const formatTemporaryImages = temporaryImages.map(image => ({ url: image, alt: 'Image' }));
 
 const formatImages = (visuals, width = 800, height = 600) => {
+    if (!visuals || !Array.isArray(visuals)) return [];
     return visuals.map(visual => ({
-        url: `${visual.filename}/m/${width}x${height}`, // Додаємо зміну розміру
+        url: `${visual.filename}/m/${width}x${height}`,
         alt: visual.alt || 'Image'
     }));
 };
 
-const getProjectImage = (project) => {
-    return project.content.visuals?.[0]?.filename || 'https://picsum.photos/800/600';
+const formatImage = (project) => {
+    if (project.content && project.content.visuals && project.content.visuals.length > 0) {
+        return `${project.content.visuals[0].filename}/m/800x600`;
+    }
+    return 'https://picsum.photos/800/600';
+};
+
+// Handle navigation to another project
+const navigateToProject = (slug) => {
+    router.push(`/projects/${slug}`);
 };
 </script>
 
@@ -69,35 +105,32 @@ const getProjectImage = (project) => {
         <div class="content-area">
             <LoadingIndicator :isLoading="isLoading" />
             
-            <transition name="fade">
-                <div v-if="story && !isLoading" class="content-container">
-                    <div class="description">
-                        {{ story.content?.main_text || 'No Description Available' }}
-                    </div>
-                    <ImageGallery :slug="story.slug" :images="formatImages(story.content.visuals, 800, 600)" :repeatCount="1" />
-                    <div class="credits-container">
-                        <div class="credits">
-                            {{ story.content.info_text }}
-                        </div>
-                    </div>
-                    <div class="button-container">
-                        <BaseButton to="/projects">Other projects</BaseButton>
-                    </div>
-                    <div class="image-grid">
-                        <div
-                            class="project-card"
-                            v-for="project in projects"
-                            :key="project.id"
-                            :style="{ backgroundImage: `url(${getProjectImage(project)})` }"
-                        >
-                            <div class="project-tags">
-                                <BaseButton :to="`/projects/${project.slug}`">{{ project.content.title_tag }}</BaseButton>
-                                <BaseButton variant="grey">{{ project.content.year_tag }}</BaseButton>
-                            </div>
-                        </div>
+            <!-- Only show content when it's ready and not in loading state -->
+            <div v-if="story && contentReady" class="content-container" :class="{ 'content-visible': !isLoading }">
+                <div class="description">
+                    {{ story.content?.main_text || 'No Description Available' }}
+                </div>
+                <ImageGallery :slug="story.slug" :images="formatImages(story.content.visuals, 800, 600)" :repeatCount="1" />
+                <div class="credits-container">
+                    <div class="credits">
+                        {{ story.content.info_text }}
                     </div>
                 </div>
-            </transition>
+                <div class="button-container">
+                    <BaseButton to="/projects">Other projects</BaseButton>
+                </div>
+                <div class="image-grid">
+                    <ProjectCard
+                        v-for="project in projects"
+                        :key="project.id"
+                        :image="formatImage(project)"
+                        :projectName="project.content.title_tag"
+                        :year="project.content.date_tag || project.content.year_tag"
+                        :slug="project.slug"
+                        @click="navigateToProject(project.slug)"
+                    />
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -116,8 +149,8 @@ const getProjectImage = (project) => {
 .fade-leave-active {
     transition: opacity 0.5s ease;
 }
-.fade-enter-from,
-.fade-leave-to {
+.fade-leave-from,
+.fade-enter-to {
     opacity: 0;
 }
 
@@ -206,42 +239,21 @@ p {
 }
 
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
 }
 
-.project-card {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: flex-end;
-  height: 55vh;
-  cursor: pointer;
-  transition: opacity 0.8s ease-out;
+/* Content visibility transition */
+.content-container {
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-.project-card.image-loading {
-  opacity: 0;
-  background-color: #f0f0f0;
+.content-visible {
+    opacity: 1;
 }
 
-.project-card.image-loaded {
-  opacity: 1;
-}
-
-.project-tags {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 3rem;
-}
-
-.project-tags:hover {
-  color: #fff;
-}
+/* Remove duplicate styles that are already in ProjectCard component */
 </style>

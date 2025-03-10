@@ -3,6 +3,7 @@
   class="project-card" 
   v-lazy-load="{ url: image, index: 0, resetQueue: true }"
   :data-index="0"
+  @click="navigateToProject"
 >
       <div class="project-tags">
         <BaseButton :to="`/projects/${slug}`">{{ projectName }}</BaseButton>
@@ -48,12 +49,25 @@ export default {
     }
   },
   
+  emits: ['click'],
+  
+  methods: {
+    navigateToProject(event) {
+      // Only navigate if the click was directly on the card (not on a button)
+      if (event.target.closest('.base-button') === null) {
+        // Emit click event to parent component
+        this.$emit('click', this.slug);
+      }
+    }
+  },
+  
   mounted() {
     // Log the image URL for debugging
     console.log(`ProjectCard mounted - Image URL: ${this.image}, Slug: ${this.slug}`);
   }
 }
 </script>
+
 <style scoped>
 .project-card {
   position: relative;
@@ -89,6 +103,7 @@ export default {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 3rem;
+  z-index: 1; /* Ensure buttons are above the card for proper click handling */
 }
 
 .project-tags:hover {
