@@ -1,95 +1,31 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
-import { useStoryblokApi } from '@storyblok/vue';
-import { ref, onMounted, watch } from 'vue';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import LoadingIndicator from '../components/LoadingIndicator.vue';
 import { renderRichText } from "@storyblok/vue";
 import ProjectCard from '../components/ProjectCard.vue';
+import useStoryblok from '../utils/useStoryblok';
 
-const route = useRoute();
-const router = useRouter();
-const story = ref(null);
-const isLoading = ref(true);
-const contentReady = ref(false);
-const otherShows = ref([]);
-
-const storyblokApi = useStoryblokApi();
-
-// Function to load show data
-const loadShowData = async (slug) => {
-  isLoading.value = true;
-  contentReady.value = false;
-  
-  try {
-    const response = await storyblokApi.get(`cdn/stories/shows/${slug}`, {
-      version: 'published' // Changed from 'draft' to 'published'
-    });
-    story.value = response.data.story; 
-    console.log('Full Story:', story.value);
-  } catch (error) {
-    console.error('Failed to load story:', error);
-  }
-  
-  // Load other shows
-  try {
-    const response = await storyblokApi.get('cdn/stories', {
-      version: 'published',
-      starts_with: 'shows/'
-    });
-    // Filter out the current show
-    otherShows.value = response.data.stories.filter(show => show.slug !== slug);
-    console.log('Other shows loaded:', otherShows.value);
-  } catch (error) {
-    console.error('Failed to load other shows:', error);
-  }
-  
-  // First set contentReady to true
-  contentReady.value = true;
-  
-  // Then after a small delay, hide the loading indicator
-  setTimeout(() => {
-    isLoading.value = false;
-  }, 300);
-};
-
-// Load data when component is mounted
-onMounted(() => {
-  loadShowData(route.params.slug);
+// Use our Storyblok composable with 'show' type
+const {
+  story,
+  stories: otherShows,
+  isLoading,
+  contentReady,
+  errorMessage,
+  formatImage,
+  formatImages,
+  navigateTo
+} = useStoryblok({
+  type: 'show',
+  preload: true,
+  watchRoute: true
 });
-
-// Watch for route changes to reload data when navigating between shows
-watch(
-  () => route.params.slug,
-  (newSlug, oldSlug) => {
-    if (newSlug !== oldSlug) {
-      console.log(`Route changed from ${oldSlug} to ${newSlug}, reloading data`);
-      loadShowData(newSlug);
-      // Scroll to top when navigating to a new show
-      window.scrollTo(0, 0);
-    }
-  }
-);
-
-const formatImages = (visuals, width = 800, height = 600) => {
-  if (!visuals || !Array.isArray(visuals)) return [];
-  return visuals.map(visual => ({
-    url: `${visual.filename}/m/${width}x${height}`,
-    alt: visual.alt || 'Image'
-  }));
-};
-
-const formatImage = (show) => {
-  if (show.content && show.content.visuals && show.content.visuals.length > 0) {
-    return `${show.content.visuals[0].filename}/m/800x600`;
-  }
-  return 'https://picsum.photos/800/600';
-};
 
 // Handle navigation to another show
 const navigateToShow = (slug) => {
-  router.push(`/shows/${slug}`);
+  navigateTo(slug);
 };
 </script>
 
@@ -99,36 +35,59 @@ const navigateToShow = (slug) => {
     <div class="content-area">
       <LoadingIndicator :isLoading="isLoading" />
       
+      <!-- Error message display for complete failure -->
+      <div v-if="errorMessage && !story && !isLoading" class="error-message">
+        <p>{{ errorMessage }}</p>
+        <p>Redirecting to shows page...</p>
+        <BaseButton to="/shows">Go to Shows</BaseButton>
+      </div>
+      
       <div v-if="story && contentReady" class="content-container" :class="{ 'content-visible': !isLoading }">
+        <!-- Show warning message if using fallback -->
+        <div v-if="errorMessage" class="warning-message">
+          <p>{{ errorMessage }}</p>
+        </div>
+        
         <ImageGallery
-          :name="story.content.title_tag"
-          :location="story.content.location_tag"
-          :date="story.content.date_tag"
+          v-if="story.content?.visuals && story.content.visuals.length > 0"
+          :name="story.content?.title_tag || ''"
+          :location="story.content?.location_tag || ''"
+          :date="story.content?.date_tag || ''"
           :slug="story.slug"
           :images="formatImages(story.content.visuals, 800, 600)"
           :repeatCount="1"
         />
+        
+        <!-- Fallback message if no visuals -->
+        <div v-else class="no-images-message">
+          <p>No images available for this show</p>
+        </div>
+        
         <div class="description" >
           {{ story.content?.main_text || 'No Description Available' }}
         </div>
         <div class="credits-container">
-          <div class="credits" v-html="renderRichText(story.content.info_text)">
+          <div class="credits" v-html="renderRichText(story.content?.info_text || '')">
           </div>
         </div>
         <div class="button-container">
           <BaseButton to="/shows">Other Shows</BaseButton>
         </div>
         
-        <div class="image-grid">
+        <div v-if="otherShows && otherShows.length > 0" class="image-grid">
           <ProjectCard
             v-for="show in otherShows"
             :key="show.id"
             :image="formatImage(show)"
-            :projectName="show.content.title_tag"
-            :year="show.content.date_tag"
+            :projectName="show.content?.title_tag || 'Untitled Show'"
+            :year="show.content?.date_tag || ''"
             :slug="show.slug"
-            @click="navigateToShow(show.slug)"
+            @click="navigateToShow(show.slug.split('/').pop())"
           />
+        </div>
+        
+        <div v-else class="no-shows-message">
+          <p>No other shows available</p>
         </div>
       </div>
     </div>
@@ -217,5 +176,47 @@ p {
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   width: 100%;
+}
+
+/* Error message styling */
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-message p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Warning message styling */
+.warning-message {
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 800px;
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+}
+
+.warning-message p {
+  font-size: 1rem;
+  margin: 0;
+  color: #856404;
+}
+
+/* No images message */
+.no-images-message, .no-shows-message {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  background-color: #f8f8f8;
+  border-radius: 8px;
 }
 </style>

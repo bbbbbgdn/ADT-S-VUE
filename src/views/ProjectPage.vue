@@ -1,102 +1,43 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
-import { useStoryblokApi } from '@storyblok/vue';
-import { ref, onMounted, watch } from 'vue';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
-import { renderRichText } from "@storyblok/vue";
 import ProjectCard from '../components/ProjectCard.vue';
 import LoadingIndicator from '../components/LoadingIndicator.vue';
+import useStoryblok from '../utils/useStoryblok';
 
-const route = useRoute();
-const router = useRouter();
-const story = ref(null);
-const storyblokApi = useStoryblokApi();
-const projects = ref([]);
-const isLoading = ref(true);
-const contentReady = ref(false);
-
-// Function to load project data
-const loadProjectData = async (slug) => {
-    isLoading.value = true;
-    contentReady.value = false;
-    
-    try {
-        const response = await storyblokApi.get(`cdn/stories/projects/${slug}`, {
-            version: 'published'
-        });
-        story.value = response.data.story;
-        console.log('Full Story:', story.value);
-    } catch (error) {
-        console.error('Failed to load story:', error);
-    }
-
-    try {
-        const response = await storyblokApi.get('cdn/stories', {
-            version: 'published',
-            starts_with: 'projects/'
-        });
-        projects.value = response.data.stories.filter(project => project.slug !== slug);
-        console.log('Other projects loaded:', projects.value);
-    } catch (error) {
-        console.error('Failed to load projects:', error);
-    }
-    
-    // First set contentReady to true
-    contentReady.value = true;
-    
-    // Then after a small delay, hide the loading indicator
-    setTimeout(() => {
-        isLoading.value = false;
-    }, 300);
-};
-
-// Load data when component is mounted
-onMounted(() => {
-    loadProjectData(route.params.slug);
+// Use our Storyblok composable
+const {
+  story,
+  stories,
+  isLoading,
+  contentReady,
+  errorMessage,
+  formatImage,
+  formatImages,
+  navigateTo
+} = useStoryblok({
+  type: 'project',
+  preload: true,
+  watchRoute: true,
+  onError: (error, slug) => {
+    console.error(`Custom error handler for project ${slug}:`, error);
+  }
 });
-
-// Watch for route changes to reload data when navigating between projects
-watch(
-    () => route.params.slug,
-    (newSlug, oldSlug) => {
-        if (newSlug !== oldSlug) {
-            console.log(`Route changed from ${oldSlug} to ${newSlug}, reloading data`);
-            loadProjectData(newSlug);
-            // Scroll to top when navigating to a new project
-            window.scrollTo(0, 0);
-        }
-    }
-);
-
-const temporaryImages = [
-    'https://picsum.photos/800/600?random=1',
-    'https://picsum.photos/800/600?random=2',
-    'https://picsum.photos/800/600?random=3',
-    'https://picsum.photos/800/600?random=4'
-];
-
-const formatTemporaryImages = temporaryImages.map(image => ({ url: image, alt: 'Image' }));
-
-const formatImages = (visuals, width = 800, height = 600) => {
-    if (!visuals || !Array.isArray(visuals)) return [];
-    return visuals.map(visual => ({
-        url: `${visual.filename}/m/${width}x${height}`,
-        alt: visual.alt || 'Image'
-    }));
-};
-
-const formatImage = (project) => {
-    if (project.content && project.content.visuals && project.content.visuals.length > 0) {
-        return `${project.content.visuals[0].filename}/m/800x600`;
-    }
-    return 'https://picsum.photos/800/600';
-};
 
 // Handle navigation to another project
 const navigateToProject = (slug) => {
-    router.push(`/projects/${slug}`);
+  navigateTo(slug);
 };
+
+const temporaryImages = [
+  'https://picsum.photos/800/600?random=1',
+  'https://picsum.photos/800/600?random=2',
+  'https://picsum.photos/800/600?random=3',
+  'https://picsum.photos/800/600?random=4'
+];
+
+const formatTemporaryImages = temporaryImages.map(image => ({ url: image, alt: 'Image' }));
 </script>
 
 <template>
@@ -105,30 +46,61 @@ const navigateToProject = (slug) => {
         <div class="content-area">
             <LoadingIndicator :isLoading="isLoading" />
             
+            <!-- Error message display for complete failure -->
+            <div v-if="errorMessage && !story && !isLoading" class="error-message">
+                <p>{{ errorMessage }}</p>
+                <p>Redirecting to projects page...</p>
+                <BaseButton to="/projects">Go to Projects</BaseButton>
+            </div>
+            
             <!-- Only show content when it's ready and not in loading state -->
             <div v-if="story && contentReady" class="content-container" :class="{ 'content-visible': !isLoading }">
+                <!-- Show warning message if using fallback -->
+                <div v-if="errorMessage" class="warning-message">
+                    <p>{{ errorMessage }}</p>
+                </div>
+                
                 <div class="description">
                     {{ story.content?.main_text || 'No Description Available' }}
                 </div>
-                <ImageGallery :slug="story.slug" :images="formatImages(story.content.visuals, 800, 600)" :repeatCount="1" />
+                
+                <!-- Only show gallery if visuals exist -->
+                <ImageGallery 
+                    v-if="story.content?.visuals && story.content.visuals.length > 0"
+                    :slug="story.slug" 
+                    :images="formatImages(story.content.visuals, 800, 600)" 
+                    :repeatCount="1" 
+                />
+                
+                <!-- Fallback message if no visuals -->
+                <div v-else class="no-images-message">
+                    <p>No images available for this project</p>
+                </div>
+                
                 <div class="credits-container">
                     <div class="credits">
-                        {{ story.content.info_text }}
+                        {{ story.content?.info_text || '' }}
                     </div>
                 </div>
+                
                 <div class="button-container">
                     <BaseButton to="/projects">Other projects</BaseButton>
                 </div>
-                <div class="image-grid">
+                
+                <div v-if="stories && stories.length > 0" class="image-grid">
                     <ProjectCard
-                        v-for="project in projects"
+                        v-for="project in stories"
                         :key="project.id"
                         :image="formatImage(project)"
-                        :projectName="project.content.title_tag"
-                        :year="project.content.date_tag || project.content.year_tag"
+                        :projectName="project.content?.title_tag || 'Untitled Project'"
+                        :year="project.content?.date_tag || project.content?.year_tag || ''"
                         :slug="project.slug"
-                        @click="navigateToProject(project.slug)"
+                        @click="navigateToProject(project.slug.split('/').pop())"
                     />
+                </div>
+                
+                <div v-else class="no-projects-message">
+                    <p>No other projects available</p>
                 </div>
             </div>
         </div>
@@ -256,4 +228,46 @@ p {
 }
 
 /* Remove duplicate styles that are already in ProjectCard component */
+
+/* Error message styling */
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-message p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* Warning message styling */
+.warning-message {
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+}
+
+.warning-message p {
+    font-size: 1rem;
+    margin: 0;
+    color: #856404;
+}
+
+/* No images message */
+.no-images-message, .no-projects-message {
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem auto;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+}
 </style>
