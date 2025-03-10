@@ -39,6 +39,7 @@ const formatImages = (visuals, width = 800, height = 600) => {
         :date="story.content.date_tag"
         :slug="story.slug"
         :repeatCount="5"
+        imageHeight="230rem"
       />
 
     </div>

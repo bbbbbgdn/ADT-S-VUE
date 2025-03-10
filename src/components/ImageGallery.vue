@@ -1,6 +1,6 @@
 <template>
   <div class="gallery-container">
-    <div class="gallery" ref="gallery">
+    <div class="gallery" ref="gallery" :style="galleryContainerStyle">
       <div 
         v-for="(image, index) in repeatedImages" 
         :key="index" 
@@ -9,6 +9,7 @@
         <img 
           v-lazy-load="image.url"
           :alt="image.alt"
+          :style="imageStyle"
           class="gallery-image">
       </div>
     </div>
@@ -56,6 +57,11 @@ export default {
     repeatCount: {
       type: Number,
       required: true
+    },
+    imageHeight: {
+      type: String,
+      default: '230rem',
+      required: false
     }
   },
 
@@ -66,6 +72,17 @@ export default {
         repeated.push(...this.images);
       }
       return repeated;
+    },
+    imageStyle() {
+      return {
+        height: this.imageHeight
+      }
+    },
+    galleryContainerStyle() {
+      return {
+        height: this.imageHeight,
+        minHeight: this.imageHeight
+      }
     }
   }
 }
@@ -85,6 +102,7 @@ export default {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  background-color: #f0f0f0; /* Placeholder background color */
 }
 
 .gallery::-webkit-scrollbar {
@@ -94,6 +112,7 @@ export default {
 .gallery-item {
   flex: 0 0 auto;
   scroll-snap-align: start;
+  position: relative;
 }
 
 .gallery-item:first-of-type {
@@ -108,14 +127,13 @@ export default {
 
 .gallery-image {
   width: auto;
-  height: 22vh;
   object-fit: cover;
   transition: opacity 0.8s ease-out;
+  position: relative;
 }
 
 .gallery-image.image-loading {
   opacity: 0;
-  background-color: #f0f0f0;
 }
 
 .gallery-image.image-loaded {
