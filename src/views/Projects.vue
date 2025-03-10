@@ -72,16 +72,6 @@ export default {
   /* height: 100%; */
 }
 
-.project-card {
-  height: 50vh;
-  /* filter: grayscale(100%); */
-  /* transition: filter 0.6s ease-out; */
-}
-
-.project-card:hover {
-  /* filter:grayscale(0%); */
-  /* height: 50%; */
-}
 
 /* Responsive layout for mobile devices */
 @media (max-width: 768px) {

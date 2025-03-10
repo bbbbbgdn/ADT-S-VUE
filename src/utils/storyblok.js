@@ -145,40 +145,146 @@ export const preloadProjects = async () => {
 };
 
 /**
- * Formats images from Storyblok for display
+ * Formats images from Storyblok for display with advanced options
  * @param {Array} visuals - Array of visual objects from Storyblok
- * @param {number} width - Desired width of images
- * @param {number} height - Desired height of images
+ * @param {Object} options - Image transformation options
+ * @param {number} options.width - Desired width of images (0 for auto)
+ * @param {number} options.height - Desired height of images (0 for auto)
+ * @param {number} options.quality - Image quality (1-100)
+ * @param {string} options.format - Image format (webp, jpg, etc.)
  * @returns {Array} - Formatted image objects
  */
-export const formatImages = (visuals, width = 800, height = 600) => {
+export const formatImages = (visuals, options = {}) => {
   if (!visuals || !Array.isArray(visuals) || visuals.length === 0) {
     console.warn('No visuals found or invalid visuals format');
     return [];
   }
+  
+  // Default options
+  const {
+    width = 0,
+    height = 230,
+    quality = 70,
+    format = null
+  } = options;
+  
+  // Build transformation string
+  let transform = `/m/${width}x${height}`;
+  
+  // Add filters if any are specified
+  const filters = [];
+  if (quality) filters.push(`quality(${quality})`);
+  if (format) filters.push(`format(${format})`);
+  
+  if (filters.length > 0) {
+    transform += `/filters:${filters.join(':')}`;
+  }
+  
   return visuals.map(visual => ({
-    url: `${visual.filename}/m/${width}x${height}`,
+    url: `${visual.filename}${transform}`,
     alt: visual.alt || 'Image'
   }));
 };
 
 /**
- * Formats a single image from a project for display
+ * Formats a single image from a project for display with advanced options
  * @param {Object} project - Project object from Storyblok
- * @param {number} width - Desired width of image
- * @param {number} height - Desired height of image
+ * @param {Object} options - Image transformation options
+ * @param {number} options.width - Desired width of image (0 for auto)
+ * @param {number} options.height - Desired height of image (0 for auto)
+ * @param {number} options.quality - Image quality (1-100)
+ * @param {string} options.format - Image format (webp, jpg, etc.)
  * @returns {string} - URL of the formatted image
  */
-export const formatImage = (project, width = 800, height = 600) => {
+export const formatImage = (project, options = {}) => {
   if (!project || !project.content) {
     console.warn('Invalid project or missing content');
-    return `https://picsum.photos/${width}/${height}`;
+    return getFallbackImageUrl(options);
   }
   
   if (project.content.visuals && Array.isArray(project.content.visuals) && project.content.visuals.length > 0) {
-    return `${project.content.visuals[0].filename}/m/${width}x${height}`;
+    // Default options
+    const {
+      width = 0,
+      height = 230,
+      quality = 70,
+      format = null
+    } = options;
+    
+    // Build transformation string
+    let transform = `/m/${width}x${height}`;
+    
+    // Add filters if any are specified
+    const filters = [];
+    if (quality) filters.push(`quality(${quality})`);
+    if (format) filters.push(`format(${format})`);
+    
+    if (filters.length > 0) {
+      transform += `/filters:${filters.join(':')}`;
+    }
+    
+    return `${project.content.visuals[0].filename}${transform}`;
   }
-  return `https://picsum.photos/${width}/${height}`;
+  
+  return getFallbackImageUrl(options);
+};
+
+/**
+ * Gets a fallback image URL with the specified dimensions
+ * @param {Object} options - Image options
+ * @returns {string} - Fallback image URL
+ */
+const getFallbackImageUrl = (options = {}) => {
+  const { width = 800, height = 600 } = options;
+  return `https://picsum.photos/${width || 800}/${height || 600}`;
+};
+
+/**
+ * Creates a Storyblok image transformation URL with specific options
+ * @param {string} filename - Original Storyblok image filename
+ * @param {Object} options - Image transformation options
+ * @returns {string} - Transformed image URL
+ */
+export const createImageUrl = (filename, options = {}) => {
+  if (!filename) {
+    console.warn('No filename provided for image transformation');
+    return '';
+  }
+  
+  // Default options
+  const {
+    width = 0,
+    height = 230,
+    quality = 70,
+    format = null,
+    crop = null,
+    fit = null
+  } = options;
+  
+  // Build transformation string
+  let transform = `/m/${width}x${height}`;
+  
+  // Add filters if any are specified
+  const filters = [];
+  if (quality) filters.push(`quality(${quality})`);
+  if (format) filters.push(`format(${format})`);
+  if (crop) filters.push(`crop(${crop})`);
+  if (fit) filters.push(`fit(${fit})`);
+  
+  if (filters.length > 0) {
+    transform += `/filters:${filters.join(':')}`;
+  }
+  
+  // Check if the filename already contains Storyblok domain
+  // If it does, we need to append the transform to the existing URL
+  // If not, we assume it's just the filename part and return as is
+  if (filename.includes('storyblok.com')) {
+    // For URLs that already have transformations, we need to remove them first
+    const baseUrl = filename.split('/m/')[0];
+    return `${baseUrl}${transform}`;
+  }
+  
+  return `${filename}${transform}`;
 };
 
 /**

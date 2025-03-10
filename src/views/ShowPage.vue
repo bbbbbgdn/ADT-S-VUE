@@ -54,7 +54,7 @@ const navigateToShow = (slug) => {
           :location="story.content?.location_tag || ''"
           :date="story.content?.date_tag || ''"
           :slug="story.slug"
-          :images="formatImages(story.content.visuals, 800, 600)"
+          :images="formatImages(story.content.visuals, { width: 0, height: 230, quality: 70 })"
           :repeatCount="1"
         />
         

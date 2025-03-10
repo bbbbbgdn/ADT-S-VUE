@@ -2,7 +2,7 @@
   <div class="gallery-container">
     <div class="gallery" ref="gallery" :style="galleryContainerStyle">
       <div 
-        v-for="(image, index) in repeatedImages" 
+        v-for="(image, index) in processedImages" 
         :key="index" 
         class="gallery-item"
         :style="galleryItemStyle"
@@ -26,6 +26,7 @@
 <script>
 import ButtonBase from './BaseButton.vue';
 import lazyLoad from '../directives/lazyLoad';
+import { createImageUrl } from '../utils/storyblok';
 
 export default {
   name: 'ImageGallery',
@@ -69,10 +70,66 @@ export default {
       type: String,
       default: 'auto',
       required: false
+    },
+    imageQuality: {
+      type: Number,
+      default: 80,
+      required: false
+    },
+    imageFormat: {
+      type: String,
+      default: null,
+      required: false
     }
   },
 
   computed: {
+    processedImages() {
+      // Process images with the requested transformations
+      if (!this.images || !Array.isArray(this.images) || this.images.length === 0) {
+        console.warn('No images provided to ImageGallery component');
+        return [];
+      }
+      
+      console.log('Processing images:', this.images);
+      
+      const processed = this.images.map((image, index) => {
+        // Extract numeric height value (remove 'rem' or 'px')
+        const heightValue = parseInt(this.imageHeight, 10) || 230;
+        
+        // Make sure we have a valid URL
+        if (!image || !image.url) {
+          console.warn(`Image at index ${index} has no URL:`, image);
+          return {
+            url: '',
+            alt: 'Missing image'
+          };
+        }
+        
+        // Request 2x resolution from Storyblok
+        const transformedUrl = createImageUrl(image.url, {
+          width: 0, // Auto width
+          height: heightValue * 1.5, // x height for high-DPI displays
+          quality: this.imageQuality,
+          format: this.imageFormat
+        });
+        
+        console.log(`Transformed URL for image ${index}:`, transformedUrl);
+        
+        return {
+          url: transformedUrl,
+          alt: image.alt || 'Image'
+        };
+      });
+      
+      // Repeat the processed images
+      const repeated = [];
+      for (let i = 0; i < this.repeatCount; i++) {
+        repeated.push(...processed);
+      }
+      
+      return repeated;
+    },
     repeatedImages() {
       const repeated = [];
       for (let i = 0; i < this.repeatCount; i++) {

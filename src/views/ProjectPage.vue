@@ -68,7 +68,7 @@ const formatTemporaryImages = temporaryImages.map(image => ({ url: image, alt: '
                 <ImageGallery 
                     v-if="story.content?.visuals && story.content.visuals.length > 0"
                     :slug="story.slug" 
-                    :images="formatImages(story.content.visuals, 800, 600)" 
+                    :images="formatImages(story.content.visuals, { width: 0, height: 230, quality: 70 })" 
                     :repeatCount="1" 
                 />
                 
