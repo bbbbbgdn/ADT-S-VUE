@@ -1,7 +1,8 @@
 <template>
 <div 
   class="project-card" 
-  v-lazy-load="image"
+  v-lazy-load="{ url: image, index: 0, resetQueue: true }"
+  :data-index="0"
 >
       <div class="project-tags">
         <BaseButton :to="`/projects/${slug}`">{{ projectName }}</BaseButton>
@@ -45,6 +46,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  
+  mounted() {
+    // Log the image URL for debugging
+    console.log(`ProjectCard mounted - Image URL: ${this.image}, Slug: ${this.slug}`);
   }
 }
 </script>
@@ -68,6 +74,11 @@ export default {
 
 .project-card.image-loaded {
   opacity: 1;
+}
+
+.project-card.image-error {
+  opacity: 0.5;
+  background-color: #f8f8f8;
 }
 
 .project-tags {

@@ -4,7 +4,7 @@
       class="project-card"
       v-for="(story, index) in stories"
       :key="story.id"
-      :image="formatImage(story.content.visuals[0])"
+      :image="formatImage(story.content)"
       :projectName="story.content.title_tag"
       :year="story.content.date_tag"
       :slug="story.slug"
@@ -26,9 +26,11 @@ export default {
     const storyblokApi = useStoryblokApi();
     const stories = ref([]);
     
-
-    const formatImage = (visual) => {
-      return `${visual.filename}/m/800x600`; // Форматуємо зображення
+    const formatImage = (content) => {
+      if (content && content.visuals && content.visuals.length > 0) {
+        return `${content.visuals[0].filename}/m/800x600`;
+      }
+      return 'https://picsum.photos/800/600';
     };
 
     onMounted(async () => {
@@ -37,6 +39,7 @@ export default {
           starts_with: 'projects/',
         });
         stories.value = response.data.stories;
+        console.log('Projects loaded:', stories.value);
       } catch (error) {
         console.error('Error fetching stories:', error);
       }

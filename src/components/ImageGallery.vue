@@ -5,11 +5,13 @@
         v-for="(image, index) in repeatedImages" 
         :key="index" 
         class="gallery-item"
+        :style="galleryItemStyle"
       >
         <img 
-          v-lazy-load="image.url"
+          v-lazy-load="{ url: image.url, index: index, resetQueue: true }"
           :alt="image.alt"
           :style="imageStyle"
+          :data-index="index"
           class="gallery-image">
       </div>
     </div>
@@ -62,6 +64,11 @@ export default {
       type: String,
       default: '230rem',
       required: false
+    },
+    imageWidth: {
+      type: String,
+      default: 'auto',
+      required: false
     }
   },
 
@@ -75,7 +82,8 @@ export default {
     },
     imageStyle() {
       return {
-        height: this.imageHeight
+        height: this.imageHeight,
+        width: this.imageWidth !== 'auto' ? this.imageWidth : 'auto'
       }
     },
     galleryContainerStyle() {
@@ -83,6 +91,15 @@ export default {
         height: this.imageHeight,
         minHeight: this.imageHeight
       }
+    },
+    galleryItemStyle() {
+      // If imageWidth is set, use it for consistent width during loading
+      if (this.imageWidth !== 'auto') {
+        return {
+          width: this.imageWidth
+        }
+      }
+      return {}
     }
   }
 }
@@ -113,6 +130,10 @@ export default {
   flex: 0 0 auto;
   scroll-snap-align: start;
   position: relative;
+  min-width: 100px; /* Minimum width to prevent collapse during loading */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .gallery-item:first-of-type {
@@ -138,5 +159,12 @@ export default {
 
 .gallery-image.image-loaded {
   opacity: 1;
+}
+
+.gallery-image.image-error {
+  /* Add a subtle indication for failed images */
+  opacity: 0.5;
+  background-color: #f8f8f8;
+  border: 1px dashed #ccc;
 }
 </style> 
