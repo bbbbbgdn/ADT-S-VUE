@@ -78,10 +78,11 @@ const navigateToShow = (slug) => {
           <ProjectCard
             v-for="show in otherShows"
             :key="show.id"
-            :image="formatImage(show)"
+            :image="formatImage(show, { width: 400, height: 300, quality: 85 })"
             :projectName="show.content?.title_tag || 'Untitled Show'"
             :year="show.content?.date_tag || ''"
             :slug="show.slug"
+            :useImgTag="true"
             @click="navigateToShow(show.slug.split('/').pop())"
           />
         </div>

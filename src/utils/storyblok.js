@@ -198,18 +198,21 @@ export const formatImages = (visuals, options = {}) => {
  */
 export const formatImage = (project, options = {}) => {
   if (!project || !project.content) {
-    console.warn('Invalid project or missing content');
+    console.warn('Invalid project or missing content:', project);
     return getFallbackImageUrl(options);
   }
   
+  // Default options
+  const {
+    width = 400,  // Default width for thumbnails
+    height = 300, // Default height for thumbnails
+    quality = 85, // Higher quality for thumbnails
+    format = null
+  } = options;
+  
   if (project.content.visuals && Array.isArray(project.content.visuals) && project.content.visuals.length > 0) {
-    // Default options
-    const {
-      width = 0,
-      height = 230,
-      quality = 70,
-      format = null
-    } = options;
+    const filename = project.content.visuals[0].filename;
+    console.log(`Found image filename: ${filename} for project: ${project.name || project.slug}`);
     
     // Build transformation string
     let transform = `/m/${width}x${height}`;
@@ -223,10 +226,28 @@ export const formatImage = (project, options = {}) => {
       transform += `/filters:${filters.join(':')}`;
     }
     
-    return `${project.content.visuals[0].filename}${transform}`;
+    // Check if the filename already contains Storyblok domain
+    // If it does, we need to append the transform to the existing URL
+    // If not, we assume it's just the filename part and return as is
+    let finalUrl;
+    if (filename.includes('storyblok.com')) {
+      // For URLs that already have transformations, we need to remove them first
+      const baseUrl = filename.split('/m/')[0];
+      finalUrl = `${baseUrl}${transform}`;
+    } else {
+      finalUrl = `${filename}${transform}`;
+    }
+    
+    console.log(`Generated image URL: ${finalUrl}`);
+    
+    // Force a unique URL to prevent caching issues
+    finalUrl = finalUrl + (finalUrl.includes('?') ? '&' : '?') + 'v=' + Date.now();
+    
+    return finalUrl;
+  } else {
+    console.warn(`No visuals found for project: ${project.name || project.slug}`);
+    return getFallbackImageUrl(options);
   }
-  
-  return getFallbackImageUrl(options);
 };
 
 /**
@@ -236,7 +257,12 @@ export const formatImage = (project, options = {}) => {
  */
 const getFallbackImageUrl = (options = {}) => {
   const { width = 800, height = 600 } = options;
-  return `https://picsum.photos/${width || 800}/${height || 600}`;
+  
+  // Add a random parameter to prevent caching issues
+  const randomSeed = Math.floor(Math.random() * 1000);
+  
+  // Use picsum.photos with specific dimensions and a random seed
+  return `https://picsum.photos/${width || 800}/${height || 600}?random=${randomSeed}`;
 };
 
 /**

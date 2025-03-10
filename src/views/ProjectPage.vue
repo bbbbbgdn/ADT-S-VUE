@@ -91,10 +91,11 @@ const formatTemporaryImages = temporaryImages.map(image => ({ url: image, alt: '
                     <ProjectCard
                         v-for="project in stories"
                         :key="project.id"
-                        :image="formatImage(project)"
+                        :image="formatImage(project, { width: 400, height: 300, quality: 85 })"
                         :projectName="project.content?.title_tag || 'Untitled Project'"
                         :year="project.content?.date_tag || project.content?.year_tag || ''"
                         :slug="project.slug"
+                        :useImgTag="true"
                         @click="navigateToProject(project.slug.split('/').pop())"
                     />
                 </div>
@@ -108,13 +109,6 @@ const formatTemporaryImages = temporaryImages.map(image => ({ url: image, alt: '
 </template>
 
 <style>
-/* .show-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-} */
 
 /* Fade transition for content */
 .fade-enter-active,

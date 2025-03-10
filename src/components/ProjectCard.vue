@@ -1,14 +1,32 @@
 <template>
 <div 
   class="project-card" 
-  v-lazy-load="{ url: image, index: 0, resetQueue: true }"
-  :data-index="0"
-  @click="navigateToProject"
+  :class="{ 'use-img-tag': useImgTag }"
 >
-      <div class="project-tags">
-        <BaseButton :to="`/projects/${slug}`">{{ projectName }}</BaseButton>
-        <BaseButton variant="grey">{{ year }}</BaseButton>
-      </div>
+  <!-- When using img tag approach -->
+  <img 
+    v-if="useImgTag"
+    v-lazy-load="{ url: image, index: 0, resetQueue: true }"
+    :data-index="0"
+    class="project-card-image"
+    alt="Project thumbnail"
+    @click="navigateToProject"
+  />
+  
+  <!-- When using background image approach -->
+  <div 
+    v-else
+    v-lazy-load="{ url: image, index: 0, resetQueue: true }"
+    :data-index="0"
+    class="project-card-background"
+    @click="navigateToProject"
+  ></div>
+  
+  <!-- Tags are always shown -->
+  <div class="project-tags">
+    <BaseButton :to="`/projects/${slug}`">{{ projectName }}</BaseButton>
+    <BaseButton variant="grey">{{ year }}</BaseButton>
+  </div>
 </div>
 </template>
 
@@ -46,10 +64,31 @@ export default {
     slug: {
       type: String,
       required: true
+    },
+    useImgTag: {
+      type: Boolean,
+      default: true
     }
   },
   
   emits: ['click'],
+  
+  data() {
+    return {
+      isLoaded: false,
+      hasError: false,
+      backgroundImage: ''
+    };
+  },
+  
+  computed: {
+    cardStyle() {
+      return {
+        backgroundColor: '#f0f0f0',
+        backgroundImage: this.useImgTag ? 'none' : this.backgroundImage
+      };
+    }
+  },
   
   methods: {
     navigateToProject(event) {
@@ -58,12 +97,34 @@ export default {
         // Emit click event to parent component
         this.$emit('click', this.slug);
       }
+    },
+    
+    setBackgroundImage(url) {
+      this.backgroundImage = `url(${url})`;
+      this.isLoaded = true;
+    },
+    
+    setErrorState() {
+      this.hasError = true;
     }
   },
   
   mounted() {
     // Log the image URL for debugging
     console.log(`ProjectCard mounted - Image URL: ${this.image}, Slug: ${this.slug}`);
+    
+    // Manually preload the image to ensure it works
+    if (!this.useImgTag) {
+      const img = new Image();
+      img.onload = () => {
+        this.setBackgroundImage(this.image);
+      };
+      img.onerror = () => {
+        console.error(`Failed to load image: ${this.image}`);
+        this.setErrorState();
+      };
+      img.src = this.image;
+    }
   }
 }
 </script>
@@ -71,42 +132,64 @@ export default {
 <style scoped>
 .project-card {
   position: relative;
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: flex-end;
-  min-height: 100px;
+  min-height: 300px;
   height: 100%;
+  overflow: hidden;
+  background-color: transparent; /* Start with transparent background */
+}
+
+.project-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
   cursor: pointer;
+  transition: opacity 0.8s ease-out;
+  opacity: 0; /* Start fully transparent */
+}
+
+.project-card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  cursor: pointer;
+  opacity: 0; /* Start fully transparent */
   transition: opacity 0.8s ease-out;
 }
 
-.project-card.image-loading {
-  opacity: 0;
-  background-color: #f0f0f0;
+/* Loading states */
+.project-card-image.image-loading,
+.project-card-background.image-loading {
+  opacity: 0; /* Keep invisible while loading */
 }
 
-.project-card.image-loaded {
-  opacity: 1;
+.project-card-image.image-loaded,
+.project-card-background.image-loaded {
+  opacity: 1; /* Fade in when loaded */
 }
 
-.project-card.image-error {
-  opacity: 0.5;
-  background-color: #f8f8f8;
+.project-card-image.image-error,
+.project-card-background.image-error {
+  opacity: 0; /* Keep invisible on error */
 }
 
 .project-tags {
-  position: absolute;
-  bottom: 0;
+  position: relative;
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 1rem;
   padding: 3rem;
-  z-index: 1; /* Ensure buttons are above the card for proper click handling */
-}
-
-.project-tags:hover {
-  color: #fff;
+  z-index: 1;
 }
 </style> 
