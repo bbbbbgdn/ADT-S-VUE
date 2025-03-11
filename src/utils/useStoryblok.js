@@ -1,4 +1,4 @@
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import * as storyblokUtils from './storyblok';
 
@@ -30,6 +30,9 @@ export default function useStoryblok(options = {}) {
   const isLoading = ref(true);
   const contentReady = ref(false);
   const errorMessage = ref('');
+  
+  // Computed property to check if we're in preview mode
+  const isPreview = computed(() => storyblokUtils.isPreviewMode());
   
   /**
    * Load a single story
@@ -146,6 +149,7 @@ export default function useStoryblok(options = {}) {
     isLoading,
     contentReady,
     errorMessage,
+    isPreview,
     
     // Methods
     loadStory,

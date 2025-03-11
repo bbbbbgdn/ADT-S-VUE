@@ -145,7 +145,7 @@ h1 {
 .other-shows-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  /* gap: 3rem; */
   width: 100%;
 }
 

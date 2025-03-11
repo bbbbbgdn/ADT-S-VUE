@@ -9,10 +9,13 @@
       >
         <img 
           v-lazy-load="{ url: image.url, index: index, resetQueue: true }"
-          :alt="image.alt"
+          alt=""
           :style="imageStyle"
           :data-index="index"
-          class="gallery-image">
+          class="gallery-image"
+          @load="onImageLoad($event, index)"
+          aria-hidden="true"
+        >
       </div>
     </div>
     <div v-if="shouldShowTags" class="gallery-tags" @click.stop>
@@ -102,7 +105,8 @@ export default {
       isScrolling: false,
       scrollTimeout: null,
       scrollStartX: 0,
-      isHovering: false
+      isHovering: false,
+      loadedImages: {} // Track which images have been loaded
     };
   },
 
@@ -146,6 +150,24 @@ export default {
         this.isScrolling = false;
         this.scrollStartX = 0;
       }, 100);
+    },
+    
+    onImageLoad(event, index) {
+      // Mark this image as loaded
+      this.loadedImages[index] = true;
+      
+      // Remove aria-hidden once the image is loaded
+      if (event.target) {
+        event.target.removeAttribute('aria-hidden');
+        
+        // Set proper alt text now that the image is loaded
+        const image = this.processedImages[index];
+        if (image && image.alt) {
+          event.target.setAttribute('alt', image.alt);
+        } else {
+          event.target.setAttribute('alt', 'Gallery image');
+        }
+      }
     }
   },
 
@@ -324,13 +346,14 @@ export default {
 }
 
 .gallery-item:first-of-type {
-  padding-left: 1rem;
+  padding-left: 3rem;
 }
 
 .gallery-tags {
   display: flex;
   gap: 3rem;
   margin: 3rem;
+  pointer-events: none;
 }
 
 /* Ensure the tags area doesn't have a pointer cursor */
@@ -350,13 +373,22 @@ export default {
 
 .gallery-image {
   width: auto;
+  min-width: 150rem;
   object-fit: cover;
   transition: opacity 0.8s ease-out;
-  position: relative;
+  font-size: 0;
+}
+
+/* Hide alt text during loading by making the image invisible but keeping its space */
+.gallery-image[aria-hidden="true"] {
+  opacity: 0;
+  color: transparent; /* Hide any text that might be displayed */
+  background-color: #f0f0f0; /* Light placeholder background */
 }
 
 .gallery-image.image-loading {
   opacity: 0;
+  color: transparent;
 }
 
 .gallery-image.image-loaded {

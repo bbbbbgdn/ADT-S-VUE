@@ -32,7 +32,8 @@ export default {
       errorMessage,
       formatImage,
       formatImages,
-      navigateTo
+      navigateTo,
+      isPreview
     } = useStoryblok({
       type: 'project',
       preload: true,
@@ -55,7 +56,8 @@ export default {
       errorMessage,
       formatImage,
       formatImages,
-      navigateToProject
+      navigateToProject,
+      isPreview
     };
   }
 };
@@ -63,6 +65,11 @@ export default {
 
 <template>
   <div class="project-page">
+    <!-- Preview mode indicator -->
+    <div v-if="isPreview" class="preview-mode-indicator">
+      <span>Preview Mode</span>
+    </div>
+    
     <!-- Content area with loading state -->
     <div class="content-area">
       <LoadingIndicator :isLoading="isLoading" />
@@ -221,9 +228,23 @@ export default {
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .project-tags {
-    gap: 1rem;
-    margin: 2rem 1rem;
-    justify-content: center;
+    /* gap: 1rem; */
+    /* margin: 2rem 1rem; */
+    /* justify-content: center; */
   }
+}
+
+/* Preview mode indicator */
+.preview-mode-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ff6b6b;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  font-weight: bold;
+  z-index: 1000;
 }
 </style>

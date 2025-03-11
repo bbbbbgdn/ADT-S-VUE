@@ -61,6 +61,13 @@ export default {
         if (el.tagName === 'IMG') {
           const imageElement = el as HTMLImageElement
           imageElement.src = imageUrl
+          
+          // Trigger the load event on the element
+          // This will allow our component to handle the loaded state
+          setTimeout(() => {
+            const loadEvent = new Event('load')
+            el.dispatchEvent(loadEvent)
+          }, 0)
         } else {
           el.style.backgroundImage = `url(${imageUrl})`
         }
@@ -77,6 +84,15 @@ export default {
         
         el.classList.remove('image-loading')
         el.classList.add('image-loaded', 'image-error')
+        
+        // For accessibility, update the alt text for error state
+        if (el.tagName === 'IMG') {
+          const imageElement = el as HTMLImageElement
+          imageElement.alt = 'Image failed to load'
+          
+          // Remove aria-hidden to make the error state accessible
+          imageElement.removeAttribute('aria-hidden')
+        }
         
         // Move to next image even if this one failed
         loadingQueue.currentIndex++
