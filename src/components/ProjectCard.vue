@@ -194,8 +194,8 @@ export default {
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
-  gap: 3rem;
-  padding: 3rem 3rem 3rem 0;
+  gap: 1rem;
+  padding: 3rem;
   z-index: 1;
 }
 

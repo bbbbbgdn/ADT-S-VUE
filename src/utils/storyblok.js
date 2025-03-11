@@ -25,13 +25,9 @@ const defaultConfig = {
 export const loadStory = async (path, options = {}) => {
   const config = { ...defaultConfig, ...options };
   const { maxRetries, retryDelay, cacheEnabled } = config;
+  const params = options.params || { version: 'published' };
   
-  // Get the Storyblok API instance which has the configured version
   const storyblokApi = useStoryblokApi();
-  
-  // Use the params from options or create a new object
-  // Don't set version here as it will come from the Storyblok configuration
-  const params = options.params || {};
   
   // Check cache first if enabled
   if (cacheEnabled && storyCache.value[path]) {
@@ -91,10 +87,8 @@ export const loadStory = async (path, options = {}) => {
  */
 export const loadStories = async (options = {}) => {
   const storyblokApi = useStoryblokApi();
-  
-  // Use the params from options or create a new object
-  // Don't set version here as it will come from the Storyblok configuration
   const params = {
+    version: 'published',
     ...options.params
   };
   
@@ -315,21 +309,8 @@ export const createImageUrl = (filename, options = {}) => {
 };
 
 /**
- * Determines if the application is currently in preview mode
- * This is true if we're in development or if the Storyblok editor is active
- * @returns {boolean} - Whether the application is in preview mode
- */
-export const isPreviewMode = () => {
-  const isDevelopment = process.env.NODE_ENV === 'development';
-  const isInStoryblokEditor = typeof window !== 'undefined' && 
-    window.location.search.includes('_storyblok=');
-  
-  return isDevelopment || isInStoryblokEditor;
-};
-
-/**
  * Clears the cache
- * @param {string} type - Type of cache to clear ('all', 'story', 'project')
+ * @param {string} type - Type of cache to clear ('all', 'projects', 'stories')
  */
 export const clearCache = (type = 'all') => {
   if (type === 'all' || type === 'projects') {
