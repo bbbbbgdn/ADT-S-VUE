@@ -44,16 +44,16 @@ const router = createRouter({
       name: 'Profile',
       component: () => import('../views/Profile.vue')
     },
-    {
-      path: '/objects',
-      name: 'Objects',
-      component: () => import('../views/Objects.vue')
-    },
-    {
-      path: '/press',
-      name: 'Press',
-      component: () => import('../views/Press.vue')
-    },
+    // {
+    //   path: '/objects',
+    //   name: 'Objects',
+    //   component: () => import('../views/Objects.vue')
+    // },
+    // {
+    //   path: '/press',
+    //   name: 'Press',
+    //   component: () => import('../views/Press.vue')
+    // },
     {
       path: '/:pathMatch(.*)*',
       redirect: '/'
