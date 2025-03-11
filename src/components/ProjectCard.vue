@@ -57,8 +57,8 @@ export default {
     },
     year: {
       type: String,
-      default: '2029',
-      required: true
+      default: '',
+      required: false
     },
     image: {
       type: String,
@@ -139,7 +139,7 @@ export default {
   position: relative;
   display: flex;
   align-items: flex-end;
-  min-height: 300px;
+  min-height: 45vh;
   height: 100%;
   overflow: hidden;
   background-color: transparent; /* Start with transparent background */
@@ -194,8 +194,7 @@ export default {
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding: 3rem;
+  margin: 3rem;
   z-index: 1;
 }
 

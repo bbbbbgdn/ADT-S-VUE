@@ -204,9 +204,9 @@ export const formatImage = (project, options = {}) => {
   
   // Default options
   const {
-    width = 400,  // Default width for thumbnails
-    height = 300, // Default height for thumbnails
-    quality = 85, // Higher quality for thumbnails
+    width = 0,  // Default width for thumbnails
+    height = 690, // Default height for thumbnails
+    quality = 75,
     format = null
   } = options;
   

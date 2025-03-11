@@ -65,7 +65,7 @@ export default {
   <div class="project-page">
     <!-- Content area with loading state -->
     <div class="content-area">
-      <LoadingIndicator :isLoading="isLoading" />
+      <!-- <LoadingIndicator :isLoading="isLoading" /> -->
       
       <!-- Error message display for complete failure -->
       <div v-if="errorMessage && !story && !isLoading" class="error-message">
@@ -129,7 +129,7 @@ export default {
           <ProjectCard
             v-for="project in stories"
             :key="project.id"
-            :image="formatImage(project, { width: 400, height: 300, quality: 85 })"
+            :image="formatImage(project)"
             :projectName="project.content?.title_tag || 'Untitled Project'"
             :year="project.content?.year_tag || ''"
             :slug="project.slug"
@@ -167,7 +167,7 @@ export default {
 .project-tags {
   display: flex;
   gap: 3rem;
-  margin: 3rem 3rem 1rem 3rem;
+  margin-left: 3rem;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -180,6 +180,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
+  padding: 3rem;
 }
 
 /* Error message styling */
@@ -223,7 +224,7 @@ export default {
 @media (max-width: 768px) {
   .project-tags {
     gap: 1rem;
-    margin: 2rem 1rem;
+    /* margin: 2rem 1rem; */
     justify-content: center;
   }
 }

@@ -324,13 +324,13 @@ export default {
 }
 
 .gallery-item:first-of-type {
-  padding-left: 1rem;
+  padding-left: 3rem;
 }
 
 .gallery-tags {
   display: flex;
   gap: 3rem;
-  margin: 3rem;
+  padding: 3rem 3rem 3rem 3rem;
 }
 
 /* Ensure the tags area doesn't have a pointer cursor */

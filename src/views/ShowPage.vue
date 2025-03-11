@@ -34,7 +34,7 @@ const navigateToShow = (slug) => {
   <div class="show-page">
     <!-- Content area with loading state -->
     <div class="content-area">
-      <LoadingIndicator :isLoading="isLoading" />
+      <!-- <LoadingIndicator :isLoading="isLoading" /> -->
       
       <!-- Error message display for complete failure -->
       <div v-if="errorMessage && !story && !isLoading" class="error-message">
@@ -145,7 +145,7 @@ h1 {
 .other-shows-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  /* gap: 3rem; */
   width: 100%;
 }
 
