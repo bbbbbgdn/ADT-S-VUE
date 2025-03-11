@@ -185,6 +185,7 @@ export default {
 
 .project-tags {
   position: relative;
+  pointer-events: none !important;
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;

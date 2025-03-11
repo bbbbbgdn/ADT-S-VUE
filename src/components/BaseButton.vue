@@ -122,6 +122,7 @@ export default {
 .button-black {
   background-color: black;
   color: white;
+  pointer-events: all;
   cursor: pointer;
 }
 
