@@ -40,6 +40,21 @@ const router = createRouter({
       component: () => import('../views/ShowPage.vue')
     },
     {
+      path: '/profile',
+      name: 'Profile',
+      component: () => import('../views/Profile.vue')
+    },
+    {
+      path: '/objects',
+      name: 'Objects',
+      component: () => import('../views/Objects.vue')
+    },
+    {
+      path: '/press',
+      name: 'Press',
+      component: () => import('../views/Press.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       redirect: '/'
     }

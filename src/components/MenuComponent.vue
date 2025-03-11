@@ -42,7 +42,7 @@ export default {
       // { name: 'Objects', path: '' },
       { name: 'Shows', path: '/shows' },
       // { name: 'Press', path: '' },
-      { name: 'Profile', path: '' },
+      { name: 'Profile', path: '/profile' },
     ]
 
     const navigateTo = (path) => {
