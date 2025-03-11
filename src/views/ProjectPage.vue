@@ -111,6 +111,7 @@ export default {
           :repeatCount="1"
           :imageHeight="'690rem'"
           :imageQuality="85"
+          :isActive="true"
         />
         
         <!-- Fallback message if no visuals -->
