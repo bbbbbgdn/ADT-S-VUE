@@ -11,6 +11,8 @@
     class="project-card-image"
     alt="Project thumbnail"
     @click="navigateToProject"
+    @mouseenter="isHovering = true"
+    @mouseleave="isHovering = false"
   />
   
   <!-- When using background image approach -->
@@ -20,11 +22,13 @@
     :data-index="0"
     class="project-card-background"
     @click="navigateToProject"
+    @mouseenter="isHovering = true"
+    @mouseleave="isHovering = false"
   ></div>
   
   <!-- Tags are always shown -->
   <div class="project-tags">
-    <BaseButton :to="`/projects/${slug}`">{{ projectName }}</BaseButton>
+    <BaseButton :to="`/projects/${slug}`" :class="{ 'button-hover': isHovering }">{{ projectName }}</BaseButton>
     <BaseButton v-if="year && year.trim().length > 0" variant="grey">{{ year }}</BaseButton>
   </div>
 </div>
@@ -77,7 +81,8 @@ export default {
     return {
       isLoaded: false,
       hasError: false,
-      backgroundImage: ''
+      backgroundImage: '',
+      isHovering: false
     };
   },
   
@@ -192,5 +197,10 @@ export default {
   gap: 1rem;
   padding: 3rem;
   z-index: 1;
+}
+
+/* Style for the button hover effect */
+.button-hover {
+  opacity: 0.75 !important;
 }
 </style> 

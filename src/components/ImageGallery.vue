@@ -1,6 +1,6 @@
 <template>
-  <div class="gallery-container">
-    <div class="gallery" ref="gallery" :style="galleryContainerStyle">
+  <div class="gallery-container" :class="{ 'clickable': !isActive }">
+    <div class="gallery" ref="gallery" :style="galleryContainerStyle" @click="navigateToShow" @mouseenter="isHovering = !isActive" @mouseleave="isHovering = false">
       <div 
         v-for="(image, index) in processedImages" 
         :key="index" 
@@ -15,8 +15,15 @@
           class="gallery-image">
       </div>
     </div>
-    <div v-if="shouldShowTags" class="gallery-tags">
-      <ButtonBase v-if="name && name.trim().length > 0" :to="`/shows/${slug}`" :variant="isActive ? 'active' : 'black'">{{ name }}</ButtonBase>
+    <div v-if="shouldShowTags" class="gallery-tags" @click.stop>
+      <ButtonBase 
+        v-if="name && name.trim().length > 0" 
+        :to="`/shows/${slug}`" 
+        :variant="isActive ? 'active' : 'black'"
+        :class="{ 'button-hover': isHovering }"
+      >
+        {{ name }}
+      </ButtonBase>
       <ButtonBase v-if="location && location.trim().length > 0" variant="grey">{{ location }}</ButtonBase>
       <ButtonBase v-if="date && date.trim().length > 0" variant="grey">{{ date }}</ButtonBase>
     </div>
@@ -87,6 +94,58 @@ export default {
       type: String,
       default: null,
       required: false
+    }
+  },
+
+  data() {
+    return {
+      isScrolling: false,
+      scrollTimeout: null,
+      scrollStartX: 0,
+      isHovering: false
+    };
+  },
+
+  methods: {
+    navigateToShow(event) {
+      // Don't navigate if we're already on this show page (isActive is true)
+      if (this.isActive) return;
+      
+      // Don't navigate if the user was scrolling
+      if (this.isScrolling) return;
+      
+      // Navigate to the show page
+      this.$router.push(`/shows/${this.slug}`);
+    },
+    
+    handleScrollStart(event) {
+      if (this.isActive) return;
+      this.scrollStartX = event.touches ? event.touches[0].clientX : event.clientX;
+      this.isScrolling = false;
+    },
+    
+    handleScrollMove(event) {
+      if (this.isActive) return;
+      if (!this.scrollStartX) return;
+      
+      const currentX = event.touches ? event.touches[0].clientX : event.clientX;
+      const diffX = Math.abs(currentX - this.scrollStartX);
+      
+      // If the user has moved more than 5px horizontally, consider it a scroll
+      if (diffX > 5) {
+        this.isScrolling = true;
+      }
+    },
+    
+    handleScrollEnd() {
+      if (this.isActive) return;
+      
+      // Reset the scroll state after a short delay
+      clearTimeout(this.scrollTimeout);
+      this.scrollTimeout = setTimeout(() => {
+        this.isScrolling = false;
+        this.scrollStartX = 0;
+      }, 100);
     }
   },
 
@@ -173,6 +232,19 @@ export default {
   },
 
   mounted() {
+    // Add event listeners for scroll detection
+    const gallery = this.$refs.gallery;
+    if (gallery) {
+      gallery.addEventListener('mousedown', this.handleScrollStart);
+      gallery.addEventListener('mousemove', this.handleScrollMove);
+      gallery.addEventListener('mouseup', this.handleScrollEnd);
+      gallery.addEventListener('mouseleave', this.handleScrollEnd);
+      
+      gallery.addEventListener('touchstart', this.handleScrollStart);
+      gallery.addEventListener('touchmove', this.handleScrollMove);
+      gallery.addEventListener('touchend', this.handleScrollEnd);
+    }
+    
     // Only log warnings if tags are expected to be shown
     if (this.shouldShowTags) {
       // Check for empty tags and log warnings
@@ -186,6 +258,24 @@ export default {
         console.warn(`Empty date tag detected for gallery with slug: ${this.slug}`);
       }
     }
+  },
+  
+  beforeUnmount() {
+    // Remove event listeners
+    const gallery = this.$refs.gallery;
+    if (gallery) {
+      gallery.removeEventListener('mousedown', this.handleScrollStart);
+      gallery.removeEventListener('mousemove', this.handleScrollMove);
+      gallery.removeEventListener('mouseup', this.handleScrollEnd);
+      gallery.removeEventListener('mouseleave', this.handleScrollEnd);
+      
+      gallery.removeEventListener('touchstart', this.handleScrollStart);
+      gallery.removeEventListener('touchmove', this.handleScrollMove);
+      gallery.removeEventListener('touchend', this.handleScrollEnd);
+    }
+    
+    // Clear any pending timeouts
+    clearTimeout(this.scrollTimeout);
   }
 }
 </script>
@@ -195,6 +285,22 @@ export default {
   width: 100%;
   overflow: hidden;
   line-height: 0;
+  position: relative;
+}
+
+/* Remove the cursor pointer from the entire container */
+.gallery-container.clickable {
+  /* cursor: pointer; - removing this */
+}
+
+/* Add cursor pointer only to the gallery (image area) */
+.gallery-container.clickable .gallery {
+  cursor: pointer;
+}
+
+/* Make sure the gallery items also have pointer cursor */
+.gallery-container.clickable .gallery-item {
+  cursor: pointer;
 }
 
 .gallery {
@@ -229,6 +335,21 @@ export default {
   display: flex;
   gap: 3rem;
   margin: 3rem;
+}
+
+/* Ensure the tags area doesn't have a pointer cursor */
+.gallery-container.clickable .gallery-tags {
+  cursor: default;
+}
+
+/* But make sure the buttons inside the tags area have the appropriate cursor */
+.gallery-container.clickable .gallery-tags .base-button {
+  cursor: pointer;
+}
+
+/* Style for the button hover effect */
+.button-hover {
+  opacity: 0.75 !important;
 }
 
 .gallery-image {
