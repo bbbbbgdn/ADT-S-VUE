@@ -53,8 +53,10 @@ const navigateToShow = (slug) => {
           :location="story.content?.location_tag || ''"
           :date="story.content?.date_tag || ''"
           :slug="story.slug"
-          :images="formatImages(story.content.visuals, { width: 0, height: 230, quality: 70 })"
+          :images="formatImages(story.content.visuals, { width: 0, height: 805, quality: 85 })" 
           :repeatCount="1"
+          :imageHeight="'805rem'"
+          :imageQuality="85"
           :isActive="true"
         />
         
