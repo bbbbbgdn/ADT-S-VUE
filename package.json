@@ -6,8 +6,10 @@
   "packageManager": "pnpm@10.6.2",
   "scripts": {
     "dev": "vite --host",
+    "dev:https": "vite --host --https",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:https": "vite preview --https"
   },
   "dependencies": {
     "@storyblok/vue": "^8.1.11",
@@ -17,5 +19,13 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.2.1"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
