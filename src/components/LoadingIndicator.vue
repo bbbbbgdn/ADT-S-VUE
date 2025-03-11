@@ -22,7 +22,7 @@ export default {
 /* Fade transition */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 1s ease;
+  transition: opacity 1s ease-in-out;
 }
 .fade-enter-from,
 .fade-leave-to {
@@ -32,15 +32,15 @@ export default {
 /* Loading styles */
 .loading-container {
   position: fixed;
-  top: 0;
+  top: 49rem;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 49rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  z-index: 100;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 9;
 }
 
 .loading-text {
