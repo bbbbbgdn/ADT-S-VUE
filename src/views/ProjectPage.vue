@@ -77,11 +77,25 @@ export default {
           <p>{{ errorMessage }}</p>
         </div>
         
+        <!-- Project tags moved to the top of the page -->
+        <div class="project-tags">
+          <BaseButton 
+            v-if="story.content?.title_tag && story.content.title_tag.trim().length > 0" 
+            :to="`/projects/${story.slug.split('/').pop()}`" 
+            variant="active">{{ story.content.title_tag }}</BaseButton>
+          <BaseButton 
+            v-if="story.content?.location_tag && story.content.location_tag.trim().length > 0" 
+            variant="grey">{{ story.content.location_tag }}</BaseButton>
+          <BaseButton 
+            v-if="(story.content?.date_tag || story.content?.year_tag) && (story.content?.date_tag || story.content?.year_tag).trim().length > 0" 
+            variant="grey">{{ story.content?.date_tag || story.content?.year_tag }}</BaseButton>
+        </div>
+        
         <div class="description">
           {{ story.content?.main_text || 'No Description Available' }}
         </div>
         
-        <!-- Only show gallery if visuals exist -->
+        <!-- Only show gallery if visuals exist, removed tag props -->
         <ImageGallery 
           v-if="story.content?.visuals && story.content.visuals.length > 0"
           :slug="story.slug" 
@@ -89,9 +103,6 @@ export default {
           :repeatCount="1"
           :imageHeight="'690rem'"
           :imageQuality="85"
-          :name="story.content?.title_tag || ''"
-          :location="story.content?.location_tag || ''"
-          :date="story.content?.date_tag || story.content?.year_tag || ''"
         />
         
         <!-- Fallback message if no visuals -->
@@ -145,6 +156,15 @@ export default {
 
 .content-visible {
   opacity: 1;
+}
+
+/* Project tags styling */
+.project-tags {
+  display: flex;
+  gap: 3rem;
+  margin: 3rem 3rem 1rem 3rem;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .description {
@@ -214,5 +234,20 @@ export default {
   margin: 2rem auto;
   background-color: #f8f8f8;
   border-radius: 8px;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .project-tags {
+    gap: 1rem;
+    margin: 2rem 1rem;
+    justify-content: center;
+  }
+  
+  .description {
+    padding: 15px;
+    margin: 15px;
+    font-size: 24px;
+  }
 }
 </style>
