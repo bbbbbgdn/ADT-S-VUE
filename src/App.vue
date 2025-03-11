@@ -27,7 +27,7 @@ export default {
 }
 
 body {
-  line-height: 1.6;
+  /* line-height: 1.6; */
   text-align: left;
   /* color: #333; */
 }

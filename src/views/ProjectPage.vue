@@ -5,6 +5,8 @@ import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import ProjectCard from '../components/ProjectCard.vue';
 import LoadingIndicator from '../components/LoadingIndicator.vue';
+import MainText from '../components/MainText.vue';
+import InfoText from '../components/InfoText.vue';
 import useStoryblok from '../utils/useStoryblok';
 
 export default {
@@ -13,7 +15,9 @@ export default {
     BaseButton,
     ImageGallery,
     ProjectCard,
-    LoadingIndicator
+    LoadingIndicator,
+    MainText,
+    InfoText
   },
   setup() {
     const route = useRoute();
@@ -91,9 +95,13 @@ export default {
             variant="grey">{{ story.content?.date_tag || story.content?.year_tag }}</BaseButton>
         </div>
         
-        <div class="description">
+        <!-- Using MainText with text prop -->
+        <!-- <MainText :text="story.content?.main_text || 'No Description Available'" /> -->
+        
+        <!-- Alternative: Using MainText with slot content -->
+        <MainText>
           {{ story.content?.main_text || 'No Description Available' }}
-        </div>
+        </MainText>
         
         <!-- Only show gallery if visuals exist, removed tag props -->
         <ImageGallery 
@@ -110,11 +118,7 @@ export default {
           <p>No images available for this project</p>
         </div>
         
-        <div class="credits-container">
-          <div class="credits">
-            {{ story.content?.info_text || '' }}
-          </div>
-        </div>
+        <InfoText :text="story.content?.info_text || ''" />
         
         <div class="button-container">
           <BaseButton to="/projects">Other projects</BaseButton>
@@ -167,35 +171,13 @@ export default {
   align-items: center;
 }
 
-.description {
-  width: 100%;
-  padding: 20px;
-  margin: 30px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  font-size: 30px;
-}
-
-.credits-container {
-  display: flex;
-  justify-content: left;
-  width: 100%;
-}
-
-.credits {
-  width: 80%;
-  text-align: left;
-  margin: 10vh 5vw;
-}
-
 .button-container {
-  margin: 25vh 0 1vh 0;
+  margin: 25vh 0 3rem 3rem;
 }
 
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
   width: 100%;
 }
 
@@ -242,12 +224,6 @@ export default {
     gap: 1rem;
     margin: 2rem 1rem;
     justify-content: center;
-  }
-  
-  .description {
-    padding: 15px;
-    margin: 15px;
-    font-size: 24px;
   }
 }
 </style>

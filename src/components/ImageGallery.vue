@@ -288,10 +288,6 @@ export default {
   position: relative;
 }
 
-/* Remove the cursor pointer from the entire container */
-.gallery-container.clickable {
-  /* cursor: pointer; - removing this */
-}
 
 /* Add cursor pointer only to the gallery (image area) */
 .gallery-container.clickable .gallery {

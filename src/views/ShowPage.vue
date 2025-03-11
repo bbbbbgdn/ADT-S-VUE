@@ -3,6 +3,8 @@ import { useRoute, useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import LoadingIndicator from '../components/LoadingIndicator.vue';
+import MainText from '../components/MainText.vue';
+import InfoText from '../components/InfoText.vue';
 import { renderRichText } from "@storyblok/vue";
 import useStoryblok from '../utils/useStoryblok';
 
@@ -65,13 +67,13 @@ const navigateToShow = (slug) => {
           <p>No images available for this show</p>
         </div>
         
-        <div class="description" >
+        <!-- Using MainText with paragraph (default) -->
+        <MainText>
           {{ story.content?.main_text || 'No Description Available' }}
-        </div>
-        <div class="credits-container">
-          <div class="credits" v-html="renderRichText(story.content?.info_text || '')">
-          </div>
-        </div>
+        </MainText>
+        
+        <InfoText :html="renderRichText(story.content?.info_text || '')" />
+        
         <div class="button-container">
           <BaseButton to="/shows">Other Shows</BaseButton>
         </div>
@@ -117,35 +119,6 @@ const navigateToShow = (slug) => {
 h1 {
   font-size: 2rem;
   margin: 20px 0;
-}
-
-.description {
-  width: 100%;
-  padding: 20px;
-  margin: 30px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  font-size: 30px;
-}
-
-.credits-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.credits {
-  column-count: 2;
-  column-gap: 20px;
-  width: 80%;
-  text-align: left;
-  margin: 0 10px;
-}
-
-p {
-  font-size: 22rem;
-  margin: 5px 0;
-  text-align: justify;
 }
 
 .image-gallery {
