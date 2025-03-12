@@ -1,6 +1,6 @@
 <template>
   <div class="profile-container">
-    <div class="profile-image">
+    <div class="profile-image" :class="{ 'image-loaded': isLoaded }">
       <img src="/main/assets/profile-image.webp" alt="Dasha Tsapenko working with bio-material" />
     </div>
     
@@ -78,6 +78,19 @@ export default {
     InfoText,
     BaseButton
   },
+  data() {
+    return {
+      isLoaded: false
+    }
+  },
+  mounted() {
+    // Create a new image object to preload
+    const img = new Image();
+    img.src = '/main/assets/profile-image.webp';
+    img.onload = () => {
+      this.isLoaded = true;
+    };
+  },
   methods: {
     sendEmail() {
       window.location.href = 'mailto:tsapenkodash@gmail.com'
@@ -102,6 +115,12 @@ export default {
   flex: 1;
   max-width: 50%;
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.profile-image.image-loaded {
+  opacity: 1;
 }
 
 .profile-image img {
@@ -157,7 +176,8 @@ export default {
 .footer-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* gap: 0rem; */
+  align-items: end;
+  padding: 6rem;
 }
 
 .footer-left p, .footer-right p {
@@ -165,7 +185,7 @@ export default {
   line-height: 1.4;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .profile-container {
     flex-direction: column;
   }
@@ -176,18 +196,24 @@ export default {
   }
   
   .profile-content {
-    padding: 20rem;
+    padding: 6rem;
   }
   
   .mailing-address {
     min-width: auto;
     width: 100%;
   }
+
+  .small-text{
+    margin-bottom: 1em !important;
+  }
   
   .footer-info {
     flex-direction: column;
     gap: 10rem;
-    padding: 20rem;
+
+
+    margin-top: 80rem;
   }
 }
 </style> 
