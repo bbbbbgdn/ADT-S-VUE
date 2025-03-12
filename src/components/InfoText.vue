@@ -6,9 +6,6 @@
     <div class="info-text" v-else-if="html" v-html="html" :style="columnStyle"></div>
     <div class="info-text" v-else-if="text" :style="columnStyle">{{ text }}</div>
   </div>
-  <div class="info-text-container" v-else>
-    <div class="info-text empty-text">No information available</div>
-  </div>
 </template>
 
 <script>
