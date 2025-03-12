@@ -223,9 +223,9 @@ export default {
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .project-tags {
-    gap: 1rem;
+    /* gap: 1rem; */
     /* margin: 2rem 1rem; */
-    justify-content: center;
+    /* justify-content: center; */
   }
 }
 </style>
