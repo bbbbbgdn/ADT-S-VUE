@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  mounted() {
+    // Add fade-in class after a short delay to ensure initial opacity is set
+    setTimeout(() => {
+      this.$el.classList.add('fade-in');
+    }, 50);
+  }
 }
 </script>
 
@@ -33,6 +39,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.home.fade-in {
+  opacity: 1;
 }
 
 .content {
