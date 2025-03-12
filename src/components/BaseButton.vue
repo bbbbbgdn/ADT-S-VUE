@@ -116,6 +116,9 @@ export default {
   transition: all .8s;
   min-height: 42.4rem;
   line-height: 1.2;
+
+  white-space: wrap;
+  text-align: left;
 }
 
 /* Black Button */
@@ -127,7 +130,7 @@ export default {
 }
 
 /* Grey Button */
-.button-grey {
+.button-grey, .button-black:disabled {
   background-color: #C3C3C3;
   color: rgb(0, 0, 0);
 }
@@ -136,7 +139,7 @@ export default {
   pointer-events: none;
 }
 
-.button-black:hover ,.button-black:disabled {
+.button-black:hover {
   opacity: 0.75;
 }
 

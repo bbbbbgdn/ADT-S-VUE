@@ -1,7 +1,7 @@
 <template>
   <div class="profile-container">
     <div class="profile-image">
-      <img src="https://placehold.co/600x800/e0e0e0/333333?text=Profile+Image" alt="Dasha Tsapenko working with bio-material" />
+      <img src="/main/assets/profile-image.webp" alt="Dasha Tsapenko working with bio-material" />
     </div>
     
     <div class="profile-content">
@@ -36,7 +36,11 @@
         
         <div class="contact-section">
           <div class="section-title">MAILING ADDRESS:</div>
-          <BaseButton disabled>De Constant Rebecqueplein 20-B 2518RA 's-Gravenhage, Netherlands</BaseButton>
+          <BaseButton class="mailing-address" disabled>
+            De Constant Rebecqueplein 20-B
+            2518RA 's-Gravenhage,
+            Netherlands
+          </BaseButton>
         </div>
         
         <div class="contact-section">
@@ -52,11 +56,11 @@
   
   <div class="footer-info">
     <div class="footer-left">
-      <p>KVK: 70382514, VAT: NL002491950B87</p>
+      <p class="small-text">KVK: 70382514, VAT: NL002491950B87</p>
       <p>2025 © Atelier Dasha Tsapenko</p>
     </div>
     <div class="footer-right">
-      <p>Website Credits: Studio Name</p>
+      <p>This website is still cultivating its final form.</p>
     </div>
   </div>
 </template>
@@ -85,6 +89,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .profile-container {
   display: flex;
   flex-direction: row;
@@ -99,7 +105,7 @@ export default {
 
 .profile-image img {
   width: 100%;
-  margin-left: 3rem;
+  padding: 0 3rem 0 3rem;
   /* height: 100%; */
   /* object-fit: cover; */
 }
@@ -117,7 +123,8 @@ export default {
 }
 
 .profile-description {
-  margin-bottom: 40rem;
+  margin-bottom: 30rem;
+
 }
 
 
@@ -135,9 +142,15 @@ export default {
   margin-bottom: 5rem;
 }
 
+.mailing-address {
+  white-space: normal !important;
+  line-height: 1.5;
+  min-width: 260rem;
+}
+
 .social-links {
   display: flex;
-  gap: 10rem;
+  gap: 3rem;
 }
 
 .footer-info {
@@ -163,6 +176,11 @@ export default {
   
   .profile-content {
     padding: 20rem;
+  }
+  
+  .mailing-address {
+    min-width: auto;
+    width: 100%;
   }
   
   .footer-info {

@@ -67,9 +67,9 @@ export default {
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .main-text {
-    padding: 15px;
-    margin: 15px;
-    font-size: 24px;
+    /* padding: 15px; */
+    /* margin: 15px; */
+    /* font-size: 24px; */
   }
 }
 </style> 

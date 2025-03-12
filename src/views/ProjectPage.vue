@@ -173,7 +173,7 @@ export default {
 }
 
 .button-container {
-  margin: 25vh 0 3rem 3rem;
+  margin: 5vh 0 0 3rem;
 }
 
 .image-grid {
