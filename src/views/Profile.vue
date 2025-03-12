@@ -48,7 +48,7 @@
           <div class="social-links">
             <BaseButton @click="openLink('https://www.instagram.com/atelier__dashatsapenko/')">Instagram</BaseButton>
             <!-- <BaseButton @click="openLink('https://linkedin.com')">Linkedin</BaseButton> -->
-            <BaseButton @click="openLink('https://linktr.ee/Atelier_dasha_tsapenko')">Linktree</BaseButton>
+            <BaseButton @click="openLink('https://www.linkedin.com/in/dasha-tsapenko-66b1838b/')">Linkedin</BaseButton>
           </div>
         </div>
       </div>
