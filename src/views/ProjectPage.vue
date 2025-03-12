@@ -234,5 +234,9 @@ export default {
   /* height: 10vh !important; */
   /* aspect-ratio: 1/1 !important; */
 }
+
+.project-card {
+    min-height: 100% !important;
+  }
 }
 </style>

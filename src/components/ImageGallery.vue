@@ -375,7 +375,10 @@ export default {
     height: auto !important;
   }
   .gallery-image {
-    height: 50vh !important; /* Use vh units for mobile too */
+    /* Use vh units for mobile too */
+    height: 40vh !important;
+    /* aspect-ratio: 1/1 !important; */
+     
   }
 }
 
