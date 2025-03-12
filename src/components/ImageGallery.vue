@@ -369,4 +369,16 @@ export default {
   background-color: #f8f8f8;
   border: 1px dashed #ccc;
 }
+
+
+@media (max-width: 768px) {
+  .gallery{
+    min-height: auto !important;
+    height: auto !important;
+  }
+  .gallery-image {
+    height: 345rem !important; /* Half the desktop size */
+  }
+}
+
 </style> 
