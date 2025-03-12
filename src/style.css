@@ -58,7 +58,7 @@
   line-height: 1.23;
   font-weight: 670;
 
-  font-size: .9px;
+  font-size: 0.9px;
   /* font-size: 6%; */
 
   color-scheme: light dark;
@@ -145,5 +145,7 @@ button:focus-visible {
   :root {
     color: #000000;
     background-color: #ffffff;
+
+    font-size: 0.6px;
   }
 }

@@ -34,6 +34,8 @@ export default {
   font-size: 34rem;
   line-height: 42rem;
   text-indent: 70rem;
+
+  margin-bottom: 70rem;
 }
 
 .main-text p {
@@ -67,9 +69,9 @@ export default {
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .main-text {
-    /* padding: 15px; */
-    /* margin: 15px; */
-    /* font-size: 24px; */
+    /* font-size: 22rem; */
+    /* line-height: 1.24; */
+    /* text-indent: 35rem; */
   }
 }
 </style> 
