@@ -211,4 +211,13 @@ export default {
 .button-hover {
   opacity: 0.75 !important;
 }
+
+
+@media screen and (max-width: 640px) {
+  .project-card {
+    min-height: 17vh;
+  }
+}
+
 </style> 
+

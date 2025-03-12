@@ -178,7 +178,7 @@ export default {
 
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 2fr);
   width: 100%;
   padding: 3rem;
 }
@@ -221,11 +221,12 @@ export default {
 }
 
 /* Responsive adjustments for mobile */
-@media (max-width: 768px) {
-  .project-tags {
-    /* gap: 1rem; */
-    /* margin: 2rem 1rem; */
-    /* justify-content: center; */
-  }
+@media (max-width: 640px) {
+  .image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  padding: 3rem;
+}
 }
 </style>

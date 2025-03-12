@@ -85,9 +85,10 @@ export default {
 }
 
 /* Responsive layout for mobile devices */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .projects-grid {
     grid-template-columns: 1fr;  /* Single column on mobile */
   }
 }
+
 </style> 

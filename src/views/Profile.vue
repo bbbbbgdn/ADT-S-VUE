@@ -46,8 +46,9 @@
         <div class="contact-section">
           <div class="section-title">LINKS:</div>
           <div class="social-links">
-            <BaseButton @click="openLink('https://instagram.com')">Instagram</BaseButton>
-            <BaseButton @click="openLink('https://linkedin.com')">Linkedin</BaseButton>
+            <BaseButton @click="openLink('https://www.instagram.com/atelier__dashatsapenko/')">Instagram</BaseButton>
+            <!-- <BaseButton @click="openLink('https://linkedin.com')">Linkedin</BaseButton> -->
+            <BaseButton @click="openLink('https://linktr.ee/Atelier_dasha_tsapenko')">Linktree</BaseButton>
           </div>
         </div>
       </div>

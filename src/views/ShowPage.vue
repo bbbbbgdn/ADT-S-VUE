@@ -57,7 +57,7 @@ const navigateToShow = (slug) => {
           :slug="story.slug"
           :images="formatImages(story.content.visuals, { width: 0, height: 805, quality: 85 })" 
           :repeatCount="1"
-          :imageHeight="'805rem'"
+          :imageHeight="'85vh'"
           :imageQuality="85"
           :isActive="true"
         />

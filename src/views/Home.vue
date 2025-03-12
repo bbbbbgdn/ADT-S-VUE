@@ -88,7 +88,7 @@ h1 {
     left: 50%;
     width: 100vh; /* Use viewport height for width */
     height: 100vw; /* Use viewport width for height */
-    transform: translate(-50%, -50%) rotate(-90deg) scale(2);
+    transform: translate(-50%, -50%) rotate(-90deg) scale(1.1);
     transform-origin: center center;
     background-size: cover;
   }
