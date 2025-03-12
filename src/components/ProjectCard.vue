@@ -82,7 +82,8 @@ export default {
       isLoaded: false,
       hasError: false,
       backgroundImage: '',
-      isHovering: false
+      isHovering: false,
+      shouldAnimate: false
     };
   },
   
@@ -115,8 +116,16 @@ export default {
   },
   
   mounted() {
+    // Check if this is the first visit
+    this.shouldAnimate = !localStorage.getItem('hasSeenAnimation');
+    
     // Log the image URL for debugging
     console.log(`ProjectCard mounted - Image URL: ${this.image}, Slug: ${this.slug}`);
+    
+    // Set animation as seen
+    if (this.shouldAnimate) {
+      localStorage.setItem('hasSeenAnimation', 'true');
+    }
     
     // Manually preload the image to ensure it works
     if (!this.useImgTag) {
@@ -154,8 +163,8 @@ export default {
   object-fit: cover;
   z-index: 0;
   cursor: pointer;
-  transition: opacity 0.8s ease-out;
-  opacity: 0; /* Start fully transparent */
+  transition: opacity 1.6s ease-out;
+  opacity: 1;
 }
 
 .project-card-background {
@@ -168,24 +177,24 @@ export default {
   background-position: center;
   z-index: 0;
   cursor: pointer;
-  opacity: 0; /* Start fully transparent */
-  transition: opacity 0.8s ease-out;
+  opacity: 1;
+  transition: opacity 1.6s ease-out;
 }
 
 /* Loading states */
 .project-card-image.image-loading,
 .project-card-background.image-loading {
-  opacity: 0; /* Keep invisible while loading */
+  opacity: 0;
 }
 
 .project-card-image.image-loaded,
 .project-card-background.image-loaded {
-  opacity: 1; /* Fade in when loaded */
+  opacity: v-bind("shouldAnimate ? 0 : 1");
 }
 
 .project-card-image.image-error,
 .project-card-background.image-error {
-  opacity: 0; /* Keep invisible on error */
+  opacity: 0;
 }
 
 .project-tags {

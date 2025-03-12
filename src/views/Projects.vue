@@ -9,6 +9,10 @@
       :year="story.content.year_tag"
       :slug="story.slug"
       @click="navigateToProject"
+      :style="{ 
+        transitionDelay: shouldAnimate ? `${index * 5}s` : '0s',
+        opacity: isLoading ? '0' : '1'
+      }"
     />
   </div>
 </template>
@@ -29,6 +33,8 @@ export default {
     const router = useRouter();
     const storyblokApi = useStoryblokApi();
     const stories = ref([]);
+    const isLoading = ref(true);
+    const shouldAnimate = ref(!localStorage.getItem('hasSeenAnimation'));
     
     const navigateToProject = (slug) => {
       router.push(`/projects/${slug}`);
@@ -42,15 +48,24 @@ export default {
         });
         stories.value = response.data.stories;
         console.log('Projects loaded:', stories.value);
+        
+        // Add a small delay to ensure smooth animation
+        setTimeout(() => {
+          isLoading.value = false;
+        }, 100);
+        
       } catch (error) {
         console.error('Error fetching stories:', error);
+        isLoading.value = false;
       }
     });
 
     return {
       stories,
       formatImage,
-      navigateToProject
+      navigateToProject,
+      isLoading,
+      shouldAnimate
     };
   }
 }
@@ -65,6 +80,9 @@ export default {
   padding: 0 3rem 3rem 3rem;
 }
 
+.project-card {
+  transition: opacity 3s ease-out;
+}
 
 /* Responsive layout for mobile devices */
 @media (max-width: 768px) {

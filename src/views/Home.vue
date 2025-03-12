@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" :class="{ 'image-loaded': isLoaded }">
 
   </div>
 </template>
@@ -7,11 +7,18 @@
 <script>
 export default {
   name: 'Home',
+  data() {
+    return {
+      isLoaded: false
+    }
+  },
   mounted() {
-    // Add fade-in class after a short delay to ensure initial opacity is set
-    setTimeout(() => {
-      this.$el.classList.add('fade-in');
-    }, 50);
+    // Create a new image object to preload
+    const img = new Image();
+    img.src = '/main/assets/DSC00121@0.5x2.webp';
+    img.onload = () => {
+      this.isLoaded = true;
+    };
   }
 }
 </script>
@@ -32,7 +39,7 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-image: url('/main/assets/DSC00121@0.5x2.webp');
+  background-image: url('/main/assets/DSC00121@0.5x.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -40,10 +47,10 @@ body {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.8s ease-out;
+  transition: opacity 1s ease-out;
 }
 
-.home.fade-in {
+.image-loaded {
   opacity: 1;
 }
 
@@ -73,4 +80,17 @@ h1 {
     transform: translate(-50%, -50%);
     text-align: center;
 } */
+
+@media screen and (orientation: portrait) {
+  .home {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vh; /* Use viewport height for width */
+    height: 100vw; /* Use viewport width for height */
+    transform: translate(-50%, -50%) rotate(-90deg) scale(2);
+    transform-origin: center center;
+    background-size: cover;
+  }
+}
 </style> 
