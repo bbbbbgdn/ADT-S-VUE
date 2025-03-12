@@ -26,12 +26,13 @@ export default {
 <style>
 body {
   background-color: transparent;
+  position: fixed;
 }
 </style>
 
 <style scoped>
 .home {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   z-index: -1;

@@ -160,8 +160,8 @@ export default {
       console.log('Processing images:', this.images);
       
       const processed = this.images.map((image, index) => {
-        // Extract numeric height value (remove 'rem' or 'px')
-        const heightValue = parseInt(this.imageHeight, 10) || 230;
+        // Don't try to parse vh values
+        const heightValue = 1600; // Fixed height for CMS request
         
         // Make sure we have a valid URL
         if (!image || !image.url) {
@@ -172,15 +172,13 @@ export default {
           };
         }
         
-        // Request 2x resolution from Storyblok
+        // Request high resolution from Storyblok
         const transformedUrl = createImageUrl(image.url, {
           width: 0, // Auto width
-          height: heightValue * 2, // x height for high-DPI displays
+          height: heightValue, // Fixed height for quality
           quality: this.imageQuality,
           format: this.imageFormat
         });
-        
-        // console.log(`Transformed URL for image ${index}:`, transformedUrl);
         
         return {
           url: transformedUrl,
@@ -372,12 +370,12 @@ export default {
 
 
 @media (max-width: 768px) {
-  .gallery{
+  .gallery {
     min-height: auto !important;
     height: auto !important;
   }
   .gallery-image {
-    height: 345rem !important; /* Half the desktop size */
+    height: 50vh !important; /* Use vh units for mobile too */
   }
 }
 

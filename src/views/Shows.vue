@@ -48,6 +48,10 @@ const formatImages = (visuals, width = 800, height = 600) => {
 </template>
 
 <style scoped>
+.gallery-container{
+  /* aspect-ratio: 16/12; */
+}
+
 .shows {
   /* padding: 20px; */
 }

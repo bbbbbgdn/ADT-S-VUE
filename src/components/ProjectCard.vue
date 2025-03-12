@@ -148,7 +148,8 @@ export default {
   position: relative;
   display: flex;
   align-items: flex-end;
-  min-height: 45vh;
+  /* min-height: 45vh; */
+  aspect-ratio: 16/10;
   height: 100%;
   overflow: hidden;
   background-color: transparent; /* Start with transparent background */
@@ -215,7 +216,7 @@ export default {
 
 @media screen and (max-width: 640px) {
   .project-card {
-    min-height: 17vh;
+    min-height: 30vh;
   }
 }
 
