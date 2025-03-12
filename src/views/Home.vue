@@ -23,16 +23,13 @@ export default {
 }
 </script>
 
-<style>
-body {
-  background-color: transparent;
-  position: fixed;
-}
-</style>
+
 
 <style scoped>
+
+
 .home {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
@@ -59,7 +56,7 @@ body {
   text-align: center;
   color: white;
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
   border-radius: 8px;
 }
 
