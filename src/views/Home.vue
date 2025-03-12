@@ -26,7 +26,7 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-image: url('https://placehold.co/1920x1080');
+  background-image: url('/main/assets/DSC00121@0.5x2.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
