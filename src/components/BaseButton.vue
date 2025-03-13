@@ -133,6 +133,7 @@ export default {
 .button-grey, .button-black:disabled {
   background-color: #C3C3C3;
   color: rgb(0, 0, 0);
+  pointer-events: none;
 }
 
 .button-black:disabled {
@@ -140,7 +141,9 @@ export default {
 }
 
 .button-black:hover {
-  opacity: 0.75;
+  /* opacity: 0.75; */
+  background-color: #E788FF;
+  color: black;
 }
 
 /* Active Button */
