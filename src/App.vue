@@ -26,6 +26,10 @@ export default {
   font-size: 22rem;
 }
 
+:root {
+  --color-pink-primary: #E788FF;
+}
+
 body {
   /* line-height: 1.6; */
   text-align: left;

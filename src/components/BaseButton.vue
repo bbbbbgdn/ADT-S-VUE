@@ -142,13 +142,13 @@ export default {
 
 .button-black:hover {
   /* opacity: 0.75; */
-  background-color: #E788FF;
+  background-color: var(--color-pink-primary);
   color: black;
 }
 
 /* Active Button */
 .button-active {
-  background-color: #E788FF;
+  background-color: var(--color-pink-primary);
   color: black;
   pointer-events: none;
 }
