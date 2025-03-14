@@ -165,25 +165,19 @@ button:focus-visible {
 }
 
 main {
-  transition: opacity 0.5s ease;
+  transition: opacity var(--transition-duration, 500ms) var(--transition-easing, ease);
 }
 
 /* Ensure transitions are smooth */
 * {
   transition-property: opacity;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
+  transition-duration: var(--transition-duration, 500ms);
+  transition-timing-function: var(--transition-easing, ease);
 }
 
 /* Fade out content during page transitions */
 body.page-transitioning main {
   opacity: 0 !important;
-}
-
-/* Exclude menu from opacity transitions but allow color transitions */
-body.page-transitioning .menu,
-body.page-transitioning .menu-button {
-  opacity: 1 !important;
 }
 
 /* Target button during transition */
@@ -197,7 +191,8 @@ body.page-transitioning .button-active {
 body.page-transitioning .menu-button:not(.button-active) {
   background-color: black !important;
   color: white !important;
-  transition: background-color 0.5s ease, color 0.5s ease !important;
+  transition: background-color var(--transition-duration, 500ms) var(--transition-easing, ease), 
+              color var(--transition-duration, 500ms) var(--transition-easing, ease) !important;
 }
 
 /* Global transition exempt class */

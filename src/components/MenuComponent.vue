@@ -18,6 +18,7 @@
 import { useRouter, useRoute } from 'vue-router'
 import { ref, watch, computed } from 'vue'
 import BaseButton from './BaseButton.vue'
+import { transitionTiming } from '../utils/transitionConfig'
 
 export default {
   name: 'MenuComponent',
@@ -85,7 +86,7 @@ export default {
           isNavigating.value = false;
           document.body.classList.remove('page-transitioning');
         });
-      }, 600); // Slightly longer than the transition duration to ensure it completes
+      }, transitionTiming.beforeNavigationDelay);
     }
 
     // Check if a menu item should be active
@@ -130,9 +131,10 @@ export default {
   margin: 3rem;
 }
 
-/* Menu button styles */
+/* Menu button styles - using CSS variables */
 .menu-button {
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color var(--transition-duration, 500ms) var(--transition-easing, ease), 
+              color var(--transition-duration, 500ms) var(--transition-easing, ease);
 }
 
 /* Ensure menu items are exempt from opacity transitions */

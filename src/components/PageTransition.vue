@@ -1,7 +1,7 @@
 <template>
+  <!-- Switch to simultaneous mode to prevent flash -->
   <transition
     name="page-transition"
-    mode="out-in"
     @enter="enter"
     @after-enter="afterEnter"
   >
@@ -10,49 +10,67 @@
 </template>
 
 <script>
+import { transitionTiming } from '../utils/transitionConfig'
+
 export default {
   name: 'PageTransition',
+  data() {
+    return {
+      transitionActive: false
+    };
+  },
   methods: {
     enter(el, done) {
-      // The element is initially hidden
+      // Mark that transition is active
+      this.transitionActive = true;
+      
+      // Force opacity to 0 immediately
       el.style.opacity = '0';
+      el.style.visibility = 'visible'; // Ensure element is in the DOM but invisible
       
-      // Check if this is the Profile component
-      const isProfilePage = el.querySelector('.profile-container') !== null;
-      
-      // Wait a moment then fade it in
-      setTimeout(() => {
-        el.style.opacity = '1';
-        
-        // For Profile page, add a slightly longer delay to ensure content is visible
-        const delay = isProfilePage ? 800 : 500;
-        setTimeout(done, delay);
-      }, 100);
+      // Use the most reliable approach with double RAF
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          // Force reflow to ensure opacity:0 is applied
+          void el.offsetWidth;
+          
+          // Start transition in
+          el.style.opacity = '1';
+          
+          // Transition completion
+          setTimeout(() => {
+            this.transitionActive = false;
+            done();
+          }, transitionTiming.pageEnterDelay);
+        });
+      });
     },
     afterEnter() {
-      // Remove the transitioning class when the new page has entered
-      // Make sure the delay is not too short - 300ms seems to work more reliably
+      // Clean up after transition
+      document.body.classList.remove('page-transitioning');
+      
+      // Ensure all page images are visible
+      this.showPageImages();
+    },
+    showPageImages() {
+      // Short timeout to ensure DOM has updated
       setTimeout(() => {
-        if (document.body.classList.contains('page-transitioning')) {
-          document.body.classList.remove('page-transitioning');
-        }
+        // Handle any image-loaded elements
+        document.querySelectorAll('.image-loaded').forEach(img => {
+          img.style.opacity = '1';
+        });
         
-        // Force any profile images to be visible
-        const profileImages = document.querySelectorAll('.profile-image');
-        if (profileImages.length > 0) {
-          profileImages.forEach(img => {
-            img.classList.add('image-loaded');
-          });
-        }
-        
-      }, 300);
+        // Handle profile page's special image-visible class
+        document.querySelectorAll('.image-visible').forEach(img => {
+          img.style.opacity = '1';
+        });
+      }, 50);
     }
   },
-  // Add beforeUnmount hook to ensure transition class is removed if component is unmounted
   beforeUnmount() {
-    if (document.body.classList.contains('page-transitioning')) {
-      document.body.classList.remove('page-transitioning');
-    }
+    // Safety cleanup
+    document.body.classList.remove('page-transitioning');
+    this.transitionActive = false;
   }
 }
 </script>
@@ -60,21 +78,29 @@ export default {
 <style>
 /* The main transition for page content */
 .page-transition-enter-active {
-  transition: opacity 0.5s ease;
+  transition: opacity var(--transition-duration, 500ms) var(--transition-easing, ease);
+  visibility: visible;
 }
 
 .page-transition-enter-from {
-  opacity: 0;
+  opacity: 0 !important; /* Force opacity 0 with !important */
+  visibility: visible;
 }
 
-/* When transitioning, fade out everything except the menu */
+/* Ensure transitioning pages fade out properly */
 body.page-transitioning main {
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--transition-duration, 500ms) var(--transition-easing, ease);
 }
 
 /* Ensure the menu stays visible during transitions */
 body.page-transitioning .menu {
   opacity: 1 !important;
+}
+
+/* Global styles for image transitions */
+.image-loaded,
+.image-visible {
+  transition: opacity var(--transition-duration, 500ms) var(--transition-easing, ease);
 }
 </style> 

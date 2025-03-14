@@ -121,7 +121,7 @@ export default {
   text-align: left;
 
   /* Set initial transition properties */
-  transition: all 0.6s ease-in-out !important;
+  transition: all 0.5s ease-in-out !important;
 }
 
 /* Black Button */

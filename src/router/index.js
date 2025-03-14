@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { transitionTiming } from '../utils/transitionConfig';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -61,24 +62,30 @@ const router = createRouter({
   ]
 });
 
-// Global after-navigation hook to ensure the page is visible
-router.afterEach((to, from) => {
-  // Make sure transition class is removed
-  setTimeout(() => {
-    if (document.body.classList.contains('page-transitioning')) {
-      document.body.classList.remove('page-transitioning');
-    }
+// Apply transition for all navigation events
+router.beforeEach((to, from, next) => {
+  // Only apply transition if we're actually changing routes
+  if (to.path !== from.path) {
+    // First add the transition class to hide content
+    document.body.classList.add('page-transitioning');
     
-    // Force profile images to be visible when navigating to profile
-    if (to.path === '/profile') {
-      setTimeout(() => {
-        const profileImages = document.querySelectorAll('.profile-image');
-        profileImages.forEach(img => {
-          img.classList.add('image-loaded');
-        });
-      }, 100);
-    }
-  }, 800);
+    // Force browser to process the class before continuing
+    void document.body.offsetWidth;
+    
+    // Proceed with navigation after ensuring the transition class is applied
+    next();
+  } else {
+    next();
+  }
+});
+
+// Global after-navigation hook - safety net only
+router.afterEach(() => {
+  // We'll let the PageTransition component handle removing the class
+  // This is just a safety timeout for any edge cases
+  setTimeout(() => {
+    document.body.classList.remove('page-transitioning');
+  }, 3000); // Extra long safety timeout
 });
 
 export default router;

@@ -1,7 +1,14 @@
 <template>
-  <div class="profile-container" :class="{ 'image-loaded': isLoaded || forceShow }">
-    <div class="profile-image" :class="{ 'image-loaded': isLoaded || forceShow }">
-      <img src="/main/assets/profile-image.webp" alt="Dasha Tsapenko working with bio-material" />
+  <div class="profile-container">
+    <div class="profile-image">
+      <img 
+        :src="profileImage" 
+        :class="{'image-visible': imageLoaded}"
+        alt="Dasha Tsapenko working with bio-material" 
+        @load="handleImageLoaded"
+        ref="profileImg"
+      />
+      <div class="image-placeholder" v-if="!imageLoaded"></div>
     </div>
     
     <div class="profile-content">
@@ -80,22 +87,28 @@ export default {
   },
   data() {
     return {
-      isLoaded: false,
-      forceShow: false
+      imageLoaded: false,
+      profileImage: '/main/assets/profile-image.webp'
     }
   },
   mounted() {
-    const img = new Image();
-    img.src = '/main/assets/profile-image.webp';
-    img.onload = () => {
-      this.isLoaded = true;
-    };
+    this.preloadImage();
     
     setTimeout(() => {
-      this.forceShow = true;
+      if (!this.imageLoaded) {
+        this.imageLoaded = true;
+      }
     }, 500);
   },
   methods: {
+    preloadImage() {
+      if (this.$refs.profileImg && this.$refs.profileImg.complete) {
+        this.imageLoaded = true;
+      }
+    },
+    handleImageLoaded() {
+      this.imageLoaded = true;
+    },
     sendEmail() {
       window.location.href = 'mailto:tsapenkodash@gmail.com'
     },
@@ -111,26 +124,39 @@ export default {
   display: flex;
   flex-direction: row;
   padding: 0;
-  opacity: 1;
 }
 
 .profile-image {
   flex: 1;
   max-width: 50%;
   overflow: hidden;
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-}
-
-.profile-image.image-loaded {
-  opacity: 1;
+  position: relative;
+  min-height: 60vh;
 }
 
 .profile-image img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   padding: 0 3rem 0 3rem;
-  /* height: 100%; */
-  /* object-fit: cover; */
+  opacity: 0;
+  transition: opacity 300ms ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f5f5f5;
+}
+
+.image-visible {
+  opacity: 1 !important;
 }
 
 .profile-content {
@@ -139,7 +165,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  opacity: 1;
 }
 
 .profile-header {
