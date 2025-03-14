@@ -3,6 +3,9 @@ import App from './App.vue';
 import router from './router';
 import { StoryblokVue, apiPlugin } from '@storyblok/vue';
 import DynamicComponent from './components/DynamicComponent.vue';
+import lazyLoad from './directives/lazyLoad';
+import LazyImage from './components/LazyImage.vue';
+import LazyBackground from './components/LazyBackground.vue';
 
 const app = createApp(App);
 
@@ -17,6 +20,11 @@ app.use(StoryblokVue, {
 });
 
 app.component('StoryblokComponent', DynamicComponent);
+app.component('LazyImage', LazyImage);
+app.component('LazyBackground', LazyBackground);
+
+// Register the lazy loading directive globally
+app.directive('lazy-load', lazyLoad);
 
 app.use(router);
 

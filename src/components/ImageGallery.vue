@@ -8,7 +8,11 @@
         :style="galleryItemStyle"
       >
         <img 
-          v-lazy-load="{ url: image.url, index: index, resetQueue: true }"
+          v-lazy-load="{
+            url: image.url,
+            threshold: 0.1,
+            rootMargin: '100px'
+          }"
           :alt="image.alt"
           :style="imageStyle"
           :data-index="index"
@@ -32,16 +36,12 @@
 
 <script>
 import ButtonBase from './BaseButton.vue';
-import lazyLoad from '../directives/lazyLoad';
 import { createImageUrl, getOptimalImageDimensions } from '../utils/storyblok';
 
 export default {
   name: 'ImageGallery',
   components: {
     ButtonBase
-  },
-  directives: {
-    lazyLoad
   },
   props: {
     name: {
@@ -432,5 +432,4 @@ export default {
      
   }
 }
-
 </style> 
