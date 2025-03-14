@@ -103,8 +103,4 @@ export default {
               color var(--transition-duration, 500ms) var(--transition-easing, ease);
 }
 
-/* Ensure menu items are exempt from opacity transitions */
-.transition-exempt {
-  /* transition: none !important; */
-}
 </style>    

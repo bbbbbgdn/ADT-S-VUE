@@ -90,7 +90,7 @@ nav.menu {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: white; /* Or whatever your background color is */
+  background-color: transparent; /* Or whatever your background color is */
   /* Below ensures the menu stays visible during transitions */
   transition: transform 0.3s ease;
   transform: translateZ(0);
