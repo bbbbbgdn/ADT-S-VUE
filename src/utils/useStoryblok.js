@@ -1,6 +1,7 @@
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import * as storyblokUtils from './storyblok';
+import navigationManager from './navigationManager';
 
 /**
  * Composable for working with Storyblok in Vue components
@@ -67,7 +68,7 @@ export default function useStoryblok(options = {}) {
       } else {
         // Default error handling - redirect to list page
         setTimeout(() => {
-          router.push(`/${type}s`);
+          navigationManager.navigateTo(router, `/${type}s`);
         }, 5000);
       }
     }
@@ -105,7 +106,8 @@ export default function useStoryblok(options = {}) {
    * @param {string} slug - Slug to navigate to
    */
   const navigateTo = (slug) => {
-    router.push(`/${type}s/${slug}`);
+    // Use navigation manager for consistent transitions
+    navigationManager.navigateTo(router, `/${type}s/${slug}`);
   };
   
   // Initialize

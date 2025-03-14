@@ -18,7 +18,7 @@
 import { useRouter, useRoute } from 'vue-router'
 import { ref, watch, computed } from 'vue'
 import BaseButton from './BaseButton.vue'
-import { transitionTiming } from '../utils/transitionConfig'
+import navigationManager from '../utils/navigationManager'
 
 export default {
   name: 'MenuComponent',
@@ -30,15 +30,12 @@ export default {
     const route = useRoute()
     const currentPath = ref(route.path)
     const clickedPath = ref(null) // Track which button was last clicked
-    const isNavigating = ref(false) // Track if we're currently navigating
     
     // Watch for route changes
     watch(
       () => route.path,
       (newPath) => {
         currentPath.value = newPath
-        // Mark navigation as complete
-        isNavigating.value = false
       }
     )
     
@@ -58,56 +55,25 @@ export default {
         return 'active'
       }
       // Otherwise, use the normal active state logic
-      return isActive(path) ? 'active' : 'black'
+      return navigationManager.isActive(route, path) ? 'active' : 'black'
     }
 
     const navigateTo = (path, event) => {
-      // Don't navigate if we're already on this page or already navigating
-      if (currentPath.value === path || isNavigating.value) return;
+      // Don't navigate if we're already on this page
+      if (currentPath.value === path) return;
       
       // Set this path as the clicked path immediately
       clickedPath.value = path;
       
-      // Mark that we're navigating to prevent double clicks
-      isNavigating.value = true;
-      
-      // Add transitioning class to body
-      document.body.classList.add('page-transitioning');
-      
-      // Store the target path to ensure it's captured in closure
-      const targetPath = path;
-      
-      // Wait for the fade-out animation to complete before changing the page
-      setTimeout(() => {
-        // Use push with catch to handle any navigation errors
-        router.push(targetPath).catch(err => {
-          console.error('Navigation error:', err);
-          // Reset navigation state on error
-          isNavigating.value = false;
-          document.body.classList.remove('page-transitioning');
-        });
-      }, transitionTiming.beforeNavigationDelay);
-    }
-
-    // Check if a menu item should be active
-    const isActive = (path) => {
-      if (!path) return false;
-      
-      // Exact match for home page
-      if (path === '/' && currentPath.value === '/') {
-        return true;
-      }
-      
-      // For other pages, check if the current path starts with the menu item path
-      // This ensures that /shows/some-show will keep the Shows menu item active
-      return path !== '/' && currentPath.value.startsWith(path);
+      // Use navigation manager for consistent transitions
+      navigationManager.navigateTo(router, path);
     }
 
     return {
       menuItems,
       navigateTo,
       currentPath,
-      isActive,
+      isActive: (path) => navigationManager.isActive(route, path),
       getButtonVariant
     }
   }

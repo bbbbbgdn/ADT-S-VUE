@@ -31,6 +31,9 @@ export default {
     document.documentElement.style.setProperty('--transition-duration', transitionCSS.duration);
     document.documentElement.style.setProperty('--transition-easing', transitionCSS.easing);
     
+    // Add smooth scrolling to the root HTML element
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
     // Log the transition settings for debugging
     console.log('Transition settings applied:', {
       duration: transitionCSS.duration,
@@ -71,6 +74,39 @@ export default {
 </script>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
+/* During transition, manage scroll position smoothly */
+body.page-transitioning {
+  scroll-behavior: smooth;
+  overflow-anchor: none;
+  overflow-x: hidden;
+}
+
+/* Create a class for the menu to ensure it stays fixed at the top during transitions */
+nav.menu {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white; /* Or whatever your background color is */
+  /* Below ensures the menu stays visible during transitions */
+  transition: transform 0.3s ease;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Enhance the page transition with transform to create a subtle lift effect */
+.main-content {
+  transition: opacity var(--transition-duration, 500ms) var(--transition-easing, ease);
+  will-change: opacity;
+}
+
+body.page-transitioning .main-content {
+  opacity: 0 !important;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -97,12 +133,6 @@ body {
   perspective: 1000px; /* Enhance 3D context */
 }
 
-.main-content {
-  transition: opacity var(--transition-duration, 500ms) var(--transition-easing, ease);
-  min-height: 50vh;
-  will-change: opacity; /* Hint to browser that opacity will animate */
-}
-
 /* Ensure transitions are smooth by forcing GPU rendering */
 .page-transition-enter-active,
 .page-transition-leave-active,
@@ -111,11 +141,6 @@ body {
   backface-visibility: hidden;
   transform: translateZ(0);
   will-change: opacity;
-}
-
-/* When transitioning, make sure everything is properly hidden */
-body.page-transitioning .main-content {
-  opacity: 0 !important; /* Force opacity with !important */
 }
 
 /* main { */

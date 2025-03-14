@@ -15,6 +15,9 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
+import navigationManager from '../utils/navigationManager'
+
 export default {
   name: 'BaseButton',
   props: {
@@ -41,6 +44,22 @@ export default {
     }
   },
   emits: ['click'],
+  setup(props) {
+    const router = useRouter()
+    
+    // Handle navigation via the navigationManager
+    const handleClick = (event) => {
+      if (props.to) {
+        event.preventDefault();
+        // Use navigation manager for consistent transitions
+        navigationManager.navigateTo(router, props.to);
+        return;
+      }
+      // If no "to" prop, emit click event to parent
+    }
+    
+    return { handleClick }
+  },
   data() {
     return {
       slotContent: ''
@@ -52,12 +71,16 @@ export default {
     }
   },
   methods: {
-    handleClick() {
-      if (this.to) {
-        event.preventDefault();
-        this.$router.push(this.to);
-        return;
+    handleClick(event) {
+      // Call the setup method first (will handle navigation if needed)
+      const result = this.$options.setup(this.$props).handleClick(event);
+      
+      // If the setup method returned a defined value, use that (likely navigation handled)
+      if (result !== undefined) {
+        return result;
       }
+      
+      // Otherwise emit the click event to the parent component
       this.$emit('click');
     },
     updateSlotContent() {

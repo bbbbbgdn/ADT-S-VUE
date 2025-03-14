@@ -81,10 +81,21 @@ router.beforeEach((to, from, next) => {
 
 // Global after-navigation hook - safety net only
 router.afterEach(() => {
+  // Make sure we're at the top of the page after navigation
+  window.scrollTo(0, 0);
+  
+  // Reset the scroll behavior to smooth after navigation
+  document.documentElement.style.scrollBehavior = 'smooth';
+  
   // We'll let the PageTransition component handle removing the class
   // This is just a safety timeout for any edge cases
   setTimeout(() => {
     document.body.classList.remove('page-transitioning');
+    
+    // Make sure all images are properly visible
+    document.querySelectorAll('.image-loaded').forEach(img => {
+      img.style.opacity = '1';
+    });
   }, 3000); // Extra long safety timeout
 });
 

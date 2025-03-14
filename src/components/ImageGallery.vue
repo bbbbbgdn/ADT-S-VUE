@@ -37,6 +37,8 @@
 <script>
 import ButtonBase from './BaseButton.vue';
 import { createImageUrl, getOptimalImageDimensions } from '../utils/storyblok';
+import { useRouter, useRoute } from 'vue-router';
+import navigationManager from '../utils/navigationManager';
 
 export default {
   name: 'ImageGallery',
@@ -112,6 +114,12 @@ export default {
     };
   },
 
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
+    return { router, route };
+  },
+
   methods: {
     navigateToShow(event) {
       // Don't navigate if we're already on this show page (isActive is true)
@@ -120,8 +128,8 @@ export default {
       // Don't navigate if the user was scrolling
       if (this.isScrolling) return;
       
-      // Navigate to the show page
-      this.$router.push(`/shows/${this.slug}`);
+      // Use our navigation manager to ensure consistent transitions
+      navigationManager.navigateTo(this.router, `/shows/${this.slug}`);
     },
     
     handleScrollStart(event) {

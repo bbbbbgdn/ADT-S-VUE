@@ -23,6 +23,7 @@ import { useRouter } from 'vue-router';
 import ProjectCard from '../components/ProjectCard.vue';
 import { useStoryblokApi } from '@storyblok/vue';
 import { formatImage } from '../utils/storyblok';
+import navigationManager from '../utils/navigationManager';
 
 export default {
   name: 'Projects',
@@ -37,7 +38,8 @@ export default {
     const shouldAnimate = ref(!localStorage.getItem('hasSeenAnimation'));
     
     const navigateToProject = (slug) => {
-      router.push(`/projects/${slug}`);
+      // Use navigation manager for consistent transitions
+      navigationManager.navigateTo(router, `/projects/${slug}`);
     };
 
     onMounted(async () => {

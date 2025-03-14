@@ -37,6 +37,9 @@
 <script>
 import BaseButton from './BaseButton.vue';
 import lazyLoad from '../directives/lazyLoad';
+import { useRouter } from 'vue-router';
+import navigationManager from '../utils/navigationManager';
+import { ref } from 'vue';
 
 export default {
   name: 'ProjectCard',
@@ -77,12 +80,32 @@ export default {
   
   emits: ['click'],
   
+  setup(props, { emit }) {
+    const router = useRouter();
+    const isHovering = ref(false);
+    
+    // Method to navigate with proper transition
+    const navigateToProject = (event) => {
+      // Only navigate if the click was directly on the card (not on a button)
+      if (event.target.closest('.base-button') === null) {
+        // Start navigation with transition
+        navigationManager.navigateTo(router, `/projects/${props.slug}`);
+        // Also emit click event for compatibility with existing code
+        emit('click', props.slug);
+      }
+    };
+    
+    return {
+      navigateToProject,
+      isHovering
+    };
+  },
+  
   data() {
     return {
       isLoaded: false,
       hasError: false,
       backgroundImage: '',
-      isHovering: false,
       shouldAnimate: false
     };
   },
@@ -97,14 +120,6 @@ export default {
   },
   
   methods: {
-    navigateToProject(event) {
-      // Only navigate if the click was directly on the card (not on a button)
-      if (event.target.closest('.base-button') === null) {
-        // Emit click event to parent component
-        this.$emit('click', this.slug);
-      }
-    },
-    
     setBackgroundImage(url) {
       this.backgroundImage = `url(${url})`;
       this.isLoaded = true;
