@@ -391,7 +391,6 @@ export default {
 
 /* Style for the button hover effect */
 .button-hover {
-  /* opacity: 0.75 !important; */
   background: var(--color-pink-primary) !important;
   color: black !important;
 }

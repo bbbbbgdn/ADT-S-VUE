@@ -1,5 +1,5 @@
 <template>
-  <nav class="menu">
+  <nav class="menu transition-exempt">
     <BaseButton 
       v-for="item in menuItems" 
       :key="item.path"
@@ -7,6 +7,7 @@
       :disabled="!item.path"
       :keepClickable="isActive(item.path) && item.path !== currentPath"
       @click="navigateTo(item.path)"
+      class="menu-button"
     >
       {{ item.name }}
     </BaseButton>
@@ -46,7 +47,19 @@ export default {
     ]
 
     const navigateTo = (path) => {
-      router.push(path)
+      // Don't navigate if we're already on this page
+      if (currentPath.value === path) return;
+      
+      // Store target path to prevent button flickering
+      const targetPath = path;
+      
+      // Add transitioning class to body
+      document.body.classList.add('page-transitioning');
+      
+      // Wait for the fade-out animation to complete before changing the page
+      setTimeout(() => {
+        router.push(targetPath);
+      }, 600); // Slightly longer than the transition duration to ensure it completes
     }
 
     // Check if a menu item should be active
@@ -79,6 +92,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
+  z-index: 100;
+  position: relative;
 }
 
 .components-button {
@@ -86,5 +101,15 @@ export default {
   right: 0;
   top: 0;
   margin: 3rem;
+}
+
+/* Menu button styles */
+.menu-button {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Ensure menu items are exempt from opacity transitions */
+.transition-exempt {
+  /* transition: none !important; */
 }
 </style>    

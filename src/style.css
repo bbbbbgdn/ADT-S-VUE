@@ -158,3 +158,51 @@ button:focus-visible {
   }
 }
 
+/* Page Transition Styles */
+.menu {
+  z-index: 100;
+  position: relative;
+}
+
+main {
+  transition: opacity 0.5s ease;
+}
+
+/* Ensure transitions are smooth */
+* {
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+}
+
+/* Fade out content during page transitions */
+body.page-transitioning main {
+  opacity: 0 !important;
+}
+
+/* Exclude menu from opacity transitions but allow color transitions */
+body.page-transitioning .menu,
+body.page-transitioning .menu-button {
+  opacity: 1 !important;
+}
+
+/* Allow button color transitions during page transitions */
+body.page-transitioning .menu-button {
+  transition: background-color 0.5s ease, color 0.5s ease !important;
+}
+
+/* After page transition, prevent active button from animating */
+.menu-button.button-active {
+  transition: background-color 0.5s ease !important;
+}
+
+/* Button hover transitions */
+.button-black:hover {
+  transition: background-color 0.5s ease, color 0.5s ease !important;
+}
+
+/* Global transition exempt class */
+.transition-exempt {
+  transition: none !important;
+}
+

@@ -4,7 +4,8 @@
     class="base-button"
     :class="[
       `button-${variant}`,
-      { 'keep-clickable': keepClickable && variant === 'active' }
+      { 'keep-clickable': keepClickable && variant === 'active' },
+      { 'transition-exempt': true }
     ]"
     :disabled="disabled"
     @click="handleClick"
@@ -113,12 +114,14 @@ export default {
   white-space: nowrap;
   border-radius: 100rem;
   
-  transition: all .8s;
   min-height: 42.4rem;
   line-height: 1.2;
 
   white-space: wrap;
   text-align: left;
+
+  /* Set initial transition properties */
+  transition: all 0.5s ease !important;
 }
 
 /* Black Button */
@@ -140,8 +143,8 @@ export default {
   pointer-events: none;
 }
 
+/* Hover effect with smooth transition */
 .button-black:hover {
-  /* opacity: 0.75; */
   background-color: var(--color-pink-primary);
   color: black;
 }
@@ -157,5 +160,11 @@ export default {
 .keep-clickable {
   pointer-events: auto !important;
   cursor: pointer !important;
+}
+
+/* During page transitions, active buttons transition to black */
+body.page-transitioning .button-active {
+  background-color: black !important;
+  color: white !important;
 }
 </style> 

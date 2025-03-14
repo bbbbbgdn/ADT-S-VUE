@@ -1,19 +1,23 @@
 <template>
   <div class="app">
     <MenuComponent />
-    <main>
-      <router-view></router-view>
+    <main class="main-content">
+      <PageTransition>
+        <router-view></router-view>
+      </PageTransition>
     </main>
   </div>
 </template>
 
 <script>
 import MenuComponent from './components/MenuComponent.vue'
+import PageTransition from './components/PageTransition.vue'
 
 export default {
   name: 'App',
   components: {
-    MenuComponent
+    MenuComponent,
+    PageTransition
   }
 }
 </script>
@@ -41,6 +45,11 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.main-content {
+  transition: opacity 0.5s ease;
+  min-height: 50vh;
 }
 
 /* main { */
