@@ -61,4 +61,24 @@ const router = createRouter({
   ]
 });
 
+// Global after-navigation hook to ensure the page is visible
+router.afterEach((to, from) => {
+  // Make sure transition class is removed
+  setTimeout(() => {
+    if (document.body.classList.contains('page-transitioning')) {
+      document.body.classList.remove('page-transitioning');
+    }
+    
+    // Force profile images to be visible when navigating to profile
+    if (to.path === '/profile') {
+      setTimeout(() => {
+        const profileImages = document.querySelectorAll('.profile-image');
+        profileImages.forEach(img => {
+          img.classList.add('image-loaded');
+        });
+      }, 100);
+    }
+  }, 800);
+});
+
 export default router;

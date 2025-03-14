@@ -18,6 +18,19 @@ export default {
   components: {
     MenuComponent,
     PageTransition
+  },
+  mounted() {
+    // Safety check: If page loads with transition class stuck, remove it
+    if (document.body.classList.contains('page-transitioning')) {
+      document.body.classList.remove('page-transitioning');
+    }
+    
+    // Clean up any transition issues on before unload
+    window.addEventListener('beforeunload', () => {
+      if (document.body.classList.contains('page-transitioning')) {
+        document.body.classList.remove('page-transitioning');
+      }
+    });
   }
 }
 </script>

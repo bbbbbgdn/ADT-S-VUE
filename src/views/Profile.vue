@@ -1,6 +1,6 @@
 <template>
-  <div class="profile-container">
-    <div class="profile-image" :class="{ 'image-loaded': isLoaded }">
+  <div class="profile-container" :class="{ 'image-loaded': isLoaded || forceShow }">
+    <div class="profile-image" :class="{ 'image-loaded': isLoaded || forceShow }">
       <img src="/main/assets/profile-image.webp" alt="Dasha Tsapenko working with bio-material" />
     </div>
     
@@ -80,16 +80,20 @@ export default {
   },
   data() {
     return {
-      isLoaded: false
+      isLoaded: false,
+      forceShow: false
     }
   },
   mounted() {
-    // Create a new image object to preload
     const img = new Image();
     img.src = '/main/assets/profile-image.webp';
     img.onload = () => {
       this.isLoaded = true;
     };
+    
+    setTimeout(() => {
+      this.forceShow = true;
+    }, 500);
   },
   methods: {
     sendEmail() {
@@ -103,12 +107,11 @@ export default {
 </script>
 
 <style scoped>
-
-
 .profile-container {
   display: flex;
   flex-direction: row;
   padding: 0;
+  opacity: 1;
 }
 
 .profile-image {
@@ -116,7 +119,7 @@ export default {
   max-width: 50%;
   overflow: hidden;
   opacity: 0;
-  transition: opacity 1s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 .profile-image.image-loaded {
@@ -136,6 +139,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  opacity: 1;
 }
 
 .profile-header {

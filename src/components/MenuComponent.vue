@@ -29,14 +29,15 @@ export default {
     const route = useRoute()
     const currentPath = ref(route.path)
     const clickedPath = ref(null) // Track which button was last clicked
+    const isNavigating = ref(false) // Track if we're currently navigating
     
     // Watch for route changes
     watch(
       () => route.path,
       (newPath) => {
         currentPath.value = newPath
-        // Reset clicked path after navigation completes
-        clickedPath.value = null
+        // Mark navigation as complete
+        isNavigating.value = false
       }
     )
     
@@ -60,18 +61,30 @@ export default {
     }
 
     const navigateTo = (path, event) => {
-      // Don't navigate if we're already on this page
-      if (currentPath.value === path) return;
+      // Don't navigate if we're already on this page or already navigating
+      if (currentPath.value === path || isNavigating.value) return;
       
       // Set this path as the clicked path immediately
       clickedPath.value = path;
       
+      // Mark that we're navigating to prevent double clicks
+      isNavigating.value = true;
+      
       // Add transitioning class to body
       document.body.classList.add('page-transitioning');
       
+      // Store the target path to ensure it's captured in closure
+      const targetPath = path;
+      
       // Wait for the fade-out animation to complete before changing the page
       setTimeout(() => {
-        router.push(path);
+        // Use push with catch to handle any navigation errors
+        router.push(targetPath).catch(err => {
+          console.error('Navigation error:', err);
+          // Reset navigation state on error
+          isNavigating.value = false;
+          document.body.classList.remove('page-transitioning');
+        });
       }, 600); // Slightly longer than the transition duration to ensure it completes
     }
 

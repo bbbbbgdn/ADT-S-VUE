@@ -17,18 +17,41 @@ export default {
       // The element is initially hidden
       el.style.opacity = '0';
       
+      // Check if this is the Profile component
+      const isProfilePage = el.querySelector('.profile-container') !== null;
+      
       // Wait a moment then fade it in
       setTimeout(() => {
         el.style.opacity = '1';
-        setTimeout(done, 500);
+        
+        // For Profile page, add a slightly longer delay to ensure content is visible
+        const delay = isProfilePage ? 800 : 500;
+        setTimeout(done, delay);
       }, 100);
     },
     afterEnter() {
       // Remove the transitioning class when the new page has entered
-      // Wait a bit longer to ensure the active button is already set
+      // Make sure the delay is not too short - 300ms seems to work more reliably
       setTimeout(() => {
-        document.body.classList.remove('page-transitioning');
-      }, 150);
+        if (document.body.classList.contains('page-transitioning')) {
+          document.body.classList.remove('page-transitioning');
+        }
+        
+        // Force any profile images to be visible
+        const profileImages = document.querySelectorAll('.profile-image');
+        if (profileImages.length > 0) {
+          profileImages.forEach(img => {
+            img.classList.add('image-loaded');
+          });
+        }
+        
+      }, 300);
+    }
+  },
+  // Add beforeUnmount hook to ensure transition class is removed if component is unmounted
+  beforeUnmount() {
+    if (document.body.classList.contains('page-transitioning')) {
+      document.body.classList.remove('page-transitioning');
     }
   }
 }
