@@ -90,7 +90,7 @@ export default {
   computed: {
     cardStyle() {
       return {
-        backgroundColor: '#f0f0f0',
+        // backgroundColor: '#f0f0f0',
         backgroundImage: this.useImgTag ? 'none' : this.backgroundImage
       };
     }
@@ -155,6 +155,11 @@ export default {
   background-color: transparent; /* Start with transparent background */
 }
 
+.project-card:hover .button-black {
+    background-color: var(--color-pink-primary);
+    color: black;
+}
+
 .project-card-image {
   position: absolute;
   top: 0;
@@ -164,7 +169,7 @@ export default {
   object-fit: cover;
   z-index: 0;
   cursor: pointer;
-  transition: opacity 1.6s ease-out;
+  transition: opacity 1s ease-out;
   opacity: 1;
 }
 
@@ -179,7 +184,7 @@ export default {
   z-index: 0;
   cursor: pointer;
   opacity: 1;
-  transition: opacity 1.6s ease-out;
+  /* transition: opacity 0s ease-out; */
 }
 
 /* Loading states */
@@ -206,11 +211,12 @@ export default {
   flex-wrap: wrap;
   margin: 3rem;
   z-index: 1;
+  gap: 3rem;
 }
 
 /* Style for the button hover effect */
 .button-hover {
-  opacity: 0.75 !important;
+  /* opacity: 0.75 !important; */
 }
 
 

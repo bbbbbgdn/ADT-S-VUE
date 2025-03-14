@@ -33,7 +33,7 @@
 <script>
 import ButtonBase from './BaseButton.vue';
 import lazyLoad from '../directives/lazyLoad';
-import { createImageUrl } from '../utils/storyblok';
+import { createImageUrl, getOptimalImageDimensions } from '../utils/storyblok';
 
 export default {
   name: 'ImageGallery',
@@ -94,6 +94,12 @@ export default {
       type: String,
       default: null,
       required: false
+    },
+    resolutionRatio: {
+      type: Number,
+      default: 1,
+      required: false,
+      validator: (value) => value > 0
     }
   },
 
@@ -146,6 +152,55 @@ export default {
         this.isScrolling = false;
         this.scrollStartX = 0;
       }, 100);
+    },
+    
+    /**
+     * Customize image parameters for different use cases
+     * @param {Object} options - Base options to customize
+     * @returns {Object} - Customized image options
+     */
+    customizeImageParams(options = {}) {
+      // Parse height value from the prop
+      let parsedHeight;
+      if (this.imageHeight.includes('vh')) {
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        const vhValue = parseFloat(this.imageHeight);
+        parsedHeight = Math.round((vhValue / 100) * viewportHeight);
+      } else if (this.imageHeight.includes('rem')) {
+        const baseFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        parsedHeight = parseFloat(this.imageHeight) * baseFontSize;
+      } else {
+        parsedHeight = parseInt(this.imageHeight) || 100;
+      }
+      
+      // Parse width if it's not auto
+      let parsedWidth = 0; // Default to auto width
+      if (this.imageWidth !== 'auto') {
+        parsedWidth = parseInt(this.imageWidth) || 0;
+      }
+      
+      // Apply resolution ratio to dimensions
+      const scaledHeight = Math.round(parsedHeight * this.resolutionRatio);
+      const scaledWidth = parsedWidth ? Math.round(parsedWidth * this.resolutionRatio) : 0;
+      
+      // Get optimal dimensions based on device and resolution ratio
+      const optimalDimensions = getOptimalImageDimensions({
+        width: scaledWidth,
+        height: scaledHeight,
+        quality: this.imageQuality,
+        resolutionRatio: this.resolutionRatio
+      });
+      
+      // Start with optimal dimensions
+      const customOptions = {
+        width: optimalDimensions.width,
+        height: optimalDimensions.height,
+        quality: optimalDimensions.quality,
+        format: this.imageFormat,
+        ...options // Override with any passed options
+      };
+      
+      return customOptions;
     }
   },
 
@@ -157,12 +212,7 @@ export default {
         return [];
       }
       
-      console.log('Processing images:', this.images);
-      
       const processed = this.images.map((image, index) => {
-        // Don't try to parse vh values
-        const heightValue = 1600; // Fixed height for CMS request
-        
         // Make sure we have a valid URL
         if (!image || !image.url) {
           console.warn(`Image at index ${index} has no URL:`, image);
@@ -172,13 +222,11 @@ export default {
           };
         }
         
-        // Request high resolution from Storyblok
-        const transformedUrl = createImageUrl(image.url, {
-          width: 0, // Auto width
-          height: heightValue, // Fixed height for quality
-          quality: this.imageQuality,
-          format: this.imageFormat
-        });
+        // Get customized image parameters
+        const imageParams = this.customizeImageParams();
+        
+        // Request optimized image from Storyblok
+        const transformedUrl = createImageUrl(image.url, imageParams);
         
         return {
           url: transformedUrl,
@@ -304,7 +352,7 @@ export default {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
-  background-color: #f0f0f0; /* Placeholder background color */
+
 }
 
 .gallery::-webkit-scrollbar {
@@ -315,7 +363,7 @@ export default {
   flex: 0 0 auto;
   scroll-snap-align: start;
   position: relative;
-  min-width: 100px; /* Minimum width to prevent collapse during loading */
+  min-width: 50px; /* Minimum width to prevent collapse during loading */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -343,14 +391,17 @@ export default {
 
 /* Style for the button hover effect */
 .button-hover {
-  opacity: 0.75 !important;
+  /* opacity: 0.75 !important; */
+  background: var(--color-pink-primary) !important;
+  color: black !important;
 }
 
 .gallery-image {
   width: auto;
   object-fit: cover;
-  transition: opacity 0.8s ease-out;
+  transition: opacity 1s ease-out;
   position: relative;
+  height: 100%;
 }
 
 .gallery-image.image-loading {

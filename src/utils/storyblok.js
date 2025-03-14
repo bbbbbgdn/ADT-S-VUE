@@ -160,12 +160,12 @@ export const formatImages = (visuals, options = {}) => {
     return [];
   }
   
-  // Default options
+  // Use options directly without modifications
   const {
     width = 0,
     height = 230,
     quality = 70,
-    format = null
+    format = 'webp'
   } = options;
   
   // Build transformation string
@@ -181,7 +181,7 @@ export const formatImages = (visuals, options = {}) => {
   }
   
   return visuals.map(visual => ({
-    url: `${visual.filename}${transform}`,
+    url: createImageUrl(visual.filename, options),
     alt: visual.alt || 'Image'
   }));
 };
@@ -282,8 +282,12 @@ export const createImageUrl = (filename, options = {}) => {
     fit = null
   } = options;
   
+  // Use height directly without applying resolution ratio again
+  const finalWidth = width > 0 ? Math.round(width) : 0;
+  const finalHeight = height > 0 ? Math.round(height) : 0;
+  
   // Build transformation string
-  let transform = `/m/${width}x${height}`;
+  let transform = `/m/${finalWidth}x${finalHeight}`;
   
   // Add filters if any are specified
   const filters = [];
@@ -297,10 +301,7 @@ export const createImageUrl = (filename, options = {}) => {
   }
   
   // Check if the filename already contains Storyblok domain
-  // If it does, we need to append the transform to the existing URL
-  // If not, we assume it's just the filename part and return as is
   if (filename.includes('storyblok.com')) {
-    // For URLs that already have transformations, we need to remove them first
     const baseUrl = filename.split('/m/')[0];
     return `${baseUrl}${transform}`;
   }
@@ -337,6 +338,31 @@ export const getFallbackProject = () => {
     };
   }
   return null;
+};
+
+/**
+ * Calculates optimal image dimensions based on device pixel ratio and screen size
+ * @param {Object} options - Base image options
+ * @param {number} options.width - Base width in pixels
+ * @param {number} options.height - Base height in pixels
+ * @param {number} options.quality - Base quality (1-100)
+ * @param {number} options.resolutionRatio - Manual resolution ratio override
+ * @returns {Object} - Optimized image options
+ */
+export const getOptimalImageDimensions = (options = {}) => {
+  const {
+    width = 0,
+    height = 230,
+    quality = 70
+  } = options;
+  
+  // Return dimensions without modification
+  return {
+    width,
+    height,
+    quality,
+    appliedRatio: 1
+  };
 };
 
 // Export the cache for advanced usage

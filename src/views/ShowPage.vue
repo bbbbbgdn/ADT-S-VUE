@@ -7,6 +7,12 @@ import MainText from '../components/MainText.vue';
 import InfoText from '../components/InfoText.vue';
 import { renderRichText } from "@storyblok/vue";
 import useStoryblok from '../utils/useStoryblok';
+import { createImageSettings } from '../utils/imageSettings';
+import { computed } from 'vue';
+
+// Create image settings using our utility - high quality for main show, thumbnail for others
+const mainShowImageSettings = createImageSettings('high');
+const otherShowsImageSettings = createImageSettings('thumbnail');
 
 // Use our Storyblok composable with 'show' type
 const {
@@ -27,6 +33,15 @@ const {
 // Handle navigation to another show
 const navigateToShow = (slug) => {
   navigateTo(slug);
+};
+
+// Format images with preset settings
+const formatMainShowImages = (visuals) => {
+  return formatImages(visuals, mainShowImageSettings);
+};
+
+const formatOtherShowsImages = (visuals) => {
+  return formatImages(visuals, otherShowsImageSettings);
 };
 </script>
 
@@ -55,10 +70,12 @@ const navigateToShow = (slug) => {
           :location="story.content?.location_tag || ''"
           :date="story.content?.date_tag || ''"
           :slug="story.slug"
-          :images="formatImages(story.content.visuals, { width: 0, height: 1600, quality: 85 })" 
+          :images="formatMainShowImages(story.content.visuals)" 
           :repeatCount="1"
-          :imageHeight="'85vh'"
-          :imageQuality="85"
+          :imageHeight="`${mainShowImageSettings.height}px`"
+          :imageQuality="mainShowImageSettings.quality"
+          :imageFormat="mainShowImageSettings.format"
+          :resolutionRatio="mainShowImageSettings.resolutionRatio"
           :isActive="true"
         />
         
@@ -85,8 +102,13 @@ const navigateToShow = (slug) => {
               :location="show.content?.location_tag || ''"
               :date="show.content?.date_tag || ''"
               :slug="show.slug"
-              :images="formatImages(show.content.visuals, { width: 0, height: 230, quality: 70 })"
+              :images="formatOtherShowsImages(show.content.visuals)"
               :repeatCount="1"
+              :imageHeight="otherShowsImageSettings.height + 'rem'"
+              :imageWidth="'auto'"
+              :imageQuality="otherShowsImageSettings.quality"
+              :imageFormat="otherShowsImageSettings.format"
+              :resolutionRatio="otherShowsImageSettings.resolutionRatio"
             />
           </div>
         </div>
@@ -145,7 +167,7 @@ h1 {
 .other-shows-container {
   display: flex;
   flex-direction: column;
-  /* gap: 3rem; */
+  gap: 3rem;
   width: 100%;
 }
 

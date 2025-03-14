@@ -10,8 +10,8 @@
       :slug="story.slug"
       @click="navigateToProject"
       :style="{ 
-        transitionDelay: shouldAnimate ? `${index * 5}s` : '0s',
-        opacity: isLoading ? '0' : '1'
+        // transitionDelay: shouldAnimate ? `${index * 5}s` : '0s',
+        // opacity: isLoading ? '0' : '1'
       }"
     />
   </div>
@@ -81,7 +81,7 @@ export default {
 }
 
 .project-card {
-  transition: opacity 3s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 /* Responsive layout for mobile devices */
