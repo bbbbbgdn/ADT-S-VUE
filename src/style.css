@@ -186,18 +186,17 @@ body.page-transitioning .menu-button {
   opacity: 1 !important;
 }
 
-/* Allow button color transitions during page transitions */
-body.page-transitioning .menu-button {
-  transition: background-color 0.5s ease, color 0.5s ease !important;
+/* Target button during transition */
+body.page-transitioning .button-active {
+  background-color: var(--color-pink-primary) !important;
+  color: black !important;
+  transition: none !important; /* Prevent transition when active state is applied */
 }
 
-/* After page transition, prevent active button from animating */
-.menu-button.button-active {
-  transition: background-color 0.5s ease !important;
-}
-
-/* Button hover transitions */
-.button-black:hover {
+/* Previously active buttons fade to black */
+body.page-transitioning .menu-button:not(.button-active) {
+  background-color: black !important;
+  color: white !important;
   transition: background-color 0.5s ease, color 0.5s ease !important;
 }
 

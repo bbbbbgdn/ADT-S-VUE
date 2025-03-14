@@ -121,7 +121,7 @@ export default {
   text-align: left;
 
   /* Set initial transition properties */
-  transition: all 0.5s ease !important;
+  transition: all 0.6s ease-in-out !important;
 }
 
 /* Black Button */
@@ -147,6 +147,7 @@ export default {
 .button-black:hover {
   background-color: var(--color-pink-primary);
   color: black;
+  transition: all 0.5s ease !important;
 }
 
 /* Active Button */
@@ -162,8 +163,8 @@ export default {
   cursor: pointer !important;
 }
 
-/* During page transitions, active buttons transition to black */
-body.page-transitioning .button-active {
+/* During page transitions, non-active buttons fade to black */
+body.page-transitioning .button-black {
   background-color: black !important;
   color: white !important;
 }

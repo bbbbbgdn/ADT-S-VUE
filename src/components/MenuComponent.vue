@@ -3,10 +3,10 @@
     <BaseButton 
       v-for="item in menuItems" 
       :key="item.path"
-      :variant="isActive(item.path) ? 'active' : 'black'"
+      :variant="getButtonVariant(item.path)"
       :disabled="!item.path"
       :keepClickable="isActive(item.path) && item.path !== currentPath"
-      @click="navigateTo(item.path)"
+      @click="navigateTo(item.path, $event)"
       class="menu-button"
     >
       {{ item.name }}
@@ -28,12 +28,15 @@ export default {
     const router = useRouter()
     const route = useRoute()
     const currentPath = ref(route.path)
+    const clickedPath = ref(null) // Track which button was last clicked
     
     // Watch for route changes
     watch(
       () => route.path,
       (newPath) => {
         currentPath.value = newPath
+        // Reset clicked path after navigation completes
+        clickedPath.value = null
       }
     )
     
@@ -46,19 +49,29 @@ export default {
       { name: 'Profile', path: '/profile' },
     ]
 
-    const navigateTo = (path) => {
+    // Get button variant considering both the current route and the clicked button
+    const getButtonVariant = (path) => {
+      // If this is the button that was just clicked, make it active immediately
+      if (clickedPath.value === path) {
+        return 'active'
+      }
+      // Otherwise, use the normal active state logic
+      return isActive(path) ? 'active' : 'black'
+    }
+
+    const navigateTo = (path, event) => {
       // Don't navigate if we're already on this page
       if (currentPath.value === path) return;
       
-      // Store target path to prevent button flickering
-      const targetPath = path;
+      // Set this path as the clicked path immediately
+      clickedPath.value = path;
       
       // Add transitioning class to body
       document.body.classList.add('page-transitioning');
       
       // Wait for the fade-out animation to complete before changing the page
       setTimeout(() => {
-        router.push(targetPath);
+        router.push(path);
       }, 600); // Slightly longer than the transition duration to ensure it completes
     }
 
@@ -80,7 +93,8 @@ export default {
       menuItems,
       navigateTo,
       currentPath,
-      isActive
+      isActive,
+      getButtonVariant
     }
   }
 }

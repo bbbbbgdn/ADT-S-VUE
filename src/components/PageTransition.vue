@@ -25,10 +25,10 @@ export default {
     },
     afterEnter() {
       // Remove the transitioning class when the new page has entered
-      // Add a small delay to prevent button flickering
+      // Wait a bit longer to ensure the active button is already set
       setTimeout(() => {
         document.body.classList.remove('page-transitioning');
-      }, 50);
+      }, 150);
     }
   }
 }
