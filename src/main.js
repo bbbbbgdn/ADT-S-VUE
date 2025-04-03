@@ -3,20 +3,29 @@ import App from './App.vue';
 import router from './router';
 import { StoryblokVue, apiPlugin } from '@storyblok/vue';
 import DynamicComponent from './components/DynamicComponent.vue';
+import lazyLoad from './directives/lazyLoad';
+import LazyImage from './components/LazyImage.vue';
+import LazyBackground from './components/LazyBackground.vue';
 
-// Створи додаток
 const app = createApp(App);
 
-// Підключи Storyblok
 app.use(StoryblokVue, {
-  accessToken: 'jVwJlAUbh5ZbmDF1SC5OHQtt', // Замініть на свій API токен
+  accessToken: import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN,
+  bridge: import.meta.env.NODE_ENV !== 'production', // optimizes by excluding the bridge on production
   use: [apiPlugin],
+
+  apiOptions: {
+    region: "eu",
+ },
 });
 
 app.component('StoryblokComponent', DynamicComponent);
+app.component('LazyImage', LazyImage);
+app.component('LazyBackground', LazyBackground);
 
-// Підключи маршрутизацію
+// Register the lazy loading directive globally
+app.directive('lazy-load', lazyLoad);
+
 app.use(router);
 
-// Монтируй додаток
 app.mount('#app');
