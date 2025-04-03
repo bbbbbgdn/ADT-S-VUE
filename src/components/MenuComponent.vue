@@ -44,7 +44,7 @@ export default {
       { name: 'Projects', path: '/projects' },
       { name: 'Objects', path: '/objects' },
       { name: 'Shows', path: '/shows' },
-      // { name: 'Press', path: '' },
+      { name: 'Press', path: '/press' },
       { name: 'Profile', path: '/profile' },
     ]
 
