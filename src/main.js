@@ -9,14 +9,16 @@ import LazyBackground from './components/LazyBackground.vue';
 
 const app = createApp(App);
 
-app.use(StoryblokVue, {
-  accessToken: import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN,
-  bridge: import.meta.env.NODE_ENV !== 'production', // optimizes by excluding the bridge on production
-  use: [apiPlugin],
+// Убедитесь, что токен существует
+const accessToken = import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN;
+if (!accessToken) {
+  throw new Error('Storyblok access token is missing');
+}
 
-  apiOptions: {
-    region: "eu",
- },
+// Инициализация Storyblok
+app.use(StoryblokVue, {
+  accessToken,
+  use: [apiPlugin]
 });
 
 app.component('StoryblokComponent', DynamicComponent);
