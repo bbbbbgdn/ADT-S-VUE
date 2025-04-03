@@ -38,7 +38,7 @@ export default {
     const menuItems = [
       { name: 'Atelier Dasha Tsapenko', path: '/' },
       { name: 'Projects', path: '/projects' },
-      { name: 'Objects', path: '' },
+      { name: 'Objects', path: '/objects' },
       { name: 'Shows', path: '/shows' },
       { name: 'Press', path: '' },
       { name: 'Profile', path: '' },
