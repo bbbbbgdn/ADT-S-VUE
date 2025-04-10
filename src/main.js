@@ -1,3 +1,5 @@
+import './style.css';
+
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
@@ -9,13 +11,13 @@ import LazyBackground from './components/LazyBackground.vue';
 
 const app = createApp(App);
 
-// Убедитесь, что токен существует
+// Ensure the token exists
 const accessToken = import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN;
 if (!accessToken) {
   throw new Error('Storyblok access token is missing');
 }
 
-// Инициализация Storyblok
+// Initialize Storyblok
 app.use(StoryblokVue, {
   accessToken,
   use: [apiPlugin]
@@ -25,7 +27,6 @@ app.component('StoryblokComponent', DynamicComponent);
 app.component('LazyImage', LazyImage);
 app.component('LazyBackground', LazyBackground);
 
-// Register the lazy loading directive globally
 app.directive('lazy-load', lazyLoad);
 
 app.use(router);

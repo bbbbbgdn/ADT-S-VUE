@@ -7,7 +7,7 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/ADT-S/', 
+  // base: '/ADT-S/', 
   plugins: [vue(),
     basicSsl(),
   ],
@@ -21,6 +21,10 @@ export default defineConfig({
     hmr: {
       overlay: true,
     },
+  },
+  build: {
+    outDir: './dist/ADT-S',
+    emptyOutDir: true,
   },
   assetsInclude: ['**/*.woff', '**/*.woff2', '**/*.ttf', '**/*.eot'],
   resolve: {
