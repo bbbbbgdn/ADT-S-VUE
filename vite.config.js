@@ -7,7 +7,7 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // base: '/ADT-S/', 
+  base: '/ADT-S/', 
   plugins: [vue(),
     basicSsl(),
   ],
@@ -23,7 +23,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: './dist/ADT-S',
+    outDir: './dist',
     emptyOutDir: true,
   },
   assetsInclude: ['**/*.woff', '**/*.woff2', '**/*.ttf', '**/*.eot'],
