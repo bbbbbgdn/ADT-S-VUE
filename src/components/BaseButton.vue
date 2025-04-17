@@ -123,7 +123,8 @@ export default {
 
 /* Grey Button */
 .button-grey, .button-black:disabled {
-  background-color: #C3C3C3;
+  background-color: rgba(195, 195, 195, 0.6);
+  backdrop-filter: blur(100px);
   color: rgb(0, 0, 0);
   pointer-events: none;
 }

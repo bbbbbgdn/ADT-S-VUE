@@ -121,9 +121,9 @@ export default {
 
 <style scoped>
 .press-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  /* padding: 20px; */
+  /* max-width: 1200px; */
+  margin: 0rem 3rem;
   position: relative; /* Для позиционирования фонового изображения */
 }
 
@@ -154,55 +154,58 @@ export default {
 }
 
 .year-group {
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   display: grid;
-  grid-template-columns: 120px 1fr; /* Добавляем grid с фиксированной шириной для года */
-  gap: 20px; /* Отступ между годом и контентом */
+  grid-template-columns: auto 1fr; 
+  gap: 3rem;
 }
 
 .year-button {
-  background-color: #f0f0f0 !important;
-  border-radius: 50px !important;
-  padding: 8px 20px !important;
-  font-size: 16px !important;
+
+  /* border-radius: 50px !important; */
+  /* padding: 8px 20px !important; */
+  /* font-size: 16px !important; */
   width: fit-content; /* Ширина по содержимому */
-  align-self: flex-start; /* Прижимаем к верху */
+  align-self: flex-start; 
 }
 
 .press-items {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 3rem;
 }
 
 .press-item {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+  gap: 3rem;
+  width: fit-content;
+  /* flex-wrap: wrap; */
   align-items: center;
 }
 
 .media-outlet {
-  position: relative;
-  z-index: 1; /* Чтобы кнопка была над фоновым изображением */
-  background-color: #000 !important;
-  color: white !important;
-  border-radius: 50px !important;
-  padding: 8px 20px !important;
-  font-size: 16px !important;
+  /* position: relative; */
+  /* z-index: 1; Чтобы кнопка была над фоновым изображением */
+  /* background-color: #000 !important; */
+  /* color: white !important; */
+  /* border-radius: 50px !important; */
+  /* padding: 8px 20px !important; */
+  /* font-size: 16px !important; */
   min-width: fit-content !important;
 }
 
 .press-title {
   flex: 1;
   text-align: left;
-  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   height: auto;
-  background-color: transparent !important;
+  /* background-color: transparent !important; */
   color: black !important;
-  border-radius: 50px !important;
-  padding: 8px 20px !important;
-  font-size: 16px !important;
+  /* border-radius: 50px !important; */
+  /* padding: 8px 20px !important; */
+  /* font-size: 16px !important; */
   border: none !important;
   justify-content: flex-start !important;
   cursor: default !important;
@@ -210,7 +213,7 @@ export default {
 
 /* Добавим hover эффекты */
 .media-outlet:hover {
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 
 @media (max-width: 768px) {
