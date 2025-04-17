@@ -8,7 +8,7 @@
       ref="gallery" 
       :style="galleryContainerStyle" 
       @click="handleGalleryClick"
-      @mouseenter="isHovering = !isActive" 
+      @mouseenter="isHovering = true" 
       @mouseleave="isHovering = false"
     >
       <div 
@@ -162,7 +162,7 @@ export default {
       return {
         height: this.imageHeight,
         minHeight: this.imageHeight,
-        transform: this.isHovering && !this.isActive ? `translateX(calc(-1 * var(--gallery-shift-amount)))` : 'translateX(0)'
+        transform: this.isHovering ? `translateX(calc(-1 * var(--gallery-shift-amount)))` : 'translateX(0)'
       };
     },
     galleryItemStyle() {
@@ -222,7 +222,7 @@ export default {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  transition: transform .6s ease-out;
+  transition: transform .8s ease;
 }
 
 .gallery::-webkit-scrollbar {
