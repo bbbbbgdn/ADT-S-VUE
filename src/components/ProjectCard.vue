@@ -184,7 +184,6 @@ export default {
   object-fit: cover;
   z-index: 0;
   cursor: pointer;
-  transition: opacity 1s ease-out;
   opacity: 1;
 }
 
@@ -199,7 +198,6 @@ export default {
   z-index: 0;
   cursor: pointer;
   opacity: 1;
-  /* transition: opacity 0s ease-out; */
 }
 
 /* Loading states */
@@ -210,7 +208,8 @@ export default {
 
 .project-card-image.image-loaded,
 .project-card-background.image-loaded {
-  opacity: v-bind("shouldAnimate ? 0 : 1");
+  opacity: 1;
+  transition: none;
 }
 
 .project-card-image.image-error,

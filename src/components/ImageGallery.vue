@@ -262,7 +262,6 @@ export default {
 .gallery-image {
   width: auto;
   object-fit: cover;
-  transition: opacity 1s ease-out;
   position: relative;
   height: 100%;
   border-radius: 0;
@@ -275,6 +274,7 @@ export default {
 
 .gallery-image.image-loaded {
   opacity: 1;
+  transition: none;
 }
 
 .gallery-image.image-error {
