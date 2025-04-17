@@ -162,7 +162,7 @@ export default {
       return {
         height: this.imageHeight,
         minHeight: this.imageHeight,
-        transform: this.isHovering ? `translateX(calc(-1 * var(--gallery-shift-amount)))` : 'translateX(0)'
+        transform: this.isHovering ? `translateX(calc(-1 * var(--gallery-hover-shift-amount)))` : 'translateX(0rem)'
       };
     },
     galleryItemStyle() {
@@ -206,7 +206,7 @@ export default {
   overflow: visible;
   line-height: 0;
   position: relative;
-  --gallery-shift-amount: 10px;
+  --gallery-hover-shift-amount: 10px;
 }
 
 .gallery-container.clickable .gallery,
@@ -217,12 +217,13 @@ export default {
 .gallery {
   display: flex;
   overflow-x: auto;
-  width: calc(100% + var(--gallery-shift-amount));
+  width: calc(100% + var(--gallery-hover-shift-amount));
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
   transition: transform .8s ease;
+  
 }
 
 .gallery::-webkit-scrollbar {
@@ -238,11 +239,11 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 0;
-  margin-right: -1px;
+  margin-right: -1px; /* -1px to prevent gap between images */
 }
 
 .gallery-item:first-of-type {
-  padding-left: 0;
+  padding-left: 3rem; /* indicate first image */
 }
 
 .gallery-tags {
