@@ -28,7 +28,17 @@ const {
   type: 'show',
   preload: true,
   watchRoute: true
+
 });
+
+const randomOtherShows = computed(() => {
+  if (!otherShows.value || otherShows.value.length === 0) return [];
+  return otherShows.value
+    .slice() // клон
+    .sort(() => 0.5 - Math.random()) // перемішати
+    .slice(0, 4); // взяти перші 4
+});
+
 
 // Handle navigation to another show
 const navigateToShow = (slug) => {
@@ -95,8 +105,8 @@ const formatOtherShowsImages = (visuals) => {
           <BaseButton to="/shows">Other Shows</BaseButton>
         </div>
         
-        <div v-if="otherShows && otherShows.length > 0" class="other-shows-container">
-          <div v-for="show in otherShows" :key="show.id">
+        <div v-if="randomOtherShows.length > 0" class="other-shows-container">
+          <div v-for="show in randomOtherShows" :key="show.id">
             <ImageGallery
               :name="show.content?.title_tag || 'Untitled Show'"
               :location="show.content?.location_tag || ''"

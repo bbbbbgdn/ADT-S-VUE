@@ -21,114 +21,80 @@ import navigationManager from '../utils/navigationManager'
 export default {
   name: 'BaseButton',
   props: {
-    outlined: {
-      type: Boolean,
-      default: false
-    },
+    outlined: { type: Boolean, default: false },
     variant: {
       type: String,
       default: 'black',
       validator: (value) => ['black', 'grey', 'active'].includes(value)
     },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    to: {
-      type: String,
-      default: null
-    },
-    keepClickable: {
-      type: Boolean,
-      default: false
-    }
+    disabled: { type: Boolean, default: false },
+    to: { type: String, default: null },
+    keepClickable: { type: Boolean, default: false }
   },
   emits: ['click'],
-  setup(props) {
+  setup(props, { emit }) {
     const router = useRouter()
-    
-    // Handle navigation via the navigationManager
+
     const handleClick = (event) => {
+      if (props.disabled) return;
+
       if (props.to) {
-        event.preventDefault();
-        // Use navigation manager for consistent transitions
-        navigationManager.navigateTo(router, props.to);
-        return;
+        event.preventDefault()
+        navigationManager.navigateTo(router, props.to)
+      } else {
+        emit('click')
       }
-      // If no "to" prop, emit click event to parent
     }
-    
+
     return { handleClick }
   },
   data() {
     return {
       slotContent: ''
-    };
+    }
   },
   computed: {
     hasContent() {
-      return this.slotContent.trim().length > 0;
+      return this.slotContent.trim().length > 0
     }
   },
   methods: {
-    handleClick(event) {
-      // Call the setup method first (will handle navigation if needed)
-      const result = this.$options.setup(this.$props).handleClick(event);
-      
-      // If the setup method returned a defined value, use that (likely navigation handled)
-      if (result !== undefined) {
-        return result;
-      }
-      
-      // Otherwise emit the click event to the parent component
-      this.$emit('click');
-    },
     updateSlotContent() {
-      // Get the text content of the default slot
-      const slotElement = this.$slots.default && this.$slots.default();
+      const slotElement = this.$slots.default && this.$slots.default()
       if (slotElement && slotElement.length > 0) {
-        // Extract text content from VNode
-        this.slotContent = this.getTextFromVNode(slotElement[0]);
-        
-        // Log warning if content is empty
+        this.slotContent = this.getTextFromVNode(slotElement[0])
         if (!this.slotContent || this.slotContent.trim().length === 0) {
           console.warn('Empty button content detected', {
             variant: this.variant,
             to: this.to
-          });
+          })
         }
       } else {
-        this.slotContent = '';
+        this.slotContent = ''
         console.warn('Empty button content detected (no slot content)', {
           variant: this.variant,
           to: this.to
-        });
+        })
       }
     },
     getTextFromVNode(vnode) {
-      if (!vnode) return '';
-      
-      // If it's a text node, return its content
-      if (typeof vnode.children === 'string') {
-        return vnode.children;
-      }
-      
-      // If it has children, recursively get text from them
+      if (!vnode) return ''
+      if (typeof vnode.children === 'string') return vnode.children
       if (Array.isArray(vnode.children)) {
-        return vnode.children.map(child => this.getTextFromVNode(child)).join('');
+        return vnode.children.map(child => this.getTextFromVNode(child)).join('')
       }
-      
-      return '';
+      return ''
     }
   },
   mounted() {
-    this.updateSlotContent();
+    this.updateSlotContent()
   },
   updated() {
-    this.updateSlotContent();
+    this.updateSlotContent()
   }
 }
 </script>
+
 
 <style scoped>
 .base-button {

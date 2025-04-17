@@ -45,19 +45,22 @@ export default {
   display: flex;
   justify-content: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .info-text {
   column-count: 2;
-  column-gap: 20px;
+  column-gap: 40px;
+  max-width: 1000px;
   width: 100%;
+  padding: 5vh 2rem;
   text-align: left;
-  margin: 10vh 70rem;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .info-text p {
-  /* margin: 5px 0; */
-  /* text-align: justify; */
+  margin-bottom: 1rem;
 }
 
 .info-text .empty-text {
@@ -66,12 +69,12 @@ export default {
   text-align: center;
 }
 
-/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .info-text {
     column-count: 1;
-    width: 90%;
-    margin: 5vh 5vw;
+    max-width: 100%;
+    padding: 5vh 1.5rem;
+    margin: 0 auto;
   }
 }
-</style> 
+</style>
