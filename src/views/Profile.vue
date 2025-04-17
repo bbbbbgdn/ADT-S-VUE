@@ -94,11 +94,9 @@ export default {
   mounted() {
     this.preloadImage();
     
-    setTimeout(() => {
-      if (!this.imageLoaded) {
-        this.imageLoaded = true;
-      }
-    }, 500);
+    if (!this.imageLoaded) {
+      this.imageLoaded = true;
+    }
   },
   methods: {
     preloadImage() {
