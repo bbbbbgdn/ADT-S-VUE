@@ -106,7 +106,6 @@ export default {
   min-height: 42.4rem;
   line-height: 1.2;
 
-  white-space: wrap;
   text-align: left;
 
   /* Set initial transition properties */
