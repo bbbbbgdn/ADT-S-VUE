@@ -161,7 +161,8 @@ export default {
     galleryContainerStyle() {
       return {
         height: this.imageHeight,
-        minHeight: this.imageHeight
+        minHeight: this.imageHeight,
+        transform: this.isHovering && !this.isActive ? `translateX(calc(-1 * var(--gallery-shift-amount)))` : 'translateX(0)'
       };
     },
     galleryItemStyle() {
@@ -202,9 +203,10 @@ export default {
 <style>
 .gallery-container {
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   line-height: 0;
   position: relative;
+  --gallery-shift-amount: 10px;
 }
 
 .gallery-container.clickable .gallery,
@@ -215,10 +217,12 @@ export default {
 .gallery {
   display: flex;
   overflow-x: auto;
+  width: calc(100% + var(--gallery-shift-amount));
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  transition: transform .6s ease-out;
 }
 
 .gallery::-webkit-scrollbar {
@@ -234,6 +238,7 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 0;
+  margin-right: -1px;
 }
 
 .gallery-item:first-of-type {
@@ -266,6 +271,7 @@ export default {
   height: 100%;
   border-radius: 0;
   margin: 0;
+  z-index: 1;
 }
 
 .gallery-image.image-loading {
