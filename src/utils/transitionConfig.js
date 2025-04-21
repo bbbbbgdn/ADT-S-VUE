@@ -4,7 +4,7 @@
  */
 
 // Base duration for all transitions - balanced for smoothness
-const BASE_DURATION = 1500;
+const BASE_DURATION = 0;
 
 // Multipliers for different transition phases
 const MULTIPLIERS = {

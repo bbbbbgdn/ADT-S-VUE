@@ -8,7 +8,7 @@
       ref="gallery" 
       :style="galleryContainerStyle" 
       @click="handleGalleryClick"
-      @mouseenter="isHovering = !isActive" 
+      @mouseenter="isHovering = true" 
       @mouseleave="isHovering = false"
     >
       <div 
@@ -161,7 +161,8 @@ export default {
     galleryContainerStyle() {
       return {
         height: this.imageHeight,
-        minHeight: this.imageHeight
+        minHeight: this.imageHeight,
+        transform: this.isHovering ? `translateX(calc(-1 * var(--gallery-hover-shift-amount)))` : 'translateX(0rem)'
       };
     },
     galleryItemStyle() {
@@ -202,9 +203,10 @@ export default {
 <style>
 .gallery-container {
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   line-height: 0;
   position: relative;
+  --gallery-hover-shift-amount: 10px;
 }
 
 .gallery-container.clickable .gallery,
@@ -215,10 +217,13 @@ export default {
 .gallery {
   display: flex;
   overflow-x: auto;
+  width: calc(100% + var(--gallery-hover-shift-amount));
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  transition: transform .8s ease;
+  
 }
 
 .gallery::-webkit-scrollbar {
@@ -234,10 +239,11 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 0;
+  margin-right: -1px; /* -1px to prevent gap between images */
 }
 
 .gallery-item:first-of-type {
-  padding-left: 0;
+  padding-left: 3rem; /* indicate first image */
 }
 
 .gallery-tags {
@@ -262,11 +268,11 @@ export default {
 .gallery-image {
   width: auto;
   object-fit: cover;
-  transition: opacity 1s ease-out;
   position: relative;
   height: 100%;
   border-radius: 0;
   margin: 0;
+  z-index: 1;
 }
 
 .gallery-image.image-loading {
@@ -275,6 +281,7 @@ export default {
 
 .gallery-image.image-loaded {
   opacity: 1;
+  transition: none;
 }
 
 .gallery-image.image-error {

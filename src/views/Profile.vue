@@ -43,7 +43,7 @@
         
         <div class="contact-section">
           <div class="section-title">MAILING ADDRESS:</div>
-          <BaseButton class="mailing-address" disabled>
+          <BaseButton class="mailing-address" >
             De Constant Rebecqueplein 20-B
             2518RA 's-Gravenhage,
             Netherlands
@@ -94,11 +94,9 @@ export default {
   mounted() {
     this.preloadImage();
     
-    setTimeout(() => {
-      if (!this.imageLoaded) {
-        this.imageLoaded = true;
-      }
-    }, 500);
+    if (!this.imageLoaded) {
+      this.imageLoaded = true;
+    }
   },
   methods: {
     preloadImage() {
@@ -192,9 +190,9 @@ export default {
 }
 
 .mailing-address {
-  white-space: normal !important;
-  line-height: 1.5;
-  min-width: 260rem;
+  /* white-space: normal !important; */
+  /* line-height: 1.5; */
+  /* min-width: 260rem; */
 }
 
 .social-links {
@@ -228,10 +226,10 @@ export default {
     padding: 6rem;
   }
   
-  .mailing-address {
+  /* .mailing-address {
     min-width: auto;
     width: 100%;
-  }
+  } */
 
   .small-text{
     margin-bottom: 1em !important;

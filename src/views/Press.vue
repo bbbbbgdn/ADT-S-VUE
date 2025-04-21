@@ -1,11 +1,12 @@
 <template>
   <div class="press-container">
-    <!-- Добавляем фоновое изображение -->
-    <div 
-      v-if="activeImage" 
-      class="background-image"
-      :style="{ backgroundImage: `url(${activeImage})` }"
-    ></div>
+    <Transition name="fade">
+      <div 
+        v-if="activeImage" 
+        class="background-image"
+        :style="{ backgroundImage: `url(${activeImage})` }"
+      ></div>
+    </Transition>
 
     <div v-for="(yearGroup, year) in groupedPress" :key="year" class="year-group">
       <BaseButton 
@@ -17,12 +18,16 @@
       </BaseButton>
       
       <div class="press-items">
-        <div v-for="press in yearGroup" :key="press.id" class="press-item">
+        <div 
+          v-for="press in yearGroup" 
+          :key="press.id" 
+          class="press-item"
+          @mouseenter="showImage(press.content.Media)"
+          @mouseleave="hideImage"
+          @click="openPressUrl(press.content.URL.url)"
+        >
           <BaseButton 
             class="media-outlet"
-            @click="openPressUrl(press.content.URL.url)"
-            @mouseenter="showImage(press.content.Media)"
-            @mouseleave="hideImage"
             variant="black"
           >
             {{ press.content.media_outlet }}
@@ -121,9 +126,9 @@ export default {
 
 <style scoped>
 .press-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  /* padding: 20px; */
+  /* max-width: 1200px; */
+  margin: 0rem 3rem;
   position: relative; /* Для позиционирования фонового изображения */
 }
 
@@ -136,82 +141,82 @@ export default {
   bottom: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.8; /* увеличиваем с 0.15 до 0.3 */
-  pointer-events: none; /* Чтобы изображение не мешало кликам */
-  transition: opacity 0.3s ease;
-  z-index: -1; /* Размещаем позади контента */
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* Добавляем плавное появление/исчезновение */
-.background-image-enter-active,
-.background-image-leave-active {
-  transition: opacity 0.3s ease;
+.fade-enter-active, 
+.fade-leave-active {
+  transition: opacity 3s ease;
 }
 
-.background-image-enter-from,
-.background-image-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+
 .year-group {
-  margin-bottom: 30px;
   display: grid;
-  grid-template-columns: 120px 1fr; /* Добавляем grid с фиксированной шириной для года */
-  gap: 20px; /* Отступ между годом и контентом */
+  grid-template-columns: auto 1fr; 
+  gap: 3rem;
 }
 
 .year-button {
-  background-color: #f0f0f0 !important;
-  border-radius: 50px !important;
-  padding: 8px 20px !important;
-  font-size: 16px !important;
-  width: fit-content; /* Ширина по содержимому */
-  align-self: flex-start; /* Прижимаем к верху */
+  align-self: flex-start; 
 }
 
 .press-items {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 3rem;
+  
 }
 
 .press-item {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+  gap: 3rem;
+  width: fit-content;
   align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.press-item:hover .press-title {
+  background-color: black !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.press-item:hover .button-black {
+  background-color: var(--color-pink-primary);
+  color: black;
 }
 
 .media-outlet {
-  position: relative;
-  z-index: 1; /* Чтобы кнопка была над фоновым изображением */
-  background-color: #000 !important;
-  color: white !important;
-  border-radius: 50px !important;
-  padding: 8px 20px !important;
-  font-size: 16px !important;
   min-width: fit-content !important;
 }
 
 .press-title {
   flex: 1;
   text-align: left;
-  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   height: auto;
-  background-color: transparent !important;
   color: black !important;
-  border-radius: 50px !important;
-  padding: 8px 20px !important;
-  font-size: 16px !important;
   border: none !important;
   justify-content: flex-start !important;
-  cursor: default !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease;
 }
 
-/* Добавим hover эффекты */
-.media-outlet:hover {
-  opacity: 0.8;
-}
 
 @media (max-width: 768px) {
   .press-container {

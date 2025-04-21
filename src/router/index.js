@@ -106,7 +106,7 @@ router.afterEach(() => {
     document.querySelectorAll('.image-loaded').forEach(img => {
       img.style.opacity = '1';
     });
-  }, 3000); // Extra long safety timeout
+  }, 100); // Reduced safety timeout
 });
 
 export default router;

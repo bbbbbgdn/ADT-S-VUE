@@ -50,12 +50,7 @@ export default {
         });
         stories.value = response.data.stories;
         console.log('Projects loaded:', stories.value);
-        
-        // Add a small delay to ensure smooth animation
-        setTimeout(() => {
-          isLoading.value = false;
-        }, 100);
-        
+        isLoading.value = false;
       } catch (error) {
         console.error('Error fetching stories:', error);
         isLoading.value = false;
@@ -89,7 +84,6 @@ export default {
 /* Responsive layout for mobile devices */
 @media screen and (max-width: 640px) {
   .projects-grid {
-
     grid-template-columns: 1fr;
   }
 }

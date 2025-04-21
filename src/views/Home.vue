@@ -9,16 +9,20 @@ export default {
   name: 'Home',
   data() {
     return {
-      isLoaded: false
+      isLoaded: true
     }
   },
   mounted() {
-    // Create a new image object to preload
-    const img = new Image();
-    img.src = '/main/assets/DSC00121@0.5x2.webp';
-    img.onload = () => {
-      this.isLoaded = true;
-    };
+    // No need for animation logic
+  },
+  beforeUnmount() {
+    // Clean up when leaving the page
+    this.isLoaded = false;
+    // Force cleanup of any remaining background
+    const homeElement = document.querySelector('.home');
+    if (homeElement) {
+      homeElement.style.display = 'none';
+    }
   }
 }
 </script>
@@ -44,8 +48,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 1s ease-out;
+  opacity: 1;
+}
+
+.home:not(.image-loaded) {
+  display: none;
 }
 
 .image-loaded {

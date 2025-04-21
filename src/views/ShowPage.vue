@@ -154,9 +154,9 @@ h1 {
 }
 
 .image-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* gap: 10px; */
 }
 
 .image-container img {
@@ -167,17 +167,17 @@ h1 {
 }
 
 .gallery-item img{
-  height: 55vh;
+  /* height: 55vh; */
 }
 
 .button-container {
-  margin: 2rem;
+  margin: 3rem;
 }
 
 .other-shows-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  /* gap: 3rem; */
   width: 100%;
 }
 
@@ -194,7 +194,7 @@ h1 {
 
 .error-message p {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 /* Warning message styling */

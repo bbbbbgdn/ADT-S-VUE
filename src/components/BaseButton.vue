@@ -106,7 +106,6 @@ export default {
   min-height: 42.4rem;
   line-height: 1.2;
 
-  white-space: wrap;
   text-align: left;
 
   /* Set initial transition properties */
@@ -123,9 +122,16 @@ export default {
 
 /* Grey Button */
 .button-grey, .button-black:disabled {
-  background-color: #C3C3C3;
+  background-color: rgba(195, 195, 195, 0.6);
+  backdrop-filter: blur(100px);
   color: rgb(0, 0, 0);
-  pointer-events: none;
+  /* pointer-events: none; */
+}
+
+.button-grey:hover {
+  background-color: rgba(195, 195, 195, 0.3);
+  cursor:default !important;
+  color: rgba(0, 0, 0, 0.7) !important;
 }
 
 .button-black:disabled {

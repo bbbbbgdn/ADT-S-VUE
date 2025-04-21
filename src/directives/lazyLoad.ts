@@ -81,6 +81,9 @@ export default {
         }
         el.classList.remove('image-loading')
         el.classList.add('image-loaded')
+        // Force immediate opacity change
+        el.style.opacity = '1'
+        el.style.transition = 'none'
         
         // Increment the current index and notify observers if using queue
         if (typeof options.index === 'number') {
