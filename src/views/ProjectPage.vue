@@ -1,5 +1,4 @@
 <script>
-// Import necessary components and utilities
 import { useRoute, useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
@@ -8,6 +7,7 @@ import LoadingIndicator from '../components/LoadingIndicator.vue';
 import MainText from '../components/MainText.vue';
 import InfoText from '../components/InfoText.vue';
 import useStoryblok from '../utils/useStoryblok';
+import { computed } from 'vue';
 
 export default {
   name: 'ProjectPage',
@@ -23,7 +23,6 @@ export default {
     const route = useRoute();
     const router = useRouter();
 
-    // Use our Storyblok composable
     const {
       story,
       stories,
@@ -42,7 +41,15 @@ export default {
       }
     });
 
-    // Handle navigation to another project
+    const randomProjects = computed(() => {
+      if (!stories.value || stories.value.length === 0) return [];
+      return stories.value
+        .filter(p => p.slug !== story.value?.slug)
+        .slice()
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 4);
+    });
+
     const navigateToProject = (slug) => {
       navigateTo(slug);
     };
@@ -50,6 +57,7 @@ export default {
     return {
       story,
       stories,
+      randomProjects,
       isLoading,
       contentReady,
       errorMessage,
@@ -63,47 +71,35 @@ export default {
 
 <template>
   <div class="project-page">
-    <!-- Content area with loading state -->
     <div class="content-area">
-      <!-- <LoadingIndicator :isLoading="isLoading" /> -->
-      
-      <!-- Error message display for complete failure -->
       <div v-if="errorMessage && !story && !isLoading" class="error-message">
         <p>{{ errorMessage }}</p>
         <p>Redirecting to projects page...</p>
         <BaseButton to="/projects">Go to Projects</BaseButton>
       </div>
-      
-      <!-- Only show content when it's ready and not in loading state -->
+
       <div v-if="story && contentReady" class="content-container" :class="{ 'content-visible': !isLoading }">
-        <!-- Show warning message if using fallback -->
         <div v-if="errorMessage" class="warning-message">
           <p>{{ errorMessage }}</p>
         </div>
-        
-        <!-- Project tags moved to the top of the page -->
+
         <div class="project-tags">
           <BaseButton 
-            v-if="story.content?.title_tag && story.content.title_tag.trim().length > 0" 
+            v-if="story.content?.title_tag?.trim()" 
             :to="`/projects/${story.slug.split('/').pop()}`" 
             variant="active">{{ story.content.title_tag }}</BaseButton>
           <BaseButton 
-            v-if="story.content?.location_tag && story.content.location_tag.trim().length > 0" 
+            v-if="story.content?.location_tag?.trim()" 
             variant="grey">{{ story.content.location_tag }}</BaseButton>
           <BaseButton 
-            v-if="(story.content?.date_tag || story.content?.year_tag) && (story.content?.date_tag || story.content?.year_tag).trim().length > 0" 
+            v-if="(story.content?.date_tag || story.content?.year_tag)?.trim()" 
             variant="grey">{{ story.content?.date_tag || story.content?.year_tag }}</BaseButton>
         </div>
-        
-        <!-- Using MainText with text prop -->
-        <!-- <MainText :text="story.content?.main_text || 'No Description Available'" /> -->
-        
-        <!-- Alternative: Using MainText with slot content -->
+
         <MainText>
           {{ story.content?.main_text || 'No Description Available' }}
         </MainText>
-        
-        <!-- Only show gallery if visuals exist, removed tag props -->
+
         <ImageGallery 
           v-if="story.content?.visuals && story.content.visuals.length > 0"
           :slug="story.slug" 
@@ -113,21 +109,20 @@ export default {
           :imageQuality="85"
           :isActive="true"
         />
-        
-        <!-- Fallback message if no visuals -->
+
         <div v-else class="no-images-message">
           <p>No images available for this project</p>
         </div>
-        
+
         <InfoText :text="story.content?.info_text || ''" />
-        
+
         <div class="button-container">
           <BaseButton to="/projects">Other projects</BaseButton>
         </div>
-        
-        <div v-if="stories && stories.length > 0" class="image-grid">
+
+        <div v-if="randomProjects.length > 0" class="image-grid">
           <ProjectCard
-            v-for="project in stories"
+            v-for="project in randomProjects"
             :key="project.id"
             :image="formatImage(project)"
             :projectName="project.content?.title_tag || 'Untitled Project'"
@@ -137,7 +132,7 @@ export default {
             @click="navigateToProject(project.slug.split('/').pop())"
           />
         </div>
-        
+
         <div v-else class="no-projects-message">
           <p>No other projects available</p>
         </div>
@@ -147,13 +142,11 @@ export default {
 </template>
 
 <style>
-/* Content area that contains both loading and content */
 .content-area {
   position: relative;
   min-height: 80vh;
 }
 
-/* Content visibility transition */
 .content-container {
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -163,7 +156,6 @@ export default {
   opacity: 1;
 }
 
-/* Project tags styling */
 .project-tags {
   display: flex;
   gap: 3rem;
@@ -183,7 +175,6 @@ export default {
   padding: 3rem;
 }
 
-/* Error message styling */
 .error-message {
   text-align: center;
   padding: 2rem;
@@ -194,7 +185,6 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Warning message styling */
 .warning-message {
   text-align: center;
   padding: 1rem;
@@ -211,7 +201,6 @@ export default {
   color: #856404;
 }
 
-/* No images message */
 .no-images-message, .no-projects-message {
   text-align: center;
   padding: 2rem;
@@ -220,22 +209,13 @@ export default {
   border-radius: 8px;
 }
 
-/* Responsive adjustments for mobile */
 @media screen and (max-width: 640px) {
   .image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 100%;
-  padding: 3rem;
-  /* aspect-ratio: 1/1 !important; */
-}
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+  }
 
-.project-card{
-  /* height: 10vh !important; */
-  /* aspect-ratio: 1/1 !important; */
-}
-
-.project-card {
+  .project-card {
     min-height: 100% !important;
   }
 }

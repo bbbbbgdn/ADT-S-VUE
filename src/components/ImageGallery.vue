@@ -26,9 +26,11 @@
           :alt="image.alt"
           :style="imageStyle"
           :data-index="index"
-          class="gallery-image">
+          class="gallery-image"
+        />
       </div>
     </div>
+
     <div v-if="shouldShowTags" class="gallery-tags" @click.stop>
       <ButtonBase 
         v-if="name && name.trim().length > 0" 
@@ -135,17 +137,42 @@ export default {
         format: this.imageFormat,
         ...options
       };
+    },
+    preloadNextImages() {
+      const gallery = this.$refs.gallery;
+      if (!gallery) return;
+
+      const images = gallery.querySelectorAll('img.gallery-image');
+
+      images.forEach((img, index) => {
+        const rect = img.getBoundingClientRect();
+        const preloadDistance = 300;
+
+        if (
+          rect.left > window.innerWidth &&
+          rect.left - window.innerWidth < preloadDistance &&
+          !img.dataset.preloaded
+        ) {
+          const src = img.getAttribute('src');
+          if (src) {
+            const preloadImg = new Image();
+            preloadImg.src = src;
+            img.dataset.preloaded = 'true';
+          }
+        }
+      });
     }
   },
   computed: {
     processedImages() {
       if (!this.images || !Array.isArray(this.images) || this.images.length === 0) return [];
-      const processed = this.images.map((image, index) => {
+      const processed = this.images.map((image) => {
         if (!image || !image.url) return { url: '', alt: 'Missing image' };
         const imageParams = this.customizeImageParams();
         return {
           url: createImageUrl(image.url, imageParams),
-          alt: image.alt || 'Image'
+          alt: image.alt || 'Image',
+          preload: false
         };
       });
       const repeated = [];
@@ -182,7 +209,12 @@ export default {
       gallery.addEventListener('touchstart', this.handleScrollStart);
       gallery.addEventListener('touchmove', this.handleScrollMove);
       gallery.addEventListener('touchend', this.handleScrollEnd);
+      gallery.addEventListener('scroll', this.preloadNextImages);
     }
+
+    this.$nextTick(() => {
+      setTimeout(() => this.preloadNextImages(), 300);
+    });
   },
   beforeUnmount() {
     const gallery = this.$refs.gallery;
@@ -194,11 +226,13 @@ export default {
       gallery.removeEventListener('touchstart', this.handleScrollStart);
       gallery.removeEventListener('touchmove', this.handleScrollMove);
       gallery.removeEventListener('touchend', this.handleScrollEnd);
+      gallery.removeEventListener('scroll', this.preloadNextImages);
     }
     clearTimeout(this.scrollTimeout);
   }
 };
 </script>
+
 
 <style>
 .gallery-container {
