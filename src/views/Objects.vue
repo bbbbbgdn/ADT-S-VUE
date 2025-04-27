@@ -58,10 +58,12 @@ export default {
       if (!visual || !visual.filename) {
         return '';
       }
-      const formattedUrl = `${visual.filename}/m/800x600`;
+      const formattedUrl = `${visual.filename}`;
       console.log('Formatted URL:', formattedUrl); // для отладки
       return formattedUrl;
     };
+  
+
 
     onMounted(async () => {
       try {
