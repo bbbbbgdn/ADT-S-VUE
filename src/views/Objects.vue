@@ -97,7 +97,7 @@ export default {
 
 .objects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px; /* добавим отступы между карточками */
   width: 100%;
   padding: 20px; /* добавим отступы от краев */
