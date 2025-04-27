@@ -58,10 +58,12 @@ export default {
       if (!visual || !visual.filename) {
         return '';
       }
-      const formattedUrl = `${visual.filename}/m/800x600`;
+      const formattedUrl = `${visual.filename}`;
       console.log('Formatted URL:', formattedUrl); // для отладки
       return formattedUrl;
     };
+  
+
 
     onMounted(async () => {
       try {
@@ -97,7 +99,7 @@ export default {
 
 .objects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px; /* добавим отступы между карточками */
   width: 100%;
   padding: 20px; /* добавим отступы от краев */

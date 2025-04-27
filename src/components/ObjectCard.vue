@@ -58,7 +58,7 @@ export default {
   min-height: 200px;
   overflow: hidden;
   /* border-radius: 12px; <-- видалено */
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); */
 }
 
 .object-bg {
@@ -67,7 +67,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   z-index: 0;
   transition: opacity 0.5s ease;
   border-radius: 0; /* чітко встановлено без округлення */
@@ -82,6 +82,9 @@ export default {
   flex-wrap: wrap;
   gap: 1rem;
   z-index: 1;
-  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  /* background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); */
 }
+
+
+
 </style>
