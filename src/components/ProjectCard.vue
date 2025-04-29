@@ -3,28 +3,28 @@
   class="project-card" 
   :class="{ 'use-img-tag': useImgTag }"
 >
-  <!-- When using img tag approach -->
-  <img 
-    v-if="useImgTag"
-    v-lazy-load="{ url: image, index: 0, resetQueue: true }"
-    :data-index="0"
-    class="project-card-image"
-    alt="Project thumbnail"
-    @click="navigateToProject"
-    @mouseenter="isHovering = true"
-    @mouseleave="isHovering = false"
-  />
-  
-  <!-- When using background image approach -->
-  <div 
-    v-else
-    v-lazy-load="{ url: image, index: 0, resetQueue: true }"
-    :data-index="0"
-    class="project-card-background"
-    @click="navigateToProject"
-    @mouseenter="isHovering = true"
-    @mouseleave="isHovering = false"
-  ></div>
+  <!-- Image container -->
+  <div class="image-container">
+    <ImageReveal
+      v-if="useImgTag"
+      :src="image"
+
+      :imageStyle="imageStyle"
+      @load="onLoad"
+      @click="navigateToProject"
+      @mouseenter="isHovering = true"
+      @mouseleave="isHovering = false"
+    />
+    <div 
+      v-else
+      v-lazy-load="{ url: image, index: 0, resetQueue: true }"
+      :data-index="0"
+      class="project-card-background"
+      @click="navigateToProject"
+      @mouseenter="isHovering = true"
+      @mouseleave="isHovering = false"
+    ></div>
+  </div>
   
   <!-- Tags are always shown -->
   <div class="project-tags">
@@ -36,6 +36,7 @@
 
 <script>
 import BaseButton from './BaseButton.vue';
+import ImageReveal from './ImageReveal.vue';
 import lazyLoad from '../directives/lazyLoad';
 import { useRouter } from 'vue-router';
 import navigationManager from '../utils/navigationManager';
@@ -45,7 +46,8 @@ export default {
   name: 'ProjectCard',
   
   components: {
-    BaseButton
+    BaseButton,
+    ImageReveal
   },
 
   directives: {
@@ -111,15 +113,30 @@ export default {
   },
   
   computed: {
+    imageStyle() {
+      return {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        zIndex: 0,
+        cursor: 'pointer'
+      };
+    },
     cardStyle() {
       return {
-        // backgroundColor: '#f0f0f0',
         backgroundImage: this.useImgTag ? 'none' : this.backgroundImage
       };
     }
   },
   
   methods: {
+    onLoad() {
+      this.isLoaded = true;
+    },
+    
     setBackgroundImage(url) {
       this.backgroundImage = `url(${url})`;
       this.isLoaded = true;
@@ -163,28 +180,24 @@ export default {
   position: relative;
   display: flex;
   align-items: flex-end;
-  /* min-height: 45vh; */
   aspect-ratio: 16/10;
   height: 100%;
   overflow: hidden;
-  background-color: transparent; /* Start with transparent background */
+  background-color: transparent;
 }
 
-.project-card:hover .button-black {
-    background-color: var(--color-pink-primary);
-    color: black;
-}
-
-.project-card-image {
+.image-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   z-index: 0;
-  cursor: pointer;
-  opacity: 1;
+}
+
+.project-card:hover .button-black {
+  background-color: var(--color-pink-primary);
+  color: black;
 }
 
 .project-card-background {
@@ -200,23 +213,6 @@ export default {
   opacity: 1;
 }
 
-/* Loading states */
-.project-card-image.image-loading,
-.project-card-background.image-loading {
-  opacity: 0;
-}
-
-.project-card-image.image-loaded,
-.project-card-background.image-loaded {
-  opacity: 1;
-  transition: none;
-}
-
-.project-card-image.image-error,
-.project-card-background.image-error {
-  opacity: 0;
-}
-
 .project-tags {
   position: relative;
   pointer-events: none !important;
@@ -228,17 +224,15 @@ export default {
   gap: 3rem;
 }
 
-/* Style for the button hover effect */
 .button-hover {
-  /* opacity: 0.75 !important; */
+  background-color: var(--color-pink-primary) !important;
+  color: black !important;
 }
-
 
 @media screen and (max-width: 640px) {
   .project-card {
     min-height: 30vh;
   }
 }
-
 </style> 
 
