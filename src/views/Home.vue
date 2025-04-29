@@ -1,6 +1,12 @@
 <template>
   <div class="home" :class="{ 'image-loaded': isLoaded }">
-
+    <iframe
+      class="video-background"
+      src="/homepage_video/index.html"
+      frameborder="0"
+      allowfullscreen
+      @load="onIframeLoad"
+    ></iframe>
   </div>
 </template>
 
@@ -9,16 +15,16 @@ export default {
   name: 'Home',
   data() {
     return {
-      isLoaded: true
+      isLoaded: false
     }
   },
-  mounted() {
-    // No need for animation logic
+  methods: {
+    onIframeLoad() {
+      this.isLoaded = true;
+    }
   },
   beforeUnmount() {
-    // Clean up when leaving the page
     this.isLoaded = false;
-    // Force cleanup of any remaining background
     const homeElement = document.querySelector('.home');
     if (homeElement) {
       homeElement.style.display = 'none';
@@ -27,11 +33,7 @@ export default {
 }
 </script>
 
-
-
 <style scoped>
-
-
 .home {
   position: fixed;
   top: 0;
@@ -41,14 +43,21 @@ export default {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-image: url('/main/assets/DSC00121@0.5x.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  /* pointer-events: none; */
 }
 
 .home:not(.image-loaded) {
@@ -91,11 +100,15 @@ h1 {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 100vh; /* Use viewport height for width */
-    height: 100vw; /* Use viewport width for height */
+    width: 100vh;
+    height: 100vw;
     transform: translate(-50%, -50%) rotate(-90deg) scale(1.1);
     transform-origin: center center;
-    background-size: cover;
+  }
+  
+  .video-background {
+    transform: rotate(90deg) scale(1.1);
+    transform-origin: center center;
   }
 }
 </style> 
