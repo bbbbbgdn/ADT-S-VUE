@@ -23,6 +23,7 @@ Ops.Gl.Meshes=Ops.Gl.Meshes || {};
 Ops.Gl.Shader=Ops.Gl.Shader || {};
 Ops.Ui.Routing=Ops.Ui.Routing || {};
 Ops.Gl.Textures=Ops.Gl.Textures || {};
+Ops.Math.Compare=Ops.Math.Compare || {};
 Ops.Devices.Mouse=Ops.Devices.Mouse || {};
 Ops.User.bbbbbgdn=Ops.User.bbbbbgdn || {};
 Ops.Gl.ImageCompose=Ops.Gl.ImageCompose || {};
@@ -2049,86 +2050,6 @@ CABLES.OPS["c8fb181e-0b03-4b41-9e55-06b6267bc634"]={f:Ops.Math.Sum,objName:"Ops.
 
 // **************************************************************
 // 
-// Ops.Anim.BoolAnim
-// 
-// **************************************************************
-
-Ops.Anim.BoolAnim= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const anim = new CABLES.Anim();
-
-const
-    exe = op.inTrigger("exe"),
-    bool = op.inValueBool("bool"),
-    pease = anim.createPort(op, "easing"),
-    duration = op.inValue("duration", 0.25),
-    dir = op.inValueSelect("Direction", ["Both", "Only True", "Only False"], "Both"),
-    valueFalse = op.inValue("value false", 0),
-    valueTrue = op.inValue("value true", 1),
-    next = op.outTrigger("trigger"),
-    value = op.outNumber("value"),
-    finished = op.outBoolNum("finished"),
-    finishedTrigger = op.outTrigger("Finished Trigger");
-
-const startTime = CABLES.now();
-op.toWorkPortsNeedToBeLinked(exe);
-op.setPortGroup("Animation", [duration, pease]);
-op.setPortGroup("Values", [valueFalse, valueTrue]);
-
-dir.onChange = bool.onChange = valueFalse.onChange = valueTrue.onChange = duration.onChange = setAnim;
-setAnim();
-
-function setAnim()
-{
-    if (dir.get() == "Animate Both")dir.set("Both");
-    finished.set(false);
-    const now = (CABLES.now() - startTime) / 1000;
-    const oldValue = anim.getValue(now);
-    anim.clear();
-
-    anim.setValue(now, oldValue);
-
-    if (!bool.get())
-    {
-        if (dir.get() != "Only True") anim.setValue(now + duration.get(), valueFalse.get());
-        else anim.setValue(now, valueFalse.get());
-    }
-    else
-    {
-        if (dir.get() != "Only False") anim.setValue(now + duration.get(), valueTrue.get());
-        else anim.setValue(now, valueTrue.get());
-    }
-}
-
-exe.onTriggered = function ()
-{
-    const t = (CABLES.now() - startTime) / 1000;
-    value.set(anim.getValue(t));
-
-    if (anim.hasEnded(t))
-    {
-        if (!finished.get()) finishedTrigger.trigger();
-        finished.set(true);
-    }
-
-    next.trigger();
-};
-
-}
-};
-
-CABLES.OPS["06ad9d35-ccf5-4d31-889c-e23fa062588a"]={f:Ops.Anim.BoolAnim,objName:"Ops.Anim.BoolAnim"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.Gl.ImageCompose.FastBlur_v2
 // 
 // **************************************************************
@@ -3997,129 +3918,6 @@ CABLES.OPS["e62f7f4c-7436-437e-8451-6bc3c28545f7"]={f:Ops.Cables.LoadingStatus_v
 
 // **************************************************************
 // 
-// Ops.Ui.VizGraph
-// 
-// **************************************************************
-
-Ops.Ui.VizGraph= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-
-const
-    inNum1 = op.inFloat("Number 1"),
-    inNum2 = op.inFloat("Number 2"),
-    inNum3 = op.inFloat("Number 3"),
-    inNum4 = op.inFloat("Number 4"),
-    inNum5 = op.inFloat("Number 5"),
-    inNum6 = op.inFloat("Number 6"),
-    inNum7 = op.inFloat("Number 7"),
-    inNum8 = op.inFloat("Number 8"),
-    inFill = op.inBool("Fill Graph", true),
-    inReset = op.inTriggerButton("Reset");
-
-op.setUiAttrib({ "height": 150, "resizable": true, "vizLayerMaxZoom": 2500 });
-
-let buff = [];
-
-let max = -Number.MAX_VALUE;
-let min = Number.MAX_VALUE;
-
-inNum1.onLinkChanged =
-    inNum2.onLinkChanged =
-    inNum3.onLinkChanged =
-    inNum4.onLinkChanged =
-    inNum5.onLinkChanged =
-    inNum6.onLinkChanged =
-    inNum7.onLinkChanged =
-    inNum8.onLinkChanged =
-    inReset.onTriggered = () =>
-    {
-        max = -Number.MAX_VALUE;
-        min = Number.MAX_VALUE;
-        buff = [];
-    };
-
-op.renderVizLayer = (ctx, layer) =>
-{
-    const doFill = inFill.get();
-
-    const colors = ["#7AC4E0", "#D183BF", "#9091D6", "#FFC395", "#F0D165", "#63A8E8", "#CF5D9D", "#66C984", "#D66AA6", "#515151"];
-
-    let fontSize = 10 * layer.pixelDensity;
-    ctx.font = "bold " + fontSize + "px sourceCodePro";
-    ctx.fillStyle = "#222";
-    ctx.fillRect(layer.x, layer.y, layer.width, layer.height);
-
-    for (let p = 0; p < op.portsIn.length; p++)
-    {
-        if (!op.portsIn[p].isLinked()) continue;
-        const newVal = op.portsIn[p].get();
-
-        max = Math.max(op.portsIn[p].get(), max);
-        min = Math.min(op.portsIn[p].get(), min);
-
-        if (!buff[p]) buff[p] = [];
-        buff[p].push(newVal);
-        if (buff[p].length > 60) buff[p].shift();
-
-        const texSlot = 6;
-        const mulX = layer.width / 60;
-
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "#555555";
-
-        ctx.beginPath();
-        ctx.moveTo(layer.x, CABLES.map(0, min, max, layer.height, 0) + layer.y);
-        ctx.lineTo(layer.x + layer.width, CABLES.map(0, min, max, layer.height, 0) + layer.y);
-        ctx.stroke();
-
-        ctx.beginPath();
-
-        let y;
-
-        for (let i = 0; i < buff[p].length; i++)
-        {
-            y = buff[p][i];
-
-            y = CABLES.map(y, min, max, layer.height - 3, 3);
-            y += layer.y;
-            if (i === 0)ctx.moveTo(layer.x, y);
-            else ctx.lineTo(layer.x + i * mulX, y);
-        }
-
-        if (doFill)
-        {
-            ctx.lineTo(layer.x + buff[p].length * mulX, layer.y + layer.height);
-            ctx.lineTo(layer.x, layer.y + layer.height);
-            ctx.fillStyle = colors[p];
-            ctx.fill();
-        }
-        else
-        {
-            ctx.strokeStyle = colors[p];
-            ctx.stroke();
-        }
-    }
-
-    ctx.fillStyle = "#fff";
-    ctx.fillText("max:" + Math.round(max * 100) / 100, layer.x + 10, layer.y + layer.height - 10);
-    ctx.fillText("min:" + Math.round(min * 100) / 100, layer.x + 10, layer.y + layer.height - 30);
-};
-
-}
-};
-
-CABLES.OPS["13c54eb4-60ef-4b9c-8425-d52a431f5c87"]={f:Ops.Ui.VizGraph,objName:"Ops.Ui.VizGraph"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.Ui.Routing.RouteNumber
 // 
 // **************************************************************
@@ -4156,11 +3954,11 @@ CABLES.OPS["afff634a-b581-4449-b6f7-9ec7863c5d4d"]={f:Ops.Ui.Routing.RouteNumber
 
 // **************************************************************
 // 
-// Ops.Boolean.And
+// Ops.Gl.CanvasInfo_v3
 // 
 // **************************************************************
 
-Ops.Boolean.And= class extends CABLES.Op 
+Ops.Gl.CanvasInfo_v3= class extends CABLES.Op 
 {
 constructor()
 {
@@ -4168,22 +3966,909 @@ super(...arguments);
 const op=this;
 const attachments=op.attachments={};
 const
-    bool0 = op.inValueBool("bool 1"),
-    bool1 = op.inValueBool("bool 2"),
-    result = op.outBoolNum("result");
+    width = op.outNumber("CSS Width"),
+    height = op.outNumber("CSS Height"),
+    pixelRatio = op.outNumber("Pixel Ratio"),
+    widthPixel = op.outNumber("Pixel Width"),
+    heightPixel = op.outNumber("Pixel Height"),
+    aspect = op.outNumber("Aspect Ratio"),
+    landscape = op.outBool("Landscape"),
+    outCanvasEle = op.outObject("Canvas", "element"),
+    outCanvasParentEle = op.outObject("Canvas Parent", "element"),
+    outResize = op.outTrigger("Resized");
 
-bool0.onChange =
-bool1.onChange = exec;
+let cgl = op.patch.cgl;
+outCanvasEle.set(op.patch.cgl.canvas);
+outCanvasParentEle.set(op.patch.cgl.canvas.parentElement);
 
-function exec()
+cgl.on("resize", () =>
 {
-    result.set(bool1.get() && bool0.get());
+    outResize.trigger();
+    update();
+});
+
+update();
+
+function update()
+{
+    let div = 1;
+
+    if (cgl.canvasHeight == 0)setTimeout(update, 100);
+
+    height.set(cgl.canvasHeight / op.patch.cgl.pixelDensity);
+    width.set(cgl.canvasWidth / op.patch.cgl.pixelDensity);
+
+    widthPixel.set(cgl.canvasWidth);
+    heightPixel.set(cgl.canvasHeight);
+
+    pixelRatio.set(op.patch.cgl.pixelDensity); // window.devicePixelRatio
+
+    aspect.set(cgl.canvasWidth / cgl.canvasHeight);
+    landscape.set(cgl.canvasWidth > cgl.canvasHeight ? 1 : 0);
 }
 
 }
 };
 
-CABLES.OPS["c26e6ce0-8047-44bb-9bc8-5a4f911ed8ad"]={f:Ops.Boolean.And,objName:"Ops.Boolean.And"};
+CABLES.OPS["be186ff9-427e-409f-b6a4-f8d957bf7bc7"]={f:Ops.Gl.CanvasInfo_v3,objName:"Ops.Gl.CanvasInfo_v3"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.Compare.GreaterThan
+// 
+// **************************************************************
+
+Ops.Math.Compare.GreaterThan= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    number1 = op.inValueFloat("number1"),
+    number2 = op.inValueFloat("number2"),
+    result = op.outBoolNum("result");
+
+op.setUiAttribs({ "mathTitle": true });
+
+number1.onChange = number2.onChange = exec;
+
+function exec()
+{
+    result.set(number1.get() > number2.get());
+}
+
+}
+};
+
+CABLES.OPS["b250d606-f7f8-44d3-b099-c29efff2608a"]={f:Ops.Math.Compare.GreaterThan,objName:"Ops.Math.Compare.GreaterThan"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Anim.InOutInAnim
+// 
+// **************************************************************
+
+Ops.Anim.InOutInAnim= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const anim = new CABLES.Anim();
+
+const
+    update = op.inTrigger("Update"),
+
+    duration2 = op.inValue("Duration In", 0.25),
+    easing2 = anim.createPort(op, "Easing In"),
+    value2 = op.inValue("Value In", 1),
+
+    holdDuration = op.inValue("Hold duration", 0.0),
+
+    duration1 = op.inValue("Duration Out", 0.25),
+    easing1 = anim.createPort(op, "Easing Out"),
+    value1 = op.inValue("Value Out", 0),
+
+    trigger = op.inTriggerButton("Start"),
+
+    next = op.outTrigger("Next"),
+    outVal = op.outNumber("Result", 0),
+    started = op.outTrigger("Started"),
+    middle = op.outTrigger("Middle"),
+    finished = op.outTrigger("finished");
+
+op.setPortGroup("Out Anim", [duration1, easing1, value1]);
+op.setPortGroup("In Anim", [duration2, easing2, value2]);
+
+let time = 0;
+trigger.onTriggered = setupAnim;
+
+update.onTriggered = function ()
+{
+    time = CABLES.now() / 1000.0;
+    if (anim.isStarted(time)) outVal.set(anim.getValue(time));
+    else outVal.set(value2.get());
+
+    next.trigger();
+};
+
+value2.onChange = function ()
+{
+    outVal.set(value2.get());
+};
+
+function setupAnim()
+{
+    anim.clear();
+    // start
+    anim.setValue(time, value2.get(), function ()
+    {
+        started.trigger();
+    });
+
+    const dur1 = duration1.get() || 0.001;
+    const dur2 = duration2.get() || 0.001;
+    // attack
+    anim.setValue(time +
+                        dur1, value1.get(), function ()
+    {
+
+    });
+    // Hold
+    anim.setValue(time +
+                        dur1 + holdDuration.get(), value1.get(), function ()
+    {
+        middle.trigger();
+    });
+    // release
+    anim.setValue(time +
+                        dur1 +
+                        dur2 + holdDuration.get(), value2.get(), function ()
+    {
+        finished.trigger();
+    });
+
+    anim.keys[0].setEasing(
+        anim.easingFromString(easing1.get()));
+
+    anim.keys[2].setEasing(
+        anim.easingFromString(easing2.get()));
+}
+
+}
+};
+
+CABLES.OPS["ae46d30d-9ea6-417b-968b-e7b5726afdde"]={f:Ops.Anim.InOutInAnim,objName:"Ops.Anim.InOutInAnim"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Anim.BoolAnim
+// 
+// **************************************************************
+
+Ops.Anim.BoolAnim= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const anim = new CABLES.Anim();
+
+const
+    exe = op.inTrigger("exe"),
+    bool = op.inValueBool("bool"),
+    pease = anim.createPort(op, "easing"),
+    duration = op.inValue("duration", 0.25),
+    dir = op.inValueSelect("Direction", ["Both", "Only True", "Only False"], "Both"),
+    valueFalse = op.inValue("value false", 0),
+    valueTrue = op.inValue("value true", 1),
+    next = op.outTrigger("trigger"),
+    value = op.outNumber("value"),
+    finished = op.outBoolNum("finished"),
+    finishedTrigger = op.outTrigger("Finished Trigger");
+
+const startTime = CABLES.now();
+op.toWorkPortsNeedToBeLinked(exe);
+op.setPortGroup("Animation", [duration, pease]);
+op.setPortGroup("Values", [valueFalse, valueTrue]);
+
+dir.onChange = bool.onChange = valueFalse.onChange = valueTrue.onChange = duration.onChange = setAnim;
+setAnim();
+
+function setAnim()
+{
+    if (dir.get() == "Animate Both")dir.set("Both");
+    finished.set(false);
+    const now = (CABLES.now() - startTime) / 1000;
+    const oldValue = anim.getValue(now);
+    anim.clear();
+
+    anim.setValue(now, oldValue);
+
+    if (!bool.get())
+    {
+        if (dir.get() != "Only True") anim.setValue(now + duration.get(), valueFalse.get());
+        else anim.setValue(now, valueFalse.get());
+    }
+    else
+    {
+        if (dir.get() != "Only False") anim.setValue(now + duration.get(), valueTrue.get());
+        else anim.setValue(now, valueTrue.get());
+    }
+}
+
+exe.onTriggered = function ()
+{
+    const t = (CABLES.now() - startTime) / 1000;
+    value.set(anim.getValue(t));
+
+    if (anim.hasEnded(t))
+    {
+        if (!finished.get()) finishedTrigger.trigger();
+        finished.set(true);
+    }
+
+    next.trigger();
+};
+
+}
+};
+
+CABLES.OPS["06ad9d35-ccf5-4d31-889c-e23fa062588a"]={f:Ops.Anim.BoolAnim,objName:"Ops.Anim.BoolAnim"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Devices.Mouse.Mouse_v4
+// 
+// **************************************************************
+
+Ops.Devices.Mouse.Mouse_v4= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inCoords = op.inSwitch("Coordinates", ["-1 to 1", "Pixel Display", "Pixel", "0 to 1"], "-1 to 1"),
+    area = op.inValueSelect("Area", ["Canvas Area", "Canvas", "Document", "Parent Element"], "Canvas Area"),
+    flipY = op.inValueBool("flip y", true),
+    rightClickPrevDef = op.inBool("right click prevent default", true),
+    inEventType = op.inSwitch("Events", ["Pointer", "Touch", "Mouse"]),
+    inPassive = op.inValueBool("Passive Events", false),
+    inEle = op.inObject("Element", "element"),
+    active = op.inValueBool("Active", true),
+    outMouseX = op.outNumber("x", 0),
+    outMouseY = op.outNumber("y", 0),
+    mouseClick = op.outTrigger("click"),
+    mouseClickRight = op.outTrigger("click right"),
+    mouseDown = op.outBoolNum("Button is down"),
+    mouseOver = op.outBoolNum("Mouse is hovering"),
+    outMovementX = op.outNumber("Movement X", 0),
+    outMovementY = op.outNumber("Movement Y", 0),
+    outEvent = op.outObject("Event");
+
+const cgl = op.patch.cgl;
+let normalize = 1;
+let listenerElement = null;
+let areaElement = null;
+
+inPassive.onChange =
+    area.onChange = addListeners;
+inCoords.onChange = updateCoordNormalizing;
+op.onDelete = removeListeners;
+
+addListeners();
+
+op.on("loadedValueSet", onStart);
+
+function onStart()
+{
+    if (normalize == 0)
+    {
+        if (areaElement.clientWidth === 0) setTimeout(onStart, 50);
+
+        outMouseX.set(areaElement.clientWidth / 2);
+        outMouseY.set(areaElement.clientHeight / 2);
+    }
+    else if (normalize == 1)
+    {
+        outMouseX.set(0);
+        outMouseY.set(0);
+    }
+    else if (normalize == 2)
+    {
+        outMouseX.set(0.5);
+        outMouseY.set(0.5);
+    }
+    else if (normalize == 3)
+    {
+        if (areaElement.clientWidth === 0)
+        {
+            setTimeout(onStart, 50);
+        }
+
+        outMouseX.set(areaElement.clientWidth / 2 / cgl.pixelDensity);
+        outMouseY.set(areaElement.clientHeight / 2 / cgl.pixelDensity);
+    }
+    else console.error("unknown normalize mouse", normalize);
+}
+
+function setValue(x, y)
+{
+    x = x || 0;
+    y = y || 0;
+
+    if (normalize == 0) // pixel
+    {
+        outMouseX.set(x);
+        outMouseY.set(y);
+    }
+    else
+    if (normalize == 3) // pixel css
+    {
+        outMouseX.set(x * cgl.pixelDensity);
+        outMouseY.set(y * cgl.pixelDensity);
+    }
+    else
+    {
+        let w = areaElement.clientWidth / cgl.pixelDensity;
+        let h = areaElement.clientHeight / cgl.pixelDensity;
+
+        w = w || 1;
+        h = h || 1;
+
+        if (normalize == 1) // -1 to 1
+        {
+            let xx = (x / w * 2.0 - 1.0);
+            let yy = (y / h * 2.0 - 1.0);
+            xx = CABLES.clamp(xx, -1, 1);
+            yy = CABLES.clamp(yy, -1, 1);
+
+            outMouseX.set(xx);
+            outMouseY.set(yy);
+        }
+        else if (normalize == 2) // 0 to 1
+        {
+            let xx = x / w;
+            let yy = y / h;
+
+            xx = CABLES.clamp(xx, 0, 1);
+            yy = CABLES.clamp(yy, 0, 1);
+
+            outMouseX.set(xx);
+            outMouseY.set(yy);
+        }
+    }
+}
+
+function checkHovering(e)
+{
+    if (!areaElement) return;
+    const r = areaElement.getBoundingClientRect();
+
+    return (
+        e.clientX > r.left &&
+        e.clientX < r.left + r.width &&
+        e.clientY > r.top &&
+        e.clientY < r.top + r.height
+    );
+}
+
+inEle.onChange =
+inEventType.onChange = function ()
+{
+    area.setUiAttribs({ "greyout": inEle.isLinked() });
+    removeListeners();
+    addListeners();
+};
+
+active.onChange = function ()
+{
+    if (listenerElement)removeListeners();
+    if (active.get())addListeners();
+};
+
+function updateCoordNormalizing()
+{
+    if (inCoords.get() == "Pixel") normalize = 0;
+    else if (inCoords.get() == "-1 to 1") normalize = 1;
+    else if (inCoords.get() == "0 to 1") normalize = 2;
+    else if (inCoords.get() == "Pixel Display") normalize = 3;
+}
+
+/// ///
+
+function onMouseEnter(e)
+{
+    outEvent.setRef(e);
+    mouseDown.set(false);
+    mouseOver.set(checkHovering(e));
+}
+
+function onMouseDown(e)
+{
+    if (!checkHovering(e)) return;
+    outEvent.setRef(e);
+    mouseDown.set(true);
+}
+
+function onMouseUp(e)
+{
+    outEvent.setRef(e);
+    mouseDown.set(false);
+}
+
+function onClickRight(e)
+{
+    if (!checkHovering(e)) return;
+    outEvent.setRef(e);
+    mouseClickRight.trigger();
+    if (rightClickPrevDef.get()) e.preventDefault();
+}
+
+function onmouseclick(e)
+{
+    if (!checkHovering(e)) return;
+    outEvent.setRef(e);
+    mouseClick.trigger();
+}
+
+function onMouseLeave(e)
+{
+    outEvent.setRef(e);
+    mouseDown.set(false);
+    mouseOver.set(checkHovering(e));
+}
+
+function onmousemove(e)
+{
+    mouseOver.set(checkHovering(e));
+    if (area.get() === "Canvas Area")
+    {
+        const r = areaElement.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+
+        if (x < 0 || x > r.width || y > r.height || y < 0) return;
+    }
+
+    outEvent.setRef(e);
+    setCoords(e);
+
+    outMovementX.set(e.movementX / cgl.pixelDensity);
+    outMovementY.set(e.movementY / cgl.pixelDensity);
+}
+
+function ontouchmove(e)
+{
+    if (event.touches && event.touches.length > 0) setCoords(e.touches[0]);
+    outEvent.setRef(e);
+}
+
+function ontouchstart(event)
+{
+    mouseDown.set(true);
+
+    if (event.touches && event.touches.length > 0) onMouseDown(event.touches[0]);
+    outEvent.setRef(e);
+}
+
+function ontouchend(event)
+{
+    mouseDown.set(false);
+    onMouseUp();
+    outEvent.setRef(e);
+}
+
+/// ////
+
+function setCoords(e)
+{
+    let x = e.clientX;
+    let y = e.clientY;
+
+    if (inEle.isLinked())
+    {
+        x = e.offsetX;
+        y = e.offsetY;
+    }
+    else
+    {
+        if (area.get() != "Document")
+        {
+            x = e.offsetX;
+            y = e.offsetY;
+        }
+        if (area.get() === "Canvas Area")
+        {
+            const r = areaElement.getBoundingClientRect();
+            x = e.clientX - r.left;
+            y = e.clientY - r.top;
+
+            if (x < 0 || x > r.width || y > r.height || y < 0) return;
+            x = CABLES.clamp(x, 0, r.width);
+            y = CABLES.clamp(y, 0, r.height);
+        }
+    }
+
+    if (flipY.get()) y = areaElement.clientHeight - y;
+
+    setValue(x / cgl.pixelDensity, y / cgl.pixelDensity);
+}
+
+function removeListeners()
+{
+    if (!listenerElement) return;
+    listenerElement.removeEventListener("touchend", ontouchend);
+    listenerElement.removeEventListener("touchstart", ontouchstart);
+    listenerElement.removeEventListener("touchmove", ontouchmove);
+
+    listenerElement.removeEventListener("mousemove", onmousemove);
+    listenerElement.removeEventListener("mouseleave", onMouseLeave);
+    listenerElement.removeEventListener("mousedown", onMouseDown);
+    listenerElement.removeEventListener("mouseup", onMouseUp);
+    listenerElement.removeEventListener("mouseenter", onMouseEnter);
+
+    listenerElement.removeEventListener("pointermove", onmousemove);
+    listenerElement.removeEventListener("pointerleave", onMouseLeave);
+    listenerElement.removeEventListener("pointerdown", onMouseDown);
+    listenerElement.removeEventListener("pointerup", onMouseUp);
+    listenerElement.removeEventListener("pointerenter", onMouseEnter);
+
+    listenerElement.removeEventListener("click", onmouseclick);
+    listenerElement.removeEventListener("contextmenu", onClickRight);
+    listenerElement = null;
+}
+
+function addListeners()
+{
+    if (listenerElement || !active.get())removeListeners();
+    if (!active.get()) return;
+
+    listenerElement = areaElement = cgl.canvas;
+
+    if (inEle.isLinked())
+    {
+        listenerElement = areaElement = inEle.get();
+    }
+    else
+    {
+        if (area.get() == "Canvas Area")
+        {
+            areaElement = cgl.canvas.parentElement;
+            listenerElement = document.body;
+        }
+        if (area.get() == "Document") areaElement = listenerElement = document.body;
+        if (area.get() == "Parent Element") listenerElement = areaElement = cgl.canvas.parentElement;
+    }
+
+    if (!areaElement)
+    {
+        op.setUiError("noarea", "could not find area element for mouse", 2);
+        return;
+    }
+    op.setUiError("noarea", null);
+
+    let passive = false;
+    if (inPassive.get())passive = { "passive": true };
+
+    if (inEventType.get() == "touch")
+    {
+        listenerElement.addEventListener("touchend", ontouchend, passive);
+        listenerElement.addEventListener("touchstart", ontouchstart, passive);
+        listenerElement.addEventListener("touchmove", ontouchmove, passive);
+    }
+
+    if (inEventType.get() == "Mouse")
+    {
+        listenerElement.addEventListener("mousemove", onmousemove, passive);
+        listenerElement.addEventListener("mouseleave", onMouseLeave, passive);
+        listenerElement.addEventListener("mousedown", onMouseDown, passive);
+        listenerElement.addEventListener("mouseup", onMouseUp, passive);
+        listenerElement.addEventListener("mouseenter", onMouseEnter, passive);
+    }
+
+    if (inEventType.get() == "Pointer")
+    {
+        listenerElement.addEventListener("pointermove", onmousemove, passive);
+        listenerElement.addEventListener("pointerleave", onMouseLeave, passive);
+        listenerElement.addEventListener("pointerdown", onMouseDown, passive);
+        listenerElement.addEventListener("pointerup", onMouseUp, passive);
+        listenerElement.addEventListener("pointerenter", onMouseEnter, passive);
+    }
+
+    listenerElement.addEventListener("contextmenu", onClickRight, passive);
+    listenerElement.addEventListener("click", onmouseclick, passive);
+}
+
+//
+
+}
+};
+
+CABLES.OPS["c86eb411-a996-47cd-a149-264903dc408c"]={f:Ops.Devices.Mouse.Mouse_v4,objName:"Ops.Devices.Mouse.Mouse_v4"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Anim.SimpleAnim
+// 
+// **************************************************************
+
+Ops.Anim.SimpleAnim= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTrigger("exe"),
+    reset = op.inTriggerButton("reset"),
+    rewind = op.inTriggerButton("rewind"),
+    inStart = op.inValueFloat("start", 0),
+    inEnd = op.inValueFloat("end", 1),
+    duration = op.inValueFloat("duration", 0.5),
+    loop = op.inValueBool("loop"),
+    waitForReset = op.inValueBool("Wait for Reset", true),
+    next = op.outTrigger("Next"),
+    result = op.outNumber("result"),
+    finished = op.outNumber("finished"),
+    finishedTrigger = op.outTrigger("Finished Trigger");
+
+const anim = new CABLES.Anim();
+let resetted = false;
+let currentEasing = -1;
+anim.createPort(op, "easing", init);
+loop.onChange = init;
+init();
+
+duration.onChange = init;
+
+function init()
+{
+    if (anim.keys.length != 3)
+    {
+        anim.setValue(0, 0);
+        anim.setValue(1, 0);
+        anim.setValue(2, 0);
+    }
+
+    anim.keys[0].time = CABLES.now() / 1000.0;
+    anim.keys[0].value = inStart.get();
+    if (anim.defaultEasing != currentEasing) anim.keys[0].setEasing(anim.defaultEasing);
+
+    anim.keys[1].time = duration.get() + CABLES.now() / 1000.0;
+    anim.keys[1].value = inEnd.get();
+
+    if (anim.defaultEasing != currentEasing) anim.keys[1].setEasing(anim.defaultEasing);
+
+    anim.loop = loop.get();
+    if (anim.loop)
+    {
+        // anim.keys[2].time = (2.0 * duration.get()) + CABLES.now() / 1000.0;
+        // anim.keys[2].value = inStart.get();
+        // if (anim.defaultEasing != currentEasing) anim.keys[2].setEasing(anim.defaultEasing);
+    }
+    else
+    {
+        anim.keys[2].time = anim.keys[1].time;
+        anim.keys[2].value = anim.keys[1].value;
+        if (anim.defaultEasing != currentEasing) anim.keys[2].setEasing(anim.defaultEasing);
+    }
+    finished.set(false);
+
+    currentEasing = anim.defaultEasing;
+}
+
+reset.onTriggered = function ()
+{
+    resetted = true;
+    init();
+};
+
+rewind.onTriggered = function ()
+{
+    anim.keys[0].time = CABLES.now() / 1000.0;
+    anim.keys[0].value = inStart.get();
+
+    anim.keys[1].time = CABLES.now() / 1000.0;
+    anim.keys[1].value = inStart.get();
+
+    anim.keys[2].time = CABLES.now() / 1000.0;
+    anim.keys[2].value = inStart.get();
+
+    result.set(inStart.get());
+};
+
+exe.onTriggered = function ()
+{
+    if (waitForReset.get() && !resetted)
+    {
+        result.set(inStart.get());
+        next.trigger();
+        return;
+    }
+    let t = CABLES.now() / 1000;
+    let v = anim.getValue(t);
+    result.set(v);
+    if (anim.hasEnded(t))
+    {
+        if (!finished.get()) finishedTrigger.trigger();
+        finished.set(true);
+    }
+
+    next.trigger();
+};
+
+}
+};
+
+CABLES.OPS["5b244b6e-c505-4743-b2cc-8119ef720028"]={f:Ops.Anim.SimpleAnim,objName:"Ops.Anim.SimpleAnim"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Anim.Smooth
+// 
+// **************************************************************
+
+Ops.Anim.Smooth= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exec = op.inTrigger("Update"),
+    inMode = op.inBool("Separate inc/dec", false),
+    inVal = op.inValue("Value"),
+    next = op.outTrigger("Next"),
+    inDivisorUp = op.inValue("Inc factor", 4),
+    inDivisorDown = op.inValue("Dec factor", 4),
+    result = op.outNumber("Result", 0);
+
+let val = 0;
+let goal = 0;
+let oldVal = 0;
+let lastTrigger = 0;
+
+op.toWorkPortsNeedToBeLinked(exec);
+
+let divisorUp;
+let divisorDown;
+let divisor = 4;
+let finished = true;
+
+let selectIndex = 0;
+const MODE_SINGLE = 0;
+const MODE_UP_DOWN = 1;
+
+onFilterChange();
+getDivisors();
+
+inMode.setUiAttribs({ "hidePort": true });
+
+inDivisorUp.onChange = inDivisorDown.onChange = getDivisors;
+inMode.onChange = onFilterChange;
+update();
+
+function onFilterChange()
+{
+    const selectedMode = inMode.get();
+    if (!selectedMode) selectIndex = MODE_SINGLE;
+    else selectIndex = MODE_UP_DOWN;
+
+    if (selectIndex == MODE_SINGLE)
+    {
+        inDivisorDown.setUiAttribs({ "greyout": true });
+        inDivisorUp.setUiAttribs({ "title": "Inc/Dec factor" });
+    }
+    else if (selectIndex == MODE_UP_DOWN)
+    {
+        inDivisorDown.setUiAttribs({ "greyout": false });
+        inDivisorUp.setUiAttribs({ "title": "Inc factor" });
+    }
+
+    getDivisors();
+    update();
+}
+
+function getDivisors()
+{
+    if (selectIndex == MODE_SINGLE)
+    {
+        divisorUp = inDivisorUp.get();
+        divisorDown = inDivisorUp.get();
+    }
+    else if (selectIndex == MODE_UP_DOWN)
+    {
+        divisorUp = inDivisorUp.get();
+        divisorDown = inDivisorDown.get();
+    }
+
+    if (divisorUp <= 0.2 || divisorUp != divisorUp)divisorUp = 0.2;
+    if (divisorDown <= 0.2 || divisorDown != divisorDown)divisorDown = 0.2;
+}
+
+inVal.onChange = function ()
+{
+    finished = false;
+    let oldGoal = goal;
+    goal = inVal.get();
+};
+
+inDivisorUp.onChange = function ()
+{
+    getDivisors();
+};
+
+function update()
+{
+    let tm = 1;
+    if (performance.now() - lastTrigger > 500 || lastTrigger === 0) val = inVal.get() || 0;
+    else tm = (performance.now() - lastTrigger) / (performance.now() - lastTrigger);
+    lastTrigger = performance.now();
+
+    if (val != val)val = 0;
+
+    if (divisor <= 0)divisor = 0.0001;
+
+    const diff = goal - val;
+
+    if (diff >= 0) val += (diff) / (divisorDown * tm);
+    else val += (diff) / (divisorUp * tm);
+
+    if (Math.abs(diff) < 0.00001)val = goal;
+
+    if (divisor != divisor)val = 0;
+    if (val != val || val == -Infinity || val == Infinity)val = inVal.get();
+
+    if (oldVal != val)
+    {
+        result.set(val);
+        oldVal = val;
+    }
+
+    if (val == goal && !finished)
+    {
+        finished = true;
+        result.set(val);
+    }
+}
+
+exec.onTriggered = function ()
+{
+    update();
+    next.trigger();
+};
+
+}
+};
+
+CABLES.OPS["5677b5b5-753a-4fbf-9e91-64c81ec68a2f"]={f:Ops.Anim.Smooth,objName:"Ops.Anim.Smooth"};
 
 
 

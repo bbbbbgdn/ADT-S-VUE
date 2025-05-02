@@ -91,7 +91,7 @@
                 },
                 {
                     "name": "progress",
-                    "value": 0.9180056938159878
+                    "value": 0.8128177036199096
                 },
                 {
                     "name": "Interaction Needed",
@@ -99,7 +99,7 @@
                 },
                 {
                     "name": "CurrentTime",
-                    "value": 48.691022
+                    "value": 43.111851
                 },
                 {
                     "name": "Loading",
@@ -123,7 +123,14 @@
                 },
                 {
                     "name": "Aspect Ratio",
-                    "value": 1.7777777777777777
+                    "links": [
+                        {
+                            "portIn": "number1",
+                            "portOut": "Aspect Ratio",
+                            "objIn": "evduj6eyg",
+                            "objOut": "3phev729b"
+                        }
+                    ]
                 },
                 {
                     "name": "Has Error",
@@ -179,11 +186,11 @@
                 },
                 {
                     "name": "width",
-                    "value": 1334
+                    "value": 1228
                 },
                 {
                     "name": "height",
-                    "value": 972
+                    "value": 892
                 },
                 {
                     "name": "Pixel Density",
@@ -311,7 +318,7 @@
                 },
                 {
                     "name": "Crop TexCoords",
-                    "value": 0
+                    "value": 1
                 },
                 {
                     "name": "billboard",
@@ -431,15 +438,15 @@
                 },
                 {
                     "name": "Aspect Ratio",
-                    "value": 1.3724279835390947
+                    "value": 1.3766816143497758
                 },
                 {
                     "name": "Texture Width",
-                    "value": 1334
+                    "value": 1228
                 },
                 {
                     "name": "Texture Height",
-                    "value": 972
+                    "value": 892
                 }
             ],
             "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
@@ -489,10 +496,6 @@
                     "value": 1
                 },
                 {
-                    "name": "Stretch Axis index",
-                    "value": 1
-                },
-                {
                     "name": "Stretch Axis",
                     "value": "Y"
                 },
@@ -502,7 +505,7 @@
                 },
                 {
                     "name": "Crop",
-                    "value": 0
+                    "value": 1
                 },
                 {
                     "name": "flip x",
@@ -639,75 +642,6 @@
                 }
             ],
             "objName": "Ops.Math.Sum"
-        },
-        {
-            "id": "esope391i",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "easing index",
-                    "value": 0
-                },
-                {
-                    "name": "easing",
-                    "value": "linear"
-                },
-                {
-                    "name": "duration",
-                    "value": 12
-                },
-                {
-                    "name": "Direction index",
-                    "value": 1
-                },
-                {
-                    "name": "Direction",
-                    "value": "Only True"
-                },
-                {
-                    "name": "value false",
-                    "value": 1
-                },
-                {
-                    "name": "value true",
-                    "value": 0
-                }
-            ],
-            "portsOut": [
-                {
-                    "name": "trigger",
-                    "links": [
-                        {
-                            "portIn": "Render",
-                            "portOut": "trigger",
-                            "objIn": "jreklxw89",
-                            "objOut": "esope391i"
-                        }
-                    ]
-                },
-                {
-                    "name": "value",
-                    "links": [
-                        {
-                            "portIn": "Number 1",
-                            "portOut": "value",
-                            "objIn": "qtz6z245h",
-                            "objOut": "esope391i"
-                        },
-                        {
-                            "portIn": "value",
-                            "portOut": "value",
-                            "objIn": "807bvbb80",
-                            "objOut": "esope391i"
-                        }
-                    ]
-                },
-                {
-                    "name": "finished",
-                    "value": 0
-                }
-            ],
-            "objName": "Ops.Anim.BoolAnim"
         },
         {
             "id": "fim1ghqcf",
@@ -878,11 +812,11 @@
             "portsOut": [
                 {
                     "name": "x",
-                    "value": -0.052473763118440764
+                    "value": -0.6482084690553747
                 },
                 {
                     "name": "y",
-                    "value": -0.2592592592592593
+                    "value": -0.42152466367713004
                 },
                 {
                     "name": "click",
@@ -901,15 +835,15 @@
                 },
                 {
                     "name": "Mouse is hovering",
-                    "value": 1
+                    "value": 0
                 },
                 {
                     "name": "Movement X",
-                    "value": 0.5
+                    "value": -18.5
                 },
                 {
                     "name": "Movement Y",
-                    "value": 0
+                    "value": -6.5
                 }
             ],
             "objName": "Ops.Devices.Mouse.Mouse_v3"
@@ -1051,14 +985,7 @@
             "portsOut": [
                 {
                     "name": "Result",
-                    "links": [
-                        {
-                            "portIn": "bool 2",
-                            "portOut": "Result",
-                            "objIn": "debgq3qsj",
-                            "objOut": "ojhwrt8wa"
-                        }
-                    ]
+                    "value": 0
                 }
             ],
             "objName": "Ops.Boolean.Not"
@@ -1134,11 +1061,11 @@
                 },
                 {
                     "name": "current time",
-                    "value": 49.137544467
+                    "value": 736.4957966229999
                 },
                 {
                     "name": "current frame",
-                    "value": 1474
+                    "value": 22095
                 }
             ],
             "objName": "Ops.TimeLine.TimeLinePlayer"
@@ -1335,9 +1262,9 @@
                     "name": "Finished Initial Loading",
                     "links": [
                         {
-                            "portIn": "bool 1",
+                            "portIn": "bool",
                             "portOut": "Finished Initial Loading",
-                            "objIn": "debgq3qsj",
+                            "objIn": "esope391i",
                             "objOut": "zj13yr39a"
                         }
                     ]
@@ -1349,48 +1276,20 @@
                 {
                     "name": "Progress",
                     "value": 1
+                },
+                {
+                    "name": "Trigger Loading Finished ",
+                    "links": [
+                        {
+                            "portIn": "reset",
+                            "portOut": "Trigger Loading Finished ",
+                            "objIn": "741yxuubt",
+                            "objOut": "zj13yr39a"
+                        }
+                    ]
                 }
             ],
             "objName": "Ops.Cables.LoadingStatus_v2"
-        },
-        {
-            "id": "qtz6z245h",
-            "uiAttribs": {},
-            "portsIn": [
-                {
-                    "name": "Number 2",
-                    "value": 0
-                },
-                {
-                    "name": "Number 3",
-                    "value": 0
-                },
-                {
-                    "name": "Number 4",
-                    "value": 0
-                },
-                {
-                    "name": "Number 5",
-                    "value": 0
-                },
-                {
-                    "name": "Number 6",
-                    "value": 0
-                },
-                {
-                    "name": "Number 7",
-                    "value": 0
-                },
-                {
-                    "name": "Number 8",
-                    "value": 0
-                },
-                {
-                    "name": "Fill Graph",
-                    "value": 1
-                }
-            ],
-            "objName": "Ops.Ui.VizGraph"
         },
         {
             "id": "807bvbb80",
@@ -1417,27 +1316,414 @@
             "objName": "Ops.Ui.Routing.RouteNumber"
         },
         {
-            "id": "debgq3qsj",
+            "id": "7mjn692r7",
+            "uiAttribs": {},
+            "portsOut": [
+                {
+                    "name": "CSS Width",
+                    "value": 614
+                },
+                {
+                    "name": "CSS Height",
+                    "value": 446
+                },
+                {
+                    "name": "Pixel Ratio",
+                    "value": 2
+                },
+                {
+                    "name": "Pixel Width",
+                    "value": 1228
+                },
+                {
+                    "name": "Pixel Height",
+                    "value": 892
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "value": 1.3766816143497758
+                },
+                {
+                    "name": "Landscape",
+                    "value": 1
+                }
+            ],
+            "objName": "Ops.Gl.CanvasInfo_v3"
+        },
+        {
+            "id": "v6inju206",
+            "uiAttribs": {},
+            "portsOut": [
+                {
+                    "name": "CSS Width",
+                    "value": 614
+                },
+                {
+                    "name": "CSS Height",
+                    "value": 446
+                },
+                {
+                    "name": "Pixel Ratio",
+                    "value": 2
+                },
+                {
+                    "name": "Pixel Width",
+                    "value": 1228
+                },
+                {
+                    "name": "Pixel Height",
+                    "value": 892
+                },
+                {
+                    "name": "Aspect Ratio",
+                    "links": [
+                        {
+                            "portIn": "number2",
+                            "portOut": "Aspect Ratio",
+                            "objIn": "evduj6eyg",
+                            "objOut": "v6inju206"
+                        }
+                    ]
+                },
+                {
+                    "name": "Landscape",
+                    "value": 1
+                }
+            ],
+            "objName": "Ops.Gl.CanvasInfo_v3"
+        },
+        {
+            "id": "evduj6eyg",
             "uiAttribs": {},
             "portsOut": [
                 {
                     "name": "result",
                     "links": [
                         {
-                            "portIn": "bool",
+                            "portIn": "Stretch Axis index",
                             "portOut": "result",
-                            "objIn": "esope391i",
-                            "objOut": "debgq3qsj"
+                            "objIn": "lgzbdnbyx",
+                            "objOut": "evduj6eyg"
                         }
                     ]
                 }
             ],
-            "objName": "Ops.Boolean.And"
+            "objName": "Ops.Math.Compare.GreaterThan"
+        },
+        {
+            "id": "yzsut91gm",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Duration In",
+                    "value": 10
+                },
+                {
+                    "name": "Easing In index",
+                    "value": 3
+                },
+                {
+                    "name": "Easing In",
+                    "value": "smootherstep"
+                },
+                {
+                    "name": "Value In",
+                    "value": 0
+                },
+                {
+                    "name": "Hold duration",
+                    "value": 0
+                },
+                {
+                    "name": "Duration Out",
+                    "value": 2
+                },
+                {
+                    "name": "Easing Out index",
+                    "value": 3
+                },
+                {
+                    "name": "Easing Out",
+                    "value": "smootherstep"
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "exe",
+                            "portOut": "Next",
+                            "objIn": "741yxuubt",
+                            "objOut": "yzsut91gm"
+                        }
+                    ]
+                },
+                {
+                    "name": "Result",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Anim.InOutInAnim"
+        },
+        {
+            "id": "esope391i",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "easing index",
+                    "value": 0
+                },
+                {
+                    "name": "easing",
+                    "value": "linear"
+                },
+                {
+                    "name": "duration",
+                    "value": 12
+                },
+                {
+                    "name": "Direction index",
+                    "value": 2
+                },
+                {
+                    "name": "Direction",
+                    "value": "Only False"
+                },
+                {
+                    "name": "value false",
+                    "value": 0
+                },
+                {
+                    "name": "value true",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "trigger",
+                    "links": [
+                        {
+                            "portIn": "Update",
+                            "portOut": "trigger",
+                            "objIn": "yzsut91gm",
+                            "objOut": "esope391i"
+                        }
+                    ]
+                },
+                {
+                    "name": "value",
+                    "links": [
+                        {
+                            "portIn": "Value Out",
+                            "portOut": "value",
+                            "objIn": "yzsut91gm",
+                            "objOut": "esope391i"
+                        }
+                    ]
+                },
+                {
+                    "name": "finished",
+                    "value": 1
+                }
+            ],
+            "objName": "Ops.Anim.BoolAnim"
+        },
+        {
+            "id": "henwqfvtq",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Coordinates index",
+                    "value": 0
+                },
+                {
+                    "name": "Coordinates",
+                    "value": "-1 to 1"
+                },
+                {
+                    "name": "Area index",
+                    "value": 0
+                },
+                {
+                    "name": "Area",
+                    "value": "Canvas Area"
+                },
+                {
+                    "name": "flip y",
+                    "value": 1
+                },
+                {
+                    "name": "right click prevent default",
+                    "value": 1
+                },
+                {
+                    "name": "Events index",
+                    "value": 0
+                },
+                {
+                    "name": "Events",
+                    "value": "Pointer"
+                },
+                {
+                    "name": "Passive Events",
+                    "value": 0
+                },
+                {
+                    "name": "Active",
+                    "value": 1
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "x",
+                    "value": -0.6484846183453787
+                },
+                {
+                    "name": "y",
+                    "value": -0.42179590062710204
+                },
+                {
+                    "name": "click",
+                    "links": [
+                        {
+                            "portIn": "reset",
+                            "portOut": "click",
+                            "objIn": "741yxuubt",
+                            "objOut": "henwqfvtq"
+                        }
+                    ]
+                },
+                {
+                    "name": "Button is down",
+                    "value": 0
+                },
+                {
+                    "name": "Mouse is hovering",
+                    "value": 0
+                },
+                {
+                    "name": "Movement X",
+                    "value": -18.5
+                },
+                {
+                    "name": "Movement Y",
+                    "value": -6.5
+                }
+            ],
+            "objName": "Ops.Devices.Mouse.Mouse_v4"
+        },
+        {
+            "id": "741yxuubt",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "start",
+                    "value": 1
+                },
+                {
+                    "name": "end",
+                    "value": 0
+                },
+                {
+                    "name": "duration",
+                    "value": 12
+                },
+                {
+                    "name": "loop",
+                    "value": 0
+                },
+                {
+                    "name": "Wait for Reset",
+                    "value": 0
+                },
+                {
+                    "name": "easing index",
+                    "value": 0
+                },
+                {
+                    "name": "easing",
+                    "value": "linear"
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "Update",
+                            "portOut": "Next",
+                            "objIn": "j4lemqjc9",
+                            "objOut": "741yxuubt"
+                        }
+                    ]
+                },
+                {
+                    "name": "result",
+                    "links": [
+                        {
+                            "portIn": "Value",
+                            "portOut": "result",
+                            "objIn": "j4lemqjc9",
+                            "objOut": "741yxuubt"
+                        }
+                    ]
+                },
+                {
+                    "name": "finished",
+                    "value": true
+                }
+            ],
+            "objName": "Ops.Anim.SimpleAnim"
+        },
+        {
+            "id": "j4lemqjc9",
+            "uiAttribs": {},
+            "portsIn": [
+                {
+                    "name": "Separate inc/dec",
+                    "value": 0
+                },
+                {
+                    "name": "Inc factor",
+                    "value": 10,
+                    "title": "Inc/Dec factor"
+                },
+                {
+                    "name": "Dec factor",
+                    "value": 4
+                }
+            ],
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "Render",
+                            "portOut": "Next",
+                            "objIn": "jreklxw89",
+                            "objOut": "j4lemqjc9"
+                        }
+                    ]
+                },
+                {
+                    "name": "Result",
+                    "links": [
+                        {
+                            "portIn": "value",
+                            "portOut": "Result",
+                            "objIn": "807bvbb80",
+                            "objOut": "j4lemqjc9"
+                        }
+                    ]
+                }
+            ],
+            "objName": "Ops.Anim.Smooth"
         }
     ],
     "export": {
-        "time": "2025-04-29 19:55",
+        "time": "2025-05-02 20:07",
         "service": "html",
-        "exportNumber": 8
+        "exportNumber": 10
     }
 }

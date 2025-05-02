@@ -1,5 +1,6 @@
 <template>
   <div class="home" :class="{ 'image-loaded': isLoaded }">
+    <div class="title-text">Atelier Dasha Tsapenko</div>
     <iframe
       class="video-background"
       src="/homepage_video/index.html"
@@ -57,7 +58,6 @@ export default {
   width: 100%;
   height: 100%;
   border: none;
-  /* pointer-events: none; */
 }
 
 .home:not(.image-loaded) {
@@ -110,5 +110,19 @@ h1 {
     transform: rotate(90deg) scale(1.1);
     transform-origin: center center;
   }
+}
+
+.title-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 34rem;
+  font-weight: 670;
+  color: rgba(0, 0, 0, 1);
+  z-index: 0;
+  white-space: nowrap;
+  font-weight: bold;
+  pointer-events: none;
 }
 </style> 
