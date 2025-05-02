@@ -87,6 +87,7 @@ const formatOtherShowsImages = (visuals) => {
           :imageFormat="mainShowImageSettings.format"
           :resolutionRatio="mainShowImageSettings.resolutionRatio"
           :isActive="true"
+          :enable-hover-scroll="false"
         />
         
         <!-- Fallback message if no visuals -->
@@ -119,6 +120,7 @@ const formatOtherShowsImages = (visuals) => {
               :imageQuality="otherShowsImageSettings.quality"
               :imageFormat="otherShowsImageSettings.format"
               :resolutionRatio="otherShowsImageSettings.resolutionRatio"
+              :enable-hover-scroll="true"
             />
           </div>
         </div>

@@ -6,10 +6,11 @@
     <div 
       class="gallery" 
       ref="gallery" 
-      :style="galleryContainerStyle" 
-      @click="handleGalleryClick"
+      :style="[galleryContainerStyle, galleryStyle]" 
       @mouseenter="isHovering = true" 
       @mouseleave="isHovering = false"
+      :class="{ 'manual-scroll': !enableHoverScroll }"
+      @click="handleGalleryClick"
     >
       <div 
         v-for="(image, index) in processedImages" 
@@ -67,14 +68,22 @@ export default {
     imageWidth: { type: String, default: 'auto' },
     imageQuality: { type: Number, default: 85 },
     imageFormat: { type: String, default: null },
-    resolutionRatio: { type: Number, default: 2, validator: value => value > 0 }
+    resolutionRatio: { type: Number, default: 2, validator: value => value > 0 },
+    enableHoverScroll: { type: Boolean, default: true }
   },
   data() {
     return {
       isScrolling: false,
       scrollTimeout: null,
       scrollStartX: 0,
-      isHovering: false
+      isHovering: false,
+      autoScrollInterval: null,
+      scrollSpeed: 0.15,
+      currentPosition: 0,
+      isManualScrolling: false,
+      galleryWidth: 0,
+      lastTimestamp: 0,
+      screenWidth: 0
     };
   },
   setup() {
@@ -83,16 +92,15 @@ export default {
     return { router, route };
   },
   methods: {
-    navigateToShow() {
-      if (!this.isActive && !this.isScrolling) {
-        navigationManager.navigateTo(this.router, `/shows/${this.slug}`);
-      }
-    },
     handleGalleryClick() {
-      this.navigateToShow();
+      if (!this.isActive) {
+        this.router.push(`/shows/${this.slug}`);
+      }
     },
     handleScrollStart(event) {
       if (this.isActive) return;
+      this.isManualScrolling = true;
+      this.stopAutoScroll();
       this.scrollStartX = event.touches ? event.touches[0].clientX : event.clientX;
       this.isScrolling = false;
     },
@@ -100,7 +108,14 @@ export default {
       if (this.isActive || !this.scrollStartX) return;
       const currentX = event.touches ? event.touches[0].clientX : event.clientX;
       const diffX = Math.abs(currentX - this.scrollStartX);
-      if (diffX > 5) this.isScrolling = true;
+      if (diffX > 5) {
+        this.isScrolling = true;
+        this.isManualScrolling = true;
+        const gallery = this.$refs.gallery;
+        if (gallery) {
+          this.currentPosition = gallery.scrollLeft;
+        }
+      }
     },
     handleScrollEnd() {
       if (this.isActive) return;
@@ -108,7 +123,52 @@ export default {
       this.scrollTimeout = setTimeout(() => {
         this.isScrolling = false;
         this.scrollStartX = 0;
+        this.isManualScrolling = false;
+        if (this.isHovering) {
+          this.startAutoScroll();
+        }
       }, 100);
+    },
+    startAutoScroll() {
+      if (this.autoScrollInterval || !this.enableHoverScroll) return;
+      
+      const gallery = this.$refs.gallery;
+      if (!gallery) return;
+      
+      this.lastTimestamp = performance.now();
+      
+      const animate = (timestamp) => {
+        if (!gallery) return;
+        
+        const deltaTime = timestamp - this.lastTimestamp;
+        this.lastTimestamp = timestamp;
+        
+        // Calculate smooth movement based on time delta
+        const movement = (this.scrollSpeed * deltaTime) / 16;
+        this.currentPosition += movement;
+        
+        // When we've scrolled past one set of images, reset to start
+        const singleSetWidth = this.galleryWidth / this.processedImages.length * this.images.length;
+        if (this.currentPosition >= singleSetWidth) {
+          this.currentPosition = 0;
+        }
+        
+        // Preload next set of images while scrolling
+        this.preloadNextImages();
+        
+        if (this.isHovering && this.enableHoverScroll) {
+          this.autoScrollInterval = requestAnimationFrame(animate);
+        }
+      };
+      
+      this.autoScrollInterval = requestAnimationFrame(animate);
+    },
+    
+    stopAutoScroll() {
+      if (this.autoScrollInterval) {
+        cancelAnimationFrame(this.autoScrollInterval);
+        this.autoScrollInterval = null;
+      }
     },
     customizeImageParams(options = {}) {
       let parsedHeight;
@@ -143,29 +203,39 @@ export default {
       if (!gallery) return;
 
       const images = gallery.querySelectorAll('img.gallery-image');
-
-      images.forEach((img, index) => {
+      const visibleImages = Array.from(images).filter(img => {
         const rect = img.getBoundingClientRect();
-        const preloadDistance = 300;
-
-        if (
-          rect.left > window.innerWidth &&
-          rect.left - window.innerWidth < preloadDistance &&
-          !img.dataset.preloaded
-        ) {
-          const src = img.getAttribute('src');
-          if (src) {
-            const preloadImg = new Image();
-            preloadImg.src = src;
-            img.dataset.preloaded = 'true';
-          }
-        }
+        return rect.left < window.innerWidth && rect.right > 0;
       });
+
+      // Preload next set of images
+      const lastVisibleIndex = visibleImages.length - 1;
+      if (lastVisibleIndex >= 0) {
+        const nextImages = Array.from(images).slice(lastVisibleIndex + 1, lastVisibleIndex + this.images.length + 1);
+        nextImages.forEach(img => {
+          if (!img.dataset.preloaded) {
+            const src = img.getAttribute('src');
+            if (src) {
+              const preloadImg = new Image();
+              preloadImg.src = src;
+              img.dataset.preloaded = 'true';
+            }
+          }
+        });
+      }
+    },
+    updateDimensions() {
+      this.screenWidth = window.innerWidth;
+      const gallery = this.$refs.gallery;
+      if (gallery) {
+        this.galleryWidth = gallery.scrollWidth;
+      }
     }
   },
   computed: {
     processedImages() {
       if (!this.images || !Array.isArray(this.images) || this.images.length === 0) return [];
+      
       const processed = this.images.map((image) => {
         if (!image || !image.url) return { url: '', alt: 'Missing image' };
         const imageParams = this.customizeImageParams();
@@ -175,8 +245,17 @@ export default {
           preload: false
         };
       });
+
+      // Calculate how many copies we need to fill the screen
+      const singleSetWidth = this.galleryWidth;
+      const copiesNeeded = Math.ceil((this.screenWidth * 2) / singleSetWidth) + 2; // Added +2 for extra buffer
+      
+      // Create enough copies to fill the screen
       const repeated = [];
-      for (let i = 0; i < this.repeatCount; i++) repeated.push(...processed);
+      for (let i = 0; i < copiesNeeded; i++) {
+        repeated.push(...processed);
+      }
+      
       return repeated;
     },
     imageStyle() {
@@ -197,6 +276,15 @@ export default {
     },
     shouldShowTags() {
       return (this.name && this.name.trim()) || (this.location && this.location.trim()) || (this.date && this.date.trim());
+    },
+    galleryStyle() {
+      if (this.enableHoverScroll) {
+        return {
+          transform: `translateX(${-this.currentPosition}px)`,
+          willChange: 'transform'
+        };
+      }
+      return {};
     }
   },
   mounted() {
@@ -210,11 +298,16 @@ export default {
       gallery.addEventListener('touchmove', this.handleScrollMove);
       gallery.addEventListener('touchend', this.handleScrollEnd);
       gallery.addEventListener('scroll', this.preloadNextImages);
+      
+      this.galleryWidth = gallery.scrollWidth;
     }
 
     this.$nextTick(() => {
       setTimeout(() => this.preloadNextImages(), 300);
     });
+
+    this.updateDimensions();
+    window.addEventListener('resize', this.updateDimensions);
   },
   beforeUnmount() {
     const gallery = this.$refs.gallery;
@@ -229,6 +322,17 @@ export default {
       gallery.removeEventListener('scroll', this.preloadNextImages);
     }
     clearTimeout(this.scrollTimeout);
+    window.removeEventListener('resize', this.updateDimensions);
+    this.stopAutoScroll();
+  },
+  watch: {
+    isHovering(newValue) {
+      if (newValue && this.enableHoverScroll) {
+        this.startAutoScroll();
+      } else {
+        this.stopAutoScroll();
+      }
+    }
   }
 };
 </script>
@@ -237,10 +341,10 @@ export default {
 <style>
 .gallery-container {
   width: 100%;
-  overflow: visible;
+  overflow: hidden;
   line-height: 0;
   position: relative;
-  --gallery-hover-shift-amount: 10px;
+  --gallery-hover-shift-amount: 0px;
 }
 
 .gallery-container.clickable .gallery,
@@ -250,30 +354,34 @@ export default {
 
 .gallery {
   display: flex;
+  width: 100%;
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.gallery.manual-scroll {
   overflow-x: auto;
-  width: calc(100% + var(--gallery-hover-shift-amount));
-  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  transition: transform .8s ease;
-  
 }
 
-.gallery::-webkit-scrollbar {
+.gallery.manual-scroll::-webkit-scrollbar {
   display: none;
 }
 
 .gallery-item {
   flex: 0 0 auto;
-  scroll-snap-align: start;
   position: relative;
   min-width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
-  margin-right: -1px; /* -1px to prevent gap between images */
+  margin-right: -1px;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .gallery-item:first-of-type {
@@ -307,6 +415,8 @@ export default {
   border-radius: 0;
   margin: 0;
   z-index: 1;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .gallery-image.image-loading {
