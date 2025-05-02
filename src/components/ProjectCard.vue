@@ -6,7 +6,7 @@
   <!-- When using img tag approach -->
   <img 
     v-if="useImgTag"
-    v-lazy-load="{ url: image, index: 0, resetQueue: true }"
+    v-lazy-load="{ url: image, index: 0, resetQueue: true, preload: preload }"
     :data-index="0"
     class="project-card-image"
     alt="Project thumbnail"
@@ -18,7 +18,7 @@
   <!-- When using background image approach -->
   <div 
     v-else
-    v-lazy-load="{ url: image, index: 0, resetQueue: true }"
+    v-lazy-load="{ url: image, index: 0, resetQueue: true, preload: preload }"
     :data-index="0"
     class="project-card-background"
     @click="navigateToProject"
@@ -75,6 +75,10 @@ export default {
     useImgTag: {
       type: Boolean,
       default: true
+    },
+    preload: {
+      type: Boolean,
+      default: false
     }
   },
   
@@ -184,7 +188,8 @@ export default {
   object-fit: cover;
   z-index: 0;
   cursor: pointer;
-  opacity: 1;
+  opacity: 0;
+  will-change: opacity;
 }
 
 .project-card-background {
@@ -197,7 +202,8 @@ export default {
   background-position: center;
   z-index: 0;
   cursor: pointer;
-  opacity: 1;
+  opacity: 0;
+  will-change: opacity;
 }
 
 /* Loading states */
@@ -209,7 +215,6 @@ export default {
 .project-card-image.image-loaded,
 .project-card-background.image-loaded {
   opacity: 1;
-  transition: none;
 }
 
 .project-card-image.image-error,

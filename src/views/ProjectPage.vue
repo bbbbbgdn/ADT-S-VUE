@@ -129,6 +129,7 @@ export default {
             :year="project.content?.year_tag || ''"
             :slug="project.slug"
             :useImgTag="true"
+            :preload="true"
             @click="navigateToProject(project.slug.split('/').pop())"
           />
         </div>

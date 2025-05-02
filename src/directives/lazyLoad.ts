@@ -14,6 +14,7 @@ interface LazyLoadOptions {
   threshold?: number; // Visibility threshold (0-1)
   rootMargin?: string; // Margin around the root
   background?: boolean; // Whether to set as background image
+  preload?: boolean; // Whether to preload the image immediately
 }
 
 // Global loading queue to track image loading status
@@ -65,6 +66,9 @@ export default {
     
     // Add loading class
     el.classList.add('image-loading')
+    // Set initial opacity
+    el.style.opacity = '0'
+    el.style.transition = 'opacity 0.5s ease-in-out'
     
     // Function to load the image
     function loadImage() {
@@ -81,9 +85,10 @@ export default {
         }
         el.classList.remove('image-loading')
         el.classList.add('image-loaded')
-        // Force immediate opacity change
-        el.style.opacity = '1'
-        el.style.transition = 'none'
+        // Trigger opacity transition
+        requestAnimationFrame(() => {
+          el.style.opacity = '1'
+        })
         
         // Increment the current index and notify observers if using queue
         if (typeof options.index === 'number') {
@@ -104,6 +109,12 @@ export default {
           loadingQueue.observers.forEach(callback => callback(loadingQueue.currentIndex))
         }
       }
+    }
+    
+    // If preload is true, load immediately without intersection observer
+    if (options.preload) {
+      loadImage()
+      return
     }
     
     // Define checkAndLoad function for queue-based approach
