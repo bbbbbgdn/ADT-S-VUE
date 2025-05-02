@@ -90,8 +90,8 @@ export default {
           el.style.opacity = '1'
         })
         
-        // Increment the current index and notify observers if using queue
-        if (typeof options.index === 'number') {
+        // Only increment queue for gallery images
+        if (typeof options.index === 'number' && !options.rootMargin) {
           loadingQueue.currentIndex++
           loadingQueue.observers.forEach(callback => callback(loadingQueue.currentIndex))
         }
@@ -103,8 +103,8 @@ export default {
         el.classList.remove('image-loading')
         el.classList.add('image-loaded', 'image-error')
         
-        // Move to next image even if this one failed
-        if (typeof options.index === 'number') {
+        // Only increment queue for gallery images
+        if (typeof options.index === 'number' && !options.rootMargin) {
           loadingQueue.currentIndex++
           loadingQueue.observers.forEach(callback => callback(loadingQueue.currentIndex))
         }
@@ -117,36 +117,11 @@ export default {
       return
     }
     
-    // Define checkAndLoad function for queue-based approach
-    const checkAndLoad = (currentIndex: number) => {
-      if (options.index === currentIndex) {
-        loadImage()
-      }
-    }
-    
-    // Cleanup function
-    const cleanup = () => {
-      // Remove observer if it exists
-      if (el._observer) {
-        el._observer.disconnect()
-        el._observer = undefined
-      }
-      
-      // Remove from queue if using index-based loading
-      if (typeof options.index === 'number') {
-        loadingQueue.observers.delete(checkAndLoad)
-      }
-    }
-    
-    // Store cleanup function
-    el._cleanup = cleanup
-    
-    // If using Intersection Observer
-    if (hasIntersectionObserver && typeof options.index !== 'number') {
-      // Create observer with options
+    // Use Intersection Observer for project cards (when rootMargin is specified)
+    if (hasIntersectionObserver && options.rootMargin) {
       const observerOptions = {
         root: null,
-        rootMargin: options.rootMargin || '0px',
+        rootMargin: options.rootMargin,
         threshold: options.threshold || 0
       }
       
@@ -163,12 +138,18 @@ export default {
       
       // Start observing
       el._observer.observe(el)
-    } else {
-      // Use queue-based approach for backward compatibility
-      // Register as an observer
-      loadingQueue.observers.add(checkAndLoad)
+      return
+    }
+    
+    // Use queue-based approach only for gallery images
+    if (typeof options.index === 'number') {
+      const checkAndLoad = (currentIndex: number) => {
+        if (options.index === currentIndex) {
+          loadImage()
+        }
+      }
       
-      // Check immediately if this image should load
+      loadingQueue.observers.add(checkAndLoad)
       checkAndLoad(loadingQueue.currentIndex)
     }
   },

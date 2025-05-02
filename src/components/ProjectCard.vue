@@ -6,7 +6,14 @@
   <!-- When using img tag approach -->
   <img 
     v-if="useImgTag"
-    v-lazy-load="{ url: image, index: 0, resetQueue: true, preload: preload }"
+    v-lazy-load="{ 
+      url: image, 
+      index: 0, 
+      resetQueue: true, 
+      preload: preload,
+      rootMargin: '200px 0px',
+      threshold: 0.1
+    }"
     :data-index="0"
     class="project-card-image"
     alt="Project thumbnail"
@@ -18,7 +25,14 @@
   <!-- When using background image approach -->
   <div 
     v-else
-    v-lazy-load="{ url: image, index: 0, resetQueue: true, preload: preload }"
+    v-lazy-load="{ 
+      url: image, 
+      index: 0, 
+      resetQueue: true, 
+      preload: preload,
+      rootMargin: '200px 0px',
+      threshold: 0.1
+    }"
     :data-index="0"
     class="project-card-background"
     @click="navigateToProject"
