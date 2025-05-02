@@ -67,7 +67,7 @@ export default {
     imageWidth: { type: String, default: 'auto' },
     imageQuality: { type: Number, default: 85 },
     imageFormat: { type: String, default: null },
-    resolutionRatio: { type: Number, default: 1, validator: value => value > 0 }
+    resolutionRatio: { type: Number, default: 2, validator: value => value > 0 }
   },
   data() {
     return {

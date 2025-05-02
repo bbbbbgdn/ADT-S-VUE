@@ -9,18 +9,18 @@ export const defaultSettings = {
   high: {
     width: 0, // Auto width
     height: 800, // Fixed height for high quality images
-    quality: 80,
+    quality: 85,
     format: 'webp',
-    resolutionRatio: 1.5
+    resolutionRatio: 2
   },
   
   // Lower quality settings for thumbnails and gallery previews
   thumbnail: {
     width: 0,
     height: 260,
-    quality: 75, // Slightly increased quality for better thumbnails
+    quality: 85, // Slightly increased quality for better thumbnails
     format: 'webp',
-    resolutionRatio: 1.5
+    resolutionRatio: 2
   }
 };
 

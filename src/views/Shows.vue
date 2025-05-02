@@ -51,7 +51,7 @@ const formatImages = (visuals, customOptions = {}) => {
         :location="story.content?.location_tag"
         :date="story.content?.date_tag"
         :slug="story.slug"
-        :repeatCount="5"
+        :repeatCount="1"
         :imageHeight="containerHeight"
         :imageWidth="'auto'"
         :imageQuality="imageSettings.quality"
