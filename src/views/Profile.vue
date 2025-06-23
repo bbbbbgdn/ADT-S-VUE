@@ -118,24 +118,26 @@ export default {
 </script>
 
 <style scoped>
+
 .profile-container {
   display: flex;
   flex-direction: row;
   padding: 0;
+  align-items: flex-start;
 }
 
 .profile-image {
-  flex: 1;
-  max-width: 50%;
+  flex: 0 0 50%;
   overflow: hidden;
   position: relative;
-  min-height: 60vh;
+  min-height: 100vh;
+  overflow: visible;
 }
 
 .profile-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  /* height: 100%; */
+  object-fit: contain;
   padding: 0 3rem 0 3rem;
   opacity: 0;
   transition: opacity 300ms ease;
@@ -158,11 +160,30 @@ export default {
 }
 
 .profile-content {
-  flex: 1;
+  /* flex: 0 0 50%; */
+
+
+  /* box-sizing: border-box; */
+
+
   padding: 40rem 80rem 40rem 80rem;
+  /* display: flex; */
+
+
+  /* flex-direction: column; */
+
+
+  /* justify-content: space-between; */
+
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+	flex-direction: row;
+	flex-wrap: wrap;
+	/* justify-content: flex-start; */
+	/* align-items: stretch; */
+	/* align-content: stretch; */
+  overflow: auto;
+  
+  
 }
 
 .profile-header {
@@ -213,34 +234,34 @@ export default {
 }
 
 @media (max-width: 640px) {
-  .profile-container {
-    flex-direction: column;
-  }
-  
-  .profile-image {
-    max-width: 100%;
-    height: 300rem;
-  }
-  
-  .profile-content {
-    padding: 6rem;
-  }
-  
-  /* .mailing-address {
-    min-width: auto;
-    width: 100%;
-  } */
+/* .profile-container {
+  flex-direction: column;
+}
 
-  .small-text{
-    margin-bottom: 1em !important;
-  }
-  
-  .footer-info {
-    flex-direction: column;
-    gap: 10rem;
+.profile-image {
+  max-width: 100%;
+  height: 300rem;
+}
+
+.profile-content {
+  padding: 6rem;
+} */
+
+/* .mailing-address {
+  min-width: auto;
+  width: 100%;
+} */
+
+/* .small-text{
+  margin-bottom: 1em !important;
+}
+
+.footer-info {
+  flex-direction: column;
+  gap: 10rem;
 
 
-    margin-top: 80rem;
-  }
+  margin-top: 80rem;
+} */
 }
 </style> 

@@ -42,7 +42,7 @@ export default {
     const menuItems = [
       { name: 'Atelier Dasha Tsapenko', path: '/' },
       { name: 'Projects', path: '/projects' },
-      // { name: 'Objects', path: '/objects' },
+      { name: 'Objects', path: '' },
       { name: 'Shows', path: '/shows' },
       { name: 'Press', path: '/press' },
       { name: 'Profile', path: '/profile' },
@@ -51,9 +51,9 @@ export default {
     // Get button variant considering both the current route and the clicked button
     const getButtonVariant = (path) => {
       // If this is the button that was just clicked, make it active immediately
-      if (clickedPath.value === path) {
-        return 'active'
-      }
+      // if (clickedPath.value === path) {
+        // return 'active'
+      // }
       // Otherwise, use the normal active state logic
       return navigationManager.isActive(route, path) ? 'active' : 'black'
     }
