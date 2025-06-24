@@ -173,19 +173,23 @@ export default {
 }
 
 .profile-content {
-  padding: var(--space-xl) var(--space-2xl) var(--space-xl) var(--space-2xl);
+  padding: var(--space-xl) var(--space-4xl) var(--space-xl) var(--space-4xl);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   overflow: auto;
+  overflow-x: hidden;
+  padding-right: calc(var(--space-4xl) *1.5);
 }
 
 .profile-header {
   margin-bottom: var(--space-lg);
+  overflow: visible;
 }
 
 .profile-description {
-  margin-bottom: var(--space-xl);
+  margin-bottom: calc(var(--space-4xl)*1.5);
+  text-indent: var(--space-2xl);
 }
 
 .contact-info {
@@ -197,9 +201,9 @@ export default {
 }
 
 .section-title {
-  font-size: var(--text-lg);
-  font-weight: bold;
-  margin-bottom: var(--space-xs);
+  /* font-size: var(--text-lg); */
+  /* font-weight: bold; */
+  margin-bottom: var(--space-sm);
 }
 
 .mailing-address {
@@ -222,6 +226,31 @@ export default {
   margin: 0;
   line-height: 1.4;
   z-index: 999;
+}
+
+.footer-right {
+  padding-left: var(--space-4xl)
+}
+
+@media (max-width: 400px) {
+  .profile-container{
+    flex-direction: column-reverse;
+  }
+
+  .profile-content {
+  padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-md);
+  width: 100%;
+}
+
+.footer-info {
+  grid-template-columns: 1fr;
+}
+
+.footer-right {
+  padding: 0;
+}
+
+
 }
 
 </style> 

@@ -28,8 +28,8 @@ export default {
   padding: var(--space-md);
   margin: 0;
   box-sizing: border-box;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  /* overflow-y: visible; */
+  /* overflow-x: hidden; */
   font-weight: 670;
   font-size: var(--text-4xl);
   line-height: var(--text-4xl);

@@ -96,9 +96,8 @@ export default {
             variant="grey">{{ story.content?.date_tag || story.content?.year_tag }}</BaseButton>
         </div>
 
-        <MainText>
-          {{ story.content?.main_text || 'No Description Available' }}
-        </MainText>
+        <InfoText :text="story.content?.info_text || ''" />
+
 
         <ImageGallery 
           v-if="story.content?.visuals && story.content.visuals.length > 0"
@@ -114,7 +113,11 @@ export default {
           <p>No images available for this project</p>
         </div>
 
-        <InfoText :text="story.content?.info_text || ''" />
+        <MainText>
+          {{ story.content?.main_text || 'No Description Available' }}
+        </MainText>
+
+
 
         <div class="button-container">
           <BaseButton to="/projects">Other projects</BaseButton>

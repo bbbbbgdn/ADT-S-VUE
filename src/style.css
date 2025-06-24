@@ -60,7 +60,7 @@
    * - scales fluidly at 0.8% of viewport width
    * - won't exceed 1.2px */
 
-   --base-font-size: clamp(0.0px, 0.065vw, 2px);
+   --base-font-size: clamp(0.1px, 0.06vw, 2px);
    --scale-factor: 1;
   
   /* Spacing scale */
@@ -69,8 +69,8 @@
   --space-md: 3rem;
   --space-lg: 4rem;
   --space-xl: 6rem;
-  --space-2xl: 8rem;
-  --space-3xl: 12rem;
+  --space-2xl: 40rem;
+  --space-4xl: 80rem;
   
   /* Typography scale */
   --text-xs: 8rem;
@@ -80,7 +80,7 @@
   --text-xl: 24rem;
   --text-2xl: 32rem;
   --text-3xl: 40rem;
-  --text-4xl: 48rem;
+  --text-4xl: 34rem;
   
   /* Component sizes */
   --button-padding-y: 4rem;
@@ -143,13 +143,15 @@
     --scale-factor: 0.8;
   }
 }
+*/
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 400px) {
   :root {
-    --base-font-size: clamp(0.5px, 0.65vw, 0.8px);
-    --scale-factor: 0.7;
+    /* --base-font-size: clamp(0.5px, 0.65vw, 0.8px); */
+    --base-font-size: clamp(0.1px, 0.2vw, 2px);
+    /* --scale-factor: 0.7; */
   }
-} */
+} 
 
 .small-text {
   font-size: var(--text-base);
