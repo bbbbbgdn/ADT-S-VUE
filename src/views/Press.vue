@@ -1,12 +1,21 @@
 <template>
   <div class="press-container">
-    <Transition name="fade">
+    <!-- Preload all images with opacity 0 -->
+    <div 
+      v-for="(yearGroup, year) in groupedPress" 
+      :key="year"
+      class="year-group"
+    >
       <div 
-        v-if="activeImage" 
+        v-for="press in yearGroup" 
+        :key="press.id"
         class="background-image"
-        :style="{ backgroundImage: `url(${activeImage})` }"
+        :style="{ 
+          backgroundImage: `url(${press.content.Media?.filename})`,
+          opacity: activeImageId === press.id ? 1 : 0
+        }"
       ></div>
-    </Transition>
+    </div>
 
     <div v-for="(yearGroup, year) in groupedPress" :key="year" class="year-group">
       <BaseButton 
@@ -22,7 +31,7 @@
           v-for="press in yearGroup" 
           :key="press.id" 
           class="press-item"
-          @mouseenter="showImage(press.content.Media)"
+          @mouseenter="showImage(press.id)"
           @mouseleave="hideImage"
           @click="openPressUrl(press.content.URL.url)"
         >
@@ -58,7 +67,7 @@ export default {
   setup() {
     const storyblokApi = useStoryblokApi()
     const pressItems = ref([])
-    const activeImage = ref(null)
+    const activeImageId = ref(null)
 
     const groupedPress = computed(() => {
       const groups = {}
@@ -81,18 +90,15 @@ export default {
       }
     }
 
-    // Добавляем функции для управления изображением
-    const showImage = (media) => {
-      console.log('Show image called with media:', media)
-      if (media?.filename) {
-        activeImage.value = media.filename
-        console.log('Setting active image to:', activeImage.value)
-      }
+    // Modified functions to manage image opacity instead of DOM manipulation
+    const showImage = (pressId) => {
+      console.log('Show image called with press ID:', pressId)
+      activeImageId.value = pressId
     }
 
     const hideImage = () => {
       console.log('Hide image called')
-      activeImage.value = null
+      activeImageId.value = null
     }
 
     onMounted(async () => {
@@ -116,7 +122,7 @@ export default {
     return {
       groupedPress,
       openPressUrl,
-      activeImage,
+      activeImageId,
       showImage,
       hideImage
     }
@@ -126,13 +132,12 @@ export default {
 
 <style scoped>
 .press-container {
-  /* padding: 20px; */
-  /* max-width: 1200px; */
-  margin: 0rem 3rem;
-  position: relative; /* Для позиционирования фонового изображения */
+  margin: 0rem var(--space-md);
+  position: relative;
+  mix-blend-mode: difference;
 }
 
-/* Добавляем стили для фонового изображения */
+/* Modified styles for background images */
 .background-image {
   position: fixed;
   top: 0;
@@ -143,14 +148,11 @@ export default {
   background-position: center;
   pointer-events: none;
   z-index: -1;
+  transition: opacity .3s ease-out;
 }
 
-.fade-enter-active, 
-.fade-leave-active {
-  transition: opacity 3s ease;
-}
 
-.fade-enter-from,
+/* .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
@@ -158,12 +160,12 @@ export default {
 .fade-enter-to,
 .fade-leave-from {
   opacity: 1;
-}
+} */
 
 .year-group {
   display: grid;
   grid-template-columns: auto 1fr; 
-  gap: 3rem;
+  gap: var(--space-md);
 }
 
 .year-button {
@@ -173,17 +175,16 @@ export default {
 .press-items {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  
+  gap: var(--space-md);
 }
 
 .press-item {
   display: flex;
-  gap: 3rem;
+  gap: var(--space-md);
   width: fit-content;
   align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; */
   position: relative;
   z-index: 1;
 }
@@ -214,18 +215,17 @@ export default {
   border: none !important;
   justify-content: flex-start !important;
   cursor: pointer !important;
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; */
 }
-
 
 @media (max-width: 768px) {
   .press-container {
-    padding: 10px;
+    padding: var(--space-sm);
   }
   
   .year-group {
-    grid-template-columns: 1fr; /* На мобильных устройствах переходим в одну колонку */
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
   }
 
   .press-item {

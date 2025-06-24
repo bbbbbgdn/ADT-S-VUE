@@ -158,27 +158,27 @@ export default {
 
 .project-tags {
   display: flex;
-  gap: 3rem;
-  margin-left: 3rem;
+  gap: var(--space-md);
+  margin-left: var(--space-md);
   flex-wrap: wrap;
   align-items: center;
 }
 
 .button-container {
-  margin: 5vh 0 0 3rem;
+  margin: 5vh 0 0 var(--space-md);
 }
 
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
-  padding: 3rem;
+  padding: var(--space-md);
 }
 
 .error-message {
   text-align: center;
-  padding: 2rem;
-  margin: 2rem auto;
+  padding: var(--space-sm);
+  margin: var(--space-sm) auto;
   max-width: 600px;
   background-color: #f8f8f8;
   border-radius: 8px;
@@ -187,8 +187,8 @@ export default {
 
 .warning-message {
   text-align: center;
-  padding: 1rem;
-  margin: 1rem auto;
+  padding: var(--space-xs);
+  margin: var(--space-xs) auto;
   max-width: 800px;
   background-color: #fff3cd;
   border-left: 4px solid #ffc107;
@@ -203,8 +203,8 @@ export default {
 
 .no-images-message, .no-projects-message {
   text-align: center;
-  padding: 2rem;
-  margin: 2rem auto;
+  padding: var(--space-sm);
+  margin: var(--space-sm) auto;
   background-color: #f8f8f8;
   border-radius: 8px;
 }
@@ -212,7 +212,7 @@ export default {
 @media screen and (max-width: 640px) {
   .image-grid {
     grid-template-columns: repeat(2, 1fr);
-    padding: 3rem;
+    padding: var(--space-md);
   }
 
   .project-card {

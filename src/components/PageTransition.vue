@@ -78,19 +78,19 @@ export default {
 <style>
 /* The main transition for page content */
 .page-transition-enter-active {
-  transition: opacity var(--transition-duration, 500ms) var(--transition-easing, ease);
+  transition: opacity var(--transition-duration) var(--transition-easing);
   visibility: visible;
 }
 
 .page-transition-enter-from {
-  opacity: 0 !important; /* Force opacity 0 with !important */
+  opacity: 0 !important;
   visibility: visible;
 }
 
 /* Ensure transitioning pages fade out properly */
 body.page-transitioning main {
   opacity: 0;
-  transition: opacity var(--transition-duration, 500ms) var(--transition-easing, ease);
+  transition: opacity var(--transition-duration) var(--transition-easing);
 }
 
 /* Ensure the menu stays visible during transitions */
@@ -101,6 +101,6 @@ body.page-transitioning .menu {
 /* Global styles for image transitions */
 .image-loaded,
 .image-visible {
-  transition: opacity var(--transition-duration, 500ms) var(--transition-easing, ease);
+  transition: opacity var(--transition-duration) var(--transition-easing);
 }
 </style> 

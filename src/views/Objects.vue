@@ -100,15 +100,15 @@ export default {
 .objects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* добавим отступы между карточками */
+  gap: var(--space-lg);
   width: 100%;
-  padding: 20px; /* добавим отступы от краев */
+  padding: var(--space-lg);
 }
 
 .object-card {
   height: 50vh;
   width: 100%;
-  overflow: hidden; /* предотвратим выход контента за пределы карточки */
+  overflow: hidden;
 }
 
 .object-card:hover {
@@ -120,7 +120,7 @@ export default {
 @media (max-width: 768px) {
   .objects-grid {
     grid-template-columns: 1fr;
-    padding: 10px;
+    padding: var(--space-sm);
   }
 }
 </style> 

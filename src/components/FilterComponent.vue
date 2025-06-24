@@ -59,13 +59,13 @@ export default {
 <style scoped>
 .filter-container {
   display: flex;
-  gap: 10px;
-  padding: 20px;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
   flex-wrap: wrap;
 }
 
 .active {
-  background-color: #E5B8FF !important; /* Фиолетовый цвет для активной кнопки */
+  background-color: var(--color-pink-primary) !important;
 }
 
 /* Черная кнопка */
@@ -76,7 +76,7 @@ export default {
 
 @media (max-width: 768px) {
   .filter-container {
-    padding: 10px;
+    padding: var(--space-sm);
     justify-content: center;
   }
 }

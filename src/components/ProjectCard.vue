@@ -181,11 +181,10 @@ export default {
   position: relative;
   display: flex;
   align-items: flex-end;
-  /* min-height: 45vh; */
   aspect-ratio: 16/10;
   height: 100%;
   overflow: hidden;
-  background-color: transparent; /* Start with transparent background */
+  background-color: transparent;
 }
 
 .project-card:hover .button-black {
@@ -242,22 +241,19 @@ export default {
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
-  margin: 3rem;
+  margin: var(--space-md);
   z-index: 1;
-  gap: 3rem;
+  gap: var(--space-md);
 }
 
 /* Style for the button hover effect */
 .button-hover {
-  /* opacity: 0.75 !important; */
 }
-
 
 @media screen and (max-width: 640px) {
   .project-card {
     min-height: 30vh;
   }
 }
-
 </style> 
 

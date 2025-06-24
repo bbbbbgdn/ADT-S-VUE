@@ -25,17 +25,16 @@ export default {
 <style>
 .main-text {
   width: 100%;
-  padding: 3rem;
+  padding: var(--space-md);
   margin: 0;
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   font-weight: 670;
-  font-size: 34rem;
-  line-height: 42rem;
-  text-indent: 70rem;
-
-  margin-bottom: 70rem;
+  font-size: var(--text-4xl);
+  line-height: var(--text-4xl);
+  text-indent: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .main-text p {
@@ -69,9 +68,6 @@ export default {
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .main-text {
-    /* font-size: 22rem; */
-    /* line-height: 1.24; */
-    /* text-indent: 35rem; */
   }
 }
 </style> 

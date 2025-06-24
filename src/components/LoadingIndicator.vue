@@ -32,10 +32,10 @@ export default {
 /* Loading styles */
 .loading-container {
   position: fixed;
-  top: 49rem;
+  top: var(--space-xl);
   left: 0;
   width: 100%;
-  height: calc(100vh - 49rem);
+  height: calc(100vh - var(--space-xl));
   display: flex;
   justify-content: center;
   align-items: center;

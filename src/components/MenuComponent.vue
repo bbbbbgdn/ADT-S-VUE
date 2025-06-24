@@ -42,7 +42,7 @@ export default {
     const menuItems = [
       { name: 'Atelier Dasha Tsapenko', path: '/' },
       { name: 'Projects', path: '/projects' },
-      { name: 'Objects', path: '' },
+      // { name: 'Objects', path: '' },
       { name: 'Shows', path: '/shows' },
       { name: 'Press', path: '/press' },
       { name: 'Profile', path: '/profile' },
@@ -82,10 +82,10 @@ export default {
 
 <style scoped>
 .menu {
-  padding: 3rem;
+  padding: var(--space-md);
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: var(--space-md);
   z-index: 100;
   position: relative;
 }
@@ -94,13 +94,13 @@ export default {
   position: absolute;
   right: 0;
   top: 0;
-  margin: 3rem;
+  margin: var(--space-md);
 }
 
 /* Menu button styles - using CSS variables */
 .menu-button {
-  transition: background-color var(--transition-duration, 500ms) var(--transition-easing, ease), 
-              color var(--transition-duration, 500ms) var(--transition-easing, ease);
+  transition: background-color var(--transition-duration) var(--transition-easing), 
+              color var(--transition-duration) var(--transition-easing);
 }
 
 </style>    

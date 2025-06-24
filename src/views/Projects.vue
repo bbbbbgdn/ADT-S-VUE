@@ -71,14 +71,14 @@ export default {
 <style scoped>
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);  /* Creates 2 equal columns */
+  grid-template-columns: repeat(2, 1fr);
   width: 100%;
   min-height: 100%;
-  padding: 0 3rem 3rem 3rem;
+  padding: 0 var(--space-md) var(--space-md) var(--space-md);
 }
 
 .project-card {
-  transition: opacity 0.5s ease-out;
+  /* transition: opacity 0.5s ease-out; */
 }
 
 /* Responsive layout for mobile devices */

@@ -99,17 +99,17 @@ export default {
 <style scoped>
 .base-button {
   display: inline-block;
-  padding: 4rem 12rem 6rem 12rem;
+  padding: var(--button-padding-y) var(--button-padding-x);
   white-space: nowrap;
-  border-radius: 100rem;
+  border-radius: var(--button-border-radius);
   
-  min-height: 42.4rem;
+  min-height: var(--button-min-height);
   line-height: 1.2;
 
   text-align: left;
 
   /* Set initial transition properties */
-  transition: all 0.5s ease-in-out !important;
+  /* transition: background-color 0.5s ease-in-out !important; */
 }
 
 /* Black Button */
@@ -142,7 +142,7 @@ export default {
 .button-black:hover {
   background-color: var(--color-pink-primary);
   color: black;
-  transition: all 0.5s ease !important;
+  /* transition: background-color 0.5s ease !important; */
 }
 
 /* Active Button */

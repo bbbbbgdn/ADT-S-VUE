@@ -1,74 +1,76 @@
 <template>
-  <div class="profile-container">
-    <div class="profile-image">
-      <img 
-        :src="profileImage" 
-        :class="{'image-visible': imageLoaded}"
-        alt="Dasha Tsapenko working with bio-material" 
-        @load="handleImageLoaded"
-        ref="profileImg"
-      />
-      <div class="image-placeholder" v-if="!imageLoaded"></div>
-    </div>
-    
-    <div class="profile-content">
-      <div class="profile-header">
-        <MainText>Atelier Dasha Tsapenko is an artistic practise focusing on bio-design, based in The Hague, NL.</MainText>
+  <div class="profile-page-wrapper">
+    <div class="profile-container">
+      <div class="profile-image">
+        <img 
+          :src="profileImage" 
+          :class="{'image-visible': imageLoaded}"
+          alt="Dasha Tsapenko working with bio-material" 
+          @load="handleImageLoaded"
+          ref="profileImg"
+        />
+        <div class="image-placeholder" v-if="!imageLoaded"></div>
       </div>
       
-      <div class="profile-description">
+      <div class="profile-content">
+        <div class="profile-header">
+          <MainText>Atelier Dasha Tsapenko is an artistic practise focusing on bio-design, based in The Hague, NL.</MainText>
+        </div>
+        
+        <div class="profile-description">
 
-          <p>
-            With a strong believe in the bio-based future of fashion, the founder of the atelier Dasha Tsapenko, develops sustainable concepts, products, and innovative techniques, using self-grown flexible matter as a medium. Fascinated by nature and her non-human inhabitants, Dasha uses natural cycles & rythms as guidelines and frameworks for design.
-          </p>
-          
-          <p>
-            To produce surfaces by letting them grow, the atelier collaborates with diverse living organisms like fungi and plants, often working between the microbiology lab and a farm—in close contact with scientists and local farmers. After the growth period, the harvested surfaces are hand-processed and transformed into garments, tapestries and flexible interior items.
-          </p>
-          
-          <p>
-            The intersection of fashion and agriculture is another major topic of investigation. Both fields share similar problems, but most importantly - methods and principles that can be learned and benefited from. Textile dyes from local crop waste, fur from regional bean pods and fungal felt are few examples of projects, the Atelier is currently busy with.
-          </p>
-          
-          <p>
-            Besides growing (art) pieces and developing alternative production procecess, Atelier Dasha Tsapenko offers artistic direction, curation and tailored workshops in fields of bio-based fashion and textile design.
-          </p>
-      </div>
-      
-      <div class="contact-info">
-        <div class="contact-section">
-          <div class="section-title">EMAIL:</div>
-          <BaseButton @click="sendEmail">tsapenkodash@gmail.com</BaseButton>
+            <p>
+              With a strong believe in the bio-based future of fashion, the founder of the atelier Dasha Tsapenko, develops sustainable concepts, products, and innovative techniques, using self-grown flexible matter as a medium. Fascinated by nature and her non-human inhabitants, Dasha uses natural cycles & rythms as guidelines and frameworks for design.
+            </p>
+            
+            <p>
+              To produce surfaces by letting them grow, the atelier collaborates with diverse living organisms like fungi and plants, often working between the microbiology lab and a farm—in close contact with scientists and local farmers. After the growth period, the harvested surfaces are hand-processed and transformed into garments, tapestries and flexible interior items.
+            </p>
+            
+            <p>
+              The intersection of fashion and agriculture is another major topic of investigation. Both fields share similar problems, but most importantly - methods and principles that can be learned and benefited from. Textile dyes from local crop waste, fur from regional bean pods and fungal felt are few examples of projects, the Atelier is currently busy with.
+            </p>
+            
+            <p>
+              Besides growing (art) pieces and developing alternative production procecess, Atelier Dasha Tsapenko offers artistic direction, curation and tailored workshops in fields of bio-based fashion and textile design.
+            </p>
         </div>
         
-        <div class="contact-section">
-          <div class="section-title">MAILING ADDRESS:</div>
-          <BaseButton class="mailing-address" >
-            De Constant Rebecqueplein 20-B
-            2518RA 's-Gravenhage,
-            Netherlands
-          </BaseButton>
-        </div>
-        
-        <div class="contact-section">
-          <div class="section-title">LINKS:</div>
-          <div class="social-links">
-            <BaseButton @click="openLink('https://www.instagram.com/atelier__dashatsapenko/')">Instagram</BaseButton>
-            <!-- <BaseButton @click="openLink('https://linkedin.com')">Linkedin</BaseButton> -->
-            <BaseButton @click="openLink('https://www.linkedin.com/in/dasha-tsapenko-66b1838b/')">Linkedin</BaseButton>
+        <div class="contact-info">
+          <div class="contact-section">
+            <div class="section-title">EMAIL:</div>
+            <BaseButton @click="sendEmail">tsapenkodash@gmail.com</BaseButton>
+          </div>
+          
+          <div class="contact-section">
+            <div class="section-title">MAILING ADDRESS:</div>
+            <BaseButton class="mailing-address" >
+              De Constant Rebecqueplein 20-B
+              2518RA 's-Gravenhage,
+              Netherlands
+            </BaseButton>
+          </div>
+          
+          <div class="contact-section">
+            <div class="section-title">LINKS:</div>
+            <div class="social-links">
+              <BaseButton @click="openLink('https://www.instagram.com/atelier__dashatsapenko/')">Instagram</BaseButton>
+              <!-- <BaseButton @click="openLink('https://linkedin.com')">Linkedin</BaseButton> -->
+              <BaseButton @click="openLink('https://www.linkedin.com/in/dasha-tsapenko-66b1838b/')">Linkedin</BaseButton>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="footer-info">
-    <div class="footer-left">
-      <p class="small-text">KVK: 70382514, VAT: NL002491950B87</p>
-      <p>2025 © Atelier Dasha Tsapenko</p>
-    </div>
-    <div class="footer-right">
-      <p>This website is still cultivating its final form.</p>
+    
+    <div class="footer-info">
+      <div class="footer-left">
+        <p class="small-text">KVK: 70382514, VAT: NL002491950B87</p>
+        <p>2025 © Atelier Dasha Tsapenko</p>
+      </div>
+      <div class="footer-right">
+        <p>This website is still cultivating its final form.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -118,6 +120,15 @@ export default {
 </script>
 
 <style scoped>
+.profile-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--button-min-height));
+}
+
+.profile-container {
+  flex: 1 0 auto;
+}
 
 .profile-container {
   display: flex;
@@ -130,20 +141,22 @@ export default {
   flex: 0 0 50%;
   overflow: hidden;
   position: relative;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   overflow: visible;
+  z-index: -1;
+  /* height: 100%; */
 }
 
 .profile-image img {
   width: 100%;
-  /* height: 100%; */
   object-fit: contain;
-  padding: 0 3rem 0 3rem;
+  padding: 0 var(--space-md) 0 var(--space-md);
   opacity: 0;
   transition: opacity 300ms ease;
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  display: block;
 }
 
 .image-placeholder {
@@ -160,108 +173,55 @@ export default {
 }
 
 .profile-content {
-  /* flex: 0 0 50%; */
-
-
-  /* box-sizing: border-box; */
-
-
-  padding: 40rem 80rem 40rem 80rem;
-  /* display: flex; */
-
-
-  /* flex-direction: column; */
-
-
-  /* justify-content: space-between; */
-
+  padding: var(--space-xl) var(--space-2xl) var(--space-xl) var(--space-2xl);
   display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	/* justify-content: flex-start; */
-	/* align-items: stretch; */
-	/* align-content: stretch; */
+  flex-direction: row;
+  flex-wrap: wrap;
   overflow: auto;
-  
-  
 }
 
 .profile-header {
-  margin-bottom: 20rem;
+  margin-bottom: var(--space-lg);
 }
 
 .profile-description {
-  margin-bottom: 30rem;
-
+  margin-bottom: var(--space-xl);
 }
 
-
 .contact-info {
-  margin-top: 40rem;
+  margin-top: var(--space-xl);
 }
 
 .contact-section {
-  margin-bottom: 15rem;
+  margin-bottom: var(--space-md);
 }
 
 .section-title {
-  font-size: 18rem;
+  font-size: var(--text-lg);
   font-weight: bold;
-  margin-bottom: 5rem;
+  margin-bottom: var(--space-xs);
 }
 
 .mailing-address {
-  /* white-space: normal !important; */
-  /* line-height: 1.5; */
-  /* min-width: 260rem; */
 }
 
 .social-links {
   display: flex;
-  gap: 3rem;
+  gap: var(--space-md);
 }
 
 .footer-info {
+  margin-top: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: end;
-  padding: 6rem;
+  padding: var(--space-sm);
 }
 
 .footer-left p, .footer-right p {
   margin: 0;
   line-height: 1.4;
+  z-index: 999;
 }
 
-@media (max-width: 640px) {
-/* .profile-container {
-  flex-direction: column;
-}
-
-.profile-image {
-  max-width: 100%;
-  height: 300rem;
-}
-
-.profile-content {
-  padding: 6rem;
-} */
-
-/* .mailing-address {
-  min-width: auto;
-  width: 100%;
-} */
-
-/* .small-text{
-  margin-bottom: 1em !important;
-}
-
-.footer-info {
-  flex-direction: column;
-  gap: 10rem;
-
-
-  margin-top: 80rem;
-} */
-}
 </style> 

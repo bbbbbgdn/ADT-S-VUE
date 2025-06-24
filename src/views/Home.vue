@@ -71,13 +71,13 @@ export default {
 .content {
   text-align: center;
   color: white;
-  padding: 2rem;
+  padding: var(--space-md);
   /* background-color: rgba(0, 0, 0, 0.5); */
   border-radius: 8px;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: var(--text-3xl);
   margin: 0;
 }
 
@@ -117,7 +117,7 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 34rem;
+  font-size: var(--text-4xl);
   font-weight: 670;
   color: rgba(0, 0, 0, 1);
   z-index: 0;

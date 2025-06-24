@@ -90,7 +90,7 @@ export default {
 .lazy-background {
   position: relative;
   background-repeat: no-repeat;
-  transition: opacity 0.3s ease;
+  /* transition: opacity 0.3s ease; */
 }
 
 .lazy-background:not(.image-loaded) {

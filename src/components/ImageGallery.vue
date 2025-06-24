@@ -385,13 +385,13 @@ export default {
 }
 
 .gallery-item:first-of-type {
-  padding-left: 3rem; /* indicate first image */
+  padding-left: var(--gallery-item-margin);
 }
 
 .gallery-tags {
   display: flex;
-  gap: 3rem;
-  padding: 3rem 3rem 3rem 3rem;
+  gap: var(--gallery-tags-gap);
+  padding: var(--gallery-tags-padding);
 }
 
 .gallery-container.clickable .gallery-tags {

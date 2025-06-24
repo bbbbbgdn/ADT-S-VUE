@@ -151,8 +151,8 @@ const formatOtherShowsImages = (visuals) => {
 }
 
 h1 {
-  font-size: 2rem;
-  margin: 20px 0;
+  font-size: var(--text-2xl);
+  margin: var(--space-lg) 0;
 }
 
 .image-gallery {
@@ -173,7 +173,7 @@ h1 {
 }
 
 .button-container {
-  margin: 3rem;
+  margin: var(--space-md);
 }
 
 .other-shows-container {
@@ -186,8 +186,8 @@ h1 {
 /* Error message styling */
 .error-message {
   text-align: center;
-  padding: 2rem;
-  margin: 2rem auto;
+  padding: var(--space-sm);
+  margin: var(--space-sm) auto;
   max-width: 600px;
   background-color: #f8f8f8;
   border-radius: 8px;
@@ -195,15 +195,15 @@ h1 {
 }
 
 .error-message p {
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
   /* margin-bottom: 1rem; */
 }
 
 /* Warning message styling */
 .warning-message {
   text-align: center;
-  padding: 1rem;
-  margin: 1rem auto;
+  padding: var(--space-xs);
+  margin: var(--space-xs) auto;
   max-width: 800px;
   background-color: #fff3cd;
   border-left: 4px solid #ffc107;
@@ -219,8 +219,8 @@ h1 {
 /* No images message */
 .no-images-message, .no-shows-message {
   text-align: center;
-  padding: 2rem;
-  margin: 2rem auto;
+  padding: var(--space-sm);
+  margin: var(--space-sm) auto;
   background-color: #f8f8f8;
   border-radius: 8px;
 }

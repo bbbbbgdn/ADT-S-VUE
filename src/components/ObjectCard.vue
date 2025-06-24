@@ -77,10 +77,10 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 2rem;
+  padding: var(--space-sm);
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--space-xs);
   z-index: 1;
   /* background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); */
 }

@@ -127,7 +127,7 @@ export default {
 .lazy-image {
   width: 100%;
   height: 100%;
-  transition: opacity 0.3s ease;
+  /* transition: opacity 0.3s ease; */
 }
 
 .lazy-image.image-loading {
