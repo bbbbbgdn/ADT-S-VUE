@@ -9,7 +9,7 @@
       @click="navigateTo(item.path, $event)"
       class="menu-button"
     >
-      {{ item.name }}
+      {{ getMenuText(item) }}
     </BaseButton>
   </nav>
 </template>
@@ -29,6 +29,18 @@ export default {
     const router = useRouter()
     const route = useRoute()
     const currentPath = ref(route.path)
+    const isMobile = ref(false)
+    
+    // Check screen size on mount and resize
+    const checkScreenSize = () => {
+      isMobile.value = window.innerWidth <= 768
+    }
+    
+    // Initialize screen size check
+    checkScreenSize()
+    
+    // Add resize listener
+    window.addEventListener('resize', checkScreenSize)
     
     // Watch for route changes
     watch(
@@ -53,6 +65,14 @@ export default {
       return navigationManager.isActive(route, path) ? 'active' : 'black'
     }
 
+    // Get menu text based on screen size
+    const getMenuText = (item) => {
+      if (item.path === '/' && isMobile.value) {
+        return 'ADT'
+      }
+      return item.name
+    }
+
     const navigateTo = (path, event) => {
       // Don't navigate if we're already on this page
       if (currentPath.value === path) return;
@@ -66,7 +86,8 @@ export default {
       navigateTo,
       currentPath,
       isActive: (path) => navigationManager.isActive(route, path),
-      getButtonVariant
+      getButtonVariant,
+      getMenuText
     }
   }
 }
