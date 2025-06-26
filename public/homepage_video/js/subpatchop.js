@@ -1,14 +1,63 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
+/******/ 	// runtime can't be in strict mode because a global variable is assign and maybe created.
+/******/ 	// The require scope
+/******/ 	var __webpack_require__ = {};
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
-const SubPatchOp = class
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  SubPatchOp: () => (/* binding */ SubPatchOp)
+});
+
+;// CONCATENATED MODULE: external "CABLES"
+const external_CABLES_namespaceObject = CABLES;
+;// CONCATENATED MODULE: ./src/corelibs/subpatchop/subpatchop.js
+
+
+class SubPatchOp
 {
     constructor(op, options)
     {
         options = options || {};
         this._op = op;
 
-        op.patchId = op.addInPort(new CABLES.Port(op, "patchId", CABLES.OP_PORT_TYPE_STRING, { "display": "readonly", "hidePort": true, "hideParam": true }));
+        op.patchId = op.addInPort(new external_CABLES_namespaceObject.Port(op, "patchId", external_CABLES_namespaceObject.CONSTANTS.OP.OP_PORT_TYPE_STRING, { "display": "readonly", "hidePort": true, "hideParam": true }));
 
         op.setUiAttribs({ "subPatchOp": { "version": 2 } });
 
@@ -19,7 +68,7 @@ const SubPatchOp = class
         else
         {
             if (options.subId) op.patchId.set(options.subId);
-            else op.patchId.set(CABLES.generateUUID());
+            else op.patchId.set(external_CABLES_namespaceObject.utils.generateUUID());
         }
 
         op.patchId.onChange = () =>
@@ -64,10 +113,12 @@ const SubPatchOp = class
     {
         return this._op.patchId.get();
     }
-};
+}
 
-CABLES.SubPatchOp = SubPatchOp;
+})();
 
-((this.CABLES = this.CABLES || {}).COREMODULES = this.CABLES.COREMODULES || {}).Subpatchop = __webpack_exports__.Cables;
+var __webpack_export_target__ = (CABLES = typeof CABLES === "undefined" ? {} : CABLES);
+for(var i in __webpack_exports__) __webpack_export_target__[i] = __webpack_exports__[i];
+if(__webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target__, "__esModule", { value: true });
 /******/ })()
 ;

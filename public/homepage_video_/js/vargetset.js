@@ -1,57 +1,7 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	// runtime can't be in strict mode because a global variable is assign and maybe created.
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
+/******/ 	"use strict";
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  VarGetOpWrapper: () => (/* binding */ VarGetOpWrapper),
-  VarSetOpWrapper: () => (/* binding */ VarSetOpWrapper)
-});
-
-;// CONCATENATED MODULE: external "CABLES"
-const external_CABLES_namespaceObject = CABLES;
-;// CONCATENATED MODULE: ./src/corelibs/vargetset/vargetset.js
-
-
-class VarSetOpWrapper
+const VarSetOpWrapper = class
 {
     constructor(op, type, valuePort, varNamePort, triggerPort, nextPort)
     {
@@ -107,11 +57,11 @@ class VarSetOpWrapper
             this._updateErrorUi();
         };
 
-        if (type == "array") this._typeId = external_CABLES_namespaceObject.Port.TYPE_ARRAY;
-        else if (type == "object") this._typeId = external_CABLES_namespaceObject.Port.TYPE_OBJECT;
-        else if (type == "string") this._typeId = external_CABLES_namespaceObject.Port.TYPE_STRING;
-        else if (type == "texture") this._typeId = external_CABLES_namespaceObject.Port.TYPE_TEXTURE;
-        else this._typeId = external_CABLES_namespaceObject.Port.TYPE_VALUE;
+        if (type == "array") this._typeId = CABLES.Port.TYPE_ARRAY;
+        else if (type == "object") this._typeId = CABLES.Port.TYPE_OBJECT;
+        else if (type == "string") this._typeId = CABLES.Port.TYPE_STRING;
+        else if (type == "texture") this._typeId = CABLES.Port.TYPE_TEXTURE;
+        else this._typeId = CABLES.Port.TYPE_VALUE;
 
     }
 
@@ -203,20 +153,20 @@ class VarSetOpWrapper
             this._var = this._op.patch.getVar(name);
         }
 
-        if (this._typeId == external_CABLES_namespaceObject.Port.TYPE_VALUE || this._typeId == external_CABLES_namespaceObject.Port.TYPE_STRING)
+        if (this._typeId == CABLES.Port.TYPE_VALUE || this._typeId == CABLES.Port.TYPE_STRING)
         {
             this._var.setValue(v);
         }
         else
-        if (this._typeId == external_CABLES_namespaceObject.Port.TYPE_ARRAY)
+        if (this._typeId == CABLES.Port.TYPE_ARRAY)
         {
             this._arr = [];
-            external_CABLES_namespaceObject.utils.copyArray(v, this._arr);
+            CABLES.copyArray(v, this._arr);
             this._var.setValue(this._arr);
         }
         else
         {
-            if (this._typeId == external_CABLES_namespaceObject.Port.TYPE_OBJECT)
+            if (this._typeId == CABLES.Port.TYPE_OBJECT)
             {
                 if (this._isTexture)
                     this._var.setValue(CGL.Texture.getEmptyTexture(this._op.patch.cgl));
@@ -231,9 +181,9 @@ class VarSetOpWrapper
 
         if (triggered && this._nextPort) this._nextPort.trigger();
     }
-}
+};
 
-class VarGetOpWrapper
+const VarGetOpWrapper = class
 {
     constructor(op, type, varnamePort, valueOutPort)
     {
@@ -245,11 +195,11 @@ class VarGetOpWrapper
         this._listenerId = null;
         this._typeId = 0;
 
-        if (type == "array") this._typeId = external_CABLES_namespaceObject.Port.TYPE_ARRAY;
-        else if (type == "object") this._typeId = external_CABLES_namespaceObject.Port.TYPE_OBJECT;
-        else if (type == "texture") this._typeId = external_CABLES_namespaceObject.Port.TYPE_TEXTURE;
-        else if (type == "string") this._typeId = external_CABLES_namespaceObject.Port.TYPE_STRING;
-        else this._typeId = external_CABLES_namespaceObject.Port.TYPE_VALUE;
+        if (type == "array") this._typeId = CABLES.Port.TYPE_ARRAY;
+        else if (type == "object") this._typeId = CABLES.Port.TYPE_OBJECT;
+        else if (type == "texture") this._typeId = CABLES.Port.TYPE_TEXTURE;
+        else if (type == "string") this._typeId = CABLES.Port.TYPE_STRING;
+        else this._typeId = CABLES.Port.TYPE_VALUE;
 
         if (valueOutPort) this._isTexture = valueOutPort.uiAttribs.objType === "texture";
 
@@ -319,10 +269,10 @@ class VarGetOpWrapper
     _setValueOut(v)
     {
         if (this._valueOutPort)
-            if (this._typeId == external_CABLES_namespaceObject.Port.TYPE_NUMBER || this._typeId == external_CABLES_namespaceObject.Port.TYPE_STRING)
+            if (this._typeId == CABLES.Port.TYPE_NUMBER || this._typeId == CABLES.Port.TYPE_STRING)
                 this._valueOutPort.set(v);
             else
-            if (this._typeId == external_CABLES_namespaceObject.Port.TYPE_ARRAY || this._typeId == external_CABLES_namespaceObject.Port.TYPE_OBJECT || this._isTexture)
+            if (this._typeId == CABLES.Port.TYPE_ARRAY || this._typeId == CABLES.Port.TYPE_OBJECT || this._isTexture)
                 this._valueOutPort.setRef(v);
             else
                 console.log("unkown type?"); // remove type checks when sure
@@ -359,12 +309,11 @@ class VarGetOpWrapper
         this._op.patch.emitEvent("opVariableNameChanged", this._op, this._varnamePort.get());
     }
 
-}
+};
 
-})();
+CABLES.VarSetOpWrapper = VarSetOpWrapper;
+CABLES.VarGetOpWrapper = VarGetOpWrapper;
 
-var __webpack_export_target__ = (CABLES = typeof CABLES === "undefined" ? {} : CABLES);
-for(var i in __webpack_exports__) __webpack_export_target__[i] = __webpack_exports__[i];
-if(__webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target__, "__esModule", { value: true });
+((this.CABLES = this.CABLES || {}).COREMODULES = this.CABLES.COREMODULES || {}).Vargetset = __webpack_exports__.Cables;
 /******/ })()
 ;

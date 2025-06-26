@@ -12,7 +12,6 @@ Ops.Math=Ops.Math || {};
 Ops.User=Ops.User || {};
 Ops.Vars=Ops.Vars || {};
 Ops.Cables=Ops.Cables || {};
-Ops.Number=Ops.Number || {};
 Ops.String=Ops.String || {};
 Ops.Boolean=Ops.Boolean || {};
 Ops.Devices=Ops.Devices || {};
@@ -22,7 +21,6 @@ Ops.Html.CSS=Ops.Html.CSS || {};
 Ops.TimeLine=Ops.TimeLine || {};
 Ops.Gl.Meshes=Ops.Gl.Meshes || {};
 Ops.Gl.Shader=Ops.Gl.Shader || {};
-Ops.Html.Utils=Ops.Html.Utils || {};
 Ops.Ui.Routing=Ops.Ui.Routing || {};
 Ops.Gl.Textures=Ops.Gl.Textures || {};
 Ops.Math.Compare=Ops.Math.Compare || {};
@@ -468,20 +466,20 @@ function updatePlayState()
 
                 if (videoElement.paused && inShowSusp.get())
                 {
+
                     op.setUiError("playvideo", null);
                     interActionNeededButton = true;
                     CABLES.interActionNeededButton.add(op.patch, "videoplayer", () =>
                     {
                         interActionNeededButton = false;
-                        videoElement.play().then(() =>
-                        {
+                        videoElement.play().then(() => {
                             doPlay();
                             CABLES.interActionNeededButton.remove("videoplayer");
-                        }).catch((e) =>
-                        {
+                        }).catch((e) => {
                             op.setUiError("playvideo", e.message);
                             op.logWarn("playvideo", e);
                         });
+
                     });
                 }
                 // Automatic playback failed.
@@ -689,6 +687,206 @@ function reload()
 };
 
 CABLES.OPS["9d66516f-d234-4114-b1d3-67b8e60f5dc6"]={f:Ops.Gl.Textures.VideoTexture_v3,objName:"Ops.Gl.Textures.VideoTexture_v3"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Gl.MainLoop_v2
+// 
+// **************************************************************
+
+Ops.Gl.MainLoop_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    hdpi = op.inFloat("Max Pixel Density (DPR)", 2),
+    fpsLimit = op.inValue("FPS Limit", 0),
+    reduceFocusFPS = op.inValueBool("Reduce FPS unfocussed", false),
+    clear = op.inValueBool("Transparent", false),
+    active = op.inValueBool("Active", 1),
+    trigger = op.outTrigger("trigger"),
+    width = op.outNumber("width"),
+    height = op.outNumber("height"),
+    outPixel = op.outNumber("Pixel Density");
+
+op.onAnimFrame = render;
+hdpi.onChange = updateHdpi;
+
+const cgl = op.patch.cg = op.patch.cgl;
+let rframes = 0;
+let rframeStart = 0;
+let timeOutTest = null;
+let addedListener = false;
+if (!op.patch.cgl) op.uiAttr({ "error": "No webgl cgl context" });
+
+const identTranslate = vec3.create();
+vec3.set(identTranslate, 0, 0, 0);
+const identTranslateView = vec3.create();
+vec3.set(identTranslateView, 0, 0, -2);
+
+let fsElement = null;
+let winhasFocus = true;
+let winVisible = true;
+
+window.addEventListener("blur", () => { winhasFocus = false; });
+window.addEventListener("focus", () => { winhasFocus = true; });
+document.addEventListener("visibilitychange", () => { winVisible = !document.hidden; });
+
+testMultiMainloop();
+
+op.patch.tempData.mainloopOp = this;
+
+function updateHdpi()
+{
+    setPixelDensity();
+
+    if (CABLES.UI)
+    {
+        if (hdpi.get() < 1)
+            op.patch.cgl.canvas.style.imageRendering = "pixelated";
+    }
+
+    op.patch.cgl.updateSize();
+    if (CABLES.UI) gui.setLayout();
+}
+
+active.onChange = function ()
+{
+    op.patch.removeOnAnimFrame(op);
+
+    if (active.get())
+    {
+        op.setUiAttrib({ "extendTitle": "" });
+        op.onAnimFrame = render;
+        op.patch.addOnAnimFrame(op);
+        op.log("adding again!");
+    }
+    else
+    {
+        op.setUiAttrib({ "extendTitle": "Inactive" });
+    }
+};
+
+function getFpsLimit()
+{
+    if (reduceFocusFPS.get())
+    {
+        if (!winVisible) return 10;
+        if (!winhasFocus) return 30;
+    }
+
+    return fpsLimit.get();
+}
+
+op.onDelete = function ()
+{
+    cgl.gl.clearColor(0, 0, 0.0, 0);
+    cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT | cgl.gl.DEPTH_BUFFER_BIT);
+};
+
+function setPixelDensity()
+{
+    if (hdpi.get() != 0) op.patch.cgl.pixelDensity = Math.min(hdpi.get(), window.devicePixelRatio);
+    else op.patch.cgl.pixelDensity = window.devicePixelRatio;
+}
+
+function render(time)
+{
+    if (!active.get()) return;
+    if (cgl.aborted || cgl.canvas.clientWidth === 0 || cgl.canvas.clientHeight === 0) return;
+
+    op.patch.cg = cgl;
+
+    setPixelDensity();
+
+    // if (hdpi.get())op.patch.cgl.pixelDensity = window.devicePixelRatio;
+
+    const startTime = performance.now();
+
+    op.patch.config.fpsLimit = getFpsLimit();
+
+    if (cgl.canvasWidth == -1)
+    {
+        cgl.setCanvas(op.patch.config.glCanvasId);
+        return;
+    }
+
+    if (cgl.canvasWidth != width.get() || cgl.canvasHeight != height.get())
+    {
+        width.set(cgl.canvasWidth / 1);
+        height.set(cgl.canvasHeight / 1);
+    }
+
+    if (CABLES.now() - rframeStart > 1000)
+    {
+        CGL.fpsReport = CGL.fpsReport || [];
+        if (op.patch.loading.getProgress() >= 1.0 && rframeStart !== 0)CGL.fpsReport.push(rframes);
+        rframes = 0;
+        rframeStart = CABLES.now();
+    }
+    CGL.MESH.lastShader = null;
+    CGL.MESH.lastMesh = null;
+
+    cgl.renderStart(cgl, identTranslate, identTranslateView);
+
+    if (!clear.get()) cgl.gl.clearColor(0, 0, 0, 1);
+    else cgl.gl.clearColor(0, 0, 0, 0);
+
+    cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT | cgl.gl.DEPTH_BUFFER_BIT);
+
+    trigger.trigger();
+
+    if (CGL.MESH.lastMesh)CGL.MESH.lastMesh.unBind();
+
+    if (CGL.Texture.previewTexture)
+    {
+        if (!CGL.Texture.texturePreviewer) CGL.Texture.texturePreviewer = new CGL.Texture.texturePreview(cgl);
+        CGL.Texture.texturePreviewer.render(CGL.Texture.previewTexture);
+    }
+    cgl.renderEnd(cgl);
+
+    op.patch.cg = null;
+
+    if (!clear.get())
+    {
+        cgl.gl.clearColor(1, 1, 1, 1);
+        cgl.gl.colorMask(false, false, false, true);
+        cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT);
+        cgl.gl.colorMask(true, true, true, true);
+    }
+
+    if (!cgl.tempData.phong)cgl.tempData.phong = {};
+    rframes++;
+
+    outPixel.set(op.patch.cgl.pixelDensity);
+    op.patch.cgl.profileData.profileMainloopMs = performance.now() - startTime;
+}
+
+function testMultiMainloop()
+{
+    clearTimeout(timeOutTest);
+    timeOutTest = setTimeout(
+        () =>
+        {
+            if (op.patch.getOpsByObjName(op.name).length > 1)
+            {
+                op.setUiError("multimainloop", "there should only be one mainloop op!");
+                if (!addedListener)addedListener = op.patch.addEventListener("onOpDelete", testMultiMainloop);
+            }
+            else op.setUiError("multimainloop", null, 1);
+        }, 500);
+}
+
+}
+};
+
+CABLES.OPS["f1029550-d877-42da-9b1e-63a5163a0350"]={f:Ops.Gl.MainLoop_v2,objName:"Ops.Gl.MainLoop_v2"};
 
 
 
@@ -1469,7 +1667,7 @@ const
 
     imageAlpha = op.inTexture("Mask"),
     alphaSrc = op.inValueSelect("Mask Src", ["alpha channel", "luminance", "luminance inv"], "luminance"),
-    invAlphaChannel = op.inBool("Invert alpha channel"),
+    invAlphaChannel = op.inValueBool("Invert alpha channel"),
 
     inAspect = op.inValueBool("Aspect Ratio", false),
     inAspectAxis = op.inValueSelect("Stretch Axis", ["X", "Y"], "X"),
@@ -1484,8 +1682,8 @@ const shader = new CGL.Shader(cgl, "drawimage");
 
 imageAlpha.onLinkChanged = updateAlphaPorts;
 
-op.setPortGroup("Aspect Ratio", [inAspect, inAspectPos, inAspectCrop, inAspectAxis]);
 op.setPortGroup("Mask", [imageAlpha, alphaSrc, invAlphaChannel]);
+op.setPortGroup("Aspect Ratio", [inAspect, inAspectPos, inAspectCrop, inAspectAxis]);
 
 function updateAlphaPorts()
 {
@@ -1688,6 +1886,70 @@ CABLES.OPS["8f6b2f15-fcb0-4597-90c0-e5173f2969fe"]={f:Ops.Gl.ImageCompose.DrawIm
 
 // **************************************************************
 // 
+// Ops.Gl.ImageCompose.Desaturate
+// 
+// **************************************************************
+
+Ops.Gl.ImageCompose.Desaturate= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={"desaturate_frag":"\nIN vec2 texCoord;\nUNI sampler2D tex;\nUNI float amount;\n\n#ifdef MASK\n    UNI sampler2D mask;\n#endif\n\nvec3 desaturate(vec3 color, float amount)\n{\n   vec3 gray = vec3(dot(vec3(0.2126,0.7152,0.0722), color));\n   return vec3(mix(color, gray, amount));\n}\n\nvoid main()\n{\n    vec4 col=texture(tex,texCoord);\n\n    float am=amount;\n    #ifdef MASK\n        am*=1.0-texture(mask,texCoord).r;\n        #ifdef INVERTMASK\n        am=1.0-am;\n        #endif\n    #endif\n\n    col.rgb=desaturate(col.rgb,am);\n    outColor= col;\n}",};
+const render = op.inTrigger("render");
+const trigger = op.outTrigger("trigger");
+const amount = op.inValueSlider("amount", 1);
+const inMask = op.inTexture("Mask");
+const invertMask = op.inValueBool("Invert Mask");
+
+const cgl = op.patch.cgl;
+const shader = new CGL.Shader(cgl, op.name, op);
+
+shader.setSource(shader.getDefaultVertexShader(), attachments.desaturate_frag);
+let textureUniform = new CGL.Uniform(shader, "t", "tex", 0);
+let masktextureUniform = new CGL.Uniform(shader, "t", "mask", 1);
+let amountUniform = new CGL.Uniform(shader, "f", "amount", amount);
+
+invertMask.onChange = function ()
+{
+    if (invertMask.get())shader.define("INVERTMASK");
+    else shader.removeDefine("INVERTMASK");
+};
+
+inMask.onChange = function ()
+{
+    if (inMask.get())shader.define("MASK");
+    else shader.removeDefine("MASK");
+};
+
+render.onTriggered = function ()
+{
+    if (!CGL.TextureEffect.checkOpInEffect(op)) return;
+
+    cgl.pushShader(shader);
+    cgl.currentTextureEffect.bind();
+
+    cgl.setTexture(0, cgl.currentTextureEffect.getCurrentSourceTexture().tex);
+
+    if (inMask.get()) cgl.setTexture(1, inMask.get().tex);
+
+    cgl.currentTextureEffect.finish();
+    cgl.popShader();
+
+    trigger.trigger();
+};
+
+}
+};
+
+CABLES.OPS["340efbd5-be53-4bd5-92ad-8f38d8eeecf1"]={f:Ops.Gl.ImageCompose.Desaturate,objName:"Ops.Gl.ImageCompose.Desaturate"};
+
+
+
+
+// **************************************************************
+// 
 // Ops.Gl.ImageCompose.Levels_v2
 // 
 // **************************************************************
@@ -1805,7 +2067,7 @@ const attachments=op.attachments={"blur_frag":"\nUNI sampler2D tex;\n#ifdef USE_
 const
     render = op.inTrigger("render"),
     trigger = op.outTrigger("trigger"),
-    inPasses = op.inInt("Passes", 3),
+    inPasses = op.inFloat("Passes", 3),
     clamp = op.inBool("Clamp", false),
     direction = op.inDropDown("direction", ["both", "vertical", "horizontal"], "both"),
     mask = op.inTexture("Mask"),
@@ -1901,6 +2163,67 @@ render.onTriggered = function ()
 };
 
 CABLES.OPS["61ed277f-d096-43b2-9de8-dc87fb3a9169"]={f:Ops.Gl.ImageCompose.FastBlur_v2,objName:"Ops.Gl.ImageCompose.FastBlur_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Gl.ImageCompose.Posterize_v2
+// 
+// **************************************************************
+
+Ops.Gl.ImageCompose.Posterize_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={"posterize_frag":"UNI sampler2D tex;\nIN vec2 texCoord;\nUNI float levels;\nUNI float amount;\n\n{{CGL.BLENDMODES3}}\n\nvoid main(void)\n{\n    vec3 srcPixel = texture(tex, texCoord  ).rgb;\n    vec3 amountPerLevel = vec3(1.0/levels);\n    vec3 numOfLevels = floor(srcPixel/amountPerLevel);\n    vec3 col = numOfLevels * (vec3(1.0) / (vec3(levels) - vec3(1.0)));\n\n    vec4 base=texture(tex,texCoord);\n    outColor= cgl_blendPixel(base,vec4(col,base.a),amount);\n}\n\n",};
+const
+    render = op.inTrigger("Render"),
+    blendMode = CGL.TextureEffect.AddBlendSelect(op, "Blend Mode", "normal"),
+    amount = op.inValueSlider("Amount", 1),
+    levels = op.inValue("levels", 2),
+    trigger = op.outTrigger("Trigger");
+
+const
+    cgl = op.patch.cgl,
+    shader = new CGL.Shader(cgl, op.name, op);
+
+shader.setSource(shader.getDefaultVertexShader(), attachments.posterize_frag);
+
+const
+    textureUniform = new CGL.Uniform(shader, "t", "tex", 0),
+    levelsUniform = new CGL.Uniform(shader, "f", "levels", levels),
+    uniWidth = new CGL.Uniform(shader, "f", "texWidth", 128),
+    uniHeight = new CGL.Uniform(shader, "f", "texHeight", 128),
+    uniAmount = new CGL.Uniform(shader, "f", "amount", amount);
+
+CGL.TextureEffect.setupBlending(op, shader, blendMode, amount);
+
+render.onTriggered = function ()
+{
+    if (!CGL.TextureEffect.checkOpInEffect(op, 3)) return;
+
+    cgl.pushShader(shader);
+    cgl.currentTextureEffect.bind();
+
+    uniWidth.setValue(cgl.currentTextureEffect.getCurrentSourceTexture().width);
+    uniHeight.setValue(cgl.currentTextureEffect.getCurrentSourceTexture().height);
+
+    cgl.setTexture(0, cgl.currentTextureEffect.getCurrentSourceTexture().tex);
+
+    cgl.currentTextureEffect.finish();
+    cgl.popShader();
+
+    trigger.trigger();
+};
+
+}
+};
+
+CABLES.OPS["19703953-7984-4334-af72-0991425b4850"]={f:Ops.Gl.ImageCompose.Posterize_v2,objName:"Ops.Gl.ImageCompose.Posterize_v2"};
 
 
 
@@ -3211,6 +3534,73 @@ CABLES.OPS["6d123c9f-7485-4fd9-a5c2-76e59dcbeb34"]={f:Ops.Boolean.Not,objName:"O
 
 // **************************************************************
 // 
+// Ops.Gl.ImageCompose.ImageComposeSnapshot
+// 
+// **************************************************************
+
+Ops.Gl.ImageCompose.ImageComposeSnapshot= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    render = op.inTrigger("Update"),
+    trigger = op.outTrigger("trigger"),
+    outTex = op.outTexture("Texture");
+
+const cgl = op.patch.cgl;
+let tc = new CGL.CopyTexture(cgl, "textureThief", {});
+let pf = false;
+let wrap = -1;
+let filter = -1;
+
+render.onTriggered = () =>
+{
+    if (!CGL.TextureEffect.checkOpInEffect(op)) return;
+
+    const effect = cgl.currentTextureEffect;
+    effect.endEffect();
+
+    const shouldPf = cgl.currentTextureEffect.getCurrentSourceTexture().pixelFormat;
+    const shouldWrap = cgl.currentTextureEffect.getCurrentSourceTexture().wrap;
+    const shouldFilter = cgl.currentTextureEffect.getCurrentSourceTexture().filter;
+
+    if (pf != shouldPf || wrap != shouldWrap || filter != shouldFilter)
+    {
+        tc = new CGL.CopyTexture(cgl, "textureThief",
+            {
+                "pixelFormat": cgl.currentTextureEffect.getCurrentSourceTexture().pixelFormat,
+                "wrap": shouldWrap,
+                "filter": shouldFilter
+            });
+        pf = shouldPf;
+        wrap = shouldWrap;
+        filter = shouldFilter;
+    }
+
+    const vp = cgl.getViewPort();
+    outTex.set(CGL.Texture.getEmptyTexture(cgl));
+
+    const tx = cgl.currentTextureEffect.getCurrentSourceTexture();
+    outTex.set(tc.copy(tx));
+
+    effect.continueEffect();
+
+    trigger.trigger();
+};
+
+}
+};
+
+CABLES.OPS["e15c0803-02bb-4783-9d75-e75abd70d910"]={f:Ops.Gl.ImageCompose.ImageComposeSnapshot,objName:"Ops.Gl.ImageCompose.ImageComposeSnapshot"};
+
+
+
+
+// **************************************************************
+// 
 // Ops.TimeLine.TimeLinePlayer
 // 
 // **************************************************************
@@ -3656,6 +4046,108 @@ function exec()
 };
 
 CABLES.OPS["b250d606-f7f8-44d3-b099-c29efff2608a"]={f:Ops.Math.Compare.GreaterThan,objName:"Ops.Math.Compare.GreaterThan"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Anim.InOutInAnim
+// 
+// **************************************************************
+
+Ops.Anim.InOutInAnim= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const anim = new CABLES.Anim();
+
+const
+    update = op.inTrigger("Update"),
+
+    duration2 = op.inValue("Duration In", 0.25),
+    easing2 = anim.createPort(op, "Easing In"),
+    value2 = op.inValue("Value In", 1),
+
+    holdDuration = op.inValue("Hold duration", 0.0),
+
+    duration1 = op.inValue("Duration Out", 0.25),
+    easing1 = anim.createPort(op, "Easing Out"),
+    value1 = op.inValue("Value Out", 0),
+
+    trigger = op.inTriggerButton("Start"),
+
+    next = op.outTrigger("Next"),
+    outVal = op.outNumber("Result", 0),
+    started = op.outTrigger("Started"),
+    middle = op.outTrigger("Middle"),
+    finished = op.outTrigger("finished");
+
+op.setPortGroup("Out Anim", [duration1, easing1, value1]);
+op.setPortGroup("In Anim", [duration2, easing2, value2]);
+
+let time = 0;
+trigger.onTriggered = setupAnim;
+
+update.onTriggered = function ()
+{
+    time = CABLES.now() / 1000.0;
+    if (anim.isStarted(time)) outVal.set(anim.getValue(time));
+    else outVal.set(value2.get());
+
+    next.trigger();
+};
+
+value2.onChange = function ()
+{
+    outVal.set(value2.get());
+};
+
+function setupAnim()
+{
+    anim.clear();
+    // start
+    anim.setValue(time, value2.get(), function ()
+    {
+        started.trigger();
+    });
+
+    const dur1 = duration1.get() || 0.001;
+    const dur2 = duration2.get() || 0.001;
+    // attack
+    anim.setValue(time +
+                        dur1, value1.get(), function ()
+    {
+
+    });
+    // Hold
+    anim.setValue(time +
+                        dur1 + holdDuration.get(), value1.get(), function ()
+    {
+        middle.trigger();
+    });
+    // release
+    anim.setValue(time +
+                        dur1 +
+                        dur2 + holdDuration.get(), value2.get(), function ()
+    {
+        finished.trigger();
+    });
+
+    anim.keys[0].setEasing(
+        anim.easingFromString(easing1.get()));
+
+    anim.keys[2].setEasing(
+        anim.easingFromString(easing2.get()));
+}
+
+}
+};
+
+CABLES.OPS["ae46d30d-9ea6-417b-968b-e7b5726afdde"]={f:Ops.Anim.InOutInAnim,objName:"Ops.Anim.InOutInAnim"};
 
 
 
@@ -4377,2623 +4869,6 @@ exec.onTriggered = function ()
 };
 
 CABLES.OPS["5677b5b5-753a-4fbf-9e91-64c81ec68a2f"]={f:Ops.Anim.Smooth,objName:"Ops.Anim.Smooth"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Number.TriggerOnChangeNumber_v2
-// 
-// **************************************************************
-
-Ops.Number.TriggerOnChangeNumber_v2= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inval = op.inFloat("Value"),
-    next = op.outTrigger("Next"),
-    number = op.outNumber("Number");
-
-inval.onChange = function ()
-{
-    number.set(inval.get());
-    next.trigger();
-};
-
-op.init = () =>
-{
-    if (inval.isLinked())next.trigger();
-};
-
-}
-};
-
-CABLES.OPS["63ec7ad7-a436-4f72-8b5e-257cc20049d4"]={f:Ops.Number.TriggerOnChangeNumber_v2,objName:"Ops.Number.TriggerOnChangeNumber_v2"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Math.PowerOfTwoSize
-// 
-// **************************************************************
-
-Ops.Math.PowerOfTwoSize= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inW = op.inValueInt("Width"),
-    inH = op.inValueInt("Height"),
-    inStrat = op.inValueSelect("Strategy", ["floor", "floor/2", "ceil"], "floor"),
-    outW = op.outNumber("Width Result"),
-    outH = op.outNumber("Height Result");
-inStrat.onChange = updateStrategy;
-inW.onChange = inH.onChange = update;
-let getPOT = null;
-updateStrategy();
-
-function isPOT(x)
-{
-    return (x == 1 || x == 2 || x == 4 || x == 8 || x == 16 || x == 32 || x == 64 || x == 128 || x == 256 || x == 512 || x == 1024 || x == 2048 || x == 4096 || x == 8192 || x == 16384);
-}
-
-function updateStrategy()
-{
-    let s = inStrat.get();
-
-    if (s == "floor")getPOT = getPotNextfloor;
-    if (s == "floor/2")getPOT = getPotNextfloorx2;
-    if (s == "ceil")getPOT = getPotNextBigger;
-    if (s == "nearest")getPOT = getPotNearest;
-
-    update();
-}
-
-function getPotNextBigger(x)
-{
-    // if(x>8192)return 16384;
-    // if(x>4096)return 8129;
-    if (x > 2048) return 4096;
-    if (x > 1024) return 2048;
-    if (x > 512) return 1024;
-    if (x > 256) return 512;
-    if (x > 128) return 256;
-    if (x > 64) return 128;
-    if (x > 32) return 64;
-    if (x > 16) return 32;
-    if (x > 8) return 16;
-    if (x > 4) return 8;
-    if (x > 2) return 4;
-}
-
-function getPotNextfloorx2(x)
-{
-    return Math.ceil(getPotNextfloor(x) / 2);
-}
-
-function getPotNextfloor(x)
-{
-    if (x < 2) return 1;
-    if (x < 4) return 2;
-    if (x < 8) return 4;
-    if (x < 16) return 8;
-    if (x < 32) return 16;
-    if (x < 64) return 32;
-    if (x < 128) return 64;
-    if (x < 256) return 128;
-    if (x < 512) return 256;
-    if (x < 1024) return 512;
-    if (x < 2048) return 1024;
-    if (x < 4096) return 2048;
-    if (x < 8192) return 4096;
-    // if(x<16384)return 8192;
-}
-
-function getPotNearest(x)
-{
-    if (x > 3072) return 4096;
-    if (x > 1536) return 2048;
-    if (x > 768) return 1024;
-    if (x > 320) return 512;
-    if (x > 191) return 256;
-    if (x > 95) return 128;
-    if (x > 47) return 64;
-    if (x > 23) return 32;
-    if (x > 11) return 16;
-    if (x > 5) return 8;
-    if (x > 3) return 4;
-    return 2;
-}
-
-function update()
-{
-    let w = inW.get();
-    let h = inH.get();
-
-    if (!isPOT(w)) w = getPOT(w);
-    if (!isPOT(h)) h = getPOT(h);
-
-    outW.set(w);
-    outH.set(h);
-}
-
-}
-};
-
-CABLES.OPS["58e01e34-0f42-4861-ad9a-ed96e08f8565"]={f:Ops.Math.PowerOfTwoSize,objName:"Ops.Math.PowerOfTwoSize"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Math.Divide
-// 
-// **************************************************************
-
-Ops.Math.Divide= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    number1 = op.inValueFloat("number1", 1),
-    number2 = op.inValueFloat("number2", 2),
-    result = op.outNumber("result");
-
-op.setUiAttribs({ "mathTitle": true });
-
-number1.onChange = number2.onChange = exec;
-exec();
-
-function exec()
-{
-    result.set(number1.get() / number2.get());
-}
-
-}
-};
-
-CABLES.OPS["86fcfd8c-038d-4b91-9820-a08114f6b7eb"]={f:Ops.Math.Divide,objName:"Ops.Math.Divide"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Trigger.GateTrigger
-// 
-// **************************************************************
-
-Ops.Trigger.GateTrigger= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    exe = op.inTrigger('Execute'),
-    passThrough = op.inValueBool('Pass Through',true),
-    triggerOut = op.outTrigger('Trigger out');
-
-exe.onTriggered = function()
-{
-    if(passThrough.get())
-        triggerOut.trigger();
-}
-
-}
-};
-
-CABLES.OPS["65e8b8a2-ba13-485f-883a-2bcf377989da"]={f:Ops.Trigger.GateTrigger,objName:"Ops.Trigger.GateTrigger"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Gl.ClearColor
-// 
-// **************************************************************
-
-Ops.Gl.ClearColor= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    render = op.inTrigger("render"),
-    trigger = op.outTrigger("trigger"),
-    r = op.inFloatSlider("r", 0.1),
-    g = op.inFloatSlider("g", 0.1),
-    b = op.inFloatSlider("b", 0.1),
-    a = op.inFloatSlider("a", 1);
-
-r.setUiAttribs({ "colorPick": true });
-
-const cgl = op.patch.cgl;
-
-render.onTriggered = function ()
-{
-    cgl.gl.clearColor(r.get(), g.get(), b.get(), a.get());
-    cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT | cgl.gl.DEPTH_BUFFER_BIT);
-    trigger.trigger();
-};
-
-}
-};
-
-CABLES.OPS["19b441eb-9f63-4f35-ba08-b87841517c4d"]={f:Ops.Gl.ClearColor,objName:"Ops.Gl.ClearColor"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Trigger.RouteTrigger
-// 
-// **************************************************************
-
-Ops.Trigger.RouteTrigger= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const NUM_PORTS = 24;
-const
-    exePort = op.inTriggerButton("Execute"),
-    switchPort = op.inValueInt("Switch Value"),
-    nextTriggerPort = op.outTrigger("Next Trigger"),
-    valueOutPort = op.outNumber("Switched Value");
-
-const triggerPorts = [];
-exePort.onTriggered = update;
-
-for (let j = 0; j < NUM_PORTS; j++)
-{
-    triggerPorts[j] = op.outTrigger("Trigger " + j);
-
-    triggerPorts[j].onLinkChanged = countLinks;
-}
-
-const
-    defaultTriggerPort = op.outTrigger("Default Trigger"),
-    outNumConnected = op.outNumber("Highest Index");
-
-function update()
-{
-    const index = Math.round(switchPort.get());
-
-    if (index >= 0 && index < NUM_PORTS)
-    {
-        valueOutPort.set(index);
-        triggerPorts[index].trigger();
-    }
-    else
-    {
-        valueOutPort.set(-1);
-        defaultTriggerPort.trigger();
-    }
-    nextTriggerPort.trigger();
-}
-
-function countLinks()
-{
-    let count = 0;
-    for (let i = 0; i < triggerPorts.length; i++)
-        if (triggerPorts[i] && triggerPorts[i].isLinked())count = i;
-
-    outNumConnected.set(count);
-}
-
-}
-};
-
-CABLES.OPS["44ceb5d8-b040-4722-b189-a6fb8172517d"]={f:Ops.Trigger.RouteTrigger,objName:"Ops.Trigger.RouteTrigger"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Cables.UIMode
-// 
-// **************************************************************
-
-Ops.Cables.UIMode= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    outUI = op.outBoolNum("UI", op.patch.isEditorMode()),
-    outOverlay = op.outBoolNum("Overlay Mode", false),
-    outRemoteViewer = op.outBoolNum("Remote Viewer", window.gui ? window.gui.isRemoteClient : false),
-    outStandalone = op.outBoolNum("Is Standalone", (CABLES.platform && CABLES.platform.frontendOptions.isElectron)),
-    outCanvasMode = op.outNumber("Canvas Mode"),
-    outPatchVisible = op.outBoolNum("Patch Field Visible");
-
-if (CABLES.UI)
-{
-    outOverlay.set(gui.shouldDrawOverlay);
-
-    gui.on("overlaysChanged", (active) =>
-    {
-        outOverlay.set(active);
-    });
-
-    gui.on("canvasModeChange", () =>
-    {
-        outCanvasMode.set(gui.canvasManager.mode);
-        outPatchVisible.set(gui.patchView.element.classList.contains("hidden"));
-    });
-}
-
-}
-};
-
-CABLES.OPS["7c110d60-829f-4b06-b3e4-0af911550570"]={f:Ops.Cables.UIMode,objName:"Ops.Cables.UIMode"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Number.Number
-// 
-// **************************************************************
-
-Ops.Number.Number= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    v = op.inValueFloat("value"),
-    result = op.outNumber("result");
-
-v.onChange = exec;
-
-let isLinked = false;
-v.onLinkChanged = () =>
-{
-    if (!isLinked && v.isLinked())op.setUiAttribs({ "extendTitle": null });
-    isLinked = v.isLinked();
-};
-
-function exec()
-{
-    if (CABLES.UI && !isLinked) op.setUiAttribs({ "extendTitle": v.get() });
-
-    result.set(Number(v.get()));
-}
-
-}
-};
-
-CABLES.OPS["8fb2bb5d-665a-4d0a-8079-12710ae453be"]={f:Ops.Number.Number,objName:"Ops.Number.Number"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Anim.LFO_v3
-// 
-// **************************************************************
-
-Ops.Anim.LFO_v3= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    time = op.inValue("Time"),
-    speed = op.inFloat("Frequency", 1),
-    type = op.inValueSelect("Type", ["sine", "triangle", "ramp up", "ramp down", "square"], "sine"),
-    phase = op.inValue("Phase", 0),
-    rangeMin = op.inValue("Range Min", -1),
-    rangeMax = op.inValue("Range Max", 1),
-    result = op.outNumber("Result");
-
-let v = 0;
-type.onChange = updateType;
-
-updateType();
-
-const PI2 = Math.PI / 2;
-
-function updateType()
-{
-    if (type.get() == "sine") time.onChange = sine;
-    if (type.get() == "ramp up") time.onChange = rampUp;
-    if (type.get() == "ramp down") time.onChange = rampDown;
-    if (type.get() == "square") time.onChange = square;
-    if (type.get() == "triangle") time.onChange = triangle;
-}
-
-function updateTime()
-{
-    return (time.get() * speed.get()) + phase.get();
-}
-
-function square()
-{
-    let t = updateTime() + 0.5;
-    v = t % 2.0;
-    if (v <= 1.0)v = -1;
-    else v = 1;
-    v = CABLES.map(v, -1, 1, rangeMin.get(), rangeMax.get());
-    result.set(v);
-}
-
-function rampUp()
-{
-    let t = (updateTime() + 1);
-    v = t % 1.0;
-    v -= 0.5;
-    v *= 2.0;
-    v = CABLES.map(v, -1, 1, rangeMin.get(), rangeMax.get());
-    result.set(v);
-}
-
-function rampDown()
-{
-    let t = updateTime();
-    v = t % 1.0;
-    v -= 0.5;
-    v *= -2.0;
-    v = CABLES.map(v, -1, 1, rangeMin.get(), rangeMax.get());
-    result.set(v);
-}
-
-function triangle()
-{
-    let t = updateTime();
-    v = t % 2.0;
-    if (v > 1) v = 2.0 - v;
-    v -= 0.5;
-    v *= 2.0;
-    v = CABLES.map(v, -1, 1, rangeMin.get(), rangeMax.get());
-    result.set(v);
-}
-
-function sine()
-{
-    let t = updateTime() * Math.PI - (PI2);
-    v = Math.sin((t));
-    v = CABLES.map(v, -1, 1, rangeMin.get(), rangeMax.get());
-    result.set(v);
-}
-
-}
-};
-
-CABLES.OPS["5bdbe26b-dea3-4266-850c-1b66ed29936e"]={f:Ops.Anim.LFO_v3,objName:"Ops.Anim.LFO_v3"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Anim.Timer_v2
-// 
-// **************************************************************
-
-Ops.Anim.Timer_v2= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inSpeed = op.inValue("Speed", 1),
-    playPause = op.inValueBool("Play", true),
-    reset = op.inTriggerButton("Reset"),
-    inSyncTimeline = op.inValueBool("Sync to timeline", false),
-    outTime = op.outNumber("Time");
-
-op.setPortGroup("Controls", [playPause, reset, inSpeed]);
-
-const timer = new CABLES.Timer();
-let lastTime = null;
-let time = 0;
-let syncTimeline = false;
-
-playPause.onChange = setState;
-setState();
-
-function setState()
-{
-    if (playPause.get())
-    {
-        timer.play();
-        op.patch.addOnAnimFrame(op);
-    }
-    else
-    {
-        timer.pause();
-        op.patch.removeOnAnimFrame(op);
-    }
-}
-
-reset.onTriggered = doReset;
-
-function doReset()
-{
-    time = 0;
-    lastTime = null;
-    timer.setTime(0);
-    outTime.set(0);
-}
-
-inSyncTimeline.onChange = function ()
-{
-    syncTimeline = inSyncTimeline.get();
-    playPause.setUiAttribs({ "greyout": syncTimeline });
-    reset.setUiAttribs({ "greyout": syncTimeline });
-};
-
-op.onAnimFrame = function (tt, frameNum, deltaMs)
-{
-    if (timer.isPlaying())
-    {
-        if (CABLES.overwriteTime !== undefined)
-        {
-            outTime.set(CABLES.overwriteTime * inSpeed.get());
-        }
-        else
-
-        if (syncTimeline)
-        {
-            outTime.set(tt * inSpeed.get());
-        }
-        else
-        {
-            timer.update();
-
-            const timerVal = timer.get();
-
-            if (lastTime === null)
-            {
-                lastTime = timerVal;
-                return;
-            }
-
-            const t = Math.abs(timerVal - lastTime);
-            lastTime = timerVal;
-
-            time += t * inSpeed.get();
-            if (time != time)time = 0;
-            outTime.set(time);
-        }
-    }
-};
-
-}
-};
-
-CABLES.OPS["aac7f721-208f-411a-adb3-79adae2e471a"]={f:Ops.Anim.Timer_v2,objName:"Ops.Anim.Timer_v2"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Gl.Performance
-// 
-// **************************************************************
-
-Ops.Gl.Performance= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    exe = op.inTrigger("exe"),
-    inActive = op.inValueBool("Active", true),
-    inShow = op.inValueBool("Visible", true),
-    inDoGpu = op.inValueBool("Measure GPU", true),
-    next = op.outTrigger("childs"),
-    position = op.inSwitch("Position", ["top", "bottom"], "top"),
-    openDefault = op.inBool("Open", false),
-    smoothGraph = op.inBool("Smooth Graph", true),
-    inScaleGraph = op.inFloat("Scale", 3),
-    inSizeGraph = op.inFloat("Size", 128),
-    outCanv = op.outObject("Canvas"),
-    outFPS = op.outNumber("FPS");
-
-const cgl = op.patch.cgl;
-const element = document.createElement("div");
-
-let elementMeasures = null;
-let ctx = null;
-let opened = false;
-let frameCount = 0;
-let fps = 0;
-let fpsStartTime = 0;
-let childsTime = 0;
-let avgMsChilds = 0;
-const queue = [];
-const timesMainloop = [];
-const timesOnFrame = [];
-const timesGPU = [];
-let avgMs = 0;
-let selfTime = 0;
-let canvas = null;
-let lastTime = 0;
-let loadingCounter = 0;
-const loadingChars = ["|", "/", "-", "\\"];
-let initMeasures = true;
-
-const colorRAFSlow = "#007f9c";
-const colorRAFVeruSlow = "#aaaaaa";
-
-const colorBg = "#222222";
-const colorRAF = "#003f5c"; // color: https://learnui.design/tools/data-color-picker.html
-const colorMainloop = "#7a5195";
-const colorOnFrame = "#ef5675";
-const colorGPU = "#ffa600";
-
-let startedQuery = false;
-
-let currentTimeGPU = 0;
-let currentTimeMainloop = 0;
-let currentTimeOnFrame = 0;
-
-op.toWorkPortsNeedToBeLinked(exe, next);
-
-const gl = op.patch.cgl.gl;
-const glQueryExt = gl.getExtension("EXT_disjoint_timer_query_webgl2");
-
-inActive.onChange =
-exe.onLinkChanged =
-    inShow.onChange = () =>
-    {
-        updateOpened();
-        updateVisibility();
-    };
-
-position.onChange = updatePos;
-inSizeGraph.onChange = updateSize;
-
-element.id = "performance";
-element.style.position = "absolute";
-element.style.left = "0px";
-element.style.opacity = "0.8";
-element.style.padding = "10px";
-element.style.cursor = "pointer";
-element.style.background = "#222";
-element.style.color = "white";
-element.style["font-family"] = "monospace";
-element.style["font-size"] = "12px";
-element.style["z-index"] = "99999";
-
-element.innerHTML = "&nbsp;";
-element.addEventListener("click", toggleOpened);
-
-const container = op.patch.cgl.canvas.parentElement;
-container.appendChild(element);
-
-updateSize();
-updateOpened();
-updatePos();
-updateVisibility();
-
-op.onDelete = function ()
-{
-    if (canvas)canvas.remove();
-    if (element)element.remove();
-};
-
-function updatePos()
-{
-    canvas.style["pointer-events"] = "none";
-    if (position.get() == "top")
-    {
-        canvas.style.top = element.style.top = "0px";
-        canvas.style.bottom = element.style.bottom = "initial";
-    }
-    else
-    {
-        canvas.style.bottom = element.style.bottom = "0px";
-        canvas.style.top = element.style.top = "initial";
-    }
-}
-
-function updateVisibility()
-{
-    if (!inShow.get() || !exe.isLinked() || !inActive.get())
-    {
-        element.style.display = "none";
-        element.style.opacity = 0;
-        canvas.style.display = "none";
-    }
-    else
-    {
-        element.style.display = "block";
-        element.style.opacity = 1;
-        canvas.style.display = "block";
-    }
-}
-
-function updateSize()
-{
-    if (!canvas) return;
-
-    const num = Math.max(0, parseInt(inSizeGraph.get()));
-
-    canvas.width = num;
-    canvas.height = num;
-    element.style.left = num + "px";
-
-    queue.length = 0;
-    timesMainloop.length = 0;
-    timesOnFrame.length = 0;
-    timesGPU.length = 0;
-
-    for (let i = 0; i < num; i++)
-    {
-        queue[i] = -1;
-        timesMainloop[i] = -1;
-        timesOnFrame[i] = -1;
-        timesGPU[i] = -1;
-    }
-}
-
-openDefault.onChange = function ()
-{
-    opened = openDefault.get();
-    updateOpened();
-};
-
-function toggleOpened()
-{
-    if (!inShow.get()) return;
-    element.style.opacity = 1;
-    opened = !opened;
-    updateOpened();
-}
-
-function updateOpened()
-{
-    updateText();
-    if (!canvas)createCanvas();
-    if (opened)
-    {
-        canvas.style.display = "block";
-        element.style.left = inSizeGraph.get() + "px";
-        element.style["min-height"] = "56px";
-    }
-    else
-    {
-        canvas.style.display = "none";
-        element.style.left = "0px";
-        element.style["min-height"] = "auto";
-    }
-}
-
-function updateCanvas()
-{
-    const height = canvas.height;
-    const hmul = inScaleGraph.get();
-
-    ctx.fillStyle = colorBg;
-    ctx.fillRect(0, 0, canvas.width, height);
-
-    ctx.fillStyle = colorRAF;
-
-    let k = 0;
-    const numBars = Math.max(0, parseInt(inSizeGraph.get()));
-
-    for (k = numBars; k >= 0; k--)
-    {
-        if (queue[k] > 30) ctx.fillStyle = colorRAFSlow;
-        if (queue[k] > 60) ctx.fillStyle = colorRAFVeruSlow;
-
-        ctx.fillRect(numBars - k, height - queue[k] * hmul, 1, queue[k] * hmul);
-        if (queue[k] > 30)ctx.fillStyle = colorRAF;
-    }
-
-    for (k = numBars; k >= 0; k--)
-    {
-        let sum = 0;
-        ctx.fillStyle = colorMainloop;
-        sum = timesMainloop[k];
-        ctx.fillRect(numBars - k, height - sum * hmul, 1, timesMainloop[k] * hmul);
-
-        ctx.fillStyle = colorOnFrame;
-        sum += timesOnFrame[k];
-        ctx.fillRect(numBars - k, height - sum * hmul, 1, timesOnFrame[k] * hmul);
-
-        ctx.fillStyle = colorGPU;
-        sum += timesGPU[k];
-        ctx.fillRect(numBars - k, height - sum * hmul, 1, timesGPU[k] * hmul);
-    }
-
-    for (let i = 10; i < height; i += 10)
-    {
-        ctx.fillStyle = "#888";
-        const y = height - (i * hmul);
-        ctx.fillRect(canvas.width - 5, y, 5, 1);
-        ctx.font = "8px arial";
-
-        ctx.fillText(i + "ms", canvas.width - 27, y + 3);
-    }
-
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(canvas.width - 5, height - (1000 / fps * hmul), 5, 1);
-    ctx.fillText(Math.round(1000 / fps) + "ms", canvas.width - 27, height - (1000 / fps * hmul));
-}
-
-function createCanvas()
-{
-    canvas = document.createElement("canvas");
-    canvas.id = "performance_" + op.patch.config.glCanvasId;
-    canvas.width = inSizeGraph.get();
-    canvas.height = inSizeGraph.get();
-    canvas.style.display = "block";
-    canvas.style.opacity = 0.9;
-    canvas.style.position = "absolute";
-    canvas.style.left = "0px";
-    canvas.style.cursor = "pointer";
-    canvas.style.top = "-64px";
-    canvas.style["z-index"] = "99998";
-    container.appendChild(canvas);
-    ctx = canvas.getContext("2d");
-
-    canvas.addEventListener("click", toggleOpened);
-
-    updateSize();
-}
-
-function updateText()
-{
-    if (!inShow.get()) return;
-    let warn = "";
-
-    if (op.patch.cgl.profileData.profileShaderCompiles > 0)warn += "Shader compile (" + op.patch.cgl.profileData.profileShaderCompileName + ") ";
-    if (op.patch.cgl.profileData.profileShaderGetUniform > 0)warn += "Shader get uni loc! (" + op.patch.cgl.profileData.profileShaderGetUniformName + ")";
-    if (op.patch.cgl.profileData.profileTextureResize > 0)warn += "Texture resize! ";
-    if (op.patch.cgl.profileData.profileFrameBuffercreate > 0)warn += "Framebuffer create! ";
-    if (op.patch.cgl.profileData.profileEffectBuffercreate > 0)warn += "Effectbuffer create! ";
-    if (op.patch.cgl.profileData.profileTextureDelete > 0)warn += "Texture delete! ";
-    if (op.patch.cgl.profileData.profileNonTypedAttrib > 0)warn += "Not-Typed Buffer Attrib! " + op.patch.cgl.profileData.profileNonTypedAttribNames;
-    if (op.patch.cgl.profileData.profileTextureNew > 0)warn += "new texture created! ";
-    if (op.patch.cgl.profileData.profileGenMipMap > 0)warn += "generating mip maps!";
-
-    if (warn.length > 0)
-    {
-        warn = "| <span style=\"color:#f80;\">WARNING: " + warn + "<span>";
-    }
-
-    let html = "";
-
-    if (opened)
-    {
-        html += "<span style=\"color:" + colorRAF + "\">■</span> " + fps + " fps ";
-        html += "<span style=\"color:" + colorMainloop + "\">■</span> " + Math.round(currentTimeMainloop * 100) / 100 + "ms mainloop ";
-        html += "<span style=\"color:" + colorOnFrame + "\">■</span> " + Math.round((currentTimeOnFrame) * 100) / 100 + "ms onframe ";
-        if (currentTimeGPU) html += "<span style=\"color:" + colorGPU + "\">■</span> " + Math.round(currentTimeGPU * 100) / 100 + "ms GPU";
-        html += warn;
-        element.innerHTML = html;
-    }
-    else
-    {
-        html += fps + " fps / ";
-        html += "CPU: " + Math.round((op.patch.cgl.profileData.profileOnAnimFrameOps) * 100) / 100 + "ms / ";
-        if (currentTimeGPU)html += "GPU: " + Math.round(currentTimeGPU * 100) / 100 + "ms  ";
-        element.innerHTML = html;
-    }
-
-    if (op.patch.loading.getProgress() != 1.0)
-    {
-        element.innerHTML += "<br/>loading " + Math.round(op.patch.loading.getProgress() * 100) + "% " + loadingChars[(++loadingCounter) % loadingChars.length];
-    }
-
-    if (opened)
-    {
-        let count = 0;
-        avgMs = 0;
-        avgMsChilds = 0;
-        for (let i = queue.length; i > queue.length - queue.length / 3; i--)
-        {
-            if (queue[i] > -1)
-            {
-                avgMs += queue[i];
-                count++;
-            }
-
-            if (timesMainloop[i] > -1) avgMsChilds += timesMainloop[i];
-        }
-
-        avgMs /= count;
-        avgMsChilds /= count;
-
-        element.innerHTML += "<br/> " + cgl.canvasWidth + " x " + cgl.canvasHeight + " (x" + cgl.pixelDensity + ") ";
-        element.innerHTML += "<br/>frame avg: " + Math.round(avgMsChilds * 100) / 100 + " ms (" + Math.round(avgMsChilds / avgMs * 100) + "%) / " + Math.round(avgMs * 100) / 100 + " ms";
-        element.innerHTML += " (self: " + Math.round((selfTime) * 100) / 100 + " ms) ";
-
-        element.innerHTML += "<br/>shader binds: " + Math.ceil(op.patch.cgl.profileData.profileShaderBinds / fps) +
-            " uniforms: " + Math.ceil(op.patch.cgl.profileData.profileUniformCount / fps) +
-            " mvp_uni_mat4: " + Math.ceil(op.patch.cgl.profileData.profileMVPMatrixCount / fps) +
-            " num glPrimitives: " + Math.ceil(op.patch.cgl.profileData.profileMeshNumElements / (fps)) +
-
-            " fenced pixelread: " + Math.ceil(op.patch.cgl.profileData.profileFencedPixelRead) +
-
-            " mesh.setGeom: " + op.patch.cgl.profileData.profileMeshSetGeom +
-            " videos: " + op.patch.cgl.profileData.profileVideosPlaying +
-            " tex preview: " + op.patch.cgl.profileData.profileTexPreviews;
-
-        element.innerHTML +=
-        " draw meshes: " + Math.ceil(op.patch.cgl.profileData.profileMeshDraw / fps) +
-        " framebuffer blit: " + Math.ceil(op.patch.cgl.profileData.profileFramebuffer / fps) +
-        " texeffect blit: " + Math.ceil(op.patch.cgl.profileData.profileTextureEffect / fps);
-
-        element.innerHTML += " all shader compiletime: " + Math.round(op.patch.cgl.profileData.shaderCompileTime * 100) / 100;
-    }
-
-    op.patch.cgl.profileData.clear();
-}
-
-function styleMeasureEle(ele)
-{
-    ele.style.padding = "0px";
-    ele.style.margin = "0px";
-}
-
-function addMeasureChild(m, parentEle, timeSum, level)
-{
-    const height = 20;
-    m.usedAvg = (m.usedAvg || m.used);
-
-    if (!m.ele || initMeasures)
-    {
-        const newEle = document.createElement("div");
-        m.ele = newEle;
-
-        if (m.childs && m.childs.length > 0) newEle.style.height = "500px";
-        else newEle.style.height = height + "px";
-
-        newEle.style.overflow = "hidden";
-        newEle.style.display = "inline-block";
-
-        if (!m.isRoot)
-        {
-            newEle.innerHTML = "<div style=\"min-height:" + height + "px;width:100%;overflow:hidden;color:black;position:relative\">&nbsp;" + m.name + "</div>";
-            newEle.style["background-color"] = "rgb(" + m.colR + "," + m.colG + "," + m.colB + ")";
-            newEle.style["border-left"] = "1px solid black";
-        }
-
-        parentEle.appendChild(newEle);
-    }
-
-    if (!m.isRoot)
-    {
-        if (performance.now() - m.lastTime > 200)
-        {
-            m.ele.style.display = "none";
-            m.hidden = true;
-        }
-        else
-        {
-            if (m.hidden)
-            {
-                m.ele.style.display = "inline-block";
-                m.hidden = false;
-            }
-        }
-
-        m.ele.style.float = "left";
-        m.ele.style.width = Math.floor((m.usedAvg / timeSum) * 98.0) + "%";
-    }
-    else
-    {
-        m.ele.style.width = "100%";
-        m.ele.style.clear = "both";
-        m.ele.style.float = "none";
-    }
-
-    if (m && m.childs && m.childs.length > 0)
-    {
-        let thisTimeSum = 0;
-        for (var i = 0; i < m.childs.length; i++)
-        {
-            m.childs[i].usedAvg = (m.childs[i].usedAvg || m.childs[i].used) * 0.95 + m.childs[i].used * 0.05;
-            thisTimeSum += m.childs[i].usedAvg;
-        }
-        for (var i = 0; i < m.childs.length; i++)
-        {
-            addMeasureChild(m.childs[i], m.ele, thisTimeSum, level + 1);
-        }
-    }
-}
-
-function clearMeasures(p)
-{
-    for (let i = 0; i < p.childs.length; i++) clearMeasures(p.childs[i]);
-    p.childs.length = 0;
-}
-
-function measures()
-{
-    if (!CGL.performanceMeasures) return;
-
-    if (!elementMeasures)
-    {
-        op.log("create measure ele");
-        elementMeasures = document.createElement("div");
-        elementMeasures.style.width = "100%";
-        elementMeasures.style["background-color"] = "#444";
-        elementMeasures.style.bottom = "10px";
-        elementMeasures.style.height = "100px";
-        elementMeasures.style.opacity = "1";
-        elementMeasures.style.position = "absolute";
-        elementMeasures.style["z-index"] = "99999";
-        elementMeasures.innerHTML = "";
-        container.appendChild(elementMeasures);
-    }
-
-    let timeSum = 0;
-    const root = CGL.performanceMeasures[0];
-
-    for (let i = 0; i < root.childs.length; i++) timeSum += root.childs[i].used;
-
-    addMeasureChild(CGL.performanceMeasures[0], elementMeasures, timeSum, 0);
-
-    root.childs.length = 0;
-
-    clearMeasures(CGL.performanceMeasures[0]);
-
-    CGL.performanceMeasures.length = 0;
-    initMeasures = false;
-}
-
-exe.onTriggered = render;
-
-function render()
-{
-    const selfTimeStart = performance.now();
-
-    if (inActive.get())
-    {
-        frameCount++;
-
-        if (glQueryExt && inDoGpu.get() && inShow.get())op.patch.cgl.profileData.doProfileGlQuery = true;
-        else op.patch.cgl.profileData.doProfileGlQuery = false;
-
-        if (fpsStartTime === 0)fpsStartTime = Date.now();
-        if (Date.now() - fpsStartTime >= 1000)
-        {
-        // query=null;
-            fps = frameCount;
-            frameCount = 0;
-            // frames = 0;
-            outFPS.set(fps);
-            if (inShow.get())updateText();
-
-            fpsStartTime = Date.now();
-        }
-
-        const glQueryData = op.patch.cgl.profileData.glQueryData;
-        currentTimeGPU = 0;
-        if (glQueryData)
-        {
-            let count = 0;
-            for (let i in glQueryData)
-            {
-                count++;
-                if (glQueryData[i].time)
-                    currentTimeGPU += glQueryData[i].time;
-            }
-        }
-
-        if (inShow.get())
-        {
-            measures();
-
-            if (opened && !op.patch.cgl.profileData.pause)
-            {
-            // const timeUsed = performance.now() - lastTime;
-                queue.push(op.patch.cgl.profileData.profileFrameDelta);
-                queue.shift();
-
-                timesMainloop.push(childsTime);
-                timesMainloop.shift();
-
-                timesOnFrame.push(op.patch.cgl.profileData.profileOnAnimFrameOps - op.patch.cgl.profileData.profileMainloopMs);
-                timesOnFrame.shift();
-
-                timesGPU.push(currentTimeGPU);
-                timesGPU.shift();
-
-                updateCanvas();
-            }
-        }
-
-        lastTime = performance.now();
-        selfTime = performance.now() - selfTimeStart;
-
-        outCanv.setRef(canvas);
-    }
-    const startTimeChilds = performance.now();
-
-    next.trigger();
-
-    if (inActive.get())
-    {
-        const nChildsTime = performance.now() - startTimeChilds;
-        const nCurrentTimeMainloop = op.patch.cgl.profileData.profileMainloopMs;
-        const nCurrentTimeOnFrame = op.patch.cgl.profileData.profileOnAnimFrameOps - op.patch.cgl.profileData.profileMainloopMs;
-
-        if (smoothGraph.get())
-        {
-            childsTime = childsTime * 0.9 + nChildsTime * 0.1;
-            currentTimeMainloop = currentTimeMainloop * 0.5 + nCurrentTimeMainloop * 0.5;
-            currentTimeOnFrame = currentTimeOnFrame * 0.5 + nCurrentTimeOnFrame * 0.5;
-        }
-        else
-        {
-            childsTime = nChildsTime;
-            currentTimeMainloop = nCurrentTimeMainloop;
-            currentTimeOnFrame = nCurrentTimeOnFrame;
-        }
-
-        op.patch.cgl.profileData.clearGlQuery();
-    }
-}
-
-}
-};
-
-CABLES.OPS["9cd2d9de-000f-4a14-bd13-e7d5f057583c"]={f:Ops.Gl.Performance,objName:"Ops.Gl.Performance"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Gl.MainLoop_v2
-// 
-// **************************************************************
-
-Ops.Gl.MainLoop_v2= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    hdpi = op.inFloat("Max Pixel Density (DPR)", 2),
-    fpsLimit = op.inValue("FPS Limit", 0),
-    reduceFocusFPS = op.inValueBool("Reduce FPS unfocussed", false),
-    clear = op.inValueBool("Transparent", false),
-    active = op.inValueBool("Active", 1),
-    trigger = op.outTrigger("trigger"),
-    width = op.outNumber("width"),
-    height = op.outNumber("height"),
-    outPixel = op.outNumber("Pixel Density");
-
-op.onAnimFrame = render;
-hdpi.onChange = updateHdpi;
-
-const cgl = op.patch.cg = op.patch.cgl;
-let rframes = 0;
-let rframeStart = 0;
-let timeOutTest = null;
-let addedListener = false;
-if (!op.patch.cgl) op.uiAttr({ "error": "No webgl cgl context" });
-
-const identTranslate = vec3.create();
-vec3.set(identTranslate, 0, 0, 0);
-const identTranslateView = vec3.create();
-vec3.set(identTranslateView, 0, 0, -2);
-
-let fsElement = null;
-let winhasFocus = true;
-let winVisible = true;
-
-window.addEventListener("blur", () => { winhasFocus = false; });
-window.addEventListener("focus", () => { winhasFocus = true; });
-document.addEventListener("visibilitychange", () => { winVisible = !document.hidden; });
-
-testMultiMainloop();
-
-op.patch.tempData.mainloopOp = this;
-
-function updateHdpi()
-{
-    setPixelDensity();
-
-    if (CABLES.UI)
-    {
-        if (hdpi.get() < 1)
-            op.patch.cgl.canvas.style.imageRendering = "pixelated";
-    }
-
-    op.patch.cgl.updateSize();
-    if (CABLES.UI) gui.setLayout();
-}
-
-active.onChange = function ()
-{
-    op.patch.removeOnAnimFrame(op);
-
-    if (active.get())
-    {
-        op.setUiAttrib({ "extendTitle": "" });
-        op.onAnimFrame = render;
-        op.patch.addOnAnimFrame(op);
-        op.log("adding again!");
-    }
-    else
-    {
-        op.setUiAttrib({ "extendTitle": "Inactive" });
-    }
-};
-
-function getFpsLimit()
-{
-    if (reduceFocusFPS.get())
-    {
-        if (!winVisible) return 10;
-        if (!winhasFocus) return 30;
-    }
-
-    return fpsLimit.get();
-}
-
-op.onDelete = function ()
-{
-    cgl.gl.clearColor(0, 0, 0.0, 0);
-    cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT | cgl.gl.DEPTH_BUFFER_BIT);
-};
-
-function setPixelDensity()
-{
-    if (hdpi.get() != 0) op.patch.cgl.pixelDensity = Math.min(hdpi.get(), window.devicePixelRatio);
-    else op.patch.cgl.pixelDensity = window.devicePixelRatio;
-}
-
-function render(time)
-{
-    if (!active.get()) return;
-    if (cgl.aborted || cgl.canvas.clientWidth === 0 || cgl.canvas.clientHeight === 0) return;
-
-    op.patch.cg = cgl;
-
-    setPixelDensity();
-
-    // if (hdpi.get())op.patch.cgl.pixelDensity = window.devicePixelRatio;
-
-    const startTime = performance.now();
-
-    op.patch.config.fpsLimit = getFpsLimit();
-
-    if (cgl.canvasWidth == -1)
-    {
-        cgl.setCanvas(op.patch.config.glCanvasId);
-        return;
-    }
-
-    if (cgl.canvasWidth != width.get() || cgl.canvasHeight != height.get())
-    {
-        width.set(cgl.canvasWidth / 1);
-        height.set(cgl.canvasHeight / 1);
-    }
-
-    if (CABLES.now() - rframeStart > 1000)
-    {
-        CGL.fpsReport = CGL.fpsReport || [];
-        if (op.patch.loading.getProgress() >= 1.0 && rframeStart !== 0)CGL.fpsReport.push(rframes);
-        rframes = 0;
-        rframeStart = CABLES.now();
-    }
-    CGL.MESH.lastShader = null;
-    CGL.MESH.lastMesh = null;
-
-    cgl.renderStart(cgl, identTranslate, identTranslateView);
-
-    if (!clear.get()) cgl.gl.clearColor(0, 0, 0, 1);
-    else cgl.gl.clearColor(0, 0, 0, 0);
-
-    cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT | cgl.gl.DEPTH_BUFFER_BIT);
-
-    trigger.trigger();
-
-    if (CGL.MESH.lastMesh)CGL.MESH.lastMesh.unBind();
-
-    if (CGL.Texture.previewTexture)
-    {
-        if (!CGL.Texture.texturePreviewer) CGL.Texture.texturePreviewer = new CGL.Texture.texturePreview(cgl);
-        CGL.Texture.texturePreviewer.render(CGL.Texture.previewTexture);
-    }
-    cgl.renderEnd(cgl);
-
-    op.patch.cg = null;
-
-    if (!clear.get())
-    {
-        cgl.gl.clearColor(1, 1, 1, 1);
-        cgl.gl.colorMask(false, false, false, true);
-        cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT);
-        cgl.gl.colorMask(true, true, true, true);
-    }
-
-    if (!cgl.tempData.phong)cgl.tempData.phong = {};
-    rframes++;
-
-    outPixel.set(op.patch.cgl.pixelDensity);
-    op.patch.cgl.profileData.profileMainloopMs = performance.now() - startTime;
-}
-
-function testMultiMainloop()
-{
-    clearTimeout(timeOutTest);
-    timeOutTest = setTimeout(
-        () =>
-        {
-            if (op.patch.getOpsByObjName(op.name).length > 1)
-            {
-                op.setUiError("multimainloop", "there should only be one mainloop op!");
-                if (!addedListener)addedListener = op.patch.addEventListener("onOpDelete", testMultiMainloop);
-            }
-            else op.setUiError("multimainloop", null, 1);
-        }, 500);
-}
-
-}
-};
-
-CABLES.OPS["f1029550-d877-42da-9b1e-63a5163a0350"]={f:Ops.Gl.MainLoop_v2,objName:"Ops.Gl.MainLoop_v2"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Ui.VizTexture
-// 
-// **************************************************************
-
-Ops.Ui.VizTexture= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={"viztex_frag":"IN vec2 texCoord;\nUNI sampler2D tex;\nUNI samplerCube cubeMap;\nUNI float width;\nUNI float height;\nUNI float type;\nUNI float time;\n\nfloat LinearizeDepth(float d,float zNear,float zFar)\n{\n    float z_n = 2.0 * d - 1.0;\n    return 2.0 * zNear / (zFar + zNear - z_n * (zFar - zNear));\n}\n\nvoid main()\n{\n    vec4 col=vec4(vec3(0.),0.0);\n\n    vec4 colTex=texture(tex,texCoord);\n\n\n\n    if(type==1.0)\n    {\n        vec4 depth=vec4(0.);\n        vec2 localST=texCoord;\n        localST.y = 1. - localST.y;\n\n        localST.t = mod(localST.t*3.,1.);\n        localST.s = mod(localST.s*4.,1.);\n\n        #ifdef WEBGL2\n            #define texCube texture\n        #endif\n        #ifdef WEBGL1\n            #define texCube textureCube\n        #endif\n\n//         //Due to the way my depth-cubeMap is rendered, objects to the -x,y,z side is projected to the positive x,y,z side\n//         //Inside where top/bottom is to be drawn?\n        if (texCoord.s*4.> 1. && texCoord.s*4.<2.)\n        {\n            //Bottom (-y) quad\n            if (texCoord.t*3. < 1.)\n            {\n                vec3 dir=vec3(localST.s*2.-1.,-1.,-localST.t*2.+1.);//Due to the (arbitrary) way I choose as up in my depth-viewmatrix, i her emultiply the latter coordinate with -1\n                depth = texCube(cubeMap, dir);\n            }\n            //top (+y) quad\n            else if (texCoord.t*3. > 2.)\n            {\n                vec3 dir=vec3(localST.s*2.-1.,1.,localST.t*2.-1.);//Get lower y texture, which is projected to the +y part of my cubeMap\n                depth = texCube(cubeMap, dir);\n            }\n            else//Front (-z) quad\n            {\n                vec3 dir=vec3(localST.s*2.-1.,-localST.t*2.+1.,1.);\n                depth = texCube(cubeMap, dir);\n            }\n        }\n//         //If not, only these ranges should be drawn\n        else if (texCoord.t*3. > 1. && texCoord.t*3. < 2.)\n        {\n            if (texCoord.x*4. < 1.)//left (-x) quad\n            {\n                vec3 dir=vec3(-1.,-localST.t*2.+1.,localST.s*2.-1.);\n                depth = texCube(cubeMap, dir);\n            }\n            else if (texCoord.x*4. < 3.)//right (+x) quad (front was done above)\n            {\n                vec3 dir=vec3(1,-localST.t*2.+1.,-localST.s*2.+1.);\n                depth = texCube(cubeMap, dir);\n            }\n            else //back (+z) quad\n            {\n                vec3 dir=vec3(-localST.s*2.+1.,-localST.t*2.+1.,-1.);\n                depth = texCube(cubeMap, dir);\n            }\n        }\n        // colTex = vec4(vec3(depth),1.);\n        colTex = vec4(depth);\n    }\n\n    if(type==2.0)\n    {\n       float near = 0.1;\n       float far = 50.;\n       float depth = LinearizeDepth(colTex.r, near, far);\n       colTex.rgb = vec3(depth);\n    }\n\n\n\n\n    #ifdef ANIM_RANGE\n\n        if(colTex.r>1.0 || colTex.r<0.0)\n            colTex.r=mod(colTex.r,1.0)*0.5+(sin(colTex.r+mod(colTex.r*3.0,1.0)+time*5.0)*0.5+0.5)*0.5;\n        if(colTex.g>1.0 || colTex.g<0.0)\n            colTex.g=mod(colTex.g,1.0)*0.5+(sin(colTex.g+mod(colTex.g*3.0,1.0)+time*5.0)*0.5+0.5)*0.5;\n        if(colTex.b>1.0 || colTex.b<0.0)\n            colTex.b=mod(colTex.b,1.0)*0.5+(sin(colTex.b+mod(colTex.b*3.0,1.0)+time*5.0)*0.5+0.5)*0.5;\n\n    #endif\n\n\n    // #ifdef ANIM_RANGE\n    //     if(colTex.r>1.0 || colTex.r<0.0)\n    //     {\n    //         float r=mod( time+colTex.r,1.0)*0.5+0.5;\n    //         colTex.r=r;\n    //     }\n    //     if(colTex.g>1.0 || colTex.g<0.0)\n    //     {\n    //         float r=mod( time+colTex.g,1.0)*0.5+0.5;\n    //         colTex.g=r;\n    //     }\n    //     if(colTex.b>1.0 || colTex.b<0.0)\n    //     {\n    //         float r=mod( time+colTex.b,1.0)*0.5+0.5;\n    //         colTex.b=r;\n    //     }\n    // #endif\n\n    #ifdef MOD_RANGE\n        colTex.r=mod(colTex.r,1.0001);\n        colTex.g=mod(colTex.g,1.0001);\n        colTex.b=mod(colTex.b,1.0001);\n\n    #endif\n\n    #ifdef ALPHA_ONE\n        colTex.a=1.0;\n    #endif\n    #ifdef ALPHA_INV\n        colTex.a=1.0-colTex.a;\n    #endif\n\n    outColor = mix(col,colTex,colTex.a);\n}\n\n","viztex_vert":"IN vec3 vPosition;\nIN vec2 attrTexCoord;\nOUT vec2 texCoord;\nUNI mat4 projMatrix;\nUNI mat4 modelMatrix;\nUNI mat4 viewMatrix;\n\nvoid main()\n{\n    texCoord=vec2(attrTexCoord.x,1.0-attrTexCoord.y);\n    vec4 pos = vec4( vPosition, 1. );\n    mat4 mvMatrix=viewMatrix * modelMatrix;\n    gl_Position = projMatrix * mvMatrix * pos;\n}",};
-const
-    inTex = op.inTexture("Texture In"),
-    inShowInfo = op.inBool("Show Info", false),
-    inVizRange = op.inSwitch("Visualize outside 0-1", ["Off", "Anim", "Modulo"], "Anim"),
-    inAlpha = op.inSwitch("Alpha", ["A", "1", "1-A"], "A"),
-    inPickColor = op.inBool("Show Color", false),
-    inX = op.inFloatSlider("X", 0.5),
-    inY = op.inFloatSlider("Y", 0.5),
-    outTex = op.outTexture("Texture Out"),
-    outInfo = op.outString("Info");
-
-op.setUiAttrib({ "height": 150, "resizable": true });
-
-const timer = new CABLES.Timer();
-let shader = null;
-let fb = null;
-let pixelReader = null;
-let colorString = "";
-let firstTime = true;
-
-inAlpha.onChange =
-    inVizRange.onChange = updateDefines;
-
-inPickColor.onChange = updateUi;
-updateUi();
-
-if (CABLES.UI)
-{
-    timer.play();
-}
-
-function updateUi()
-{
-    inX.setUiAttribs({ "greyout": !inPickColor.get() });
-    inY.setUiAttribs({ "greyout": !inPickColor.get() });
-}
-
-inTex.onChange = () =>
-{
-    const t = inTex.get();
-
-    outTex.setRef(t);
-
-    let title = "";
-
-    if (inTex.get() && inTex.isLinked()) title = inTex.links[0].getOtherPort(inTex).name;
-
-    op.setUiAttrib({ "extendTitle": title });
-};
-
-function updateDefines()
-{
-    if (!shader) return;
-
-    shader.toggleDefine("MOD_RANGE", inVizRange.get() == "Modulo");
-    shader.toggleDefine("ANIM_RANGE", inVizRange.get() == "Anim");
-    shader.toggleDefine("ALPHA_INV", inAlpha.get() == "1-A");
-    shader.toggleDefine("ALPHA_ONE", inAlpha.get() == "1");
-    // op.checkMainloopExists();
-}
-
-op.renderVizLayerGl = (ctx, layer) =>
-{
-    if (!inTex.isLinked()) return;
-    if (!layer.useGl) return;
-
-    const port = inTex;
-    const texSlot = 5;
-    const texSlotCubemap = texSlot + 1;
-
-    const perf = gui.uiProfiler.start("previewlayer texture");
-    const cgl = port.op.patch.cgl;
-
-    if (!this._emptyCubemap) this._emptyCubemap = CGL.Texture.getEmptyCubemapTexture(cgl);
-    port.op.patch.cgl.profileData.profileTexPreviews++;
-
-    const portTex = port.get() || CGL.Texture.getEmptyTexture(cgl);
-
-    if (!this._mesh)
-    {
-        const geom = new CGL.Geometry("vizTexture rect");
-        geom.vertices = [1.0, 1.0, 0.0, -1.0, 1.0, 0.0, 1.0, -1.0, 0.0, -1.0, -1.0, 0.0];
-        geom.texCoords = [
-            1.0, 1.0,
-            0.0, 1.0,
-            1.0, 0.0,
-            0.0, 0.0];
-        geom.verticesIndices = [0, 1, 2, 3, 1, 2];
-        this._mesh = new CGL.Mesh(cgl, geom);
-    }
-    if (!this._shader)
-    {
-        this._shader = new CGL.Shader(cgl, "glpreviewtex");
-        this._shader.setModules(["MODULE_VERTEX_POSITION", "MODULE_COLOR", "MODULE_BEGIN_FRAG"]);
-        this._shader.setSource(attachments.viztex_vert, attachments.viztex_frag);
-        this._shaderTexUniform = new CGL.Uniform(this._shader, "t", "tex", texSlot);
-        this._shaderTexCubemapUniform = new CGL.Uniform(this._shader, "tc", "cubeMap", texSlotCubemap);
-        shader = this._shader;
-        updateDefines();
-
-        this._shaderTexUniformW = new CGL.Uniform(this._shader, "f", "width", portTex.width);
-        this._shaderTexUniformH = new CGL.Uniform(this._shader, "f", "height", portTex.height);
-        this._shaderTypeUniform = new CGL.Uniform(this._shader, "f", "type", 0);
-        this._shaderTimeUniform = new CGL.Uniform(this._shader, "f", "time", 0);
-    }
-
-    cgl.pushPMatrix();
-    const sizeTex = [portTex.width, portTex.height];
-    const small = port.op.patch.cgl.canvasWidth > sizeTex[0] && port.op.patch.cgl.canvasHeight > sizeTex[1];
-
-    if (small)
-    {
-        mat4.ortho(cgl.pMatrix, 0, port.op.patch.cgl.canvasWidth, port.op.patch.cgl.canvasHeight, 0, 0.001, 11);
-    }
-    else mat4.ortho(cgl.pMatrix, -1, 1, 1, -1, 0.001, 11);
-
-    const oldTex = cgl.getTexture(texSlot);
-    const oldTexCubemap = cgl.getTexture(texSlotCubemap);
-
-    let texType = 0;
-    if (portTex)
-    {
-        if (portTex.cubemap) texType = 1;
-        if (portTex.textureType == CGL.Texture.TYPE_DEPTH) texType = 2;
-
-        if (texType == 0 || texType == 2)
-        {
-            cgl.setTexture(texSlot, portTex.tex);
-            cgl.setTexture(texSlotCubemap, this._emptyCubemap.cubemap, cgl.gl.TEXTURE_CUBE_MAP);
-        }
-        else if (texType == 1)
-        {
-            cgl.setTexture(texSlotCubemap, portTex.cubemap, cgl.gl.TEXTURE_CUBE_MAP);
-        }
-
-        timer.update();
-        this._shaderTimeUniform.setValue(timer.get());
-
-        this._shaderTypeUniform.setValue(texType);
-        let s = [port.op.patch.cgl.canvasWidth, port.op.patch.cgl.canvasHeight];
-
-        cgl.gl.clearColor(0, 0, 0, 0);
-        cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT | cgl.gl.DEPTH_BUFFER_BIT);
-
-        cgl.pushModelMatrix();
-        if (small)
-        {
-            s = sizeTex;
-            mat4.translate(cgl.mMatrix, cgl.mMatrix, [sizeTex[0] / 2, sizeTex[1] / 2, 0]);
-            mat4.scale(cgl.mMatrix, cgl.mMatrix, [sizeTex[0] / 2, sizeTex[1] / 2, 0]);
-        }
-        this._mesh.render(this._shader);
-        cgl.popModelMatrix();
-
-        if (texType == 0) cgl.setTexture(texSlot, oldTex);
-        if (texType == 1) cgl.setTexture(texSlotCubemap, oldTexCubemap);
-
-        cgl.popPMatrix();
-        cgl.resetViewPort();
-
-        const sizeImg = [layer.width, layer.height];
-
-        const stretch = false;
-        // if (!stretch)
-        // {
-        if (portTex.width > portTex.height) sizeImg[1] = layer.width * sizeTex[1] / sizeTex[0];
-        else
-        {
-            sizeImg[1] = layer.width * (sizeTex[1] / sizeTex[0]);
-
-            if (sizeImg[1] > layer.height)
-            {
-                const r = layer.height / sizeImg[1];
-                sizeImg[0] *= r;
-                sizeImg[1] *= r;
-            }
-        }
-
-        const scaledDown = sizeImg[0] > sizeTex[0] && sizeImg[1] > sizeTex[1];
-
-        // ctx.imageSmoothingEnabled = !small || !scaledDown;
-        ctx.imageSmoothingEnabled = true;
-
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(layer.x, layer.y - 10, 10, 10);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(layer.x, layer.y - 10, 5, 5);
-        ctx.fillRect(layer.x + 5, layer.y - 10 + 5, 5, 5);
-
-        let layerHeight = layer.height;
-        let numX = (10 * layer.width / layerHeight);
-        let stepY = (layerHeight / 10);
-        let stepX = (layer.width / numX);
-        for (let x = 0; x < numX; x++)
-            for (let y = 0; y < 10; y++)
-            {
-                if ((x + y) % 2 == 0)ctx.fillStyle = "#333333";
-                else ctx.fillStyle = "#393939";
-                ctx.fillRect(layer.x + stepX * x, layer.y + stepY * y, stepX, stepY);
-            }
-
-        ctx.fillStyle = "#222";
-        const borderLeft = (layer.width - sizeImg[0]) / 2;
-        const borderTop = (layerHeight - sizeImg[1]) / 2;
-
-        let imgPosX = layer.x + (layer.width - sizeImg[0]) / 2;
-        let imgPosY = layer.y + (layerHeight - sizeImg[1]) / 2;
-        let imgSizeW = sizeImg[0];
-        let imgSizeH = sizeImg[1];
-
-        if (layerHeight - sizeImg[1] < 0)
-        {
-            imgPosX = layer.x + (layer.width - sizeImg[0] * layerHeight / sizeImg[1]) / 2;
-            imgPosY = layer.y;
-            imgSizeW = sizeImg[0] * layerHeight / sizeImg[1];
-            imgSizeH = layerHeight;
-        }
-
-        ctx.fillRect(layer.x, layer.y, imgPosX - layer.x, layerHeight);
-        ctx.fillRect(layer.x + imgSizeW + imgPosX - layer.x, layer.y, imgSizeW, layerHeight);
-        ctx.fillRect(layer.x, layer.y, layer.width, borderTop);
-        ctx.fillRect(layer.x, layer.y + sizeImg[1] + borderTop, layer.width, borderTop);
-
-        if (cgl.canvas && cgl.canvasWidth > 0 && cgl.canvasHeight > 0 && cgl.canvas.width > 0 && cgl.canvas.height > 0)
-        {
-            try
-            {
-                const bigPixels = imgSizeW / s[0] > 3 || imgSizeH / s[1] > 3;
-                const veryBigPixels = imgSizeW / s[0] > 10 || imgSizeH / s[1] > 10;
-
-                if (sizeTex[1] == 1)
-                {
-                    ctx.imageSmoothingEnabled = false;// workaround filtering problems
-                    ctx.drawImage(cgl.canvas,
-                        0,
-                        0,
-                        s[0],
-                        s[1],
-                        layer.x,
-                        layer.y,
-                        layer.width,
-                        layerHeight);// workaround filtering problems
-                    ctx.imageSmoothingEnabled = true;
-                }
-                else
-                if (sizeTex[0] == 1)
-                {
-                    ctx.imageSmoothingEnabled = false;// workaround filtering problems
-                    ctx.drawImage(cgl.canvas,
-                        0,
-                        0,
-                        s[0],
-                        s[1],
-                        layer.x,
-                        layer.y,
-                        layer.width,
-                        layerHeight);
-                    ctx.imageSmoothingEnabled = true;
-                }
-                else
-                if (sizeImg[0] != 0 && sizeImg[1] != 0 && layer.width != 0 && layerHeight != 0 && imgSizeW != 0 && imgSizeH != 0)
-                {
-                    ctx.imageSmoothingEnabled = !bigPixels;
-
-                    ctx.drawImage(cgl.canvas,
-                        0,
-                        0,
-                        s[0],
-                        s[1],
-                        imgPosX,
-                        imgPosY,
-                        imgSizeW,
-                        imgSizeH);
-                }
-
-                if (veryBigPixels)
-                {
-                    const stepx = imgSizeW / s[0];
-                    const stepy = imgSizeH / s[1];
-
-                    ctx.imageSmoothingEnabled = true;
-                    ctx.lineWidth = 1;
-                    ctx.globalAlpha = 0.5;
-                    ctx.beginPath();
-
-                    for (let x = 0; x <= s[0]; x++)
-                    {
-                        ctx.moveTo(imgPosX + x * stepx, imgPosY);
-                        ctx.lineTo(imgPosX + x * stepx, imgPosY + imgSizeH);
-                    }
-
-                    for (let y = 0; y <= s[1]; y++)
-                    {
-                        ctx.moveTo(imgPosX, imgPosY + y * stepy);
-                        ctx.lineTo(imgPosX + imgSizeW, imgPosY + y * stepy);
-                    }
-
-                    ctx.strokeStyle = "#555";
-                    ctx.stroke();
-                    ctx.globalAlpha = 1;
-                }
-            }
-            catch (e)
-            {
-                console.error("canvas drawimage exception...", e);
-            }
-            // }
-        }
-
-        let info = "";
-        if (inShowInfo.get() && port.get() && port.get().getInfoOneLine) info += port.get().getInfoOneLine() + "\n";
-        outInfo.set(info);
-
-        if (inPickColor.get())
-        {
-            info += colorString + "\n";
-
-            const x = imgPosX + imgSizeW * inX.get();
-            const y = imgPosY + imgSizeH * inY.get();
-
-            for (let ii = 0; ii < 2; ii++)
-            {
-                if (ii == 0)ctx.fillStyle = "#000";
-                else ctx.fillStyle = "#fff";
-
-                ctx.fillRect(
-                    x - 1 + ii,
-                    y - 10 + ii,
-                    1,
-                    20);
-
-                ctx.fillRect(
-                    x - 10 + ii,
-                    y - 1 + ii,
-                    20,
-                    1);
-            }
-        }
-
-        if (inShowInfo.get() || inPickColor.get())
-        {
-            op.setUiAttrib({ "comment": info });
-        }
-
-        if (inPickColor.get())
-        {
-            const gl = cgl.gl;
-
-            const realTexture = inTex.get();
-            if (!realTexture)
-            {
-                colorString = "";
-                return;
-            }
-            if (!fb) fb = gl.createFramebuffer();
-            if (!pixelReader) pixelReader = new CGL.PixelReader();
-
-            gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
-            gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, realTexture.tex, 0);
-            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-
-            pixelReader.read(cgl, fb, realTexture.pixelFormat, inX.get() * realTexture.width, realTexture.height - inY.get() * realTexture.height, 1, 1, (pixel) =>
-            {
-                if (!CGL.Texture.isPixelFormatFloat(realTexture.pixelFormat))
-                {
-                    colorString = "Pixel Float: " + Math.floor(pixel[0] / 255 * 100) / 100;
-                    if (!isNaN(pixel[1]))colorString += ", " + Math.floor(pixel[1] / 255 * 100) / 100;
-                    if (!isNaN(pixel[2]))colorString += ", " + Math.floor(pixel[2] / 255 * 100) / 100;
-                    if (!isNaN(pixel[3]))colorString += ", " + Math.floor(pixel[3] / 255 * 100) / 100;
-                    colorString += "\n";
-
-                    if (realTexture.pixelFormat.indexOf("ubyte") > 0)
-                    {
-                        colorString += "Pixel UByte: ";
-                        colorString += Math.round(pixel[0]);
-                        if (!isNaN(pixel[1]))colorString += ", " + Math.round(pixel[1]);
-                        if (!isNaN(pixel[2]))colorString += ", " + Math.round(pixel[2]);
-                        if (!isNaN(pixel[3]))colorString += ", " + Math.round(pixel[3]);
-
-                        colorString += "\n";
-                    }
-                }
-                else
-                {
-                    colorString = "Pixel Float: " + Math.round(pixel[0] * 100) / 100 + ", " + Math.round(pixel[1] * 100) / 100 + ", " + Math.round(pixel[2] * 100) / 100 + ", " + Math.round(pixel[3] * 100) / 100;
-                    colorString += "\n";
-                }
-            });
-        }
-    }
-
-    cgl.gl.clearColor(0, 0, 0, 0);
-    cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT | cgl.gl.DEPTH_BUFFER_BIT);
-
-    perf.finish();
-};
-
-}
-};
-
-CABLES.OPS["4ea2d7b0-ca74-45db-962b-4d1965ac20c0"]={f:Ops.Ui.VizTexture,objName:"Ops.Ui.VizTexture"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Gl.ImageCompose.ImageComposeSnapshot
-// 
-// **************************************************************
-
-Ops.Gl.ImageCompose.ImageComposeSnapshot= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    render = op.inTrigger("Update"),
-    trigger = op.outTrigger("trigger"),
-    outTex = op.outTexture("Texture");
-
-const cgl = op.patch.cgl;
-let tc = new CGL.CopyTexture(cgl, "textureThief", {});
-let pf = false;
-let wrap = -1;
-let filter = -1;
-
-render.onTriggered = () =>
-{
-    if (!CGL.TextureEffect.checkOpInEffect(op)) return;
-
-    const effect = cgl.currentTextureEffect;
-    effect.endEffect();
-
-    const shouldPf = cgl.currentTextureEffect.getCurrentSourceTexture().pixelFormat;
-    const shouldWrap = cgl.currentTextureEffect.getCurrentSourceTexture().wrap;
-    const shouldFilter = cgl.currentTextureEffect.getCurrentSourceTexture().filter;
-
-    if (pf != shouldPf || wrap != shouldWrap || filter != shouldFilter)
-    {
-        tc = new CGL.CopyTexture(cgl, "textureThief",
-            {
-                "pixelFormat": cgl.currentTextureEffect.getCurrentSourceTexture().pixelFormat,
-                "wrap": shouldWrap,
-                "filter": shouldFilter
-            });
-        pf = shouldPf;
-        wrap = shouldWrap;
-        filter = shouldFilter;
-    }
-
-    const vp = cgl.getViewPort();
-    outTex.set(CGL.Texture.getEmptyTexture(cgl));
-
-    const tx = cgl.currentTextureEffect.getCurrentSourceTexture();
-    outTex.set(tc.copy(tx));
-
-    effect.continueEffect();
-
-    trigger.trigger();
-};
-
-}
-};
-
-CABLES.OPS["e15c0803-02bb-4783-9d75-e75abd70d910"]={f:Ops.Gl.ImageCompose.ImageComposeSnapshot,objName:"Ops.Gl.ImageCompose.ImageComposeSnapshot"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Gl.ImageCompose.RgbToHsvTexture
-// 
-// **************************************************************
-
-Ops.Gl.ImageCompose.RgbToHsvTexture= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={"tonormal_frag":"#ifdef HAS_TEXTURES\n  IN vec2 texCoord;\n  UNI sampler2D tex;\n#endif\n\nUNI float strength;\n\n\nvec3 rgb2hsv(vec3 c)\n{\n    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);\n    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));\n    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));\n\n    float d = q.x - min(q.w, q.y);\n    float e = 1.0e-10;\n    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);\n}\n\nvec3 hsv2rgb(vec3 c)\n{\n    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);\n    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);\n    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);\n}\n\nvoid main()\n{\n    vec4 col=texture(tex, texCoord);\n\n\n\n    #ifdef OUT_HSB\n        col.rgb=rgb2hsv(col.rgb).rgb;\n    #endif\n    #ifdef OUT_H\n        col.rgb=rgb2hsv(col.rgb).rrr;\n    #endif\n    #ifdef OUT_S\n        col.rgb=rgb2hsv(col.rgb).ggg;\n    #endif\n    #ifdef OUT_B\n        col.rgb=rgb2hsv(col.rgb).bbb;\n    #endif\n    #ifdef OUT_SB\n        col.rgb=rgb2hsv(col.rgb).ggg*rgb2hsv(col.rgb).bbb;\n    #endif\n\n\n    outColor=col;\n}",};
-const
-    render = op.inTrigger("render"),
-    inMeth = op.inSwitch("Output RGB", ["HSB", "Hue", "Sat", "Bright", "Sat*Bright"], "HSB"),
-    trigger = op.outTrigger("trigger"),
-    cgl = op.patch.cgl,
-    shader = new CGL.Shader(cgl, op.name, op);
-
-shader.setSource(shader.getDefaultVertexShader(), attachments.tonormal_frag);
-let textureUniform = new CGL.Uniform(shader, "t", "tex", 0);
-
-inMeth.onChange = updateDefines;
-updateDefines();
-
-function updateDefines()
-{
-    shader.toggleDefine("OUT_HSB", inMeth.get() == "HSB");
-    shader.toggleDefine("OUT_H", inMeth.get() == "Hue");
-    shader.toggleDefine("OUT_S", inMeth.get() == "Sat");
-    shader.toggleDefine("OUT_B", inMeth.get() == "Bright");
-    shader.toggleDefine("OUT_SB", inMeth.get() == "Sat*Bright");
-}
-
-render.onTriggered = function ()
-{
-    if (!CGL.TextureEffect.checkOpInEffect(op)) return;
-
-    cgl.pushShader(shader);
-    cgl.currentTextureEffect.bind();
-
-    cgl.setTexture(0, cgl.currentTextureEffect.getCurrentSourceTexture().tex);
-
-    cgl.currentTextureEffect.finish();
-    cgl.popShader();
-
-    trigger.trigger();
-};
-
-}
-};
-
-CABLES.OPS["147ed29e-f04e-4f7c-b9d7-133d7c6cbef9"]={f:Ops.Gl.ImageCompose.RgbToHsvTexture,objName:"Ops.Gl.ImageCompose.RgbToHsvTexture"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Html.Utils.PlayerControlPanel_v2
-// 
-// **************************************************************
-
-Ops.Html.Utils.PlayerControlPanel_v2= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={"css_progressui_css":".progressUI\n{\n    padding: 10px;\n    position: absolute;\n    border-radius: 10px;\n    background-color: rgba(0,0,0,0.45);\n    margin: 20px;\n    bottom: 10px;\n    height:30px;\n    margin-left:50%;\n    transform: translate(-50%);\n    display: flex;\n    align-items: center;\n}\n\n.progressUI .buttonContainer {\n    display: flex;\n    align-content: center;\n    height: 100%;\n}\n\n.progressUI .progress\n{\n    font-family: Monospace;\n    float:left;\n    color:white;\n    width: auto;\n    margin-left:15px;\n    margin-right: 10px;\n}\n\n.progressUI .progressContainer\n{\n    width:200px;\n    overflow: hidden;\n    background: rgba(0,0,0,0.4);\n    border-radius: 4px;\n    float:left;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    height: 100%;\n}\n\n.progressUI .button\n{\n    cursor: pointer;\n    box-sizing: border-box;\n    background: rgba(0,0,0,0.4);\n    display: flex;\n    align-content: center;\n    padding: 5px;\n    padding-left: 10px;\n    padding-right: 10px;\n    margin-right: 5px;\n    border-radius: 5px;\n    float:left;\n    display: flex;\n    align-items: center;\n}\n\n.progressUIIcon\n{\n    display: inline-block;\n    vertical-align: middle;\n    width: 15px;\n    height: 15px;\n    background-color: white;\n    -webkit-mask-repeat: no-repeat !important;\n    -webkit-mask-size: 100% !important;\n}\n\n.progressUI .progressContainer .progressbar {\n    height: 100%;\n    width: 97%;\n}\n\n.progressUI_icon-play {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-play'%3E%3Cpath d='M5 3l14 9-14 9V3z'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-play'%3E%3Cpath d='M5 3l14 9-14 9V3z'/%3E%3C/svg%3E\");\n}\n\n.progressUI_icon-pause {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-pause'%3E%3Cpath d='M6 4h4v16H6zM14 4h4v16h-4z'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-pause'%3E%3Cpath d='M6 4h4v16H6zM14 4h4v16h-4z'/%3E%3C/svg%3E\");\n}\n\n.progressUI_icon-rewind {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-rewind'%3E%3Cpath d='M11 19l-9-7 9-7v14zM22 19l-9-7 9-7v14z'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-rewind'%3E%3Cpath d='M11 19l-9-7 9-7v14zM22 19l-9-7 9-7v14z'/%3E%3C/svg%3E\");\n}\n\n.progressUI_icon-fast-forward {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-fast-forward'%3E%3Cpath d='M13 19l9-7-9-7v14zM2 19l9-7-9-7v14z'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-fast-forward'%3E%3Cpath d='M13 19l9-7-9-7v14zM2 19l9-7-9-7v14z'/%3E%3C/svg%3E\");\n}\n\n.progressUI_icon-skip-back {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-skip-back'%3E%3Cpath d='M19 20L9 12l10-8v16zM5 19V5'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-skip-back'%3E%3Cpath d='M19 20L9 12l10-8v16zM5 19V5'/%3E%3C/svg%3E\");\n}\n",};
-const
-    inMax = op.inFloat("Length", 30),
-    inCurrent = op.inFloat("Current", 0),
-    inClamp = op.inBool("Clamp", false),
-    inIsPlaying = op.inBool("Is Playing", false),
-    inVisible = op.inBool("Visible", true),
-    inShowValue = op.inBool("Show Time"),
-    inShowSkip = op.inBool("Show Skip Buttons"),
-
-    outPlay = op.outTrigger("Play clicked"),
-    outPause = op.outTrigger("Pause clicked"),
-    outRewind = op.outTrigger("Rewind clicked"),
-    outBack = op.outTrigger("Skip Back clicked"),
-    outForward = op.outTrigger("Skip Forward clicked"),
-
-    outDragged = op.outTrigger("Dragged"),
-    outValue = op.outNumber("Current Value"),
-    outDragging = op.outBoolNum("Dragging", false),
-    outElement = op.outObject("DOM Element", null, "element");
-
-let div = op.patch.getDocument().createElement("div");
-div.id = "progressUI_" + op.id;
-div.classList.add("progressUI");
-outElement.set(div);
-
-const cgl = op.patch.cgl;
-let canvas = op.patch.cgl.canvas.parentElement;
-canvas.appendChild(div);
-
-let progressContainer = op.patch.getDocument().createElement("div");
-if (!inVisible.get())
-{
-    div.style.display = "none";
-}
-let progressbar = op.patch.getDocument().createElement("input");
-let progress = op.patch.getDocument().createElement("div");
-const buttonContainer = op.patch.getDocument().createElement("div");
-
-progressContainer.classList.add("progressContainer");
-
-progressContainer.appendChild(progressbar);
-
-progressbar.setAttribute("type", "range");
-progressbar.setAttribute("step", 0.01);
-progressbar.setAttribute("min", 0);
-progressbar.setAttribute("max", inMax.get());
-progressbar.setAttribute("value", inCurrent.get());
-progressbar.classList.add("progressbar");
-progressbar.addEventListener("input", handleInput);
-let wasPlaying = false;
-let isDragging = false;
-
-div.appendChild(buttonContainer);
-div.appendChild(progressContainer);
-div.appendChild(progress);
-
-let eleId = "css_progressui_" + CABLES.uuid();
-
-const styleEle = op.patch.getDocument().createElement("style");
-styleEle.type = "text/css";
-styleEle.id = eleId;
-styleEle.classList.add("cablesEle");
-
-let head = op.patch.getDocument().getElementsByTagName("body")[0];
-head.appendChild(styleEle);
-
-buttonContainer.classList.add("buttonContainer");
-
-let skipbackbutton = addButton("", "progressUI_icon-skip-back");
-buttonContainer.appendChild(skipbackbutton);
-
-let rewindButton = addButton("", "progressUI_icon-rewind", "skip");
-if (!inShowSkip.get())
-{
-    rewindButton.style.display = "none";
-}
-buttonContainer.appendChild(rewindButton);
-rewindButton.addEventListener("pointerdown", () =>
-{
-    outBack.trigger();
-});
-
-let playButton = addButton("", "progressUI_icon-play");
-buttonContainer.appendChild(playButton);
-
-let forwardButton = addButton("", "progressUI_icon-fast-forward", "skip");
-if (!inShowSkip.get())
-{
-    forwardButton.style.display = "none";
-}
-buttonContainer.appendChild(forwardButton);
-
-forwardButton.addEventListener("pointerdown", () =>
-{
-    outForward.trigger();
-});
-
-progress.classList.add("progress");
-progress.innerHTML = "00:00:000";
-
-function addButton(title, icon, additionalClass)
-{
-    let button = op.patch.getDocument().createElement("div");
-    button.classList.add("button");
-    button.classList.add(additionalClass);
-    button.innerHTML = title;
-
-    if (icon)
-    {
-        let buttonicon = op.patch.getDocument().createElement("div");
-        buttonicon.classList.add("progressUIIcon");
-        buttonicon.classList.add(icon);
-        button.appendChild(buttonicon);
-    }
-    return button;
-}
-
-inMax.onChange = () =>
-{
-    progressbar.setAttribute("max", inMax.get());
-};
-
-inVisible.onChange = () =>
-{
-    if (inVisible.get())
-    {
-        div.style.removeProperty("display");
-    }
-    else
-    {
-        div.style.display = "none";
-    }
-};
-
-inShowValue.onChange = () =>
-{
-    if (inShowValue.get())
-    {
-        div.classList.add("showValue");
-        progress.style.display = "block";
-    }
-    else
-    {
-        div.classList.remove("showValue");
-        progress.style.display = "none";
-    }
-};
-
-inShowSkip.onChange = () =>
-{
-    if (inShowSkip.get())
-    {
-        div.querySelectorAll(".button.skip").forEach((skip) =>
-        {
-            skip.style.display = "block";
-        });
-    }
-    else
-    {
-        div.querySelectorAll(".button.skip").forEach((skip) =>
-        {
-            skip.style.display = "none";
-        });
-    }
-};
-
-if (!inShowValue.get())
-{
-    progress.style.display = "none";
-}
-progressbar.addEventListener("pointerdown", () =>
-{
-    isDragging = true;
-    if (inIsPlaying.get())
-    {
-        wasPlaying = true;
-        outPause.trigger();
-        updatePlayButton();
-    }
-});
-progressbar.addEventListener("pointermove", () =>
-{
-    const currentProgress = progressbar.value;
-    if (isDragging)
-    {
-        outDragging.set(isDragging);
-        updateProgressDisplay(currentProgress);
-        outValue.set(currentProgress);
-        outDragged.trigger();
-    }
-});
-
-progressbar.addEventListener("pointerup", () =>
-{
-    const currentProgress = progressbar.value;
-    updateProgressDisplay(currentProgress);
-    outValue.set(currentProgress);
-
-    if (isDragging)
-    {
-        outDragged.trigger();
-    }
-
-    isDragging = false;
-    outDragging.set(isDragging);
-    if (wasPlaying)
-    {
-        wasPlaying = false;
-        outPlay.trigger();
-        updatePlayButton();
-    }
-});
-
-function updateStyle()
-{
-    styleEle.textContent = attachments.css_progressui_css;
-}
-
-function updatePlayButton()
-{
-    playButton.querySelector(".progressUIIcon").classList.remove("progressUI_icon-play");
-    playButton.querySelector(".progressUIIcon").classList.remove("progressUI_icon-pause");
-    if (inIsPlaying.get())
-    {
-        playButton.querySelector(".progressUIIcon").classList.add("progressUI_icon-pause");
-    }
-    else
-    {
-        playButton.querySelector(".progressUIIcon").classList.add("progressUI_icon-play");
-    }
-}
-
-playButton.addEventListener("pointerdown", function ()
-{
-    if (inIsPlaying.get())
-    {
-        outPause.trigger();
-    }
-    else
-    {
-        outPlay.trigger();
-    }
-    updatePlayButton();
-});
-
-skipbackbutton.addEventListener("pointerdown", () =>
-{
-    outValue.set(0);
-    outRewind.trigger();
-});
-
-op.onDelete = function ()
-{
-    if (div) div.remove();
-    if (styleEle) styleEle.remove();
-};
-
-function handleInput(e)
-{
-    inCurrent.onChange = null;
-    const newValue = e.target.value;
-    outValue.set(newValue);
-    inCurrent.onChange = currentValueChange;
-}
-
-function currentValueChange()
-{
-    let currentValue = inCurrent.get();
-    if (inClamp.get() && currentValue > inMax.get())
-    {
-        currentValue = inMax.get();
-    }
-    progressbar.value = currentValue;
-    outValue.set(currentValue);
-    updateProgressDisplay();
-}
-
-let lasttime = 0;
-function updateProgressDisplay(currentValue = null)
-{
-    let displayValue = currentValue || inCurrent.get();
-    let t = displayValue;
-    if (t != lasttime)
-    {
-        progress.innerHTML = formatValue(t);
-        lasttime = t;
-    }
-}
-
-function formatValue(t)
-{
-    const minutes = String(new Date(t * 1000).getUTCMinutes()).padStart(2, "0");
-    const seconds = String(new Date(t * 1000).getUTCSeconds()).padStart(2, "0");
-    const millis = String(new Date(t * 1000).getUTCMilliseconds()).padStart(2, "0").padEnd(3, "0");
-    const html = minutes + ":" + seconds + ":" + millis;
-    return html;
-}
-
-updateStyle();
-updatePlayButton();
-
-inCurrent.onChange = currentValueChange;
-inIsPlaying.onChange = updatePlayButton;
-
-}
-};
-
-CABLES.OPS["12ac1d94-f043-454d-92a8-60733d2908b2"]={f:Ops.Html.Utils.PlayerControlPanel_v2,objName:"Ops.Html.Utils.PlayerControlPanel_v2"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Math.Subtract
-// 
-// **************************************************************
-
-Ops.Math.Subtract= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    number1 = op.inValue("number1", 1),
-    number2 = op.inValue("number2", 1),
-    result = op.outNumber("result");
-
-op.setUiAttribs({ "mathTitle": true });
-
-number1.onChange =
-    number2.onChange = exec;
-exec();
-
-function exec()
-{
-    let v = number1.get() - number2.get();
-    if (!isNaN(v)) result.set(v);
-}
-
-}
-};
-
-CABLES.OPS["a4ffe852-d200-4b96-9347-68feb01122ca"]={f:Ops.Math.Subtract,objName:"Ops.Math.Subtract"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Gl.Textures.CopyTexture_v3
-// 
-// **************************************************************
-
-Ops.Gl.Textures.CopyTexture_v3= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={"copytexture_frag":"UNI float a;\nUNI sampler2D tex;\n\n#ifdef TEX_MASK\nUNI sampler2D texMask;\n#endif\n\nIN vec2 texCoord;\n\nvoid main()\n{\n    vec2 tc=texCoord;\n\n    #ifdef FLIPX\n        tc.x=1.0-tc.x;\n    #endif\n    #ifdef FLIPY\n        tc.y=1.0-tc.y;\n    #endif\n\n    vec4 col=texture(tex,tc);\n\n    #ifdef TEX_MASK\n        col.a=texture(texMask,tc).r;\n    #endif\n\n    #ifdef GREY_R\n        col.rgb=vec3(col.r);\n    #endif\n\n    #ifdef GREY_G\n        col.rgb=vec3(col.g);\n    #endif\n\n    #ifdef GREY_B\n        col.rgb=vec3(col.b);\n    #endif\n\n    #ifdef GREY_A\n        col.rgb=vec3(col.a);\n    #endif\n\n    #ifdef GREY_LUMI\n        col.rgb=vec3( dot(vec3(0.2126,0.7152,0.0722), col.rgb) );\n    #endif\n\n\n    #ifdef INVERT_A\n        col.a=1.0-col.a;\n    #endif\n\n    #ifdef INVERT_R\n        col.r=1.0-col.r;\n    #endif\n\n    #ifdef INVERT_G\n        col.g=1.0-col.g;\n    #endif\n\n    #ifdef INVERT_B\n        col.b=1.0-col.b;\n    #endif\n\n    #ifdef ALPHA_1\n        col.a=1.0;\n    #endif\n\n\n\n\n    outColor= col;\n}",};
-const
-    render = op.inTriggerButton("render"),
-    inTexture = op.inTexture("Texture"),
-    inTextureMask = op.inTexture("Alpha Mask"),
-    useVPSize = op.inValueBool("use original size", true),
-    width = op.inValueInt("width", 640),
-    height = op.inValueInt("height", 360),
-    tfilter = op.inSwitch("filter", ["nearest", "linear", "mipmap"], "linear"),
-    inPixelFormat = op.inDropDown("Pixel Format", CGL.Texture.PIXELFORMATS, CGL.Texture.PFORMATSTR_RGBA8UB),
-    aniso = op.inSwitch("Anisotropic", ["0", "1", "2", "4", "8", "16"], "0"),
-
-    twrap = op.inValueSelect("wrap", ["clamp to edge", "repeat", "mirrored repeat"], "clamp to edge"),
-    alphaMaskMethod = op.inSwitch("Alpha Mask Source", ["A", "1"], "A"),
-    greyscale = op.inSwitch("Convert Greyscale", ["Off", "R", "G", "B", "A", "Luminance"], "Off"),
-    invertR = op.inBool("Invert R", false),
-    invertG = op.inBool("Invert G", false),
-    invertB = op.inBool("Invert B", false),
-    invertA = op.inBool("Invert A", false),
-
-    flipX = op.inBool("Flip X", false),
-    flipY = op.inBool("Flip Y", false),
-
-    trigger = op.outTrigger("trigger"),
-    texOut = op.outTexture("texture_out", null),
-    outRatio = op.outNumber("Aspect Ratio");
-
-alphaMaskMethod.setUiAttribs({ "hidePort": true });
-greyscale.setUiAttribs({ "hidePort": true });
-invertR.setUiAttribs({ "hidePort": true });
-invertG.setUiAttribs({ "hidePort": true });
-invertB.setUiAttribs({ "hidePort": true });
-
-let autoRefreshTimeout = null;
-const cgl = op.patch.cgl;
-let lastTex = null;
-let effect = null;
-let tex = null;
-let needsResUpdate = true;
-let oldTex = null;
-
-let w = 2, h = 2;
-const prevViewPort = [0, 0, 0, 0];
-let reInitEffect = true;
-
-op.toWorkPortsNeedToBeLinked(render, inTexture);
-op.setPortGroup("Size", [useVPSize, width, height]);
-
-const bgShader = new CGL.Shader(cgl, "copytexture");
-bgShader.setSource(bgShader.getDefaultVertexShader(), attachments.copytexture_frag);
-const textureUniform = new CGL.Uniform(bgShader, "t", "tex", 0);
-let textureMaskUniform = new CGL.Uniform(bgShader, "t", "texMask", 1);
-
-let selectedFilter = CGL.Texture.FILTER_LINEAR;
-let selectedWrap = CGL.Texture.WRAP_CLAMP_TO_EDGE;
-
-flipX.onChange =
-flipY.onChange =
-alphaMaskMethod.onChange =
-    aniso.onChange =
-    greyscale.onChange =
-    invertR.onChange =
-    invertG.onChange =
-    invertB.onChange =
-    twrap.onChange =
-    tfilter.onChange =
-    inPixelFormat.onChange =
-    render.onLinkChanged =
-    inTextureMask.onChange =
-    inTexture.onLinkChanged = () => { updateSoon(); };
-
-inTexture.onChange = () =>
-{
-    if (oldTex != inTexture.get()) { updateSoon(); }
-    oldTex = inTexture.get();
-};
-
-render.onTriggered = doRender;
-updateUi();
-
-function initEffect()
-{
-    if (effect)effect.delete();
-    if (tex)
-    {
-        tex.delete();
-        tex = null;
-    }
-    effect = new CGL.TextureEffect(cgl, { "pixelFormat": inPixelFormat.get(), "clear": false });
-
-    if (!tex ||
-        tex.width != Math.floor(width.get()) ||
-        tex.height != Math.floor(height.get()) ||
-        tex.wrap != selectedWrap ||
-        tex.pixelFormat != inPixelFormat.get()
-    )
-    {
-        const cgl_aniso = Math.min(cgl.maxAnisotropic, parseFloat(aniso.get()));
-
-        if (tex) tex.delete();
-        tex = new CGL.Texture(cgl,
-            {
-                "name": "copytexture_" + op.id,
-                "pixelFormat": inPixelFormat.get(),
-                "anisotropic": cgl_aniso,
-                "filter": selectedFilter,
-                "wrap": selectedWrap,
-                "width": Math.floor(width.get()),
-                "height": Math.floor(height.get()),
-            });
-    }
-
-    effect.setSourceTexture(tex);
-    updateUi();
-    // texOut.set(CGL.Texture.getEmptyTexture(cgl));
-    reInitEffect = false;
-}
-
-function updateSoon()
-{
-    updateParams();
-    reInitEffect = true;
-
-    if (!render.isLinked() || !inTexture.isLinked()) texOut.setRef(CGL.Texture.getEmptyTexture(cgl));
-}
-
-function updateResolution()
-{
-    if (!inTexture.get() || inTexture.get() == CGL.Texture.getEmptyTexture(cgl)) return;
-    if (!effect)initEffect();
-
-    if (useVPSize.get())
-    {
-        w = inTexture.get().width;
-        h = inTexture.get().height;
-    }
-    else
-    {
-        w = Math.floor(width.get());
-        h = Math.floor(height.get());
-    }
-
-    if ((w != tex.width || h != tex.height) && (w !== 0 && h !== 0))
-    {
-        height.set(h);
-        width.set(w);
-        tex.filter = selectedFilter;
-        tex.setSize(w, h);
-        outRatio.set(w / h);
-        effect.setSourceTexture(tex);
-    }
-
-    // if (texOut.get() && selectedFilter != CGL.Texture.FILTER_NEAREST)
-    // {
-    //     if (!texOut.get().isPowerOfTwo()) op.setUiError("hintnpot", "texture dimensions not power of two! - texture filtering when scaling will not work on ios devices.", 0);
-    //     else op.setUiError("hintnpot", null, 0);
-    // }
-    // else op.setUiError("hintnpot", null, 0);
-
-    needsResUpdate = false;
-}
-
-function updateUi()
-{
-    if (!CABLES.UI) return;
-    aniso.setUiAttribs({ "greyout": tfilter.get() != "mipmap" });
-    width.setUiAttribs({ "greyout": useVPSize.get() });
-    height.setUiAttribs({ "greyout": useVPSize.get() });
-}
-
-function updateResolutionLater()
-{
-    needsResUpdate = true;
-    updateSoon();
-}
-
-useVPSize.onChange = function ()
-{
-    updateUi();
-    if (useVPSize.get())
-    {
-        width.onChange = null;
-        height.onChange = null;
-    }
-    else
-    {
-        width.onChange = updateResolutionLater;
-        height.onChange = updateResolutionLater;
-    }
-    updateResolution();
-};
-
-function doRender()
-{
-    // op.patch.removeOnAnimCallback(doRender);
-    // if (!inTexture.get())
-
-    if (!inTexture.get() || inTexture.get() == CGL.Texture.getEmptyTexture(cgl)) texOut.setRef(CGL.Texture.getEmptyTexture(cgl));
-
-    if (!inTexture.get() || inTexture.get() == CGL.Texture.getEmptyTexture(cgl))
-    {
-        lastTex = null;// CGL.Texture.getEmptyTexture(cgl);
-        trigger.trigger();
-        return;
-    }
-    else
-    if (!effect || reInitEffect || lastTex != inTexture.get())
-    {
-        initEffect();
-    }
-    const vp = cgl.getViewPort();
-    prevViewPort[0] = vp[0];
-    prevViewPort[1] = vp[1];
-    prevViewPort[2] = vp[2];
-    prevViewPort[3] = vp[3];
-
-    updateResolution();
-
-    lastTex = inTexture.get();
-    const oldEffect = cgl.currentTextureEffect;
-    cgl.currentTextureEffect = effect;
-    effect.setSourceTexture(tex);
-
-    effect.startEffect();
-
-    // render background color...
-    cgl.pushShader(bgShader);
-    cgl.currentTextureEffect.bind();
-    cgl.setTexture(0, inTexture.get().tex);
-    if (inTextureMask.get())cgl.setTexture(1, inTextureMask.get().tex);
-
-    cgl.pushBlend(false);
-
-    cgl.currentTextureEffect.finish();
-    cgl.popShader();
-
-    cgl.popBlend();
-
-    texOut.setRef(effect.getCurrentSourceTexture());
-
-    effect.endEffect();
-
-    cgl.setViewPort(prevViewPort[0], prevViewPort[1], prevViewPort[2], prevViewPort[3]);
-
-    cgl.currentTextureEffect = oldEffect;
-
-    cgl.setTexture(0, CGL.Texture.getEmptyTexture(cgl).tex);
-
-    trigger.trigger();
-}
-
-function updateParams()
-{
-    bgShader.toggleDefine("FLIPX", flipX.get());
-    bgShader.toggleDefine("FLIPY", flipY.get());
-
-    bgShader.toggleDefine("TEX_MASK", inTextureMask.get());
-
-    bgShader.toggleDefine("GREY_R", greyscale.get() === "R");
-    bgShader.toggleDefine("GREY_G", greyscale.get() === "G");
-    bgShader.toggleDefine("GREY_B", greyscale.get() === "B");
-    bgShader.toggleDefine("GREY_A", greyscale.get() === "A");
-    bgShader.toggleDefine("GREY_LUMI", greyscale.get() === "Luminance");
-
-    bgShader.toggleDefine("ALPHA_1", alphaMaskMethod.get() === "1");
-    bgShader.toggleDefine("ALPHA_A", alphaMaskMethod.get() === "A");
-
-    bgShader.toggleDefine("INVERT_R", invertR.get());
-    bgShader.toggleDefine("INVERT_G", invertG.get());
-    bgShader.toggleDefine("INVERT_B", invertB.get());
-    bgShader.toggleDefine("INVERT_A", invertA.get());
-
-    if (twrap.get() == "repeat") selectedWrap = CGL.Texture.WRAP_REPEAT;
-    else if (twrap.get() == "mirrored repeat") selectedWrap = CGL.Texture.WRAP_MIRRORED_REPEAT;
-    else if (twrap.get() == "clamp to edge") selectedWrap = CGL.Texture.WRAP_CLAMP_TO_EDGE;
-
-    if (tfilter.get() == "nearest") selectedFilter = CGL.Texture.FILTER_NEAREST;
-    else if (tfilter.get() == "linear") selectedFilter = CGL.Texture.FILTER_LINEAR;
-    else if (tfilter.get() == "mipmap") selectedFilter = CGL.Texture.FILTER_MIPMAP;
-
-    if (bgShader.needsRecompile())
-    {
-        reInitEffect = true;
-    }
-    if (tex && (
-        tex.width != Math.floor(width.get()) ||
-        tex.height != Math.floor(height.get()) ||
-        tex.wrap != selectedWrap ||
-        tex.pixelFormat != inPixelFormat.get()
-    ))
-    {
-        reInitEffect = true;
-    }
-}
-
-}
-};
-
-CABLES.OPS["25d77a01-ccfe-4b2e-b3c3-a09a8a018d0c"]={f:Ops.Gl.Textures.CopyTexture_v3,objName:"Ops.Gl.Textures.CopyTexture_v3"};
 
 
 

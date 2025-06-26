@@ -1,460 +1,23 @@
-var CABLES;
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-/*!****************************************!*\
-  !*** ./src/core/index.js + 79 modules ***!
-  \****************************************/
+/******/ 	// runtime can't be in strict mode because a global variable is assign and maybe created.
+/******/ 	var __webpack_modules__ = ({
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ core)
-});
+/***/ "./node_modules/gl-matrix/esm/common.js":
+/*!**********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/common.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-// UNUSED EXPORTS: Anim, AnimKey, CglContext, Geometry, Link, Mesh, Op, Patch, PatchVariable, Port, Shader, Texture, Timer, Uniform, extendJs
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/common.js
-var common_namespaceObject = {};
-__webpack_require__.r(common_namespaceObject);
-__webpack_require__.d(common_namespaceObject, {
-  ARRAY_TYPE: () => (ARRAY_TYPE),
-  EPSILON: () => (EPSILON),
-  RANDOM: () => (RANDOM),
-  equals: () => (equals),
-  setMatrixArrayType: () => (setMatrixArrayType),
-  toRadian: () => (toRadian)
-});
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/mat2.js
-var mat2_namespaceObject = {};
-__webpack_require__.r(mat2_namespaceObject);
-__webpack_require__.d(mat2_namespaceObject, {
-  LDU: () => (LDU),
-  add: () => (add),
-  adjoint: () => (adjoint),
-  clone: () => (clone),
-  copy: () => (copy),
-  create: () => (create),
-  determinant: () => (determinant),
-  equals: () => (mat2_equals),
-  exactEquals: () => (exactEquals),
-  frob: () => (frob),
-  fromRotation: () => (fromRotation),
-  fromScaling: () => (fromScaling),
-  fromValues: () => (fromValues),
-  identity: () => (identity),
-  invert: () => (invert),
-  mul: () => (mul),
-  multiply: () => (multiply),
-  multiplyScalar: () => (multiplyScalar),
-  multiplyScalarAndAdd: () => (multiplyScalarAndAdd),
-  rotate: () => (rotate),
-  scale: () => (scale),
-  set: () => (set),
-  str: () => (str),
-  sub: () => (sub),
-  subtract: () => (subtract),
-  transpose: () => (transpose)
-});
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/mat2d.js
-var mat2d_namespaceObject = {};
-__webpack_require__.r(mat2d_namespaceObject);
-__webpack_require__.d(mat2d_namespaceObject, {
-  add: () => (mat2d_add),
-  clone: () => (mat2d_clone),
-  copy: () => (mat2d_copy),
-  create: () => (mat2d_create),
-  determinant: () => (mat2d_determinant),
-  equals: () => (mat2d_equals),
-  exactEquals: () => (mat2d_exactEquals),
-  frob: () => (mat2d_frob),
-  fromRotation: () => (mat2d_fromRotation),
-  fromScaling: () => (mat2d_fromScaling),
-  fromTranslation: () => (fromTranslation),
-  fromValues: () => (mat2d_fromValues),
-  identity: () => (mat2d_identity),
-  invert: () => (mat2d_invert),
-  mul: () => (mat2d_mul),
-  multiply: () => (mat2d_multiply),
-  multiplyScalar: () => (mat2d_multiplyScalar),
-  multiplyScalarAndAdd: () => (mat2d_multiplyScalarAndAdd),
-  rotate: () => (mat2d_rotate),
-  scale: () => (mat2d_scale),
-  set: () => (mat2d_set),
-  str: () => (mat2d_str),
-  sub: () => (mat2d_sub),
-  subtract: () => (mat2d_subtract),
-  translate: () => (translate)
-});
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/mat3.js
-var mat3_namespaceObject = {};
-__webpack_require__.r(mat3_namespaceObject);
-__webpack_require__.d(mat3_namespaceObject, {
-  add: () => (mat3_add),
-  adjoint: () => (mat3_adjoint),
-  clone: () => (mat3_clone),
-  copy: () => (mat3_copy),
-  create: () => (mat3_create),
-  determinant: () => (mat3_determinant),
-  equals: () => (mat3_equals),
-  exactEquals: () => (mat3_exactEquals),
-  frob: () => (mat3_frob),
-  fromMat2d: () => (fromMat2d),
-  fromMat4: () => (fromMat4),
-  fromQuat: () => (fromQuat),
-  fromRotation: () => (mat3_fromRotation),
-  fromScaling: () => (mat3_fromScaling),
-  fromTranslation: () => (mat3_fromTranslation),
-  fromValues: () => (mat3_fromValues),
-  identity: () => (mat3_identity),
-  invert: () => (mat3_invert),
-  mul: () => (mat3_mul),
-  multiply: () => (mat3_multiply),
-  multiplyScalar: () => (mat3_multiplyScalar),
-  multiplyScalarAndAdd: () => (mat3_multiplyScalarAndAdd),
-  normalFromMat4: () => (normalFromMat4),
-  projection: () => (projection),
-  rotate: () => (mat3_rotate),
-  scale: () => (mat3_scale),
-  set: () => (mat3_set),
-  str: () => (mat3_str),
-  sub: () => (mat3_sub),
-  subtract: () => (mat3_subtract),
-  translate: () => (mat3_translate),
-  transpose: () => (mat3_transpose)
-});
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/mat4.js
-var mat4_namespaceObject = {};
-__webpack_require__.r(mat4_namespaceObject);
-__webpack_require__.d(mat4_namespaceObject, {
-  add: () => (mat4_add),
-  adjoint: () => (mat4_adjoint),
-  clone: () => (mat4_clone),
-  copy: () => (mat4_copy),
-  create: () => (mat4_create),
-  determinant: () => (mat4_determinant),
-  equals: () => (mat4_equals),
-  exactEquals: () => (mat4_exactEquals),
-  frob: () => (mat4_frob),
-  fromQuat: () => (mat4_fromQuat),
-  fromQuat2: () => (fromQuat2),
-  fromRotation: () => (mat4_fromRotation),
-  fromRotationTranslation: () => (fromRotationTranslation),
-  fromRotationTranslationScale: () => (fromRotationTranslationScale),
-  fromRotationTranslationScaleOrigin: () => (fromRotationTranslationScaleOrigin),
-  fromScaling: () => (mat4_fromScaling),
-  fromTranslation: () => (mat4_fromTranslation),
-  fromValues: () => (mat4_fromValues),
-  fromXRotation: () => (fromXRotation),
-  fromYRotation: () => (fromYRotation),
-  fromZRotation: () => (fromZRotation),
-  frustum: () => (frustum),
-  getRotation: () => (getRotation),
-  getScaling: () => (getScaling),
-  getTranslation: () => (getTranslation),
-  identity: () => (mat4_identity),
-  invert: () => (mat4_invert),
-  lookAt: () => (lookAt),
-  mul: () => (mat4_mul),
-  multiply: () => (mat4_multiply),
-  multiplyScalar: () => (mat4_multiplyScalar),
-  multiplyScalarAndAdd: () => (mat4_multiplyScalarAndAdd),
-  ortho: () => (ortho),
-  perspective: () => (perspective),
-  perspectiveFromFieldOfView: () => (perspectiveFromFieldOfView),
-  rotate: () => (mat4_rotate),
-  rotateX: () => (rotateX),
-  rotateY: () => (rotateY),
-  rotateZ: () => (rotateZ),
-  scale: () => (mat4_scale),
-  set: () => (mat4_set),
-  str: () => (mat4_str),
-  sub: () => (mat4_sub),
-  subtract: () => (mat4_subtract),
-  targetTo: () => (targetTo),
-  translate: () => (mat4_translate),
-  transpose: () => (mat4_transpose)
-});
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/vec3.js
-var vec3_namespaceObject = {};
-__webpack_require__.r(vec3_namespaceObject);
-__webpack_require__.d(vec3_namespaceObject, {
-  add: () => (vec3_add),
-  angle: () => (angle),
-  bezier: () => (bezier),
-  ceil: () => (ceil),
-  clone: () => (vec3_clone),
-  copy: () => (vec3_copy),
-  create: () => (vec3_create),
-  cross: () => (cross),
-  dist: () => (dist),
-  distance: () => (distance),
-  div: () => (div),
-  divide: () => (divide),
-  dot: () => (vec3_dot),
-  equals: () => (vec3_equals),
-  exactEquals: () => (vec3_exactEquals),
-  floor: () => (floor),
-  forEach: () => (forEach),
-  fromValues: () => (vec3_fromValues),
-  hermite: () => (hermite),
-  inverse: () => (inverse),
-  len: () => (len),
-  length: () => (vec3_length),
-  lerp: () => (lerp),
-  max: () => (max),
-  min: () => (min),
-  mul: () => (vec3_mul),
-  multiply: () => (vec3_multiply),
-  negate: () => (negate),
-  normalize: () => (normalize),
-  random: () => (random),
-  rotateX: () => (vec3_rotateX),
-  rotateY: () => (vec3_rotateY),
-  rotateZ: () => (vec3_rotateZ),
-  round: () => (round),
-  scale: () => (vec3_scale),
-  scaleAndAdd: () => (scaleAndAdd),
-  set: () => (vec3_set),
-  sqrDist: () => (sqrDist),
-  sqrLen: () => (sqrLen),
-  squaredDistance: () => (squaredDistance),
-  squaredLength: () => (squaredLength),
-  str: () => (vec3_str),
-  sub: () => (vec3_sub),
-  subtract: () => (vec3_subtract),
-  transformMat3: () => (transformMat3),
-  transformMat4: () => (transformMat4),
-  transformQuat: () => (transformQuat),
-  zero: () => (zero)
-});
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/vec4.js
-var vec4_namespaceObject = {};
-__webpack_require__.r(vec4_namespaceObject);
-__webpack_require__.d(vec4_namespaceObject, {
-  add: () => (vec4_add),
-  ceil: () => (vec4_ceil),
-  clone: () => (vec4_clone),
-  copy: () => (vec4_copy),
-  create: () => (vec4_create),
-  cross: () => (vec4_cross),
-  dist: () => (vec4_dist),
-  distance: () => (vec4_distance),
-  div: () => (vec4_div),
-  divide: () => (vec4_divide),
-  dot: () => (dot),
-  equals: () => (vec4_equals),
-  exactEquals: () => (vec4_exactEquals),
-  floor: () => (vec4_floor),
-  forEach: () => (vec4_forEach),
-  fromValues: () => (vec4_fromValues),
-  inverse: () => (vec4_inverse),
-  len: () => (vec4_len),
-  length: () => (vec4_length),
-  lerp: () => (vec4_lerp),
-  max: () => (vec4_max),
-  min: () => (vec4_min),
-  mul: () => (vec4_mul),
-  multiply: () => (vec4_multiply),
-  negate: () => (vec4_negate),
-  normalize: () => (vec4_normalize),
-  random: () => (vec4_random),
-  round: () => (vec4_round),
-  scale: () => (vec4_scale),
-  scaleAndAdd: () => (vec4_scaleAndAdd),
-  set: () => (vec4_set),
-  sqrDist: () => (vec4_sqrDist),
-  sqrLen: () => (vec4_sqrLen),
-  squaredDistance: () => (vec4_squaredDistance),
-  squaredLength: () => (vec4_squaredLength),
-  str: () => (vec4_str),
-  sub: () => (vec4_sub),
-  subtract: () => (vec4_subtract),
-  transformMat4: () => (vec4_transformMat4),
-  transformQuat: () => (vec4_transformQuat),
-  zero: () => (vec4_zero)
-});
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/quat.js
-var quat_namespaceObject = {};
-__webpack_require__.r(quat_namespaceObject);
-__webpack_require__.d(quat_namespaceObject, {
-  add: () => (quat_add),
-  calculateW: () => (calculateW),
-  clone: () => (quat_clone),
-  conjugate: () => (conjugate),
-  copy: () => (quat_copy),
-  create: () => (quat_create),
-  dot: () => (quat_dot),
-  equals: () => (quat_equals),
-  exactEquals: () => (quat_exactEquals),
-  exp: () => (exp),
-  fromEuler: () => (fromEuler),
-  fromMat3: () => (fromMat3),
-  fromValues: () => (quat_fromValues),
-  getAngle: () => (getAngle),
-  getAxisAngle: () => (getAxisAngle),
-  identity: () => (quat_identity),
-  invert: () => (quat_invert),
-  len: () => (quat_len),
-  length: () => (quat_length),
-  lerp: () => (quat_lerp),
-  ln: () => (ln),
-  mul: () => (quat_mul),
-  multiply: () => (quat_multiply),
-  normalize: () => (quat_normalize),
-  pow: () => (pow),
-  random: () => (quat_random),
-  rotateX: () => (quat_rotateX),
-  rotateY: () => (quat_rotateY),
-  rotateZ: () => (quat_rotateZ),
-  rotationTo: () => (rotationTo),
-  scale: () => (quat_scale),
-  set: () => (quat_set),
-  setAxes: () => (setAxes),
-  setAxisAngle: () => (setAxisAngle),
-  slerp: () => (slerp),
-  sqlerp: () => (sqlerp),
-  sqrLen: () => (quat_sqrLen),
-  squaredLength: () => (quat_squaredLength),
-  str: () => (quat_str)
-});
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/quat2.js
-var quat2_namespaceObject = {};
-__webpack_require__.r(quat2_namespaceObject);
-__webpack_require__.d(quat2_namespaceObject, {
-  add: () => (quat2_add),
-  clone: () => (quat2_clone),
-  conjugate: () => (quat2_conjugate),
-  copy: () => (quat2_copy),
-  create: () => (quat2_create),
-  dot: () => (quat2_dot),
-  equals: () => (quat2_equals),
-  exactEquals: () => (quat2_exactEquals),
-  fromMat4: () => (quat2_fromMat4),
-  fromRotation: () => (quat2_fromRotation),
-  fromRotationTranslation: () => (quat2_fromRotationTranslation),
-  fromRotationTranslationValues: () => (fromRotationTranslationValues),
-  fromTranslation: () => (quat2_fromTranslation),
-  fromValues: () => (quat2_fromValues),
-  getDual: () => (getDual),
-  getReal: () => (getReal),
-  getTranslation: () => (quat2_getTranslation),
-  identity: () => (quat2_identity),
-  invert: () => (quat2_invert),
-  len: () => (quat2_len),
-  length: () => (quat2_length),
-  lerp: () => (quat2_lerp),
-  mul: () => (quat2_mul),
-  multiply: () => (quat2_multiply),
-  normalize: () => (quat2_normalize),
-  rotateAroundAxis: () => (rotateAroundAxis),
-  rotateByQuatAppend: () => (rotateByQuatAppend),
-  rotateByQuatPrepend: () => (rotateByQuatPrepend),
-  rotateX: () => (quat2_rotateX),
-  rotateY: () => (quat2_rotateY),
-  rotateZ: () => (quat2_rotateZ),
-  scale: () => (quat2_scale),
-  set: () => (quat2_set),
-  setDual: () => (setDual),
-  setReal: () => (setReal),
-  sqrLen: () => (quat2_sqrLen),
-  squaredLength: () => (quat2_squaredLength),
-  str: () => (quat2_str),
-  translate: () => (quat2_translate)
-});
-
-// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/vec2.js
-var vec2_namespaceObject = {};
-__webpack_require__.r(vec2_namespaceObject);
-__webpack_require__.d(vec2_namespaceObject, {
-  add: () => (vec2_add),
-  angle: () => (vec2_angle),
-  ceil: () => (vec2_ceil),
-  clone: () => (vec2_clone),
-  copy: () => (vec2_copy),
-  create: () => (vec2_create),
-  cross: () => (vec2_cross),
-  dist: () => (vec2_dist),
-  distance: () => (vec2_distance),
-  div: () => (vec2_div),
-  divide: () => (vec2_divide),
-  dot: () => (vec2_dot),
-  equals: () => (vec2_equals),
-  exactEquals: () => (vec2_exactEquals),
-  floor: () => (vec2_floor),
-  forEach: () => (vec2_forEach),
-  fromValues: () => (vec2_fromValues),
-  inverse: () => (vec2_inverse),
-  len: () => (vec2_len),
-  length: () => (vec2_length),
-  lerp: () => (vec2_lerp),
-  max: () => (vec2_max),
-  min: () => (vec2_min),
-  mul: () => (vec2_mul),
-  multiply: () => (vec2_multiply),
-  negate: () => (vec2_negate),
-  normalize: () => (vec2_normalize),
-  random: () => (vec2_random),
-  rotate: () => (vec2_rotate),
-  round: () => (vec2_round),
-  scale: () => (vec2_scale),
-  scaleAndAdd: () => (vec2_scaleAndAdd),
-  set: () => (vec2_set),
-  sqrDist: () => (vec2_sqrDist),
-  sqrLen: () => (vec2_sqrLen),
-  squaredDistance: () => (vec2_squaredDistance),
-  squaredLength: () => (vec2_squaredLength),
-  str: () => (vec2_str),
-  sub: () => (vec2_sub),
-  subtract: () => (vec2_subtract),
-  transformMat2: () => (transformMat2),
-  transformMat2d: () => (transformMat2d),
-  transformMat3: () => (vec2_transformMat3),
-  transformMat4: () => (vec2_transformMat4),
-  zero: () => (vec2_zero)
-});
-
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/common.js
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ARRAY_TYPE: () => (/* binding */ ARRAY_TYPE),
+/* harmony export */   EPSILON: () => (/* binding */ EPSILON),
+/* harmony export */   RANDOM: () => (/* binding */ RANDOM),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   setMatrixArrayType: () => (/* binding */ setMatrixArrayType),
+/* harmony export */   toRadian: () => (/* binding */ toRadian)
+/* harmony export */ });
 /**
  * Common utilities
  * @module glMatrix
@@ -505,7 +68,46 @@ if (!Math.hypot) Math.hypot = function () {
 
   return Math.sqrt(y);
 };
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/mat2.js
+
+/***/ }),
+
+/***/ "./node_modules/gl-matrix/esm/mat2.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/mat2.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   LDU: () => (/* binding */ LDU),
+/* harmony export */   add: () => (/* binding */ add),
+/* harmony export */   adjoint: () => (/* binding */ adjoint),
+/* harmony export */   clone: () => (/* binding */ clone),
+/* harmony export */   copy: () => (/* binding */ copy),
+/* harmony export */   create: () => (/* binding */ create),
+/* harmony export */   determinant: () => (/* binding */ determinant),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   exactEquals: () => (/* binding */ exactEquals),
+/* harmony export */   frob: () => (/* binding */ frob),
+/* harmony export */   fromRotation: () => (/* binding */ fromRotation),
+/* harmony export */   fromScaling: () => (/* binding */ fromScaling),
+/* harmony export */   fromValues: () => (/* binding */ fromValues),
+/* harmony export */   identity: () => (/* binding */ identity),
+/* harmony export */   invert: () => (/* binding */ invert),
+/* harmony export */   mul: () => (/* binding */ mul),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   multiplyScalar: () => (/* binding */ multiplyScalar),
+/* harmony export */   multiplyScalarAndAdd: () => (/* binding */ multiplyScalarAndAdd),
+/* harmony export */   rotate: () => (/* binding */ rotate),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   set: () => (/* binding */ set),
+/* harmony export */   str: () => (/* binding */ str),
+/* harmony export */   sub: () => (/* binding */ sub),
+/* harmony export */   subtract: () => (/* binding */ subtract),
+/* harmony export */   transpose: () => (/* binding */ transpose)
+/* harmony export */ });
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 2x2 Matrix
@@ -519,9 +121,9 @@ if (!Math.hypot) Math.hypot = function () {
  */
 
 function create() {
-  var out = new ARRAY_TYPE(4);
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(4);
 
-  if (ARRAY_TYPE != Float32Array) {
+  if (_common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE != Float32Array) {
     out[1] = 0;
     out[2] = 0;
   }
@@ -538,7 +140,7 @@ function create() {
  */
 
 function clone(a) {
-  var out = new ARRAY_TYPE(4);
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(4);
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -585,7 +187,7 @@ function identity(out) {
  */
 
 function fromValues(m00, m01, m10, m11) {
-  var out = new ARRAY_TYPE(4);
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(4);
   out[0] = m00;
   out[1] = m01;
   out[2] = m10;
@@ -882,7 +484,7 @@ function exactEquals(a, b) {
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
-function mat2_equals(a, b) {
+function equals(a, b) {
   var a0 = a[0],
       a1 = a[1],
       a2 = a[2],
@@ -891,7 +493,7 @@ function mat2_equals(a, b) {
       b1 = b[1],
       b2 = b[2],
       b3 = b[3];
-  return Math.abs(a0 - b0) <= EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3));
+  return Math.abs(a0 - b0) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3));
 }
 /**
  * Multiply each element of the matrix by a scalar.
@@ -938,7 +540,45 @@ var mul = multiply;
  */
 
 var sub = subtract;
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/mat2d.js
+
+/***/ }),
+
+/***/ "./node_modules/gl-matrix/esm/mat2d.js":
+/*!*********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/mat2d.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   add: () => (/* binding */ add),
+/* harmony export */   clone: () => (/* binding */ clone),
+/* harmony export */   copy: () => (/* binding */ copy),
+/* harmony export */   create: () => (/* binding */ create),
+/* harmony export */   determinant: () => (/* binding */ determinant),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   exactEquals: () => (/* binding */ exactEquals),
+/* harmony export */   frob: () => (/* binding */ frob),
+/* harmony export */   fromRotation: () => (/* binding */ fromRotation),
+/* harmony export */   fromScaling: () => (/* binding */ fromScaling),
+/* harmony export */   fromTranslation: () => (/* binding */ fromTranslation),
+/* harmony export */   fromValues: () => (/* binding */ fromValues),
+/* harmony export */   identity: () => (/* binding */ identity),
+/* harmony export */   invert: () => (/* binding */ invert),
+/* harmony export */   mul: () => (/* binding */ mul),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   multiplyScalar: () => (/* binding */ multiplyScalar),
+/* harmony export */   multiplyScalarAndAdd: () => (/* binding */ multiplyScalarAndAdd),
+/* harmony export */   rotate: () => (/* binding */ rotate),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   set: () => (/* binding */ set),
+/* harmony export */   str: () => (/* binding */ str),
+/* harmony export */   sub: () => (/* binding */ sub),
+/* harmony export */   subtract: () => (/* binding */ subtract),
+/* harmony export */   translate: () => (/* binding */ translate)
+/* harmony export */ });
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 2x3 Matrix
@@ -965,10 +605,10 @@ var sub = subtract;
  * @returns {mat2d} a new 2x3 matrix
  */
 
-function mat2d_create() {
-  var out = new ARRAY_TYPE(6);
+function create() {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(6);
 
-  if (ARRAY_TYPE != Float32Array) {
+  if (_common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE != Float32Array) {
     out[1] = 0;
     out[2] = 0;
     out[4] = 0;
@@ -986,8 +626,8 @@ function mat2d_create() {
  * @returns {mat2d} a new 2x3 matrix
  */
 
-function mat2d_clone(a) {
-  var out = new ARRAY_TYPE(6);
+function clone(a) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(6);
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -1004,7 +644,7 @@ function mat2d_clone(a) {
  * @returns {mat2d} out
  */
 
-function mat2d_copy(out, a) {
+function copy(out, a) {
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -1020,7 +660,7 @@ function mat2d_copy(out, a) {
  * @returns {mat2d} out
  */
 
-function mat2d_identity(out) {
+function identity(out) {
   out[0] = 1;
   out[1] = 0;
   out[2] = 0;
@@ -1041,8 +681,8 @@ function mat2d_identity(out) {
  * @returns {mat2d} A new mat2d
  */
 
-function mat2d_fromValues(a, b, c, d, tx, ty) {
-  var out = new ARRAY_TYPE(6);
+function fromValues(a, b, c, d, tx, ty) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(6);
   out[0] = a;
   out[1] = b;
   out[2] = c;
@@ -1064,7 +704,7 @@ function mat2d_fromValues(a, b, c, d, tx, ty) {
  * @returns {mat2d} out
  */
 
-function mat2d_set(out, a, b, c, d, tx, ty) {
+function set(out, a, b, c, d, tx, ty) {
   out[0] = a;
   out[1] = b;
   out[2] = c;
@@ -1081,7 +721,7 @@ function mat2d_set(out, a, b, c, d, tx, ty) {
  * @returns {mat2d} out
  */
 
-function mat2d_invert(out, a) {
+function invert(out, a) {
   var aa = a[0],
       ab = a[1],
       ac = a[2],
@@ -1110,7 +750,7 @@ function mat2d_invert(out, a) {
  * @returns {Number} determinant of a
  */
 
-function mat2d_determinant(a) {
+function determinant(a) {
   return a[0] * a[3] - a[1] * a[2];
 }
 /**
@@ -1122,7 +762,7 @@ function mat2d_determinant(a) {
  * @returns {mat2d} out
  */
 
-function mat2d_multiply(out, a, b) {
+function multiply(out, a, b) {
   var a0 = a[0],
       a1 = a[1],
       a2 = a[2],
@@ -1152,7 +792,7 @@ function mat2d_multiply(out, a, b) {
  * @returns {mat2d} out
  */
 
-function mat2d_rotate(out, a, rad) {
+function rotate(out, a, rad) {
   var a0 = a[0],
       a1 = a[1],
       a2 = a[2],
@@ -1178,7 +818,7 @@ function mat2d_rotate(out, a, rad) {
  * @returns {mat2d} out
  **/
 
-function mat2d_scale(out, a, v) {
+function scale(out, a, v) {
   var a0 = a[0],
       a1 = a[1],
       a2 = a[2],
@@ -1233,7 +873,7 @@ function translate(out, a, v) {
  * @returns {mat2d} out
  */
 
-function mat2d_fromRotation(out, rad) {
+function fromRotation(out, rad) {
   var s = Math.sin(rad),
       c = Math.cos(rad);
   out[0] = c;
@@ -1256,7 +896,7 @@ function mat2d_fromRotation(out, rad) {
  * @returns {mat2d} out
  */
 
-function mat2d_fromScaling(out, v) {
+function fromScaling(out, v) {
   out[0] = v[0];
   out[1] = 0;
   out[2] = 0;
@@ -1293,7 +933,7 @@ function fromTranslation(out, v) {
  * @returns {String} string representation of the matrix
  */
 
-function mat2d_str(a) {
+function str(a) {
   return 'mat2d(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' + a[4] + ', ' + a[5] + ')';
 }
 /**
@@ -1303,7 +943,7 @@ function mat2d_str(a) {
  * @returns {Number} Frobenius norm
  */
 
-function mat2d_frob(a) {
+function frob(a) {
   return Math.hypot(a[0], a[1], a[2], a[3], a[4], a[5], 1);
 }
 /**
@@ -1315,7 +955,7 @@ function mat2d_frob(a) {
  * @returns {mat2d} out
  */
 
-function mat2d_add(out, a, b) {
+function add(out, a, b) {
   out[0] = a[0] + b[0];
   out[1] = a[1] + b[1];
   out[2] = a[2] + b[2];
@@ -1333,7 +973,7 @@ function mat2d_add(out, a, b) {
  * @returns {mat2d} out
  */
 
-function mat2d_subtract(out, a, b) {
+function subtract(out, a, b) {
   out[0] = a[0] - b[0];
   out[1] = a[1] - b[1];
   out[2] = a[2] - b[2];
@@ -1351,7 +991,7 @@ function mat2d_subtract(out, a, b) {
  * @returns {mat2d} out
  */
 
-function mat2d_multiplyScalar(out, a, b) {
+function multiplyScalar(out, a, b) {
   out[0] = a[0] * b;
   out[1] = a[1] * b;
   out[2] = a[2] * b;
@@ -1370,7 +1010,7 @@ function mat2d_multiplyScalar(out, a, b) {
  * @returns {mat2d} out
  */
 
-function mat2d_multiplyScalarAndAdd(out, a, b, scale) {
+function multiplyScalarAndAdd(out, a, b, scale) {
   out[0] = a[0] + b[0] * scale;
   out[1] = a[1] + b[1] * scale;
   out[2] = a[2] + b[2] * scale;
@@ -1387,7 +1027,7 @@ function mat2d_multiplyScalarAndAdd(out, a, b, scale) {
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
-function mat2d_exactEquals(a, b) {
+function exactEquals(a, b) {
   return a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3] && a[4] === b[4] && a[5] === b[5];
 }
 /**
@@ -1398,7 +1038,7 @@ function mat2d_exactEquals(a, b) {
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
-function mat2d_equals(a, b) {
+function equals(a, b) {
   var a0 = a[0],
       a1 = a[1],
       a2 = a[2],
@@ -1411,21 +1051,66 @@ function mat2d_equals(a, b) {
       b3 = b[3],
       b4 = b[4],
       b5 = b[5];
-  return Math.abs(a0 - b0) <= EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3)) && Math.abs(a4 - b4) <= EPSILON * Math.max(1.0, Math.abs(a4), Math.abs(b4)) && Math.abs(a5 - b5) <= EPSILON * Math.max(1.0, Math.abs(a5), Math.abs(b5));
+  return Math.abs(a0 - b0) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3)) && Math.abs(a4 - b4) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a4), Math.abs(b4)) && Math.abs(a5 - b5) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a5), Math.abs(b5));
 }
 /**
  * Alias for {@link mat2d.multiply}
  * @function
  */
 
-var mat2d_mul = mat2d_multiply;
+var mul = multiply;
 /**
  * Alias for {@link mat2d.subtract}
  * @function
  */
 
-var mat2d_sub = mat2d_subtract;
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/mat3.js
+var sub = subtract;
+
+/***/ }),
+
+/***/ "./node_modules/gl-matrix/esm/mat3.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/mat3.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   add: () => (/* binding */ add),
+/* harmony export */   adjoint: () => (/* binding */ adjoint),
+/* harmony export */   clone: () => (/* binding */ clone),
+/* harmony export */   copy: () => (/* binding */ copy),
+/* harmony export */   create: () => (/* binding */ create),
+/* harmony export */   determinant: () => (/* binding */ determinant),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   exactEquals: () => (/* binding */ exactEquals),
+/* harmony export */   frob: () => (/* binding */ frob),
+/* harmony export */   fromMat2d: () => (/* binding */ fromMat2d),
+/* harmony export */   fromMat4: () => (/* binding */ fromMat4),
+/* harmony export */   fromQuat: () => (/* binding */ fromQuat),
+/* harmony export */   fromRotation: () => (/* binding */ fromRotation),
+/* harmony export */   fromScaling: () => (/* binding */ fromScaling),
+/* harmony export */   fromTranslation: () => (/* binding */ fromTranslation),
+/* harmony export */   fromValues: () => (/* binding */ fromValues),
+/* harmony export */   identity: () => (/* binding */ identity),
+/* harmony export */   invert: () => (/* binding */ invert),
+/* harmony export */   mul: () => (/* binding */ mul),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   multiplyScalar: () => (/* binding */ multiplyScalar),
+/* harmony export */   multiplyScalarAndAdd: () => (/* binding */ multiplyScalarAndAdd),
+/* harmony export */   normalFromMat4: () => (/* binding */ normalFromMat4),
+/* harmony export */   projection: () => (/* binding */ projection),
+/* harmony export */   rotate: () => (/* binding */ rotate),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   set: () => (/* binding */ set),
+/* harmony export */   str: () => (/* binding */ str),
+/* harmony export */   sub: () => (/* binding */ sub),
+/* harmony export */   subtract: () => (/* binding */ subtract),
+/* harmony export */   translate: () => (/* binding */ translate),
+/* harmony export */   transpose: () => (/* binding */ transpose)
+/* harmony export */ });
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 3x3 Matrix
@@ -1438,10 +1123,10 @@ var mat2d_sub = mat2d_subtract;
  * @returns {mat3} a new 3x3 matrix
  */
 
-function mat3_create() {
-  var out = new ARRAY_TYPE(9);
+function create() {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(9);
 
-  if (ARRAY_TYPE != Float32Array) {
+  if (_common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE != Float32Array) {
     out[1] = 0;
     out[2] = 0;
     out[3] = 0;
@@ -1482,8 +1167,8 @@ function fromMat4(out, a) {
  * @returns {mat3} a new 3x3 matrix
  */
 
-function mat3_clone(a) {
-  var out = new ARRAY_TYPE(9);
+function clone(a) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(9);
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -1503,7 +1188,7 @@ function mat3_clone(a) {
  * @returns {mat3} out
  */
 
-function mat3_copy(out, a) {
+function copy(out, a) {
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -1530,8 +1215,8 @@ function mat3_copy(out, a) {
  * @returns {mat3} A new mat3
  */
 
-function mat3_fromValues(m00, m01, m02, m10, m11, m12, m20, m21, m22) {
-  var out = new ARRAY_TYPE(9);
+function fromValues(m00, m01, m02, m10, m11, m12, m20, m21, m22) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(9);
   out[0] = m00;
   out[1] = m01;
   out[2] = m02;
@@ -1559,7 +1244,7 @@ function mat3_fromValues(m00, m01, m02, m10, m11, m12, m20, m21, m22) {
  * @returns {mat3} out
  */
 
-function mat3_set(out, m00, m01, m02, m10, m11, m12, m20, m21, m22) {
+function set(out, m00, m01, m02, m10, m11, m12, m20, m21, m22) {
   out[0] = m00;
   out[1] = m01;
   out[2] = m02;
@@ -1578,7 +1263,7 @@ function mat3_set(out, m00, m01, m02, m10, m11, m12, m20, m21, m22) {
  * @returns {mat3} out
  */
 
-function mat3_identity(out) {
+function identity(out) {
   out[0] = 1;
   out[1] = 0;
   out[2] = 0;
@@ -1598,7 +1283,7 @@ function mat3_identity(out) {
  * @returns {mat3} out
  */
 
-function mat3_transpose(out, a) {
+function transpose(out, a) {
   // If we are transposing ourselves we can skip a few steps but have to cache some values
   if (out === a) {
     var a01 = a[1],
@@ -1632,7 +1317,7 @@ function mat3_transpose(out, a) {
  * @returns {mat3} out
  */
 
-function mat3_invert(out, a) {
+function invert(out, a) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2];
@@ -1672,7 +1357,7 @@ function mat3_invert(out, a) {
  * @returns {mat3} out
  */
 
-function mat3_adjoint(out, a) {
+function adjoint(out, a) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2];
@@ -1700,7 +1385,7 @@ function mat3_adjoint(out, a) {
  * @returns {Number} determinant of a
  */
 
-function mat3_determinant(a) {
+function determinant(a) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2];
@@ -1721,7 +1406,7 @@ function mat3_determinant(a) {
  * @returns {mat3} out
  */
 
-function mat3_multiply(out, a, b) {
+function multiply(out, a, b) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2];
@@ -1760,7 +1445,7 @@ function mat3_multiply(out, a, b) {
  * @returns {mat3} out
  */
 
-function mat3_translate(out, a, v) {
+function translate(out, a, v) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2],
@@ -1792,7 +1477,7 @@ function mat3_translate(out, a, v) {
  * @returns {mat3} out
  */
 
-function mat3_rotate(out, a, rad) {
+function rotate(out, a, rad) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2],
@@ -1825,7 +1510,7 @@ function mat3_rotate(out, a, rad) {
  * @returns {mat3} out
  **/
 
-function mat3_scale(out, a, v) {
+function scale(out, a, v) {
   var x = v[0],
       y = v[1];
   out[0] = x * a[0];
@@ -1851,7 +1536,7 @@ function mat3_scale(out, a, v) {
  * @returns {mat3} out
  */
 
-function mat3_fromTranslation(out, v) {
+function fromTranslation(out, v) {
   out[0] = 1;
   out[1] = 0;
   out[2] = 0;
@@ -1875,7 +1560,7 @@ function mat3_fromTranslation(out, v) {
  * @returns {mat3} out
  */
 
-function mat3_fromRotation(out, rad) {
+function fromRotation(out, rad) {
   var s = Math.sin(rad),
       c = Math.cos(rad);
   out[0] = c;
@@ -1901,7 +1586,7 @@ function mat3_fromRotation(out, rad) {
  * @returns {mat3} out
  */
 
-function mat3_fromScaling(out, v) {
+function fromScaling(out, v) {
   out[0] = v[0];
   out[1] = 0;
   out[2] = 0;
@@ -2055,7 +1740,7 @@ function projection(out, width, height) {
  * @returns {String} string representation of the matrix
  */
 
-function mat3_str(a) {
+function str(a) {
   return 'mat3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + a[6] + ', ' + a[7] + ', ' + a[8] + ')';
 }
 /**
@@ -2065,7 +1750,7 @@ function mat3_str(a) {
  * @returns {Number} Frobenius norm
  */
 
-function mat3_frob(a) {
+function frob(a) {
   return Math.hypot(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]);
 }
 /**
@@ -2077,7 +1762,7 @@ function mat3_frob(a) {
  * @returns {mat3} out
  */
 
-function mat3_add(out, a, b) {
+function add(out, a, b) {
   out[0] = a[0] + b[0];
   out[1] = a[1] + b[1];
   out[2] = a[2] + b[2];
@@ -2098,7 +1783,7 @@ function mat3_add(out, a, b) {
  * @returns {mat3} out
  */
 
-function mat3_subtract(out, a, b) {
+function subtract(out, a, b) {
   out[0] = a[0] - b[0];
   out[1] = a[1] - b[1];
   out[2] = a[2] - b[2];
@@ -2119,7 +1804,7 @@ function mat3_subtract(out, a, b) {
  * @returns {mat3} out
  */
 
-function mat3_multiplyScalar(out, a, b) {
+function multiplyScalar(out, a, b) {
   out[0] = a[0] * b;
   out[1] = a[1] * b;
   out[2] = a[2] * b;
@@ -2141,7 +1826,7 @@ function mat3_multiplyScalar(out, a, b) {
  * @returns {mat3} out
  */
 
-function mat3_multiplyScalarAndAdd(out, a, b, scale) {
+function multiplyScalarAndAdd(out, a, b, scale) {
   out[0] = a[0] + b[0] * scale;
   out[1] = a[1] + b[1] * scale;
   out[2] = a[2] + b[2] * scale;
@@ -2161,7 +1846,7 @@ function mat3_multiplyScalarAndAdd(out, a, b, scale) {
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
-function mat3_exactEquals(a, b) {
+function exactEquals(a, b) {
   return a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3] && a[4] === b[4] && a[5] === b[5] && a[6] === b[6] && a[7] === b[7] && a[8] === b[8];
 }
 /**
@@ -2172,7 +1857,7 @@ function mat3_exactEquals(a, b) {
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
-function mat3_equals(a, b) {
+function equals(a, b) {
   var a0 = a[0],
       a1 = a[1],
       a2 = a[2],
@@ -2191,21 +1876,81 @@ function mat3_equals(a, b) {
       b6 = b[6],
       b7 = b[7],
       b8 = b[8];
-  return Math.abs(a0 - b0) <= EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3)) && Math.abs(a4 - b4) <= EPSILON * Math.max(1.0, Math.abs(a4), Math.abs(b4)) && Math.abs(a5 - b5) <= EPSILON * Math.max(1.0, Math.abs(a5), Math.abs(b5)) && Math.abs(a6 - b6) <= EPSILON * Math.max(1.0, Math.abs(a6), Math.abs(b6)) && Math.abs(a7 - b7) <= EPSILON * Math.max(1.0, Math.abs(a7), Math.abs(b7)) && Math.abs(a8 - b8) <= EPSILON * Math.max(1.0, Math.abs(a8), Math.abs(b8));
+  return Math.abs(a0 - b0) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3)) && Math.abs(a4 - b4) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a4), Math.abs(b4)) && Math.abs(a5 - b5) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a5), Math.abs(b5)) && Math.abs(a6 - b6) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a6), Math.abs(b6)) && Math.abs(a7 - b7) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a7), Math.abs(b7)) && Math.abs(a8 - b8) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a8), Math.abs(b8));
 }
 /**
  * Alias for {@link mat3.multiply}
  * @function
  */
 
-var mat3_mul = mat3_multiply;
+var mul = multiply;
 /**
  * Alias for {@link mat3.subtract}
  * @function
  */
 
-var mat3_sub = mat3_subtract;
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/mat4.js
+var sub = subtract;
+
+/***/ }),
+
+/***/ "./node_modules/gl-matrix/esm/mat4.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/mat4.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   add: () => (/* binding */ add),
+/* harmony export */   adjoint: () => (/* binding */ adjoint),
+/* harmony export */   clone: () => (/* binding */ clone),
+/* harmony export */   copy: () => (/* binding */ copy),
+/* harmony export */   create: () => (/* binding */ create),
+/* harmony export */   determinant: () => (/* binding */ determinant),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   exactEquals: () => (/* binding */ exactEquals),
+/* harmony export */   frob: () => (/* binding */ frob),
+/* harmony export */   fromQuat: () => (/* binding */ fromQuat),
+/* harmony export */   fromQuat2: () => (/* binding */ fromQuat2),
+/* harmony export */   fromRotation: () => (/* binding */ fromRotation),
+/* harmony export */   fromRotationTranslation: () => (/* binding */ fromRotationTranslation),
+/* harmony export */   fromRotationTranslationScale: () => (/* binding */ fromRotationTranslationScale),
+/* harmony export */   fromRotationTranslationScaleOrigin: () => (/* binding */ fromRotationTranslationScaleOrigin),
+/* harmony export */   fromScaling: () => (/* binding */ fromScaling),
+/* harmony export */   fromTranslation: () => (/* binding */ fromTranslation),
+/* harmony export */   fromValues: () => (/* binding */ fromValues),
+/* harmony export */   fromXRotation: () => (/* binding */ fromXRotation),
+/* harmony export */   fromYRotation: () => (/* binding */ fromYRotation),
+/* harmony export */   fromZRotation: () => (/* binding */ fromZRotation),
+/* harmony export */   frustum: () => (/* binding */ frustum),
+/* harmony export */   getRotation: () => (/* binding */ getRotation),
+/* harmony export */   getScaling: () => (/* binding */ getScaling),
+/* harmony export */   getTranslation: () => (/* binding */ getTranslation),
+/* harmony export */   identity: () => (/* binding */ identity),
+/* harmony export */   invert: () => (/* binding */ invert),
+/* harmony export */   lookAt: () => (/* binding */ lookAt),
+/* harmony export */   mul: () => (/* binding */ mul),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   multiplyScalar: () => (/* binding */ multiplyScalar),
+/* harmony export */   multiplyScalarAndAdd: () => (/* binding */ multiplyScalarAndAdd),
+/* harmony export */   ortho: () => (/* binding */ ortho),
+/* harmony export */   perspective: () => (/* binding */ perspective),
+/* harmony export */   perspectiveFromFieldOfView: () => (/* binding */ perspectiveFromFieldOfView),
+/* harmony export */   rotate: () => (/* binding */ rotate),
+/* harmony export */   rotateX: () => (/* binding */ rotateX),
+/* harmony export */   rotateY: () => (/* binding */ rotateY),
+/* harmony export */   rotateZ: () => (/* binding */ rotateZ),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   set: () => (/* binding */ set),
+/* harmony export */   str: () => (/* binding */ str),
+/* harmony export */   sub: () => (/* binding */ sub),
+/* harmony export */   subtract: () => (/* binding */ subtract),
+/* harmony export */   targetTo: () => (/* binding */ targetTo),
+/* harmony export */   translate: () => (/* binding */ translate),
+/* harmony export */   transpose: () => (/* binding */ transpose)
+/* harmony export */ });
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 4x4 Matrix<br>Format: column-major, when typed out it looks like row-major<br>The matrices are being post multiplied.
@@ -2218,10 +1963,10 @@ var mat3_sub = mat3_subtract;
  * @returns {mat4} a new 4x4 matrix
  */
 
-function mat4_create() {
-  var out = new ARRAY_TYPE(16);
+function create() {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(16);
 
-  if (ARRAY_TYPE != Float32Array) {
+  if (_common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE != Float32Array) {
     out[1] = 0;
     out[2] = 0;
     out[3] = 0;
@@ -2249,8 +1994,8 @@ function mat4_create() {
  * @returns {mat4} a new 4x4 matrix
  */
 
-function mat4_clone(a) {
-  var out = new ARRAY_TYPE(16);
+function clone(a) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(16);
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -2277,7 +2022,7 @@ function mat4_clone(a) {
  * @returns {mat4} out
  */
 
-function mat4_copy(out, a) {
+function copy(out, a) {
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -2318,8 +2063,8 @@ function mat4_copy(out, a) {
  * @returns {mat4} A new mat4
  */
 
-function mat4_fromValues(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
-  var out = new ARRAY_TYPE(16);
+function fromValues(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(16);
   out[0] = m00;
   out[1] = m01;
   out[2] = m02;
@@ -2361,7 +2106,7 @@ function mat4_fromValues(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, 
  * @returns {mat4} out
  */
 
-function mat4_set(out, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
+function set(out, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
   out[0] = m00;
   out[1] = m01;
   out[2] = m02;
@@ -2387,7 +2132,7 @@ function mat4_set(out, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m2
  * @returns {mat4} out
  */
 
-function mat4_identity(out) {
+function identity(out) {
   out[0] = 1;
   out[1] = 0;
   out[2] = 0;
@@ -2414,7 +2159,7 @@ function mat4_identity(out) {
  * @returns {mat4} out
  */
 
-function mat4_transpose(out, a) {
+function transpose(out, a) {
   // If we are transposing ourselves we can skip a few steps but have to cache some values
   if (out === a) {
     var a01 = a[1],
@@ -2464,7 +2209,7 @@ function mat4_transpose(out, a) {
  * @returns {mat4} out
  */
 
-function mat4_invert(out, a) {
+function invert(out, a) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2],
@@ -2527,7 +2272,7 @@ function mat4_invert(out, a) {
  * @returns {mat4} out
  */
 
-function mat4_adjoint(out, a) {
+function adjoint(out, a) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2],
@@ -2569,7 +2314,7 @@ function mat4_adjoint(out, a) {
  * @returns {Number} determinant of a
  */
 
-function mat4_determinant(a) {
+function determinant(a) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2],
@@ -2610,7 +2355,7 @@ function mat4_determinant(a) {
  * @returns {mat4} out
  */
 
-function mat4_multiply(out, a, b) {
+function multiply(out, a, b) {
   var a00 = a[0],
       a01 = a[1],
       a02 = a[2],
@@ -2671,7 +2416,7 @@ function mat4_multiply(out, a, b) {
  * @returns {mat4} out
  */
 
-function mat4_translate(out, a, v) {
+function translate(out, a, v) {
   var x = v[0],
       y = v[1],
       z = v[2];
@@ -2726,7 +2471,7 @@ function mat4_translate(out, a, v) {
  * @returns {mat4} out
  **/
 
-function mat4_scale(out, a, v) {
+function scale(out, a, v) {
   var x = v[0],
       y = v[1],
       z = v[2];
@@ -2758,7 +2503,7 @@ function mat4_scale(out, a, v) {
  * @returns {mat4} out
  */
 
-function mat4_rotate(out, a, rad, axis) {
+function rotate(out, a, rad, axis) {
   var x = axis[0],
       y = axis[1],
       z = axis[2];
@@ -2771,7 +2516,7 @@ function mat4_rotate(out, a, rad, axis) {
   var b10, b11, b12;
   var b20, b21, b22;
 
-  if (len < EPSILON) {
+  if (len < _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON) {
     return null;
   }
 
@@ -2972,7 +2717,7 @@ function rotateZ(out, a, rad) {
  * @returns {mat4} out
  */
 
-function mat4_fromTranslation(out, v) {
+function fromTranslation(out, v) {
   out[0] = 1;
   out[1] = 0;
   out[2] = 0;
@@ -3003,7 +2748,7 @@ function mat4_fromTranslation(out, v) {
  * @returns {mat4} out
  */
 
-function mat4_fromScaling(out, v) {
+function fromScaling(out, v) {
   out[0] = v[0];
   out[1] = 0;
   out[2] = 0;
@@ -3035,14 +2780,14 @@ function mat4_fromScaling(out, v) {
  * @returns {mat4} out
  */
 
-function mat4_fromRotation(out, rad, axis) {
+function fromRotation(out, rad, axis) {
   var x = axis[0],
       y = axis[1],
       z = axis[2];
   var len = Math.hypot(x, y, z);
   var s, c, t;
 
-  if (len < EPSILON) {
+  if (len < _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON) {
     return null;
   }
 
@@ -3235,7 +2980,7 @@ function fromRotationTranslation(out, q, v) {
  */
 
 function fromQuat2(out, a) {
-  var translation = new ARRAY_TYPE(3);
+  var translation = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(3);
   var bx = -a[0],
       by = -a[1],
       bz = -a[2],
@@ -3312,7 +3057,7 @@ function getScaling(out, mat) {
  */
 
 function getRotation(out, mat) {
-  var scaling = new ARRAY_TYPE(3);
+  var scaling = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(3);
   getScaling(scaling, mat);
   var is1 = 1 / scaling[0];
   var is2 = 1 / scaling[1];
@@ -3495,7 +3240,7 @@ function fromRotationTranslationScaleOrigin(out, q, v, s, o) {
  * @returns {mat4} out
  */
 
-function mat4_fromQuat(out, q) {
+function fromQuat(out, q) {
   var x = q[0],
       y = q[1],
       z = q[2],
@@ -3701,8 +3446,8 @@ function lookAt(out, eye, center, up) {
   var centery = center[1];
   var centerz = center[2];
 
-  if (Math.abs(eyex - centerx) < EPSILON && Math.abs(eyey - centery) < EPSILON && Math.abs(eyez - centerz) < EPSILON) {
-    return mat4_identity(out);
+  if (Math.abs(eyex - centerx) < _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON && Math.abs(eyey - centery) < _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON && Math.abs(eyez - centerz) < _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON) {
+    return identity(out);
   }
 
   z0 = eyex - centerx;
@@ -3829,7 +3574,7 @@ function targetTo(out, eye, target, up) {
  * @returns {String} string representation of the matrix
  */
 
-function mat4_str(a) {
+function str(a) {
   return 'mat4(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + a[6] + ', ' + a[7] + ', ' + a[8] + ', ' + a[9] + ', ' + a[10] + ', ' + a[11] + ', ' + a[12] + ', ' + a[13] + ', ' + a[14] + ', ' + a[15] + ')';
 }
 /**
@@ -3839,7 +3584,7 @@ function mat4_str(a) {
  * @returns {Number} Frobenius norm
  */
 
-function mat4_frob(a) {
+function frob(a) {
   return Math.hypot(a[0], a[1], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15]);
 }
 /**
@@ -3851,7 +3596,7 @@ function mat4_frob(a) {
  * @returns {mat4} out
  */
 
-function mat4_add(out, a, b) {
+function add(out, a, b) {
   out[0] = a[0] + b[0];
   out[1] = a[1] + b[1];
   out[2] = a[2] + b[2];
@@ -3879,7 +3624,7 @@ function mat4_add(out, a, b) {
  * @returns {mat4} out
  */
 
-function mat4_subtract(out, a, b) {
+function subtract(out, a, b) {
   out[0] = a[0] - b[0];
   out[1] = a[1] - b[1];
   out[2] = a[2] - b[2];
@@ -3907,7 +3652,7 @@ function mat4_subtract(out, a, b) {
  * @returns {mat4} out
  */
 
-function mat4_multiplyScalar(out, a, b) {
+function multiplyScalar(out, a, b) {
   out[0] = a[0] * b;
   out[1] = a[1] * b;
   out[2] = a[2] * b;
@@ -3936,7 +3681,7 @@ function mat4_multiplyScalar(out, a, b) {
  * @returns {mat4} out
  */
 
-function mat4_multiplyScalarAndAdd(out, a, b, scale) {
+function multiplyScalarAndAdd(out, a, b, scale) {
   out[0] = a[0] + b[0] * scale;
   out[1] = a[1] + b[1] * scale;
   out[2] = a[2] + b[2] * scale;
@@ -3963,7 +3708,7 @@ function mat4_multiplyScalarAndAdd(out, a, b, scale) {
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
-function mat4_exactEquals(a, b) {
+function exactEquals(a, b) {
   return a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3] && a[4] === b[4] && a[5] === b[5] && a[6] === b[6] && a[7] === b[7] && a[8] === b[8] && a[9] === b[9] && a[10] === b[10] && a[11] === b[11] && a[12] === b[12] && a[13] === b[13] && a[14] === b[14] && a[15] === b[15];
 }
 /**
@@ -3974,7 +3719,7 @@ function mat4_exactEquals(a, b) {
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
-function mat4_equals(a, b) {
+function equals(a, b) {
   var a0 = a[0],
       a1 = a[1],
       a2 = a[2],
@@ -4007,21 +3752,2438 @@ function mat4_equals(a, b) {
       b13 = b[13],
       b14 = b[14],
       b15 = b[15];
-  return Math.abs(a0 - b0) <= EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3)) && Math.abs(a4 - b4) <= EPSILON * Math.max(1.0, Math.abs(a4), Math.abs(b4)) && Math.abs(a5 - b5) <= EPSILON * Math.max(1.0, Math.abs(a5), Math.abs(b5)) && Math.abs(a6 - b6) <= EPSILON * Math.max(1.0, Math.abs(a6), Math.abs(b6)) && Math.abs(a7 - b7) <= EPSILON * Math.max(1.0, Math.abs(a7), Math.abs(b7)) && Math.abs(a8 - b8) <= EPSILON * Math.max(1.0, Math.abs(a8), Math.abs(b8)) && Math.abs(a9 - b9) <= EPSILON * Math.max(1.0, Math.abs(a9), Math.abs(b9)) && Math.abs(a10 - b10) <= EPSILON * Math.max(1.0, Math.abs(a10), Math.abs(b10)) && Math.abs(a11 - b11) <= EPSILON * Math.max(1.0, Math.abs(a11), Math.abs(b11)) && Math.abs(a12 - b12) <= EPSILON * Math.max(1.0, Math.abs(a12), Math.abs(b12)) && Math.abs(a13 - b13) <= EPSILON * Math.max(1.0, Math.abs(a13), Math.abs(b13)) && Math.abs(a14 - b14) <= EPSILON * Math.max(1.0, Math.abs(a14), Math.abs(b14)) && Math.abs(a15 - b15) <= EPSILON * Math.max(1.0, Math.abs(a15), Math.abs(b15));
+  return Math.abs(a0 - b0) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3)) && Math.abs(a4 - b4) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a4), Math.abs(b4)) && Math.abs(a5 - b5) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a5), Math.abs(b5)) && Math.abs(a6 - b6) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a6), Math.abs(b6)) && Math.abs(a7 - b7) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a7), Math.abs(b7)) && Math.abs(a8 - b8) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a8), Math.abs(b8)) && Math.abs(a9 - b9) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a9), Math.abs(b9)) && Math.abs(a10 - b10) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a10), Math.abs(b10)) && Math.abs(a11 - b11) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a11), Math.abs(b11)) && Math.abs(a12 - b12) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a12), Math.abs(b12)) && Math.abs(a13 - b13) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a13), Math.abs(b13)) && Math.abs(a14 - b14) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a14), Math.abs(b14)) && Math.abs(a15 - b15) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a15), Math.abs(b15));
 }
 /**
  * Alias for {@link mat4.multiply}
  * @function
  */
 
-var mat4_mul = mat4_multiply;
+var mul = multiply;
 /**
  * Alias for {@link mat4.subtract}
  * @function
  */
 
-var mat4_sub = mat4_subtract;
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/vec3.js
+var sub = subtract;
+
+/***/ }),
+
+/***/ "./node_modules/gl-matrix/esm/quat.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/quat.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   add: () => (/* binding */ add),
+/* harmony export */   calculateW: () => (/* binding */ calculateW),
+/* harmony export */   clone: () => (/* binding */ clone),
+/* harmony export */   conjugate: () => (/* binding */ conjugate),
+/* harmony export */   copy: () => (/* binding */ copy),
+/* harmony export */   create: () => (/* binding */ create),
+/* harmony export */   dot: () => (/* binding */ dot),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   exactEquals: () => (/* binding */ exactEquals),
+/* harmony export */   exp: () => (/* binding */ exp),
+/* harmony export */   fromEuler: () => (/* binding */ fromEuler),
+/* harmony export */   fromMat3: () => (/* binding */ fromMat3),
+/* harmony export */   fromValues: () => (/* binding */ fromValues),
+/* harmony export */   getAngle: () => (/* binding */ getAngle),
+/* harmony export */   getAxisAngle: () => (/* binding */ getAxisAngle),
+/* harmony export */   identity: () => (/* binding */ identity),
+/* harmony export */   invert: () => (/* binding */ invert),
+/* harmony export */   len: () => (/* binding */ len),
+/* harmony export */   length: () => (/* binding */ length),
+/* harmony export */   lerp: () => (/* binding */ lerp),
+/* harmony export */   ln: () => (/* binding */ ln),
+/* harmony export */   mul: () => (/* binding */ mul),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   normalize: () => (/* binding */ normalize),
+/* harmony export */   pow: () => (/* binding */ pow),
+/* harmony export */   random: () => (/* binding */ random),
+/* harmony export */   rotateX: () => (/* binding */ rotateX),
+/* harmony export */   rotateY: () => (/* binding */ rotateY),
+/* harmony export */   rotateZ: () => (/* binding */ rotateZ),
+/* harmony export */   rotationTo: () => (/* binding */ rotationTo),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   set: () => (/* binding */ set),
+/* harmony export */   setAxes: () => (/* binding */ setAxes),
+/* harmony export */   setAxisAngle: () => (/* binding */ setAxisAngle),
+/* harmony export */   slerp: () => (/* binding */ slerp),
+/* harmony export */   sqlerp: () => (/* binding */ sqlerp),
+/* harmony export */   sqrLen: () => (/* binding */ sqrLen),
+/* harmony export */   squaredLength: () => (/* binding */ squaredLength),
+/* harmony export */   str: () => (/* binding */ str)
+/* harmony export */ });
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
+/* harmony import */ var _mat3_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mat3.js */ "./node_modules/gl-matrix/esm/mat3.js");
+/* harmony import */ var _vec3_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vec3.js */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var _vec4_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vec4.js */ "./node_modules/gl-matrix/esm/vec4.js");
+
+
+
+
+/**
+ * Quaternion
+ * @module quat
+ */
+
+/**
+ * Creates a new identity quat
+ *
+ * @returns {quat} a new quaternion
+ */
+
+function create() {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(4);
+
+  if (_common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE != Float32Array) {
+    out[0] = 0;
+    out[1] = 0;
+    out[2] = 0;
+  }
+
+  out[3] = 1;
+  return out;
+}
+/**
+ * Set a quat to the identity quaternion
+ *
+ * @param {quat} out the receiving quaternion
+ * @returns {quat} out
+ */
+
+function identity(out) {
+  out[0] = 0;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 1;
+  return out;
+}
+/**
+ * Sets a quat from the given angle and rotation axis,
+ * then returns it.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {vec3} axis the axis around which to rotate
+ * @param {Number} rad the angle in radians
+ * @returns {quat} out
+ **/
+
+function setAxisAngle(out, axis, rad) {
+  rad = rad * 0.5;
+  var s = Math.sin(rad);
+  out[0] = s * axis[0];
+  out[1] = s * axis[1];
+  out[2] = s * axis[2];
+  out[3] = Math.cos(rad);
+  return out;
+}
+/**
+ * Gets the rotation axis and angle for a given
+ *  quaternion. If a quaternion is created with
+ *  setAxisAngle, this method will return the same
+ *  values as providied in the original parameter list
+ *  OR functionally equivalent values.
+ * Example: The quaternion formed by axis [0, 0, 1] and
+ *  angle -90 is the same as the quaternion formed by
+ *  [0, 0, 1] and 270. This method favors the latter.
+ * @param  {vec3} out_axis  Vector receiving the axis of rotation
+ * @param  {quat} q     Quaternion to be decomposed
+ * @return {Number}     Angle, in radians, of the rotation
+ */
+
+function getAxisAngle(out_axis, q) {
+  var rad = Math.acos(q[3]) * 2.0;
+  var s = Math.sin(rad / 2.0);
+
+  if (s > _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON) {
+    out_axis[0] = q[0] / s;
+    out_axis[1] = q[1] / s;
+    out_axis[2] = q[2] / s;
+  } else {
+    // If s is zero, return any axis (no rotation - axis does not matter)
+    out_axis[0] = 1;
+    out_axis[1] = 0;
+    out_axis[2] = 0;
+  }
+
+  return rad;
+}
+/**
+ * Gets the angular distance between two unit quaternions
+ *
+ * @param  {quat} a     Origin unit quaternion 
+ * @param  {quat} b     Destination unit quaternion
+ * @return {Number}     Angle, in radians, between the two quaternions
+ */
+
+function getAngle(a, b) {
+  var dotproduct = dot(a, b);
+  return Math.acos(2 * dotproduct * dotproduct - 1);
+}
+/**
+ * Multiplies two quat's
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @returns {quat} out
+ */
+
+function multiply(out, a, b) {
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var bx = b[0],
+      by = b[1],
+      bz = b[2],
+      bw = b[3];
+  out[0] = ax * bw + aw * bx + ay * bz - az * by;
+  out[1] = ay * bw + aw * by + az * bx - ax * bz;
+  out[2] = az * bw + aw * bz + ax * by - ay * bx;
+  out[3] = aw * bw - ax * bx - ay * by - az * bz;
+  return out;
+}
+/**
+ * Rotates a quaternion by the given angle about the X axis
+ *
+ * @param {quat} out quat receiving operation result
+ * @param {quat} a quat to rotate
+ * @param {number} rad angle (in radians) to rotate
+ * @returns {quat} out
+ */
+
+function rotateX(out, a, rad) {
+  rad *= 0.5;
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var bx = Math.sin(rad),
+      bw = Math.cos(rad);
+  out[0] = ax * bw + aw * bx;
+  out[1] = ay * bw + az * bx;
+  out[2] = az * bw - ay * bx;
+  out[3] = aw * bw - ax * bx;
+  return out;
+}
+/**
+ * Rotates a quaternion by the given angle about the Y axis
+ *
+ * @param {quat} out quat receiving operation result
+ * @param {quat} a quat to rotate
+ * @param {number} rad angle (in radians) to rotate
+ * @returns {quat} out
+ */
+
+function rotateY(out, a, rad) {
+  rad *= 0.5;
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var by = Math.sin(rad),
+      bw = Math.cos(rad);
+  out[0] = ax * bw - az * by;
+  out[1] = ay * bw + aw * by;
+  out[2] = az * bw + ax * by;
+  out[3] = aw * bw - ay * by;
+  return out;
+}
+/**
+ * Rotates a quaternion by the given angle about the Z axis
+ *
+ * @param {quat} out quat receiving operation result
+ * @param {quat} a quat to rotate
+ * @param {number} rad angle (in radians) to rotate
+ * @returns {quat} out
+ */
+
+function rotateZ(out, a, rad) {
+  rad *= 0.5;
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var bz = Math.sin(rad),
+      bw = Math.cos(rad);
+  out[0] = ax * bw + ay * bz;
+  out[1] = ay * bw - ax * bz;
+  out[2] = az * bw + aw * bz;
+  out[3] = aw * bw - az * bz;
+  return out;
+}
+/**
+ * Calculates the W component of a quat from the X, Y, and Z components.
+ * Assumes that quaternion is 1 unit in length.
+ * Any existing W component will be ignored.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate W component of
+ * @returns {quat} out
+ */
+
+function calculateW(out, a) {
+  var x = a[0],
+      y = a[1],
+      z = a[2];
+  out[0] = x;
+  out[1] = y;
+  out[2] = z;
+  out[3] = Math.sqrt(Math.abs(1.0 - x * x - y * y - z * z));
+  return out;
+}
+/**
+ * Calculate the exponential of a unit quaternion.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate the exponential of
+ * @returns {quat} out
+ */
+
+function exp(out, a) {
+  var x = a[0],
+      y = a[1],
+      z = a[2],
+      w = a[3];
+  var r = Math.sqrt(x * x + y * y + z * z);
+  var et = Math.exp(w);
+  var s = r > 0 ? et * Math.sin(r) / r : 0;
+  out[0] = x * s;
+  out[1] = y * s;
+  out[2] = z * s;
+  out[3] = et * Math.cos(r);
+  return out;
+}
+/**
+ * Calculate the natural logarithm of a unit quaternion.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate the exponential of
+ * @returns {quat} out
+ */
+
+function ln(out, a) {
+  var x = a[0],
+      y = a[1],
+      z = a[2],
+      w = a[3];
+  var r = Math.sqrt(x * x + y * y + z * z);
+  var t = r > 0 ? Math.atan2(r, w) / r : 0;
+  out[0] = x * t;
+  out[1] = y * t;
+  out[2] = z * t;
+  out[3] = 0.5 * Math.log(x * x + y * y + z * z + w * w);
+  return out;
+}
+/**
+ * Calculate the scalar power of a unit quaternion.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate the exponential of
+ * @param {Number} b amount to scale the quaternion by
+ * @returns {quat} out
+ */
+
+function pow(out, a, b) {
+  ln(out, a);
+  scale(out, out, b);
+  exp(out, out);
+  return out;
+}
+/**
+ * Performs a spherical linear interpolation between two quat
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+ * @returns {quat} out
+ */
+
+function slerp(out, a, b, t) {
+  // benchmarks:
+  //    http://jsperf.com/quaternion-slerp-implementations
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var bx = b[0],
+      by = b[1],
+      bz = b[2],
+      bw = b[3];
+  var omega, cosom, sinom, scale0, scale1; // calc cosine
+
+  cosom = ax * bx + ay * by + az * bz + aw * bw; // adjust signs (if necessary)
+
+  if (cosom < 0.0) {
+    cosom = -cosom;
+    bx = -bx;
+    by = -by;
+    bz = -bz;
+    bw = -bw;
+  } // calculate coefficients
+
+
+  if (1.0 - cosom > _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON) {
+    // standard case (slerp)
+    omega = Math.acos(cosom);
+    sinom = Math.sin(omega);
+    scale0 = Math.sin((1.0 - t) * omega) / sinom;
+    scale1 = Math.sin(t * omega) / sinom;
+  } else {
+    // "from" and "to" quaternions are very close
+    //  ... so we can do a linear interpolation
+    scale0 = 1.0 - t;
+    scale1 = t;
+  } // calculate final values
+
+
+  out[0] = scale0 * ax + scale1 * bx;
+  out[1] = scale0 * ay + scale1 * by;
+  out[2] = scale0 * az + scale1 * bz;
+  out[3] = scale0 * aw + scale1 * bw;
+  return out;
+}
+/**
+ * Generates a random unit quaternion
+ * 
+ * @param {quat} out the receiving quaternion
+ * @returns {quat} out
+ */
+
+function random(out) {
+  // Implementation of http://planning.cs.uiuc.edu/node198.html
+  // TODO: Calling random 3 times is probably not the fastest solution
+  var u1 = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM();
+  var u2 = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM();
+  var u3 = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM();
+  var sqrt1MinusU1 = Math.sqrt(1 - u1);
+  var sqrtU1 = Math.sqrt(u1);
+  out[0] = sqrt1MinusU1 * Math.sin(2.0 * Math.PI * u2);
+  out[1] = sqrt1MinusU1 * Math.cos(2.0 * Math.PI * u2);
+  out[2] = sqrtU1 * Math.sin(2.0 * Math.PI * u3);
+  out[3] = sqrtU1 * Math.cos(2.0 * Math.PI * u3);
+  return out;
+}
+/**
+ * Calculates the inverse of a quat
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate inverse of
+ * @returns {quat} out
+ */
+
+function invert(out, a) {
+  var a0 = a[0],
+      a1 = a[1],
+      a2 = a[2],
+      a3 = a[3];
+  var dot = a0 * a0 + a1 * a1 + a2 * a2 + a3 * a3;
+  var invDot = dot ? 1.0 / dot : 0; // TODO: Would be faster to return [0,0,0,0] immediately if dot == 0
+
+  out[0] = -a0 * invDot;
+  out[1] = -a1 * invDot;
+  out[2] = -a2 * invDot;
+  out[3] = a3 * invDot;
+  return out;
+}
+/**
+ * Calculates the conjugate of a quat
+ * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate conjugate of
+ * @returns {quat} out
+ */
+
+function conjugate(out, a) {
+  out[0] = -a[0];
+  out[1] = -a[1];
+  out[2] = -a[2];
+  out[3] = a[3];
+  return out;
+}
+/**
+ * Creates a quaternion from the given 3x3 rotation matrix.
+ *
+ * NOTE: The resultant quaternion is not normalized, so you should be sure
+ * to renormalize the quaternion yourself where necessary.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {mat3} m rotation matrix
+ * @returns {quat} out
+ * @function
+ */
+
+function fromMat3(out, m) {
+  // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
+  // article "Quaternion Calculus and Fast Animation".
+  var fTrace = m[0] + m[4] + m[8];
+  var fRoot;
+
+  if (fTrace > 0.0) {
+    // |w| > 1/2, may as well choose w > 1/2
+    fRoot = Math.sqrt(fTrace + 1.0); // 2w
+
+    out[3] = 0.5 * fRoot;
+    fRoot = 0.5 / fRoot; // 1/(4w)
+
+    out[0] = (m[5] - m[7]) * fRoot;
+    out[1] = (m[6] - m[2]) * fRoot;
+    out[2] = (m[1] - m[3]) * fRoot;
+  } else {
+    // |w| <= 1/2
+    var i = 0;
+    if (m[4] > m[0]) i = 1;
+    if (m[8] > m[i * 3 + i]) i = 2;
+    var j = (i + 1) % 3;
+    var k = (i + 2) % 3;
+    fRoot = Math.sqrt(m[i * 3 + i] - m[j * 3 + j] - m[k * 3 + k] + 1.0);
+    out[i] = 0.5 * fRoot;
+    fRoot = 0.5 / fRoot;
+    out[3] = (m[j * 3 + k] - m[k * 3 + j]) * fRoot;
+    out[j] = (m[j * 3 + i] + m[i * 3 + j]) * fRoot;
+    out[k] = (m[k * 3 + i] + m[i * 3 + k]) * fRoot;
+  }
+
+  return out;
+}
+/**
+ * Creates a quaternion from the given euler angle x, y, z.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {x} Angle to rotate around X axis in degrees.
+ * @param {y} Angle to rotate around Y axis in degrees.
+ * @param {z} Angle to rotate around Z axis in degrees.
+ * @returns {quat} out
+ * @function
+ */
+
+function fromEuler(out, x, y, z) {
+  var halfToRad = 0.5 * Math.PI / 180.0;
+  x *= halfToRad;
+  y *= halfToRad;
+  z *= halfToRad;
+  var sx = Math.sin(x);
+  var cx = Math.cos(x);
+  var sy = Math.sin(y);
+  var cy = Math.cos(y);
+  var sz = Math.sin(z);
+  var cz = Math.cos(z);
+  out[0] = sx * cy * cz - cx * sy * sz;
+  out[1] = cx * sy * cz + sx * cy * sz;
+  out[2] = cx * cy * sz - sx * sy * cz;
+  out[3] = cx * cy * cz + sx * sy * sz;
+  return out;
+}
+/**
+ * Returns a string representation of a quatenion
+ *
+ * @param {quat} a vector to represent as a string
+ * @returns {String} string representation of the vector
+ */
+
+function str(a) {
+  return 'quat(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
+}
+/**
+ * Creates a new quat initialized with values from an existing quaternion
+ *
+ * @param {quat} a quaternion to clone
+ * @returns {quat} a new quaternion
+ * @function
+ */
+
+var clone = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.clone;
+/**
+ * Creates a new quat initialized with the given values
+ *
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @param {Number} w W component
+ * @returns {quat} a new quaternion
+ * @function
+ */
+
+var fromValues = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.fromValues;
+/**
+ * Copy the values from one quat to another
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the source quaternion
+ * @returns {quat} out
+ * @function
+ */
+
+var copy = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.copy;
+/**
+ * Set the components of a quat to the given values
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @param {Number} w W component
+ * @returns {quat} out
+ * @function
+ */
+
+var set = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.set;
+/**
+ * Adds two quat's
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @returns {quat} out
+ * @function
+ */
+
+var add = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.add;
+/**
+ * Alias for {@link quat.multiply}
+ * @function
+ */
+
+var mul = multiply;
+/**
+ * Scales a quat by a scalar number
+ *
+ * @param {quat} out the receiving vector
+ * @param {quat} a the vector to scale
+ * @param {Number} b amount to scale the vector by
+ * @returns {quat} out
+ * @function
+ */
+
+var scale = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.scale;
+/**
+ * Calculates the dot product of two quat's
+ *
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @returns {Number} dot product of a and b
+ * @function
+ */
+
+var dot = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.dot;
+/**
+ * Performs a linear interpolation between two quat's
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+ * @returns {quat} out
+ * @function
+ */
+
+var lerp = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.lerp;
+/**
+ * Calculates the length of a quat
+ *
+ * @param {quat} a vector to calculate length of
+ * @returns {Number} length of a
+ */
+
+var length = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.length;
+/**
+ * Alias for {@link quat.length}
+ * @function
+ */
+
+var len = length;
+/**
+ * Calculates the squared length of a quat
+ *
+ * @param {quat} a vector to calculate squared length of
+ * @returns {Number} squared length of a
+ * @function
+ */
+
+var squaredLength = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.squaredLength;
+/**
+ * Alias for {@link quat.squaredLength}
+ * @function
+ */
+
+var sqrLen = squaredLength;
+/**
+ * Normalize a quat
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quaternion to normalize
+ * @returns {quat} out
+ * @function
+ */
+
+var normalize = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.normalize;
+/**
+ * Returns whether or not the quaternions have exactly the same elements in the same position (when compared with ===)
+ *
+ * @param {quat} a The first quaternion.
+ * @param {quat} b The second quaternion.
+ * @returns {Boolean} True if the vectors are equal, false otherwise.
+ */
+
+var exactEquals = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.exactEquals;
+/**
+ * Returns whether or not the quaternions have approximately the same elements in the same position.
+ *
+ * @param {quat} a The first vector.
+ * @param {quat} b The second vector.
+ * @returns {Boolean} True if the vectors are equal, false otherwise.
+ */
+
+var equals = _vec4_js__WEBPACK_IMPORTED_MODULE_1__.equals;
+/**
+ * Sets a quaternion to represent the shortest rotation from one
+ * vector to another.
+ *
+ * Both vectors are assumed to be unit length.
+ *
+ * @param {quat} out the receiving quaternion.
+ * @param {vec3} a the initial vector
+ * @param {vec3} b the destination vector
+ * @returns {quat} out
+ */
+
+var rotationTo = function () {
+  var tmpvec3 = _vec3_js__WEBPACK_IMPORTED_MODULE_2__.create();
+  var xUnitVec3 = _vec3_js__WEBPACK_IMPORTED_MODULE_2__.fromValues(1, 0, 0);
+  var yUnitVec3 = _vec3_js__WEBPACK_IMPORTED_MODULE_2__.fromValues(0, 1, 0);
+  return function (out, a, b) {
+    var dot = _vec3_js__WEBPACK_IMPORTED_MODULE_2__.dot(a, b);
+
+    if (dot < -0.999999) {
+      _vec3_js__WEBPACK_IMPORTED_MODULE_2__.cross(tmpvec3, xUnitVec3, a);
+      if (_vec3_js__WEBPACK_IMPORTED_MODULE_2__.len(tmpvec3) < 0.000001) _vec3_js__WEBPACK_IMPORTED_MODULE_2__.cross(tmpvec3, yUnitVec3, a);
+      _vec3_js__WEBPACK_IMPORTED_MODULE_2__.normalize(tmpvec3, tmpvec3);
+      setAxisAngle(out, tmpvec3, Math.PI);
+      return out;
+    } else if (dot > 0.999999) {
+      out[0] = 0;
+      out[1] = 0;
+      out[2] = 0;
+      out[3] = 1;
+      return out;
+    } else {
+      _vec3_js__WEBPACK_IMPORTED_MODULE_2__.cross(tmpvec3, a, b);
+      out[0] = tmpvec3[0];
+      out[1] = tmpvec3[1];
+      out[2] = tmpvec3[2];
+      out[3] = 1 + dot;
+      return normalize(out, out);
+    }
+  };
+}();
+/**
+ * Performs a spherical linear interpolation with two control points
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @param {quat} c the third operand
+ * @param {quat} d the fourth operand
+ * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+ * @returns {quat} out
+ */
+
+var sqlerp = function () {
+  var temp1 = create();
+  var temp2 = create();
+  return function (out, a, b, c, d, t) {
+    slerp(temp1, a, d, t);
+    slerp(temp2, b, c, t);
+    slerp(out, temp1, temp2, 2 * t * (1 - t));
+    return out;
+  };
+}();
+/**
+ * Sets the specified quaternion with values corresponding to the given
+ * axes. Each axis is a vec3 and is expected to be unit length and
+ * perpendicular to all other specified axes.
+ *
+ * @param {vec3} view  the vector representing the viewing direction
+ * @param {vec3} right the vector representing the local "right" direction
+ * @param {vec3} up    the vector representing the local "up" direction
+ * @returns {quat} out
+ */
+
+var setAxes = function () {
+  var matr = _mat3_js__WEBPACK_IMPORTED_MODULE_3__.create();
+  return function (out, view, right, up) {
+    matr[0] = right[0];
+    matr[3] = right[1];
+    matr[6] = right[2];
+    matr[1] = up[0];
+    matr[4] = up[1];
+    matr[7] = up[2];
+    matr[2] = -view[0];
+    matr[5] = -view[1];
+    matr[8] = -view[2];
+    return normalize(out, fromMat3(out, matr));
+  };
+}();
+
+/***/ }),
+
+/***/ "./node_modules/gl-matrix/esm/quat2.js":
+/*!*********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/quat2.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   add: () => (/* binding */ add),
+/* harmony export */   clone: () => (/* binding */ clone),
+/* harmony export */   conjugate: () => (/* binding */ conjugate),
+/* harmony export */   copy: () => (/* binding */ copy),
+/* harmony export */   create: () => (/* binding */ create),
+/* harmony export */   dot: () => (/* binding */ dot),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   exactEquals: () => (/* binding */ exactEquals),
+/* harmony export */   fromMat4: () => (/* binding */ fromMat4),
+/* harmony export */   fromRotation: () => (/* binding */ fromRotation),
+/* harmony export */   fromRotationTranslation: () => (/* binding */ fromRotationTranslation),
+/* harmony export */   fromRotationTranslationValues: () => (/* binding */ fromRotationTranslationValues),
+/* harmony export */   fromTranslation: () => (/* binding */ fromTranslation),
+/* harmony export */   fromValues: () => (/* binding */ fromValues),
+/* harmony export */   getDual: () => (/* binding */ getDual),
+/* harmony export */   getReal: () => (/* binding */ getReal),
+/* harmony export */   getTranslation: () => (/* binding */ getTranslation),
+/* harmony export */   identity: () => (/* binding */ identity),
+/* harmony export */   invert: () => (/* binding */ invert),
+/* harmony export */   len: () => (/* binding */ len),
+/* harmony export */   length: () => (/* binding */ length),
+/* harmony export */   lerp: () => (/* binding */ lerp),
+/* harmony export */   mul: () => (/* binding */ mul),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   normalize: () => (/* binding */ normalize),
+/* harmony export */   rotateAroundAxis: () => (/* binding */ rotateAroundAxis),
+/* harmony export */   rotateByQuatAppend: () => (/* binding */ rotateByQuatAppend),
+/* harmony export */   rotateByQuatPrepend: () => (/* binding */ rotateByQuatPrepend),
+/* harmony export */   rotateX: () => (/* binding */ rotateX),
+/* harmony export */   rotateY: () => (/* binding */ rotateY),
+/* harmony export */   rotateZ: () => (/* binding */ rotateZ),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   set: () => (/* binding */ set),
+/* harmony export */   setDual: () => (/* binding */ setDual),
+/* harmony export */   setReal: () => (/* binding */ setReal),
+/* harmony export */   sqrLen: () => (/* binding */ sqrLen),
+/* harmony export */   squaredLength: () => (/* binding */ squaredLength),
+/* harmony export */   str: () => (/* binding */ str),
+/* harmony export */   translate: () => (/* binding */ translate)
+/* harmony export */ });
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
+/* harmony import */ var _quat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./quat.js */ "./node_modules/gl-matrix/esm/quat.js");
+/* harmony import */ var _mat4_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mat4.js */ "./node_modules/gl-matrix/esm/mat4.js");
+
+
+
+/**
+ * Dual Quaternion<br>
+ * Format: [real, dual]<br>
+ * Quaternion format: XYZW<br>
+ * Make sure to have normalized dual quaternions, otherwise the functions may not work as intended.<br>
+ * @module quat2
+ */
+
+/**
+ * Creates a new identity dual quat
+ *
+ * @returns {quat2} a new dual quaternion [real -> rotation, dual -> translation]
+ */
+
+function create() {
+  var dq = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(8);
+
+  if (_common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE != Float32Array) {
+    dq[0] = 0;
+    dq[1] = 0;
+    dq[2] = 0;
+    dq[4] = 0;
+    dq[5] = 0;
+    dq[6] = 0;
+    dq[7] = 0;
+  }
+
+  dq[3] = 1;
+  return dq;
+}
+/**
+ * Creates a new quat initialized with values from an existing quaternion
+ *
+ * @param {quat2} a dual quaternion to clone
+ * @returns {quat2} new dual quaternion
+ * @function
+ */
+
+function clone(a) {
+  var dq = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(8);
+  dq[0] = a[0];
+  dq[1] = a[1];
+  dq[2] = a[2];
+  dq[3] = a[3];
+  dq[4] = a[4];
+  dq[5] = a[5];
+  dq[6] = a[6];
+  dq[7] = a[7];
+  return dq;
+}
+/**
+ * Creates a new dual quat initialized with the given values
+ *
+ * @param {Number} x1 X component
+ * @param {Number} y1 Y component
+ * @param {Number} z1 Z component
+ * @param {Number} w1 W component
+ * @param {Number} x2 X component
+ * @param {Number} y2 Y component
+ * @param {Number} z2 Z component
+ * @param {Number} w2 W component
+ * @returns {quat2} new dual quaternion
+ * @function
+ */
+
+function fromValues(x1, y1, z1, w1, x2, y2, z2, w2) {
+  var dq = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(8);
+  dq[0] = x1;
+  dq[1] = y1;
+  dq[2] = z1;
+  dq[3] = w1;
+  dq[4] = x2;
+  dq[5] = y2;
+  dq[6] = z2;
+  dq[7] = w2;
+  return dq;
+}
+/**
+ * Creates a new dual quat from the given values (quat and translation)
+ *
+ * @param {Number} x1 X component
+ * @param {Number} y1 Y component
+ * @param {Number} z1 Z component
+ * @param {Number} w1 W component
+ * @param {Number} x2 X component (translation)
+ * @param {Number} y2 Y component (translation)
+ * @param {Number} z2 Z component (translation)
+ * @returns {quat2} new dual quaternion
+ * @function
+ */
+
+function fromRotationTranslationValues(x1, y1, z1, w1, x2, y2, z2) {
+  var dq = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(8);
+  dq[0] = x1;
+  dq[1] = y1;
+  dq[2] = z1;
+  dq[3] = w1;
+  var ax = x2 * 0.5,
+      ay = y2 * 0.5,
+      az = z2 * 0.5;
+  dq[4] = ax * w1 + ay * z1 - az * y1;
+  dq[5] = ay * w1 + az * x1 - ax * z1;
+  dq[6] = az * w1 + ax * y1 - ay * x1;
+  dq[7] = -ax * x1 - ay * y1 - az * z1;
+  return dq;
+}
+/**
+ * Creates a dual quat from a quaternion and a translation
+ *
+ * @param {quat2} dual quaternion receiving operation result
+ * @param {quat} q a normalized quaternion
+ * @param {vec3} t tranlation vector
+ * @returns {quat2} dual quaternion receiving operation result
+ * @function
+ */
+
+function fromRotationTranslation(out, q, t) {
+  var ax = t[0] * 0.5,
+      ay = t[1] * 0.5,
+      az = t[2] * 0.5,
+      bx = q[0],
+      by = q[1],
+      bz = q[2],
+      bw = q[3];
+  out[0] = bx;
+  out[1] = by;
+  out[2] = bz;
+  out[3] = bw;
+  out[4] = ax * bw + ay * bz - az * by;
+  out[5] = ay * bw + az * bx - ax * bz;
+  out[6] = az * bw + ax * by - ay * bx;
+  out[7] = -ax * bx - ay * by - az * bz;
+  return out;
+}
+/**
+ * Creates a dual quat from a translation
+ *
+ * @param {quat2} dual quaternion receiving operation result
+ * @param {vec3} t translation vector
+ * @returns {quat2} dual quaternion receiving operation result
+ * @function
+ */
+
+function fromTranslation(out, t) {
+  out[0] = 0;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 1;
+  out[4] = t[0] * 0.5;
+  out[5] = t[1] * 0.5;
+  out[6] = t[2] * 0.5;
+  out[7] = 0;
+  return out;
+}
+/**
+ * Creates a dual quat from a quaternion
+ *
+ * @param {quat2} dual quaternion receiving operation result
+ * @param {quat} q the quaternion
+ * @returns {quat2} dual quaternion receiving operation result
+ * @function
+ */
+
+function fromRotation(out, q) {
+  out[0] = q[0];
+  out[1] = q[1];
+  out[2] = q[2];
+  out[3] = q[3];
+  out[4] = 0;
+  out[5] = 0;
+  out[6] = 0;
+  out[7] = 0;
+  return out;
+}
+/**
+ * Creates a new dual quat from a matrix (4x4)
+ *
+ * @param {quat2} out the dual quaternion
+ * @param {mat4} a the matrix
+ * @returns {quat2} dual quat receiving operation result
+ * @function
+ */
+
+function fromMat4(out, a) {
+  //TODO Optimize this
+  var outer = _quat_js__WEBPACK_IMPORTED_MODULE_1__.create();
+  _mat4_js__WEBPACK_IMPORTED_MODULE_2__.getRotation(outer, a);
+  var t = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(3);
+  _mat4_js__WEBPACK_IMPORTED_MODULE_2__.getTranslation(t, a);
+  fromRotationTranslation(out, outer, t);
+  return out;
+}
+/**
+ * Copy the values from one dual quat to another
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a the source dual quaternion
+ * @returns {quat2} out
+ * @function
+ */
+
+function copy(out, a) {
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  out[3] = a[3];
+  out[4] = a[4];
+  out[5] = a[5];
+  out[6] = a[6];
+  out[7] = a[7];
+  return out;
+}
+/**
+ * Set a dual quat to the identity dual quaternion
+ *
+ * @param {quat2} out the receiving quaternion
+ * @returns {quat2} out
+ */
+
+function identity(out) {
+  out[0] = 0;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 1;
+  out[4] = 0;
+  out[5] = 0;
+  out[6] = 0;
+  out[7] = 0;
+  return out;
+}
+/**
+ * Set the components of a dual quat to the given values
+ *
+ * @param {quat2} out the receiving quaternion
+ * @param {Number} x1 X component
+ * @param {Number} y1 Y component
+ * @param {Number} z1 Z component
+ * @param {Number} w1 W component
+ * @param {Number} x2 X component
+ * @param {Number} y2 Y component
+ * @param {Number} z2 Z component
+ * @param {Number} w2 W component
+ * @returns {quat2} out
+ * @function
+ */
+
+function set(out, x1, y1, z1, w1, x2, y2, z2, w2) {
+  out[0] = x1;
+  out[1] = y1;
+  out[2] = z1;
+  out[3] = w1;
+  out[4] = x2;
+  out[5] = y2;
+  out[6] = z2;
+  out[7] = w2;
+  return out;
+}
+/**
+ * Gets the real part of a dual quat
+ * @param  {quat} out real part
+ * @param  {quat2} a Dual Quaternion
+ * @return {quat} real part
+ */
+
+var getReal = _quat_js__WEBPACK_IMPORTED_MODULE_1__.copy;
+/**
+ * Gets the dual part of a dual quat
+ * @param  {quat} out dual part
+ * @param  {quat2} a Dual Quaternion
+ * @return {quat} dual part
+ */
+
+function getDual(out, a) {
+  out[0] = a[4];
+  out[1] = a[5];
+  out[2] = a[6];
+  out[3] = a[7];
+  return out;
+}
+/**
+ * Set the real component of a dual quat to the given quaternion
+ *
+ * @param {quat2} out the receiving quaternion
+ * @param {quat} q a quaternion representing the real part
+ * @returns {quat2} out
+ * @function
+ */
+
+var setReal = _quat_js__WEBPACK_IMPORTED_MODULE_1__.copy;
+/**
+ * Set the dual component of a dual quat to the given quaternion
+ *
+ * @param {quat2} out the receiving quaternion
+ * @param {quat} q a quaternion representing the dual part
+ * @returns {quat2} out
+ * @function
+ */
+
+function setDual(out, q) {
+  out[4] = q[0];
+  out[5] = q[1];
+  out[6] = q[2];
+  out[7] = q[3];
+  return out;
+}
+/**
+ * Gets the translation of a normalized dual quat
+ * @param  {vec3} out translation
+ * @param  {quat2} a Dual Quaternion to be decomposed
+ * @return {vec3} translation
+ */
+
+function getTranslation(out, a) {
+  var ax = a[4],
+      ay = a[5],
+      az = a[6],
+      aw = a[7],
+      bx = -a[0],
+      by = -a[1],
+      bz = -a[2],
+      bw = a[3];
+  out[0] = (ax * bw + aw * bx + ay * bz - az * by) * 2;
+  out[1] = (ay * bw + aw * by + az * bx - ax * bz) * 2;
+  out[2] = (az * bw + aw * bz + ax * by - ay * bx) * 2;
+  return out;
+}
+/**
+ * Translates a dual quat by the given vector
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a the dual quaternion to translate
+ * @param {vec3} v vector to translate by
+ * @returns {quat2} out
+ */
+
+function translate(out, a, v) {
+  var ax1 = a[0],
+      ay1 = a[1],
+      az1 = a[2],
+      aw1 = a[3],
+      bx1 = v[0] * 0.5,
+      by1 = v[1] * 0.5,
+      bz1 = v[2] * 0.5,
+      ax2 = a[4],
+      ay2 = a[5],
+      az2 = a[6],
+      aw2 = a[7];
+  out[0] = ax1;
+  out[1] = ay1;
+  out[2] = az1;
+  out[3] = aw1;
+  out[4] = aw1 * bx1 + ay1 * bz1 - az1 * by1 + ax2;
+  out[5] = aw1 * by1 + az1 * bx1 - ax1 * bz1 + ay2;
+  out[6] = aw1 * bz1 + ax1 * by1 - ay1 * bx1 + az2;
+  out[7] = -ax1 * bx1 - ay1 * by1 - az1 * bz1 + aw2;
+  return out;
+}
+/**
+ * Rotates a dual quat around the X axis
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a the dual quaternion to rotate
+ * @param {number} rad how far should the rotation be
+ * @returns {quat2} out
+ */
+
+function rotateX(out, a, rad) {
+  var bx = -a[0],
+      by = -a[1],
+      bz = -a[2],
+      bw = a[3],
+      ax = a[4],
+      ay = a[5],
+      az = a[6],
+      aw = a[7],
+      ax1 = ax * bw + aw * bx + ay * bz - az * by,
+      ay1 = ay * bw + aw * by + az * bx - ax * bz,
+      az1 = az * bw + aw * bz + ax * by - ay * bx,
+      aw1 = aw * bw - ax * bx - ay * by - az * bz;
+  _quat_js__WEBPACK_IMPORTED_MODULE_1__.rotateX(out, a, rad);
+  bx = out[0];
+  by = out[1];
+  bz = out[2];
+  bw = out[3];
+  out[4] = ax1 * bw + aw1 * bx + ay1 * bz - az1 * by;
+  out[5] = ay1 * bw + aw1 * by + az1 * bx - ax1 * bz;
+  out[6] = az1 * bw + aw1 * bz + ax1 * by - ay1 * bx;
+  out[7] = aw1 * bw - ax1 * bx - ay1 * by - az1 * bz;
+  return out;
+}
+/**
+ * Rotates a dual quat around the Y axis
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a the dual quaternion to rotate
+ * @param {number} rad how far should the rotation be
+ * @returns {quat2} out
+ */
+
+function rotateY(out, a, rad) {
+  var bx = -a[0],
+      by = -a[1],
+      bz = -a[2],
+      bw = a[3],
+      ax = a[4],
+      ay = a[5],
+      az = a[6],
+      aw = a[7],
+      ax1 = ax * bw + aw * bx + ay * bz - az * by,
+      ay1 = ay * bw + aw * by + az * bx - ax * bz,
+      az1 = az * bw + aw * bz + ax * by - ay * bx,
+      aw1 = aw * bw - ax * bx - ay * by - az * bz;
+  _quat_js__WEBPACK_IMPORTED_MODULE_1__.rotateY(out, a, rad);
+  bx = out[0];
+  by = out[1];
+  bz = out[2];
+  bw = out[3];
+  out[4] = ax1 * bw + aw1 * bx + ay1 * bz - az1 * by;
+  out[5] = ay1 * bw + aw1 * by + az1 * bx - ax1 * bz;
+  out[6] = az1 * bw + aw1 * bz + ax1 * by - ay1 * bx;
+  out[7] = aw1 * bw - ax1 * bx - ay1 * by - az1 * bz;
+  return out;
+}
+/**
+ * Rotates a dual quat around the Z axis
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a the dual quaternion to rotate
+ * @param {number} rad how far should the rotation be
+ * @returns {quat2} out
+ */
+
+function rotateZ(out, a, rad) {
+  var bx = -a[0],
+      by = -a[1],
+      bz = -a[2],
+      bw = a[3],
+      ax = a[4],
+      ay = a[5],
+      az = a[6],
+      aw = a[7],
+      ax1 = ax * bw + aw * bx + ay * bz - az * by,
+      ay1 = ay * bw + aw * by + az * bx - ax * bz,
+      az1 = az * bw + aw * bz + ax * by - ay * bx,
+      aw1 = aw * bw - ax * bx - ay * by - az * bz;
+  _quat_js__WEBPACK_IMPORTED_MODULE_1__.rotateZ(out, a, rad);
+  bx = out[0];
+  by = out[1];
+  bz = out[2];
+  bw = out[3];
+  out[4] = ax1 * bw + aw1 * bx + ay1 * bz - az1 * by;
+  out[5] = ay1 * bw + aw1 * by + az1 * bx - ax1 * bz;
+  out[6] = az1 * bw + aw1 * bz + ax1 * by - ay1 * bx;
+  out[7] = aw1 * bw - ax1 * bx - ay1 * by - az1 * bz;
+  return out;
+}
+/**
+ * Rotates a dual quat by a given quaternion (a * q)
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a the dual quaternion to rotate
+ * @param {quat} q quaternion to rotate by
+ * @returns {quat2} out
+ */
+
+function rotateByQuatAppend(out, a, q) {
+  var qx = q[0],
+      qy = q[1],
+      qz = q[2],
+      qw = q[3],
+      ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  out[0] = ax * qw + aw * qx + ay * qz - az * qy;
+  out[1] = ay * qw + aw * qy + az * qx - ax * qz;
+  out[2] = az * qw + aw * qz + ax * qy - ay * qx;
+  out[3] = aw * qw - ax * qx - ay * qy - az * qz;
+  ax = a[4];
+  ay = a[5];
+  az = a[6];
+  aw = a[7];
+  out[4] = ax * qw + aw * qx + ay * qz - az * qy;
+  out[5] = ay * qw + aw * qy + az * qx - ax * qz;
+  out[6] = az * qw + aw * qz + ax * qy - ay * qx;
+  out[7] = aw * qw - ax * qx - ay * qy - az * qz;
+  return out;
+}
+/**
+ * Rotates a dual quat by a given quaternion (q * a)
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat} q quaternion to rotate by
+ * @param {quat2} a the dual quaternion to rotate
+ * @returns {quat2} out
+ */
+
+function rotateByQuatPrepend(out, q, a) {
+  var qx = q[0],
+      qy = q[1],
+      qz = q[2],
+      qw = q[3],
+      bx = a[0],
+      by = a[1],
+      bz = a[2],
+      bw = a[3];
+  out[0] = qx * bw + qw * bx + qy * bz - qz * by;
+  out[1] = qy * bw + qw * by + qz * bx - qx * bz;
+  out[2] = qz * bw + qw * bz + qx * by - qy * bx;
+  out[3] = qw * bw - qx * bx - qy * by - qz * bz;
+  bx = a[4];
+  by = a[5];
+  bz = a[6];
+  bw = a[7];
+  out[4] = qx * bw + qw * bx + qy * bz - qz * by;
+  out[5] = qy * bw + qw * by + qz * bx - qx * bz;
+  out[6] = qz * bw + qw * bz + qx * by - qy * bx;
+  out[7] = qw * bw - qx * bx - qy * by - qz * bz;
+  return out;
+}
+/**
+ * Rotates a dual quat around a given axis. Does the normalisation automatically
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a the dual quaternion to rotate
+ * @param {vec3} axis the axis to rotate around
+ * @param {Number} rad how far the rotation should be
+ * @returns {quat2} out
+ */
+
+function rotateAroundAxis(out, a, axis, rad) {
+  //Special case for rad = 0
+  if (Math.abs(rad) < _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON) {
+    return copy(out, a);
+  }
+
+  var axisLength = Math.hypot(axis[0], axis[1], axis[2]);
+  rad = rad * 0.5;
+  var s = Math.sin(rad);
+  var bx = s * axis[0] / axisLength;
+  var by = s * axis[1] / axisLength;
+  var bz = s * axis[2] / axisLength;
+  var bw = Math.cos(rad);
+  var ax1 = a[0],
+      ay1 = a[1],
+      az1 = a[2],
+      aw1 = a[3];
+  out[0] = ax1 * bw + aw1 * bx + ay1 * bz - az1 * by;
+  out[1] = ay1 * bw + aw1 * by + az1 * bx - ax1 * bz;
+  out[2] = az1 * bw + aw1 * bz + ax1 * by - ay1 * bx;
+  out[3] = aw1 * bw - ax1 * bx - ay1 * by - az1 * bz;
+  var ax = a[4],
+      ay = a[5],
+      az = a[6],
+      aw = a[7];
+  out[4] = ax * bw + aw * bx + ay * bz - az * by;
+  out[5] = ay * bw + aw * by + az * bx - ax * bz;
+  out[6] = az * bw + aw * bz + ax * by - ay * bx;
+  out[7] = aw * bw - ax * bx - ay * by - az * bz;
+  return out;
+}
+/**
+ * Adds two dual quat's
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a the first operand
+ * @param {quat2} b the second operand
+ * @returns {quat2} out
+ * @function
+ */
+
+function add(out, a, b) {
+  out[0] = a[0] + b[0];
+  out[1] = a[1] + b[1];
+  out[2] = a[2] + b[2];
+  out[3] = a[3] + b[3];
+  out[4] = a[4] + b[4];
+  out[5] = a[5] + b[5];
+  out[6] = a[6] + b[6];
+  out[7] = a[7] + b[7];
+  return out;
+}
+/**
+ * Multiplies two dual quat's
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a the first operand
+ * @param {quat2} b the second operand
+ * @returns {quat2} out
+ */
+
+function multiply(out, a, b) {
+  var ax0 = a[0],
+      ay0 = a[1],
+      az0 = a[2],
+      aw0 = a[3],
+      bx1 = b[4],
+      by1 = b[5],
+      bz1 = b[6],
+      bw1 = b[7],
+      ax1 = a[4],
+      ay1 = a[5],
+      az1 = a[6],
+      aw1 = a[7],
+      bx0 = b[0],
+      by0 = b[1],
+      bz0 = b[2],
+      bw0 = b[3];
+  out[0] = ax0 * bw0 + aw0 * bx0 + ay0 * bz0 - az0 * by0;
+  out[1] = ay0 * bw0 + aw0 * by0 + az0 * bx0 - ax0 * bz0;
+  out[2] = az0 * bw0 + aw0 * bz0 + ax0 * by0 - ay0 * bx0;
+  out[3] = aw0 * bw0 - ax0 * bx0 - ay0 * by0 - az0 * bz0;
+  out[4] = ax0 * bw1 + aw0 * bx1 + ay0 * bz1 - az0 * by1 + ax1 * bw0 + aw1 * bx0 + ay1 * bz0 - az1 * by0;
+  out[5] = ay0 * bw1 + aw0 * by1 + az0 * bx1 - ax0 * bz1 + ay1 * bw0 + aw1 * by0 + az1 * bx0 - ax1 * bz0;
+  out[6] = az0 * bw1 + aw0 * bz1 + ax0 * by1 - ay0 * bx1 + az1 * bw0 + aw1 * bz0 + ax1 * by0 - ay1 * bx0;
+  out[7] = aw0 * bw1 - ax0 * bx1 - ay0 * by1 - az0 * bz1 + aw1 * bw0 - ax1 * bx0 - ay1 * by0 - az1 * bz0;
+  return out;
+}
+/**
+ * Alias for {@link quat2.multiply}
+ * @function
+ */
+
+var mul = multiply;
+/**
+ * Scales a dual quat by a scalar number
+ *
+ * @param {quat2} out the receiving dual quat
+ * @param {quat2} a the dual quat to scale
+ * @param {Number} b amount to scale the dual quat by
+ * @returns {quat2} out
+ * @function
+ */
+
+function scale(out, a, b) {
+  out[0] = a[0] * b;
+  out[1] = a[1] * b;
+  out[2] = a[2] * b;
+  out[3] = a[3] * b;
+  out[4] = a[4] * b;
+  out[5] = a[5] * b;
+  out[6] = a[6] * b;
+  out[7] = a[7] * b;
+  return out;
+}
+/**
+ * Calculates the dot product of two dual quat's (The dot product of the real parts)
+ *
+ * @param {quat2} a the first operand
+ * @param {quat2} b the second operand
+ * @returns {Number} dot product of a and b
+ * @function
+ */
+
+var dot = _quat_js__WEBPACK_IMPORTED_MODULE_1__.dot;
+/**
+ * Performs a linear interpolation between two dual quats's
+ * NOTE: The resulting dual quaternions won't always be normalized (The error is most noticeable when t = 0.5)
+ *
+ * @param {quat2} out the receiving dual quat
+ * @param {quat2} a the first operand
+ * @param {quat2} b the second operand
+ * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+ * @returns {quat2} out
+ */
+
+function lerp(out, a, b, t) {
+  var mt = 1 - t;
+  if (dot(a, b) < 0) t = -t;
+  out[0] = a[0] * mt + b[0] * t;
+  out[1] = a[1] * mt + b[1] * t;
+  out[2] = a[2] * mt + b[2] * t;
+  out[3] = a[3] * mt + b[3] * t;
+  out[4] = a[4] * mt + b[4] * t;
+  out[5] = a[5] * mt + b[5] * t;
+  out[6] = a[6] * mt + b[6] * t;
+  out[7] = a[7] * mt + b[7] * t;
+  return out;
+}
+/**
+ * Calculates the inverse of a dual quat. If they are normalized, conjugate is cheaper
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a dual quat to calculate inverse of
+ * @returns {quat2} out
+ */
+
+function invert(out, a) {
+  var sqlen = squaredLength(a);
+  out[0] = -a[0] / sqlen;
+  out[1] = -a[1] / sqlen;
+  out[2] = -a[2] / sqlen;
+  out[3] = a[3] / sqlen;
+  out[4] = -a[4] / sqlen;
+  out[5] = -a[5] / sqlen;
+  out[6] = -a[6] / sqlen;
+  out[7] = a[7] / sqlen;
+  return out;
+}
+/**
+ * Calculates the conjugate of a dual quat
+ * If the dual quaternion is normalized, this function is faster than quat2.inverse and produces the same result.
+ *
+ * @param {quat2} out the receiving quaternion
+ * @param {quat2} a quat to calculate conjugate of
+ * @returns {quat2} out
+ */
+
+function conjugate(out, a) {
+  out[0] = -a[0];
+  out[1] = -a[1];
+  out[2] = -a[2];
+  out[3] = a[3];
+  out[4] = -a[4];
+  out[5] = -a[5];
+  out[6] = -a[6];
+  out[7] = a[7];
+  return out;
+}
+/**
+ * Calculates the length of a dual quat
+ *
+ * @param {quat2} a dual quat to calculate length of
+ * @returns {Number} length of a
+ * @function
+ */
+
+var length = _quat_js__WEBPACK_IMPORTED_MODULE_1__.length;
+/**
+ * Alias for {@link quat2.length}
+ * @function
+ */
+
+var len = length;
+/**
+ * Calculates the squared length of a dual quat
+ *
+ * @param {quat2} a dual quat to calculate squared length of
+ * @returns {Number} squared length of a
+ * @function
+ */
+
+var squaredLength = _quat_js__WEBPACK_IMPORTED_MODULE_1__.squaredLength;
+/**
+ * Alias for {@link quat2.squaredLength}
+ * @function
+ */
+
+var sqrLen = squaredLength;
+/**
+ * Normalize a dual quat
+ *
+ * @param {quat2} out the receiving dual quaternion
+ * @param {quat2} a dual quaternion to normalize
+ * @returns {quat2} out
+ * @function
+ */
+
+function normalize(out, a) {
+  var magnitude = squaredLength(a);
+
+  if (magnitude > 0) {
+    magnitude = Math.sqrt(magnitude);
+    var a0 = a[0] / magnitude;
+    var a1 = a[1] / magnitude;
+    var a2 = a[2] / magnitude;
+    var a3 = a[3] / magnitude;
+    var b0 = a[4];
+    var b1 = a[5];
+    var b2 = a[6];
+    var b3 = a[7];
+    var a_dot_b = a0 * b0 + a1 * b1 + a2 * b2 + a3 * b3;
+    out[0] = a0;
+    out[1] = a1;
+    out[2] = a2;
+    out[3] = a3;
+    out[4] = (b0 - a0 * a_dot_b) / magnitude;
+    out[5] = (b1 - a1 * a_dot_b) / magnitude;
+    out[6] = (b2 - a2 * a_dot_b) / magnitude;
+    out[7] = (b3 - a3 * a_dot_b) / magnitude;
+  }
+
+  return out;
+}
+/**
+ * Returns a string representation of a dual quatenion
+ *
+ * @param {quat2} a dual quaternion to represent as a string
+ * @returns {String} string representation of the dual quat
+ */
+
+function str(a) {
+  return 'quat2(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + a[6] + ', ' + a[7] + ')';
+}
+/**
+ * Returns whether or not the dual quaternions have exactly the same elements in the same position (when compared with ===)
+ *
+ * @param {quat2} a the first dual quaternion.
+ * @param {quat2} b the second dual quaternion.
+ * @returns {Boolean} true if the dual quaternions are equal, false otherwise.
+ */
+
+function exactEquals(a, b) {
+  return a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3] && a[4] === b[4] && a[5] === b[5] && a[6] === b[6] && a[7] === b[7];
+}
+/**
+ * Returns whether or not the dual quaternions have approximately the same elements in the same position.
+ *
+ * @param {quat2} a the first dual quat.
+ * @param {quat2} b the second dual quat.
+ * @returns {Boolean} true if the dual quats are equal, false otherwise.
+ */
+
+function equals(a, b) {
+  var a0 = a[0],
+      a1 = a[1],
+      a2 = a[2],
+      a3 = a[3],
+      a4 = a[4],
+      a5 = a[5],
+      a6 = a[6],
+      a7 = a[7];
+  var b0 = b[0],
+      b1 = b[1],
+      b2 = b[2],
+      b3 = b[3],
+      b4 = b[4],
+      b5 = b[5],
+      b6 = b[6],
+      b7 = b[7];
+  return Math.abs(a0 - b0) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3)) && Math.abs(a4 - b4) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a4), Math.abs(b4)) && Math.abs(a5 - b5) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a5), Math.abs(b5)) && Math.abs(a6 - b6) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a6), Math.abs(b6)) && Math.abs(a7 - b7) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a7), Math.abs(b7));
+}
+
+/***/ }),
+
+/***/ "./node_modules/gl-matrix/esm/vec2.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/vec2.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   add: () => (/* binding */ add),
+/* harmony export */   angle: () => (/* binding */ angle),
+/* harmony export */   ceil: () => (/* binding */ ceil),
+/* harmony export */   clone: () => (/* binding */ clone),
+/* harmony export */   copy: () => (/* binding */ copy),
+/* harmony export */   create: () => (/* binding */ create),
+/* harmony export */   cross: () => (/* binding */ cross),
+/* harmony export */   dist: () => (/* binding */ dist),
+/* harmony export */   distance: () => (/* binding */ distance),
+/* harmony export */   div: () => (/* binding */ div),
+/* harmony export */   divide: () => (/* binding */ divide),
+/* harmony export */   dot: () => (/* binding */ dot),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   exactEquals: () => (/* binding */ exactEquals),
+/* harmony export */   floor: () => (/* binding */ floor),
+/* harmony export */   forEach: () => (/* binding */ forEach),
+/* harmony export */   fromValues: () => (/* binding */ fromValues),
+/* harmony export */   inverse: () => (/* binding */ inverse),
+/* harmony export */   len: () => (/* binding */ len),
+/* harmony export */   length: () => (/* binding */ length),
+/* harmony export */   lerp: () => (/* binding */ lerp),
+/* harmony export */   max: () => (/* binding */ max),
+/* harmony export */   min: () => (/* binding */ min),
+/* harmony export */   mul: () => (/* binding */ mul),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   negate: () => (/* binding */ negate),
+/* harmony export */   normalize: () => (/* binding */ normalize),
+/* harmony export */   random: () => (/* binding */ random),
+/* harmony export */   rotate: () => (/* binding */ rotate),
+/* harmony export */   round: () => (/* binding */ round),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   scaleAndAdd: () => (/* binding */ scaleAndAdd),
+/* harmony export */   set: () => (/* binding */ set),
+/* harmony export */   sqrDist: () => (/* binding */ sqrDist),
+/* harmony export */   sqrLen: () => (/* binding */ sqrLen),
+/* harmony export */   squaredDistance: () => (/* binding */ squaredDistance),
+/* harmony export */   squaredLength: () => (/* binding */ squaredLength),
+/* harmony export */   str: () => (/* binding */ str),
+/* harmony export */   sub: () => (/* binding */ sub),
+/* harmony export */   subtract: () => (/* binding */ subtract),
+/* harmony export */   transformMat2: () => (/* binding */ transformMat2),
+/* harmony export */   transformMat2d: () => (/* binding */ transformMat2d),
+/* harmony export */   transformMat3: () => (/* binding */ transformMat3),
+/* harmony export */   transformMat4: () => (/* binding */ transformMat4),
+/* harmony export */   zero: () => (/* binding */ zero)
+/* harmony export */ });
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
+
+/**
+ * 2 Dimensional Vector
+ * @module vec2
+ */
+
+/**
+ * Creates a new, empty vec2
+ *
+ * @returns {vec2} a new 2D vector
+ */
+
+function create() {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(2);
+
+  if (_common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE != Float32Array) {
+    out[0] = 0;
+    out[1] = 0;
+  }
+
+  return out;
+}
+/**
+ * Creates a new vec2 initialized with values from an existing vector
+ *
+ * @param {vec2} a vector to clone
+ * @returns {vec2} a new 2D vector
+ */
+
+function clone(a) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(2);
+  out[0] = a[0];
+  out[1] = a[1];
+  return out;
+}
+/**
+ * Creates a new vec2 initialized with the given values
+ *
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @returns {vec2} a new 2D vector
+ */
+
+function fromValues(x, y) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(2);
+  out[0] = x;
+  out[1] = y;
+  return out;
+}
+/**
+ * Copy the values from one vec2 to another
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the source vector
+ * @returns {vec2} out
+ */
+
+function copy(out, a) {
+  out[0] = a[0];
+  out[1] = a[1];
+  return out;
+}
+/**
+ * Set the components of a vec2 to the given values
+ *
+ * @param {vec2} out the receiving vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @returns {vec2} out
+ */
+
+function set(out, x, y) {
+  out[0] = x;
+  out[1] = y;
+  return out;
+}
+/**
+ * Adds two vec2's
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
+ */
+
+function add(out, a, b) {
+  out[0] = a[0] + b[0];
+  out[1] = a[1] + b[1];
+  return out;
+}
+/**
+ * Subtracts vector b from vector a
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
+ */
+
+function subtract(out, a, b) {
+  out[0] = a[0] - b[0];
+  out[1] = a[1] - b[1];
+  return out;
+}
+/**
+ * Multiplies two vec2's
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
+ */
+
+function multiply(out, a, b) {
+  out[0] = a[0] * b[0];
+  out[1] = a[1] * b[1];
+  return out;
+}
+/**
+ * Divides two vec2's
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
+ */
+
+function divide(out, a, b) {
+  out[0] = a[0] / b[0];
+  out[1] = a[1] / b[1];
+  return out;
+}
+/**
+ * Math.ceil the components of a vec2
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to ceil
+ * @returns {vec2} out
+ */
+
+function ceil(out, a) {
+  out[0] = Math.ceil(a[0]);
+  out[1] = Math.ceil(a[1]);
+  return out;
+}
+/**
+ * Math.floor the components of a vec2
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to floor
+ * @returns {vec2} out
+ */
+
+function floor(out, a) {
+  out[0] = Math.floor(a[0]);
+  out[1] = Math.floor(a[1]);
+  return out;
+}
+/**
+ * Returns the minimum of two vec2's
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
+ */
+
+function min(out, a, b) {
+  out[0] = Math.min(a[0], b[0]);
+  out[1] = Math.min(a[1], b[1]);
+  return out;
+}
+/**
+ * Returns the maximum of two vec2's
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
+ */
+
+function max(out, a, b) {
+  out[0] = Math.max(a[0], b[0]);
+  out[1] = Math.max(a[1], b[1]);
+  return out;
+}
+/**
+ * Math.round the components of a vec2
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to round
+ * @returns {vec2} out
+ */
+
+function round(out, a) {
+  out[0] = Math.round(a[0]);
+  out[1] = Math.round(a[1]);
+  return out;
+}
+/**
+ * Scales a vec2 by a scalar number
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to scale
+ * @param {Number} b amount to scale the vector by
+ * @returns {vec2} out
+ */
+
+function scale(out, a, b) {
+  out[0] = a[0] * b;
+  out[1] = a[1] * b;
+  return out;
+}
+/**
+ * Adds two vec2's after scaling the second operand by a scalar value
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @param {Number} scale the amount to scale b by before adding
+ * @returns {vec2} out
+ */
+
+function scaleAndAdd(out, a, b, scale) {
+  out[0] = a[0] + b[0] * scale;
+  out[1] = a[1] + b[1] * scale;
+  return out;
+}
+/**
+ * Calculates the euclidian distance between two vec2's
+ *
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {Number} distance between a and b
+ */
+
+function distance(a, b) {
+  var x = b[0] - a[0],
+      y = b[1] - a[1];
+  return Math.hypot(x, y);
+}
+/**
+ * Calculates the squared euclidian distance between two vec2's
+ *
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {Number} squared distance between a and b
+ */
+
+function squaredDistance(a, b) {
+  var x = b[0] - a[0],
+      y = b[1] - a[1];
+  return x * x + y * y;
+}
+/**
+ * Calculates the length of a vec2
+ *
+ * @param {vec2} a vector to calculate length of
+ * @returns {Number} length of a
+ */
+
+function length(a) {
+  var x = a[0],
+      y = a[1];
+  return Math.hypot(x, y);
+}
+/**
+ * Calculates the squared length of a vec2
+ *
+ * @param {vec2} a vector to calculate squared length of
+ * @returns {Number} squared length of a
+ */
+
+function squaredLength(a) {
+  var x = a[0],
+      y = a[1];
+  return x * x + y * y;
+}
+/**
+ * Negates the components of a vec2
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to negate
+ * @returns {vec2} out
+ */
+
+function negate(out, a) {
+  out[0] = -a[0];
+  out[1] = -a[1];
+  return out;
+}
+/**
+ * Returns the inverse of the components of a vec2
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to invert
+ * @returns {vec2} out
+ */
+
+function inverse(out, a) {
+  out[0] = 1.0 / a[0];
+  out[1] = 1.0 / a[1];
+  return out;
+}
+/**
+ * Normalize a vec2
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to normalize
+ * @returns {vec2} out
+ */
+
+function normalize(out, a) {
+  var x = a[0],
+      y = a[1];
+  var len = x * x + y * y;
+
+  if (len > 0) {
+    //TODO: evaluate use of glm_invsqrt here?
+    len = 1 / Math.sqrt(len);
+  }
+
+  out[0] = a[0] * len;
+  out[1] = a[1] * len;
+  return out;
+}
+/**
+ * Calculates the dot product of two vec2's
+ *
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {Number} dot product of a and b
+ */
+
+function dot(a, b) {
+  return a[0] * b[0] + a[1] * b[1];
+}
+/**
+ * Computes the cross product of two vec2's
+ * Note that the cross product must by definition produce a 3D vector
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec3} out
+ */
+
+function cross(out, a, b) {
+  var z = a[0] * b[1] - a[1] * b[0];
+  out[0] = out[1] = 0;
+  out[2] = z;
+  return out;
+}
+/**
+ * Performs a linear interpolation between two vec2's
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+ * @returns {vec2} out
+ */
+
+function lerp(out, a, b, t) {
+  var ax = a[0],
+      ay = a[1];
+  out[0] = ax + t * (b[0] - ax);
+  out[1] = ay + t * (b[1] - ay);
+  return out;
+}
+/**
+ * Generates a random vector with the given scale
+ *
+ * @param {vec2} out the receiving vector
+ * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
+ * @returns {vec2} out
+ */
+
+function random(out, scale) {
+  scale = scale || 1.0;
+  var r = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM() * 2.0 * Math.PI;
+  out[0] = Math.cos(r) * scale;
+  out[1] = Math.sin(r) * scale;
+  return out;
+}
+/**
+ * Transforms the vec2 with a mat2
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat2} m matrix to transform with
+ * @returns {vec2} out
+ */
+
+function transformMat2(out, a, m) {
+  var x = a[0],
+      y = a[1];
+  out[0] = m[0] * x + m[2] * y;
+  out[1] = m[1] * x + m[3] * y;
+  return out;
+}
+/**
+ * Transforms the vec2 with a mat2d
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat2d} m matrix to transform with
+ * @returns {vec2} out
+ */
+
+function transformMat2d(out, a, m) {
+  var x = a[0],
+      y = a[1];
+  out[0] = m[0] * x + m[2] * y + m[4];
+  out[1] = m[1] * x + m[3] * y + m[5];
+  return out;
+}
+/**
+ * Transforms the vec2 with a mat3
+ * 3rd vector component is implicitly '1'
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat3} m matrix to transform with
+ * @returns {vec2} out
+ */
+
+function transformMat3(out, a, m) {
+  var x = a[0],
+      y = a[1];
+  out[0] = m[0] * x + m[3] * y + m[6];
+  out[1] = m[1] * x + m[4] * y + m[7];
+  return out;
+}
+/**
+ * Transforms the vec2 with a mat4
+ * 3rd vector component is implicitly '0'
+ * 4th vector component is implicitly '1'
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat4} m matrix to transform with
+ * @returns {vec2} out
+ */
+
+function transformMat4(out, a, m) {
+  var x = a[0];
+  var y = a[1];
+  out[0] = m[0] * x + m[4] * y + m[12];
+  out[1] = m[1] * x + m[5] * y + m[13];
+  return out;
+}
+/**
+ * Rotate a 2D vector
+ * @param {vec2} out The receiving vec2
+ * @param {vec2} a The vec2 point to rotate
+ * @param {vec2} b The origin of the rotation
+ * @param {Number} c The angle of rotation
+ * @returns {vec2} out
+ */
+
+function rotate(out, a, b, c) {
+  //Translate point to the origin
+  var p0 = a[0] - b[0],
+      p1 = a[1] - b[1],
+      sinC = Math.sin(c),
+      cosC = Math.cos(c); //perform rotation and translate to correct position
+
+  out[0] = p0 * cosC - p1 * sinC + b[0];
+  out[1] = p0 * sinC + p1 * cosC + b[1];
+  return out;
+}
+/**
+ * Get the angle between two 2D vectors
+ * @param {vec2} a The first operand
+ * @param {vec2} b The second operand
+ * @returns {Number} The angle in radians
+ */
+
+function angle(a, b) {
+  var x1 = a[0],
+      y1 = a[1],
+      x2 = b[0],
+      y2 = b[1];
+  var len1 = x1 * x1 + y1 * y1;
+
+  if (len1 > 0) {
+    //TODO: evaluate use of glm_invsqrt here?
+    len1 = 1 / Math.sqrt(len1);
+  }
+
+  var len2 = x2 * x2 + y2 * y2;
+
+  if (len2 > 0) {
+    //TODO: evaluate use of glm_invsqrt here?
+    len2 = 1 / Math.sqrt(len2);
+  }
+
+  var cosine = (x1 * x2 + y1 * y2) * len1 * len2;
+
+  if (cosine > 1.0) {
+    return 0;
+  } else if (cosine < -1.0) {
+    return Math.PI;
+  } else {
+    return Math.acos(cosine);
+  }
+}
+/**
+ * Set the components of a vec2 to zero
+ *
+ * @param {vec2} out the receiving vector
+ * @returns {vec2} out
+ */
+
+function zero(out) {
+  out[0] = 0.0;
+  out[1] = 0.0;
+  return out;
+}
+/**
+ * Returns a string representation of a vector
+ *
+ * @param {vec2} a vector to represent as a string
+ * @returns {String} string representation of the vector
+ */
+
+function str(a) {
+  return 'vec2(' + a[0] + ', ' + a[1] + ')';
+}
+/**
+ * Returns whether or not the vectors exactly have the same elements in the same position (when compared with ===)
+ *
+ * @param {vec2} a The first vector.
+ * @param {vec2} b The second vector.
+ * @returns {Boolean} True if the vectors are equal, false otherwise.
+ */
+
+function exactEquals(a, b) {
+  return a[0] === b[0] && a[1] === b[1];
+}
+/**
+ * Returns whether or not the vectors have approximately the same elements in the same position.
+ *
+ * @param {vec2} a The first vector.
+ * @param {vec2} b The second vector.
+ * @returns {Boolean} True if the vectors are equal, false otherwise.
+ */
+
+function equals(a, b) {
+  var a0 = a[0],
+      a1 = a[1];
+  var b0 = b[0],
+      b1 = b[1];
+  return Math.abs(a0 - b0) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1));
+}
+/**
+ * Alias for {@link vec2.length}
+ * @function
+ */
+
+var len = length;
+/**
+ * Alias for {@link vec2.subtract}
+ * @function
+ */
+
+var sub = subtract;
+/**
+ * Alias for {@link vec2.multiply}
+ * @function
+ */
+
+var mul = multiply;
+/**
+ * Alias for {@link vec2.divide}
+ * @function
+ */
+
+var div = divide;
+/**
+ * Alias for {@link vec2.distance}
+ * @function
+ */
+
+var dist = distance;
+/**
+ * Alias for {@link vec2.squaredDistance}
+ * @function
+ */
+
+var sqrDist = squaredDistance;
+/**
+ * Alias for {@link vec2.squaredLength}
+ * @function
+ */
+
+var sqrLen = squaredLength;
+/**
+ * Perform some operation over an array of vec2s.
+ *
+ * @param {Array} a the array of vectors to iterate over
+ * @param {Number} stride Number of elements between the start of each vec2. If 0 assumes tightly packed
+ * @param {Number} offset Number of elements to skip at the beginning of the array
+ * @param {Number} count Number of vec2s to iterate over. If 0 iterates over entire array
+ * @param {Function} fn Function to call for each vector in the array
+ * @param {Object} [arg] additional argument to pass to fn
+ * @returns {Array} a
+ * @function
+ */
+
+var forEach = function () {
+  var vec = create();
+  return function (a, stride, offset, count, fn, arg) {
+    var i, l;
+
+    if (!stride) {
+      stride = 2;
+    }
+
+    if (!offset) {
+      offset = 0;
+    }
+
+    if (count) {
+      l = Math.min(count * stride + offset, a.length);
+    } else {
+      l = a.length;
+    }
+
+    for (i = offset; i < l; i += stride) {
+      vec[0] = a[i];
+      vec[1] = a[i + 1];
+      fn(vec, vec, arg);
+      a[i] = vec[0];
+      a[i + 1] = vec[1];
+    }
+
+    return a;
+  };
+}();
+
+/***/ }),
+
+/***/ "./node_modules/gl-matrix/esm/vec3.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/vec3.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   add: () => (/* binding */ add),
+/* harmony export */   angle: () => (/* binding */ angle),
+/* harmony export */   bezier: () => (/* binding */ bezier),
+/* harmony export */   ceil: () => (/* binding */ ceil),
+/* harmony export */   clone: () => (/* binding */ clone),
+/* harmony export */   copy: () => (/* binding */ copy),
+/* harmony export */   create: () => (/* binding */ create),
+/* harmony export */   cross: () => (/* binding */ cross),
+/* harmony export */   dist: () => (/* binding */ dist),
+/* harmony export */   distance: () => (/* binding */ distance),
+/* harmony export */   div: () => (/* binding */ div),
+/* harmony export */   divide: () => (/* binding */ divide),
+/* harmony export */   dot: () => (/* binding */ dot),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   exactEquals: () => (/* binding */ exactEquals),
+/* harmony export */   floor: () => (/* binding */ floor),
+/* harmony export */   forEach: () => (/* binding */ forEach),
+/* harmony export */   fromValues: () => (/* binding */ fromValues),
+/* harmony export */   hermite: () => (/* binding */ hermite),
+/* harmony export */   inverse: () => (/* binding */ inverse),
+/* harmony export */   len: () => (/* binding */ len),
+/* harmony export */   length: () => (/* binding */ length),
+/* harmony export */   lerp: () => (/* binding */ lerp),
+/* harmony export */   max: () => (/* binding */ max),
+/* harmony export */   min: () => (/* binding */ min),
+/* harmony export */   mul: () => (/* binding */ mul),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   negate: () => (/* binding */ negate),
+/* harmony export */   normalize: () => (/* binding */ normalize),
+/* harmony export */   random: () => (/* binding */ random),
+/* harmony export */   rotateX: () => (/* binding */ rotateX),
+/* harmony export */   rotateY: () => (/* binding */ rotateY),
+/* harmony export */   rotateZ: () => (/* binding */ rotateZ),
+/* harmony export */   round: () => (/* binding */ round),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   scaleAndAdd: () => (/* binding */ scaleAndAdd),
+/* harmony export */   set: () => (/* binding */ set),
+/* harmony export */   sqrDist: () => (/* binding */ sqrDist),
+/* harmony export */   sqrLen: () => (/* binding */ sqrLen),
+/* harmony export */   squaredDistance: () => (/* binding */ squaredDistance),
+/* harmony export */   squaredLength: () => (/* binding */ squaredLength),
+/* harmony export */   str: () => (/* binding */ str),
+/* harmony export */   sub: () => (/* binding */ sub),
+/* harmony export */   subtract: () => (/* binding */ subtract),
+/* harmony export */   transformMat3: () => (/* binding */ transformMat3),
+/* harmony export */   transformMat4: () => (/* binding */ transformMat4),
+/* harmony export */   transformQuat: () => (/* binding */ transformQuat),
+/* harmony export */   zero: () => (/* binding */ zero)
+/* harmony export */ });
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 3 Dimensional Vector
@@ -4034,10 +6196,10 @@ var mat4_sub = mat4_subtract;
  * @returns {vec3} a new 3D vector
  */
 
-function vec3_create() {
-  var out = new ARRAY_TYPE(3);
+function create() {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(3);
 
-  if (ARRAY_TYPE != Float32Array) {
+  if (_common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE != Float32Array) {
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
@@ -4052,8 +6214,8 @@ function vec3_create() {
  * @returns {vec3} a new 3D vector
  */
 
-function vec3_clone(a) {
-  var out = new ARRAY_TYPE(3);
+function clone(a) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(3);
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -4066,7 +6228,7 @@ function vec3_clone(a) {
  * @returns {Number} length of a
  */
 
-function vec3_length(a) {
+function length(a) {
   var x = a[0];
   var y = a[1];
   var z = a[2];
@@ -4081,8 +6243,8 @@ function vec3_length(a) {
  * @returns {vec3} a new 3D vector
  */
 
-function vec3_fromValues(x, y, z) {
-  var out = new ARRAY_TYPE(3);
+function fromValues(x, y, z) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(3);
   out[0] = x;
   out[1] = y;
   out[2] = z;
@@ -4096,7 +6258,7 @@ function vec3_fromValues(x, y, z) {
  * @returns {vec3} out
  */
 
-function vec3_copy(out, a) {
+function copy(out, a) {
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -4112,7 +6274,7 @@ function vec3_copy(out, a) {
  * @returns {vec3} out
  */
 
-function vec3_set(out, x, y, z) {
+function set(out, x, y, z) {
   out[0] = x;
   out[1] = y;
   out[2] = z;
@@ -4127,7 +6289,7 @@ function vec3_set(out, x, y, z) {
  * @returns {vec3} out
  */
 
-function vec3_add(out, a, b) {
+function add(out, a, b) {
   out[0] = a[0] + b[0];
   out[1] = a[1] + b[1];
   out[2] = a[2] + b[2];
@@ -4142,7 +6304,7 @@ function vec3_add(out, a, b) {
  * @returns {vec3} out
  */
 
-function vec3_subtract(out, a, b) {
+function subtract(out, a, b) {
   out[0] = a[0] - b[0];
   out[1] = a[1] - b[1];
   out[2] = a[2] - b[2];
@@ -4157,7 +6319,7 @@ function vec3_subtract(out, a, b) {
  * @returns {vec3} out
  */
 
-function vec3_multiply(out, a, b) {
+function multiply(out, a, b) {
   out[0] = a[0] * b[0];
   out[1] = a[1] * b[1];
   out[2] = a[2] * b[2];
@@ -4259,7 +6421,7 @@ function round(out, a) {
  * @returns {vec3} out
  */
 
-function vec3_scale(out, a, b) {
+function scale(out, a, b) {
   out[0] = a[0] * b;
   out[1] = a[1] * b;
   out[2] = a[2] * b;
@@ -4382,7 +6544,7 @@ function normalize(out, a) {
  * @returns {Number} dot product of a and b
  */
 
-function vec3_dot(a, b) {
+function dot(a, b) {
   return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 }
 /**
@@ -4483,8 +6645,8 @@ function bezier(out, a, b, c, d, t) {
 
 function random(out, scale) {
   scale = scale || 1.0;
-  var r = RANDOM() * 2.0 * Math.PI;
-  var z = RANDOM() * 2.0 - 1.0;
+  var r = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM() * 2.0 * Math.PI;
+  var z = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM() * 2.0 - 1.0;
   var zScale = Math.sqrt(1.0 - z * z) * scale;
   out[0] = Math.cos(r) * zScale;
   out[1] = Math.sin(r) * zScale;
@@ -4582,7 +6744,7 @@ function transformQuat(out, a, q) {
  * @returns {vec3} out
  */
 
-function vec3_rotateX(out, a, b, c) {
+function rotateX(out, a, b, c) {
   var p = [],
       r = []; //Translate point to the origin
 
@@ -4608,7 +6770,7 @@ function vec3_rotateX(out, a, b, c) {
  * @returns {vec3} out
  */
 
-function vec3_rotateY(out, a, b, c) {
+function rotateY(out, a, b, c) {
   var p = [],
       r = []; //Translate point to the origin
 
@@ -4634,7 +6796,7 @@ function vec3_rotateY(out, a, b, c) {
  * @returns {vec3} out
  */
 
-function vec3_rotateZ(out, a, b, c) {
+function rotateZ(out, a, b, c) {
   var p = [],
       r = []; //Translate point to the origin
 
@@ -4659,11 +6821,11 @@ function vec3_rotateZ(out, a, b, c) {
  */
 
 function angle(a, b) {
-  var tempA = vec3_fromValues(a[0], a[1], a[2]);
-  var tempB = vec3_fromValues(b[0], b[1], b[2]);
+  var tempA = fromValues(a[0], a[1], a[2]);
+  var tempB = fromValues(b[0], b[1], b[2]);
   normalize(tempA, tempA);
   normalize(tempB, tempB);
-  var cosine = vec3_dot(tempA, tempB);
+  var cosine = dot(tempA, tempB);
 
   if (cosine > 1.0) {
     return 0;
@@ -4693,7 +6855,7 @@ function zero(out) {
  * @returns {String} string representation of the vector
  */
 
-function vec3_str(a) {
+function str(a) {
   return 'vec3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ')';
 }
 /**
@@ -4704,7 +6866,7 @@ function vec3_str(a) {
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
-function vec3_exactEquals(a, b) {
+function exactEquals(a, b) {
   return a[0] === b[0] && a[1] === b[1] && a[2] === b[2];
 }
 /**
@@ -4715,27 +6877,27 @@ function vec3_exactEquals(a, b) {
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
-function vec3_equals(a, b) {
+function equals(a, b) {
   var a0 = a[0],
       a1 = a[1],
       a2 = a[2];
   var b0 = b[0],
       b1 = b[1],
       b2 = b[2];
-  return Math.abs(a0 - b0) <= EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2));
+  return Math.abs(a0 - b0) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2));
 }
 /**
  * Alias for {@link vec3.subtract}
  * @function
  */
 
-var vec3_sub = vec3_subtract;
+var sub = subtract;
 /**
  * Alias for {@link vec3.multiply}
  * @function
  */
 
-var vec3_mul = vec3_multiply;
+var mul = multiply;
 /**
  * Alias for {@link vec3.divide}
  * @function
@@ -4759,7 +6921,7 @@ var sqrDist = squaredDistance;
  * @function
  */
 
-var len = vec3_length;
+var len = length;
 /**
  * Alias for {@link vec3.squaredLength}
  * @function
@@ -4780,7 +6942,7 @@ var sqrLen = squaredLength;
  */
 
 var forEach = function () {
-  var vec = vec3_create();
+  var vec = create();
   return function (a, stride, offset, count, fn, arg) {
     var i, l;
 
@@ -4811,7 +6973,61 @@ var forEach = function () {
     return a;
   };
 }();
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/vec4.js
+
+/***/ }),
+
+/***/ "./node_modules/gl-matrix/esm/vec4.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/vec4.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   add: () => (/* binding */ add),
+/* harmony export */   ceil: () => (/* binding */ ceil),
+/* harmony export */   clone: () => (/* binding */ clone),
+/* harmony export */   copy: () => (/* binding */ copy),
+/* harmony export */   create: () => (/* binding */ create),
+/* harmony export */   cross: () => (/* binding */ cross),
+/* harmony export */   dist: () => (/* binding */ dist),
+/* harmony export */   distance: () => (/* binding */ distance),
+/* harmony export */   div: () => (/* binding */ div),
+/* harmony export */   divide: () => (/* binding */ divide),
+/* harmony export */   dot: () => (/* binding */ dot),
+/* harmony export */   equals: () => (/* binding */ equals),
+/* harmony export */   exactEquals: () => (/* binding */ exactEquals),
+/* harmony export */   floor: () => (/* binding */ floor),
+/* harmony export */   forEach: () => (/* binding */ forEach),
+/* harmony export */   fromValues: () => (/* binding */ fromValues),
+/* harmony export */   inverse: () => (/* binding */ inverse),
+/* harmony export */   len: () => (/* binding */ len),
+/* harmony export */   length: () => (/* binding */ length),
+/* harmony export */   lerp: () => (/* binding */ lerp),
+/* harmony export */   max: () => (/* binding */ max),
+/* harmony export */   min: () => (/* binding */ min),
+/* harmony export */   mul: () => (/* binding */ mul),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   negate: () => (/* binding */ negate),
+/* harmony export */   normalize: () => (/* binding */ normalize),
+/* harmony export */   random: () => (/* binding */ random),
+/* harmony export */   round: () => (/* binding */ round),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   scaleAndAdd: () => (/* binding */ scaleAndAdd),
+/* harmony export */   set: () => (/* binding */ set),
+/* harmony export */   sqrDist: () => (/* binding */ sqrDist),
+/* harmony export */   sqrLen: () => (/* binding */ sqrLen),
+/* harmony export */   squaredDistance: () => (/* binding */ squaredDistance),
+/* harmony export */   squaredLength: () => (/* binding */ squaredLength),
+/* harmony export */   str: () => (/* binding */ str),
+/* harmony export */   sub: () => (/* binding */ sub),
+/* harmony export */   subtract: () => (/* binding */ subtract),
+/* harmony export */   transformMat4: () => (/* binding */ transformMat4),
+/* harmony export */   transformQuat: () => (/* binding */ transformQuat),
+/* harmony export */   zero: () => (/* binding */ zero)
+/* harmony export */ });
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 4 Dimensional Vector
@@ -4824,10 +7040,10 @@ var forEach = function () {
  * @returns {vec4} a new 4D vector
  */
 
-function vec4_create() {
-  var out = new ARRAY_TYPE(4);
+function create() {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(4);
 
-  if (ARRAY_TYPE != Float32Array) {
+  if (_common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE != Float32Array) {
     out[0] = 0;
     out[1] = 0;
     out[2] = 0;
@@ -4843,8 +7059,8 @@ function vec4_create() {
  * @returns {vec4} a new 4D vector
  */
 
-function vec4_clone(a) {
-  var out = new ARRAY_TYPE(4);
+function clone(a) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(4);
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -4861,8 +7077,8 @@ function vec4_clone(a) {
  * @returns {vec4} a new 4D vector
  */
 
-function vec4_fromValues(x, y, z, w) {
-  var out = new ARRAY_TYPE(4);
+function fromValues(x, y, z, w) {
+  var out = new _common_js__WEBPACK_IMPORTED_MODULE_0__.ARRAY_TYPE(4);
   out[0] = x;
   out[1] = y;
   out[2] = z;
@@ -4877,7 +7093,7 @@ function vec4_fromValues(x, y, z, w) {
  * @returns {vec4} out
  */
 
-function vec4_copy(out, a) {
+function copy(out, a) {
   out[0] = a[0];
   out[1] = a[1];
   out[2] = a[2];
@@ -4895,7 +7111,7 @@ function vec4_copy(out, a) {
  * @returns {vec4} out
  */
 
-function vec4_set(out, x, y, z, w) {
+function set(out, x, y, z, w) {
   out[0] = x;
   out[1] = y;
   out[2] = z;
@@ -4911,7 +7127,7 @@ function vec4_set(out, x, y, z, w) {
  * @returns {vec4} out
  */
 
-function vec4_add(out, a, b) {
+function add(out, a, b) {
   out[0] = a[0] + b[0];
   out[1] = a[1] + b[1];
   out[2] = a[2] + b[2];
@@ -4927,7 +7143,7 @@ function vec4_add(out, a, b) {
  * @returns {vec4} out
  */
 
-function vec4_subtract(out, a, b) {
+function subtract(out, a, b) {
   out[0] = a[0] - b[0];
   out[1] = a[1] - b[1];
   out[2] = a[2] - b[2];
@@ -4943,7 +7159,7 @@ function vec4_subtract(out, a, b) {
  * @returns {vec4} out
  */
 
-function vec4_multiply(out, a, b) {
+function multiply(out, a, b) {
   out[0] = a[0] * b[0];
   out[1] = a[1] * b[1];
   out[2] = a[2] * b[2];
@@ -4959,7 +7175,7 @@ function vec4_multiply(out, a, b) {
  * @returns {vec4} out
  */
 
-function vec4_divide(out, a, b) {
+function divide(out, a, b) {
   out[0] = a[0] / b[0];
   out[1] = a[1] / b[1];
   out[2] = a[2] / b[2];
@@ -4974,7 +7190,7 @@ function vec4_divide(out, a, b) {
  * @returns {vec4} out
  */
 
-function vec4_ceil(out, a) {
+function ceil(out, a) {
   out[0] = Math.ceil(a[0]);
   out[1] = Math.ceil(a[1]);
   out[2] = Math.ceil(a[2]);
@@ -4989,7 +7205,7 @@ function vec4_ceil(out, a) {
  * @returns {vec4} out
  */
 
-function vec4_floor(out, a) {
+function floor(out, a) {
   out[0] = Math.floor(a[0]);
   out[1] = Math.floor(a[1]);
   out[2] = Math.floor(a[2]);
@@ -5005,7 +7221,7 @@ function vec4_floor(out, a) {
  * @returns {vec4} out
  */
 
-function vec4_min(out, a, b) {
+function min(out, a, b) {
   out[0] = Math.min(a[0], b[0]);
   out[1] = Math.min(a[1], b[1]);
   out[2] = Math.min(a[2], b[2]);
@@ -5021,7 +7237,7 @@ function vec4_min(out, a, b) {
  * @returns {vec4} out
  */
 
-function vec4_max(out, a, b) {
+function max(out, a, b) {
   out[0] = Math.max(a[0], b[0]);
   out[1] = Math.max(a[1], b[1]);
   out[2] = Math.max(a[2], b[2]);
@@ -5036,7 +7252,7 @@ function vec4_max(out, a, b) {
  * @returns {vec4} out
  */
 
-function vec4_round(out, a) {
+function round(out, a) {
   out[0] = Math.round(a[0]);
   out[1] = Math.round(a[1]);
   out[2] = Math.round(a[2]);
@@ -5052,7 +7268,7 @@ function vec4_round(out, a) {
  * @returns {vec4} out
  */
 
-function vec4_scale(out, a, b) {
+function scale(out, a, b) {
   out[0] = a[0] * b;
   out[1] = a[1] * b;
   out[2] = a[2] * b;
@@ -5069,7 +7285,7 @@ function vec4_scale(out, a, b) {
  * @returns {vec4} out
  */
 
-function vec4_scaleAndAdd(out, a, b, scale) {
+function scaleAndAdd(out, a, b, scale) {
   out[0] = a[0] + b[0] * scale;
   out[1] = a[1] + b[1] * scale;
   out[2] = a[2] + b[2] * scale;
@@ -5084,7 +7300,7 @@ function vec4_scaleAndAdd(out, a, b, scale) {
  * @returns {Number} distance between a and b
  */
 
-function vec4_distance(a, b) {
+function distance(a, b) {
   var x = b[0] - a[0];
   var y = b[1] - a[1];
   var z = b[2] - a[2];
@@ -5099,7 +7315,7 @@ function vec4_distance(a, b) {
  * @returns {Number} squared distance between a and b
  */
 
-function vec4_squaredDistance(a, b) {
+function squaredDistance(a, b) {
   var x = b[0] - a[0];
   var y = b[1] - a[1];
   var z = b[2] - a[2];
@@ -5113,7 +7329,7 @@ function vec4_squaredDistance(a, b) {
  * @returns {Number} length of a
  */
 
-function vec4_length(a) {
+function length(a) {
   var x = a[0];
   var y = a[1];
   var z = a[2];
@@ -5127,7 +7343,7 @@ function vec4_length(a) {
  * @returns {Number} squared length of a
  */
 
-function vec4_squaredLength(a) {
+function squaredLength(a) {
   var x = a[0];
   var y = a[1];
   var z = a[2];
@@ -5142,7 +7358,7 @@ function vec4_squaredLength(a) {
  * @returns {vec4} out
  */
 
-function vec4_negate(out, a) {
+function negate(out, a) {
   out[0] = -a[0];
   out[1] = -a[1];
   out[2] = -a[2];
@@ -5157,7 +7373,7 @@ function vec4_negate(out, a) {
  * @returns {vec4} out
  */
 
-function vec4_inverse(out, a) {
+function inverse(out, a) {
   out[0] = 1.0 / a[0];
   out[1] = 1.0 / a[1];
   out[2] = 1.0 / a[2];
@@ -5172,7 +7388,7 @@ function vec4_inverse(out, a) {
  * @returns {vec4} out
  */
 
-function vec4_normalize(out, a) {
+function normalize(out, a) {
   var x = a[0];
   var y = a[1];
   var z = a[2];
@@ -5210,7 +7426,7 @@ function dot(a, b) {
  * @returns {vec4} result
  */
 
-function vec4_cross(out, u, v, w) {
+function cross(out, u, v, w) {
   var A = v[0] * w[1] - v[1] * w[0],
       B = v[0] * w[2] - v[2] * w[0],
       C = v[0] * w[3] - v[3] * w[0],
@@ -5238,7 +7454,7 @@ function vec4_cross(out, u, v, w) {
  * @returns {vec4} out
  */
 
-function vec4_lerp(out, a, b, t) {
+function lerp(out, a, b, t) {
   var ax = a[0];
   var ay = a[1];
   var az = a[2];
@@ -5257,7 +7473,7 @@ function vec4_lerp(out, a, b, t) {
  * @returns {vec4} out
  */
 
-function vec4_random(out, scale) {
+function random(out, scale) {
   scale = scale || 1.0; // Marsaglia, George. Choosing a Point from the Surface of a
   // Sphere. Ann. Math. Statist. 43 (1972), no. 2, 645--646.
   // http://projecteuclid.org/euclid.aoms/1177692644;
@@ -5266,14 +7482,14 @@ function vec4_random(out, scale) {
   var s1, s2;
 
   do {
-    v1 = RANDOM() * 2 - 1;
-    v2 = RANDOM() * 2 - 1;
+    v1 = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM() * 2 - 1;
+    v2 = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM() * 2 - 1;
     s1 = v1 * v1 + v2 * v2;
   } while (s1 >= 1);
 
   do {
-    v3 = RANDOM() * 2 - 1;
-    v4 = RANDOM() * 2 - 1;
+    v3 = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM() * 2 - 1;
+    v4 = _common_js__WEBPACK_IMPORTED_MODULE_0__.RANDOM() * 2 - 1;
     s2 = v3 * v3 + v4 * v4;
   } while (s2 >= 1);
 
@@ -5293,7 +7509,7 @@ function vec4_random(out, scale) {
  * @returns {vec4} out
  */
 
-function vec4_transformMat4(out, a, m) {
+function transformMat4(out, a, m) {
   var x = a[0],
       y = a[1],
       z = a[2],
@@ -5313,7 +7529,7 @@ function vec4_transformMat4(out, a, m) {
  * @returns {vec4} out
  */
 
-function vec4_transformQuat(out, a, q) {
+function transformQuat(out, a, q) {
   var x = a[0],
       y = a[1],
       z = a[2];
@@ -5340,7 +7556,7 @@ function vec4_transformQuat(out, a, q) {
  * @returns {vec4} out
  */
 
-function vec4_zero(out) {
+function zero(out) {
   out[0] = 0.0;
   out[1] = 0.0;
   out[2] = 0.0;
@@ -5354,7 +7570,7 @@ function vec4_zero(out) {
  * @returns {String} string representation of the vector
  */
 
-function vec4_str(a) {
+function str(a) {
   return 'vec4(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
 }
 /**
@@ -5365,7 +7581,7 @@ function vec4_str(a) {
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
-function vec4_exactEquals(a, b) {
+function exactEquals(a, b) {
   return a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3];
 }
 /**
@@ -5376,7 +7592,7 @@ function vec4_exactEquals(a, b) {
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
-function vec4_equals(a, b) {
+function equals(a, b) {
   var a0 = a[0],
       a1 = a[1],
       a2 = a[2],
@@ -5385,50 +7601,50 @@ function vec4_equals(a, b) {
       b1 = b[1],
       b2 = b[2],
       b3 = b[3];
-  return Math.abs(a0 - b0) <= EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3));
+  return Math.abs(a0 - b0) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= _common_js__WEBPACK_IMPORTED_MODULE_0__.EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3));
 }
 /**
  * Alias for {@link vec4.subtract}
  * @function
  */
 
-var vec4_sub = vec4_subtract;
+var sub = subtract;
 /**
  * Alias for {@link vec4.multiply}
  * @function
  */
 
-var vec4_mul = vec4_multiply;
+var mul = multiply;
 /**
  * Alias for {@link vec4.divide}
  * @function
  */
 
-var vec4_div = vec4_divide;
+var div = divide;
 /**
  * Alias for {@link vec4.distance}
  * @function
  */
 
-var vec4_dist = vec4_distance;
+var dist = distance;
 /**
  * Alias for {@link vec4.squaredDistance}
  * @function
  */
 
-var vec4_sqrDist = vec4_squaredDistance;
+var sqrDist = squaredDistance;
 /**
  * Alias for {@link vec4.length}
  * @function
  */
 
-var vec4_len = vec4_length;
+var len = length;
 /**
  * Alias for {@link vec4.squaredLength}
  * @function
  */
 
-var vec4_sqrLen = vec4_squaredLength;
+var sqrLen = squaredLength;
 /**
  * Perform some operation over an array of vec4s.
  *
@@ -5442,8 +7658,8 @@ var vec4_sqrLen = vec4_squaredLength;
  * @function
  */
 
-var vec4_forEach = function () {
-  var vec = vec4_create();
+var forEach = function () {
+  var vec = create();
   return function (a, stride, offset, count, fn, arg) {
     var i, l;
 
@@ -5476,2562 +7692,697 @@ var vec4_forEach = function () {
     return a;
   };
 }();
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/quat.js
 
+/***/ }),
 
+/***/ "./src/core/anim.js":
+/*!**************************!*\
+  !*** ./src/core/anim.js ***!
+  \**************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Anim: () => (/* binding */ Anim)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ "./src/core/utils.js");
+/* harmony import */ var _anim_key_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./anim_key.js */ "./src/core/anim_key.js");
 
-/**
- * Quaternion
- * @module quat
- */
-
-/**
- * Creates a new identity quat
- *
- * @returns {quat} a new quaternion
- */
-
-function quat_create() {
-  var out = new ARRAY_TYPE(4);
-
-  if (ARRAY_TYPE != Float32Array) {
-    out[0] = 0;
-    out[1] = 0;
-    out[2] = 0;
-  }
-
-  out[3] = 1;
-  return out;
-}
-/**
- * Set a quat to the identity quaternion
- *
- * @param {quat} out the receiving quaternion
- * @returns {quat} out
- */
-
-function quat_identity(out) {
-  out[0] = 0;
-  out[1] = 0;
-  out[2] = 0;
-  out[3] = 1;
-  return out;
-}
-/**
- * Sets a quat from the given angle and rotation axis,
- * then returns it.
- *
- * @param {quat} out the receiving quaternion
- * @param {vec3} axis the axis around which to rotate
- * @param {Number} rad the angle in radians
- * @returns {quat} out
- **/
-
-function setAxisAngle(out, axis, rad) {
-  rad = rad * 0.5;
-  var s = Math.sin(rad);
-  out[0] = s * axis[0];
-  out[1] = s * axis[1];
-  out[2] = s * axis[2];
-  out[3] = Math.cos(rad);
-  return out;
-}
-/**
- * Gets the rotation axis and angle for a given
- *  quaternion. If a quaternion is created with
- *  setAxisAngle, this method will return the same
- *  values as providied in the original parameter list
- *  OR functionally equivalent values.
- * Example: The quaternion formed by axis [0, 0, 1] and
- *  angle -90 is the same as the quaternion formed by
- *  [0, 0, 1] and 270. This method favors the latter.
- * @param  {vec3} out_axis  Vector receiving the axis of rotation
- * @param  {quat} q     Quaternion to be decomposed
- * @return {Number}     Angle, in radians, of the rotation
- */
-
-function getAxisAngle(out_axis, q) {
-  var rad = Math.acos(q[3]) * 2.0;
-  var s = Math.sin(rad / 2.0);
-
-  if (s > EPSILON) {
-    out_axis[0] = q[0] / s;
-    out_axis[1] = q[1] / s;
-    out_axis[2] = q[2] / s;
-  } else {
-    // If s is zero, return any axis (no rotation - axis does not matter)
-    out_axis[0] = 1;
-    out_axis[1] = 0;
-    out_axis[2] = 0;
-  }
-
-  return rad;
-}
-/**
- * Gets the angular distance between two unit quaternions
- *
- * @param  {quat} a     Origin unit quaternion 
- * @param  {quat} b     Destination unit quaternion
- * @return {Number}     Angle, in radians, between the two quaternions
- */
-
-function getAngle(a, b) {
-  var dotproduct = quat_dot(a, b);
-  return Math.acos(2 * dotproduct * dotproduct - 1);
-}
-/**
- * Multiplies two quat's
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @returns {quat} out
- */
-
-function quat_multiply(out, a, b) {
-  var ax = a[0],
-      ay = a[1],
-      az = a[2],
-      aw = a[3];
-  var bx = b[0],
-      by = b[1],
-      bz = b[2],
-      bw = b[3];
-  out[0] = ax * bw + aw * bx + ay * bz - az * by;
-  out[1] = ay * bw + aw * by + az * bx - ax * bz;
-  out[2] = az * bw + aw * bz + ax * by - ay * bx;
-  out[3] = aw * bw - ax * bx - ay * by - az * bz;
-  return out;
-}
-/**
- * Rotates a quaternion by the given angle about the X axis
- *
- * @param {quat} out quat receiving operation result
- * @param {quat} a quat to rotate
- * @param {number} rad angle (in radians) to rotate
- * @returns {quat} out
- */
-
-function quat_rotateX(out, a, rad) {
-  rad *= 0.5;
-  var ax = a[0],
-      ay = a[1],
-      az = a[2],
-      aw = a[3];
-  var bx = Math.sin(rad),
-      bw = Math.cos(rad);
-  out[0] = ax * bw + aw * bx;
-  out[1] = ay * bw + az * bx;
-  out[2] = az * bw - ay * bx;
-  out[3] = aw * bw - ax * bx;
-  return out;
-}
-/**
- * Rotates a quaternion by the given angle about the Y axis
- *
- * @param {quat} out quat receiving operation result
- * @param {quat} a quat to rotate
- * @param {number} rad angle (in radians) to rotate
- * @returns {quat} out
- */
-
-function quat_rotateY(out, a, rad) {
-  rad *= 0.5;
-  var ax = a[0],
-      ay = a[1],
-      az = a[2],
-      aw = a[3];
-  var by = Math.sin(rad),
-      bw = Math.cos(rad);
-  out[0] = ax * bw - az * by;
-  out[1] = ay * bw + aw * by;
-  out[2] = az * bw + ax * by;
-  out[3] = aw * bw - ay * by;
-  return out;
-}
-/**
- * Rotates a quaternion by the given angle about the Z axis
- *
- * @param {quat} out quat receiving operation result
- * @param {quat} a quat to rotate
- * @param {number} rad angle (in radians) to rotate
- * @returns {quat} out
- */
-
-function quat_rotateZ(out, a, rad) {
-  rad *= 0.5;
-  var ax = a[0],
-      ay = a[1],
-      az = a[2],
-      aw = a[3];
-  var bz = Math.sin(rad),
-      bw = Math.cos(rad);
-  out[0] = ax * bw + ay * bz;
-  out[1] = ay * bw - ax * bz;
-  out[2] = az * bw + aw * bz;
-  out[3] = aw * bw - az * bz;
-  return out;
-}
-/**
- * Calculates the W component of a quat from the X, Y, and Z components.
- * Assumes that quaternion is 1 unit in length.
- * Any existing W component will be ignored.
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate W component of
- * @returns {quat} out
- */
-
-function calculateW(out, a) {
-  var x = a[0],
-      y = a[1],
-      z = a[2];
-  out[0] = x;
-  out[1] = y;
-  out[2] = z;
-  out[3] = Math.sqrt(Math.abs(1.0 - x * x - y * y - z * z));
-  return out;
-}
-/**
- * Calculate the exponential of a unit quaternion.
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate the exponential of
- * @returns {quat} out
- */
-
-function exp(out, a) {
-  var x = a[0],
-      y = a[1],
-      z = a[2],
-      w = a[3];
-  var r = Math.sqrt(x * x + y * y + z * z);
-  var et = Math.exp(w);
-  var s = r > 0 ? et * Math.sin(r) / r : 0;
-  out[0] = x * s;
-  out[1] = y * s;
-  out[2] = z * s;
-  out[3] = et * Math.cos(r);
-  return out;
-}
-/**
- * Calculate the natural logarithm of a unit quaternion.
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate the exponential of
- * @returns {quat} out
- */
-
-function ln(out, a) {
-  var x = a[0],
-      y = a[1],
-      z = a[2],
-      w = a[3];
-  var r = Math.sqrt(x * x + y * y + z * z);
-  var t = r > 0 ? Math.atan2(r, w) / r : 0;
-  out[0] = x * t;
-  out[1] = y * t;
-  out[2] = z * t;
-  out[3] = 0.5 * Math.log(x * x + y * y + z * z + w * w);
-  return out;
-}
-/**
- * Calculate the scalar power of a unit quaternion.
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate the exponential of
- * @param {Number} b amount to scale the quaternion by
- * @returns {quat} out
- */
-
-function pow(out, a, b) {
-  ln(out, a);
-  quat_scale(out, out, b);
-  exp(out, out);
-  return out;
-}
-/**
- * Performs a spherical linear interpolation between two quat
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
- * @returns {quat} out
- */
-
-function slerp(out, a, b, t) {
-  // benchmarks:
-  //    http://jsperf.com/quaternion-slerp-implementations
-  var ax = a[0],
-      ay = a[1],
-      az = a[2],
-      aw = a[3];
-  var bx = b[0],
-      by = b[1],
-      bz = b[2],
-      bw = b[3];
-  var omega, cosom, sinom, scale0, scale1; // calc cosine
-
-  cosom = ax * bx + ay * by + az * bz + aw * bw; // adjust signs (if necessary)
-
-  if (cosom < 0.0) {
-    cosom = -cosom;
-    bx = -bx;
-    by = -by;
-    bz = -bz;
-    bw = -bw;
-  } // calculate coefficients
-
-
-  if (1.0 - cosom > EPSILON) {
-    // standard case (slerp)
-    omega = Math.acos(cosom);
-    sinom = Math.sin(omega);
-    scale0 = Math.sin((1.0 - t) * omega) / sinom;
-    scale1 = Math.sin(t * omega) / sinom;
-  } else {
-    // "from" and "to" quaternions are very close
-    //  ... so we can do a linear interpolation
-    scale0 = 1.0 - t;
-    scale1 = t;
-  } // calculate final values
-
-
-  out[0] = scale0 * ax + scale1 * bx;
-  out[1] = scale0 * ay + scale1 * by;
-  out[2] = scale0 * az + scale1 * bz;
-  out[3] = scale0 * aw + scale1 * bw;
-  return out;
-}
-/**
- * Generates a random unit quaternion
- * 
- * @param {quat} out the receiving quaternion
- * @returns {quat} out
- */
-
-function quat_random(out) {
-  // Implementation of http://planning.cs.uiuc.edu/node198.html
-  // TODO: Calling random 3 times is probably not the fastest solution
-  var u1 = RANDOM();
-  var u2 = RANDOM();
-  var u3 = RANDOM();
-  var sqrt1MinusU1 = Math.sqrt(1 - u1);
-  var sqrtU1 = Math.sqrt(u1);
-  out[0] = sqrt1MinusU1 * Math.sin(2.0 * Math.PI * u2);
-  out[1] = sqrt1MinusU1 * Math.cos(2.0 * Math.PI * u2);
-  out[2] = sqrtU1 * Math.sin(2.0 * Math.PI * u3);
-  out[3] = sqrtU1 * Math.cos(2.0 * Math.PI * u3);
-  return out;
-}
-/**
- * Calculates the inverse of a quat
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate inverse of
- * @returns {quat} out
- */
-
-function quat_invert(out, a) {
-  var a0 = a[0],
-      a1 = a[1],
-      a2 = a[2],
-      a3 = a[3];
-  var dot = a0 * a0 + a1 * a1 + a2 * a2 + a3 * a3;
-  var invDot = dot ? 1.0 / dot : 0; // TODO: Would be faster to return [0,0,0,0] immediately if dot == 0
-
-  out[0] = -a0 * invDot;
-  out[1] = -a1 * invDot;
-  out[2] = -a2 * invDot;
-  out[3] = a3 * invDot;
-  return out;
-}
-/**
- * Calculates the conjugate of a quat
- * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate conjugate of
- * @returns {quat} out
- */
-
-function conjugate(out, a) {
-  out[0] = -a[0];
-  out[1] = -a[1];
-  out[2] = -a[2];
-  out[3] = a[3];
-  return out;
-}
-/**
- * Creates a quaternion from the given 3x3 rotation matrix.
- *
- * NOTE: The resultant quaternion is not normalized, so you should be sure
- * to renormalize the quaternion yourself where necessary.
- *
- * @param {quat} out the receiving quaternion
- * @param {mat3} m rotation matrix
- * @returns {quat} out
- * @function
- */
-
-function fromMat3(out, m) {
-  // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
-  // article "Quaternion Calculus and Fast Animation".
-  var fTrace = m[0] + m[4] + m[8];
-  var fRoot;
-
-  if (fTrace > 0.0) {
-    // |w| > 1/2, may as well choose w > 1/2
-    fRoot = Math.sqrt(fTrace + 1.0); // 2w
-
-    out[3] = 0.5 * fRoot;
-    fRoot = 0.5 / fRoot; // 1/(4w)
-
-    out[0] = (m[5] - m[7]) * fRoot;
-    out[1] = (m[6] - m[2]) * fRoot;
-    out[2] = (m[1] - m[3]) * fRoot;
-  } else {
-    // |w| <= 1/2
-    var i = 0;
-    if (m[4] > m[0]) i = 1;
-    if (m[8] > m[i * 3 + i]) i = 2;
-    var j = (i + 1) % 3;
-    var k = (i + 2) % 3;
-    fRoot = Math.sqrt(m[i * 3 + i] - m[j * 3 + j] - m[k * 3 + k] + 1.0);
-    out[i] = 0.5 * fRoot;
-    fRoot = 0.5 / fRoot;
-    out[3] = (m[j * 3 + k] - m[k * 3 + j]) * fRoot;
-    out[j] = (m[j * 3 + i] + m[i * 3 + j]) * fRoot;
-    out[k] = (m[k * 3 + i] + m[i * 3 + k]) * fRoot;
-  }
-
-  return out;
-}
-/**
- * Creates a quaternion from the given euler angle x, y, z.
- *
- * @param {quat} out the receiving quaternion
- * @param {x} Angle to rotate around X axis in degrees.
- * @param {y} Angle to rotate around Y axis in degrees.
- * @param {z} Angle to rotate around Z axis in degrees.
- * @returns {quat} out
- * @function
- */
-
-function fromEuler(out, x, y, z) {
-  var halfToRad = 0.5 * Math.PI / 180.0;
-  x *= halfToRad;
-  y *= halfToRad;
-  z *= halfToRad;
-  var sx = Math.sin(x);
-  var cx = Math.cos(x);
-  var sy = Math.sin(y);
-  var cy = Math.cos(y);
-  var sz = Math.sin(z);
-  var cz = Math.cos(z);
-  out[0] = sx * cy * cz - cx * sy * sz;
-  out[1] = cx * sy * cz + sx * cy * sz;
-  out[2] = cx * cy * sz - sx * sy * cz;
-  out[3] = cx * cy * cz + sx * sy * sz;
-  return out;
-}
-/**
- * Returns a string representation of a quatenion
- *
- * @param {quat} a vector to represent as a string
- * @returns {String} string representation of the vector
- */
-
-function quat_str(a) {
-  return 'quat(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
-}
-/**
- * Creates a new quat initialized with values from an existing quaternion
- *
- * @param {quat} a quaternion to clone
- * @returns {quat} a new quaternion
- * @function
- */
-
-var quat_clone = vec4_clone;
-/**
- * Creates a new quat initialized with the given values
- *
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
- * @returns {quat} a new quaternion
- * @function
- */
-
-var quat_fromValues = vec4_fromValues;
-/**
- * Copy the values from one quat to another
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the source quaternion
- * @returns {quat} out
- * @function
- */
-
-var quat_copy = vec4_copy;
-/**
- * Set the components of a quat to the given values
- *
- * @param {quat} out the receiving quaternion
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
- * @returns {quat} out
- * @function
- */
-
-var quat_set = vec4_set;
-/**
- * Adds two quat's
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @returns {quat} out
- * @function
- */
-
-var quat_add = vec4_add;
-/**
- * Alias for {@link quat.multiply}
- * @function
- */
-
-var quat_mul = quat_multiply;
-/**
- * Scales a quat by a scalar number
- *
- * @param {quat} out the receiving vector
- * @param {quat} a the vector to scale
- * @param {Number} b amount to scale the vector by
- * @returns {quat} out
- * @function
- */
-
-var quat_scale = vec4_scale;
-/**
- * Calculates the dot product of two quat's
- *
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @returns {Number} dot product of a and b
- * @function
- */
-
-var quat_dot = dot;
-/**
- * Performs a linear interpolation between two quat's
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
- * @returns {quat} out
- * @function
- */
-
-var quat_lerp = vec4_lerp;
-/**
- * Calculates the length of a quat
- *
- * @param {quat} a vector to calculate length of
- * @returns {Number} length of a
- */
-
-var quat_length = vec4_length;
-/**
- * Alias for {@link quat.length}
- * @function
- */
-
-var quat_len = quat_length;
-/**
- * Calculates the squared length of a quat
- *
- * @param {quat} a vector to calculate squared length of
- * @returns {Number} squared length of a
- * @function
- */
-
-var quat_squaredLength = vec4_squaredLength;
-/**
- * Alias for {@link quat.squaredLength}
- * @function
- */
-
-var quat_sqrLen = quat_squaredLength;
-/**
- * Normalize a quat
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quaternion to normalize
- * @returns {quat} out
- * @function
- */
-
-var quat_normalize = vec4_normalize;
-/**
- * Returns whether or not the quaternions have exactly the same elements in the same position (when compared with ===)
- *
- * @param {quat} a The first quaternion.
- * @param {quat} b The second quaternion.
- * @returns {Boolean} True if the vectors are equal, false otherwise.
- */
-
-var quat_exactEquals = vec4_exactEquals;
-/**
- * Returns whether or not the quaternions have approximately the same elements in the same position.
- *
- * @param {quat} a The first vector.
- * @param {quat} b The second vector.
- * @returns {Boolean} True if the vectors are equal, false otherwise.
- */
-
-var quat_equals = vec4_equals;
-/**
- * Sets a quaternion to represent the shortest rotation from one
- * vector to another.
- *
- * Both vectors are assumed to be unit length.
- *
- * @param {quat} out the receiving quaternion.
- * @param {vec3} a the initial vector
- * @param {vec3} b the destination vector
- * @returns {quat} out
- */
-
-var rotationTo = function () {
-  var tmpvec3 = vec3_create();
-  var xUnitVec3 = vec3_fromValues(1, 0, 0);
-  var yUnitVec3 = vec3_fromValues(0, 1, 0);
-  return function (out, a, b) {
-    var dot = vec3_dot(a, b);
-
-    if (dot < -0.999999) {
-      cross(tmpvec3, xUnitVec3, a);
-      if (len(tmpvec3) < 0.000001) cross(tmpvec3, yUnitVec3, a);
-      normalize(tmpvec3, tmpvec3);
-      setAxisAngle(out, tmpvec3, Math.PI);
-      return out;
-    } else if (dot > 0.999999) {
-      out[0] = 0;
-      out[1] = 0;
-      out[2] = 0;
-      out[3] = 1;
-      return out;
-    } else {
-      cross(tmpvec3, a, b);
-      out[0] = tmpvec3[0];
-      out[1] = tmpvec3[1];
-      out[2] = tmpvec3[2];
-      out[3] = 1 + dot;
-      return quat_normalize(out, out);
-    }
-  };
-}();
-/**
- * Performs a spherical linear interpolation with two control points
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @param {quat} c the third operand
- * @param {quat} d the fourth operand
- * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
- * @returns {quat} out
- */
-
-var sqlerp = function () {
-  var temp1 = quat_create();
-  var temp2 = quat_create();
-  return function (out, a, b, c, d, t) {
-    slerp(temp1, a, d, t);
-    slerp(temp2, b, c, t);
-    slerp(out, temp1, temp2, 2 * t * (1 - t));
-    return out;
-  };
-}();
-/**
- * Sets the specified quaternion with values corresponding to the given
- * axes. Each axis is a vec3 and is expected to be unit length and
- * perpendicular to all other specified axes.
- *
- * @param {vec3} view  the vector representing the viewing direction
- * @param {vec3} right the vector representing the local "right" direction
- * @param {vec3} up    the vector representing the local "up" direction
- * @returns {quat} out
- */
-
-var setAxes = function () {
-  var matr = mat3_create();
-  return function (out, view, right, up) {
-    matr[0] = right[0];
-    matr[3] = right[1];
-    matr[6] = right[2];
-    matr[1] = up[0];
-    matr[4] = up[1];
-    matr[7] = up[2];
-    matr[2] = -view[0];
-    matr[5] = -view[1];
-    matr[8] = -view[2];
-    return quat_normalize(out, fromMat3(out, matr));
-  };
-}();
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/quat2.js
-
-
-
-/**
- * Dual Quaternion<br>
- * Format: [real, dual]<br>
- * Quaternion format: XYZW<br>
- * Make sure to have normalized dual quaternions, otherwise the functions may not work as intended.<br>
- * @module quat2
- */
-
-/**
- * Creates a new identity dual quat
- *
- * @returns {quat2} a new dual quaternion [real -> rotation, dual -> translation]
- */
-
-function quat2_create() {
-  var dq = new ARRAY_TYPE(8);
-
-  if (ARRAY_TYPE != Float32Array) {
-    dq[0] = 0;
-    dq[1] = 0;
-    dq[2] = 0;
-    dq[4] = 0;
-    dq[5] = 0;
-    dq[6] = 0;
-    dq[7] = 0;
-  }
-
-  dq[3] = 1;
-  return dq;
-}
-/**
- * Creates a new quat initialized with values from an existing quaternion
- *
- * @param {quat2} a dual quaternion to clone
- * @returns {quat2} new dual quaternion
- * @function
- */
-
-function quat2_clone(a) {
-  var dq = new ARRAY_TYPE(8);
-  dq[0] = a[0];
-  dq[1] = a[1];
-  dq[2] = a[2];
-  dq[3] = a[3];
-  dq[4] = a[4];
-  dq[5] = a[5];
-  dq[6] = a[6];
-  dq[7] = a[7];
-  return dq;
-}
-/**
- * Creates a new dual quat initialized with the given values
- *
- * @param {Number} x1 X component
- * @param {Number} y1 Y component
- * @param {Number} z1 Z component
- * @param {Number} w1 W component
- * @param {Number} x2 X component
- * @param {Number} y2 Y component
- * @param {Number} z2 Z component
- * @param {Number} w2 W component
- * @returns {quat2} new dual quaternion
- * @function
- */
-
-function quat2_fromValues(x1, y1, z1, w1, x2, y2, z2, w2) {
-  var dq = new ARRAY_TYPE(8);
-  dq[0] = x1;
-  dq[1] = y1;
-  dq[2] = z1;
-  dq[3] = w1;
-  dq[4] = x2;
-  dq[5] = y2;
-  dq[6] = z2;
-  dq[7] = w2;
-  return dq;
-}
-/**
- * Creates a new dual quat from the given values (quat and translation)
- *
- * @param {Number} x1 X component
- * @param {Number} y1 Y component
- * @param {Number} z1 Z component
- * @param {Number} w1 W component
- * @param {Number} x2 X component (translation)
- * @param {Number} y2 Y component (translation)
- * @param {Number} z2 Z component (translation)
- * @returns {quat2} new dual quaternion
- * @function
- */
-
-function fromRotationTranslationValues(x1, y1, z1, w1, x2, y2, z2) {
-  var dq = new ARRAY_TYPE(8);
-  dq[0] = x1;
-  dq[1] = y1;
-  dq[2] = z1;
-  dq[3] = w1;
-  var ax = x2 * 0.5,
-      ay = y2 * 0.5,
-      az = z2 * 0.5;
-  dq[4] = ax * w1 + ay * z1 - az * y1;
-  dq[5] = ay * w1 + az * x1 - ax * z1;
-  dq[6] = az * w1 + ax * y1 - ay * x1;
-  dq[7] = -ax * x1 - ay * y1 - az * z1;
-  return dq;
-}
-/**
- * Creates a dual quat from a quaternion and a translation
- *
- * @param {quat2} dual quaternion receiving operation result
- * @param {quat} q a normalized quaternion
- * @param {vec3} t tranlation vector
- * @returns {quat2} dual quaternion receiving operation result
- * @function
- */
-
-function quat2_fromRotationTranslation(out, q, t) {
-  var ax = t[0] * 0.5,
-      ay = t[1] * 0.5,
-      az = t[2] * 0.5,
-      bx = q[0],
-      by = q[1],
-      bz = q[2],
-      bw = q[3];
-  out[0] = bx;
-  out[1] = by;
-  out[2] = bz;
-  out[3] = bw;
-  out[4] = ax * bw + ay * bz - az * by;
-  out[5] = ay * bw + az * bx - ax * bz;
-  out[6] = az * bw + ax * by - ay * bx;
-  out[7] = -ax * bx - ay * by - az * bz;
-  return out;
-}
-/**
- * Creates a dual quat from a translation
- *
- * @param {quat2} dual quaternion receiving operation result
- * @param {vec3} t translation vector
- * @returns {quat2} dual quaternion receiving operation result
- * @function
- */
-
-function quat2_fromTranslation(out, t) {
-  out[0] = 0;
-  out[1] = 0;
-  out[2] = 0;
-  out[3] = 1;
-  out[4] = t[0] * 0.5;
-  out[5] = t[1] * 0.5;
-  out[6] = t[2] * 0.5;
-  out[7] = 0;
-  return out;
-}
-/**
- * Creates a dual quat from a quaternion
- *
- * @param {quat2} dual quaternion receiving operation result
- * @param {quat} q the quaternion
- * @returns {quat2} dual quaternion receiving operation result
- * @function
- */
-
-function quat2_fromRotation(out, q) {
-  out[0] = q[0];
-  out[1] = q[1];
-  out[2] = q[2];
-  out[3] = q[3];
-  out[4] = 0;
-  out[5] = 0;
-  out[6] = 0;
-  out[7] = 0;
-  return out;
-}
-/**
- * Creates a new dual quat from a matrix (4x4)
- *
- * @param {quat2} out the dual quaternion
- * @param {mat4} a the matrix
- * @returns {quat2} dual quat receiving operation result
- * @function
- */
-
-function quat2_fromMat4(out, a) {
-  //TODO Optimize this
-  var outer = quat_create();
-  getRotation(outer, a);
-  var t = new ARRAY_TYPE(3);
-  getTranslation(t, a);
-  quat2_fromRotationTranslation(out, outer, t);
-  return out;
-}
-/**
- * Copy the values from one dual quat to another
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the source dual quaternion
- * @returns {quat2} out
- * @function
- */
-
-function quat2_copy(out, a) {
-  out[0] = a[0];
-  out[1] = a[1];
-  out[2] = a[2];
-  out[3] = a[3];
-  out[4] = a[4];
-  out[5] = a[5];
-  out[6] = a[6];
-  out[7] = a[7];
-  return out;
-}
-/**
- * Set a dual quat to the identity dual quaternion
- *
- * @param {quat2} out the receiving quaternion
- * @returns {quat2} out
- */
-
-function quat2_identity(out) {
-  out[0] = 0;
-  out[1] = 0;
-  out[2] = 0;
-  out[3] = 1;
-  out[4] = 0;
-  out[5] = 0;
-  out[6] = 0;
-  out[7] = 0;
-  return out;
-}
-/**
- * Set the components of a dual quat to the given values
- *
- * @param {quat2} out the receiving quaternion
- * @param {Number} x1 X component
- * @param {Number} y1 Y component
- * @param {Number} z1 Z component
- * @param {Number} w1 W component
- * @param {Number} x2 X component
- * @param {Number} y2 Y component
- * @param {Number} z2 Z component
- * @param {Number} w2 W component
- * @returns {quat2} out
- * @function
- */
-
-function quat2_set(out, x1, y1, z1, w1, x2, y2, z2, w2) {
-  out[0] = x1;
-  out[1] = y1;
-  out[2] = z1;
-  out[3] = w1;
-  out[4] = x2;
-  out[5] = y2;
-  out[6] = z2;
-  out[7] = w2;
-  return out;
-}
-/**
- * Gets the real part of a dual quat
- * @param  {quat} out real part
- * @param  {quat2} a Dual Quaternion
- * @return {quat} real part
- */
-
-var getReal = quat_copy;
-/**
- * Gets the dual part of a dual quat
- * @param  {quat} out dual part
- * @param  {quat2} a Dual Quaternion
- * @return {quat} dual part
- */
-
-function getDual(out, a) {
-  out[0] = a[4];
-  out[1] = a[5];
-  out[2] = a[6];
-  out[3] = a[7];
-  return out;
-}
-/**
- * Set the real component of a dual quat to the given quaternion
- *
- * @param {quat2} out the receiving quaternion
- * @param {quat} q a quaternion representing the real part
- * @returns {quat2} out
- * @function
- */
-
-var setReal = quat_copy;
-/**
- * Set the dual component of a dual quat to the given quaternion
- *
- * @param {quat2} out the receiving quaternion
- * @param {quat} q a quaternion representing the dual part
- * @returns {quat2} out
- * @function
- */
-
-function setDual(out, q) {
-  out[4] = q[0];
-  out[5] = q[1];
-  out[6] = q[2];
-  out[7] = q[3];
-  return out;
-}
-/**
- * Gets the translation of a normalized dual quat
- * @param  {vec3} out translation
- * @param  {quat2} a Dual Quaternion to be decomposed
- * @return {vec3} translation
- */
-
-function quat2_getTranslation(out, a) {
-  var ax = a[4],
-      ay = a[5],
-      az = a[6],
-      aw = a[7],
-      bx = -a[0],
-      by = -a[1],
-      bz = -a[2],
-      bw = a[3];
-  out[0] = (ax * bw + aw * bx + ay * bz - az * by) * 2;
-  out[1] = (ay * bw + aw * by + az * bx - ax * bz) * 2;
-  out[2] = (az * bw + aw * bz + ax * by - ay * bx) * 2;
-  return out;
-}
-/**
- * Translates a dual quat by the given vector
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to translate
- * @param {vec3} v vector to translate by
- * @returns {quat2} out
- */
-
-function quat2_translate(out, a, v) {
-  var ax1 = a[0],
-      ay1 = a[1],
-      az1 = a[2],
-      aw1 = a[3],
-      bx1 = v[0] * 0.5,
-      by1 = v[1] * 0.5,
-      bz1 = v[2] * 0.5,
-      ax2 = a[4],
-      ay2 = a[5],
-      az2 = a[6],
-      aw2 = a[7];
-  out[0] = ax1;
-  out[1] = ay1;
-  out[2] = az1;
-  out[3] = aw1;
-  out[4] = aw1 * bx1 + ay1 * bz1 - az1 * by1 + ax2;
-  out[5] = aw1 * by1 + az1 * bx1 - ax1 * bz1 + ay2;
-  out[6] = aw1 * bz1 + ax1 * by1 - ay1 * bx1 + az2;
-  out[7] = -ax1 * bx1 - ay1 * by1 - az1 * bz1 + aw2;
-  return out;
-}
-/**
- * Rotates a dual quat around the X axis
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
- * @param {number} rad how far should the rotation be
- * @returns {quat2} out
- */
-
-function quat2_rotateX(out, a, rad) {
-  var bx = -a[0],
-      by = -a[1],
-      bz = -a[2],
-      bw = a[3],
-      ax = a[4],
-      ay = a[5],
-      az = a[6],
-      aw = a[7],
-      ax1 = ax * bw + aw * bx + ay * bz - az * by,
-      ay1 = ay * bw + aw * by + az * bx - ax * bz,
-      az1 = az * bw + aw * bz + ax * by - ay * bx,
-      aw1 = aw * bw - ax * bx - ay * by - az * bz;
-  quat_rotateX(out, a, rad);
-  bx = out[0];
-  by = out[1];
-  bz = out[2];
-  bw = out[3];
-  out[4] = ax1 * bw + aw1 * bx + ay1 * bz - az1 * by;
-  out[5] = ay1 * bw + aw1 * by + az1 * bx - ax1 * bz;
-  out[6] = az1 * bw + aw1 * bz + ax1 * by - ay1 * bx;
-  out[7] = aw1 * bw - ax1 * bx - ay1 * by - az1 * bz;
-  return out;
-}
-/**
- * Rotates a dual quat around the Y axis
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
- * @param {number} rad how far should the rotation be
- * @returns {quat2} out
- */
-
-function quat2_rotateY(out, a, rad) {
-  var bx = -a[0],
-      by = -a[1],
-      bz = -a[2],
-      bw = a[3],
-      ax = a[4],
-      ay = a[5],
-      az = a[6],
-      aw = a[7],
-      ax1 = ax * bw + aw * bx + ay * bz - az * by,
-      ay1 = ay * bw + aw * by + az * bx - ax * bz,
-      az1 = az * bw + aw * bz + ax * by - ay * bx,
-      aw1 = aw * bw - ax * bx - ay * by - az * bz;
-  quat_rotateY(out, a, rad);
-  bx = out[0];
-  by = out[1];
-  bz = out[2];
-  bw = out[3];
-  out[4] = ax1 * bw + aw1 * bx + ay1 * bz - az1 * by;
-  out[5] = ay1 * bw + aw1 * by + az1 * bx - ax1 * bz;
-  out[6] = az1 * bw + aw1 * bz + ax1 * by - ay1 * bx;
-  out[7] = aw1 * bw - ax1 * bx - ay1 * by - az1 * bz;
-  return out;
-}
-/**
- * Rotates a dual quat around the Z axis
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
- * @param {number} rad how far should the rotation be
- * @returns {quat2} out
- */
-
-function quat2_rotateZ(out, a, rad) {
-  var bx = -a[0],
-      by = -a[1],
-      bz = -a[2],
-      bw = a[3],
-      ax = a[4],
-      ay = a[5],
-      az = a[6],
-      aw = a[7],
-      ax1 = ax * bw + aw * bx + ay * bz - az * by,
-      ay1 = ay * bw + aw * by + az * bx - ax * bz,
-      az1 = az * bw + aw * bz + ax * by - ay * bx,
-      aw1 = aw * bw - ax * bx - ay * by - az * bz;
-  quat_rotateZ(out, a, rad);
-  bx = out[0];
-  by = out[1];
-  bz = out[2];
-  bw = out[3];
-  out[4] = ax1 * bw + aw1 * bx + ay1 * bz - az1 * by;
-  out[5] = ay1 * bw + aw1 * by + az1 * bx - ax1 * bz;
-  out[6] = az1 * bw + aw1 * bz + ax1 * by - ay1 * bx;
-  out[7] = aw1 * bw - ax1 * bx - ay1 * by - az1 * bz;
-  return out;
-}
-/**
- * Rotates a dual quat by a given quaternion (a * q)
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
- * @param {quat} q quaternion to rotate by
- * @returns {quat2} out
- */
-
-function rotateByQuatAppend(out, a, q) {
-  var qx = q[0],
-      qy = q[1],
-      qz = q[2],
-      qw = q[3],
-      ax = a[0],
-      ay = a[1],
-      az = a[2],
-      aw = a[3];
-  out[0] = ax * qw + aw * qx + ay * qz - az * qy;
-  out[1] = ay * qw + aw * qy + az * qx - ax * qz;
-  out[2] = az * qw + aw * qz + ax * qy - ay * qx;
-  out[3] = aw * qw - ax * qx - ay * qy - az * qz;
-  ax = a[4];
-  ay = a[5];
-  az = a[6];
-  aw = a[7];
-  out[4] = ax * qw + aw * qx + ay * qz - az * qy;
-  out[5] = ay * qw + aw * qy + az * qx - ax * qz;
-  out[6] = az * qw + aw * qz + ax * qy - ay * qx;
-  out[7] = aw * qw - ax * qx - ay * qy - az * qz;
-  return out;
-}
-/**
- * Rotates a dual quat by a given quaternion (q * a)
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat} q quaternion to rotate by
- * @param {quat2} a the dual quaternion to rotate
- * @returns {quat2} out
- */
-
-function rotateByQuatPrepend(out, q, a) {
-  var qx = q[0],
-      qy = q[1],
-      qz = q[2],
-      qw = q[3],
-      bx = a[0],
-      by = a[1],
-      bz = a[2],
-      bw = a[3];
-  out[0] = qx * bw + qw * bx + qy * bz - qz * by;
-  out[1] = qy * bw + qw * by + qz * bx - qx * bz;
-  out[2] = qz * bw + qw * bz + qx * by - qy * bx;
-  out[3] = qw * bw - qx * bx - qy * by - qz * bz;
-  bx = a[4];
-  by = a[5];
-  bz = a[6];
-  bw = a[7];
-  out[4] = qx * bw + qw * bx + qy * bz - qz * by;
-  out[5] = qy * bw + qw * by + qz * bx - qx * bz;
-  out[6] = qz * bw + qw * bz + qx * by - qy * bx;
-  out[7] = qw * bw - qx * bx - qy * by - qz * bz;
-  return out;
-}
-/**
- * Rotates a dual quat around a given axis. Does the normalisation automatically
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
- * @param {vec3} axis the axis to rotate around
- * @param {Number} rad how far the rotation should be
- * @returns {quat2} out
- */
-
-function rotateAroundAxis(out, a, axis, rad) {
-  //Special case for rad = 0
-  if (Math.abs(rad) < EPSILON) {
-    return quat2_copy(out, a);
-  }
-
-  var axisLength = Math.hypot(axis[0], axis[1], axis[2]);
-  rad = rad * 0.5;
-  var s = Math.sin(rad);
-  var bx = s * axis[0] / axisLength;
-  var by = s * axis[1] / axisLength;
-  var bz = s * axis[2] / axisLength;
-  var bw = Math.cos(rad);
-  var ax1 = a[0],
-      ay1 = a[1],
-      az1 = a[2],
-      aw1 = a[3];
-  out[0] = ax1 * bw + aw1 * bx + ay1 * bz - az1 * by;
-  out[1] = ay1 * bw + aw1 * by + az1 * bx - ax1 * bz;
-  out[2] = az1 * bw + aw1 * bz + ax1 * by - ay1 * bx;
-  out[3] = aw1 * bw - ax1 * bx - ay1 * by - az1 * bz;
-  var ax = a[4],
-      ay = a[5],
-      az = a[6],
-      aw = a[7];
-  out[4] = ax * bw + aw * bx + ay * bz - az * by;
-  out[5] = ay * bw + aw * by + az * bx - ax * bz;
-  out[6] = az * bw + aw * bz + ax * by - ay * bx;
-  out[7] = aw * bw - ax * bx - ay * by - az * bz;
-  return out;
-}
-/**
- * Adds two dual quat's
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the first operand
- * @param {quat2} b the second operand
- * @returns {quat2} out
- * @function
- */
-
-function quat2_add(out, a, b) {
-  out[0] = a[0] + b[0];
-  out[1] = a[1] + b[1];
-  out[2] = a[2] + b[2];
-  out[3] = a[3] + b[3];
-  out[4] = a[4] + b[4];
-  out[5] = a[5] + b[5];
-  out[6] = a[6] + b[6];
-  out[7] = a[7] + b[7];
-  return out;
-}
-/**
- * Multiplies two dual quat's
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the first operand
- * @param {quat2} b the second operand
- * @returns {quat2} out
- */
-
-function quat2_multiply(out, a, b) {
-  var ax0 = a[0],
-      ay0 = a[1],
-      az0 = a[2],
-      aw0 = a[3],
-      bx1 = b[4],
-      by1 = b[5],
-      bz1 = b[6],
-      bw1 = b[7],
-      ax1 = a[4],
-      ay1 = a[5],
-      az1 = a[6],
-      aw1 = a[7],
-      bx0 = b[0],
-      by0 = b[1],
-      bz0 = b[2],
-      bw0 = b[3];
-  out[0] = ax0 * bw0 + aw0 * bx0 + ay0 * bz0 - az0 * by0;
-  out[1] = ay0 * bw0 + aw0 * by0 + az0 * bx0 - ax0 * bz0;
-  out[2] = az0 * bw0 + aw0 * bz0 + ax0 * by0 - ay0 * bx0;
-  out[3] = aw0 * bw0 - ax0 * bx0 - ay0 * by0 - az0 * bz0;
-  out[4] = ax0 * bw1 + aw0 * bx1 + ay0 * bz1 - az0 * by1 + ax1 * bw0 + aw1 * bx0 + ay1 * bz0 - az1 * by0;
-  out[5] = ay0 * bw1 + aw0 * by1 + az0 * bx1 - ax0 * bz1 + ay1 * bw0 + aw1 * by0 + az1 * bx0 - ax1 * bz0;
-  out[6] = az0 * bw1 + aw0 * bz1 + ax0 * by1 - ay0 * bx1 + az1 * bw0 + aw1 * bz0 + ax1 * by0 - ay1 * bx0;
-  out[7] = aw0 * bw1 - ax0 * bx1 - ay0 * by1 - az0 * bz1 + aw1 * bw0 - ax1 * bx0 - ay1 * by0 - az1 * bz0;
-  return out;
-}
-/**
- * Alias for {@link quat2.multiply}
- * @function
- */
-
-var quat2_mul = quat2_multiply;
-/**
- * Scales a dual quat by a scalar number
- *
- * @param {quat2} out the receiving dual quat
- * @param {quat2} a the dual quat to scale
- * @param {Number} b amount to scale the dual quat by
- * @returns {quat2} out
- * @function
- */
-
-function quat2_scale(out, a, b) {
-  out[0] = a[0] * b;
-  out[1] = a[1] * b;
-  out[2] = a[2] * b;
-  out[3] = a[3] * b;
-  out[4] = a[4] * b;
-  out[5] = a[5] * b;
-  out[6] = a[6] * b;
-  out[7] = a[7] * b;
-  return out;
-}
-/**
- * Calculates the dot product of two dual quat's (The dot product of the real parts)
- *
- * @param {quat2} a the first operand
- * @param {quat2} b the second operand
- * @returns {Number} dot product of a and b
- * @function
- */
-
-var quat2_dot = quat_dot;
-/**
- * Performs a linear interpolation between two dual quats's
- * NOTE: The resulting dual quaternions won't always be normalized (The error is most noticeable when t = 0.5)
- *
- * @param {quat2} out the receiving dual quat
- * @param {quat2} a the first operand
- * @param {quat2} b the second operand
- * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
- * @returns {quat2} out
- */
-
-function quat2_lerp(out, a, b, t) {
-  var mt = 1 - t;
-  if (quat2_dot(a, b) < 0) t = -t;
-  out[0] = a[0] * mt + b[0] * t;
-  out[1] = a[1] * mt + b[1] * t;
-  out[2] = a[2] * mt + b[2] * t;
-  out[3] = a[3] * mt + b[3] * t;
-  out[4] = a[4] * mt + b[4] * t;
-  out[5] = a[5] * mt + b[5] * t;
-  out[6] = a[6] * mt + b[6] * t;
-  out[7] = a[7] * mt + b[7] * t;
-  return out;
-}
-/**
- * Calculates the inverse of a dual quat. If they are normalized, conjugate is cheaper
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a dual quat to calculate inverse of
- * @returns {quat2} out
- */
-
-function quat2_invert(out, a) {
-  var sqlen = quat2_squaredLength(a);
-  out[0] = -a[0] / sqlen;
-  out[1] = -a[1] / sqlen;
-  out[2] = -a[2] / sqlen;
-  out[3] = a[3] / sqlen;
-  out[4] = -a[4] / sqlen;
-  out[5] = -a[5] / sqlen;
-  out[6] = -a[6] / sqlen;
-  out[7] = a[7] / sqlen;
-  return out;
-}
-/**
- * Calculates the conjugate of a dual quat
- * If the dual quaternion is normalized, this function is faster than quat2.inverse and produces the same result.
- *
- * @param {quat2} out the receiving quaternion
- * @param {quat2} a quat to calculate conjugate of
- * @returns {quat2} out
- */
-
-function quat2_conjugate(out, a) {
-  out[0] = -a[0];
-  out[1] = -a[1];
-  out[2] = -a[2];
-  out[3] = a[3];
-  out[4] = -a[4];
-  out[5] = -a[5];
-  out[6] = -a[6];
-  out[7] = a[7];
-  return out;
-}
-/**
- * Calculates the length of a dual quat
- *
- * @param {quat2} a dual quat to calculate length of
- * @returns {Number} length of a
- * @function
- */
-
-var quat2_length = quat_length;
-/**
- * Alias for {@link quat2.length}
- * @function
- */
-
-var quat2_len = quat2_length;
-/**
- * Calculates the squared length of a dual quat
- *
- * @param {quat2} a dual quat to calculate squared length of
- * @returns {Number} squared length of a
- * @function
- */
-
-var quat2_squaredLength = quat_squaredLength;
-/**
- * Alias for {@link quat2.squaredLength}
- * @function
- */
-
-var quat2_sqrLen = quat2_squaredLength;
-/**
- * Normalize a dual quat
- *
- * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a dual quaternion to normalize
- * @returns {quat2} out
- * @function
- */
-
-function quat2_normalize(out, a) {
-  var magnitude = quat2_squaredLength(a);
-
-  if (magnitude > 0) {
-    magnitude = Math.sqrt(magnitude);
-    var a0 = a[0] / magnitude;
-    var a1 = a[1] / magnitude;
-    var a2 = a[2] / magnitude;
-    var a3 = a[3] / magnitude;
-    var b0 = a[4];
-    var b1 = a[5];
-    var b2 = a[6];
-    var b3 = a[7];
-    var a_dot_b = a0 * b0 + a1 * b1 + a2 * b2 + a3 * b3;
-    out[0] = a0;
-    out[1] = a1;
-    out[2] = a2;
-    out[3] = a3;
-    out[4] = (b0 - a0 * a_dot_b) / magnitude;
-    out[5] = (b1 - a1 * a_dot_b) / magnitude;
-    out[6] = (b2 - a2 * a_dot_b) / magnitude;
-    out[7] = (b3 - a3 * a_dot_b) / magnitude;
-  }
-
-  return out;
-}
-/**
- * Returns a string representation of a dual quatenion
- *
- * @param {quat2} a dual quaternion to represent as a string
- * @returns {String} string representation of the dual quat
- */
-
-function quat2_str(a) {
-  return 'quat2(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + a[6] + ', ' + a[7] + ')';
-}
-/**
- * Returns whether or not the dual quaternions have exactly the same elements in the same position (when compared with ===)
- *
- * @param {quat2} a the first dual quaternion.
- * @param {quat2} b the second dual quaternion.
- * @returns {Boolean} true if the dual quaternions are equal, false otherwise.
- */
-
-function quat2_exactEquals(a, b) {
-  return a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3] && a[4] === b[4] && a[5] === b[5] && a[6] === b[6] && a[7] === b[7];
-}
-/**
- * Returns whether or not the dual quaternions have approximately the same elements in the same position.
- *
- * @param {quat2} a the first dual quat.
- * @param {quat2} b the second dual quat.
- * @returns {Boolean} true if the dual quats are equal, false otherwise.
- */
-
-function quat2_equals(a, b) {
-  var a0 = a[0],
-      a1 = a[1],
-      a2 = a[2],
-      a3 = a[3],
-      a4 = a[4],
-      a5 = a[5],
-      a6 = a[6],
-      a7 = a[7];
-  var b0 = b[0],
-      b1 = b[1],
-      b2 = b[2],
-      b3 = b[3],
-      b4 = b[4],
-      b5 = b[5],
-      b6 = b[6],
-      b7 = b[7];
-  return Math.abs(a0 - b0) <= EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1)) && Math.abs(a2 - b2) <= EPSILON * Math.max(1.0, Math.abs(a2), Math.abs(b2)) && Math.abs(a3 - b3) <= EPSILON * Math.max(1.0, Math.abs(a3), Math.abs(b3)) && Math.abs(a4 - b4) <= EPSILON * Math.max(1.0, Math.abs(a4), Math.abs(b4)) && Math.abs(a5 - b5) <= EPSILON * Math.max(1.0, Math.abs(a5), Math.abs(b5)) && Math.abs(a6 - b6) <= EPSILON * Math.max(1.0, Math.abs(a6), Math.abs(b6)) && Math.abs(a7 - b7) <= EPSILON * Math.max(1.0, Math.abs(a7), Math.abs(b7));
-}
-;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/vec2.js
-
-/**
- * 2 Dimensional Vector
- * @module vec2
- */
-
-/**
- * Creates a new, empty vec2
- *
- * @returns {vec2} a new 2D vector
- */
-
-function vec2_create() {
-  var out = new ARRAY_TYPE(2);
-
-  if (ARRAY_TYPE != Float32Array) {
-    out[0] = 0;
-    out[1] = 0;
-  }
-
-  return out;
-}
-/**
- * Creates a new vec2 initialized with values from an existing vector
- *
- * @param {vec2} a vector to clone
- * @returns {vec2} a new 2D vector
- */
-
-function vec2_clone(a) {
-  var out = new ARRAY_TYPE(2);
-  out[0] = a[0];
-  out[1] = a[1];
-  return out;
-}
-/**
- * Creates a new vec2 initialized with the given values
- *
- * @param {Number} x X component
- * @param {Number} y Y component
- * @returns {vec2} a new 2D vector
- */
-
-function vec2_fromValues(x, y) {
-  var out = new ARRAY_TYPE(2);
-  out[0] = x;
-  out[1] = y;
-  return out;
-}
-/**
- * Copy the values from one vec2 to another
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the source vector
- * @returns {vec2} out
- */
-
-function vec2_copy(out, a) {
-  out[0] = a[0];
-  out[1] = a[1];
-  return out;
-}
-/**
- * Set the components of a vec2 to the given values
- *
- * @param {vec2} out the receiving vector
- * @param {Number} x X component
- * @param {Number} y Y component
- * @returns {vec2} out
- */
-
-function vec2_set(out, x, y) {
-  out[0] = x;
-  out[1] = y;
-  return out;
-}
-/**
- * Adds two vec2's
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {vec2} out
- */
-
-function vec2_add(out, a, b) {
-  out[0] = a[0] + b[0];
-  out[1] = a[1] + b[1];
-  return out;
-}
-/**
- * Subtracts vector b from vector a
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {vec2} out
- */
-
-function vec2_subtract(out, a, b) {
-  out[0] = a[0] - b[0];
-  out[1] = a[1] - b[1];
-  return out;
-}
-/**
- * Multiplies two vec2's
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {vec2} out
- */
-
-function vec2_multiply(out, a, b) {
-  out[0] = a[0] * b[0];
-  out[1] = a[1] * b[1];
-  return out;
-}
-/**
- * Divides two vec2's
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {vec2} out
- */
-
-function vec2_divide(out, a, b) {
-  out[0] = a[0] / b[0];
-  out[1] = a[1] / b[1];
-  return out;
-}
-/**
- * Math.ceil the components of a vec2
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a vector to ceil
- * @returns {vec2} out
- */
-
-function vec2_ceil(out, a) {
-  out[0] = Math.ceil(a[0]);
-  out[1] = Math.ceil(a[1]);
-  return out;
-}
-/**
- * Math.floor the components of a vec2
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a vector to floor
- * @returns {vec2} out
- */
-
-function vec2_floor(out, a) {
-  out[0] = Math.floor(a[0]);
-  out[1] = Math.floor(a[1]);
-  return out;
-}
-/**
- * Returns the minimum of two vec2's
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {vec2} out
- */
-
-function vec2_min(out, a, b) {
-  out[0] = Math.min(a[0], b[0]);
-  out[1] = Math.min(a[1], b[1]);
-  return out;
-}
-/**
- * Returns the maximum of two vec2's
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {vec2} out
- */
-
-function vec2_max(out, a, b) {
-  out[0] = Math.max(a[0], b[0]);
-  out[1] = Math.max(a[1], b[1]);
-  return out;
-}
-/**
- * Math.round the components of a vec2
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a vector to round
- * @returns {vec2} out
- */
-
-function vec2_round(out, a) {
-  out[0] = Math.round(a[0]);
-  out[1] = Math.round(a[1]);
-  return out;
-}
-/**
- * Scales a vec2 by a scalar number
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to scale
- * @param {Number} b amount to scale the vector by
- * @returns {vec2} out
- */
-
-function vec2_scale(out, a, b) {
-  out[0] = a[0] * b;
-  out[1] = a[1] * b;
-  return out;
-}
-/**
- * Adds two vec2's after scaling the second operand by a scalar value
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @param {Number} scale the amount to scale b by before adding
- * @returns {vec2} out
- */
-
-function vec2_scaleAndAdd(out, a, b, scale) {
-  out[0] = a[0] + b[0] * scale;
-  out[1] = a[1] + b[1] * scale;
-  return out;
-}
-/**
- * Calculates the euclidian distance between two vec2's
- *
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {Number} distance between a and b
- */
-
-function vec2_distance(a, b) {
-  var x = b[0] - a[0],
-      y = b[1] - a[1];
-  return Math.hypot(x, y);
-}
-/**
- * Calculates the squared euclidian distance between two vec2's
- *
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {Number} squared distance between a and b
- */
-
-function vec2_squaredDistance(a, b) {
-  var x = b[0] - a[0],
-      y = b[1] - a[1];
-  return x * x + y * y;
-}
-/**
- * Calculates the length of a vec2
- *
- * @param {vec2} a vector to calculate length of
- * @returns {Number} length of a
- */
-
-function vec2_length(a) {
-  var x = a[0],
-      y = a[1];
-  return Math.hypot(x, y);
-}
-/**
- * Calculates the squared length of a vec2
- *
- * @param {vec2} a vector to calculate squared length of
- * @returns {Number} squared length of a
- */
-
-function vec2_squaredLength(a) {
-  var x = a[0],
-      y = a[1];
-  return x * x + y * y;
-}
-/**
- * Negates the components of a vec2
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a vector to negate
- * @returns {vec2} out
- */
-
-function vec2_negate(out, a) {
-  out[0] = -a[0];
-  out[1] = -a[1];
-  return out;
-}
-/**
- * Returns the inverse of the components of a vec2
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a vector to invert
- * @returns {vec2} out
- */
-
-function vec2_inverse(out, a) {
-  out[0] = 1.0 / a[0];
-  out[1] = 1.0 / a[1];
-  return out;
-}
-/**
- * Normalize a vec2
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a vector to normalize
- * @returns {vec2} out
- */
-
-function vec2_normalize(out, a) {
-  var x = a[0],
-      y = a[1];
-  var len = x * x + y * y;
-
-  if (len > 0) {
-    //TODO: evaluate use of glm_invsqrt here?
-    len = 1 / Math.sqrt(len);
-  }
-
-  out[0] = a[0] * len;
-  out[1] = a[1] * len;
-  return out;
-}
-/**
- * Calculates the dot product of two vec2's
- *
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {Number} dot product of a and b
- */
-
-function vec2_dot(a, b) {
-  return a[0] * b[0] + a[1] * b[1];
-}
-/**
- * Computes the cross product of two vec2's
- * Note that the cross product must by definition produce a 3D vector
- *
- * @param {vec3} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @returns {vec3} out
- */
-
-function vec2_cross(out, a, b) {
-  var z = a[0] * b[1] - a[1] * b[0];
-  out[0] = out[1] = 0;
-  out[2] = z;
-  return out;
-}
-/**
- * Performs a linear interpolation between two vec2's
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
- * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
- * @returns {vec2} out
- */
-
-function vec2_lerp(out, a, b, t) {
-  var ax = a[0],
-      ay = a[1];
-  out[0] = ax + t * (b[0] - ax);
-  out[1] = ay + t * (b[1] - ay);
-  return out;
-}
-/**
- * Generates a random vector with the given scale
- *
- * @param {vec2} out the receiving vector
- * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
- * @returns {vec2} out
- */
-
-function vec2_random(out, scale) {
-  scale = scale || 1.0;
-  var r = RANDOM() * 2.0 * Math.PI;
-  out[0] = Math.cos(r) * scale;
-  out[1] = Math.sin(r) * scale;
-  return out;
-}
-/**
- * Transforms the vec2 with a mat2
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to transform
- * @param {mat2} m matrix to transform with
- * @returns {vec2} out
- */
-
-function transformMat2(out, a, m) {
-  var x = a[0],
-      y = a[1];
-  out[0] = m[0] * x + m[2] * y;
-  out[1] = m[1] * x + m[3] * y;
-  return out;
-}
-/**
- * Transforms the vec2 with a mat2d
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to transform
- * @param {mat2d} m matrix to transform with
- * @returns {vec2} out
- */
-
-function transformMat2d(out, a, m) {
-  var x = a[0],
-      y = a[1];
-  out[0] = m[0] * x + m[2] * y + m[4];
-  out[1] = m[1] * x + m[3] * y + m[5];
-  return out;
-}
-/**
- * Transforms the vec2 with a mat3
- * 3rd vector component is implicitly '1'
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to transform
- * @param {mat3} m matrix to transform with
- * @returns {vec2} out
- */
-
-function vec2_transformMat3(out, a, m) {
-  var x = a[0],
-      y = a[1];
-  out[0] = m[0] * x + m[3] * y + m[6];
-  out[1] = m[1] * x + m[4] * y + m[7];
-  return out;
-}
-/**
- * Transforms the vec2 with a mat4
- * 3rd vector component is implicitly '0'
- * 4th vector component is implicitly '1'
- *
- * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to transform
- * @param {mat4} m matrix to transform with
- * @returns {vec2} out
- */
-
-function vec2_transformMat4(out, a, m) {
-  var x = a[0];
-  var y = a[1];
-  out[0] = m[0] * x + m[4] * y + m[12];
-  out[1] = m[1] * x + m[5] * y + m[13];
-  return out;
-}
-/**
- * Rotate a 2D vector
- * @param {vec2} out The receiving vec2
- * @param {vec2} a The vec2 point to rotate
- * @param {vec2} b The origin of the rotation
- * @param {Number} c The angle of rotation
- * @returns {vec2} out
- */
-
-function vec2_rotate(out, a, b, c) {
-  //Translate point to the origin
-  var p0 = a[0] - b[0],
-      p1 = a[1] - b[1],
-      sinC = Math.sin(c),
-      cosC = Math.cos(c); //perform rotation and translate to correct position
-
-  out[0] = p0 * cosC - p1 * sinC + b[0];
-  out[1] = p0 * sinC + p1 * cosC + b[1];
-  return out;
-}
-/**
- * Get the angle between two 2D vectors
- * @param {vec2} a The first operand
- * @param {vec2} b The second operand
- * @returns {Number} The angle in radians
- */
-
-function vec2_angle(a, b) {
-  var x1 = a[0],
-      y1 = a[1],
-      x2 = b[0],
-      y2 = b[1];
-  var len1 = x1 * x1 + y1 * y1;
-
-  if (len1 > 0) {
-    //TODO: evaluate use of glm_invsqrt here?
-    len1 = 1 / Math.sqrt(len1);
-  }
-
-  var len2 = x2 * x2 + y2 * y2;
-
-  if (len2 > 0) {
-    //TODO: evaluate use of glm_invsqrt here?
-    len2 = 1 / Math.sqrt(len2);
-  }
-
-  var cosine = (x1 * x2 + y1 * y2) * len1 * len2;
-
-  if (cosine > 1.0) {
-    return 0;
-  } else if (cosine < -1.0) {
-    return Math.PI;
-  } else {
-    return Math.acos(cosine);
-  }
-}
-/**
- * Set the components of a vec2 to zero
- *
- * @param {vec2} out the receiving vector
- * @returns {vec2} out
- */
-
-function vec2_zero(out) {
-  out[0] = 0.0;
-  out[1] = 0.0;
-  return out;
-}
-/**
- * Returns a string representation of a vector
- *
- * @param {vec2} a vector to represent as a string
- * @returns {String} string representation of the vector
- */
-
-function vec2_str(a) {
-  return 'vec2(' + a[0] + ', ' + a[1] + ')';
-}
-/**
- * Returns whether or not the vectors exactly have the same elements in the same position (when compared with ===)
- *
- * @param {vec2} a The first vector.
- * @param {vec2} b The second vector.
- * @returns {Boolean} True if the vectors are equal, false otherwise.
- */
-
-function vec2_exactEquals(a, b) {
-  return a[0] === b[0] && a[1] === b[1];
-}
-/**
- * Returns whether or not the vectors have approximately the same elements in the same position.
- *
- * @param {vec2} a The first vector.
- * @param {vec2} b The second vector.
- * @returns {Boolean} True if the vectors are equal, false otherwise.
- */
-
-function vec2_equals(a, b) {
-  var a0 = a[0],
-      a1 = a[1];
-  var b0 = b[0],
-      b1 = b[1];
-  return Math.abs(a0 - b0) <= EPSILON * Math.max(1.0, Math.abs(a0), Math.abs(b0)) && Math.abs(a1 - b1) <= EPSILON * Math.max(1.0, Math.abs(a1), Math.abs(b1));
-}
-/**
- * Alias for {@link vec2.length}
- * @function
- */
-
-var vec2_len = vec2_length;
-/**
- * Alias for {@link vec2.subtract}
- * @function
- */
-
-var vec2_sub = vec2_subtract;
-/**
- * Alias for {@link vec2.multiply}
- * @function
- */
 
-var vec2_mul = vec2_multiply;
-/**
- * Alias for {@link vec2.divide}
- * @function
- */
 
-var vec2_div = vec2_divide;
-/**
- * Alias for {@link vec2.distance}
- * @function
- */
 
-var vec2_dist = vec2_distance;
-/**
- * Alias for {@link vec2.squaredDistance}
- * @function
- */
 
-var vec2_sqrDist = vec2_squaredDistance;
-/**
- * Alias for {@link vec2.squaredLength}
- * @function
- */
 
-var vec2_sqrLen = vec2_squaredLength;
 /**
- * Perform some operation over an array of vec2s.
+ * Keyframed interpolated animation.
  *
- * @param {Array} a the array of vectors to iterate over
- * @param {Number} stride Number of elements between the start of each vec2. If 0 assumes tightly packed
- * @param {Number} offset Number of elements to skip at the beginning of the array
- * @param {Number} count Number of vec2s to iterate over. If 0 iterates over entire array
- * @param {Function} fn Function to call for each vector in the array
- * @param {Object} [arg] additional argument to pass to fn
- * @returns {Array} a
- * @function
+ * @class
+ * @param cfg
+ * @example
+ * var anim=new CABLES.Anim();
+ * anim.setValue(0,0);  // set value 0 at 0 seconds
+ * anim.setValue(10,1); // set value 1 at 10 seconds
+ * anim.getValue(5);    // get value at 5 seconds - this returns 0.5
  */
-
-var vec2_forEach = function () {
-  var vec = vec2_create();
-  return function (a, stride, offset, count, fn, arg) {
-    var i, l;
-
-    if (!stride) {
-      stride = 2;
-    }
 
-    if (!offset) {
-      offset = 0;
-    }
-
-    if (count) {
-      l = Math.min(count * stride + offset, a.length);
-    } else {
-      l = a.length;
-    }
-
-    for (i = offset; i < l; i += stride) {
-      vec[0] = a[i];
-      vec[1] = a[i + 1];
-      fn(vec, vec, arg);
-      a[i] = vec[0];
-      a[i + 1] = vec[1];
-    }
-
-    return a;
-  };
-}();
-;// CONCATENATED MODULE: ../shared/client/src/helper.js
-/**
- * Shared helper methods for cables uis
- */
-class Helper
+class Anim extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
 {
-    constructor()
+    static EVENT_CHANGE = "onChange";
+    static EVENT_UIATTRIB_CHANGE = "uiattrchange";
+
+    static LOOP_OFF = 0;
+    static LOOP_REPEAT = 1;
+    static LOOP_MIRROR = 2;
+    static LOOP_OFFSET = 3;
+
+    static EASING_LINEAR = 0;
+    static EASING_ABSOLUTE = 1;
+    static EASING_SMOOTHSTEP = 2;
+    static EASING_SMOOTHERSTEP = 3;
+    static EASING_CUBICSPLINE = 4;
+
+    static EASING_CUBIC_IN = 5;
+    static EASING_CUBIC_OUT = 6;
+    static EASING_CUBIC_INOUT = 7;
+
+    static EASING_EXPO_IN = 8;
+    static EASING_EXPO_OUT = 9;
+    static EASING_EXPO_INOUT = 10;
+
+    static EASING_SIN_IN = 11;
+    static EASING_SIN_OUT = 12;
+    static EASING_SIN_INOUT = 13;
+
+    static EASING_BACK_IN = 14;
+    static EASING_BACK_OUT = 15;
+    static EASING_BACK_INOUT = 16;
+
+    static EASING_ELASTIC_IN = 17;
+    static EASING_ELASTIC_OUT = 18;
+
+    static EASING_BOUNCE_IN = 19;
+    static EASING_BOUNCE_OUT = 21;
+
+    static EASING_QUART_IN = 22;
+    static EASING_QUART_OUT = 23;
+    static EASING_QUART_INOUT = 24;
+
+    static EASING_QUINT_IN = 25;
+    static EASING_QUINT_OUT = 26;
+    static EASING_QUINT_INOUT = 27;
+
+    static EASINGNAMES = ["linear", "absolute", "smoothstep", "smootherstep", "Cubic In", "Cubic Out", "Cubic In Out", "Expo In", "Expo Out", "Expo In Out", "Sin In", "Sin Out", "Sin In Out", "Quart In", "Quart Out", "Quart In Out", "Quint In", "Quint Out", "Quint In Out", "Back In", "Back Out", "Back In Out", "Elastic In", "Elastic Out", "Bounce In", "Bounce Out"];
+
+    #tlActive = true;
+    uiAttribs = {};
+
+    /**
+     * @param {AnimCfg} [cfg]
+     */
+    constructor(cfg = {})
     {
-        this._simpleIdCounter = 0;
+        super();
+        cfg = cfg || {};
+        this.id = (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.uuid)();
+
+        /** @type {AnimKey[]} */
+        this.keys = [];
+        this.onChange = null;
+        this.stayInTimeline = false;
+
+        this.loop = 0;
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_2__["default"]("Anim");
+        this._lastKeyIndex = 0;
+        this._cachedIndex = 0;
+        this.name = cfg.name || null;
+
+        /**
+         * @type {Number}
+         */
+        this.defaultEasing = cfg.defaultEasing || Anim.EASING_LINEAR;
+        this.onLooped = null;
+
+        this._timesLooped = 0;
+        this._needsSort = false;
+    }
+
+    forceChangeCallback()
+    {
+        if (this.onChange !== null) this.onChange();
+        this.emitEvent(Anim.EVENT_CHANGE, this);
+    }
+
+    forceChangeCallbackSoon()
+    {
+        clearTimeout(this.forcecbto);
+        this.forcecbto = setTimeout(this.forceChangeCallback.bind(this), 10);
+    }
+
+    getLoop()
+    {
+        return this.loop;
     }
 
     /**
-     * generate a random v4 uuid
-     *
-     * @return {string}
+     * @param {number} loopType
      */
-    uuid()
+    setLoop(loopType)
     {
-        let d = new Date().getTime();
-        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) =>
-        {
-            const r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
-        });
+        if (loopType === false)loopType = 0;
+        if (loopType === true)loopType = 1;
+
+        this.loop = loopType;
+        this.emitEvent(Anim.EVENT_CHANGE, this);
     }
 
     /**
-     * checks value for !isNan and isFinite
-     *
-     * @param {string} n
-     * @return {boolean}
+     * returns true if animation has ended at @time
+     * checks if last key time is < time
+     * @param {Number} time
+     * @returns {Boolean}
+     * @memberof Anim
+     * @instance
+     * @function
      */
-    isNumeric(n)
+    hasEnded(time)
     {
-        const nn = parseFloat(n);
-        return !isNaN(nn) && isFinite(nn);
+        if (this.keys.length === 0) return true;
+        if (this.keys[this._lastKeyIndex].time <= time) return true;
+        return false;
     }
 
     /**
-     * generate a simple ID using an internal counter
-     *
-     * @return {Number} new id
-     * @static
+     * @param {number} time
      */
-    simpleId()
+    isRising(time)
     {
-        this._simpleIdCounter++;
-        return this._simpleIdCounter;
-    }
-
-    pathLookup(obj, path)
-    {
-        const parts = path.split(".");
-        if (parts.length == 1)
-        {
-            return obj[parts[0]];
-        }
-        return this.pathLookup(obj[parts[0]], parts.slice(1).join("."));
-    }
-
-}
-/* harmony default export */ const helper = (new Helper());
-
-;// CONCATENATED MODULE: ../shared/client/src/logger.js
-/* eslint-disable no-console */
-class Logger
-{
-
-    /**
-     * @param {any} initiator
-     * @param {Object} options
-     */
-    constructor(initiator, options)
-    {
-        this.initiator = initiator;
-        this._options = options;
+        if (this.hasEnded(time)) return false;
+        const ki = this.getKeyIndex(time);
+        if (this.keys[ki].value < this.keys[ki + 1].value) return true;
+        return false;
     }
 
     /**
-     * @param {string} t
+     * remove all keys from animation before time
+     * @param {Number} time
+     * @memberof Anim
+     * @instance
+     * @function
      */
-    stack(t)
+    clearBefore(time)
     {
-        console.info("[" + this.initiator + "] ", t);
-        console.log((new Error()).stack);
+        const v = this.getValue(time);
+        const ki = this.getKeyIndex(time);
+
+        this.setValue(time, v);
+
+        if (ki > 1) this.keys.splice(0, ki);
+        this._updateLastIndex();
     }
 
     /**
-     * @param {string} t
+     * remove all keys from animation
+     * @param {Number} [time=0] set a new key at time with the old value at time
+     * @memberof Anim
+     * @instance
+     * @function
      */
-    groupCollapsed(t)
+    clear(time)
     {
-        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments)) || !CABLES.logSilent) console.log("[" + this.initiator + "]", ...arguments);
-
-        console.groupCollapsed("[" + this.initiator + "] " + t);
+        let v = 0;
+        if (time) v = this.getValue(time);
+        this.keys.length = 0;
+        this._updateLastIndex();
+        if (time) this.setValue(time, v);
+        if (this.onChange !== null) this.onChange();
+        this.emitEvent(Anim.EVENT_CHANGE, this);
     }
 
-    /**
-     * @param {any[][]} t
-     */
-    table(t)
+    sortKeys()
     {
-        console.table(t);
-    }
-
-    groupEnd()
-    {
-        console.groupEnd();
-    }
-
-    error()
-    {
-        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 2 }, ...arguments)) || !CABLES.UI)
-        {
-            console.error("[" + this.initiator + "]", ...arguments);
-        }
-
-        if (this._options && this._options.onError)
-        {
-            this._options.onError(this.initiator, ...arguments);
-            // console.log("emitevent onerror...");
-            // CABLES.patch.emitEvent("onError", this.initiator, ...arguments);
-            // CABLES.logErrorConsole("[" + this.initiator + "]", ...arguments);
-        }
-    }
-
-    errorGui()
-    {
-        if (CABLES.UI) CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 2 }, ...arguments);
-    }
-
-    warn()
-    {
-        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 1 }, ...arguments)) || !CABLES.logSilent)
-            console.warn("[" + this.initiator + "]", ...arguments);
-    }
-
-    verbose()
-    {
-        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments)) || !CABLES.logSilent)
-            console.log("[" + this.initiator + "]", ...arguments);
-    }
-
-    info()
-    {
-        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments)) || !CABLES.logSilent)
-            console.info("[" + this.initiator + "]", ...arguments);
-    }
-
-    log()
-    {
-        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments)) || !CABLES.logSilent)
-            console.log("[" + this.initiator + "]", ...arguments);
-    }
-
-    logGui()
-    {
-        if (CABLES.UI) CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments);
-    }
-
-    userInteraction(text)
-    {
-        // this.log({ "initiator": "userinteraction", "text": text });
-    }
-}
-
-;// CONCATENATED MODULE: ../shared/client/src/eventtarget.js
-
-
-
-/**
- * add eventlistener functionality to classes
- */
-class Events
-{
-    #eventLog;
-    constructor()
-    {
-        this.#eventLog = new Logger("eventtarget");
-        this._eventCallbacks = {};
-        this._logName = "";
-        this._logEvents = false;
-        this._listeners = {};
-
-        this._countErrorUnknowns = 0;
-    }
-
-    /**
-     * add event listener
-     * @param {string} which event name
-     * @param {function} cb callback
-     * @param {string} idPrefix prefix for id, default empty
-     * @return {string} event id
-     */
-    on(which, cb, idPrefix = "")
-    {
-        const event =
+        let isSorted = true;
+        for (let i = 0; i < this.keys.length - 1; i++)
+            if (this.keys[i].time < this.keys[i + 1].time)
             {
-                "id": (idPrefix || "") + helper.simpleId(),
-                "name": which,
-                "cb": cb,
-            };
-        if (!this._eventCallbacks[which]) this._eventCallbacks[which] = [event];
-        else this._eventCallbacks[which].push(event);
+                isSorted = false;
+                break;
+            }
 
-        this._listeners[event.id] = event;
-
-        return event.id;
-    }
-
-    /** @deprecated */
-    addEventListener(which, cb, idPrefix = "")
-    {
-        return this.on(which, cb, idPrefix);
-    }
-
-    /**
-     * check event listener registration
-     * @param {string} id event id
-     * @param {function} cb callback - deprecated
-     * @return {boolean}
-     */
-    hasEventListener(id, cb = null)
-    {
-        if (id && !cb)
+        if (!isSorted)
         {
-            // check by id
-            return !!this._listeners[id];
+            this.keys.sort((a, b) => { return a.time - b.time; });
+            this._updateLastIndex();
+            this._needsSort = false;
+            if (this.keys.length > 999 && this.keys.length % 1000 == 0)console.log(this.name, this.keys.length);
+
+            this.emitEvent(Anim.EVENT_CHANGE);
         }
-        else
+        return !isSorted;
+    }
+
+    hasDuplicates()
+    {
+        const test = {};
+        let count = 0;
+        for (let i = 0; i < this.keys.length; i++)
         {
-            this.#eventLog.warn("old eventtarget function haseventlistener!");
-            if (id && cb)
+            test[this.keys[i].time] = 1;
+            count++;
+        }
+
+        const keys = Object.keys(test);
+        if (keys.length != count)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    removeDuplicates()
+    {
+        if (this.hasDuplicates())
+        {
+            this.sortKeys();
+            let count = 0;
+
+            while (this.hasDuplicates())
             {
-                if (this._eventCallbacks[id])
+                for (let i = 0; i < this.keys.length - 1; i++)
                 {
-                    const idx = this._eventCallbacks[id].indexOf(cb);
-                    return idx !== -1;
+                    if (this.keys[i].time == this.keys[i + 1].time) this.keys.splice(i, 1);
+                    count++;
                 }
             }
+            this._updateLastIndex();
         }
     }
 
-    /**
-     * check event listener by name
-     * @param eventName event name
-     * @return {boolean}
-     */
-    hasListenerForEventName(eventName)
+    getLengthLoop()
     {
-        return this._eventCallbacks[eventName] && this._eventCallbacks[eventName].length > 0;
+        if (this.keys.length < 2) return 0;
+        return this.lastKey.time - this.firstKey.time;
     }
 
-    /** @deprecated */
-    removeEventListener(id)
+    getLength()
     {
-        return this.off(id);
+        if (this.keys.length === 0) return 0;
+        return this.lastKey.time;
     }
 
     /**
-     * remove event listener registration
-     * @param {string} id event id
-     * @return
+     * @param {number} time
      */
-    off(id)
+    getKeyIndex(time)
     {
-        if (id === null || id === undefined)
+        let index = 0;
+        let start = 0;
+        if (this._cachedIndex && this.keys.length > this._cachedIndex && time >= this.keys[this._cachedIndex].time) start = this._cachedIndex;
+        for (let i = start; i < this.keys.length; i++)
         {
-            this.#eventLog.warn("removeEventListener id null", id);
-            return;
-        }
-
-        if (typeof id == "string") // new style, remove by id, not by name/callback
-        {
-            const event = this._listeners[id];
-            if (!event)
+            if (time >= this.keys[i].time) index = i;
+            if (this.keys[i].time > time)
             {
-                if (this._countErrorUnknowns == 20) this.#eventLog.warn("stopped reporting unknown events");
-                if (this._countErrorUnknowns < 20) this.#eventLog.warn("could not find event...", id);
-                this._countErrorUnknowns++;
+                if (time != 0) this._cachedIndex = index;
+                return index;
+            }
+        }
+
+        return index;
+    }
+
+    /**
+     * set value at time
+     * @function setValue
+     * @memberof Anim
+     * @instance
+     * @param {Number} time
+     * @param {Number} value
+     * @param {Function} cb callback
+     */
+    setValue(time, value, cb = null)
+    {
+        let found = null;
+
+        if (this.keys.length == 0 || time <= this.lastKey.time)
+            for (let i = 0; i < this.keys.length; i++)
+                if (this.keys[i].time == time)
+                {
+                    found = this.keys[i];
+                    this.keys[i].setValue(value);
+                    this.keys[i].cb = cb;
+                    break;
+                }
+
+        if (!found)
+        {
+            found = new _anim_key_js__WEBPACK_IMPORTED_MODULE_3__.AnimKey(
+                {
+                    "time": time,
+                    "value": value,
+                    "e": this.defaultEasing,
+                    "cb": cb,
+                    "anim": this
+                });
+            this.keys.push(found);
+
+            // if (this.keys.length % 1000 == 0)console.log(this.name, this.keys.length);
+            this._updateLastIndex();
+        }
+
+        if (this.onChange) this.onChange();
+        this.emitEvent(Anim.EVENT_CHANGE, this);
+        this._needsSort = true;
+        return found;
+    }
+
+    /**
+     * @param {number} index
+     * @param {number} easing
+     */
+    setKeyEasing(index, easing)
+    {
+        if (this.keys[index])
+        {
+            this.keys[index].setEasing(easing);
+            this.emitEvent(Anim.EVENT_CHANGE, this);
+        }
+    }
+
+    /**
+     * @param {object} obj
+     */
+    deserialize(obj)
+    {
+
+        if (obj.loop) this.loop = obj.loop;
+        if (obj.tlActive) this.#tlActive = obj.tlActive;
+        for (const ani in obj.keys)
+        {
+            this.keys.push(new _anim_key_js__WEBPACK_IMPORTED_MODULE_3__.AnimKey(obj.keys[ani], this));
+        }
+    }
+
+    /**
+     * @returns {SerializedAnim}
+     */
+    getSerialized()
+    {
+
+        /** @type {SerializedAnim} */
+        const obj = {};
+        obj.keys = [];
+        obj.loop = this.loop;
+        if (this.#tlActive)obj.tlActive = this.tlActive;
+
+        for (let i = 0; i < this.keys.length; i++)
+            obj.keys.push(this.keys[i].getSerialized());
+
+        return obj;
+    }
+
+    /**
+     * @param {number} time
+     */
+    getKey(time)
+    {
+        const index = this.getKeyIndex(time);
+        return this.keys[index];
+    }
+
+    /**
+     * @param {number} time
+     */
+    getNextKey(time)
+    {
+        let index = this.getKeyIndex(time) + 1;
+        if (index >= this.keys.length) index = this.keys.length - 1;
+
+        return this.keys[index];
+    }
+
+    /**
+     * @param {number} time
+     */
+    getPrevKey(time)
+    {
+        let index = this.getKeyIndex(time) - 1;
+        if (index < 0) index = 0;
+
+        return this.keys[index];
+    }
+
+    /**
+     * @param {number} time
+     */
+    isFinished(time)
+    {
+        if (this.keys.length <= 0) return true;
+        return time > this.lastKey.time;
+    }
+
+    /**
+     * @param {number} time
+     */
+    isStarted(time)
+    {
+        if (this.keys.length <= 0) return false;
+        return time >= this.firstKey.time;
+    }
+
+    /**
+     * @param {AnimKey} k
+     */
+    remove(k)
+    {
+        for (let i = 0; i < this.keys.length; i++)
+        {
+            if (this.keys[i] == k)
+            {
+                this.keys.splice(i, 1);
+                this._updateLastIndex();
+                this.emitEvent(Anim.EVENT_CHANGE, this);
                 return;
             }
+        }
+        console.log("key remove not found", k);
+    }
 
-            let removeCount = 0;
+    get lastKey()
+    {
+        return this.keys[this._lastKeyIndex];
+    }
 
-            let found = true;
-            while (found)
+    get firstKey()
+    {
+        return this.keys[0];
+    }
+
+    /**
+     * @param {number} time
+     */
+    getLoopIndex(time)
+    {
+        if (this.keys.length < 2) return 0;
+        return (time - this.firstKey.time) / this.getLengthLoop();
+    }
+
+    /**
+     * get value at time
+     * @function getValue
+     * @memberof Anim
+     * @instance
+     * @param {Number} [time] time
+     * @returns {Number} interpolated value at time
+     */
+    getValue(time)
+    {
+        let valAdd = 0;
+        if (this.keys.length === 0) return 0;
+        if (this._needsSort) this.sortKeys();
+
+        if (!this.loop && time > this.keys[this._lastKeyIndex].time)
+        {
+            if (this.lastKey.cb && !this.lastKey.cbTriggered) this.lastKey.trigger();
+
+            return this.lastKey.value;
+        }
+
+        if (time < this.firstKey.time) return this.keys[0].value;
+
+        if (this.loop && this.keys.length > 1 && time > this.lastKey.time)
+        {
+            const currentLoop = this.getLoopIndex(time);
+            if (currentLoop > this._timesLooped)
             {
-                found = false;
-                let index = -1;
-                for (let i = 0; i < this._eventCallbacks[event.name].length; i++)
-                {
-                    if (this._eventCallbacks[event.name][i].id.indexOf(id) === 0) // this._eventCallbacks[event.name][i].id == which ||
-                    {
-                        found = true;
-                        index = i;
-                    }
-                }
-
-                if (index !== -1)
-                {
-                    this._eventCallbacks[event.name].splice(index, 1);
-                    delete this._listeners[id];
-                    removeCount++;
-                }
+                this._timesLooped++;
+                if (this.onLooped) this.onLooped();
             }
 
-            if (removeCount == 0)console.log("no events removed", event.name, id);
+            time = (time - this.firstKey.time) % (this.getLengthLoop());
 
-            return;
+            if (this.loop == Anim.LOOP_REPEAT) { }
+            else if (this.loop == Anim.LOOP_MIRROR)
+            {
+                if (Math.floor(currentLoop) % 2 == 1)time = this.getLengthLoop() - time;
+            }
+            else if (this.loop == Anim.LOOP_OFFSET)
+            {
+                valAdd = (this.lastKey.value - this.keys[0].value) * Math.floor(currentLoop);
+            }
+
+            time += this.firstKey.time;
+        }
+
+        const index = this.getKeyIndex(time);
+        if (index >= this._lastKeyIndex)
+        {
+            if (this.lastKey.cb && !this.lastKey.cbTriggered) this.lastKey.trigger();
+            return this.lastKey.value;
+        }
+
+        const index2 = index + 1;
+        const key1 = this.keys[index];
+        const key2 = this.keys[index2];
+
+        if (key1.cb && !key1.cbTriggered) key1.trigger();
+
+        if (!key2) return -1;
+
+        const perc = (time - key1.time) / (key2.time - key1.time);
+
+        return key1.ease(perc, key2) + valAdd;
+    }
+
+    _updateLastIndex()
+    {
+        this._lastKeyIndex = this.keys.length - 1;
+    }
+
+    /**
+     * @param {AnimKey} k
+     */
+    addKey(k)
+    {
+        if (k.time === undefined)
+        {
+            this._log.warn("key time undefined, ignoring!");
         }
         else
         {
-            console.log("old function signature: removeEventListener! use listener id");
+            this.keys.push(k);
+            if (this.onChange !== null) this.onChange();
+            this.emitEvent(Anim.EVENT_CHANGE, this);
+            this._needsSort = true;
+        }
+        this._updateLastIndex();
+    }
+
+    /**
+     * @param {string} str
+     */
+    easingFromString(str)
+    {
+        // todo smarter way to map ?
+        if (str == "linear") return Anim.EASING_LINEAR;
+        if (str == "absolute") return Anim.EASING_ABSOLUTE;
+        if (str == "smoothstep") return Anim.EASING_SMOOTHSTEP;
+        if (str == "smootherstep") return Anim.EASING_SMOOTHERSTEP;
+
+        if (str == "Cubic In") return Anim.EASING_CUBIC_IN;
+        if (str == "Cubic Out") return Anim.EASING_CUBIC_OUT;
+        if (str == "Cubic In Out") return Anim.EASING_CUBIC_INOUT;
+
+        if (str == "Expo In") return Anim.EASING_EXPO_IN;
+        if (str == "Expo Out") return Anim.EASING_EXPO_OUT;
+        if (str == "Expo In Out") return Anim.EASING_EXPO_INOUT;
+
+        if (str == "Sin In") return Anim.EASING_SIN_IN;
+        if (str == "Sin Out") return Anim.EASING_SIN_OUT;
+        if (str == "Sin In Out") return Anim.EASING_SIN_INOUT;
+
+        if (str == "Back In") return Anim.EASING_BACK_IN;
+        if (str == "Back Out") return Anim.EASING_BACK_OUT;
+        if (str == "Back In Out") return Anim.EASING_BACK_INOUT;
+
+        if (str == "Elastic In") return Anim.EASING_ELASTIC_IN;
+        if (str == "Elastic Out") return Anim.EASING_ELASTIC_OUT;
+
+        if (str == "Bounce In") return Anim.EASING_BOUNCE_IN;
+        if (str == "Bounce Out") return Anim.EASING_BOUNCE_OUT;
+
+        if (str == "Quart Out") return Anim.EASING_QUART_OUT;
+        if (str == "Quart In") return Anim.EASING_QUART_IN;
+        if (str == "Quart In Out") return Anim.EASING_QUART_INOUT;
+
+        if (str == "Quint Out") return Anim.EASING_QUINT_OUT;
+        if (str == "Quint In") return Anim.EASING_QUINT_IN;
+        if (str == "Quint In Out") return Anim.EASING_QUINT_INOUT;
+
+        console.log("unknown anim easing?", str);
+    }
+
+    /**
+     * @param {Op} op
+     * @param {string} title
+     * @param {function} cb
+     * @returns {Port}
+     */
+    createPort(op, title, cb)
+    {
+        const port = op.inDropDown(title, Anim.EASINGNAMES, "linear");
+        port.set("linear");
+        port.defaultValue = "linear";
+
+        port.onChange = () =>
+        {
+            this.defaultEasing = this.easingFromString(port.get());
+            this.emitEvent("onChangeDefaultEasing", this);
+
+            if (cb) cb();
+        };
+
+        return port;
+    }
+
+    get tlActive()
+    {
+        return this.#tlActive;
+    }
+
+    set tlActive(b)
+    {
+        if (CABLES.UI)
+        {
+            this.#tlActive = b;
+            window.gui.emitEvent("tlActiveChanged", this);
+            this.forceChangeCallbackSoon();
         }
     }
 
     /**
-     * enable/disable logging of events for the class
-     *
-     * @param {boolean} enabled
-     * @param {string} logName
+     * @param {Object} o
      */
-    logEvents(enabled, logName)
+    setUiAttribs(o)
     {
-        this._logEvents = enabled;
-        this._logName = logName;
+        for (const i in o)
+        {
+            this.uiAttribs[i] = o[i];
+            if (o[i] === null) delete this.uiAttribs[i];
+        }
+
+        this.emitEvent(Anim.EVENT_UIATTRIB_CHANGE);
     }
 
-    /**
-     * emit event
-     *
-     * @param {string} which event name
-     * @param {*} param1
-     * @param {*} param2
-     * @param {*} param3
-     * @param {*} param4
-     * @param {*} param5
-     * @param {*} param6
-     */
-    emitEvent(which, param1 = null, param2 = null, param3 = null, param4 = null, param5 = null, param6 = null, param7 = null, param8 = null)
-    {
-        if (this._logEvents) this.#eventLog.log("[event] ", this._logName, which, this._eventCallbacks);
-
-        if (this._eventCallbacks[which])
-        {
-            for (let i = 0; i < this._eventCallbacks[which].length; i++)
-            {
-                if (this._eventCallbacks[which][i])
-                {
-                    this._eventCallbacks[which][i].cb(param1, param2, param3, param4, param5, param6, param7, param8);
-                }
-            }
-        }
-        else
-        {
-            if (this._logEvents) this.#eventLog.log("[event] has no event callback", which, this._eventCallbacks);
-        }
-    }
 }
 
-;// CONCATENATED MODULE: ./src/core/anim_key.js
+// ------------------------------
+
+
+/***/ }),
+
+/***/ "./src/core/anim_key.js":
+/*!******************************!*\
+  !*** ./src/core/anim_key.js ***!
+  \******************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AnimKey: () => (/* binding */ AnimKey)
+/* harmony export */ });
+/* unused harmony exports easeExpoIn, easeExpoOut, easeExpoInOut, easeCubicIn, easeCubicOut, easeCubicInOut */
+/* harmony import */ var _anim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./anim.js */ "./src/core/anim.js");
 
 
 class AnimKey
 {
+
+    /**
+     * @param {SerializedKey} obj
+     * @param {Anim} [an]
+     */
     constructor(obj, an)
     {
         this.id = CABLES.shortId();
@@ -8039,26 +8390,33 @@ class AnimKey
         this.value = 0.0;
         this.selected = false;
 
+        /** @type {Anim} */
         this.anim = obj.anim || an || null;
 
-        // this.ui = null;
         this.onChange = null;
         this._easing = 0;
-        // this.bezTangIn = 0;
-        // this.bezTangOut = 0;
-        // this.bezTime = 0.5;
-        // this.bezValue = 0;
-        // this.bezTimeIn = -0.5;
-        // this.bezValueIn = 0;
+
+        this.bezCp1 = null;
+        this.bezCp2 = null;
+        this.bezAn = null;
 
         this.cb = null;
         this.cbTriggered = false;
+        this.temp = {};
+        this.uiAttribs = {};
 
-        // const bezierAnim = null;
-        // this._updateBezier = false;
-
-        this.setEasing(Anim.EASING_LINEAR);
+        this.setEasing(_anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_LINEAR);
         this.set(obj);
+    }
+
+    emitChange()
+    {
+        this.bezAn = null;
+        if (this.onChange !== null) this.onChange();
+        this.anim.forceChangeCallbackSoon();
+        for (let i = 0; i < this.anim.keys.length; i++)
+            this.anim.keys[i].bezAn = null;
+
     }
 
     delete()
@@ -8068,49 +8426,66 @@ class AnimKey
     }
 
     /**
+     * @param {Object} o
+     */
+    setUiAttribs(o)
+    {
+        for (const i in o)
+        {
+            this.uiAttribs[i] = o[i];
+            if (o[i] === null) delete this.uiAttribs[i];
+        }
+        this.anim.emitEvent(_anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EVENT_CHANGE);
+    }
+
+    /**
      * @param {Number} e
      */
     setEasing(e)
     {
         this._easing = e;
 
-        if (this._easing == Anim.EASING_LINEAR) this.ease = AnimKey.easeLinear;
-        else if (this._easing == Anim.EASING_ABSOLUTE) this.ease = AnimKey.easeAbsolute;
-        else if (this._easing == Anim.EASING_SMOOTHSTEP) this.ease = AnimKey.easeSmoothStep;
-        else if (this._easing == Anim.EASING_SMOOTHERSTEP) this.ease = AnimKey.easeSmootherStep;
-        else if (this._easing == Anim.EASING_CUBIC_IN) this.ease = AnimKey.easeCubicIn;
-        else if (this._easing == Anim.EASING_CUBIC_OUT) this.ease = AnimKey.easeCubicOut;
-        else if (this._easing == Anim.EASING_CUBIC_INOUT) this.ease = AnimKey.easeCubicInOut;
-        else if (this._easing == Anim.EASING_EXPO_IN) this.ease = AnimKey.easeExpoIn;
-        else if (this._easing == Anim.EASING_EXPO_OUT) this.ease = AnimKey.easeExpoOut;
-        else if (this._easing == Anim.EASING_EXPO_INOUT) this.ease = AnimKey.easeExpoInOut;
-        else if (this._easing == Anim.EASING_SIN_IN) this.ease = AnimKey.easeSinIn;
-        else if (this._easing == Anim.EASING_SIN_OUT) this.ease = AnimKey.easeSinOut;
-        else if (this._easing == Anim.EASING_SIN_INOUT) this.ease = AnimKey.easeSinInOut;
-        else if (this._easing == Anim.EASING_BACK_OUT) this.ease = AnimKey.easeOutBack;
-        else if (this._easing == Anim.EASING_BACK_IN) this.ease = AnimKey.easeInBack;
-        else if (this._easing == Anim.EASING_BACK_INOUT) this.ease = AnimKey.easeInOutBack;
-        else if (this._easing == Anim.EASING_ELASTIC_IN) this.ease = AnimKey.easeInElastic;
-        else if (this._easing == Anim.EASING_ELASTIC_OUT) this.ease = AnimKey.easeOutElastic;
+        if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_LINEAR) this.ease = this.easeLinear;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_ABSOLUTE) this.ease = this.easeAbsolute;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SMOOTHSTEP) this.ease = AnimKey.easeSmoothStep;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SMOOTHERSTEP) this.ease = AnimKey.easeSmootherStep;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBIC_IN) this.ease = AnimKey.easeCubicIn;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBIC_OUT) this.ease = AnimKey.easeCubicOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBIC_INOUT) this.ease = AnimKey.easeCubicInOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_EXPO_IN) this.ease = AnimKey.easeExpoIn;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_EXPO_OUT) this.ease = AnimKey.easeExpoOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_EXPO_INOUT) this.ease = AnimKey.easeExpoInOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SIN_IN) this.ease = AnimKey.easeSinIn;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SIN_OUT) this.ease = AnimKey.easeSinOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SIN_INOUT) this.ease = AnimKey.easeSinInOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BACK_OUT) this.ease = AnimKey.easeOutBack;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BACK_IN) this.ease = AnimKey.easeInBack;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BACK_INOUT) this.ease = AnimKey.easeInOutBack;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_ELASTIC_IN) this.ease = AnimKey.easeInElastic;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_ELASTIC_OUT) this.ease = AnimKey.easeOutElastic;
         // else if (this._easing == Anim.EASING_ELASTIC_INOUT) this.ease = AnimKey.easeElasticInOut;
-        else if (this._easing == Anim.EASING_BOUNCE_IN) this.ease = AnimKey.easeInBounce;
-        else if (this._easing == Anim.EASING_BOUNCE_OUT) this.ease = AnimKey.easeOutBounce;
-        else if (this._easing == Anim.EASING_QUART_OUT) this.ease = AnimKey.easeOutQuart;
-        else if (this._easing == Anim.EASING_QUART_IN) this.ease = AnimKey.easeInQuart;
-        else if (this._easing == Anim.EASING_QUART_INOUT) this.ease = AnimKey.easeInOutQuart;
-        else if (this._easing == Anim.EASING_QUINT_OUT) this.ease = AnimKey.easeOutQuint;
-        else if (this._easing == Anim.EASING_QUINT_IN) this.ease = AnimKey.easeInQuint;
-        else if (this._easing == Anim.EASING_QUINT_INOUT) this.ease = AnimKey.easeInOutQuint;
-        else if (this._easing == Anim.EASING_CUBICSPLINE)
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BOUNCE_IN) this.ease = AnimKey.easeInBounce;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BOUNCE_OUT) this.ease = AnimKey.easeOutBounce;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUART_OUT) this.ease = AnimKey.easeOutQuart;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUART_IN) this.ease = AnimKey.easeInQuart;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUART_INOUT) this.ease = AnimKey.easeInOutQuart;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUINT_OUT) this.ease = AnimKey.easeOutQuint;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUINT_IN) this.ease = AnimKey.easeInQuint;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUINT_INOUT) this.ease = AnimKey.easeInOutQuint;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBICSPLINE)
         {
-            // this._updateBezier = true;
-            this.ease = AnimKey.easeCubicSpline;
+            this.ease = this.easeCubicSpline;
+
+            this.bezCp1 = this.bezCp1 || [-0.5, 0];
+            this.bezCp2 = this.bezCp2 || [0.5, 0];
+            this.bezAn = null;
         }
         else
         {
-            this._easing = Anim.EASING_LINEAR;
-            this.ease = AnimKey.easeLinear;
+            this._easing = _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_LINEAR;
+            this.ease = this.easeLinear;
         }
+        this.emitChange();
     }
 
     trigger()
@@ -8119,38 +8494,63 @@ class AnimKey
         this.cbTriggered = true;
     }
 
+    /**
+     * @param {number} v
+     */
     setValue(v)
     {
         this.value = v;
-        if (this.onChange !== null) this.onChange();
+        this.emitChange();
     }
 
+    /**
+     * @param {number} t
+     * @param {number} v
+     */
+    setBezCp1(t, v)
+    {
+        this.bezCp1 = [t, v];
+        this.emitChange();
+    }
+
+    /**
+     * @param {number} t
+     * @param {number} v
+     */
+    setBezCp2(t, v)
+    {
+        this.bezCp2 = [t, v];
+        this.emitChange();
+    }
+
+    /**
+     * @param {SerializedKey} obj
+     */
     set(obj)
     {
         if (obj)
         {
-            if (obj.e) this.setEasing(obj.e);
+            if (obj.hasOwnProperty("e")) this.setEasing(obj.e);
             if (obj.cb)
             {
                 this.cb = obj.cb;
                 this.cbTriggered = false;
             }
 
-            if (obj.b)
+            if (obj.hasOwnProperty("cp1"))
             {
-                // this.bezTime = obj.b[0];
-                // this.bezValue = obj.b[1];
-                // this.bezTimeIn = obj.b[2];
-                // this.bezValueIn = obj.b[3];
-                // this._updateBezier = true;
+                this.bezCp1 = obj.cp1;
+                this.bezCp2 = obj.cp2;
             }
 
             if (obj.hasOwnProperty("t")) this.time = obj.t;
             if (obj.hasOwnProperty("time")) this.time = obj.time;
             if (obj.hasOwnProperty("v")) this.value = obj.v;
             else if (obj.hasOwnProperty("value")) this.value = obj.value;
+
+            if (obj.hasOwnProperty("uiAttribs")) this.setUiAttribs(obj.uiAttribs);
         }
-        if (this.onChange !== null) this.onChange();
+        this.emitChange();
     }
 
     /**
@@ -8162,6 +8562,13 @@ class AnimKey
         obj.t = this.time;
         obj.v = this.value;
         obj.e = this._easing;
+        obj.uiAttribs = this.uiAttribs;
+
+        if (this._easing === _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBICSPLINE)
+        {
+            obj.cp1 = this.bezCp1;
+            obj.cp2 = this.bezCp2;
+        }
 
         return obj;
     }
@@ -8170,40 +8577,77 @@ class AnimKey
     {
         return this._easing;
     }
+
+    /**
+     * @param {number} perc
+     * @param {AnimKey} key2
+     */
+    easeCubicSpline(perc, key2)
+    {
+        if (!this.bezAn)
+        {
+            const samples = 30;
+
+            const prevKey = this.anim.getPrevKey(this.time);
+            this.bezAn = new _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim();
+            for (let i = 0; i <= samples + 1; i++)
+            {
+                const c = AnimKey.cubicSpline(i / samples, prevKey, this, key2);
+                this.bezAn.setValue(c[0], c[1]);
+            }
+            console.log("bea", this.bezAn);
+        }
+
+        return this.bezAn.getValue(this.time + perc * (key2.time - this.time));
+        // return AnimKey.cubicSpline(perc, this, key2);
+    }
+
+    /**
+     * @param {number} perc
+     * @param {AnimKey} key2
+     */
+    easeLinear(perc, key2)
+    {
+        return AnimKey.linear(perc, this, key2);
+    }
+
+    easeAbsolute()
+    {
+        return this.value;
+    }
 }
 
-AnimKey.cubicSpline = function (perc, key1, key2)
+AnimKey.cubicSpline = function (t, key0, key1, key2)
 {
-    let
-        previousPoint = key1.value,
-        previousTangent = key1.bezTangOut,
-        nextPoint = key2.value,
-        nextTangent = key2.bezTangIn;
-    let t = perc;
-    let t2 = t * t;
-    let t3 = t2 * t;
+    const tInv = 1 - t;
+    const tInvSq = tInv * tInv;
+    const tSq = t * t;
 
-    return (2 * t3 - 3 * t2 + 1) * previousPoint + (t3 - 2 * t2 + t) * previousTangent + (-2 * t3 + 3 * t2) * nextPoint + (t3 - t2) * nextTangent;
-};
+    const c0 = tInvSq * tInv;
+    const c1 = 3 * tInvSq * t;
+    const c2 = 3 * tInv * tSq;
+    const c3 = tSq * t;
 
-AnimKey.easeCubicSpline = function (perc, key2)
-{
-    return AnimKey.cubicSpline(perc, this, key2);
+    key1.bezCp1 = key1.bezCp1 || [0, 0];
+    key2.bezCp2 = key2.bezCp2 || [0, 0];
+    key1.bezCp1 = key1.bezCp1 || [0, 0];
+    key2.bezCp2 = key2.bezCp2 || [0, 0];
+
+    const x1 = Math.min(key2.time, key1.bezCp2[0] + key1.time);
+    const xp = Math.max(key0.time, key2.bezCp1[0] + key2.time);
+    // const xp = key2.bezCp1[0] + key2.time;
+    // console.log("textjjjj", key2.time, key0.time);
+
+    // const x = c0 + c1 * (key1.bezCp2[0]) + c2 * (key2.bezCp1[0]) + c3;
+    const x = c0 * key1.time + c1 * (x1) + c2 * (xp) + c3 * (key2.time);
+    const y = c0 * key1.value + c1 * (key1.bezCp2[1] + key1.value) + c2 * (key2.bezCp1[1] + key2.value) + c3 * (key2.value);
+
+    return [x, y];
 };
 
 AnimKey.linear = function (perc, key1, key2)
 {
-    return parseFloat(key1.value) + parseFloat(key2.value - key1.value) * perc;
-};
-
-AnimKey.easeLinear = function (perc, key2)
-{
-    return AnimKey.linear(perc, this, key2);
-};
-
-AnimKey.easeAbsolute = function (perc, key2)
-{
-    return this.value;
+    return (key1.value) + (key2.value - key1.value) * perc;
 };
 
 const easeExpoIn = function (t)
@@ -8469,583 +8913,25 @@ AnimKey.easeSmootherStep = function (perc, key2)
     return AnimKey.linear(perc, this, key2);
 };
 
-;// CONCATENATED MODULE: ./src/core/anim.js
 
-
-
-
-
-
-
-/**
- * configuration object for loading a patch
- * @typedef {Object} AnimCfg
- * @property {number} [defaultEasing] use easing index as default
- * @property {string} [name] anim name
- */
-
-/**
- * Keyframed interpolated animation.
- *
- * @class
- * @param cfg
- * @example
- * var anim=new CABLES.Anim();
- * anim.setValue(0,0);  // set value 0 at 0 seconds
- * anim.setValue(10,1); // set value 1 at 10 seconds
- * anim.getValue(5);    // get value at 5 seconds - this returns 0.5
- */
-
-class Anim extends Events
-{
-    static EASING_LINEAR = 0;
-    static EASING_ABSOLUTE = 1;
-    static EASING_SMOOTHSTEP = 2;
-    static EASING_SMOOTHERSTEP = 3;
-    static EASING_CUBICSPLINE = 4;
-
-    static EASING_CUBIC_IN = 5;
-    static EASING_CUBIC_OUT = 6;
-    static EASING_CUBIC_INOUT = 7;
-
-    static EASING_EXPO_IN = 8;
-    static EASING_EXPO_OUT = 9;
-    static EASING_EXPO_INOUT = 10;
-
-    static EASING_SIN_IN = 11;
-    static EASING_SIN_OUT = 12;
-    static EASING_SIN_INOUT = 13;
-
-    static EASING_BACK_IN = 14;
-    static EASING_BACK_OUT = 15;
-    static EASING_BACK_INOUT = 16;
-
-    static EASING_ELASTIC_IN = 17;
-    static EASING_ELASTIC_OUT = 18;
-
-    static EASING_BOUNCE_IN = 19;
-    static EASING_BOUNCE_OUT = 21;
-
-    static EASING_QUART_IN = 22;
-    static EASING_QUART_OUT = 23;
-    static EASING_QUART_INOUT = 24;
-
-    static EASING_QUINT_IN = 25;
-    static EASING_QUINT_OUT = 26;
-    static EASING_QUINT_INOUT = 27;
-
-    static EASINGNAMES = ["linear", "absolute", "smoothstep", "smootherstep", "Cubic In", "Cubic Out", "Cubic In Out", "Expo In", "Expo Out", "Expo In Out", "Sin In", "Sin Out", "Sin In Out", "Quart In", "Quart Out", "Quart In Out", "Quint In", "Quint Out", "Quint In Out", "Back In", "Back Out", "Back In Out", "Elastic In", "Elastic Out", "Bounce In", "Bounce Out"];
-
-    /**
-     * @param {AnimCfg} [cfg]
-     */
-    constructor(cfg = {})
-    {
-        super();
-        cfg = cfg || {};
-        this.id = uuid();
-
-        /** @type {AnimKey[]} */
-        this.keys = [];
-        this.onChange = null;
-        this.stayInTimeline = false;
-        this.loop = false;
-        this._log = new Logger("Anim");
-        this._lastKeyIndex = 0;
-        this._cachedIndex = 0;
-        this.name = cfg.name || null;
-
-        /**
-         * @type {Number}
-         */
-        this.defaultEasing = cfg.defaultEasing || Anim.EASING_LINEAR;
-        this.onLooped = null;
-
-        this._timesLooped = 0;
-        this._needsSort = false;
-    }
-
-    forceChangeCallback()
-    {
-        if (this.onChange !== null) this.onChange();
-        this.emitEvent("onChange", this);
-    }
-
-    getLoop()
-    {
-        return this.loop;
-    }
-
-    /**
-     * @param {boolean} enable
-     */
-    setLoop(enable)
-    {
-        this.loop = enable;
-        this.emitEvent("onChange", this);
-    }
-
-    /**
-     * returns true if animation has ended at @time
-     * checks if last key time is < time
-     * @param {Number} time
-     * @returns {Boolean}
-     * @memberof Anim
-     * @instance
-     * @function
-     */
-    hasEnded(time)
-    {
-        if (this.keys.length === 0) return true;
-        if (this.keys[this._lastKeyIndex].time <= time) return true;
-        return false;
-    }
-
-    /**
-     * @param {number} time
-     */
-    isRising(time)
-    {
-        if (this.hasEnded(time)) return false;
-        const ki = this.getKeyIndex(time);
-        if (this.keys[ki].value < this.keys[ki + 1].value) return true;
-        return false;
-    }
-
-    /**
-     * remove all keys from animation before time
-     * @param {Number} time
-     * @memberof Anim
-     * @instance
-     * @function
-     */
-    clearBefore(time)
-    {
-        const v = this.getValue(time);
-        const ki = this.getKeyIndex(time);
-
-        this.setValue(time, v);
-
-        if (ki > 1) this.keys.splice(0, ki);
-        this._updateLastIndex();
-    }
-
-    /**
-     * remove all keys from animation
-     * @param {Number} [time=0] set a new key at time with the old value at time
-     * @memberof Anim
-     * @instance
-     * @function
-     */
-    clear(time)
-    {
-        let v = 0;
-        if (time) v = this.getValue(time);
-        this.keys.length = 0;
-        this._updateLastIndex();
-        if (time) this.setValue(time, v);
-        if (this.onChange !== null) this.onChange();
-        this.emitEvent("onChange", this);
-    }
-
-    sortKeys()
-    {
-        this.keys.sort((a, b) => { return parseFloat(a.time) - parseFloat(b.time); });
-        this._updateLastIndex();
-        this._needsSort = false;
-        if (this.keys.length > 999 && this.keys.length % 1000 == 0)console.log(this.name, this.keys.length);
-    }
-
-    hasDuplicates()
-    {
-        const test = {};
-        let count = 0;
-        for (let i = 0; i < this.keys.length; i++)
-        {
-            test[this.keys[i].time] = 1;
-            count++;
-        }
-
-        const keys = Object.keys(test);
-        if (keys.length != count)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    removeDuplicates()
-    {
-        if (this.hasDuplicates())
-        {
-            this.sortKeys();
-            let count = 0;
-
-            while (this.hasDuplicates())
-            {
-                for (let i = 0; i < this.keys.length - 1; i++)
-                {
-                    if (this.keys[i].time == this.keys[i + 1].time) this.keys.splice(i, 1);
-                    count++;
-                }
-            }
-            this._updateLastIndex();
-        }
-    }
-
-    getLength()
-    {
-        if (this.keys.length === 0) return 0;
-        return this.keys[this.keys.length - 1].time;
-    }
-
-    /**
-     * @param {number} time
-     */
-    getKeyIndex(time)
-    {
-        let index = 0;
-        let start = 0;
-        if (this._cachedIndex && this.keys.length > this._cachedIndex && time >= this.keys[this._cachedIndex].time) start = this._cachedIndex;
-        for (let i = start; i < this.keys.length; i++)
-        {
-            if (time >= this.keys[i].time) index = i;
-            if (this.keys[i].time > time)
-            {
-                if (time != 0) this._cachedIndex = index;
-                return index;
-            }
-        }
-
-        return index;
-    }
-
-    /**
-     * set value at time
-     * @function setValue
-     * @memberof Anim
-     * @instance
-     * @param {Number} time
-     * @param {Number} value
-     * @param {Function} cb callback
-     */
-    setValue(time, value, cb = null)
-    {
-        let found = null;
-
-        if (this.keys.length == 0 || time <= this.keys[this.keys.length - 1].time)
-            for (let i = 0; i < this.keys.length; i++)
-                if (this.keys[i].time == time)
-                {
-                    found = this.keys[i];
-                    this.keys[i].setValue(value);
-                    this.keys[i].cb = cb;
-                    break;
-                }
-
-        if (!found)
-        {
-            found = new AnimKey(
-                {
-                    "time": time,
-                    "value": value,
-                    "e": this.defaultEasing,
-                    "cb": cb,
-                    "anim": this
-                });
-            this.keys.push(found);
-
-            // if (this.keys.length % 1000 == 0)console.log(this.name, this.keys.length);
-            this._updateLastIndex();
-        }
-
-        if (this.onChange) this.onChange();
-        this.emitEvent("onChange", this);
-        this._needsSort = true;
-        return found;
-    }
-
-    /**
-     * @param {number} index
-     * @param {number} easing
-     */
-    setKeyEasing(index, easing)
-    {
-        if (this.keys[index])
-        {
-            this.keys[index].setEasing(easing);
-            this.emitEvent("onChange", this);
-        }
-    }
-
-    /**
-     * @returns {Object}
-     */
-    getSerialized()
-    {
-        const obj = {};
-        obj.keys = [];
-        obj.loop = this.loop;
-
-        for (let i = 0; i < this.keys.length; i++)
-            obj.keys.push(this.keys[i].getSerialized());
-
-        return obj;
-    }
-
-    /**
-     * @param {number} time
-     */
-    getKey(time)
-    {
-        const index = this.getKeyIndex(time);
-        return this.keys[index];
-    }
-
-    /**
-     * @param {number} time
-     */
-    getNextKey(time)
-    {
-        let index = this.getKeyIndex(time) + 1;
-        if (index >= this.keys.length) index = this.keys.length - 1;
-
-        return this.keys[index];
-    }
-
-    /**
-     * @param {number} time
-     */
-    isFinished(time)
-    {
-        if (this.keys.length <= 0) return true;
-        return time > this.keys[this.keys.length - 1].time;
-    }
-
-    /**
-     * @param {number} time
-     */
-    isStarted(time)
-    {
-        if (this.keys.length <= 0) return false;
-        return time >= this.keys[0].time;
-    }
-
-    /**
-     * @param {AnimKey} k
-     */
-    remove(k)
-    {
-        for (let i = 0; i < this.keys.length; i++)
-        {
-            if (this.keys[i] == k)
-            {
-                this.keys.splice(i, 1);
-                this._updateLastIndex();
-                return;
-            }
-        }
-        console.log("key remove not found", k);
-    }
-
-    /**
-     * get value at time
-     * @function getValue
-     * @memberof Anim
-     * @instance
-     * @param {Number} [time] time
-     * @returns {Number} interpolated value at time
-     */
-    getValue(time)
-    {
-        if (this.keys.length === 0)
-        {
-            return 0;
-        }
-        if (this._needsSort) this.sortKeys();
-
-        if (!this.loop && time > this.keys[this._lastKeyIndex].time)
-        {
-            if (this.keys[this._lastKeyIndex].cb && !this.keys[this._lastKeyIndex].cbTriggered) this.keys[this._lastKeyIndex].trigger();
-
-            return this.keys[this._lastKeyIndex].value;
-        }
-
-        if (time < this.keys[0].time)
-            return this.keys[0].value;
-
-        if (this.loop && time > this.keys[this._lastKeyIndex].time)
-        {
-            const currentLoop = time / this.keys[this._lastKeyIndex].time;
-            if (currentLoop > this._timesLooped)
-            {
-                this._timesLooped++;
-                if (this.onLooped) this.onLooped();
-            }
-            time = (time - this.keys[0].time) % (this.keys[this._lastKeyIndex].time - this.keys[0].time);
-            time += this.keys[0].time;
-        }
-
-        const index = this.getKeyIndex(time);
-        if (index >= this._lastKeyIndex)
-        {
-            if (this.keys[this._lastKeyIndex].cb && !this.keys[this._lastKeyIndex].cbTriggered) this.keys[this._lastKeyIndex].trigger();
-
-            return this.keys[this._lastKeyIndex].value;
-        }
-
-        const index2 = index + 1;
-        const key1 = this.keys[index];
-        const key2 = this.keys[index2];
-
-        if (key1.cb && !key1.cbTriggered) key1.trigger();
-
-        if (!key2) return -1;
-
-        const perc = (time - key1.time) / (key2.time - key1.time);
-
-        return key1.ease(perc, key2);
-    }
-
-    _updateLastIndex()
-    {
-        this._lastKeyIndex = this.keys.length - 1;
-    }
-
-    /**
-     * @param {AnimKey} k
-     */
-    addKey(k)
-    {
-        if (k.time === undefined)
-        {
-            this._log.warn("key time undefined, ignoring!");
-        }
-        else
-        {
-            this.keys.push(k);
-            if (this.onChange !== null) this.onChange();
-            this.emitEvent("onChange", this);
-            this._needsSort = true;
-        }
-        this._updateLastIndex();
-    }
-
-    /**
-     * @param {string} str
-     */
-    easingFromString(str)
-    {
-        // todo smarter way to map ?
-        if (str == "linear") return Anim.EASING_LINEAR;
-        if (str == "absolute") return Anim.EASING_ABSOLUTE;
-        if (str == "smoothstep") return Anim.EASING_SMOOTHSTEP;
-        if (str == "smootherstep") return Anim.EASING_SMOOTHERSTEP;
-
-        if (str == "Cubic In") return Anim.EASING_CUBIC_IN;
-        if (str == "Cubic Out") return Anim.EASING_CUBIC_OUT;
-        if (str == "Cubic In Out") return Anim.EASING_CUBIC_INOUT;
-
-        if (str == "Expo In") return Anim.EASING_EXPO_IN;
-        if (str == "Expo Out") return Anim.EASING_EXPO_OUT;
-        if (str == "Expo In Out") return Anim.EASING_EXPO_INOUT;
-
-        if (str == "Sin In") return Anim.EASING_SIN_IN;
-        if (str == "Sin Out") return Anim.EASING_SIN_OUT;
-        if (str == "Sin In Out") return Anim.EASING_SIN_INOUT;
-
-        if (str == "Back In") return Anim.EASING_BACK_IN;
-        if (str == "Back Out") return Anim.EASING_BACK_OUT;
-        if (str == "Back In Out") return Anim.EASING_BACK_INOUT;
-
-        if (str == "Elastic In") return Anim.EASING_ELASTIC_IN;
-        if (str == "Elastic Out") return Anim.EASING_ELASTIC_OUT;
-
-        if (str == "Bounce In") return Anim.EASING_BOUNCE_IN;
-        if (str == "Bounce Out") return Anim.EASING_BOUNCE_OUT;
-
-        if (str == "Quart Out") return Anim.EASING_QUART_OUT;
-        if (str == "Quart In") return Anim.EASING_QUART_IN;
-        if (str == "Quart In Out") return Anim.EASING_QUART_INOUT;
-
-        if (str == "Quint Out") return Anim.EASING_QUINT_OUT;
-        if (str == "Quint In") return Anim.EASING_QUINT_IN;
-        if (str == "Quint In Out") return Anim.EASING_QUINT_INOUT;
-
-        console.log("unknown anim easing?", str);
-    }
-
-    /**
-     * @param {Op} op
-     * @param {string} title
-     * @param {function} cb
-     * @returns {Port}
-     */
-    createPort(op, title, cb)
-    {
-        const port = op.inDropDown(title, Anim.EASINGNAMES, "linear");
-        port.set("linear");
-        port.defaultValue = "linear";
-
-        port.onChange = () =>
-        {
-            this.defaultEasing = this.easingFromString(port.get());
-            this.emitEvent("onChangeDefaultEasing", this);
-
-            if (cb) cb();
-        };
-
-        return port;
-    }
-}
-
-// ------------------------------
-
-/**
- * @param {number} time
- * @param {quat} q
- * @param {Anim} animx
- * @param {Anim} animy
- * @param {Anim} animz
- * @param {Anim} animw
- */
-Anim.slerpQuaternion = function (time, q, animx, animy, animz, animw)
-{
-    if (!Anim.slerpQuaternion.q1)
-    {
-        Anim.slerpQuaternion.q1 = quat_create();
-        Anim.slerpQuaternion.q2 = quat_create();
-    }
-
-    const i1 = animx.getKeyIndex(time);
-    let i2 = i1 + 1;
-    if (i2 >= animx.keys.length) i2 = animx.keys.length - 1;
-
-    if (i1 == i2)
-    {
-        quat_set(q, animx.keys[i1].value, animy.keys[i1].value, animz.keys[i1].value, animw.keys[i1].value);
-    }
-    else
-    {
-        const key1Time = animx.keys[i1].time;
-        const key2Time = animx.keys[i2].time;
-        const perc = (time - key1Time) / (key2Time - key1Time);
-
-        quat_set(Anim.slerpQuaternion.q1, animx.keys[i1].value, animy.keys[i1].value, animz.keys[i1].value, animw.keys[i1].value);
-
-        quat_set(Anim.slerpQuaternion.q2, animx.keys[i2].value, animy.keys[i2].value, animz.keys[i2].value, animw.keys[i2].value);
-
-        slerp(q, Anim.slerpQuaternion.q1, Anim.slerpQuaternion.q2, perc);
-    }
-    return q;
-};
-
-;// CONCATENATED MODULE: ./src/core/constants.js
+/***/ }),
+
+/***/ "./src/core/constants.js":
+/*!*******************************!*\
+  !*** ./src/core/constants.js ***!
+  \*******************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CONSTANTS: () => (/* binding */ CONSTANTS)
+/* harmony export */ });
+/* harmony import */ var _anim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./anim.js */ "./src/core/anim.js");
 
 
 const CONSTANTS = {
     "ANIM": {
-        "EASINGS": Anim.EASINGNAMES,
+        "EASINGS": _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASINGNAMES,
         "EASING_LINEAR": 0,
         "EASING_ABSOLUTE": 1,
         "EASING_SMOOTHSTEP": 2,
@@ -9123,624 +9009,24 @@ const CONSTANTS = {
     },
 };
 
-;// CONCATENATED MODULE: ./src/core/extendjs.js
-/**
- * extend javascript functionality
- */
 
-/**
- * @external Math
- */
-
-/**
- * set random seed for seededRandom()
- * @type Number
- * @static
- */
-Math.randomSeed = 1;
-
-/**
- * @function external:Math#setRandomSeed
- * @param {number} seed
- */
-Math.setRandomSeed = function (seed)
-{
-    // https://github.com/cables-gl/cables_docs/issues/622
-    Math.randomSeed = seed * 50728129;
-    if (seed != 0)
-    {
-        Math.randomSeed = Math.seededRandom() * 17624813;
-        Math.randomSeed = Math.seededRandom() * 9737333;
-    }
-};
-
-/**
- * generate a seeded random number
- * @function seededRandom
- * @memberof Math
- * @param {Number} max minimum possible random number
- * @param {Number} min maximum possible random number
- * @return {Number} random value
- * @static
- */
-Math.seededRandom = function (max, min)
-{
-    if (Math.randomSeed === 0) Math.randomSeed = Math.random() * 999;
-    max = max || 1;
-    min = min || 0;
-
-    Math.randomSeed = (Math.randomSeed * 9301 + 49297) % 233280;
-    const rnd = Math.randomSeed / 233280.0;
-
-    return min + rnd * (max - min);
-};
-
-/**
-     * @namespace String
-     */
-
-/**
- * append a linebreak to a string
- * @this {String}
- * @returns {string} string with newline appended
-*/
-String.prototype.endl = function ()
-{
-    return this + "\n";
-};
-
-String.prototype.contains = function (str)
-{
-    console.warn("string.contains deprecated, use string.includes");
-    console.log((new Error()).stack);
-    return this.includes(str);
-
-};
-
-function extendJs()
-{
-
-}
-
-;// CONCATENATED MODULE: ./src/core/utils.js
-/**
- * @namespace external:CABLES#Utils
- */
-
-
-
-
-extendJs();
-
-/**
- * Merge two Float32Arrays.
- * @function float32Concat
- * @param {Float32Array} first Left-hand side array
- * @param {Float32Array} second Right-hand side array
- * @return {Float32Array}
- * @static
- */
-function float32Concat(first, second)
-{
-    if (!(first instanceof Float32Array)) first = new Float32Array(first);
-    if (!(second instanceof Float32Array)) second = new Float32Array(second);
-
-    const result = new Float32Array(first.length + second.length);
-
-    result.set(first);
-    result.set(second, first.length);
-
-    return result;
-}
-
-/**
- * get op shortname: only last part of fullname and without version
- * @function getShortOpName
- * @memberof CABLES
- * @param {string} fullname full op name
- * @static
- */
-const getShortOpName = function (fullname)
-{
-    let name = fullname.split(".")[fullname.split(".").length - 1];
-
-    if (name.includes(CONSTANTS.OP.OP_VERSION_PREFIX))
-    {
-        const n = name.split(CONSTANTS.OP.OP_VERSION_PREFIX)[1];
-        name = name.substring(0, name.length - (CONSTANTS.OP.OP_VERSION_PREFIX + n).length);
-    }
-    return name;
-};
-
-/**
- * randomize order of an array
- * @function shuffleArray
- * @param {Array|Float32Array} array {Array} original
- * @return {Array|Float32Array} shuffled array
- * @static
- */
-const shuffleArray = function (array)
-{
-    for (let i = array.length - 1; i > 0; i--)
-    {
-        const j = Math.floor(Math.seededRandom() * (i + 1));
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-};
-
-/**
- * generate a short "relativly unique" id
- * @function shortId
- * @return {String} generated ID
- * @static
- */
-
-const _shortIds = {};
-const shortId = function ()
-{
-    let str = Math.random().toString(36).substr(2, 9);
-
-    if (_shortIds.hasOwnProperty(str)) str = shortId();
-    _shortIds[str] = true;
-    return str;
-};
-
-/**
- * @typedef {String} UUID
-*/
-
-/**
- * generate a UUID
- * @function uuid
- * @return {UUID} generated UUID
- * @static
- */
-const uuid = function ()
-{
-    let d = new Date().getTime();
-    const uuidStr = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) =>
-    {
-        const r = (d + Math.random() * 16) % 16 | 0;
-        d = Math.floor(d / 16);
-        return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
-    });
-    return uuidStr;
-};
-const generateUUID = uuid;
-
-function cleanJson(obj)
-{
-    for (const i in obj)
-    {
-        if (obj[i] && typeof objValue === "object" && obj[i].constructor === Object) obj[i] = cleanJson(obj[i]);
-
-        if (obj[i] === null || obj[i] === undefined) delete obj[i];
-        else if (Array.isArray(obj[i]) && obj[i].length == 0) delete obj[i];
-    }
-
-    return obj;
-}
-
-/**
- * @see http://stackoverflow.com/q/7616461/940217
- * @param {string} str
- * @param {string} prefix
- * @return {string}
- */
-const prefixedHash = function (str, prefix = "id")
-{
-    let hash = 0;
-    if (str.length > 0)
-    {
-        for (let i = 0; i < str.length; i++)
-        {
-            let character = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + character;
-            hash &= hash; // Convert to 32bit integer
-        }
-    }
-    return prefix + "" + hash;
-};
-
-/**
- * generate a simple ID
- * @return {Number} new id
- * @static
- */
-let simpleIdCounter = 0;
-const simpleId = function ()
-{
-    simpleIdCounter++;
-    return simpleIdCounter;
-};
-
-/**
- * smoothStep a value
- * @param {Number} perc value value to be smoothed [0-1]
- * @return {Number} smoothed value
- * @static
- */
-const smoothStep = function (perc)
-{
-    const x = Math.max(0, Math.min(1, (perc - 0) / (1 - 0)));
-    perc = x * x * (3 - 2 * x); // smoothstep
-    return perc;
-};
-
-/**
- * smootherstep a value
- * @param {Number} perc value to be smoothed [0-1]
- * @return {Number} smoothed value
- * @static
- */
-const smootherStep = function (perc)
-{
-    const x = Math.max(0, Math.min(1, (perc - 0) / (1 - 0)));
-    perc = x * x * x * (x * (x * 6 - 15) + 10); // smootherstep
-    return perc;
-};
-
-/**
- * clamp number / make sure its between min/max
- * @param {Number} value value to be mapped
- * @param {Number} min minimum value
- * @param {Number} max maximum value
- * @static
- */
-const clamp = function (value, min, max)
-{
-    return Math.min(Math.max(value, min), max);
-};
-
-/**
- * map a value in a range to a value in another range
- * @param {Number} x value to be mapped
- * @param {Number} _oldMin old range minimum value
- * @param {Number} _oldMax old range maximum value
- * @param {Number} _newMin new range minimum value
- * @param {Number} _newMax new range maximum value
- * @param {Number} _easing
- * @return {Number} mapped value
- * @static
- */
-const map = function (x, _oldMin, _oldMax, _newMin, _newMax, _easing = 0)
-{
-    if (x >= _oldMax) return _newMax;
-    if (x <= _oldMin) return _newMin;
-
-    let reverseInput = false;
-    const oldMin = Math.min(_oldMin, _oldMax);
-    const oldMax = Math.max(_oldMin, _oldMax);
-    if (oldMin != _oldMin) reverseInput = true;
-
-    let reverseOutput = false;
-    const newMin = Math.min(_newMin, _newMax);
-    const newMax = Math.max(_newMin, _newMax);
-    if (newMin != _newMin) reverseOutput = true;
-
-    let portion = 0;
-    let r = 0;
-
-    if (reverseInput) portion = ((oldMax - x) * (newMax - newMin)) / (oldMax - oldMin);
-    else portion = ((x - oldMin) * (newMax - newMin)) / (oldMax - oldMin);
-
-    if (reverseOutput) r = newMax - portion;
-    else r = portion + newMin;
-
-    if (!_easing) return r;
-    if (_easing == 1)
-    {
-        // smoothstep
-        x = Math.max(0, Math.min(1, (r - _newMin) / (_newMax - _newMin)));
-        return _newMin + x * x * (3 - 2 * x) * (_newMax - _newMin);
-    }
-    if (_easing == 2)
-    {
-        // smootherstep
-        x = Math.max(0, Math.min(1, (r - _newMin) / (_newMax - _newMin)));
-        return _newMin + x * x * x * (x * (x * 6 - 15) + 10) * (_newMax - _newMin);
-    }
-
-    return r;
-};
-
-// ----------------------------------------------------------------
-
-/**
- * returns true if parameter is a number
- * @param {any} n value The value to check.
- * @return {Boolean}
- * @static
- */
-function isNumeric(n)
-{
-    return !isNaN(parseFloat(n)) && isFinite(n);
-}
-
-/**
- * returns true if parameter is array
- * @function isArray
- * @param {any} v value Value to check
- * @return {Boolean}
- * @static
- */
-function isArray(v)
-{
-    return Object.prototype.toString.call(v) === "[object Array]";
-}
-
-// ----------------------------------------------------------------
-
-/**
- * append a unique/random parameter to a url, so the browser is forced to reload the file, even if its cached
- * @static
- * @param {String} url The url to append the cachebuster parameter to.
- * @return {String} url with cachebuster parameter
- */
-const cacheBust = function (url = "")
-{
-    if (!url) return "";
-    if (url.startsWith("data:")) return;
-    if (url.includes("?")) url += "&";
-    else url += "?";
-    return url + "cache=" + CABLES.uuid();
-};
-
-/**
- * copy the content of an array
- * @static
- * @param {Array} src sourceArray
- * @param {Array} dst optional
- * @return {Array} dst
- */
-const copyArray = function (src, dst)
-{
-    if (!src) return null;
-    dst = dst || [];
-    dst.length = src.length;
-    for (let i = 0; i < src.length; i++)
-        dst[i] = src[i];
-
-    return dst;
-};
-
-/**
- * return the filename part of a url without extension
- * @static
- * @param {String} url
- * @return {String} just the filename
- */
-const basename = function (url)
-{
-    let name = CABLES.filename(url);
-
-    const parts2 = name.split(".");
-    name = parts2[0];
-
-    return name;
-};
-
-/**
- * output a stacktrace to the console
- * @static
- */
-const logStack = function ()
-{
-    console.log("logstack", (new Error()).stack);
-};
-
-/**
- * return the filename part of a url
- * @static
- * @param {String} url
- * @return {String} just the filename
- */
-const filename = function (url)
-{
-    let name = "";
-    if (!url) return "";
-
-    if (url.startsWith("data:") && url.includes(":"))
-    {
-        const parts = url.split(",");
-        return parts[0];
-    }
-
-    let parts = (url + "").split("/");
-    if (parts.length > 0)
-    {
-        const str = parts[parts.length - 1];
-        let parts2 = str.split("?");
-        name = parts2[0];
-    }
-
-    return name || "";
-};
-
-const ajaxSync = function (url, cb, method, post, contenttype)
-{
-    request({
-        "url": url,
-        "cb": cb,
-        "method": method,
-        "data": post,
-        "contenttype": contenttype,
-        "sync": true,
-    });
-};
-
-/**
- * make an ajax request
- * @static
- * @function ajax
- * @param url
- * @param cb
- * @param method
- * @param post
- * @param contenttype
- * @param jsonP
- * @param headers
- * @param options
- */
-const ajax = function (url, cb, method, post, contenttype, jsonP, headers = {}, options = {})
-{
-    const requestOptions = {
-        "url": url,
-        "cb": cb,
-        "method": method,
-        "data": post,
-        "contenttype": contenttype,
-        "sync": false,
-        "jsonP": jsonP,
-        "headers": headers,
-    };
-    if (options && options.credentials) requestOptions.credentials = options.credentials;
-    request(requestOptions);
-};
-
-const request = function (options)
-{
-    if (!options.hasOwnProperty("asynch")) options.asynch = true;
-
-    let xhr;
-    try
-    {
-        xhr = new XMLHttpRequest();
-    }
-    catch (e) {}
-
-    xhr.onreadystatechange = function ()
-    {
-        if (xhr.readyState != 4) return;
-
-        if (options.cb)
-        {
-            if (xhr.status == 200 || xhr.status == 0) options.cb(false, xhr.responseText, xhr);
-            else options.cb(true, xhr.responseText, xhr);
-        }
-    };
-
-    try
-    {
-        xhr.open(options.method ? options.method.toUpperCase() : "GET", options.url, !options.sync);
-    }
-    catch (e)
-    {
-        if (options.cb && e) options.cb(true, e.msg, xhr);
-    }
-
-    if (typeof options.headers === "object")
-    {
-        if (options.headers)
-        {
-            const keys = Object.keys(options.headers);
-            for (let i = 0; i < keys.length; i++)
-            {
-                const name = keys[i];
-                const value = options.headers[name];
-                xhr.setRequestHeader(name, value);
-            }
-        }
-    }
-
-    if (options.credentials && options.credentials !== "omit")
-    {
-        xhr.withCredentials = true;
-    }
-
-    try
-    {
-        if (!options.post && !options.data)
-        {
-            xhr.send();
-        }
-        else
-        {
-            xhr.setRequestHeader(
-                "Content-type",
-                options.contenttype ? options.contenttype : "application/x-www-form-urlencoded",
-            );
-            xhr.send(options.data || options.post);
-        }
-    }
-    catch (e)
-    {
-        if (options.cb) options.cb(true, e.msg, xhr);
-    }
-};
-
-// ----------------------------------------------------------------
-
-const logErrorConsole = function (initiator)
-{
-    CABLES.errorConsole = CABLES.errorConsole || { "log": [] };
-    CABLES.errorConsole.log.push({ "initiator": initiator, "arguments": arguments });
-
-    if (!CABLES.errorConsole.ele)
-    {
-        const ele = document.createElement("div");
-        ele.id = "cablesErrorConsole";
-        ele.style.width = "90%";
-        ele.style.height = "300px";
-        ele.style.zIndex = "9999999";
-        ele.style.display = "inline-block";
-        ele.style.position = "absolute";
-        ele.style.padding = "10px";
-        ele.style.fontFamily = "monospace";
-        ele.style.color = "red";
-        ele.style.backgroundColor = "#200";
-
-        CABLES.errorConsole.ele = ele;
-        document.body.appendChild(ele);
-    }
-
-    let logHtml = "ERROR<br/>for more info, open your browsers dev tools console (Ctrl+Shift+I or Command+Alt+I)<br/>";
-
-    for (let l = 0; l < CABLES.errorConsole.log.length; l++)
-    {
-        logHtml += CABLES.errorConsole.log[l].initiator + " ";
-        for (let i = 1; i < CABLES.errorConsole.log[l].arguments.length; i++)
-        {
-            if (i > 2)logHtml += ", ";
-            let arg = CABLES.errorConsole.log[l].arguments[i];
-            if (arg.constructor.name.indexOf("Error") > -1 || arg.constructor.name.indexOf("error") > -1)
-            {
-                let txt = "Uncaught ErrorEvent ";
-                if (arg.message)txt += " message: " + arg.message;
-                logHtml += txt;
-            }
-            else if (typeof arg == "string")
-                logHtml += arg;
-            else if (typeof arg == "number")
-                logHtml += String(arg) + " ";
-        }
-        logHtml += "<br/>";
-    }
-
-    CABLES.errorConsole.ele.innerHTML = logHtml;
-};
-
-/**
- * @param {Array<any>} arr
- */
-function uniqueArray(arr)
-{
-    const u = {}, a = [];
-    for (let i = 0, l = arr.length; i < l; ++i)
-    {
-        if (!u.hasOwnProperty(arr[i]))
-        {
-            a.push(arr[i]);
-            u[arr[i]] = 1;
-        }
-    }
-    return a;
-}
-
-;// CONCATENATED MODULE: ./src/core/core_port.js
+/***/ }),
+
+/***/ "./src/core/core_port.js":
+/*!*******************************!*\
+  !*** ./src/core/core_port.js ***!
+  \*******************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Port: () => (/* binding */ Port)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants.js */ "./src/core/constants.js");
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils.js */ "./src/core/utils.js");
+/* harmony import */ var _anim_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./anim.js */ "./src/core/anim.js");
 
 
 
@@ -9781,6 +9067,8 @@ function uniqueArray(arr)
  * @property  {boolean} [colorPick] internal: do not set manually
  * @property  {Array<String>} [values] internal: do not set manually
  * @property  {boolean} [boundToVar] internal: do not set manually
+ * @property  {boolean} [addPort] internal: do not set manually
+ * @property  {boolean} [notWorking] internal: do not set manually
  *
  */
 
@@ -9792,7 +9080,7 @@ function uniqueArray(arr)
  * @example
  * const myPort=op.inString("String Port");
  */
-class Port extends Events
+class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
 {
     static DIR_IN = 0;
     static DIR_OUT = 1;
@@ -9807,8 +9095,14 @@ class Port extends Events
     static TYPE_DYNAMIC = 4;
     static TYPE_STRING = 5;
 
+    static EVENT_UIATTRCHANGE = "onUiAttrChange";
+    static EVENT_VALUE_CHANGE = "change";
+
     #oldAnimVal = -5711;
 
+    animMuted = false;
+
+    lastAnimTime = 0;
     #uiActiveState = true;
     #valueBeforeLink = null;
     // #lastAnimFrame = -1;
@@ -9826,7 +9120,7 @@ class Port extends Events
     {
         super();
         this.data = {}; // UNUSED, DEPRECATED, only left in for backwards compatibility with userops
-        this._log = new Logger("core_port");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_1__["default"]("core_port");
 
         /**
          * @type {Number}
@@ -9839,6 +9133,7 @@ class Port extends Events
         this.id = String(CABLES.simpleId());
 
         /** @type {Op} */
+
         this._op = ___op;
 
         /** @type {Array<Link>} */
@@ -9930,7 +9225,6 @@ class Port extends Events
     }
 
     /*
-     * sdjksdjklsd
      * TODO make extend class for ports, like for ops only for ui
      */
     getValueForDisplay()
@@ -9961,8 +9255,13 @@ class Port extends Events
         }
         else
         {
-            str = this.value;
+            str = String(this.value);
         }
+        // if (this.type == Port.TYPE_NUMBER)
+        // {
+        //     if (isNaN(this.value)) return "NaN";
+
+        // }
         return str;
     }
 
@@ -10028,7 +9327,7 @@ class Port extends Events
 
         if (newAttribs.hasOwnProperty("expose")) this._op.patch.emitEvent("subpatchExpose", this._op.uiAttribs.subPatch);
 
-        if (changed) this.emitEvent("onUiAttrChange", newAttribs, this);
+        if (changed) this.emitEvent(Port.EVENT_UIATTRCHANGE, newAttribs, this);
     }
 
     /**
@@ -10069,8 +9368,13 @@ class Port extends Events
      */
     get()
     {
-        if (this.#animated && this.lastAnimFrame != this._op.patch.getFrameNum())
+        if (CABLES.UI && this.#animated && this.lastAnimTime == this._op.patch.timer.getTime() && !CABLES.UI.keyframeAutoCreate)
         {
+            return this.value;
+        }
+        if (!this.animMuted && this.#animated && this.lastAnimFrame != this._op.patch.getFrameNum())
+        {
+            this.lastAnimTime = this._op.patch.timer.getTime();
             this.lastAnimFrame = this._op.patch.getFrameNum();
 
             let animval = this.anim.getValue(this._op.patch.timer.getTime());
@@ -10086,6 +9390,9 @@ class Port extends Events
         return this.value;
     }
 
+    /**
+     * @param {object|array} v
+     */
     setRef(v)
     {
         this.forceRefChange = true;
@@ -10097,27 +9404,40 @@ class Port extends Events
      * @memberof Port
      * @instance
      * @description set value of port / will send value to all linked ports (only for output ports)
+     * @param {string | number | boolean | any[]} v
      */
     set(v)
     {
+
         this.setValue(v);
     }
 
+    /**
+     * @param {string|boolean|number} v
+     */
     setValue(v)
     {
         if (v === undefined) v = null;
 
         if (CABLES.UI && CABLES.UI.showDevInfos)
-            if (this.direction == CONSTANTS.PORT.PORT_DIR_OUT && this.type == Port.TYPE_OBJECT && v && !this.forceRefChange)
+            if (this.direction == _constants_js__WEBPACK_IMPORTED_MODULE_2__.CONSTANTS.PORT.PORT_DIR_OUT && this.type == Port.TYPE_OBJECT && v && !this.forceRefChange)
                 this._log.warn("object port [" + this.name + "] uses .set [" + this.op.objName + "]");
 
         if (this._op.enabled && !this.crashed)
         {
             if (v !== this.value || this.changeAlways || this.type == Port.TYPE_TEXTURE || this.type == Port.TYPE_ARRAY)
             {
-                if (this.#animated)
+                if (CABLES.UI && this.#animated)
                 {
-                    this.anim.setValue(this._op.patch.timer.getTime(), v);
+                    CABLES.UI.PREVISKEYVAL = null;
+                    if (!CABLES.UI.keyframeAutoCreate) CABLES.UI.PREVISKEYVAL = v;
+                }
+
+                if (CABLES.UI && this.#animated && CABLES.UI.keyframeAutoCreate)
+                {
+                    let t = this._op.patch.timer.getTime();
+                    if (CABLES.UI && window.gui.glTimeline) window.gui.glTimeline.createKey(this.anim, t, v);
+                    else this.anim.setValue(t, v);
                 }
                 else
                 {
@@ -10142,24 +9462,23 @@ class Port extends Events
                     if (this._op && this._op.patch && this._op.patch.isEditorMode() && this.type == Port.TYPE_TEXTURE) gui.texturePreview().updateTexturePort(this);
                 }
 
-                if (this.direction == CONSTANTS.PORT.PORT_DIR_OUT) for (let i = 0; i < this.links.length; ++i) this.links[i].setValue();
+                if (this.direction == _constants_js__WEBPACK_IMPORTED_MODULE_2__.CONSTANTS.PORT.PORT_DIR_OUT) for (let i = 0; i < this.links.length; ++i) this.links[i].setValue();
             }
         }
     }
 
     updateAnim()
     {
-        if (this.#animated)
-        {
-            this.value = this.get();
+        if (!this.#animated || this.animMuted) return;
+        this.value = this.get();
 
-            if (this.#oldAnimVal != this.value || this.changeAlways)
-            {
-                this.#oldAnimVal = this.value;
-                this.forceChange();
-            }
+        if (this.#oldAnimVal != this.value || this.changeAlways)
+        {
             this.#oldAnimVal = this.value;
+            this.forceChange();
         }
+        this.#oldAnimVal = this.value;
+
     }
 
     forceChange()
@@ -10173,7 +9492,7 @@ class Port extends Events
          */
         }
         this._activity();
-        this.emitEvent("change", this.value, this);
+        this.emitEvent(Port.EVENT_VALUE_CHANGE, this.value, this);
 
         if (this.onChange) this.onChange(this, this.value);
         else if (this.onValueChanged) this.onValueChanged(this, this.value); // deprecated
@@ -10214,17 +9533,13 @@ class Port extends Events
 
         if (objPort.anim)
         {
-            if (!this.anim) this.anim = new Anim({ "name": "port " + this.name });
+            if (!this.anim) this.anim = new _anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim({ "name": "port " + this.name });
             this._op.hasAnimPort = true;
-            this.anim.on("onChange", () =>
+            this.anim.on(_anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim.EVENT_CHANGE, () =>
             {
                 this._op.patch.emitEvent("portAnimUpdated", this._op, this, this.anim);
             });
-            if (objPort.anim.loop) this.anim.loop = objPort.anim.loop;
-            for (const ani in objPort.anim.keys)
-            {
-                this.anim.keys.push(new CABLES.AnimKey(objPort.anim.keys[ani], this.anim));
-            }
+            this.anim.deserialize(objPort.anim);
             this._op.patch.emitEvent("portAnimUpdated", this._op, this, this.anim);
 
             this.anim.sortKeys();
@@ -10280,7 +9595,7 @@ class Port extends Events
             if (this.uiAttribs.hasOwnProperty("order")) obj.order = this.uiAttribs.order;
         }
         if (this.uiAttribs.title) obj.title = this.uiAttribs.title;
-        if ((this.preserveLinks || this.direction == CONSTANTS.PORT.PORT_DIR_OUT) && this.links.length > 0)
+        if ((this.preserveLinks || this.direction == _constants_js__WEBPACK_IMPORTED_MODULE_2__.CONSTANTS.PORT.PORT_DIR_OUT) && this.links.length > 0)
         {
             obj.links = [];
             for (const i in this.links)
@@ -10313,7 +9628,7 @@ class Port extends Events
         if (this.type === Port.TYPE_FUNCTION && this.links.length == 0) obj = null;
         if (obj && Object.keys(obj).length == 1 && obj.name)obj = null; // obj is null if there is no real information other than name
 
-        cleanJson(obj);
+        (0,_utils_js__WEBPACK_IMPORTED_MODULE_4__.cleanJson)(obj);
 
         return obj;
     }
@@ -10593,6 +9908,7 @@ class Port extends Events
                 {
                     this._varChangeListenerId = this._variableIn.on("change", this.set.bind(this));
                 }
+
                 this.set(this._variableIn.getValue());
             }
             this.#useVariableName = v;
@@ -10646,11 +9962,12 @@ class Port extends Events
 
             if (this.#animated && !this.anim)
             {
-                this.anim = new Anim({ "name": "port " + this.name });
-                this.anim.on("onChange", () =>
+                this.anim = new _anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim({ "name": "port " + this.name });
+                this.anim.on(_anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim.EVENT_CHANGE, () =>
                 {
                     this._op.patch.emitEvent("portAnimUpdated", this._op, this, this.anim);
                 });
+                // this.anim.setValue(this._op.patch.timer.getTime(), this.get());
             }
             this._onAnimToggle();
         }
@@ -10671,8 +9988,8 @@ class Port extends Events
         this.#animated = !this.#animated;
         if (this.#animated && !this.anim)
         {
-            this.anim = new Anim({ "name": "port " + this.name });
-            this.anim.on("onChange", () =>
+            this.anim = new _anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim({ "name": "port " + this.name });
+            this.anim.on(_anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim.EVENT_CHANGE, () =>
             {
                 this._op.patch.emitEvent("portAnimUpdated", this._op, this, this.anim);
             });
@@ -10810,6 +10127,96 @@ Port.portTypeNumberToString = function (type)
     return "unknown";
 };
 
+
+/***/ }),
+
+/***/ "./src/core/index.js":
+/*!****************************************!*\
+  !*** ./src/core/index.js + 12 modules ***!
+  \****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  Anim: () => (/* reexport */ anim.Anim),
+  AnimKey: () => (/* reexport */ anim_key.AnimKey),
+  CONSTANTS: () => (/* reexport */ constants.CONSTANTS),
+  EMBED: () => (/* reexport */ EMBED),
+  Link: () => (/* reexport */ Link),
+  LoadingStatus: () => (/* reexport */ LoadingStatus),
+  Op: () => (/* reexport */ Op),
+  Patch: () => (/* reexport */ Patch),
+  PatchVariable: () => (/* reexport */ PatchVariable),
+  Port: () => (/* reexport */ core_port.Port),
+  Profiler: () => (/* reexport */ Profiler),
+  Timer: () => (/* reexport */ timer.Timer),
+  "default": () => (/* binding */ core),
+  now: () => (/* reexport */ timer.now),
+  utils: () => (/* reexport */ utils)
+});
+
+// NAMESPACE OBJECT: ./node_modules/gl-matrix/esm/index.js
+var esm_namespaceObject = {};
+__webpack_require__.r(esm_namespaceObject);
+__webpack_require__.d(esm_namespaceObject, {
+  glMatrix: () => (common),
+  mat2: () => (mat2),
+  mat2d: () => (mat2d),
+  mat3: () => (mat3),
+  mat4: () => (mat4),
+  quat: () => (quat),
+  quat2: () => (quat2),
+  vec2: () => (vec2),
+  vec3: () => (vec3),
+  vec4: () => (vec4)
+});
+
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/common.js
+var common = __webpack_require__("./node_modules/gl-matrix/esm/common.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat2.js
+var mat2 = __webpack_require__("./node_modules/gl-matrix/esm/mat2.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat2d.js
+var mat2d = __webpack_require__("./node_modules/gl-matrix/esm/mat2d.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat3.js
+var mat3 = __webpack_require__("./node_modules/gl-matrix/esm/mat3.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat4.js
+var mat4 = __webpack_require__("./node_modules/gl-matrix/esm/mat4.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/quat.js
+var quat = __webpack_require__("./node_modules/gl-matrix/esm/quat.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/quat2.js
+var quat2 = __webpack_require__("./node_modules/gl-matrix/esm/quat2.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/vec2.js
+var vec2 = __webpack_require__("./node_modules/gl-matrix/esm/vec2.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/vec3.js
+var vec3 = __webpack_require__("./node_modules/gl-matrix/esm/vec3.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/vec4.js
+var vec4 = __webpack_require__("./node_modules/gl-matrix/esm/vec4.js");
+;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/index.js
+
+
+
+
+
+
+
+
+
+
+
+// EXTERNAL MODULE: ../shared/client/src/eventtarget.js + 2 modules
+var eventtarget = __webpack_require__("../shared/client/src/eventtarget.js");
+// EXTERNAL MODULE: ../shared/client/src/logger.js
+var logger = __webpack_require__("../shared/client/src/logger.js");
+// EXTERNAL MODULE: ./src/core/utils.js + 1 modules
+var utils = __webpack_require__("./src/core/utils.js");
+// EXTERNAL MODULE: ./src/core/anim.js
+var anim = __webpack_require__("./src/core/anim.js");
+// EXTERNAL MODULE: ./src/core/core_port.js
+var core_port = __webpack_require__("./src/core/core_port.js");
 ;// CONCATENATED MODULE: ./src/core/core_link.js
 
 
@@ -10821,7 +10228,7 @@ Port.portTypeNumberToString = function (type)
  * @hideconstructor
  * @class
  */
-class Link extends Events
+class Link extends eventtarget["default"]
 {
 
     /**
@@ -10876,7 +10283,7 @@ class Link extends Events
 
         if (v == v) // NaN is the only JavaScript value that is treated as unequal to itself
         {
-            if (this.portIn.type != Port.TYPE_FUNCTION) this.activity();
+            if (this.portIn.type != core_port.Port.TYPE_FUNCTION) this.activity();
 
             if (this.portIn.get() !== v)
             {
@@ -10918,7 +10325,7 @@ class Link extends Events
             this._patch.emitEvent("onUnLink", this.portIn, this.portOut, this);
         }
 
-        if (this.portIn && (this.portIn.type == Port.TYPE_OBJECT || this.portIn.type == Port.TYPE_ARRAY))
+        if (this.portIn && (this.portIn.type == core_port.Port.TYPE_OBJECT || this.portIn.type == core_port.Port.TYPE_ARRAY))
         {
             this.portIn.set(null);
             if (this.portIn.links.length > 0) this.portIn.set(this.portIn.links[0].getOtherPort(this.portIn).get());
@@ -10948,7 +10355,7 @@ class Link extends Events
             return false;
         }
 
-        if (p1.direction == Port.DIR_IN)
+        if (p1.direction == core_port.Port.DIR_IN)
         {
             this.portIn = p1;
             this.portOut = p2;
@@ -10979,99 +10386,99 @@ class Link extends Events
 
         return obj;
     }
+
+    /**
+     * return a text message with human readable reason if ports can not be linked, or can be
+     *
+     * @param {Port} p1 port1
+     * @param {Port} p2 port2
+     */
+    static canLinkText(p1, p2)
+    {
+        if (p1.direction == p2.direction)
+        {
+            let txt = "(out)";
+            if (p2.direction == core_port.Port.DIR_IN) txt = "(in)";
+            return "can not link: same direction " + txt;
+        }
+        if (p1.op == p2.op) return "can not link: same op";
+        if (p1.type != core_port.Port.TYPE_DYNAMIC && p2.type != core_port.Port.TYPE_DYNAMIC)
+        {
+            if (p1.type != p2.type) return "can not link: different type";
+        }
+
+        if (CABLES.UI && p1.type == core_port.Port.TYPE_OBJECT && p2.type == core_port.Port.TYPE_OBJECT)
+        {
+            if (p1.uiAttribs.objType && p2.uiAttribs.objType)
+                if (p1.uiAttribs.objType != p2.uiAttribs.objType)
+                    return "incompatible objects";
+        }
+
+        if (!p1) return "can not link: port 1 invalid";
+        if (!p2) return "can not link: port 2 invalid";
+
+        if (p1.direction == core_port.Port.DIR_IN && p1.isAnimated()) return "can not link: is animated";
+        if (p2.direction == core_port.Port.DIR_IN && p2.isAnimated()) return "can not link: is animated";
+
+        if (p1.isLinkedTo(p2)) return "ports already linked";
+
+        if ((p1.canLink && !p1.canLink(p2)) || (p2.canLink && !p2.canLink(p1))) return "Incompatible";
+
+        return "can link";
+    }
+
+    /**
+     * return true if ports can be linked
+     *
+     * @param {Port} p1 port1
+     * @param {Port} p2 port2
+     * @returns {Boolean}
+     */
+    static canLink(p1, p2)
+    {
+        if (!p1) return false;
+        if (!p2) return false;
+        if (p1.direction == core_port.Port.DIR_IN && p1.isAnimated()) return false;
+        if (p2.direction == core_port.Port.DIR_IN && p2.isAnimated()) return false;
+
+        if (p1.isHidden() || p2.isHidden()) return false;
+
+        if (p1.isLinkedTo(p2)) return false;
+
+        if (p1.direction == p2.direction) return false;
+
+        if (CABLES.UI && p1.type == core_port.Port.TYPE_OBJECT && p2.type == core_port.Port.TYPE_OBJECT)
+        {
+            if (p1.uiAttribs.objType && p2.uiAttribs.objType)
+            {
+                if (p1.uiAttribs.objType.indexOf("sg_") == 0 && p2.uiAttribs.objType.indexOf("sg_") == 0) return true;
+                if (p1.uiAttribs.objType != p2.uiAttribs.objType)
+                    return false;
+            }
+        }
+
+        if (p1.type != p2.type && (p1.type != core_port.Port.TYPE_DYNAMIC && p2.type != core_port.Port.TYPE_DYNAMIC)) return false;
+        if (p1.type == core_port.Port.TYPE_DYNAMIC || p2.type == core_port.Port.TYPE_DYNAMIC) return true;
+
+        if (p1.op == p2.op) return false;
+
+        if (p1.canLink && !p1.canLink(p2)) return false;
+        if (p2.canLink && !p2.canLink(p1)) return false;
+
+        return true;
+    }
 }
 
 // --------------------------------------------
 
-/**
- * @function canLinkText
- * @memberof Link
- * @instance
- * @description return a text message with human readable reason if ports can not be linked, or can be
- * @param {Port} p1 port1
- * @param {Port} p2 port2
- */
-Link.canLinkText = function (p1, p2)
-{
-    if (p1.direction == p2.direction)
-    {
-        let txt = "(out)";
-        if (p2.direction == Port.DIR_IN) txt = "(in)";
-        return "can not link: same direction " + txt;
-    }
-    if (p1.op == p2.op) return "can not link: same op";
-    if (p1.type != Port.TYPE_DYNAMIC && p2.type != Port.TYPE_DYNAMIC)
-    {
-        if (p1.type != p2.type) return "can not link: different type";
-    }
-
-    if (CABLES.UI && p1.type == Port.TYPE_OBJECT && p2.type == Port.TYPE_OBJECT)
-    {
-        if (p1.uiAttribs.objType && p2.uiAttribs.objType)
-            if (p1.uiAttribs.objType != p2.uiAttribs.objType)
-                return "incompatible objects";
-    }
-
-    if (!p1) return "can not link: port 1 invalid";
-    if (!p2) return "can not link: port 2 invalid";
-
-    if (p1.direction == Port.DIR_IN && p1.isAnimated()) return "can not link: is animated";
-    if (p2.direction == Port.DIR_IN && p2.isAnimated()) return "can not link: is animated";
-
-    if (p1.isLinkedTo(p2)) return "ports already linked";
-
-    if ((p1.canLink && !p1.canLink(p2)) || (p2.canLink && !p2.canLink(p1))) return "Incompatible";
-
-    return "can link";
-};
-
-/**
- * @function canLink
- * @memberof Link
- * @instance
- * @description return true if ports can be linked
- * @param {Port} p1 port1
- * @param {Port} p2 port2
- * @returns {Boolean}
- */
-Link.canLink = function (p1, p2)
-{
-    if (!p1) return false;
-    if (!p2) return false;
-    if (p1.direction == Port.DIR_IN && p1.isAnimated()) return false;
-    if (p2.direction == Port.DIR_IN && p2.isAnimated()) return false;
-
-    if (p1.isHidden() || p2.isHidden()) return false;
-
-    if (p1.isLinkedTo(p2)) return false;
-
-    if (p1.direction == p2.direction) return false;
-
-    if (CABLES.UI && p1.type == Port.TYPE_OBJECT && p2.type == Port.TYPE_OBJECT)
-    {
-        if (p1.uiAttribs.objType && p2.uiAttribs.objType)
-        {
-            if (p1.uiAttribs.objType.indexOf("sg_") == 0 && p2.uiAttribs.objType.indexOf("sg_") == 0) return true;
-            if (p1.uiAttribs.objType != p2.uiAttribs.objType)
-                return false;
-        }
-    }
-
-    if (p1.type != p2.type && (p1.type != Port.TYPE_DYNAMIC && p2.type != Port.TYPE_DYNAMIC)) return false;
-    if (p1.type == Port.TYPE_DYNAMIC || p2.type == Port.TYPE_DYNAMIC) return true;
-
-    if (p1.op == p2.op) return false;
-
-    if (p1.canLink && !p1.canLink(p2)) return false;
-    if (p2.canLink && !p2.canLink(p1)) return false;
-
-    return true;
-};
-
+// EXTERNAL MODULE: ./src/corelibs/cgl/index.js + 9 modules
+var cgl = __webpack_require__("./src/corelibs/cgl/index.js");
+// EXTERNAL MODULE: ./src/core/constants.js
+var constants = __webpack_require__("./src/core/constants.js");
 ;// CONCATENATED MODULE: ./src/core/core_port_switch.js
 
 
-class SwitchPort extends Port
+class SwitchPort extends core_port.Port
 {
     constructor(__parent, name, type, uiAttribs, indexPort)
     {
@@ -11164,11 +10571,11 @@ class ValueSelectPort extends SwitchPort
 
 const MIN_NUM_PORTS = 2;
 
-class MultiPort extends Port
+class MultiPort extends core_port.Port
 {
     constructor(__parent, name, type, dir, uiAttribs, uiAttribsPorts)
     {
-        super(__parent, name, Port.TYPE_ARRAY, uiAttribs);
+        super(__parent, name, core_port.Port.TYPE_ARRAY, uiAttribs);
 
         this.setUiAttribs({ "multiPort": true, "group": this.name, "order": -1 });
         this.ports = [];
@@ -11192,7 +10599,7 @@ class MultiPort extends Port
         {
             let grey = !this.uiAttribs.multiPortManual || false;
 
-            if (this.direction == CONSTANTS.PORT.PORT_DIR_OUT)grey = false;
+            if (this.direction == constants.CONSTANTS.PORT.PORT_DIR_OUT)grey = false;
 
             for (let i = 0; i < this.ports.length; i++)
             {
@@ -11399,16 +10806,16 @@ class MultiPort extends Port
             const attrs = {};
             // if (type == CABLES.OP_PORT_TYPE_STRING) attrs.type = "string";
             attrs.type = type;
-            const po = new Port(this.op, name + "_" + this.ports.length, type, attrs);
+            const po = new core_port.Port(this.op, name + "_" + this.ports.length, type, attrs);
 
             po.direction = dir;
             this.ports.push(po);
             // console.log("CONSTANTS.PORT_DIR_OUT", CONSTANTS.PORT.PORT_DIR_OUT, this.direction);
-            if (this.direction == CONSTANTS.PORT.PORT_DIR_OUT) this.op.addOutPort(po);
+            if (this.direction == constants.CONSTANTS.PORT.PORT_DIR_OUT) this.op.addOutPort(po);
             else this.op.addInPort(po);
 
-            if (type == Port.TYPE_NUMBER) po.setInitialValue(0);
-            else if (type == Port.TYPE_STRING) po.setInitialValue("");
+            if (type == core_port.Port.TYPE_NUMBER) po.setInitialValue(0);
+            else if (type == core_port.Port.TYPE_STRING) po.setInitialValue("");
 
             this.addListeners();
 
@@ -11474,7 +10881,7196 @@ class MultiPort extends Port
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cg/cg_texture.js
+;// CONCATENATED MODULE: ./src/core/core_op.js
+
+
+
+
+
+
+
+
+
+
+/**
+ * @typedef Translation
+ * @property {number} [x]
+ * @property {number} [y]
+ */
+
+/**
+ * configuration object for loading a patch
+ * @typedef OpUiAttribs
+ * @property {string} [title] overwrite op title
+ * @property {string} [hidePort] hidePort
+ * @property {string} [title] overwrite op title
+ * @property {String} [title=''] overwrite title of port (by default this is portname)
+ * @property {string} [extendTitle] extended op title, shown in grey next to op name
+ * @property {object} [storage] internal - do not use manualy
+ * @property {boolean} [working] internal - do not use manualy
+ * @property {boolean} [bookmarked] internal - do not use manualy
+ * @property {boolean} [selected] internal - do not use manualy
+ * @property {boolean} [disabled] internal - do not use manualy
+ * @property {boolean} [loading] internal - do not use manualy
+ * @property {boolean} [resizable] internal - do not use manualy
+ * @property {object} [uierrors] internal - do not use manualy - use op.setUiError
+ * @property {string} [color]
+ * @property {object} [area]
+ * @property {string} [comment]
+ * @property {number} [height]
+ * @property {number} [width]
+ * @property {Translation} [translate]
+ * @property {string|number} [subPatch] internal - do not use manualy - use op.setUiError
+*/
+
+/**
+ * @typedef CorePatch
+ * @type Patch
+ */
+
+/**
+ * @template {CorePatch} Patch
+ */
+class Op extends eventtarget["default"]
+{
+    static OP_VERSION_PREFIX = "_v";
+    static EVENT_INIT = "init";
+    static EVENT_UIATTR_CHANGE = "onUiAttribsChange";
+
+    #objName = "";
+    _log = new logger["default"]("core_op");
+    //    #name = "";
+    #shortOpName = "";
+
+    opId = ""; // unique op id
+
+    /** @type {Array<Port>} */
+    portsOut = [];
+
+    /** @type {Patch} */
+    patch = null;
+
+    data = {}; // UNUSED, DEPRECATED, only left in for backwards compatibility with userops
+    storage = {}; // op-specific data to be included in export
+
+    /** @type {Array<Port>} */
+    portsIn = [];
+    portsInData = []; // original loaded patch data
+
+    /** @type {OpUiAttribs} */
+    uiAttribs = {};
+    enabled = true;
+
+    onAnimFrame = null;
+
+    preservedPortTitles = {};
+    preservedPortValues = {};
+    preservedPortLinks = {};
+
+    linkTimeRules = {
+        "needsLinkedToWork": [],
+        "needsStringToWork": [],
+        "needsParentOp": null
+    };
+
+    shouldWork = {};
+    hasUiErrors = 0;
+
+    /** @type {Object} */
+    uiErrors = {};
+    hasAnimPort = false;
+
+    /** @type {Port} */
+    patchId = null; // will be defined by subpatchops
+
+    /**
+     * @param {Patch} _patch
+     * @param {String} _objName
+     * @param {String} _id=null
+    */
+    constructor(_patch, _objName, _id = null)
+    {
+        super();
+
+        // this.#name = _objName;
+        this.opId = _id;
+        this.#objName = _objName;
+        this.patch = _patch;
+
+        this.#shortOpName = CABLES.getShortOpName(_objName);
+        this.getTitle();
+
+        this.id = _id || (0,utils.shortId)(); // instance id
+        this.onAddPort = null;
+        this.onCreate = null;
+        this.onResize = null;
+        this.onLoaded = null;
+        this.onDelete = null;
+        this.onError = null;
+
+        this._instances = null;
+
+        /**
+         * overwrite this to prerender shader and meshes / will be called by op `loadingStatus`
+         */
+        this.preRender = null;
+
+        /**
+         * overwrite this to initialize your op
+         */
+        this.init = null;
+
+        /**
+         * Implement to render 2d canvas based graphics from in an op - optionaly defined in op instance
+         * @param {CanvasRenderingContext2D} context of canvas 2d
+         * @param {Object} layer info
+         * @param {number} layer.x x position on canvas
+         * @param {number} layer.y y position on canvas
+         * @param {number} layer.width width of canvas
+         * @param {number} layer.height height of canvas
+         * @param {number} layer.scale current scaling of patchfield view
+         */
+    }
+
+    isInBlueprint2() // will be overwritten in ui
+    {
+        return false;
+    }
+
+    get name()
+    {
+        return this.getTitle();
+    }
+
+    set name(n)
+    {
+        this.setTitle(n);
+    }
+
+    /**
+     * @param {string} on
+     */
+    set _objName(on)
+    {
+        this.#objName = on;
+        this._log = new logger["default"]("op " + on);
+    }
+
+    get objName()
+    {
+        return this.#objName;
+    }
+
+    get shortName()
+    {
+        return this.#shortOpName;
+    }
+
+    /**
+     * op.require
+     *
+     * @param {String} _name - module name
+     * @returns {Object}
+     */
+    require(_name)
+    {
+        if (CABLES.platform && CABLES.StandaloneElectron && !CABLES.platform.frontendOptions.isElectron)
+            this.setUiError("notstandalone", "This op will only work in cables standalone version", 3);
+
+        return null;
+    }
+
+    checkMainloopExists()
+    {
+        if (!CABLES.UI) return;
+        if (!this.patch.tempData.mainloopOp) this.setUiError("nomainloop", "patch should have a mainloop to use this op");
+        else this.setUiError("nomainloop", null);
+    }
+
+    /** @returns {string} */
+    getTitle()
+    {
+        if (!this.uiAttribs) return "nouiattribs" + this.shortName;
+
+        /*
+         * if ((this.uiAttribs.title === undefined || this.uiAttribs.title === "") && this.objName.indexOf("Ops.Ui.") == -1)
+         *     this.uiAttribs.title = this._shortOpName;
+         */
+
+        return this.uiAttribs.title || this.#shortOpName;
+    }
+
+    /**
+     * @param {string} title
+     */
+    setTitle(title)
+    {
+
+        /*
+         * this._log.log("settitle", title);
+         * this._log.log(
+         *     (new Error()).stack
+         * );
+         */
+
+        if (title != this.getTitle()) this._setUiAttrib({ "title": title });
+    }
+
+    /**
+     * @param {Object} newAttribs
+     */
+    setStorage(newAttribs)
+    {
+        if (!newAttribs) return;
+        this.storage = this.storage || {};
+
+        let changed = false;
+        for (const p in newAttribs)
+        {
+            if (this.storage[p] != newAttribs[p]) changed = true;
+            this.storage[p] = newAttribs[p];
+        }
+
+        if (changed) this.emitEvent("onStorageChange", newAttribs);
+    }
+
+    isSubPatchOp()
+    {
+        if (this.patchId && this.storage) return (this.storage.subPatchVer || this.storage.blueprintVer || 0);
+        return false;
+    }
+
+    /**
+     * setUiAttrib
+     * possible values:
+     * <pre>
+     * warning - warning message - showing up in op parameter panel
+     * error - error message - showing up in op parameter panel
+     * extendTitle - op title extension, e.g. [ + ]
+     * </pre>
+     // * @param {OpUiAttribs} newAttribs, e.g. {"attrib":value}
+     * @example
+     * op.setUiAttrib({"extendTitle":str});
+     */
+    setUiAttrib(newAttribs)
+    {
+        this._setUiAttrib(newAttribs);
+    }
+
+    /**
+     * @deprecated
+     * @param {OpUiAttribs} a
+     */
+    setUiAttribs(a)
+    {
+        this._setUiAttrib(a);
+    }
+
+    /**
+     * @deprecated
+     * @param {OpUiAttribs} a
+     */
+    uiAttr(a)
+    {
+        this._setUiAttrib(a);
+    }
+
+    /**
+     * @param {OpUiAttribs} newAttribs
+     */
+    _setUiAttrib(newAttribs)
+    {
+        if (!newAttribs) return;
+
+        if (typeof newAttribs != "object") this._log.error("op.uiAttrib attribs are not of type object");
+        if (!this.uiAttribs) this.uiAttribs = {};
+
+        let changed = false;
+        let emitMove = false;
+        if (
+            CABLES.UI &&
+            newAttribs.hasOwnProperty("translate") &&
+            (
+                !this.uiAttribs.translate ||
+                this.uiAttribs.translate.x != newAttribs.translate.x ||
+                this.uiAttribs.translate.y != newAttribs.translate.y
+            )) emitMove = true;
+
+        if (newAttribs.hasOwnProperty("title") && newAttribs.title != this.uiAttribs.title)
+        {
+            this.uiAttribs.title = newAttribs.title;
+            changed = true;
+        }
+
+        if (newAttribs.hasOwnProperty("disabled"))
+        {
+            changed = true;
+            this.setEnabled(!newAttribs.disabled);
+        }
+
+        for (const p in newAttribs)
+        {
+            if (this.uiAttribs[p] != newAttribs[p]) changed = true;
+            this.uiAttribs[p] = newAttribs[p];
+        }
+
+        if (this.uiAttribs.hasOwnProperty("selected") && this.uiAttribs.selected == false) delete this.uiAttribs.selected;
+        if (this.uiAttribs.hasOwnProperty("selected")) changed = true;
+
+        if (changed)
+        {
+            this.emitEvent(Op.EVENT_UIATTR_CHANGE, newAttribs);
+            this.patch.emitEvent("onUiAttribsChange", this, newAttribs);
+        }
+
+        if (emitMove) this.emitEvent("move");
+    }
+
+    getName()
+    {
+        return this.#shortOpName;
+    }
+
+    /**
+     * @param {Port} p
+     */
+    addOutPort(p)
+    {
+        p.direction = constants.CONSTANTS.PORT.PORT_DIR_OUT;
+        p._op = this;
+        this.portsOut.push(p);
+        this.emitEvent("onPortAdd", p);
+        return p;
+    }
+
+    hasDynamicPort()
+    {
+        let i = 0;
+        for (i = 0; i < this.portsIn.length; i++)
+        {
+            if (this.portsIn[i].type == core_port.Port.TYPE_DYNAMIC) return true;
+            if (this.portsIn[i].getName() == "dyn") return true;
+        }
+        for (i = 0; i < this.portsOut.length; i++)
+        {
+            if (this.portsOut[i].type == core_port.Port.TYPE_DYNAMIC) return true;
+            if (this.portsOut[i].getName() == "dyn") return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param {any|Port | MultiPort} p
+     */
+    addInPort(p)
+    {
+        p.direction = core_port.Port.DIR_IN;
+        p._op = this;
+
+        this.portsIn.push(p);
+        this.emitEvent("onPortAdd", p);
+
+        return p;
+    }
+
+    /**
+     *
+     * @param {string} name
+     * @param {string} v
+     */
+    inFunction(name, v)
+    {
+        return this.inTrigger(name, v);
+    }
+
+    /**
+     * create a trigger input port
+     * @param {String} name
+     * @param {String} v
+     * @return {Port} created port
+     *
+     */
+    inTrigger(name, v)
+    {
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_FUNCTION));
+        if (v !== undefined) p.set(v);
+        return p;
+    }
+
+    /**
+     * create multiple UI trigger buttons
+     * @param {String} name
+     * @param {Array} v
+     * @return {Port} created port
+     */
+    inTriggerButton(name, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_FUNCTION, {
+                "display": "button"
+            })
+        );
+        if (v !== undefined) p.set(v);
+        return p;
+    }
+
+    /**
+     * @param {string} name
+     * @param {any} v
+     */
+    inUiTriggerButtons(name, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_FUNCTION, {
+                "display": "buttons"
+            })
+        );
+        if (v !== undefined) p.set(v);
+        return p;
+    }
+
+    /**
+     * @deprecated
+     */
+    inValueFloat(name, v)
+    {
+        return this.inFloat(name, v);
+    }
+
+    /**
+     * @deprecated
+     */
+    inValue(name, v)
+    {
+        return this.inFloat(name, v);
+    }
+
+    /**
+     * create a number value input port
+     * @param {String} name
+     * @param {Number} v
+     * @return {Port} created port
+     */
+    inFloat(name, v)
+    {
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_VALUE));
+
+        p.setInitialValue(v);
+
+        return p;
+    }
+
+    /**
+     * @deprecated
+     */
+    inValueBool(name, v)
+    {
+        return this.inBool(name, v);
+    }
+
+    /**
+     * create a boolean input port, displayed as a checkbox
+     * @param {String} name
+     * @param {Boolean|number} v
+     * @return {Port} created port
+     */
+    inBool(name, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_NUMBER, {
+                "display": "bool"
+            })
+        );
+
+        if (v === true)v = 1;
+        if (v === false)v = 0;
+        p.setInitialValue(v);
+
+        return p;
+    }
+
+    /**
+     * @param {string} name
+     * @param {number} type
+     */
+    inMultiPort(name, type)
+    {
+        const p = new MultiPort(
+            this,
+            name,
+            type,
+            core_port.Port.DIR_IN,
+            {
+                "addPort": true,
+                "hidePort": true
+            }
+        );
+        p.ignoreValueSerialize = true;
+
+        this.addInPort(p);
+        p.initPorts();
+
+        return p;
+    }
+
+    /**
+     * @param {string} name
+     * @param {number} type
+     */
+    outMultiPort(name, type, uiAttribsPort = {})
+    {
+        const p = new MultiPort(
+            this,
+            name,
+            type,
+            constants.CONSTANTS.PORT.PORT_DIR_OUT,
+            {
+                "display": "multiport",
+                "hidePort": true
+            },
+            uiAttribsPort
+        );
+        p.ignoreValueSerialize = true;
+
+        this.addOutPort(p);
+        p.initPorts();
+
+        return p;
+    }
+
+    /**
+     * @param {string} name
+     * @param {string} v
+     */
+    inValueString(name, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
+                "type": "string"
+            })
+        );
+        p.value = "";
+
+        p.setInitialValue(v);
+        return p;
+    }
+
+    /**
+     * create a String value input port
+     * @param {String} name
+     * @param {String} v default value
+     * @return {Port} created port
+     */
+    inString(name, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
+                "type": "string"
+            })
+        );
+        v = v || "";
+
+        p.setInitialValue(v);
+        return p;
+    }
+
+    // /**
+    //  * create a String value input port displayed as TextArea
+    //  * @memberof Op
+    //  * @param {String} name
+    //  * @param {String} v default value
+    //  * @return {Port} created port
+    //  */
+    // inValueText(name, v)
+    // {
+    //     const p = this.addInPort(
+    //         new Port(this, name, Port.TYPE_VALUE, {
+    //             "type": "string",
+    //             "display": "text"
+    //         })
+    //     );
+    //     p.value = "";
+
+    //     p.setInitialValue(v);
+
+    //     /*
+    //      * if (v !== undefined)
+    //      * {
+    //      *     p.set(v);
+    //      *     p.defaultValue = v;
+    //      * }
+    //      */
+    //     return p;
+    // }
+
+    /**
+     * @param {string} name
+     * @param {string} v
+     */
+    inTextarea(name, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
+                "type": "string",
+                "display": "text"
+            })
+        );
+        p.value = "";
+        if (v !== undefined)
+        {
+            p.set(v);
+            p.defaultValue = v;
+        }
+        return p;
+    }
+
+    /**
+     * create a String value input port displayed as editor
+     * @param {String} name
+     * @param {String} v default value
+     * @param {String} syntax language
+     * @param {Boolean} hideFormatButton
+     * @return {Port} created port
+     */
+    inStringEditor(name, v, syntax, hideFormatButton = true)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
+                "type": "string",
+                "display": "editor",
+                "editShortcut": true,
+                "editorSyntax": syntax,
+                "hideFormatButton": hideFormatButton
+            }));
+
+        p.value = "";
+        if (v !== undefined)
+        {
+            p.set(v);
+            p.defaultValue = v;
+        }
+        return p;
+    }
+
+    /**
+     *
+     * @param {string} name
+     * @param {String} v
+     * @param {String} syntax
+     */
+    inValueEditor(name, v, syntax, hideFormatButton = true)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_NUMBER, {
+                "type": "string",
+                "display": "editor",
+                "editorSyntax": syntax,
+                "hideFormatButton": hideFormatButton
+            })
+        );
+        p.value = "";
+        if (v !== undefined)
+        {
+            p.set(v);
+            p.defaultValue = v;
+        }
+        return p;
+    }
+
+    /**
+     * @deprecated
+     * @param {string} name
+     * @param {any[]} values
+     * @param {string} v
+     * @param {boolean} noindex
+     */
+    inValueSelect(name, values, v, noindex)
+    {
+        return this.inDropDown(name, values, v, noindex);
+    }
+
+    /**
+     * create a string select box
+     * @param {String} name
+     * @param {Array} values
+     * @param {String} v default value
+     * @return {Port} created port
+     * @param {boolean} [noindex]
+     */
+    inDropDown(name, values, v, noindex)
+    {
+        let p = null;
+        if (!noindex)
+        {
+            const indexPort = new core_port.Port(this, name + " index", core_port.Port.TYPE_NUMBER, {
+                "increment": "integer",
+                "hideParam": true
+            });
+            const n = this.addInPort(indexPort);
+
+            if (values) for (let i = 0; i < values.length; i++) values[i] = String(values[i]);
+
+            const valuePort = new ValueSelectPort(
+                this,
+                name,
+                core_port.Port.TYPE_NUMBER,
+                {
+                    "display": "dropdown",
+                    "hidePort": true,
+                    "type": "string",
+                    "values": values
+                },
+                n
+            );
+
+            valuePort.indexPort = indexPort;
+
+            valuePort.on("change", (/** @type {any} */ val, /** @type {Port} */ thePort) =>
+            {
+                if (!thePort.indexPort.isLinked() && thePort.uiAttribs.values)
+                {
+                    const idx = thePort.uiAttribs.values.indexOf(val);
+                    if (idx > -1) thePort.indexPort.set(idx);
+                }
+            });
+
+            indexPort.onLinkChanged = () =>
+            {
+                valuePort.setUiAttribs({ "greyout": indexPort.isLinked() });
+            };
+
+            p = this.addInPort(valuePort);
+
+            if (v !== undefined)
+            {
+                p.set(v);
+                const index = values.findIndex((item) => { return item == v; });
+                n.setValue(index);
+                p.defaultValue = v;
+                n.defaultValue = index;
+            }
+        }
+        else
+        {
+            const valuePort = new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
+                "display": "dropdown",
+                "hidePort": true,
+                "type": "string",
+                "values": values
+            });
+
+            p = this.addInPort(valuePort);
+        }
+
+        return p;
+    }
+
+    /**
+     * create a string switch box
+     * @param {String} name
+     * @param {Array} values
+     * @param {String} v default value
+     * @param {boolean} noindex
+     * @return {Port} created port
+     */
+    inSwitch(name, values, v, noindex)
+    {
+        let p = null;
+        if (!noindex)
+        {
+            if (!v)v = values[0];
+            const indexPort = new core_port.Port(this, name + " index", core_port.Port.TYPE_VALUE, {
+                "increment": "integer",
+                "values": values,
+                "hideParam": true
+            });
+            const n = this.addInPort(indexPort);
+
+            if (values) for (let i = 0; i < values.length; i++) values[i] = String(values[i]);
+
+            const switchPort = new SwitchPort(
+                this,
+                name,
+                core_port.Port.TYPE_STRING,
+                {
+                    "display": "switch",
+                    "hidePort": true,
+                    "type": "string",
+                    "values": values
+                },
+                n
+            );
+
+            switchPort.indexPort = indexPort;
+
+            switchPort.on("change", (val, thePort) =>
+            {
+                if (!thePort.indexPort.isLinked() && thePort.uiAttribs.values)
+                {
+                    const idx = thePort.uiAttribs.values.indexOf(val);
+                    if (idx > -1) thePort.indexPort.set(idx);
+                }
+            });
+
+            indexPort.onLinkChanged = function ()
+            {
+                switchPort.setUiAttribs({ "greyout": indexPort.isLinked() });
+            };
+            p = this.addInPort(switchPort);
+
+            if (v !== undefined)
+            {
+                p.set(v);
+                const index = values.findIndex((item) => { return item == v; });
+                n.setValue(index);
+                p.defaultValue = v;
+                n.defaultValue = index;
+            }
+        }
+        else
+        {
+            const switchPort = new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
+                "display": "switch",
+                "hidePort": true,
+                "type": "string",
+                "values": values
+            });
+            p = this.addInPort(switchPort);
+        }
+
+        return p;
+    }
+
+    /**
+     * @deprecated
+     */
+    inValueInt(name, v)
+    {
+        return this.inInt(name, v);
+    }
+
+    /**
+     * create a integer input port
+     * @param {String} name
+     * @param {number} v default value
+     * @return {Port} created port
+     */
+    inInt(name, v)
+    {
+        // old
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, { "increment": "integer" })
+        );
+        if (v !== undefined)
+        {
+            p.set(v);
+            p.defaultValue = v;
+        }
+        return p;
+    }
+
+    /**
+     * create a file/URL input port
+     * @param {String} name
+     * @param {String} filter
+     * @param {String} v
+     * @return {Port} created port
+     */
+    inFile(name, filter, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
+                "display": "file",
+                "type": "string",
+                "filter": filter
+            })
+        );
+        if (v !== undefined)
+        {
+            p.set(v);
+            p.defaultValue = v;
+        }
+        return p;
+    }
+
+    /**
+     * @deprecated
+     */
+    inUrl(name, filter, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
+                "display": "file",
+                "type": "string",
+                "filter": filter
+            })
+        );
+        if (v !== undefined)
+        {
+            p.set(v);
+            p.defaultValue = v;
+        }
+        return p;
+    }
+
+    /**
+     * create a texture input port
+     * @param {String} name
+     * @return {Port} created port
+     */
+    inTexture(name, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_OBJECT, {
+                "display": "texture",
+                "objType": "texture",
+                "preview": true
+            })
+        );
+        p.ignoreValueSerialize = true;
+        if (v !== undefined) p.set(v);
+        return p;
+    }
+
+    /**
+     * create a object input port
+     * @param {String} name
+     * @param {Object} v
+     * @param {String} objType
+     * @return {Port} created port
+     */
+    inObject(name, v, objType)
+    {
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_OBJECT, { "objType": objType }));
+        p.ignoreValueSerialize = true;
+
+        if (v !== undefined) p.set(v);
+        return p;
+    }
+
+    /**
+     * @param {string} name
+     * @param {string} v
+     */
+    inGradient(name, v)
+    {
+        const p = this.addInPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
+                "display": "gradient"
+                // "hidePort": true
+            })
+        );
+        if (v !== undefined) p.set(v);
+        return p;
+    }
+
+    /**
+     * @param {Port} p
+     * returns {number}
+     */
+    getPortVisibleIndex(p)
+    {
+        let ports = this.portsIn;
+        if (p.direction == constants.CONSTANTS.PORT_DIR_OUT)ports = this.portsOut;
+
+        let index = 0;
+        for (let i = 0; i < ports.length; i++)
+        {
+            if (ports[i].uiAttribs.hidePort) continue;
+            index++;
+            if (ports[i] == p) return index;
+        }
+    }
+
+    /**
+     * create a array input port
+     * @param {String} name
+     * @param {Array|Number} v
+     * @param {Number} _stride
+     * @return {Port} created port
+     */
+    inArray(name, v = undefined, _stride = undefined)
+    {
+        let stride = _stride;
+        // @ts-ignore
+        if (!_stride && CABLES.isNumeric(v))stride = v;
+
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_ARRAY, { "stride": stride }));
+
+        if (v !== undefined && (Array.isArray(v) || v == null)) p.set(v);
+
+        return p;
+    }
+
+    /**
+     * @deprecated
+     */
+    inValueSlider(name, v, min, max)
+    {
+        return this.inFloatSlider(name, v, min, max);
+    }
+
+    /**
+     * create a value slider input port
+     * @param {String} name
+     * @param {number} v
+     * @param {number} min
+     * @param {number} max
+     * @return {Port} created port
+     */
+    inFloatSlider(name, v, min, max)
+    {
+        const uiattribs = { "display": "range" };
+
+        if (min != undefined && max != undefined)
+        {
+            uiattribs.min = min;
+            uiattribs.max = max;
+        }
+
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_VALUE, uiattribs));
+        if (v !== undefined)
+        {
+            p.set(v);
+            p.defaultValue = v;
+        }
+        return p;
+    }
+
+    /**
+     * @deprecated
+     */
+    outFunction(name, v)
+    {
+        return this.outTrigger(name, v);
+    }
+
+    /**
+     * create output trigger port
+     * @param {String} name
+     * @param {String} v
+     * @return {Port} created port
+     */
+    outTrigger(name, v)
+    {
+        // old
+        const p = this.addOutPort(new core_port.Port(this, name, core_port.Port.TYPE_FUNCTION));
+        if (v !== undefined) p.set(v);
+        return p;
+    }
+
+    /**
+     * @deprecated
+     */
+    outValue(name, v)
+    {
+        return this.outNumber(name, v);
+    }
+
+    /**
+     * create output value port
+     * @param {String} name
+     * @param {number} v default value
+     * @return {Port} created port
+     */
+    outNumber(name, v)
+    {
+        const p = this.addOutPort(new core_port.Port(this, name, core_port.Port.TYPE_VALUE));
+        if (v !== undefined) p.set(v);
+        return p;
+    }
+
+    /**
+     * @deprecated
+     */
+    outValueBool(name, v)
+    {
+        return this.outBool(name, v);
+    }
+
+    /**
+     * deprecated create output boolean port
+     * @deprecated
+     * @param {String} name
+     * @param {boolean} v default value
+     * @return {Port} created port
+     */
+    outBool(name, v)
+    {
+        // old: use outBoolNum
+        const p = this.addOutPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
+                "display": "bool"
+            })
+        );
+        if (v !== undefined) p.set(v);
+        else p.set(0);
+        return p;
+    }
+
+    /**
+     * create output boolean port,value will be converted to 0 or 1
+     * @param {String} name
+     * @return {Port} created port
+     */
+    outBoolNum(name, v)
+    {
+        const p = this.addOutPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
+                "display": "boolnum"
+            })
+        );
+
+        p.set = function (b)
+        {
+            this.setValue(b ? 1 : 0);
+        }.bind(p);
+
+        if (v !== undefined) p.set(v);
+        else p.set(0);
+        return p;
+    }
+
+    /**
+     * @deprecated
+     * @param {string} name
+     * @param {string} v
+     */
+    outValueString(name, v)
+    {
+        const p = this.addOutPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
+                "type": "string"
+            })
+        );
+        if (v !== undefined) p.set(v);
+        return p;
+    }
+
+    /**
+     * create output string port
+     * @param {string} name
+     * @param {String} v
+     * @return {Port} created port
+     */
+    outString(name, v)
+    {
+        const p = this.addOutPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
+                "type": "string"
+            })
+        );
+        if (v !== undefined) p.set(v);
+        else p.set("");
+        return p;
+    }
+
+    /**
+     * create output object port
+     * @param {String} name
+     * @return {Port} created port
+     * @param {object} v
+     * @param {string} objType
+     */
+    outObject(name, v, objType)
+    {
+        const p = this.addOutPort(new core_port.Port(this, name, core_port.Port.TYPE_OBJECT, { "objType": objType || null }));
+        p.set(v || null);
+        p.ignoreValueSerialize = true;
+        return p;
+    }
+
+    /**
+     * create output array port
+     * @param {String} name
+     * @return {Port} created port
+     * @param {array|number} v
+     * @param {number} stride
+     */
+    outArray(name, v, stride)
+    {
+        if (!stride && CABLES.isNumeric(v))stride = v;
+        const p = this.addOutPort(new core_port.Port(this, name, core_port.Port.TYPE_ARRAY, { "stride": stride }));
+        if (v !== undefined && (Array.isArray(v) || v == null)) p.set(v);
+
+        p.ignoreValueSerialize = true;
+        return p;
+    }
+
+    /**
+     * create output texture port
+     * @param {String} name
+     * @return {Port} created port
+     * @param {any} v
+     */
+    outTexture(name, v)
+    {
+        const p = this.addOutPort(
+            new core_port.Port(this, name, core_port.Port.TYPE_OBJECT, {
+                "preview": true,
+                "objType": "texture",
+                "display": "texture"
+            })
+        );
+        if (v !== undefined) p.setRef(v || cgl.CGL.Texture.getEmptyTexture(this.patch.cgl));
+
+        p.ignoreValueSerialize = true;
+        return p;
+    }
+
+    /**
+     * @deprecated
+     * @param {string} name
+     * @param {any} filter
+     * @param {any} options
+     * @param {any} v
+     */
+    inDynamic(name, filter, options, v)
+    {
+        const p = new core_port.Port(this, name, core_port.Port.TYPE_DYNAMIC, options);
+
+        p.shouldLink = (p1, p2) =>
+        {
+            if (filter && CABLES.isArray(filter))
+            {
+                // for (let i = 0; i < filter.length; i++)
+                // {
+                // if (p1 == this && p2.type === filter[i]) return true;
+                // if (p2 == this && p1.type === filter[i]) return true;
+                // }
+                return false; // types do not match
+            }
+            return true; // no filter set
+        };
+
+        this.addInPort(p);
+        if (v !== undefined)
+        {
+            p.set(v);
+            p.defaultValue = v;
+        }
+        return p;
+    }
+
+    removeLinks()
+    {
+        for (let i = 0; i < this.portsIn.length; i++) this.portsIn[i].removeLinks();
+        for (let i = 0; i < this.portsOut.length; i++) this.portsOut[i].removeLinks();
+    }
+
+    getSerialized()
+    {
+        const opObj = {};
+
+        if (this.opId) opObj.opId = this.opId;
+        if (this.patch.storeObjNames) opObj.objName = this.objName;
+
+        opObj.id = this.id;
+        opObj.uiAttribs = JSON.parse(JSON.stringify(this.uiAttribs)) || {};
+
+        if (this.storage && Object.keys(this.storage).length > 0) opObj.storage = JSON.parse(JSON.stringify(this.storage));
+        if (this.uiAttribs.hasOwnProperty("working") && this.uiAttribs.working == true) delete this.uiAttribs.working;
+        if (opObj.uiAttribs.hasOwnProperty("uierrors")) delete opObj.uiAttribs.uierrors;
+
+        if (opObj.uiAttribs.title === "") delete opObj.uiAttribs.title;
+        if (opObj.uiAttribs.color === null) delete opObj.uiAttribs.color;
+        if (opObj.uiAttribs.comment === null) delete opObj.uiAttribs.comment;
+
+        if (opObj.uiAttribs.title == this.#shortOpName ||
+            (this.uiAttribs.title || "").toLowerCase() == this.#shortOpName.toLowerCase()) delete opObj.uiAttribs.title;
+
+        opObj.portsIn = [];
+        opObj.portsOut = [];
+
+        for (let i = 0; i < this.portsIn.length; i++)
+        {
+            const s = this.portsIn[i].getSerialized();
+            if (s) opObj.portsIn.push(s);
+        }
+
+        for (let i = 0; i < this.portsOut.length; i++)
+        {
+            const s = this.portsOut[i].getSerialized();
+            if (s) opObj.portsOut.push(s);
+        }
+
+        if (opObj.portsIn.length == 0) delete opObj.portsIn;
+        if (opObj.portsOut.length == 0) delete opObj.portsOut;
+        (0,utils.cleanJson)(opObj);
+
+        return opObj;
+    }
+
+    /**
+     * @param {number} type
+     */
+    getFirstOutPortByType(type)
+    {
+        for (let i = 0; i < this.portsOut.length; i++)
+            if (this.portsOut[i].type == type) return this.portsOut[i];
+    }
+
+    /**
+     * @param {number} type
+     */
+    getFirstInPortByType(type)
+    {
+        for (let i = 0; i < this.portsIn.length; i++)
+            if (this.portsIn[i].type == type) return this.portsIn[i];
+    }
+
+    /**
+     * return port by the name portName
+     * @param {String} name
+     * @param {boolean} [lowerCase]
+     * @return {Port}
+     */
+    getPort(name, lowerCase = false)
+    {
+        return this.getPortByName(name, lowerCase);
+    }
+
+    /**
+     * @param {string} name
+     * @param {boolean} [lowerCase]
+     * @returns {Port}
+     */
+    getPortByName(name, lowerCase = false)
+    {
+        if (lowerCase)
+        {
+            for (let ipi = 0; ipi < this.portsIn.length; ipi++)
+                if (this.portsIn[ipi].getName().toLowerCase() == name || this.portsIn[ipi].id.toLowerCase() == name)
+                    return this.portsIn[ipi];
+
+            for (let ipo = 0; ipo < this.portsOut.length; ipo++)
+                if (this.portsOut[ipo].getName().toLowerCase() == name || this.portsOut[ipo].id.toLowerCase() == name)
+                    return this.portsOut[ipo];
+        }
+        else
+        {
+            for (let ipi = 0; ipi < this.portsIn.length; ipi++)
+                if (this.portsIn[ipi].getName() == name || this.portsIn[ipi].id == name)
+                    return this.portsIn[ipi];
+
+            for (let ipo = 0; ipo < this.portsOut.length; ipo++)
+                if (this.portsOut[ipo].getName() == name || this.portsOut[ipo].id == name)
+                    return this.portsOut[ipo];
+        }
+    }
+
+    /**
+     * return port by the name id
+     * @param {String} id
+     * @return {Port}
+     */
+    getPortById(id)
+    {
+        for (let ipi = 0; ipi < this.portsIn.length; ipi++) if (this.portsIn[ipi].id == id) return this.portsIn[ipi];
+        for (let ipo = 0; ipo < this.portsOut.length; ipo++) if (this.portsOut[ipo].id == id) return this.portsOut[ipo];
+    }
+
+    updateAnims()
+    {
+        if (this.hasAnimPort)
+            for (let i = 0; i < this.portsIn.length; i++) this.portsIn[i].updateAnim();
+    }
+
+    log()
+    {
+        this._log.log(...arguments);
+    }
+
+    /**
+     * @deprecated
+     */
+    error()
+    {
+        this._log.error(...arguments);
+    }
+
+    logError()
+    {
+        this._log.error(...arguments);
+    }
+
+    /**
+     * @deprecated
+     */
+    warn()
+    {
+        this._log.warn(...arguments);
+    }
+
+    logWarn()
+    {
+        this._log.warn(...arguments);
+    }
+
+    /**
+     * @deprecated
+     */
+    verbose()
+    {
+        this._log.verbose(...arguments);
+    }
+
+    logVerbose()
+    {
+        this._log.verbose(...arguments);
+    }
+
+    profile()
+    {
+        for (let ipi = 0; ipi < this.portsIn.length; ipi++)
+        {
+            this.portsIn[ipi]._onTriggered = this.portsIn[ipi]._onTriggeredProfiling;
+            this.portsIn[ipi].set = this.portsIn[ipi]._onSetProfiling;
+        }
+    }
+
+    // todo: check instancing stuff?
+    cleanUp()
+    {
+        if (this._instances)
+        {
+            for (let i = 0; i < this._instances.length; i++)
+                if (this._instances[i].onDelete) this._instances[i].onDelete();
+
+            this._instances.length = 0;
+        }
+
+        for (let i = 0; i < this.portsIn.length; i++)
+            this.portsIn[i].setAnimated(false);
+
+        if (this.onAnimFrame) this.patch.removeOnAnimFrame(this);
+    }
+
+    // todo: check instancing stuff?
+    instanced(triggerPort)
+    {
+        return false;
+
+        /*
+         * this._log.log("instanced", this.patch.instancing.numCycles());
+         * if (this.patch.instancing.numCycles() === 0) return false;
+         */
+
+        /*
+         * let i = 0;
+         * let ipi = 0;
+         * if (!this._instances || this._instances.length != this.patch.instancing.numCycles())
+         * {
+         *     if (!this._instances) this._instances = [];
+         *     this._.log("creating instances of ", this.objName, this.patch.instancing.numCycles(), this._instances.length);
+         *     this._instances.length = this.patch.instancing.numCycles();
+         */
+
+        /*
+         *     for (i = 0; i < this._instances.length; i++)
+         *     {
+         *         this._instances[i] = this.patch.createOp(this.objName, true);
+         *         this._instances[i].instanced ()
+         *         {
+         *             return false;
+         *         };
+         *         this._instances[i].uiAttr(this.uiAttribs);
+         */
+
+        /*
+         *         for (let ipo = 0; ipo < this.portsOut.length; ipo++)
+         *         {
+         *             if (this.portsOut[ipo].type == Port.TYPE_FUNCTION)
+         *             {
+         *                 this._instances[i].getPortByName(this.portsOut[ipo].name).trigger = this.portsOut[ipo].trigger.bind(this.portsOut[ipo]);
+         *             }
+         *         }
+         *     }
+         */
+
+        /*
+         *     for (ipi = 0; ipi < this.portsIn.length; ipi++)
+         *     {
+         *         this.portsIn[ipi].onChange = null;
+         *         this.portsIn[ipi].onValueChanged = null;
+         *     }
+         * }
+         */
+
+        /*
+         * const theTriggerPort = null;
+         * for (ipi = 0; ipi < this.portsIn.length; ipi++)
+         * {
+         *     if (
+         *         this.portsIn[ipi].type == Port.TYPE_VALUE ||
+         *         this.portsIn[ipi].type == Port.TYPE_ARRAY
+         *     )
+         *     {
+         *         this._instances[this.patch.instancing.index()].portsIn[ipi].set(this.portsIn[ipi].get());
+         *     }
+         *     if (this.portsIn[ipi].type == Port.TYPE_FUNCTION)
+         *     {
+         *         // if(this._instances[ this.patch.instancing.index() ].portsIn[ipi].name==triggerPort.name)
+         *         // theTriggerPort=this._instances[ this.patch.instancing.index() ].portsIn[ipi];
+         *     }
+         * }
+         */
+
+        // if (theTriggerPort) theTriggerPort.onTriggered();
+
+        /*
+         * for (ipi = 0; ipi < this.portsOut.length; ipi++)
+         * {
+         *     if (this.portsOut[ipi].type == Port.TYPE_VALUE)
+         *     {
+         *         this.portsOut[ipi].set(this._instances[this.patch.instancing.index()].portsOut[ipi].get());
+         *     }
+         * }
+         */
+
+        // return true;
+    }
+
+    // todo: check instancing stuff?
+    initInstancable()
+    {
+        //         if(this.isInstanced)
+        //         {
+        //             this._log.log('cancel instancing');
+        //             return;
+        //         }
+        //         this._instances=[];
+        //         for(var ipi=0;ipi<this.portsIn.length;ipi++)
+        //         {
+        //             if(this.portsIn[ipi].type==Port.TYPE_VALUE)
+        //             {
+        //
+        //             }
+        //             if(this.portsIn[ipi].type==Port.TYPE_FUNCTION)
+        //             {
+        //                 // var piIndex=ipi;
+        //                 this.portsIn[ipi].onTriggered=function(piIndex)
+        //                 {
+        //
+        //                     var i=0;
+        // // this._log.log('trigger',this._instances.length);
+        //
+        //                 }.bind(this,ipi );
+        //
+        //             }
+        // };
+        // this._instances=null;
+    }
+
+    // setValues(obj)
+    // {
+    //     for (const i in obj)
+    //     {
+    //         const port = this.getPortByName(i);
+    //         if (port) port.set(obj[i]);
+    //         else this._log.warn("op.setValues: port not found:", i);
+    //     }
+    // }
+
+    /**
+     * return true if op has this error message id
+     * @param {String} id
+     * @returns {Boolean} - has id
+     */
+    hasUiError(id)
+    {
+        return this.uiErrors.hasOwnProperty(id) && this.uiErrors[id];
+    }
+
+    /**
+     * show op error message - set message to null to remove error message
+     * @param {string} id error id
+     * @param {string} txt text message
+     * @param {number} level level
+     */
+    setUiError(id, txt, level = 2, options = {})
+    {
+        // overwritten in ui: core_extend_op
+    }
+
+    /**
+     * enable/disable op
+     * @function
+     * @param {boolean} b
+     */
+    setEnabled(b)
+    {
+        this.enabled = b;
+        this.emitEvent("onEnabledChange", b);
+    }
+
+    /**
+     * organize ports into a group
+     * @function
+     * @param {String} name
+     * @param {Array} ports
+     */
+    setPortGroup(name, ports)
+    {
+        for (let i = 0; i < ports.length; i++)
+        {
+            if (ports[i])
+                if (ports[i].setUiAttribs) ports[i].setUiAttribs({ "group": name });
+                else this._log.error("setPortGroup: invalid port!");
+        }
+    }
+
+    /**
+     * visually indicate ports that they are coordinate inputs
+     * @function
+     * @param {Port} px
+     * @param {Port} py
+     * @param {Port} pz
+     */
+    setUiAxisPorts(px, py, pz)
+    {
+        if (px) px.setUiAttribs({ "axis": "X" });
+        if (py) py.setUiAttribs({ "axis": "Y" });
+        if (pz) pz.setUiAttribs({ "axis": "Z" });
+    }
+
+    /**
+     * remove port from op
+     * @param {Port} port to remove
+     */
+    removePort(port)
+    {
+        for (let ipi = 0; ipi < this.portsIn.length; ipi++)
+        {
+            if (this.portsIn[ipi] == port)
+            {
+                this.portsIn.splice(ipi, 1);
+                this.emitEvent(Op.EVENT_UIATTR_CHANGE, {});
+                this.emitEvent("onPortRemoved", {});
+                return;
+            }
+        }
+        for (let ipi = 0; ipi < this.portsOut.length; ipi++)
+        {
+            if (this.portsOut[ipi] == port)
+            {
+                this.portsOut.splice(ipi, 1);
+                this.emitEvent(Op.EVENT_UIATTR_CHANGE, {});
+                this.emitEvent("onPortRemoved", {});
+                return;
+            }
+        }
+    }
+
+    /**
+     * show a warning of this op is not a child of parentOpName
+     * @function
+     * @param {String} parentOpName
+     */
+    toWorkNeedsParent(parentOpName)
+    {
+        this.linkTimeRules.needsParentOp = parentOpName;
+    }
+
+    /**
+     * show a warning of this op is a child of parentOpName
+     * @function
+     * @instance
+     * @memberof Op
+     * @param {String} parentOpName
+     * @param {number} type
+     */
+    toWorkShouldNotBeChild(parentOpName, type)
+    {
+        if (!this.patch.isEditorMode()) return;
+        this.linkTimeRules.forbiddenParent = parentOpName;
+        if (type != undefined) this.linkTimeRules.forbiddenParentType = type;
+    }
+
+    toWorkPortsNeedsString()
+    {
+        if (!this.patch.isEditorMode()) return;
+        for (let i = 0; i < arguments.length; i++)
+            if (this.linkTimeRules.needsStringToWork.indexOf(arguments[i]) == -1) this.linkTimeRules.needsStringToWork.push(arguments[i]);
+    }
+
+    /**
+     * show a small X to indicate op is not working when given ports are not linked
+     * @function
+     * @instance
+     * @memberof Op
+     * @param {Array<Port>} port
+     */
+    toWorkPortsNeedToBeLinked()
+    {
+        if (!this.patch.isEditorMode()) return;
+        for (let i = 0; i < arguments.length; i++)
+            if (this.linkTimeRules.needsLinkedToWork.indexOf(arguments[i]) == -1) this.linkTimeRules.needsLinkedToWork.push(arguments[i]);
+    }
+
+    toWorkPortsNeedToBeLinkedReset()
+    {
+        if (!this.patch.isEditorMode()) return;
+        this.linkTimeRules.needsLinkedToWork.length = 0;
+        if (this.checkLinkTimeWarnings) this.checkLinkTimeWarnings();
+    }
+
+    initVarPorts()
+    {
+        for (let i = 0; i < this.portsIn.length; i++)
+            if (this.portsIn[i].getVariableName()) this.portsIn[i].setVariable(this.portsIn[i].getVariableName());
+    }
+
+    checkLinkTimeWarnings() {}
+    _checkLinksNeededToWork() { }
+
+    /**
+     * refresh op parameters, if current op is selected
+     * @function
+     * @instance
+     * @memberof Op
+     */
+    refreshParams()
+    {
+        if (this.patch && this.patch.isEditorMode() && this.isCurrentUiOp()) gui.opParams.show(this);
+    }
+
+    /**
+     * Returns true if op is selected and parameter are shown in the editor, can only return true if in editor/ui
+     * @instance
+     * @memberof Op
+     * @returns {Boolean} - is current ui op
+     */
+    isCurrentUiOp()
+    {
+        if (this.patch.isEditorMode()) return gui.patchView.isCurrentOp(this);
+    }
+
+    checkGraphicsApi(api = 0)
+    {
+        if (this.patch.isEditorMode())
+            if (this.patch.cg && this.patch.cg.gApi != api)
+                this.setUiError("wronggapi", "Wrong graphics API", 2);
+    }
+}
+
+;// CONCATENATED MODULE: ./src/core/loadingstatus.js
+
+
+
+
+
+/**
+ * LoadingStatus class, manages asynchronous loading jobs
+ *
+ * @namespace external:CABLES#LoadingStatus
+ * @hideconstructor
+ * @class
+ * @param patch
+ */
+
+class LoadingStatus extends eventtarget["default"]
+{
+
+    /**
+     * @param {Patch} patch
+     */
+    constructor(patch)
+    {
+        super();
+        this._log = new logger["default"]("LoadingStatus");
+        this._loadingAssets = {};
+        this._cbFinished = [];
+        this._assetTasks = [];
+        this._percent = 0;
+        this._count = 0;
+        this._countFinished = 0;
+        this._order = 0;
+        this._startTime = 0;
+        this._patch = patch;
+        this._wasFinishedPrinted = false;
+        this._loadingAssetTaskCb = false;
+    }
+
+    /**
+     * @param {Function} cb
+     */
+    setOnFinishedLoading(cb)
+    {
+        this._cbFinished.push(cb);
+    }
+
+    getNumAssets()
+    {
+        return this._countFinished;
+    }
+
+    getProgress()
+    {
+        return this._percent;
+    }
+
+    checkStatus()
+    {
+        this._countFinished = 0;
+        this._count = 0;
+
+        for (const i in this._loadingAssets)
+        {
+            this._count++;
+            if (!this._loadingAssets[i].finished)
+            {
+                this._countFinished++;
+            }
+        }
+
+        this._percent = (this._count - this._countFinished) / this._count;
+
+        if (this._countFinished === 0)
+        {
+            for (let j = 0; j < this._cbFinished.length; j++)
+            {
+                if (this._cbFinished[j])
+                {
+                    const cb = this._cbFinished[j];
+                    setTimeout(() => { cb(this._patch); this.emitEvent("finishedAll"); }, 100);
+                }
+            }
+
+            if (!this._wasFinishedPrinted)
+            {
+                this._wasFinishedPrinted = true;
+                this.print();
+            }
+            this.emitEvent("finishedAll");
+        }
+    }
+
+    getList()
+    {
+        let arr = [];
+        for (const i in this._loadingAssets)
+        {
+            arr.push(this._loadingAssets[i]);
+        }
+
+        return arr;
+    }
+
+    getListJobs()
+    {
+        let arr = [];
+        for (const i in this._loadingAssets)
+        {
+            if (!this._loadingAssets[i].finished)arr.push(this._loadingAssets[i].name);
+        }
+
+        return arr;
+    }
+
+    print()
+    {
+        if (this._patch.config.silent) return;
+
+        const rows = [];
+
+        for (const i in this._loadingAssets)
+        {
+            rows.push([
+                this._loadingAssets[i].order,
+                this._loadingAssets[i].type,
+                this._loadingAssets[i].name,
+                (this._loadingAssets[i].timeEnd - this._loadingAssets[i].timeStart) / 1000 + "s",
+            ]);
+        }
+
+        this._log.groupCollapsed("finished loading " + this._order + " assets in " + (Date.now() - this._startTime) / 1000 + "s");
+        this._log.table(rows);
+        this._log.groupEnd();
+    }
+
+    /**
+     * @param {string} id
+     */
+    finished(id)
+    {
+        const l = this._loadingAssets[id];
+        if (l)
+        {
+            if (l.finished) this._log.warn("loading job was already finished", l);
+
+            if (l.op) l.op.setUiAttribs({ "loading": false });
+            l.finished = true;
+            l.timeEnd = Date.now();
+        }
+
+        this.checkStatus();
+        this.emitEvent("finishedTask");
+        return null;
+    }
+
+    _startAssetTasks()
+    {
+        for (let i = 0; i < this._assetTasks.length; i++) this._assetTasks[i]();
+        this._assetTasks.length = 0;
+    }
+
+    /**
+     * delay an asset loading task, mainly to wait for ui to be finished loading and showing, and only then start loading assets
+     * @function addAssetLoadingTask
+     * @instance
+     * @memberof LoadingStatus
+     * @param {function} cb callback
+     */
+    addAssetLoadingTask(cb)
+    {
+        if (this._patch.isEditorMode() && !CABLES.UI.loaded)
+        {
+            this._assetTasks.push(cb);
+
+            if (!this._loadingAssetTaskCb)window.gui.addEventListener("uiloaded", this._startAssetTasks.bind(this));
+            this._loadingAssetTaskCb = true;
+        }
+        else
+        {
+            cb();
+        }
+        this.emitEvent("addAssetTask");
+    }
+
+    /**
+     * @param {string} name
+     */
+    existByName(name)
+    {
+        for (let i in this._loadingAssets)
+        {
+            if (this._loadingAssets[i].name == name && !this._loadingAssets[i].finished)
+                return true;
+        }
+    }
+
+    /**
+     * @param {string} type
+     * @param {string} name
+     * @param {Op} [op]
+     */
+    start(type, name, op)
+    {
+        if (this._startTime == 0) this._startTime = Date.now();
+        const id = (0,utils.generateUUID)();
+
+        name = name || "unknown";
+        if (name.length > 100)name = name.substring(0, 100);
+
+        if (op)op.setUiAttrib({ "loading": true });
+
+        this._loadingAssets[id] = {
+            "id": id,
+            "op": op,
+            "type": type,
+            "name": name,
+            "finished": false,
+            "timeStart": Date.now(),
+            "order": this._order,
+        };
+        this._order++;
+
+        this.emitEvent("startTask");
+
+        return id;
+    }
+}
+
+// EXTERNAL MODULE: ./src/core/timer.js
+var timer = __webpack_require__("./src/core/timer.js");
+;// CONCATENATED MODULE: ./src/core/core_profiler.js
+
+
+
+class Profiler
+{
+
+    /**
+     * @param {Patch} patch
+     */
+    constructor(patch)
+    {
+        this.startFrame = patch.getFrameNum();
+        this.items = {};
+        this.currentId = null;
+        this.currentStart = 0;
+        this._patch = patch;
+    }
+
+    getItems()
+    {
+        return this.items;
+    }
+
+    clear()
+    {
+        if (this.paused) return;
+        this.items = {};
+    }
+
+    togglePause()
+    {
+        this.paused = !this.paused;
+        if (!this.paused)
+        {
+            this.items = {};
+            this.currentStart = performance.now();
+        }
+    }
+
+    add(type, object)
+    {
+        if (this.paused) return;
+
+        if (this.currentId !== null)
+        {
+            if (!object || object.id != this.currentId)
+            {
+                if (this.items[this.currentId])
+                {
+                    this.items[this.currentId].timeUsed += performance.now() - this.currentStart;
+
+                    if (!this.items[this.currentId].peakTime || (0,timer.now)() - this.items[this.currentId].peakTime > 5000)
+                    {
+                        this.items[this.currentId].peak = 0;
+                        this.items[this.currentId].peakTime = (0,timer.now)();
+                    }
+                    this.items[this.currentId].peak = Math.max(this.items[this.currentId].peak, performance.now() - this.currentStart);
+                }
+            }
+        }
+
+        if (object !== null)
+        {
+            if (!this.items[object.id])
+            {
+                this.items[object.id] = {
+                    "numTriggers": 0,
+                    "timeUsed": 0,
+                };
+            }
+
+            if (this.items[object.id].lastFrame != this._patch.getFrameNum()) this.items[object.id].numTriggers = 0;
+
+            this.items[object.id].lastFrame = this._patch.getFrameNum();
+            this.items[object.id].numTriggers++;
+            this.items[object.id].opid = object.op.id;
+            this.items[object.id].title = object.op.name + "." + object.name;
+            this.items[object.id].subPatch = object.op.uiAttribs.subPatch;
+
+            this.currentId = object.id;
+            this.currentStart = performance.now();
+        }
+        else
+        {
+            this.currentId = null;
+        }
+    }
+
+    print()
+    {
+        console.log("--------");
+        for (const i in this.items)
+        {
+            console.log(this.items[i].title + ": " + this.items[i].numTriggers + " / " + this.items[i].timeUsed);
+        }
+    }
+}
+
+;// CONCATENATED MODULE: ./src/core/core_variable.js
+
+
+class PatchVariable extends eventtarget["default"]
+{
+
+    /**
+     * @param {String} name
+     * @param {String|Number} val
+     * @param {number} type
+     */
+    constructor(name, val, type)
+    {
+        super();
+        this._name = name;
+        this.type = type;
+        this.setValue(val);
+    }
+
+    /**
+     * keeping this for backwards compatibility in older
+     * exports before using eventtarget
+     *
+     * @param cb
+     */
+    addListener(cb)
+    {
+        this.on("change", cb, "var");
+    }
+
+    /**
+     * @function Variable.getValue
+     * @memberof PatchVariable
+     * @returns {String|Number|Boolean}
+     */
+    getValue()
+    {
+        return this._v;
+    }
+
+    /**
+     * @function getName
+     * @memberof PatchVariable
+     * @instance
+     * @returns {String|Number|Boolean}
+     * @function
+     */
+    getName()
+    {
+        return this._name;
+    }
+
+    /**
+     * @function setValue
+     * @memberof PatchVariable
+     * @instance
+     * @param v
+     * @returns {any}
+     * @function
+     */
+    setValue(v)
+    {
+        this._v = v;
+        this.emitEvent("change", v, this);
+    }
+}
+
+;// CONCATENATED MODULE: ./src/core/core_patch.js
+
+
+
+
+
+
+
+
+
+
+
+/** @global CABLES.OPS  */
+
+/**
+ * @typedef {import("./core_op.js").OpUiAttribs} OpUiAttribs
+ */
+
+/**
+ * @typedef PatchConfig
+ * @property {String} [prefixAssetPath=''] prefix for path to assets
+ * @property {String} [assetPath=''] path to assets
+ * @property {String} [jsPath=''] path to javascript files
+ * @property {String} [glCanvasId='glcanvas'] dom element id of canvas element
+ * @property {Function} [onError=null] called when an error occurs
+ * @property {Function} [onFinishedLoading=null] called when patch finished loading all assets
+ * @property {Function} [onFirstFrameRendered=null] called when patch rendered it's first frame
+ * @property {Boolean} [glCanvasResizeToWindow=false] resize canvas automatically to window size
+ * @property {Boolean} [glCanvasResizeToParent] resize canvas automatically to parent element
+ * @property {Boolean} [doRequestAnimation=true] do requestAnimationFrame set to false if you want to trigger exec() from outside (only do if you know what you are doing)
+ * @property {Boolean} [clearCanvasColor=true] clear canvas in transparent color every frame
+ * @property {Boolean} [clearCanvasDepth=true] clear depth every frame
+ * @property {Boolean} [glValidateShader=true] enable/disable validation of shaders *
+ * @property {Boolean} [silent=false]
+ * @property {Number} [fpsLimit=0] 0 for maximum possible frames per second
+ * @property {String} [glslPrecision='mediump'] default precision for glsl shader
+ * @property {String} [prefixJsPath]
+ * @property {Function} [onPatchLoaded]
+ * @property {Object} [canvas]
+ * @property {Object} [patch]
+ * @property {String} [patchFile]
+ * @property {String} [subPatch] internal use
+ * @property {Number} [masterVolume] 0 for maximum possible frames per second
+ * @property {HTMLCanvasElement} [glCanvas]
+*/
+
+/**
+ * @typedef CoreOp
+ * @type Op
+ */
+
+/**
+ * @template {CoreOp} Op
+ *
+ * Patch class, contains all operators,values,links etc. manages loading and running of the whole patch
+ *
+ * see {@link PatchConfig}
+ *
+ * @example
+ * CABLES.patch=new CABLES.Patch(
+ * {
+ *     patch:pStr,
+ *     glCanvasId:'glcanvas',
+ *     glCanvasResizeToWindow:true,
+ *     canvas:{powerPreference:"high-performance"},
+ *     prefixAssetPath:'/assets/',
+ *     prefixJsPath:'/js/',
+ *     onError:function(e){console.log(e);}
+ *     glslPrecision:'highp'
+ * });
+ */
+class Patch extends eventtarget["default"]
+{
+    static EVENT_OP_DELETED = "onOpDelete";
+    static EVENT_OP_ADDED = "onOpAdd";
+    static EVENT_PAUSE = "pause";
+    static EVENT_RESUME = "resume";
+    static EVENT_PATCHLOADEND = "patchLoadEnd";
+    static EVENT_VARIABLES_CHANGED = "variablesChanged";
+    static EVENT_RENDER_FRAME = "onRenderFrame";
+    static EVENT_RENDERED_ONE_FRAME = "renderedOneFrame";
+    static EVENT_LINK = "onLink";
+    static EVENT_VALUESSET = "loadedValueSet";
+
+    #renderOneFrame = false;
+    #initialDeserialize = true;
+
+    /** @param {PatchConfig} cfg */
+    constructor(cfg)
+    {
+        super();
+
+        this._log = new logger["default"]("core_patch", { "onError": cfg.onError });
+
+        /** @type {Array<Op>} */
+        this.ops = [];
+        this.settings = {};
+
+        /** @type {PatchConfig} */
+        this.config = cfg ||
+        {
+            "glCanvasResizeToWindow": false,
+            "prefixAssetPath": "",
+            "prefixJsPath": "",
+            "silent": true,
+            "onError": null,
+            "onFinishedLoading": null,
+            "onFirstFrameRendered": null,
+            "onPatchLoaded": null,
+            "fpsLimit": 0,
+
+        };
+
+        this.timer = new timer.Timer();
+        this.freeTimer = new timer.Timer();
+        this.animFrameOps = [];
+        this.animFrameCallbacks = [];
+        this.gui = false;
+        CABLES.logSilent = this.silent = true;
+        this.profiler = null;
+        this.aborted = false;
+        this._crashedOps = [];
+
+        this._animReq = null;
+        this._opIdCache = {};
+        this._triggerStack = [];
+        this.storeObjNames = false; // remove after may release
+
+        /** @type {LoadingStatus} */
+        this.loading = new LoadingStatus(this);
+
+        this._volumeListeners = [];
+        this._paused = false;
+        this._frameNum = 0;
+        this.onOneFrameRendered = null;
+        this.namedTriggers = {};
+
+        this._origData = null;
+        this._frameNext = 0;
+        this._frameInterval = 0;
+        this._lastFrameTime = 0;
+        this._frameWasdelayed = true;
+        this.tempData = this.frameStore = {};
+        this.reqAnimTimeStamp = 0;
+
+        this.cgCanvas = null;
+
+        if (!(function () { return !this; }())) console.log("not in strict mode: core patch");
+
+        if (this.config.hasOwnProperty("silent")) this.silent = CABLES.logSilent = this.config.silent;
+        if (!this.config.hasOwnProperty("doRequestAnimation")) this.config.doRequestAnimation = true;
+
+        if (!this.config.prefixAssetPath) this.config.prefixAssetPath = "";
+        if (!this.config.prefixJsPath) this.config.prefixJsPath = "";
+        if (!this.config.masterVolume) this.config.masterVolume = 1.0;
+
+        this._variables = {};
+
+        this.vars = {};
+        if (cfg && cfg.vars) this.vars = cfg.vars; // vars is old!
+
+        this.cgl = new cgl.CGL.Context(this);
+        this.cgp = null;
+
+        this._subpatchOpCache = {};
+
+        this.cgl.setCanvas(this.config.glCanvasId || this.config.glCanvas || "glcanvas");
+        if (this.config.glCanvasResizeToWindow === true) this.cgl.setAutoResize("window");
+        if (this.config.glCanvasResizeToParent === true) this.cgl.setAutoResize("parent");
+        this.loading.setOnFinishedLoading(this.config.onFinishedLoading);
+
+        if (this.cgl.aborted) this.aborted = true;
+        if (this.cgl.silent) this.silent = true;
+
+        if (!CABLES.OPS)
+        {
+            this.aborted = true;
+            throw new Error("no CABLES.OPS found");
+        }
+        this.freeTimer.play();
+        this.exec();
+
+        if (!this.aborted)
+        {
+            if (this.config.patch)
+            {
+                this.deSerialize(this.config.patch);
+            }
+            else if (this.config.patchFile)
+            {
+                (0,utils.ajax)(
+                    this.config.patchFile,
+                    (err, _data) =>
+                    {
+                        try
+                        {
+                            const data = JSON.parse(_data);
+                            if (err)
+                            {
+                                const txt = "";
+                                this._log.error("err", err);
+                                this._log.error("data", data);
+                                this._log.error("data", data.msg);
+                                return;
+                            }
+                            this.deSerialize(data);
+                        }
+                        catch (e)
+                        {
+                            this._log.error("could not load/parse patch ", e);
+                        }
+                    }
+                );
+            }
+            this.timer.play();
+        }
+
+        console.log("made with https://cables.gl"); // eslint-disable-line
+        this.cg = undefined;
+
+    }
+
+    isPlaying()
+    {
+        return !this._paused;
+    }
+
+    /** @deprecated */
+    renderOneFrame()
+    {
+        this._paused = true;
+        this._renderOneFrame = true;
+        this.exec();
+        this._renderOneFrame = false;
+    }
+
+    /**
+     * returns true if patch is opened in editor/gui mode
+     * @function isEditorMode
+     * @memberof Patch
+     * @instance
+     * @return {Boolean} editor mode
+     */
+    isEditorMode()
+    {
+        return this.config.editorMode === true;
+    }
+
+    /**
+     * pauses patch execution
+     * @function pause
+     * @memberof Patch
+     * @instance
+     */
+    pause()
+    {
+        cancelAnimationFrame(this._animReq);
+        this.emitEvent(Patch.EVENT_PAUSE);
+        this._animReq = null;
+        this._paused = true;
+        this.freeTimer.pause();
+    }
+
+    /**
+     * resumes patch execution
+     * @function resume
+     * @memberof Patch
+     * @instance
+     */
+    resume()
+    {
+        if (this._paused)
+        {
+            cancelAnimationFrame(this._animReq);
+            this._paused = false;
+            this.freeTimer.play();
+            this.emitEvent(Patch.EVENT_RESUME);
+            this.exec();
+        }
+    }
+
+    /**
+     * set volume [0-1]
+     * @function setVolume
+     * @param {Number} v volume
+     * @memberof Patch
+     * @instance
+     */
+    setVolume(v)
+    {
+        this.config.masterVolume = v;
+        for (let i = 0; i < this._volumeListeners.length; i++) this._volumeListeners[i].onMasterVolumeChanged(v);
+    }
+
+    /**
+     * get asset path
+     * @function getAssetPath
+     * @memberof Patch
+     * @param patchId
+     * @instance
+     */
+    getAssetPath(patchId = null)
+    {
+        if (this.config.hasOwnProperty("assetPath"))
+        {
+            return this.config.assetPath;
+        }
+        else if (this.isEditorMode())
+        {
+            let id = patchId || gui.project()._id;
+            return "/assets/" + id + "/";
+        }
+        else if (document.location.href.indexOf("cables.gl") > 0 || document.location.href.indexOf("cables.local") > 0)
+        {
+            const parts = document.location.pathname.split("/");
+            let id = patchId || parts[parts.length - 1];
+            return "/assets/" + id + "/";
+        }
+        else
+        {
+            return "assets/";
+        }
+    }
+
+    /**
+     * get js path
+     * @function getJsPath
+     * @memberof Patch
+     * @instance
+     */
+    getJsPath()
+    {
+        if (this.config.hasOwnProperty("jsPath"))
+        {
+            return this.config.jsPath;
+        }
+        else
+        {
+            return "js/";
+        }
+    }
+
+    /**
+     * get url/filepath for a filename
+     * this uses prefixAssetpath in exported patches
+     * @function getFilePath
+     * @memberof Patch
+     * @instance
+     * @param {String} filename
+     * @return {String} url
+     */
+    getFilePath(filename)
+    {
+        if (!filename) return filename;
+        filename = String(filename);
+        if (filename.indexOf("https:") === 0 || filename.indexOf("http:") === 0) return filename;
+        if (filename.indexOf("data:") === 0) return filename;
+        if (filename.indexOf("file:") === 0) return filename;
+        filename = filename.replace("//", "/");
+        if (filename.startsWith(this.config.prefixAssetPath)) filename = filename.replace(this.config.prefixAssetPath, "");
+        return this.config.prefixAssetPath + filename + (this.config.suffixAssetPath || ""); //
+    }
+
+    clear()
+    {
+        this.emitEvent("patchClearStart");
+        this.cgl.TextureEffectMesh = null;
+        this.animFrameOps.length = 0;
+        this.timer = new timer.Timer();
+        while (this.ops.length > 0) this.deleteOp(this.ops[0].id);
+
+        this._opIdCache = {};
+        this.emitEvent("patchClearEnd");
+    }
+
+    /**
+     * @param {string} identifier
+     * @param {string} id
+     * @param {string} [opName]
+     * @returns {Op}
+     */
+    createOp(identifier, id, opName = null)
+    {
+
+        /**
+         * @type {Op}
+         */
+        let op = null;
+        let objName = "";
+
+        try
+        {
+            if (!identifier)
+            {
+                console.error("createop identifier false", identifier);
+                console.log((new Error()).stack);
+                return;
+            }
+            if (identifier.indexOf("Ops.") === -1)
+            {
+
+                /*
+                 * this should be a uuid, not a namespace
+                 * creating ops by id should be the default way from now on!
+                 */
+                const opId = identifier;
+
+                if (CABLES.OPS[opId])
+                {
+                    objName = CABLES.OPS[opId].objName;
+                    op = new CABLES.OPS[opId].f(this, objName, id, opId);
+                    op.opId = opId;
+                }
+                else
+                {
+                    if (opName)
+                    {
+                        identifier = opName;
+                        this._log.warn("could not find op by id: " + opId);
+                    }
+                    else
+                    {
+                        throw new Error("could not find op by id: " + opId, { "cause": "opId:" + opId });
+                    }
+                }
+            }
+
+            if (!op)
+            {
+                // fallback: create by objname!
+                objName = identifier;
+                const parts = identifier.split(".");
+                const opObj = Patch.getOpClass(objName);
+
+                if (!opObj)
+                {
+                    this.emitEvent("criticalError", { "title": "unknown op" + objName, "text": "unknown op: " + objName });
+
+                    this._log.error("unknown op: " + objName);
+                    throw new Error("unknown op: " + objName);
+                }
+                else
+                {
+                    if (parts.length == 2) op = new window[parts[0]][parts[1]](this, objName, id);
+                    else if (parts.length == 3) op = new window[parts[0]][parts[1]][parts[2]](this, objName, id);
+                    else if (parts.length == 4) op = new window[parts[0]][parts[1]][parts[2]][parts[3]](this, objName, id);
+                    else if (parts.length == 5) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]](this, objName, id);
+                    else if (parts.length == 6) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]](this, objName, id);
+                    else if (parts.length == 7) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]](this, objName, id);
+                    else if (parts.length == 8) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]](this, objName, id);
+                    else if (parts.length == 9) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]][parts[8]](this, objName, id);
+                    else if (parts.length == 10) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]][parts[8]][parts[9]](this, objName, id);
+                    else console.log("parts.length", parts.length);
+                }
+
+                if (op)
+                {
+                    op.opId = null;
+                    for (const i in CABLES.OPS)
+                    {
+                        if (CABLES.OPS[i].objName == objName) op.opId = i;
+                    }
+                }
+            }
+        }
+        catch (e)
+        {
+            this._crashedOps.push(objName);
+
+            this._log.error("[instancing error] " + objName, e);
+
+            if (!this.isEditorMode())
+            {
+                this._log.error("INSTANCE_ERR", "Instancing Error: " + objName, e);
+                // throw new Error("instancing error 1" + objName);
+            }
+        }
+
+        if (op)
+        {
+            op._objName = objName;
+            op.patch = this;
+        }
+        else
+        {
+            this._log.log("no op was created!?", identifier, id);
+        }
+        return op;
+    }
+
+    /**
+     * create a new op in patch
+     * @function addOp
+     * @memberof Patch
+     * @instance
+     * @param {string} opIdentifier uuid or name, e.g. Ops.Math.Sum
+     * @param {OpUiAttribs} uiAttribs Attributes
+     * @param {string} id
+     * @param {boolean} [fromDeserialize]
+     * @param {string} [opName] e.g. Ops.Math.Sum
+     * @example
+     * // add invisible op
+     * patch.addOp('Ops.Math.Sum', { showUiAttribs: false });
+     */
+    addOp(opIdentifier, uiAttribs, id, fromDeserialize = false, opName = null)
+    {
+        const op = this.createOp(opIdentifier, id, opName);
+
+        if (op)
+        {
+            uiAttribs = uiAttribs || {};
+            if (uiAttribs.hasOwnProperty("errors")) delete uiAttribs.errors;
+            if (uiAttribs.hasOwnProperty("error")) delete uiAttribs.error;
+            uiAttribs.subPatch = uiAttribs.subPatch || 0;
+            op.setUiAttribs(uiAttribs);
+            if (op.onCreate) op.onCreate();
+
+            if (op.hasOwnProperty("onAnimFrame")) this.addOnAnimFrame(op);
+            if (op.hasOwnProperty("onMasterVolumeChanged")) this._volumeListeners.push(op);
+
+            if (this._opIdCache[op.id])
+            {
+                this._log.warn("opid with id " + op.id + " already exists in patch!");
+                this.deleteOp(op.id); // strange with subpatch ops: why is this needed, somehow ops get added twice ???.....
+                // return;
+            }
+
+            this.ops.push(op);
+            this._opIdCache[op.id] = op;
+
+            if (this._subPatchCacheAdd) this._subPatchCacheAdd(uiAttribs.subPatch, op);
+            this.emitEvent(Patch.EVENT_OP_ADDED, op, fromDeserialize);
+
+            if (op.init) op.init();
+
+            op.emitEvent(Op.EVENT_INIT, fromDeserialize);
+        }
+        else
+        {
+            this._log.error("addop: op could not be created: ", opIdentifier);
+        }
+
+        return op;
+    }
+
+    addOnAnimFrame(op)
+    {
+        for (let i = 0; i < this.animFrameOps.length; i++) if (this.animFrameOps[i] == op) { return; }
+
+        this.animFrameOps.push(op);
+    }
+
+    removeOnAnimFrame(op)
+    {
+        for (let i = 0; i < this.animFrameOps.length; i++)
+        {
+            if (this.animFrameOps[i] == op)
+            {
+                this.animFrameOps.splice(i, 1);
+                return;
+            }
+        }
+    }
+
+    addOnAnimFrameCallback(cb)
+    {
+        this.animFrameCallbacks.push(cb);
+    }
+
+    removeOnAnimCallback(cb)
+    {
+        for (let i = 0; i < this.animFrameCallbacks.length; i++)
+        {
+            if (this.animFrameCallbacks[i] == cb)
+            {
+                this.animFrameCallbacks.splice(i, 1);
+                return;
+            }
+        }
+    }
+
+    deleteOp(opid, tryRelink, reloadingOp)
+    {
+        let found = false;
+        for (let i = 0; i < this.ops.length; i++)
+        {
+            if (this.ops[i].id == opid)
+            {
+                const op = this.ops[i];
+
+                /** @type {Port} */
+                let reLinkP1 = null;
+
+                /** @type {Port} */
+                let reLinkP2 = null;
+
+                if (op)
+                {
+                    found = true;
+                    if (tryRelink)
+                    {
+                        if (op.portsIn.length > 0 && op.portsIn[0].isLinked() && (op.portsOut.length > 0 && op.portsOut[0].isLinked()))
+                        {
+                            if (op.portsIn[0].getType() == op.portsOut[0].getType() && op.portsIn[0].links[0])
+                            {
+                                reLinkP1 = op.portsIn[0].links[0].getOtherPort(op.portsIn[0]);
+                                reLinkP2 = op.portsOut[0].links[0].getOtherPort(op.portsOut[0]);
+                            }
+                        }
+                    }
+
+                    const opToDelete = this.ops[i];
+                    opToDelete.removeLinks();
+
+                    this.ops.splice(i, 1);
+                    opToDelete.emitEvent("delete", opToDelete);
+                    this.emitEvent(Patch.EVENT_OP_DELETED, opToDelete, reloadingOp);
+
+                    if (this.clearSubPatchCache) this.clearSubPatchCache(opToDelete.uiAttribs.subPatch);
+
+                    if (opToDelete.onDelete) opToDelete.onDelete(reloadingOp);
+                    opToDelete.cleanUp();
+
+                    if (reLinkP1 !== null && reLinkP2 !== null)
+                    {
+                        this.link(reLinkP1.op, reLinkP1.getName(), reLinkP2.op, reLinkP2.getName());
+                    }
+
+                    delete this._opIdCache[opid];
+                    break;
+                }
+            }
+        }
+
+        if (!found) this._log.warn("core patch deleteop: not found...", opid);
+    }
+
+    getFrameNum()
+    {
+        return this._frameNum;
+    }
+
+    emitOnAnimFrameEvent(time, delta)
+    {
+        time = time || this.timer.getTime();
+
+        for (let i = 0; i < this.animFrameCallbacks.length; ++i)
+            if (this.animFrameCallbacks[i])
+                this.animFrameCallbacks[i](time, this._frameNum, delta);
+
+        for (let i = 0; i < this.animFrameOps.length; ++i)
+            if (this.animFrameOps[i].onAnimFrame)
+                this.animFrameOps[i].onAnimFrame(time, this._frameNum, delta);
+    }
+
+    renderFrame(timestamp)
+    {
+        this.timer.update(this.reqAnimTimeStamp);
+        this.freeTimer.update(this.reqAnimTimeStamp);
+        const time = this.timer.getTime();
+        const startTime = performance.now();
+        this.cgl.frameStartTime = this.timer.getTime();
+
+        const delta = timestamp - this.reqAnimTimeStamp || timestamp;
+
+        this.emitOnAnimFrameEvent(null, delta);
+
+        this.cgl.profileData.profileFrameDelta = delta;
+        this.reqAnimTimeStamp = timestamp;
+        this.cgl.profileData.profileOnAnimFrameOps = performance.now() - startTime;
+
+        this.emitEvent(Patch.EVENT_RENDER_FRAME, time);
+
+        this._frameNum++;
+        if (this._frameNum == 1)
+        {
+            if (this.config.onFirstFrameRendered) this.config.onFirstFrameRendered();
+        }
+    }
+
+    /**
+     * @param {number} [timestamp]
+     */
+    exec(timestamp)
+    {
+        if (!this.#renderOneFrame && (this._paused || this.aborted)) return;
+        this.emitEvent("reqAnimFrame");
+        cancelAnimationFrame(this._animReq);
+
+        this.config.fpsLimit = this.config.fpsLimit || 0;
+        if (this.config.fpsLimit)
+        {
+            this._frameInterval = 1000 / this.config.fpsLimit;
+        }
+
+        const now = CABLES.now();
+        const frameDelta = now - this._frameNext;
+
+        if (this.isEditorMode())
+        {
+            if (!this.#renderOneFrame)
+            {
+                if (now - this._lastFrameTime >= 500 && this._lastFrameTime !== 0 && !this._frameWasdelayed)
+                {
+                    this._lastFrameTime = 0;
+                    setTimeout(this.exec.bind(this), 500);
+                    this.emitEvent("renderDelayStart");
+                    this._frameWasdelayed = true;
+                    return;
+                }
+            }
+        }
+
+        if (this.#renderOneFrame || this.config.fpsLimit === 0 || frameDelta > this._frameInterval || this._frameWasdelayed)
+        {
+            this.renderFrame(timestamp);
+
+            if (this._frameInterval) this._frameNext = now - (frameDelta % this._frameInterval);
+        }
+
+        if (this._frameWasdelayed)
+        {
+            this.emitEvent("renderDelayEnd");
+            this._frameWasdelayed = false;
+        }
+
+        if (this.#renderOneFrame)
+        {
+            if (this.onOneFrameRendered) this.onOneFrameRendered(); // todo remove everywhere and use propper event...
+            this.emitEvent(Patch.EVENT_RENDERED_ONE_FRAME);
+            this._renderOneFrame = false;
+        }
+
+        if (this.config.doRequestAnimation) this._animReq = this.cgl.canvas.ownerDocument.defaultView.requestAnimationFrame(this.exec.bind(this));
+    }
+
+    /**
+     * link two ops/ports
+     * @function link
+     * @memberof Patch
+     * @instance
+     * @param {Op} op1
+     * @param {String} port1Name
+     * @param {Op} op2
+     * @param {String} port2Name
+     * @param {boolean} lowerCase
+     * @param {boolean} fromDeserialize
+     */
+    link(op1, port1Name, op2, port2Name, lowerCase = false, fromDeserialize = false)
+    {
+        if (!op1) return this._log.warn("link: op1 is null ");
+        if (!op2) return this._log.warn("link: op2 is null");
+
+        const port1 = op1.getPort(port1Name, lowerCase);
+        const port2 = op2.getPort(port2Name, lowerCase);
+
+        if (!port1) return this._log.warn("port1 not found! " + port1Name + " (" + op1.objName + ")");
+        if (!port2) return this._log.warn("port2 not found! " + port2Name + " of " + op2.name + "(" + op2.objName + ")", op2);
+
+        if (!port1.shouldLink(port1, port2) || !port2.shouldLink(port1, port2)) return false;
+
+        if (Link.canLink(port1, port2))
+        {
+            const link = new Link(this);
+            link.link(port1, port2);
+
+            this.emitEvent(Patch.EVENT_LINK, port1, port2, link, fromDeserialize);
+            return link;
+        }
+    }
+
+    /**
+     * @param {Object} options
+     * @returns {Object|String}
+     */
+    serialize(options)
+    {
+        const obj = {};
+
+        options = options || {};
+        obj.ops = [];
+        obj.settings = this.settings;
+        for (let i = 0; i < this.ops.length; i++)
+        {
+            const op = this.ops[i];
+            if (op && op.getSerialized)obj.ops.push(op.getSerialized());
+        }
+
+        (0,utils.cleanJson)(obj);
+
+        if (options.asObject) return obj;
+        return JSON.stringify(obj);
+    }
+
+    getOpsByRefId(refId) // needed for instancing ops ?
+    {
+        const perf = gui.uiProfiler.start("[corepatchetend] getOpsByRefId");
+        const refOps = [];
+        const ops = gui.corePatch().ops;
+        for (let i = 0; i < ops.length; i++)
+            if (ops[i].storage && ops[i].storage.ref == refId) refOps.push(ops[i]);
+        perf.finish();
+        return refOps;
+    }
+
+    /**
+     * @param {String} opid
+     * @returns {Op}
+     */
+    getOpById(opid)
+    {
+        return this._opIdCache[opid];
+    }
+
+    /**
+     * @param {String} name
+     */
+    getOpsByObjName(name)
+    {
+        const arr = [];
+        // for (const i in this.ops
+        for (let i = 0; i < this.ops.length; i++)
+            if (this.ops[i].objName == name) arr.push(this.ops[i]);
+        return arr;
+    }
+
+    /**
+     * @param {String} opid
+     */
+    getOpsByOpId(opid)
+    {
+        const arr = [];
+        // for (const i in this.ops)
+        for (let i = 0; i < this.ops.length; i++)
+            if (this.ops[i].opId == opid) arr.push(this.ops[i]);
+        return arr;
+    }
+
+    getSubPatchOpsByName(patchId, objName)
+    {
+        const arr = [];
+        // for (const i in this.ops)
+        for (let i = 0; i < this.ops.length; i++)
+            if (this.ops[i].uiAttribs && this.ops[i].uiAttribs.subPatch == patchId && this.ops[i].objName == objName)
+                arr.push(this.ops[i]);
+
+        return arr;
+    }
+
+    getSubPatchOp(patchId, objName)
+    {
+        return this.getFirstSubPatchOpByName(patchId, objName);
+    }
+
+    /**
+     * @param {string} patchId
+     * @param {string} objName
+     * @returns {Op}
+     */
+    getFirstSubPatchOpByName(patchId, objName)
+    {
+        for (let i = 0; i < this.ops.length; i++)
+            if (this.ops[i].uiAttribs && this.ops[i].uiAttribs.subPatch == patchId && this.ops[i].objName == objName)
+                return this.ops[i];
+
+        return null;
+    }
+
+    _addLink(opinid, opoutid, inName, outName)
+    {
+        return this.link(this.getOpById(opinid), inName, this.getOpById(opoutid), outName, false, true);
+    }
+
+    /**
+     * @param {String} s
+     */
+    logStartup(s)
+    {
+        if (window.logStartup)window.logStartup(s);
+    }
+
+    /**
+     * @typedef DeserializeOptions
+     * @property {boolean} [genIds]
+     * @property {boolean} [createRef]
+     */
+
+    /**
+     * Description
+     * @param {Object} obj
+     * @param {DeserializeOptions} options
+     * @returns {any}
+     */
+    deSerialize(obj, options = { "genIds": false, "createRef": false })
+    {
+        if (this.aborted) return;
+        const newOps = [];
+        const loadingId = this.loading.start("core", "deserialize");
+
+        if (typeof obj === "string") obj = JSON.parse(obj);
+
+        if (this.#initialDeserialize)
+        {
+            this.#initialDeserialize = false;
+            this.namespace = obj.namespace || "";
+            this.name = obj.name || "";
+            this.settings = obj.settings;
+        }
+
+        this.emitEvent("patchLoadStart");
+
+        obj.ops = obj.ops || [];
+
+        this.logStartup("add " + obj.ops.length + " ops... ");
+
+        const addedOps = [];
+
+        // add ops...
+        for (let iop = 0; iop < obj.ops.length; iop++)
+        {
+            const start = CABLES.now();
+            const opData = obj.ops[iop];
+            let op = null;
+
+            try
+            {
+                if (opData.opId) op = this.addOp(opData.opId, opData.uiAttribs, opData.id, true, opData.objName);
+                else op = this.addOp(opData.objName, opData.uiAttribs, opData.id, true);
+            }
+            catch (e)
+            {
+                this._log.error("[instancing error] op data:", opData, e);
+                // throw new Error("could not create op by id: <b>" + (opData.objName || opData.opId) + "</b> (" + opData.id + ")");
+            }
+
+            if (op)
+            {
+                addedOps.push(op);
+                if (options.genIds) op.id = (0,utils.shortId)();
+                op.portsInData = opData.portsIn;
+                op._origData = JSON.parse(JSON.stringify(opData));
+                op.storage = opData.storage;
+                // if (opData.hasOwnProperty("disabled"))op.setEnabled(!opData.disabled);
+
+                // for (const ipi in opData.portsIn)
+                if (opData.portsIn)
+                    for (let ipi = 0; ipi < opData.portsIn.length; ipi++)
+                    {
+                        const objPort = opData.portsIn[ipi];
+                        if (objPort && objPort.hasOwnProperty("name"))
+                        {
+                            const port = op.getPort(objPort.name);
+
+                            if (port && (port.uiAttribs.display == "bool" || port.uiAttribs.type == "bool") && !isNaN(objPort.value)) objPort.value = objPort.value == true ? 1 : 0;
+                            if (port && objPort.value !== undefined && port.type != core_port.Port.TYPE_TEXTURE) port.set(objPort.value);
+
+                            if (port)
+                            {
+                                port.deSerializeSettings(objPort);
+                            }
+                            else
+                            {
+
+                                /*
+                             * if (port.uiAttribs.hasOwnProperty("title"))
+                             * {
+                             *     op.preservedPortTitles = op.preservedPortTitles || {};
+                             *     op.preservedPortTitles[port.name] = port.uiAttribs.title;
+                             * }
+                             */
+                                op.preservedPortValues = op.preservedPortValues || {};
+                                op.preservedPortValues[objPort.name] = objPort.value;
+                            }
+                        }
+                    }
+
+                // for (const ipo in opData.portsOut)
+                if (opData.portsOut)
+                    for (let ipo = 0; ipo < opData.portsOut.length; ipo++)
+                    {
+                        const objPort = opData.portsOut[ipo];
+                        if (objPort && objPort.hasOwnProperty("name"))
+                        {
+                            const port2 = op.getPort(objPort.name);
+
+                            if (port2)
+                            {
+                                port2.deSerializeSettings(objPort);
+
+                                if (port2.uiAttribs.hasOwnProperty("title"))
+                                {
+                                    op.preservedPortTitles = op.preservedPortTitles || {};
+                                    op.preservedPortTitles[port2.name] = port2.uiAttribs.title;
+                                }
+
+                                if (port2.type != core_port.Port.TYPE_TEXTURE && objPort.hasOwnProperty("value"))
+                                    port2.set(obj.ops[iop].portsOut[ipo].value);
+
+                                if (objPort.expose) port2.setUiAttribs({ "expose": true });
+                            }
+                        }
+                    }
+                newOps.push(op);
+            }
+
+            const timeused = Math.round(100 * (CABLES.now() - start)) / 100;
+            if (!this.silent && timeused > 5) console.log("long op init ", obj.ops[iop].objName, timeused);
+        }
+        this.logStartup("add ops done");
+
+        // for (const i in this.ops)
+        for (let i = 0; i < this.ops.length; i++)
+        {
+            // deprecated use event
+            if (this.ops[i].onLoadedValueSet)
+            {
+                this.ops[i].onLoadedValueSet(this.ops[i]._origData);
+                this.ops[i].onLoadedValueSet = null;
+                this.ops[i]._origData = null;
+            }
+
+            // this is only emited when the patch is loaded from serializid data, e.g. loading from api
+            // NOT when op is created by hand!
+            this.ops[i].emitEvent(Patch.EVENT_VALUESSET);
+        }
+
+        this.logStartup("creating links");
+
+        if (options.opsCreated)options.opsCreated(addedOps);
+        // create links...
+        if (obj.ops)
+        {
+            for (let iop = 0; iop < obj.ops.length; iop++)
+            {
+                if (obj.ops[iop].portsIn)
+                {
+                    for (let ipi2 = 0; ipi2 < obj.ops[iop].portsIn.length; ipi2++)
+                    {
+                        if (obj.ops[iop].portsIn[ipi2] && obj.ops[iop].portsIn[ipi2].links)
+                        {
+                            for (let ili = 0; ili < obj.ops[iop].portsIn[ipi2].links.length; ili++)
+                            {
+                                this._addLink(
+                                    obj.ops[iop].portsIn[ipi2].links[ili].objIn,
+                                    obj.ops[iop].portsIn[ipi2].links[ili].objOut,
+                                    obj.ops[iop].portsIn[ipi2].links[ili].portIn,
+                                    obj.ops[iop].portsIn[ipi2].links[ili].portOut);
+
+                                /*
+                                 * const took = performance.now - startTime;
+                                 * if (took > 100)console.log(obj().ops[iop].portsIn[ipi2].links[ili].objIn, obj.ops[iop].portsIn[ipi2].links[ili].objOut, took);
+                                 */
+                            }
+                        }
+                    }
+                }
+                if (obj.ops[iop].portsOut)
+                    for (let ipi2 = 0; ipi2 < obj.ops[iop].portsOut.length; ipi2++)
+                        if (obj.ops[iop].portsOut[ipi2] && obj.ops[iop].portsOut[ipi2].links)
+                        {
+                            for (let ili = 0; ili < obj.ops[iop].portsOut[ipi2].links.length; ili++)
+                            {
+                                if (obj.ops[iop].portsOut[ipi2].links[ili])
+                                {
+                                    if (obj.ops[iop].portsOut[ipi2].links[ili].subOpRef)
+                                    {
+                                        // lost link
+                                        const outOp = this.getOpById(obj.ops[iop].portsOut[ipi2].links[ili].objOut);
+                                        let dstOp = null;
+                                        let theSubPatch = 0;
+
+                                        for (let i = 0; i < this.ops.length; i++)
+                                        {
+                                            if (
+                                                this.ops[i].storage &&
+                                                this.ops[i].storage.ref == obj.ops[iop].portsOut[ipi2].links[ili].subOpRef &&
+                                                outOp.uiAttribs.subPatch == this.ops[i].uiAttribs.subPatch
+                                            )
+                                            {
+                                                theSubPatch = this.ops[i].patchId.get();
+                                                break;
+                                            }
+                                        }
+
+                                        for (let i = 0; i < this.ops.length; i++)
+                                        {
+                                            if (
+                                                this.ops[i].storage &&
+                                                this.ops[i].storage.ref == obj.ops[iop].portsOut[ipi2].links[ili].refOp &&
+                                                this.ops[i].uiAttribs.subPatch == theSubPatch)
+                                            {
+                                                dstOp = this.ops[i];
+                                                break;
+                                            }
+                                        }
+
+                                        if (!dstOp) this._log.warn("could not find op for lost link");
+                                        else
+                                        {
+                                            this._addLink(
+                                                dstOp.id,
+                                                obj.ops[iop].portsOut[ipi2].links[ili].objOut,
+
+                                                obj.ops[iop].portsOut[ipi2].links[ili].portIn,
+                                                obj.ops[iop].portsOut[ipi2].links[ili].portOut);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        const l = this._addLink(obj.ops[iop].portsOut[ipi2].links[ili].objIn, obj.ops[iop].portsOut[ipi2].links[ili].objOut, obj.ops[iop].portsOut[ipi2].links[ili].portIn, obj.ops[iop].portsOut[ipi2].links[ili].portOut);
+
+                                        if (!l)
+                                        {
+                                            const op1 = this.getOpById(obj.ops[iop].portsOut[ipi2].links[ili].objIn);
+                                            const op2 = this.getOpById(obj.ops[iop].portsOut[ipi2].links[ili].objOut);
+
+                                            if (!op1)console.log("could not find link op1");
+                                            if (!op2)console.log("could not find link op2");
+
+                                            const p1Name = obj.ops[iop].portsOut[ipi2].links[ili].portIn;
+
+                                            if (op1 && !op1.getPort(p1Name))
+                                            {
+                                                // console.log("PRESERVE port 1 not found", p1Name);
+
+                                                op1.preservedPortLinks[p1Name] = op1.preservedPortLinks[p1Name] || [];
+                                                op1.preservedPortLinks[p1Name].push(obj.ops[iop].portsOut[ipi2].links[ili]);
+                                            }
+
+                                            const p2Name = obj.ops[iop].portsOut[ipi2].links[ili].portOut;
+                                            if (op2 && !op2.getPort(p2Name))
+                                            {
+                                                // console.log("PRESERVE port 2 not found", obj.ops[iop].portsOut[ipi2].links[ili].portOut);
+                                                op2.preservedPortLinks[p1Name] = op2.preservedPortLinks[p1Name] || [];
+                                                op2.preservedPortLinks[p1Name].push(obj.ops[iop].portsOut[ipi2].links[ili]);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+            }
+        }
+
+        this.logStartup("calling ops onloaded");
+
+        // for (const i in this.ops)
+        for (let i = 0; i < this.ops.length; i++)
+        {
+            if (this.ops[i].onLoaded)
+            {
+                // TODO: deprecated - use even
+                this.ops[i].onLoaded();
+                this.ops[i].onLoaded = null;
+            }
+        }
+
+        this.logStartup("initializing ops...");
+        for (let i = 0; i < this.ops.length; i++)
+        // for (const i in this.ops)
+        {
+            if (this.ops[i].init)
+            {
+                try
+                {
+                    this.ops[i].init();
+                    this.ops[i].init = null;
+                }
+                catch (e)
+                {
+                    console.error("op.init crash", e);
+                }
+            }
+        }
+
+        this.logStartup("initializing vars...");
+
+        if (this.config.variables)
+            for (const varName in this.config.variables)
+                this.setVarValue(varName, this.config.variables[varName]);
+
+        this.logStartup("initializing var ports");
+
+        // for (const i in this.ops)
+        for (let i = 0; i < this.ops.length; i++)
+        {
+            this.ops[i].initVarPorts();
+            delete this.ops[i].uiAttribs.pasted;
+        }
+
+        setTimeout(() => { this.loading.finished(loadingId); }, 100);
+
+        if (this.config.onPatchLoaded) this.config.onPatchLoaded(this);
+
+        this.emitEvent(Patch.EVENT_PATCHLOADEND, newOps, obj, options.genIds);
+    }
+
+    profile(enable)
+    {
+        this.profiler = new Profiler(this);
+        // for (const i in this.ops)
+        for (let i = 0; i < this.ops.length; i++)
+            this.ops[i].profile();
+    }
+
+    // ----------------------
+
+    /**
+     * set variable value
+     * @function setVariable
+     * @memberof Patch
+     * @instance
+     * @param {String} name of variable
+     * @param {Number|String|Boolean} val value
+     */
+    setVariable(name, val)
+    {
+        if (this._variables[name] !== undefined)
+        {
+            this._variables[name].setValue(val);
+        }
+        else
+        {
+            this._log.warn("variable " + name + " not found!");
+        }
+    }
+
+    _sortVars()
+    {
+        if (!this.isEditorMode()) return;
+        const ordered = {};
+        Object.keys(this._variables).sort(
+            (a, b) =>
+            { return a.localeCompare(b, "en", { "sensitivity": "base" }); }
+        ).forEach((key) =>
+        {
+            ordered[key] = this._variables[key];
+        });
+        this._variables = ordered;
+    }
+
+    /**
+     * has variable
+     * @function hasVariable
+     * @memberof Patch
+     * @instance
+     * @param {String} name of variable
+     */
+    hasVar(name)
+    {
+        return this._variables[name] !== undefined;
+    }
+
+    // used internally
+    setVarValue(name, val, type)
+    {
+        if (this.hasVar(name))
+        {
+            this._variables[name].setValue(val);
+        }
+        else
+        {
+            this._variables[name] = new PatchVariable(name, val, type);
+            this._sortVars();
+            this.emitEvent(Patch.EVENT_VARIABLES_CHANGED);
+        }
+        return this._variables[name];
+    }
+
+    // old?
+    getVarValue(name, val)
+    {
+        if (this._variables.hasOwnProperty(name)) return this._variables[name].getValue();
+    }
+
+    /**
+     * @function getVar
+     * @memberof Patch
+     * @instance
+     * @param {String} name
+     * @return {PatchVariable} variable
+     */
+    getVar(name)
+    {
+        if (this._variables.hasOwnProperty(name)) return this._variables[name];
+    }
+
+    deleteVar(name)
+    {
+        for (let i = 0; i < this.ops.length; i++)
+            for (let j = 0; j < this.ops[i].portsIn.length; j++)
+                if (this.ops[i].portsIn[j].getVariableName() == name)
+                    this.ops[i].portsIn[j].setVariable(null);
+
+        delete this._variables[name];
+        this.emitEvent("variableDeleted", name);
+        this.emitEvent("variablesChanged");
+    }
+
+    /**
+     * @param {number} t
+     * @returns {Object}
+     */
+    getVars(t)
+    {
+        if (t === undefined) return this._variables;
+        if (t === 1) return {};
+
+        const perf = gui.uiProfiler.start("[corepatchetend] getVars");
+
+        const vars = [];
+        let tStr = "";
+        if (t == core_port.Port.TYPE_STRING) tStr = "string";
+        else if (t == core_port.Port.TYPE_VALUE) tStr = "number";
+        else if (t == core_port.Port.TYPE_ARRAY) tStr = "array";
+        else if (t == core_port.Port.TYPE_OBJECT) tStr = "object";
+        else if (t == core_port.Port.TYPE_DYNAMIC) tStr = "dynamic";
+        else
+        {
+            console.log("unknown port type", t);
+            console.log(new Error().stack);
+        }
+
+        for (const i in this._variables)
+        {
+            if (!this._variables[i].type || this._variables[i].type == tStr || this._variables[i].type == t) vars.push(this._variables[i]);
+        }
+
+        perf.finish();
+
+        return vars;
+    }
+
+    // getVars(t)
+    // {
+    //     if (t === undefined) return this._variables;
+
+    //     const vars = [];
+    //     let tStr = "";
+    //     if (t == Port.TYPE_STRING) tStr = "string";
+    //     if (t == Port.TYPE_VALUE) tStr = "number";
+    //     if (t == Port.TYPE_ARRAY) tStr = "array";
+    //     if (t == Port.TYPE_OBJECT) tStr = "object";
+
+    //     for (const i in this._variables)
+    //     {
+    //         if (!this._variables[i].type || this._variables[i].type == tStr || this._variables[i].type == t) vars.push(this._variables[i]);
+    //     }
+    //     return vars;
+    // }
+
+    /**
+     * @function preRenderOps
+     * @memberof Patch
+     * @instance
+     * @description invoke pre rendering of ops
+     * @function
+     */
+    preRenderOps()
+    {
+        this._log.log("prerendering...");
+
+        for (let i = 0; i < this.ops.length; i++)
+        {
+            if (this.ops[i].preRender)
+            {
+                this.ops[i].preRender();
+                this._log.log("prerender " + this.ops[i].objName);
+            }
+        }
+    }
+
+    /**
+     * @function dispose
+     * @memberof Patch
+     * @instance
+     * @description stop, dispose and cleanup patch
+     */
+    dispose()
+    {
+        this.pause();
+        this.clear();
+        this.cgl.dispose();
+    }
+
+    pushTriggerStack(p)
+    {
+        this._triggerStack.push(p);
+    }
+
+    popTriggerStack()
+    {
+        this._triggerStack.pop();
+    }
+
+    printTriggerStack()
+    {
+        if (this._triggerStack.length == 0)
+        {
+            // console.log("stack length", this._triggerStack.length); // eslint-disable-line
+            return;
+        }
+        console.groupCollapsed( // eslint-disable-line
+            "trigger port stack " + this._triggerStack[this._triggerStack.length - 1].op.objName + "." + this._triggerStack[this._triggerStack.length - 1].name,
+        );
+
+        const rows = [];
+        for (let i = 0; i < this._triggerStack.length; i++)
+        {
+            rows.push(i + ". " + this._triggerStack[i].op.objName + " " + this._triggerStack[i].name);
+        }
+
+        console.table(rows); // eslint-disable-line
+        console.groupEnd(); // eslint-disable-line
+    }
+
+    /**
+     * returns document object of the patch could be != global document object when opening canvas ina popout window
+     * @function getDocument
+     * @memberof Patch
+     * @instance
+     * @return {Object} document
+     */
+    getDocument()
+    {
+        return this.cgl.canvas.ownerDocument;
+    }
+}
+
+Patch.getOpClass = function (objName)
+{
+    const parts = objName.split(".");
+    let opObj = null;
+
+    try
+    {
+        if (parts.length == 2) opObj = window[parts[0]][parts[1]];
+        else if (parts.length == 3) opObj = window[parts[0]][parts[1]][parts[2]];
+        else if (parts.length == 4) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]];
+        else if (parts.length == 5) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]];
+        else if (parts.length == 6) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]];
+        else if (parts.length == 7) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]];
+        else if (parts.length == 8) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]];
+        else if (parts.length == 9) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]][parts[8]];
+        else if (parts.length == 10) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]][parts[8]][parts[9]];
+        return opObj;
+    }
+    catch (e)
+    {
+        return null;
+    }
+};
+
+Patch.replaceOpIds = function (json, options)
+{
+    const opids = {};
+    for (const i in json.ops)
+    {
+        opids[json.ops[i].id] = json.ops[i];
+    }
+
+    for (const j in json.ops)
+    {
+        for (const k in json.ops[j].portsOut)
+        {
+            const links = json.ops[j].portsOut[k].links;
+            if (links)
+            {
+                let l = links.length;
+
+                while (l--)
+                {
+                    if (links[l] && (!opids[links[l].objIn] || !opids[links[l].objOut]))
+                    {
+                        if (!options.doNotUnlinkLostLinks)
+                        {
+                            links.splice(l, 1);
+                        }
+                        else
+                        {
+                            if (options.fixLostLinks)
+                            {
+                                const op = gui.corePatch().getOpById(links[l].objIn);
+                                if (!op) console.log("op not found!");
+                                else
+                                {
+                                    const outerOp = gui.patchView.getSubPatchOuterOp(op.uiAttribs.subPatch);
+                                    if (outerOp)
+                                    {
+                                        op.storage = op.storage || {};
+                                        op.storage.ref = op.storage.ref || (0,utils.shortId)();
+                                        links[l].refOp = op.storage.ref;
+                                        links[l].subOpRef = outerOp.storage.ref;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    for (const i in json.ops)
+    {
+        const op = json.ops[i];
+        const oldId = op.id;
+        let newId = (0,utils.shortId)();
+
+        if (options.prefixHash) newId = (0,utils.prefixedHash)(options.prefixHash + oldId);
+
+        else if (options.prefixId) newId = options.prefixId + oldId;
+        else if (options.refAsId) // when saving json
+        {
+            if (op.storage && op.storage.ref)
+            {
+                newId = op.storage.ref;
+                delete op.storage.ref;
+            }
+            else
+            {
+                op.storage = op.storage || {};
+                op.storage.ref = newId = (0,utils.shortId)();
+            }
+        }
+
+        const newID = op.id = newId;
+
+        if (options.oldIdAsRef) // when loading json
+        {
+            op.storage = op.storage || {};
+            op.storage.ref = oldId;
+        }
+
+        for (const j in json.ops)
+        {
+            if (json.ops[j].portsIn)
+                for (const k in json.ops[j].portsIn)
+                {
+                    if (json.ops[j].portsIn[k].links)
+                    {
+                        let l = json.ops[j].portsIn[k].links.length;
+
+                        while (l--) if (json.ops[j].portsIn[k].links[l] === null) json.ops[j].portsIn[k].links.splice(l, 1);
+
+                        for (l in json.ops[j].portsIn[k].links)
+                        {
+                            if (json.ops[j].portsIn[k].links[l].objIn === oldId) json.ops[j].portsIn[k].links[l].objIn = newID;
+                            if (json.ops[j].portsIn[k].links[l].objOut === oldId) json.ops[j].portsIn[k].links[l].objOut = newID;
+                        }
+                    }
+                }
+
+            if (json.ops[j].portsOut)
+                for (const k in json.ops[j].portsOut)
+                {
+                    if (json.ops[j].portsOut[k].links)
+                    {
+                        let l = json.ops[j].portsOut[k].links.length;
+
+                        while (l--) if (json.ops[j].portsOut[k].links[l] === null) json.ops[j].portsOut[k].links.splice(l, 1);
+
+                        for (l in json.ops[j].portsOut[k].links)
+                        {
+                            if (json.ops[j].portsOut[k].links[l].objIn === oldId) json.ops[j].portsOut[k].links[l].objIn = newID;
+                            if (json.ops[j].portsOut[k].links[l].objOut === oldId) json.ops[j].portsOut[k].links[l].objOut = newID;
+                        }
+                    }
+                }
+        }
+    }
+
+    // set correct subpatch
+    const subpatchIds = [];
+    const fixedSubPatches = [];
+
+    for (let i = 0; i < json.ops.length; i++)
+    {
+        // if (CABLES.Op.isSubPatchOpName(json.ops[i].objName))
+        if (json.ops[i].storage && json.ops[i].storage.subPatchVer)
+        {
+            // for (const k in json.ops[i].portsInckkkkk
+            for (let k = 0; k < json.ops[i].portsIn.length; k++)
+            {
+                if (json.ops[i].portsIn[k].name === "patchId")
+                {
+                    let newId = (0,utils.shortId)();
+
+                    if (options.prefixHash) newId = (0,utils.prefixedHash)(options.prefixHash + json.ops[i].portsIn[k].value);
+
+                    const oldSubPatchId = json.ops[i].portsIn[k].value;
+                    const newSubPatchId = json.ops[i].portsIn[k].value = newId;
+
+                    subpatchIds.push(newSubPatchId);
+
+                    for (let j = 0; j < json.ops.length; j++)
+                    {
+                        // op has no uiAttribs in export, we don't care about subpatches in export though
+                        if (json.ops[j].uiAttribs)
+                        {
+                            if (json.ops[j].uiAttribs.subPatch === oldSubPatchId)
+                            {
+                                json.ops[j].uiAttribs.subPatch = newSubPatchId;
+                                fixedSubPatches.push(json.ops[j].id);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    for (const kk in json.ops)
+    {
+        let found = false;
+        for (let j = 0; j < fixedSubPatches.length; j++)
+        {
+            if (json.ops[kk].id === fixedSubPatches[j])
+            {
+                found = true;
+                break;
+            }
+        }
+        // op has no uiAttribs in export, we don't care about subpatches in export though
+        if (!found && json.ops[kk].uiAttribs && options.parentSubPatchId != null)
+            json.ops[kk].uiAttribs.subPatch = options.parentSubPatchId;
+    }
+
+    return json;
+};
+
+/**
+ * remove an eventlistener
+ * @instance
+ * @function addEventListener
+ * @param {String} name of event
+ * @param {function} callback
+ */
+
+/**
+ * remove an eventlistener
+ * @instance
+ * @function removeEventListener
+ * @param {String} name of event
+ * @param {function} callback
+ */
+
+/**
+ * op added to patch event
+ * @event onOpAdd
+ *
+ * @memberof Patch
+ * @type {Object}
+ * @property {Op} op new op
+ */
+
+/**
+ * op deleted from patch
+ * @event onOpDelete
+ * @memberof Patch
+ * @type {Object}
+ * @property {Op} op that will be deleted
+ */
+
+/**
+ * link event - two ports will be linked
+ * @event onLink
+ * @memberof Patch
+ * @type {Object}
+ * @property {Port} port1
+ * @property {Port} port2
+ */
+
+/**
+ * unlink event - a link was deleted
+ * @event onUnLink
+ * @memberof Patch
+ * @type {Object}
+ */
+
+/**
+ * variables has been changed / a variable has been added to the patch
+ * @event variablesChanged
+ * @memberof Patch
+ * @type {Object}
+ * @property {Port} port1
+ * @property {Port} port2
+ */
+
+;// CONCATENATED MODULE: ./src/core/embedding.js
+
+
+
+const EMBED = {};
+
+/**
+ * add patch into html element (will create canvas and set size to fill containerElement)
+ * @name CABLES.EMBED#addPatch
+ * @param {object|string} _element containerElement dom element or id of element
+ * @param {Object} options patch options
+ * @function
+ */
+EMBED.addPatch = function (_element, options)
+{
+    let el = _element;
+    let id = (0,utils.generateUUID)();
+    if (typeof _element == "string")
+    {
+        id = _element;
+        el = document.getElementById(id);
+
+        if (!el)
+        {
+            console.error(id + " Polyshape Container Element not found!");
+            return;
+        }
+    }
+
+    const canvEl = document.createElement("canvas");
+    canvEl.id = "glcanvas_" + id;
+    canvEl.width = el.clientWidth;
+    canvEl.height = el.clientHeight;
+
+    window.addEventListener(
+        "resize",
+        function ()
+        {
+            this.setAttribute("width", el.clientWidth);
+            this.height = el.clientHeight;
+        }.bind(canvEl),
+    );
+
+    el.appendChild(canvEl);
+
+    options = options || {};
+    options.glCanvasId = canvEl.id;
+
+    if (!options.onError)
+    {
+        options.onError = function (err)
+        {
+            console.error(err);
+        };
+    }
+
+    CABLES.patch = new Patch(options);
+    return canvEl;
+};
+
+
+
+;// CONCATENATED MODULE: ./src/core/sessionvar.js
+// todo: old... remove this from ops...
+
+/**
+ * todo: old... remove this from ops...
+ *
+ * @class
+ */
+const Variable = function ()
+{
+    let value = null;
+    const changedCallbacks = [];
+
+    this.onChanged = function (f)
+    {
+        changedCallbacks.push(f);
+    };
+
+    this.getValue = function ()
+    {
+        return value;
+    };
+
+    this.setValue = function (v)
+    {
+        value = v;
+        this.emitChanged();
+    };
+
+    this.emitChanged = function ()
+    {
+        for (let i = 0; i < changedCallbacks.length; i++)
+        {
+            changedCallbacks[i]();
+        }
+    };
+};
+
+
+
+// EXTERNAL MODULE: ./src/core/anim_key.js
+var anim_key = __webpack_require__("./src/core/anim_key.js");
+;// CONCATENATED MODULE: ./src/core/index.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CABLES = CABLES || {};
+CABLES = {
+    ...CABLES,
+    ...constants.CONSTANTS.PORT,
+    ...constants.CONSTANTS.PACO,
+    ...constants.CONSTANTS.ANIM,
+    ...constants.CONSTANTS.OP
+};
+
+CABLES.EMBED = EMBED;
+CABLES.Link = Link;
+CABLES.Port = core_port.Port;
+CABLES.Op = Op;
+CABLES.Profiler = Profiler;
+CABLES.Patch = Patch;
+CABLES.Timer = timer.Timer;
+CABLES.Variable = Variable;
+CABLES.LoadingStatus = LoadingStatus;
+CABLES.now = timer.now;
+CABLES.internalNow = timer.internalNow;
+CABLES.Anim = anim.Anim;
+CABLES.AnimKey = anim_key.AnimKey;
+
+CABLES.shortId = utils.shortId;
+CABLES.uuid = utils.uuid;
+CABLES.getShortOpName = utils.getShortOpName;
+CABLES.simpleId = utils.simpleId;
+CABLES.clamp = utils.clamp;
+CABLES.map = utils.map;
+CABLES.shuffleArray = utils.shuffleArray;
+CABLES.generateUUID = utils.generateUUID;
+CABLES.prefixedHash = utils.prefixedHash;
+CABLES.smoothStep = utils.smoothStep;
+CABLES.smootherStep = utils.smootherStep;
+CABLES.cacheBust = utils.cacheBust;
+CABLES.copyArray = utils.copyArray;
+CABLES.basename = utils.basename;
+CABLES.logStack = utils.logStack;
+CABLES.filename = utils.filename;
+CABLES.ajax = utils.ajax;
+CABLES.request = utils.request;
+CABLES.logErrorConsole = utils.logErrorConsole;
+CABLES.isNumeric = utils.isNumeric;
+CABLES.uniqueArray = utils.uniqueArray;
+
+/** @type {Array<Op>} */
+CABLES.OPS = [];
+CABLES.utils = utils;
+CABLES.CONSTANTS = constants.CONSTANTS;
+
+CABLES.GLMatrix = esm_namespaceObject;
+CABLES.SHARED = {};
+CABLES.SHARED.Events = eventtarget["default"];
+CABLES.SHARED.Logger = logger["default"];
+
+/* harmony default export */ const core = (CABLES);
+
+
+if (!(function () { return !this; }())) console.warn("not in strict mode: index core"); // eslint-disable-line
+
+
+/***/ }),
+
+/***/ "./src/core/timer.js":
+/*!***************************!*\
+  !*** ./src/core/timer.js ***!
+  \***************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Timer: () => (/* binding */ Timer),
+/* harmony export */   internalNow: () => (/* binding */ internalNow),
+/* harmony export */   now: () => (/* binding */ now)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+
+
+/**
+ * @namespace CABLES
+ */
+
+const internalNow = function ()
+{
+    return window.performance.now();
+};
+
+/*
+ * current time in milliseconds
+ * @memberof CABLES
+ * @function now
+ * @static
+ *
+ */
+const now = function ()
+{
+    return internalNow();
+};
+
+/**
+ * Measuring time
+ * @namespace external:CABLES#Timer
+ * @hideconstructor
+ * @class
+ */
+class Timer extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
+{
+    static EVENT_PLAY_PAUSE = "playPause";
+    static EVENT_TIME_CHANGED = "timeChanged";
+
+    constructor()
+    {
+        super();
+
+        /**
+         * @private
+         */
+        this._timeStart = internalNow();
+        this._timeOffset = 0;
+        this._currentTime = 0;
+        this._lastTime = 0;
+        this._paused = true;
+        this._delay = 0;
+        this.overwriteTime = -1;
+    }
+
+    _internalNow()
+    {
+        if (this._ts) return this._ts;
+        return internalNow();
+    }
+
+    _getTime()
+    {
+        this._lastTime = (this._internalNow() - this._timeStart) / 1000;
+        return this._lastTime + this._timeOffset;
+    }
+
+    /**
+     * @param {number} d
+     */
+    setDelay(d)
+    {
+        this._delay = d;
+        this.emitEvent(Timer.EVENT_TIME_CHANGED);
+    }
+
+    /**
+     * @function
+     * @memberof Timer
+     * @instance
+     * @description returns true if timer is playing
+     * @return {Boolean} value
+     */
+    isPlaying()
+    {
+        return !this._paused;
+    }
+
+    /**
+     * @function
+     * @memberof Timer
+     * @instance
+     * @param {any} ts
+     * @description update timer
+     * @return {Number} time
+     */
+    update(ts)
+    {
+        if (ts) this._ts = ts;
+        if (this._paused) return;
+        this._currentTime = this._getTime();
+
+        return this._currentTime;
+    }
+
+    /**
+     * @function
+     * @memberof Timer
+     * @instance
+     * @return {Number} time in milliseconds
+     */
+    getMillis()
+    {
+        return this.get() * 1000;
+    }
+
+    /**
+     * @function
+     * @memberof Timer
+     * @instance
+     * @return {Number} value time in seconds
+     */
+    get()
+    {
+        return this.getTime();
+    }
+
+    getTime()
+    {
+        if (this.overwriteTime >= 0) return this.overwriteTime - this._delay;
+        return this._currentTime - this._delay;
+    }
+
+    /**
+     * toggle between play/pause state
+     * @function
+     * @memberof Timer
+     * @instance
+     */
+    togglePlay()
+    {
+        if (this._paused) this.play();
+        else this.pause();
+    }
+
+    /**
+     * set current time
+     * @function
+     * @memberof Timer
+     * @instance
+     * @param {Number} t
+     */
+    setTime(t)
+    {
+        if (isNaN(t) || t < 0) t = 0;
+        this._timeStart = this._internalNow();
+        this._timeOffset = t;
+        this._currentTime = t;
+        this.emitEvent((Timer.EVENT_TIME_CHANGED));
+    }
+
+    setOffset(val)
+    {
+        if (this._currentTime + val < 0)
+        {
+            this._timeStart = this._internalNow();
+            this._timeOffset = 0;
+            this._currentTime = 0;
+        }
+        else
+        {
+            this._timeOffset += val;
+            this._currentTime = this._lastTime + this._timeOffset;
+        }
+        this.emitEvent(Timer.EVENT_TIME_CHANGED);
+    }
+
+    /**
+     * (re)starts the timer
+     * @function
+     * @memberof Timer
+     * @instance
+     */
+    play()
+    {
+        this._timeStart = this._internalNow();
+        this._paused = false;
+        this.emitEvent(Timer.EVENT_PLAY_PAUSE);
+    }
+
+    /**
+     * pauses the timer
+     * @function
+     * @memberof Timer
+     * @instance
+     */
+    pause()
+    {
+        this._timeOffset = this._currentTime;
+        this._paused = true;
+        this.emitEvent(Timer.EVENT_PLAY_PAUSE);
+    }
+
+    static now()
+    {
+        return window.performance.now();
+    }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/core/utils.js":
+/*!***************************************!*\
+  !*** ./src/core/utils.js + 1 modules ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  ajax: () => (/* binding */ ajax),
+  basename: () => (/* binding */ basename),
+  cacheBust: () => (/* binding */ cacheBust),
+  clamp: () => (/* binding */ clamp),
+  cleanJson: () => (/* binding */ cleanJson),
+  copyArray: () => (/* binding */ copyArray),
+  escapeHTML: () => (/* binding */ escapeHTML),
+  filename: () => (/* binding */ filename),
+  float32Concat: () => (/* binding */ float32Concat),
+  generateUUID: () => (/* binding */ generateUUID),
+  getShortOpName: () => (/* binding */ getShortOpName),
+  isNumeric: () => (/* binding */ isNumeric),
+  logErrorConsole: () => (/* binding */ logErrorConsole),
+  logStack: () => (/* binding */ logStack),
+  map: () => (/* binding */ map),
+  prefixedHash: () => (/* binding */ prefixedHash),
+  request: () => (/* binding */ request),
+  shortId: () => (/* binding */ shortId),
+  shuffleArray: () => (/* binding */ shuffleArray),
+  simpleId: () => (/* binding */ simpleId),
+  smoothStep: () => (/* binding */ smoothStep),
+  smootherStep: () => (/* binding */ smootherStep),
+  uniqueArray: () => (/* binding */ uniqueArray),
+  uuid: () => (/* binding */ uuid)
+});
+
+// EXTERNAL MODULE: ./src/core/constants.js
+var constants = __webpack_require__("./src/core/constants.js");
+;// CONCATENATED MODULE: ./src/core/extendjs.js
+/**
+ * extend javascript functionality
+ */
+
+/**
+ * @external Math
+ */
+
+/**
+ * set random seed for seededRandom()
+ * @type Number
+ * @static
+ */
+Math.randomSeed = 1;
+
+/**
+ * @function external:Math#setRandomSeed
+ * @param {number} seed
+ */
+Math.setRandomSeed = function (seed)
+{
+    // https://github.com/cables-gl/cables_docs/issues/622
+    Math.randomSeed = seed * 50728129;
+    if (seed != 0)
+    {
+        Math.randomSeed = Math.seededRandom() * 17624813;
+        Math.randomSeed = Math.seededRandom() * 9737333;
+    }
+};
+
+/**
+ * generate a seeded random number
+ * @function seededRandom
+ * @memberof Math
+ * @param {Number} max minimum possible random number
+ * @param {Number} min maximum possible random number
+ * @return {Number} random value
+ * @static
+ */
+Math.seededRandom = function (max, min)
+{
+    if (Math.randomSeed === 0) Math.randomSeed = Math.random() * 999;
+    max = max || 1;
+    min = min || 0;
+
+    Math.randomSeed = (Math.randomSeed * 9301 + 49297) % 233280;
+    const rnd = Math.randomSeed / 233280.0;
+
+    return min + rnd * (max - min);
+};
+
+/**
+     * @namespace String
+     */
+
+/**
+ * append a linebreak to a string
+ * @this {String}
+ * @returns {string} string with newline appended
+*/
+String.prototype.endl = function ()
+{
+    return this + "\n";
+};
+
+String.prototype.contains = function (str)
+{
+    console.warn("string.contains deprecated, use string.includes");
+    console.log((new Error()).stack);
+    return this.includes(str);
+
+};
+
+function extendJs() {}
+
+;// CONCATENATED MODULE: ./src/core/utils.js
+/**
+ * @namespace external:CABLES#Utils
+ */
+
+
+
+
+extendJs();
+
+/**
+ * Merge two Float32Arrays.
+ * @function float32Concat
+ * @param {Float32Array} first Left-hand side array
+ * @param {Float32Array} second Right-hand side array
+ * @return {Float32Array}
+ * @static
+ */
+function float32Concat(first, second)
+{
+    if (!(first instanceof Float32Array)) first = new Float32Array(first);
+    if (!(second instanceof Float32Array)) second = new Float32Array(second);
+
+    const result = new Float32Array(first.length + second.length);
+
+    result.set(first);
+    result.set(second, first.length);
+
+    return result;
+}
+
+/**
+ * get op shortname: only last part of fullname and without version
+ * @function getShortOpName
+ * @memberof CABLES
+ * @param {string} fullname full op name
+ * @static
+ */
+const getShortOpName = function (fullname)
+{
+    let name = fullname.split(".")[fullname.split(".").length - 1];
+
+    if (name.includes(constants.CONSTANTS.OP.OP_VERSION_PREFIX))
+    {
+        const n = name.split(constants.CONSTANTS.OP.OP_VERSION_PREFIX)[1];
+        name = name.substring(0, name.length - (constants.CONSTANTS.OP.OP_VERSION_PREFIX + n).length);
+    }
+    return name;
+};
+
+/**
+ * randomize order of an array
+ * @function shuffleArray
+ * @param {Array|Float32Array} array {Array} original
+ * @return {Array|Float32Array} shuffled array
+ * @static
+ */
+const shuffleArray = function (array)
+{
+    for (let i = array.length - 1; i > 0; i--)
+    {
+        const j = Math.floor(Math.seededRandom() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+};
+
+/**
+ * generate a short "relativly unique" id
+ * @function shortId
+ * @return {String} generated ID
+ * @static
+ */
+
+const _shortIds = {};
+const shortId = function ()
+{
+    let str = Math.random().toString(36).substr(2, 9);
+
+    if (_shortIds.hasOwnProperty(str)) str = shortId();
+    _shortIds[str] = true;
+    return str;
+};
+
+/**
+ * @typedef {String} UUID
+*/
+
+/**
+ * generate a UUID
+ * @function uuid
+ * @return {UUID} generated UUID
+ * @static
+ */
+const uuid = function ()
+{
+    let d = new Date().getTime();
+    const uuidStr = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) =>
+    {
+        const r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+    });
+    return uuidStr;
+};
+const generateUUID = uuid;
+
+function cleanJson(obj)
+{
+    for (const i in obj)
+    {
+        if (obj[i] && typeof objValue === "object" && obj[i].constructor === Object) obj[i] = cleanJson(obj[i]);
+
+        if (obj[i] === null || obj[i] === undefined) delete obj[i];
+        else if (Array.isArray(obj[i]) && obj[i].length == 0) delete obj[i];
+    }
+
+    return obj;
+}
+
+/**
+ * @see http://stackoverflow.com/q/7616461/940217
+ * @param {string} str
+ * @param {string} prefix
+ * @return {string}
+ */
+const prefixedHash = function (str, prefix = "id")
+{
+    let hash = 0;
+    if (str.length > 0)
+    {
+        for (let i = 0; i < str.length; i++)
+        {
+            let character = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + character;
+            hash &= hash; // Convert to 32bit integer
+        }
+    }
+    return prefix + "" + hash;
+};
+
+/**
+ * generate a simple ID
+ * @return {Number} new id
+ * @static
+ */
+let simpleIdCounter = 0;
+const simpleId = function ()
+{
+    simpleIdCounter++;
+    return simpleIdCounter;
+};
+
+/**
+ * smoothStep a value
+ * @param {Number} perc value value to be smoothed [0-1]
+ * @return {Number} smoothed value
+ * @static
+ */
+const smoothStep = function (perc)
+{
+    const x = Math.max(0, Math.min(1, (perc - 0) / (1 - 0)));
+    perc = x * x * (3 - 2 * x); // smoothstep
+    return perc;
+};
+
+/**
+ * smootherstep a value
+ * @param {Number} perc value to be smoothed [0-1]
+ * @return {Number} smoothed value
+ * @static
+ */
+const smootherStep = function (perc)
+{
+    const x = Math.max(0, Math.min(1, (perc - 0) / (1 - 0)));
+    perc = x * x * x * (x * (x * 6 - 15) + 10); // smootherstep
+    return perc;
+};
+
+/**
+ * clamp number / make sure its between min/max
+ * @param {Number} value value to be mapped
+ * @param {Number} min minimum value
+ * @param {Number} max maximum value
+ * @static
+ */
+const clamp = function (value, min, max)
+{
+    return Math.min(Math.max(value, min), max);
+};
+
+/**
+ * map a value in a range to a value in another range
+ * @param {Number} x value to be mapped
+ * @param {Number} _oldMin old range minimum value
+ * @param {Number} _oldMax old range maximum value
+ * @param {Number} _newMin new range minimum value
+ * @param {Number} _newMax new range maximum value
+ * @param {Number} _easing
+ * @return {Number} mapped value
+ * @static
+ */
+const map = function (x, _oldMin, _oldMax, _newMin, _newMax, _easing = 0, clamp = true)
+{
+    if (clamp)
+    {
+        if (x >= _oldMax) return _newMax;
+        if (x <= _oldMin) return _newMin;
+    }
+
+    let reverseInput = false;
+    const oldMin = Math.min(_oldMin, _oldMax);
+    const oldMax = Math.max(_oldMin, _oldMax);
+    if (oldMin != _oldMin) reverseInput = true;
+
+    let reverseOutput = false;
+    const newMin = Math.min(_newMin, _newMax);
+    const newMax = Math.max(_newMin, _newMax);
+    if (newMin != _newMin) reverseOutput = true;
+
+    let portion = 0;
+    let r = 0;
+
+    if (reverseInput) portion = ((oldMax - x) * (newMax - newMin)) / (oldMax - oldMin);
+    else portion = ((x - oldMin) * (newMax - newMin)) / (oldMax - oldMin);
+
+    if (reverseOutput) r = newMax - portion;
+    else r = portion + newMin;
+
+    if (!_easing) return r;
+    if (_easing == 1)
+    {
+        // smoothstep
+        x = Math.max(0, Math.min(1, (r - _newMin) / (_newMax - _newMin)));
+        return _newMin + x * x * (3 - 2 * x) * (_newMax - _newMin);
+    }
+    if (_easing == 2)
+    {
+        // smootherstep
+        x = Math.max(0, Math.min(1, (r - _newMin) / (_newMax - _newMin)));
+        return _newMin + x * x * x * (x * (x * 6 - 15) + 10) * (_newMax - _newMin);
+    }
+
+    return r;
+};
+
+// ----------------------------------------------------------------
+
+/**
+ * returns true if parameter is a number
+ * @param {any} n value The value to check.
+ * @return {Boolean}
+ * @static
+ */
+function isNumeric(n)
+{
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+// ----------------------------------------------------------------
+
+/**
+ * append a unique/random parameter to a url, so the browser is forced to reload the file, even if its cached
+ * @static
+ * @param {String} url The url to append the cachebuster parameter to.
+ * @return {String} url with cachebuster parameter
+ */
+const cacheBust = function (url = "")
+{
+    if (!url) return "";
+    if (url.startsWith("data:")) return;
+    if (url.includes("?")) url += "&";
+    else url += "?";
+    return url + "cache=" + CABLES.uuid();
+};
+
+/**
+ * copy the content of an array
+ * @static
+ * @param {Array} src sourceArray
+ * @param {Array} dst optional
+ * @return {Array} dst
+ */
+const copyArray = function (src, dst)
+{
+    if (!src) return null;
+    dst = dst || [];
+    dst.length = src.length;
+    for (let i = 0; i < src.length; i++)
+        dst[i] = src[i];
+
+    return dst;
+};
+
+/**
+ * return the filename part of a url without extension
+ * @static
+ * @param {String} url
+ * @return {String} just the filename
+ */
+const basename = function (url)
+{
+    let name = CABLES.filename(url);
+
+    const parts2 = name.split(".");
+    name = parts2[0];
+
+    return name;
+};
+
+/**
+ * output a stacktrace to the console
+ * @static
+ */
+const logStack = function ()
+{
+    console.log("logstack", (new Error()).stack);
+};
+
+/**
+ * return the filename part of a url
+ * @static
+ * @param {String} url
+ * @return {String} just the filename
+ */
+const filename = function (url)
+{
+    let name = "";
+    if (!url) return "";
+
+    if (url.startsWith("data:") && url.includes(":"))
+    {
+        const parts = url.split(",");
+        return parts[0];
+    }
+
+    let parts = (url + "").split("/");
+    if (parts.length > 0)
+    {
+        const str = parts[parts.length - 1];
+        let parts2 = str.split("?");
+        name = parts2[0];
+    }
+
+    return name || "";
+};
+
+/**
+ * make an ajax request
+ * @static
+ * @function ajax
+ * @param url
+ * @param cb
+ * @param method
+ * @param post
+ * @param contenttype
+ * @param jsonP
+ * @param headers
+ * @param options
+ */
+const ajax = function (url, cb, method, post, contenttype, jsonP, headers = {}, options = {})
+{
+    const requestOptions = {
+        "url": url,
+        "cb": cb,
+        "method": method,
+        "data": post,
+        "contenttype": contenttype,
+        "sync": false,
+        "jsonP": jsonP,
+        "headers": headers,
+    };
+    if (options && options.credentials) requestOptions.credentials = options.credentials;
+    request(requestOptions);
+};
+
+const request = function (options)
+{
+    if (!options.hasOwnProperty("asynch")) options.asynch = true;
+
+    let xhr;
+    try
+    {
+        xhr = new XMLHttpRequest();
+    }
+    catch (e) {}
+
+    xhr.onreadystatechange = function ()
+    {
+        if (xhr.readyState != 4) return;
+
+        if (options.cb)
+        {
+            if (xhr.status == 200 || xhr.status == 0) options.cb(false, xhr.responseText, xhr);
+            else options.cb(true, xhr.responseText, xhr);
+        }
+    };
+
+    try
+    {
+        xhr.open(options.method ? options.method.toUpperCase() : "GET", options.url, !options.sync);
+    }
+    catch (e)
+    {
+        if (options.cb && e) options.cb(true, e.msg, xhr);
+    }
+
+    if (typeof options.headers === "object")
+    {
+        if (options.headers)
+        {
+            const keys = Object.keys(options.headers);
+            for (let i = 0; i < keys.length; i++)
+            {
+                const name = keys[i];
+                const value = options.headers[name];
+                xhr.setRequestHeader(name, value);
+            }
+        }
+    }
+
+    if (options.credentials && options.credentials !== "omit")
+    {
+        xhr.withCredentials = true;
+    }
+
+    try
+    {
+        if (!options.post && !options.data)
+        {
+            xhr.send();
+        }
+        else
+        {
+            xhr.setRequestHeader(
+                "Content-type",
+                options.contenttype ? options.contenttype : "application/x-www-form-urlencoded",
+            );
+            xhr.send(options.data || options.post);
+        }
+    }
+    catch (e)
+    {
+        if (options.cb) options.cb(true, e.msg, xhr);
+    }
+};
+
+// ----------------------------------------------------------------
+
+const logErrorConsole = function (initiator)
+{
+    CABLES.errorConsole = CABLES.errorConsole || { "log": [] };
+    CABLES.errorConsole.log.push({ "initiator": initiator, "arguments": arguments });
+
+    if (!CABLES.errorConsole.ele)
+    {
+        const ele = document.createElement("div");
+        ele.id = "cablesErrorConsole";
+        ele.style.width = "90%";
+        ele.style.height = "300px";
+        ele.style.zIndex = "9999999";
+        ele.style.display = "inline-block";
+        ele.style.position = "absolute";
+        ele.style.padding = "10px";
+        ele.style.fontFamily = "monospace";
+        ele.style.color = "red";
+        ele.style.backgroundColor = "#200";
+
+        CABLES.errorConsole.ele = ele;
+        document.body.appendChild(ele);
+    }
+
+    let logHtml = "ERROR<br/>for more info, open your browsers dev tools console (Ctrl+Shift+I or Command+Alt+I)<br/>";
+
+    for (let l = 0; l < CABLES.errorConsole.log.length; l++)
+    {
+        logHtml += CABLES.errorConsole.log[l].initiator + " ";
+        for (let i = 1; i < CABLES.errorConsole.log[l].arguments.length; i++)
+        {
+            if (i > 2)logHtml += ", ";
+            let arg = CABLES.errorConsole.log[l].arguments[i];
+            if (arg.constructor.name.indexOf("Error") > -1 || arg.constructor.name.indexOf("error") > -1)
+            {
+                let txt = "Uncaught ErrorEvent ";
+                if (arg.message)txt += " message: " + arg.message;
+                logHtml += txt;
+            }
+            else if (typeof arg == "string")
+                logHtml += arg;
+            else if (typeof arg == "number")
+                logHtml += String(arg) + " ";
+        }
+        logHtml += "<br/>";
+    }
+
+    CABLES.errorConsole.ele.innerHTML = logHtml;
+};
+
+/**
+ * @param {Array<any>} arr
+ */
+function uniqueArray(arr)
+{
+    const u = {}, a = [];
+    for (let i = 0, l = arr.length; i < l; ++i)
+    {
+        if (!u.hasOwnProperty(arr[i]))
+        {
+            a.push(arr[i]);
+            u[arr[i]] = 1;
+        }
+    }
+    return a;
+}
+
+const htmlEscapes = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;",
+};
+
+/** Used to match HTML entities and HTML characters. */
+const reUnescapedHtml = /[&<>"']/g;
+const reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
+
+// from https://github.com/lodash/lodash/blob/master/escape.js
+/*  eslint-disable */
+const escapeHTML = function(string)
+{
+    return string && reHasUnescapedHtml.test(string) ?
+        string.replace(reUnescapedHtml, function(chr) { return htmlEscapes[chr]; })
+        : string || "";
+}
+/* eslint-enable */
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_boundingbox.js":
+/*!*******************************************!*\
+  !*** ./src/corelibs/cg/cg_boundingbox.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BoundingBox: () => (/* binding */ BoundingBox)
+/* harmony export */ });
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat4.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
+
+
+
+
+
+/**
+ * bounding box
+ *
+ * @namespace external:CGL
+ * @param {Geometry} geometry or bounding box
+ */
+class BoundingBox
+{
+
+    /**
+     * @param {Geometry} [geom]
+     */
+    constructor(geom)
+    {
+        this._init();
+        this._first = true;
+        this._wireMesh = null;
+
+        if (geom) this.applyGeom(geom);
+    }
+
+    _init()
+    {
+        this._max = [-0, -0, -0];
+        this._min = [0, 0, 0];
+        this._center = [0, 0, 0];
+        this._size = [0, 0, 0];
+        this._maxAxis = 0.0;
+        this._first = true;
+    }
+
+    /**
+     * get biggest number of maxX,maxY,maxZ
+     * @type {Number}
+     */
+    get maxAxis() { return this._maxAxis || 1; }
+
+    /**
+     * size of bounding box
+     * @type {vec3}
+     */
+    get size() { return this._size; }
+
+    /**
+     * center of bounding box
+     * @type {vec3}
+     */
+    get center() { return this._center; }
+
+    /**
+     * center x
+     * @type {Number}
+     */
+    get x() { return this._center[0]; }
+
+    /**
+     * center y
+     * @type {Number}
+     */
+    get y() { return this._center[1]; }
+
+    /**
+     * center z
+     * @type {Number}
+     */
+    get z() { return this._center[2]; }
+
+    /**
+     * minimum x
+     * @type {Number}
+     */
+    get minX() { return this._min[0]; }
+
+    /**
+     * minimum y
+     * @type {Number}
+     */
+    get minY() { return this._min[1]; }
+
+    /**
+     * minimum z
+     * @type {Number}
+     */
+    get minZ() { return this._min[2]; }
+
+    /**
+     * maximum x
+     * @type {Number}
+     */
+    get maxX() { return this._max[0]; }
+
+    /**
+     * maximum y
+     * @type {Number}
+     */
+    get maxY() { return this._max[1]; }
+
+    /**
+     * maximum z
+     * @type {Number}
+     */
+    get maxZ() { return this._max[2]; }
+
+    /**
+     * @deprecated
+     * @param {Geometry} geom
+     */
+    apply(geom)
+    {
+        return this.applyGeom(geom);
+    }
+
+    /**
+     * @param {Geometry} geom
+     */
+    applyGeom(geom)
+    {
+        if (!geom) return;
+
+        if (geom instanceof BoundingBox)
+        {
+            const bb = geom;
+
+            this.applyPos(bb.maxX, bb.maxY, bb.maxZ);
+            this.applyPos(bb.minX, bb.minY, bb.minZ);
+        }
+        else
+        {
+            if (geom.isGeometry)
+                for (let i = 0; i < geom.vertices.length; i += 3)
+                    this.applyPos(geom.vertices[i], geom.vertices[i + 1], geom.vertices[i + 2]);
+        }
+        this.calcCenterSize();
+    }
+
+    /**
+     * returns a copy of the bounding box
+     * @function copy
+     * @memberof BoundingBox
+     * @instance
+     */
+    copy()
+    {
+        return new BoundingBox(this);
+    }
+
+    get changed()
+    {
+        return !(this._max[0] == -Number.MAX_VALUE && this._max[1] == -Number.MAX_VALUE && this._max[2] == -Number.MAX_VALUE);
+    }
+
+    /**
+     * @param {number} x
+     * @param {number} y
+     * @param {number} z
+     */
+    applyPos(x, y, z)
+    {
+        if (x == Number.MAX_VALUE || x == -Number.MAX_VALUE ||
+            y == Number.MAX_VALUE || y == -Number.MAX_VALUE ||
+            z == Number.MAX_VALUE || z == -Number.MAX_VALUE) return;
+
+        if (!cables__WEBPACK_IMPORTED_MODULE_0__.isNumeric(x) || !cables__WEBPACK_IMPORTED_MODULE_0__.isNumeric(y) || !cables__WEBPACK_IMPORTED_MODULE_0__.isNumeric(z)) return;
+
+        if (this._first)
+        {
+            this._max[0] = x;
+            this._max[1] = y;
+            this._max[2] = z;
+
+            this._min[0] = x;
+            this._min[1] = y;
+            this._min[2] = z;
+            this._first = false;
+            return;
+        }
+
+        this._max[0] = Math.max(this._max[0], x);
+        this._max[1] = Math.max(this._max[1], y);
+        this._max[2] = Math.max(this._max[2], z);
+
+        this._min[0] = Math.min(this._min[0], x);
+        this._min[1] = Math.min(this._min[1], y);
+        this._min[2] = Math.min(this._min[2], z);
+    }
+
+    calcCenterSize()
+    {
+        if (this._first) return;
+
+        this._size[0] = this._max[0] - this._min[0];
+        this._size[1] = this._max[1] - this._min[1];
+        this._size[2] = this._max[2] - this._min[2];
+
+        this._center[0] = (this._min[0] + this._max[0]) / 2;
+        this._center[1] = (this._min[1] + this._max[1]) / 2;
+        this._center[2] = (this._min[2] + this._max[2]) / 2;
+
+        this._maxAxis = Math.max(this._size[2], Math.max(this._size[0], this._size[1]));
+    }
+
+    /**
+     * @param {mat4} m
+     */
+    mulMat4(m)
+    {
+        if (this._first)
+        {
+            this._max[0] = 0;
+            this._max[1] = 0;
+            this._max[2] = 0;
+
+            this._min[0] = 0;
+            this._min[1] = 0;
+            this._min[2] = 0;
+            this._first = false;
+        }
+        gl_matrix__WEBPACK_IMPORTED_MODULE_1__.transformMat4(this._max, this._max, m);
+        gl_matrix__WEBPACK_IMPORTED_MODULE_1__.transformMat4(this._min, this._min, m);
+        this.calcCenterSize();
+    }
+
+    /**
+     * @param {CglContext} cgl
+     * @param {Shader} _shader
+     * @param {Op} op
+     */
+    render(cgl, _shader, op)
+    {
+        if (!this._wireMesh) this._wireMesh = new CGL.WireCube(cgl);
+
+        cgl.pushModelMatrix();
+        gl_matrix__WEBPACK_IMPORTED_MODULE_2__.translate(cgl.mMatrix, cgl.mMatrix, this._center);
+
+        if (CABLES.UI && op)
+        {
+            CABLES.UI.OverlayMeshes.drawCube(op, this._size[0] / 2, this._size[1] / 2, this._size[2] / 2);
+        }
+
+        cgl.popModelMatrix();
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_canvas.js":
+/*!**************************************!*\
+  !*** ./src/corelibs/cg/cg_canvas.js ***!
+  \**************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CgCanvas: () => (/* binding */ CgCanvas)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+
+
+class CgCanvas
+{
+    hasFocus = false;
+
+    constructor(options)
+    {
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]("CgCanvas");
+        if (!options)
+        {
+            this._log.error("CgCanvas no options");
+        }
+        else
+        {
+            this._canvasEle = options.canvasEle;
+        }
+
+        if (!options.cg) this._log.error("CgCanvas options has no cg");
+        if (!options.canvasEle) this._log.error("CgCanvas options has no canvasEle");
+
+        this._cg = options.cg;
+        this.pixelDensity = 1;
+        this.canvasWidth = this.canvasEle.clientWidth;
+        this.canvasHeight = this.canvasEle.clientHeight;
+
+        this._oldWidthRp = -1;
+        this._oldHeightRp = -1;
+
+        this.setSize(this.canvasWidth, this.canvasHeight);
+        this.canvasEle.addEventListener("focus", () => { this.hasFocus = true; });
+        this.canvasEle.addEventListener("blur", () => { this.hasFocus = false; });
+    }
+
+    get canvasEle() { return this._canvasEle; }
+
+    setWhyCompile(why)
+    {
+        this._compileReason = why;
+    }
+
+    /**
+     * @param {Number} w
+     * @param {Number} h
+     * @param {any} ignorestyle
+     * @returns {any}
+     */
+    setSize(w, h, ignorestyle = false)
+    {
+        if (this._oldWidthRp != w * this.pixelDensity || this._oldHeightRp != h * this.pixelDensity)
+        {
+            this._oldWidthRp = this.canvasEle.width = w * this.pixelDensity;
+            this._oldHeightRp = this.canvasEle.height = h * this.pixelDensity;
+
+            if (!ignorestyle)
+            {
+                this.canvasEle.style.width = w + "px";
+                this.canvasEle.style.height = h + "px";
+            }
+
+            this.updateSize();
+
+            this._cg.emitEvent("resize");
+        }
+    }
+
+    updateSize()
+    {
+        this.canvasEle.width = this.canvasWidth = this.canvasEle.clientWidth * this.pixelDensity;
+        this.canvasEle.height = this.canvasHeight = this.canvasEle.clientHeight * this.pixelDensity;
+    }
+
+    dispose()
+    {
+        if (this._canvasEle) this._canvasEle.remove();
+        this._canvasEle = null;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_context.js":
+/*!***************************************!*\
+  !*** ./src/corelibs/cg/cg_context.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CgContext: () => (/* binding */ CgContext)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat4.js");
+/* harmony import */ var _cg_canvas_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./cg_canvas.js */ "./src/corelibs/cg/cg_canvas.js");
+/* harmony import */ var _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./cg_matrixstack.js */ "./src/corelibs/cg/cg_matrixstack.js");
+/* harmony import */ var _cgl_cgl_profiledata_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../cgl/cgl_profiledata.js */ "./src/corelibs/cgl/cgl_profiledata.js");
+/* harmony import */ var _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cg_fpscounter.js */ "./src/corelibs/cg/cg_fpscounter.js");
+
+
+
+
+
+
+
+
+class CgContext extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
+{
+
+    static API_WEBGL = 0;
+    static API_WEBGPU = 1;
+
+    gApi = "unknown";
+
+    /**
+     * Description
+     * @param {Patch} _patch
+     */
+    constructor(_patch)
+    {
+        super();
+
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_1__["default"]("cg_context", { "onError": _patch.config.onError });
+
+        /** @type {object} */
+        this.tempData = this.frameStore = this.frameStore || {};
+        this.fpsCounter = new _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__.FpsCounter();
+        this._identView = gl_matrix__WEBPACK_IMPORTED_MODULE_3__.create();
+        this._ident = gl_matrix__WEBPACK_IMPORTED_MODULE_3__.create();
+        gl_matrix__WEBPACK_IMPORTED_MODULE_3__.set(this._identView, 0, 0, -2);
+        gl_matrix__WEBPACK_IMPORTED_MODULE_3__.set(this._ident, 0, 0, 0);
+        this._onetimeCallbacks = [];
+        this.maxTexSize = 2048;
+        this._viewPort = [0, 0, 1, 1];
+        this._viewPortStack = [];
+        this.patch = _patch;
+        this.autoReSize = true;
+
+        this.DEPTH_COMPARE_FUNC_NEVER = 0;
+        this.DEPTH_COMPARE_FUNC_LESS = 1;
+        this.DEPTH_COMPARE_FUNC_EQUAL = 2;
+        this.DEPTH_COMPARE_FUNC_LESSEQUAL = 3;
+        this.DEPTH_COMPARE_FUNC_GREATER = 4;
+        this.DEPTH_COMPARE_FUNC_NOTEQUAL = 5;
+        this.DEPTH_COMPARE_FUNC_GREATEREQUAL = 6;
+        this.DEPTH_COMPARE_FUNC_ALWAYS = 7;
+
+        this.profileData = new _cgl_cgl_profiledata_js__WEBPACK_IMPORTED_MODULE_4__.ProfileData(this);
+
+        /**
+         * Current projection matrix
+         * @memberof Context
+         * @instance
+         * @type {mat4}
+         */
+        this.pMatrix = gl_matrix__WEBPACK_IMPORTED_MODULE_5__.create();
+
+        /**
+         * Current model matrix
+         * @memberof Context
+         * @instance
+         * @type {mat4}
+         */
+        this.mMatrix = gl_matrix__WEBPACK_IMPORTED_MODULE_5__.create();
+
+        /**
+         * Current view matrix
+         * @memberof Context
+         * @instance
+         * @type {mat4}
+         */
+        this.vMatrix = gl_matrix__WEBPACK_IMPORTED_MODULE_5__.create();
+        this._textureslots = [];
+
+        this._pMatrixStack = new _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__.MatrixStack();
+        this._mMatrixStack = new _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__.MatrixStack();
+        this._vMatrixStack = new _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__.MatrixStack();
+
+        this.canvasScale = 1;
+
+        gl_matrix__WEBPACK_IMPORTED_MODULE_5__.identity(this.mMatrix);
+        gl_matrix__WEBPACK_IMPORTED_MODULE_5__.identity(this.vMatrix);
+
+        window.matchMedia("screen and (min-resolution: 2dppx)").addEventListener("change", () =>
+        {
+            this.emitEvent("resize");
+        });
+
+    }
+
+    get canvasWidth()
+    {
+        return this.cgCanvas.canvasWidth;
+    }
+
+    get canvasHeight()
+    {
+        return this.cgCanvas.canvasHeight;
+    }
+
+    set pixelDensity(p)
+    {
+        if (this.cgCanvas.pixelDensity != p)
+        {
+            this.cgCanvas.pixelDensity = p;
+            this.cgCanvas.updateSize();
+            this.emitEvent("resize");
+        }
+    }
+
+    get pixelDensity()
+    {
+        return this.cgCanvas.pixelDensity;
+    }
+
+    getGApiName()
+    {
+        return ["WebGL", "WebGPU"][this.gApi];
+    }
+
+    get canvas()
+    {
+        return this.cgCanvas.canvasEle;
+    }
+
+    get viewPort()
+    {
+        // TODO: add stack...
+        return [0, 0, this.canvasWidth, this.canvasHeight];
+    }
+
+    /**
+     * @param {HTMLElement} canvEle
+     */
+    setCanvas(canvEle)
+    {
+        if (this.cgCanvas && canvEle == this.cgCanvas.canvasEle) return;
+        if (typeof canvEle === "string") canvEle = document.getElementById(canvEle);
+
+        this.cgCanvas = new _cg_canvas_js__WEBPACK_IMPORTED_MODULE_7__.CgCanvas({ "canvasEle": canvEle, "cg": this });
+
+        canvEle.parentElement.classList.add("cablesContainer");
+        if (this._setCanvas) this._setCanvas(canvEle);
+
+        this.updateSize();
+    }
+
+    /**
+     * @param {HTMLElement} _canvEle
+     */
+    _setCanvas(_canvEle)
+    {
+    }
+
+    updateSize()
+    {
+        this.cgCanvas.updateSize();
+    }
+
+    /**
+     * @param {number} w
+     * @param {number} h
+     * @param {boolean} ignorestyle
+     */
+    setSize(w, h, ignorestyle = false)
+    {
+        this.cgCanvas.setSize(w, h, ignorestyle);
+    }
+
+    _resizeToWindowSize()
+    {
+        if (this.autoReSize)
+        {
+            this.setSize(window.innerWidth, window.innerHeight);
+            this.updateSize();
+        }
+    }
+
+    _resizeToParentSize()
+    {
+        if (this.autoReSize)
+        {
+            const p = this.canvas.parentElement;
+            if (!p)
+            {
+                this._log.error("cables: can not resize to container element");
+                return;
+            }
+
+            this.setSize(p.clientWidth, p.clientHeight);
+            this.updateSize();
+        }
+    }
+
+    setAutoResize(parent)
+    {
+        window.removeEventListener("resize", this._resizeToWindowSize.bind(this));
+        window.removeEventListener("resize", this._resizeToParentSize.bind(this));
+
+        if (parent == "window")
+        {
+            window.addEventListener("resize", this._resizeToWindowSize.bind(this));
+            window.addEventListener("orientationchange", this._resizeToWindowSize.bind(this));
+            this._resizeToWindowSize();
+        }
+        if (parent == "parent")
+        {
+            window.addEventListener("resize", this._resizeToParentSize.bind(this));
+            this._resizeToParentSize();
+        }
+    }
+
+    /**
+     * push a matrix to the projection matrix stack
+     * @function pushPMatrix
+     * @memberof Context
+     * @instance
+     */
+    pushPMatrix()
+    {
+        this.pMatrix = this._pMatrixStack.push(this.pMatrix);
+    }
+
+    /**
+      * pop projection matrix stack
+      * @function popPMatrix
+      * @memberof Context
+      * @instance
+      * @returns {mat4} current projectionmatrix
+      */
+    popPMatrix()
+    {
+        this.pMatrix = this._pMatrixStack.pop();
+        return this.pMatrix;
+    }
+
+    getProjectionMatrixStateCount()
+    {
+        return this._pMatrixStack.stateCounter;
+    }
+
+    /**
+      * push a matrix to the model matrix stack
+      * @function pushModelMatrix
+      * @memberof Context
+      * @instance
+      * @example
+      * // see source code of translate op:
+      * cgl.pushModelMatrix();
+      * mat4.translate(cgl.mMatrix,cgl.mMatrix, vec);
+      * trigger.trigger();
+      * cgl.popModelMatrix();
+      */
+    pushModelMatrix()
+    {
+        this.mMatrix = this._mMatrixStack.push(this.mMatrix);
+    }
+
+    /**
+      * pop model matrix stack
+      * @function popModelMatrix
+      * @memberof Context
+      * @instance
+      * @returns {mat4} current modelmatrix
+      */
+    popModelMatrix()
+    {
+        // todo: DEPRECATE
+        // if (this._mMatrixStack.length === 0) throw "Invalid modelview popMatrix!";
+        this.mMatrix = this._mMatrixStack.pop();
+        return this.mMatrix;
+    }
+
+    /**
+      * get model matrix
+      * @function modelMatrix
+      * @memberof Context
+      * @instance
+      * @returns {mat4} current modelmatrix
+      */
+    modelMatrix()
+    {
+        return this.mMatrix;
+    }
+
+    /**
+     * push a matrix to the view matrix stack
+     * @function pushviewMatrix
+     * @memberof Context
+     * @instance
+     */
+    pushViewMatrix()
+    {
+        this.vMatrix = this._vMatrixStack.push(this.vMatrix);
+    }
+
+    /**
+      * pop view matrix stack
+      * @function popViewMatrix
+      * @memberof Context
+      * @instance
+      * @returns {mat4} current viewmatrix
+      * @function
+      */
+    popViewMatrix()
+    {
+        this.vMatrix = this._vMatrixStack.pop();
+    }
+
+    getViewMatrixStateCount()
+    {
+        return this._vMatrixStack.stateCounter;
+    }
+
+    /**
+     * @param {vec3} identTranslate
+     * @param {vec3} identTranslateView
+     */
+    _startMatrixStacks(identTranslate, identTranslateView)
+    {
+        identTranslate = identTranslate || this._ident;
+        identTranslateView = identTranslateView || this._identView;
+
+        gl_matrix__WEBPACK_IMPORTED_MODULE_5__.perspective(this.pMatrix, 45, this.canvasWidth / this.canvasHeight, 0.1, 1000.0);
+
+        gl_matrix__WEBPACK_IMPORTED_MODULE_5__.identity(this.mMatrix);
+        gl_matrix__WEBPACK_IMPORTED_MODULE_5__.identity(this.vMatrix);
+        gl_matrix__WEBPACK_IMPORTED_MODULE_5__.translate(this.mMatrix, this.mMatrix, identTranslate);
+        gl_matrix__WEBPACK_IMPORTED_MODULE_5__.translate(this.vMatrix, this.vMatrix, identTranslateView);
+
+        this.pushPMatrix();
+        this.pushModelMatrix();
+        this.pushViewMatrix();
+    }
+
+    _endMatrixStacks()
+    {
+        this.popViewMatrix();
+        this.popModelMatrix();
+        this.popPMatrix();
+    }
+
+    dispose()
+    {
+        this.aborted = true;
+        if (this.cgCanvas) this.cgCanvas.dispose();
+        if (this._dispose) this._dispose();
+    }
+
+    _dispose()
+    {
+    }
+
+    /**
+     * @param {any} _op
+     */
+    shouldDrawHelpers(_op)
+    {
+        return false;
+    }
+
+    /**
+     * execute the callback next frame, once
+     * @param {function} cb
+     */
+    addNextFrameOnceCallback(cb)
+    {
+        if (cb && this._onetimeCallbacks.indexOf(cb) == -1) this._onetimeCallbacks.push(cb);
+    }
+
+    _execOneTimeCallbacks()
+    {
+        if (this._onetimeCallbacks.length > 0)
+        {
+            for (let i = 0; i < this._onetimeCallbacks.length; i++) this._onetimeCallbacks[i]();
+            this._onetimeCallbacks.length = 0;
+        }
+    }
+
+    /**
+     * @param {number} x
+     */
+    checkTextureSize(x)
+    {
+        x = x || 1;
+        x = Math.floor(x);
+        x = Math.min(x, this.maxTexSize);
+        x = Math.max(x, 1);
+        return x;
+    }
+
+    // should be overwritten...
+    screenShot(cb, doScreenshotClearAlpha, mimeType, quality)
+    {
+        console.log("no screenshot function implemented");
+    }
+
+    /**
+     * @param {string} [filename]
+     * @param {function} [cb]
+     * @param {number} [pw]
+     * @param {number} [ph]
+     * @param {boolean} [noclearalpha]
+     */
+    saveScreenshot(filename, cb, pw, ph, noclearalpha)
+    {
+        this.patch.renderOneFrame();
+
+        let w = this.canvas.clientWidth * this.pixelDensity;
+        let h = this.canvas.clientHeight * this.pixelDensity;
+
+        if (pw)
+        {
+            this.canvas.width = pw;
+            w = pw;
+        }
+        if (ph)
+        {
+            this.canvas.height = ph;
+            h = ph;
+        }
+
+        function padLeft(nr, n, str)
+        {
+            return Array(n - String(nr).length + 1).join(str || "0") + nr;
+        }
+
+        const d = new Date();
+        const dateStr = "".concat(String(d.getFullYear()) + String(d.getMonth() + 1) + String(d.getDate()), "_").concat(padLeft(d.getHours(), 2)).concat(padLeft(d.getMinutes(), 2)).concat(padLeft(d.getSeconds(), 2));
+
+        if (!filename) filename = "cables_" + dateStr + ".png";
+        else filename += ".png";
+
+        this.screenShot((blob) =>
+        {
+            this.canvas.width = w;
+            this.canvas.height = h;
+
+            if (blob)
+            {
+                const anchor = document.createElement("a");
+
+                anchor.download = filename;
+                anchor.href = URL.createObjectURL(blob);
+
+                console.log("scrrenshot");
+                setTimeout(function ()
+                {
+                    anchor.click();
+                    if (cb) cb(blob);
+                }, 100);
+            }
+            else
+            {
+                this._log.log("screenshot: no blob");
+            }
+        });
+    }
+
+    hasFocus()
+    {
+        return this.cgCanvas.hasFocus;
+
+    }
+
+}
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_fpscounter.js":
+/*!******************************************!*\
+  !*** ./src/corelibs/cg/cg_fpscounter.js ***!
+  \******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FpsCounter: () => (/* binding */ FpsCounter)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables */ "./src/core/timer.js");
+
+
+
+class FpsCounter extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
+{
+    constructor()
+    {
+        super();
+        this._timeStartFrame = 0;
+        this._timeStartSecond = 0;
+        this._fpsCounter = 0;
+        this._msCounter = 0;
+        this._frameCount = 0;
+        this.logFps = false;
+
+        this.stats = { "ms": 0, "fps": 0 };
+    }
+
+    get frameCount()
+    {
+        return this._frameCount;
+    }
+
+    startFrame()
+    {
+        this._timeStartFrame = (0,cables__WEBPACK_IMPORTED_MODULE_1__.now)();
+    }
+
+    endFrame()
+    {
+        this._frameCount++;
+        this._fpsCounter++;
+
+        const timeFrame = (0,cables__WEBPACK_IMPORTED_MODULE_1__.now)() - this._timeStartFrame;
+        this._msCounter += timeFrame;
+
+        if ((0,cables__WEBPACK_IMPORTED_MODULE_1__.now)() - this._timeStartSecond > 1000) this.endSecond();
+    }
+
+    endSecond()
+    {
+        this.stats.fps = this._fpsCounter;
+        this.stats.ms = Math.round(this._msCounter / this._fpsCounter * 100) / 100;
+
+        this.emitEvent("performance", this.stats);
+        if (this.logFps)console.log(this.stats);
+
+        // reset
+        this._fpsCounter = 0;
+        this._msCounter = 0;
+        this._timeStartSecond = (0,cables__WEBPACK_IMPORTED_MODULE_1__.now)();
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_geom.js":
+/*!************************************!*\
+  !*** ./src/corelibs/cg/cg_geom.js ***!
+  \************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Geometry: () => (/* binding */ Geometry)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec2.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
+/* harmony import */ var _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cg_boundingbox.js */ "./src/corelibs/cg/cg_boundingbox.js");
+
+
+
+
+
+/**
+ * a geometry contains all information about a mesh, vertices, texturecoordinates etc. etc.
+ * @param {String} name
+ * @example
+ * // create a triangle with all attributes
+ * const geom=new Geometry("triangle"),
+ *
+ * geom.vertices = [
+ *      0.0,           sizeH.get(),  0.0,
+ *     -sizeW.get(),  -sizeH.get(),  0.0,
+ *      sizeW.get(),  -sizeH.get(),  0.0 ];
+ *
+ * geom.vertexNormals = [
+ *      0.0,  0.0,  1.0,
+ *      0.0,  0.0,  1.0,
+ *      0.0,  0.0,  1.0 ];
+ *
+ * geom.tangents = [
+ *     1,0,0,
+ *     1,0,0,
+ *     1,0,0 ];
+ *
+ * geom.biTangents = [
+ *     0,1,0,
+ *     0,1,0,
+ *     0,1,0 ];
+ *
+ * geom.texCoords = [
+ *      0.5,  0.0,
+ *      1.0,  1.0,
+ *      0.0,  1.0, ];
+ *
+ * geom.verticesIndices = [
+ *     0, 1, 2 ];
+ *
+ */
+
+class Geometry
+{
+    isGeometry = true;
+
+    /**
+     * @param {String} name
+    */
+    constructor(name)
+    {
+        this.name = name || "unknown";
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]("cgl_geometry");
+
+        this.faceVertCount = 3;
+        this.glPrimitive = null;
+        this._attributes = {};
+
+        /** @type {Array|Float32Array} */
+        this._vertices = [];
+
+        /** @type {Array} */
+        this.verticesIndices = [];
+
+        this.morphTargets = [];
+    }
+
+    get vertices()
+    {
+        return this._vertices;
+    }
+
+    set vertices(v)
+    {
+        this.setVertices(v);
+    }
+
+    get texCoords()
+    {
+        const att = this.getAttribute("texCoords");
+        if (!att) return [];
+        return att.data;
+    }
+
+    set texCoords(v)
+    {
+        this.setAttribute("texCoords", v, 2);
+    }
+
+    get vertexNormals()
+    {
+        const att = this.getAttribute("vertexNormals");
+        if (!att) return [];
+        return att.data;
+    }
+
+    set vertexNormals(v)
+    {
+        this.setAttribute("vertexNormals", v, 3);
+    }
+
+    get tangents()
+    {
+        const att = this.getAttribute("tangents");
+        if (!att) return [];
+        return att.data;
+    }
+
+    set tangents(v)
+    {
+        this.setAttribute("tangents", v, 3);
+    }
+
+    get biTangents()
+    {
+        const att = this.getAttribute("biTangents");
+        if (!att) return [];
+        return att.data;
+    }
+
+    set biTangents(v)
+    {
+        this.setAttribute("biTangents", v, 3);
+    }
+
+    get vertexColors()
+    {
+        const att = this.getAttribute("vertexColors");
+        if (!att) return [];
+        return att.data;
+    }
+
+    set vertexColors(v)
+    {
+        this.setAttribute("vertexColors", v, 4);
+    }
+
+    /**
+     * @description clear all buffers/set them to length 0
+     */
+    clear()
+    {
+        this._vertices = new Float32Array([]);
+        this.verticesIndices = [];
+        this.texCoords = new Float32Array([]);
+        this.vertexNormals = new Float32Array([]);
+        this.tangents = [];
+        this.biTangents = [];
+        this._attributes = {};
+    }
+
+    /**
+    * @return {Object} returns array of attribute objects
+    */
+    getAttributes()
+    {
+        return this._attributes;
+    }
+
+    /**
+     * @function getAttribute
+     * @memberof Geometry
+     * @instance
+     * @param {String} name
+     * @return {Object}
+     */
+    getAttribute(name)
+    {
+        for (const i in this._attributes)
+        {
+            if (this._attributes[i].name == name) return this._attributes[i];
+        }
+        return null;
+    }
+
+    /**
+     * @function setAttribute
+     * @description create an attribute
+     * @memberof Geometry
+     * @instance
+     * @param {String} name
+     * @param {Array} arr
+     * @param {Number} itemSize
+     */
+    setAttribute(name, arr, itemSize)
+    {
+        let attrType = "";
+        if (!itemSize || itemSize > 4)
+        {
+            this._log.warn("itemsize wrong?", itemSize, name);
+            this._log.stack("itemsize");
+
+            itemSize = 3;
+        }
+
+        if (itemSize == 1) attrType = "float";
+        else if (itemSize == 2) attrType = "vec2";
+        else if (itemSize == 3) attrType = "vec3";
+        else if (itemSize == 4) attrType = "vec4";
+
+        const attr = {
+            "name": name,
+            "data": arr,
+            "itemSize": itemSize,
+            "type": attrType,
+        };
+
+        this._attributes[name] = attr;
+    }
+
+    /**
+     * @param {string} name
+     * @param {Geometry} newgeom
+     */
+    copyAttribute(name, newgeom)
+    {
+        const attr = this.getAttribute(name);
+        newgeom.setAttribute(name, new Float32Array(attr.data), attr.itemSize);
+    }
+
+    /**
+     * @function setVertices
+     * @memberof Geometry
+     * @instance
+     * @description set vertices
+     * @param {Array|Float32Array} arr [x,y,z,x,y,z,...]
+     */
+    setVertices(arr)
+    {
+        if (arr instanceof Float32Array) this._vertices = arr;
+        else this._vertices = new Float32Array(arr);
+    }
+
+    /**
+     * set texcoords
+     * @param {Array|Float32Array} arr [u,v,u,v,...]
+     */
+    setTexCoords(arr)
+    {
+        if (arr instanceof Float32Array) this.texCoords = arr;
+        else this.texCoords = new Float32Array(arr);
+    }
+
+    // deprecated
+    calcNormals(smooth)
+    {
+        const options = { "smooth": smooth };
+        this.calculateNormals(options);
+    }
+
+    /**
+     * @param {number} x
+     * @param {number} y
+     * @param {number} z
+     */
+    flipNormals(x, y, z)
+    {
+        let vec = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+
+        if (x == undefined)x = 1;
+        if (y == undefined)y = 1;
+        if (z == undefined)z = 1;
+
+        for (let i = 0; i < this.vertexNormals.length; i += 3)
+        {
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.set(vec,
+                this.vertexNormals[i + 0],
+                this.vertexNormals[i + 1],
+                this.vertexNormals[i + 2]);
+
+            vec[0] *= -x;
+            vec[1] *= -y;
+            vec[2] *= -z;
+
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.normalize(vec, vec);
+
+            this.vertexNormals[i + 0] = vec[0];
+            this.vertexNormals[i + 1] = vec[1];
+            this.vertexNormals[i + 2] = vec[2];
+        }
+    }
+
+    getNumTriangles()
+    {
+        if (this.verticesIndices && this.verticesIndices.length) return this.verticesIndices.length / 3;
+        return this.vertices.length / 3;
+    }
+
+    /**
+     * flip order of vertices in geom faces
+     */
+    flipVertDir()
+    {
+        const newInd = [];
+        newInd.length = this.verticesIndices.length;
+        for (let i = 0; i < this.verticesIndices.length; i += 3)
+        {
+            newInd[i] = this.verticesIndices[i + 2];
+            newInd[i + 1] = this.verticesIndices[i + 1];
+            newInd[i + 2] = this.verticesIndices[i];
+        }
+        this.verticesIndices = newInd;
+    }
+
+    /**
+     * @param {Array} verts
+     */
+    setPointVertices(verts)
+    {
+        if (verts.length % 3 !== 0)
+        {
+            this._log.error("SetPointVertices: Array must be multiple of three.");
+            return;
+        }
+
+        if (!(verts instanceof Float32Array)) this.vertices = new Float32Array(verts);
+        else this.vertices = verts;
+
+        if (!(this.texCoords instanceof Float32Array)) this.texCoords = new Float32Array((verts.length / 3) * 2);
+
+        // this.texCoords.length=verts.length/3*2;
+        this.verticesIndices.length = verts.length / 3;
+        // this.verticesIndices=[];
+
+        for (let i = 0; i < verts.length / 3; i++)
+        {
+            this.verticesIndices[i] = i;
+            this.texCoords[i * 2] = 0;
+            this.texCoords[i * 2 + 1] = 0;
+        }
+    }
+
+    /**
+     * merge a different geometry into the this geometry
+     * @param {Geometry} geom
+     */
+    merge(geom)
+    {
+        if (!geom) return;
+
+        if (this.isIndexed() != geom.isIndexed())
+        {
+            if (this.isIndexed())
+            {
+                this.unIndex(false, true);
+            }
+            if (geom.isIndexed())
+            {
+                const g = geom.copy();
+                g.unIndex(false, true);
+                geom = g;
+            }
+        }
+
+        const oldIndizesLength = this.verticesIndices.length;
+        const vertLength = this._vertices.length / 3;
+
+        this.verticesIndices.length += geom.verticesIndices.length;
+        for (let i = 0; i < geom.verticesIndices.length; i++)
+            this.verticesIndices[oldIndizesLength + i] = geom.verticesIndices[i] + vertLength;
+
+        this.vertices = cables__WEBPACK_IMPORTED_MODULE_2__.float32Concat(this._vertices, geom.vertices);
+        this.texCoords = cables__WEBPACK_IMPORTED_MODULE_2__.float32Concat(this.texCoords, geom.texCoords);
+        this.vertexNormals = cables__WEBPACK_IMPORTED_MODULE_2__.float32Concat(this.vertexNormals, geom.vertexNormals);
+        this.tangents = cables__WEBPACK_IMPORTED_MODULE_2__.float32Concat(this.tangents, geom.tangents);
+        this.biTangents = cables__WEBPACK_IMPORTED_MODULE_2__.float32Concat(this.biTangents, geom.biTangents);
+    }
+
+    /**
+     *   a copy of the geometry
+     * @function copy
+     * @memberof Geometry
+     * @instance
+     */
+    copy()
+    {
+        const geom = new Geometry(this.name + " copy");
+        geom.faceVertCount = this.faceVertCount;
+        geom.glPrimitive = this.glPrimitive;
+
+        geom.setVertices(this._vertices.slice(0));
+
+        if (this.verticesIndices)
+        {
+            geom.verticesIndices.length = this.verticesIndices.length;
+            for (let i = 0; i < this.verticesIndices.length; i++) geom.verticesIndices[i] = this.verticesIndices[i];
+        }
+
+        for (let i in this._attributes) this.copyAttribute(i, geom);
+
+        geom.morphTargets.length = this.morphTargets.length;
+        for (let i = 0; i < this.morphTargets.length; i++) geom.morphTargets[i] = this.morphTargets[i];
+
+        return geom;
+    }
+
+    /**
+     * Calculaten normals
+     * @function calculateNormals
+     * @param {{ smooth?: any; forceZUp?: any; }} options
+     */
+    calculateNormals(options = null)
+    {
+        // todo: should check angle of normals to get edges    https://community.khronos.org/t/calculating-accurate-vertex-normals/28152
+        options = options || {};
+        if (options.smooth === false) this.unIndex();
+
+        const u = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const v = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const n = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+
+        function calcNormal(triangle)
+        {
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.subtract(u, triangle[0], triangle[1]);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.subtract(v, triangle[0], triangle[2]);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.cross(n, u, v);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.normalize(n, n);
+
+            if (options && options.forceZUp)
+            {
+                if (n[2] < 0)
+                {
+                    n[0] *= -1;
+                    n[1] *= -1;
+                    n[2] *= -1;
+                }
+            }
+            return n;
+        }
+
+        this.getVertexVec = function (which)
+        {
+            const vec = [0, 0, 0];
+            vec[0] = this.vertices[which * 3 + 0];
+            vec[1] = this.vertices[which * 3 + 1];
+            vec[2] = this.vertices[which * 3 + 2];
+            return vec;
+        };
+
+        if (!(this.vertexNormals instanceof Float32Array) || this.vertexNormals.length != this.vertices.length) this.vertexNormals = new Float32Array(this.vertices.length);
+
+        for (let i = 0; i < this.vertices.length; i++)
+        {
+            this.vertexNormals[i] = 0;
+        }
+
+        if (!this.isIndexed())
+        {
+            const norms = [];
+            for (let i = 0; i < this.vertices.length; i += 9)
+            {
+                const triangle = [[this.vertices[i + 0], this.vertices[i + 1], this.vertices[i + 2]], [this.vertices[i + 3], this.vertices[i + 4], this.vertices[i + 5]], [this.vertices[i + 6], this.vertices[i + 7], this.vertices[i + 8]]];
+                const nn = calcNormal(triangle);
+                norms.push(nn[0], nn[1], nn[2], nn[0], nn[1], nn[2], nn[0], nn[1], nn[2]);
+            }
+            this.vertexNormals = norms;
+        }
+        else
+        {
+            const faceNormals = [];
+
+            faceNormals.length = Math.floor(this.verticesIndices.length / 3);
+
+            for (let i = 0; i < this.verticesIndices.length; i += 3)
+            {
+                const triangle = [this.getVertexVec(this.verticesIndices[i + 0]), this.getVertexVec(this.verticesIndices[i + 1]), this.getVertexVec(this.verticesIndices[i + 2])];
+
+                faceNormals[i / 3] = calcNormal(triangle);
+
+                this.vertexNormals[this.verticesIndices[i + 0] * 3 + 0] += faceNormals[i / 3][0];
+                this.vertexNormals[this.verticesIndices[i + 0] * 3 + 1] += faceNormals[i / 3][1];
+                this.vertexNormals[this.verticesIndices[i + 0] * 3 + 2] += faceNormals[i / 3][2];
+
+                this.vertexNormals[this.verticesIndices[i + 1] * 3 + 0] += faceNormals[i / 3][0];
+                this.vertexNormals[this.verticesIndices[i + 1] * 3 + 1] += faceNormals[i / 3][1];
+                this.vertexNormals[this.verticesIndices[i + 1] * 3 + 2] += faceNormals[i / 3][2];
+
+                this.vertexNormals[this.verticesIndices[i + 2] * 3 + 0] += faceNormals[i / 3][0];
+                this.vertexNormals[this.verticesIndices[i + 2] * 3 + 1] += faceNormals[i / 3][1];
+                this.vertexNormals[this.verticesIndices[i + 2] * 3 + 2] += faceNormals[i / 3][2];
+            }
+
+            for (let i = 0; i < this.verticesIndices.length; i += 3) // faces
+            {
+                for (let k = 0; k < 3; k++) // triangles
+                {
+                    const vv = [this.vertexNormals[this.verticesIndices[i + k] * 3 + 0], this.vertexNormals[this.verticesIndices[i + k] * 3 + 1], this.vertexNormals[this.verticesIndices[i + k] * 3 + 2]];
+                    gl_matrix__WEBPACK_IMPORTED_MODULE_1__.normalize(vv, vv);
+                    this.vertexNormals[this.verticesIndices[i + k] * 3 + 0] = vv[0];
+                    this.vertexNormals[this.verticesIndices[i + k] * 3 + 1] = vv[1];
+                    this.vertexNormals[this.verticesIndices[i + k] * 3 + 2] = vv[2];
+                }
+            }
+        }
+    }
+
+    /**
+     * Calculates tangents & bitangents with the help of uv-coordinates. Adapted from
+     * Lengyel, Eric. “Computing Tangent Space Basis Vectors for an Arbitrary Mesh”.
+     * Terathon Software 3D Graphics Library.
+     * https://fenix.tecnico.ulisboa.pt/downloadFile/845043405449073/Tangent%20Space%20Calculation.pdf
+     *
+     * @function calcTangentsBitangents
+     */
+    calcTangentsBitangents()
+    {
+        if (!this.vertices.length)
+        {
+            // this._log.error("Cannot calculate tangents/bitangents without vertices.");
+            return;
+        }
+        if (!this.vertexNormals.length)
+        {
+            // this._log.error("Cannot calculate tangents/bitangents without normals.");
+            return;
+        }
+        if (!this.texCoords.length)
+        {
+            const texCoordLength = (this.vertices.length / 3) * 2;
+            this.texCoords = new Float32Array(texCoordLength);
+            for (let i = 0; i < texCoordLength; i += 1) this.texCoords[i] = 0;
+        }
+        if (!this.verticesIndices || !this.verticesIndices.length)
+        {
+            // this._log.error("Cannot calculate tangents/bitangents without vertex indices.");
+            return;
+        }
+        // this code assumes that we have three indices per triangle
+        if (this.verticesIndices.length % 3 !== 0)
+        {
+            this._log.error("Vertex indices mismatch!");
+            return;
+        }
+
+        const triangleCount = this.verticesIndices.length / 3;
+        const vertexCount = this.vertices.length / 3;
+
+        this.tangents = new Float32Array(this.vertexNormals.length);
+        this.biTangents = new Float32Array(this.vertexNormals.length);
+
+        // temporary buffers
+        const tempVertices = [];
+        tempVertices.length = vertexCount * 2;
+        const v1 = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const v2 = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const v3 = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+
+        const w1 = gl_matrix__WEBPACK_IMPORTED_MODULE_3__.create();
+        const w2 = gl_matrix__WEBPACK_IMPORTED_MODULE_3__.create();
+        const w3 = gl_matrix__WEBPACK_IMPORTED_MODULE_3__.create();
+
+        const sdir = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const tdir = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+
+        // for details on calculation, see article referenced above
+        for (let tri = 0; tri < triangleCount; tri += 1)
+        {
+            // indices of the three vertices for a triangle
+            const i1 = this.verticesIndices[tri * 3];
+            const i2 = this.verticesIndices[tri * 3 + 1];
+            const i3 = this.verticesIndices[tri * 3 + 2];
+
+            // vertex position as vec3
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.set(v1, this.vertices[i1 * 3], this.vertices[i1 * 3 + 1], this.vertices[i1 * 3 + 2]);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.set(v2, this.vertices[i2 * 3], this.vertices[i2 * 3 + 1], this.vertices[i2 * 3 + 2]);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.set(v3, this.vertices[i3 * 3], this.vertices[i3 * 3 + 1], this.vertices[i3 * 3 + 2]);
+
+            // texture coordinate as vec2
+            gl_matrix__WEBPACK_IMPORTED_MODULE_3__.set(w1, this.texCoords[i1 * 2], this.texCoords[i1 * 2 + 1]);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_3__.set(w2, this.texCoords[i2 * 2], this.texCoords[i2 * 2 + 1]);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_3__.set(w3, this.texCoords[i3 * 2], this.texCoords[i3 * 2 + 1]);
+
+            const x1 = v2[0] - v1[0];
+            const x2 = v3[0] - v1[0];
+            const y1 = v2[1] - v1[1];
+            const y2 = v3[1] - v1[1];
+            const z1 = v2[2] - v1[2];
+            const z2 = v3[2] - v1[2];
+
+            const s1 = w2[0] - w1[0];
+            const s2 = w3[0] - w1[0];
+            const t1 = w2[1] - w1[1];
+            const t2 = w3[1] - w1[1];
+
+            const r = 1.0 / (s1 * t2 - s2 * t1);
+
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.set(sdir, (t2 * x1 - t1 * x2) * r, (t2 * y1 - t1 * y2) * r, (t2 * z1 - t1 * z2) * r);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.set(tdir, (s1 * x2 - s2 * x1) * r, (s1 * y2 - s2 * y1) * r, (s1 * z2 - s2 * z1) * r);
+
+            tempVertices[i1] = sdir;
+            tempVertices[i2] = sdir;
+            tempVertices[i3] = sdir;
+
+            tempVertices[i1 + vertexCount] = tdir;
+            tempVertices[i2 + vertexCount] = tdir;
+            tempVertices[i3 + vertexCount] = tdir;
+        }
+
+        const normal = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const tempVert = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const tan = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const bitan = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const temp1 = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const temp2 = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const crossPd = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+        const normalized = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.create();
+
+        for (let vert = 0; vert < vertexCount; vert += 1)
+        {
+            // NOTE: some meshes don't have index 0 - n in their indexbuffer, if this is the case, skip calculation of this vertex
+            if (!tempVertices[vert]) continue;
+
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.set(normal, this.vertexNormals[vert * 3], this.vertexNormals[vert * 3 + 1], this.vertexNormals[vert * 3 + 2]);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.set(tempVert, tempVertices[vert][0], tempVertices[vert][1], tempVertices[vert][2]);
+
+            // Gram-Schmidt orthagonalize
+            const _dp = gl_matrix__WEBPACK_IMPORTED_MODULE_1__.dot(normal, tempVert);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.scale(temp1, normal, _dp);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.subtract(temp2, tempVert, temp1);
+
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.normalize(normalized, temp2);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.cross(crossPd, normal, tempVert);
+
+            // const intermDot = vec3.dot(crossPd, tempVertices[vert + vertexCount]);
+            const w = 1.0;// intermDot < 0.0 ? -1.0 : 1.0;
+
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.scale(tan, normalized, 1 / w);
+            gl_matrix__WEBPACK_IMPORTED_MODULE_1__.cross(bitan, normal, tan);
+
+            this.tangents[vert * 3 + 0] = tan[0];
+            this.tangents[vert * 3 + 1] = tan[1];
+            this.tangents[vert * 3 + 2] = tan[2];
+            this.biTangents[vert * 3 + 0] = bitan[0];
+            this.biTangents[vert * 3 + 1] = bitan[1];
+            this.biTangents[vert * 3 + 2] = bitan[2];
+        }
+    }
+
+    isIndexed()
+    {
+        if (this._vertices.length == 0) return true;
+        return this.verticesIndices.length != 0;
+    }
+
+    /**
+     * @function unIndex
+     * @memberof Geometry
+     * @instance
+     * @description remove all vertex indizes, vertices array will contain 3*XYZ for every triangle
+     * @param {boolean} reIndex
+     * @param {boolean} dontCalcNormals
+     */
+    unIndex(reIndex = false, dontCalcNormals = false)
+    {
+        const newVerts = [];
+        const newIndizes = [];
+        let count = 0;
+
+        for (let j in this._attributes)
+        {
+            const attr = this._attributes[j];
+            let na = [];
+
+            for (let i = 0; i < this.verticesIndices.length; i += 3)
+            {
+                for (let s = 0; s < 3; s++)
+                {
+                    if (attr.itemSize == 3)
+                        na.push(
+                            attr.data[this.verticesIndices[i + s] * 3 + 0],
+                            attr.data[this.verticesIndices[i + s] * 3 + 1],
+                            attr.data[this.verticesIndices[i + s] * 3 + 2]);
+                    else if (attr.itemSize == 4)
+                        na.push(
+                            attr.data[this.verticesIndices[i + s] * 4 + 0],
+                            attr.data[this.verticesIndices[i + s] * 4 + 1],
+                            attr.data[this.verticesIndices[i + s] * 4 + 2],
+                            attr.data[this.verticesIndices[i + s] * 4 + 3]);
+                    else if (attr.itemSize == 2)
+                        na.push(
+                            attr.data[this.verticesIndices[i + s] * 2 + 0],
+                            attr.data[this.verticesIndices[i + s] * 2 + 1]);
+                    else if (attr.itemSize == 1)
+                        na.push(
+                            attr.data[this.verticesIndices[i + s]]);
+                    else this._log.warn("unknown attr", attr);
+                }
+            }
+            this.setAttribute(attr.name, na, attr.itemSize);
+        }
+
+        for (let i = 0; i < this.verticesIndices.length; i += 3)
+        {
+            newVerts.push(
+                this.vertices[this.verticesIndices[i + 0] * 3 + 0],
+                this.vertices[this.verticesIndices[i + 0] * 3 + 1],
+                this.vertices[this.verticesIndices[i + 0] * 3 + 2]);
+
+            newIndizes.push(count);
+            count++;
+
+            newVerts.push(
+                this.vertices[this.verticesIndices[i + 1] * 3 + 0],
+                this.vertices[this.verticesIndices[i + 1] * 3 + 1],
+                this.vertices[this.verticesIndices[i + 1] * 3 + 2]);
+
+            newIndizes.push(count);
+            count++;
+
+            newVerts.push(
+                this.vertices[this.verticesIndices[i + 2] * 3 + 0],
+                this.vertices[this.verticesIndices[i + 2] * 3 + 1],
+                this.vertices[this.verticesIndices[i + 2] * 3 + 2]);
+
+            newIndizes.push(count);
+            count++;
+        }
+
+        this.vertices = newVerts;
+
+        this.verticesIndices = [];
+        if (reIndex) this.verticesIndices = newIndizes;
+
+        if (!dontCalcNormals) this.calculateNormals();
+    }
+
+    calcBarycentric()
+    {
+        let barycentrics = [];
+        barycentrics.length = this.vertices.length;
+        for (let i = 0; i < this.vertices.length; i++) barycentrics[i] = 0;
+
+        let count = 0;
+        for (let i = 0; i < this.vertices.length; i += 3)
+        {
+            barycentrics[i + count] = 1;
+            count++;
+            if (count == 3) count = 0;
+        }
+
+        this.setAttribute("attrBarycentric", barycentrics, 3);
+    }
+
+    getBounds()
+    {
+        return new _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_4__.BoundingBox(this);
+    }
+
+    /**
+     * @param {boolean} x
+     * @param {boolean} y
+     * @param {boolean} z
+     * @returns {Array} offset
+     */
+    center(x, y, z)
+    {
+        if (x === undefined)
+        {
+            x = true;
+            y = true;
+            z = true;
+        }
+
+        let i = 0;
+        const bounds = this.getBounds();
+        const offset = [bounds.minX + (bounds.maxX - bounds.minX) / 2, bounds.minY + (bounds.maxY - bounds.minY) / 2, bounds.minZ + (bounds.maxZ - bounds.minZ) / 2];
+
+        for (i = 0; i < this.vertices.length; i += 3)
+        {
+            if (this.vertices[i + 0] == this.vertices[i + 0])
+            {
+                if (x) this.vertices[i + 0] -= offset[0];
+                if (y) this.vertices[i + 1] -= offset[1];
+                if (z) this.vertices[i + 2] -= offset[2];
+            }
+        }
+
+        return offset;
+    }
+
+    mapTexCoords2d()
+    {
+        const bounds = this.getBounds();
+        const num = this.vertices.length / 3;
+
+        this.texCoords = new Float32Array(num * 2);
+
+        for (let i = 0; i < num; i++)
+        {
+            const vertX = this.vertices[i * 3 + 0];
+            const vertY = this.vertices[i * 3 + 1];
+            this.texCoords[i * 2 + 0] = vertX / (bounds.maxX - bounds.minX) + 0.5;
+            this.texCoords[i * 2 + 1] = 1.0 - vertY / (bounds.maxY - bounds.minY) + 0.5;
+        }
+    }
+
+    getInfoOneLine()
+    {
+        let txt = "";
+        if (this.faceVertCount == 3 && this.verticesIndices)txt += this.verticesIndices.length / 3;
+        else txt += 0;
+
+        txt += " tris ";
+
+        if (this.vertices)txt += this.vertices.length / 3;
+        else txt += 0;
+
+        txt += " verts";
+
+        return txt;
+    }
+
+    getInfo()
+    {
+        const info = {};
+
+        info.name = this.name;
+        info.class = this.constructor.name;
+
+        if (this.faceVertCount == 3 && this.verticesIndices)info.numFaces = this.verticesIndices.length / 3;
+        else info.numFaces = 0;
+
+        if (this.verticesIndices && this.verticesIndices.length)info.indices = this.verticesIndices.length;
+
+        if (this.vertices)info.numVerts = this.vertices.length / 3;
+        else info.numVerts = 0;
+
+        if (this.vertexNormals) info.numNormals = this.vertexNormals.length / 3;
+        else info.numNormals = 0;
+
+        if (this.texCoords) info.numTexCoords = this.texCoords.length / 2;
+        else info.numTexCoords = 0;
+
+        if (this.tangents) info.numTangents = this.tangents.length / 3;
+        else info.numTangents = 0;
+
+        if (this.biTangents) info.numBiTangents = this.biTangents.length / 3;
+        else info.numBiTangents = 0;
+
+        if (this.biTangents) info.numBiTangents = this.biTangents.length / 3;
+        else info.numBiTangents = 0;
+
+        if (this.vertexColors) info.numVertexColors = this.vertexColors.length / 4;
+        else info.numVertexColors = 0;
+
+        if (this.getAttributes()) info.numAttribs = Object.keys(this.getAttributes()).length;
+        else info.numAttribs = 0;
+
+        info.isIndexed = this.isIndexed();
+
+        return info;
+    }
+
+    // -----------------
+}
+
+// TODO : rewritwe circle op 1
+/** @deprecated */
+Geometry.buildFromFaces = function (arr, name, optimize)
+{
+    const vertices = [];
+    const verticesIndices = [];
+
+    for (let i = 0; i < arr.length; i += 3)
+    {
+        const a = arr[i + 0];
+        const b = arr[i + 1];
+        const c = arr[i + 2];
+        const face = [-1, -1, -1];
+
+        if (optimize)
+            for (let iv = 0; iv < vertices.length; iv += 3)
+            {
+                if (vertices[iv + 0] == a[0] && vertices[iv + 1] == a[1] && vertices[iv + 2] == a[2]) face[0] = iv / 3;
+                if (vertices[iv + 0] == b[0] && vertices[iv + 1] == b[1] && vertices[iv + 2] == b[2]) face[1] = iv / 3;
+                if (vertices[iv + 0] == c[0] && vertices[iv + 1] == c[1] && vertices[iv + 2] == c[2]) face[2] = iv / 3;
+            }
+
+        if (face[0] == -1)
+        {
+            vertices.push(a[0], a[1], a[2]);
+            face[0] = (vertices.length - 1) / 3;
+        }
+
+        if (face[1] == -1)
+        {
+            vertices.push(b[0], b[1], b[2]);
+            face[1] = (vertices.length - 1) / 3;
+        }
+
+        if (face[2] == -1)
+        {
+            vertices.push(c[0], c[1], c[2]);
+            face[2] = (vertices.length - 1) / 3;
+        }
+
+        verticesIndices.push(face[0]);
+        verticesIndices.push(face[1]);
+        verticesIndices.push(face[2]);
+    }
+
+    const geom = new Geometry(name);
+    geom.name = name;
+    geom.vertices = vertices;
+    geom.verticesIndices = verticesIndices;
+
+    return geom;
+};
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_matrixstack.js":
+/*!*******************************************!*\
+  !*** ./src/corelibs/cg/cg_matrixstack.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MatrixStack: () => (/* binding */ MatrixStack)
+/* harmony export */ });
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat4.js");
+
+
+class MatrixStack
+{
+    constructor()
+    {
+        this._arr = [gl_matrix__WEBPACK_IMPORTED_MODULE_0__.create()];
+        this._index = 0;
+        this.stateCounter = 0;
+    }
+
+    /**
+     * @param {mat4} m
+     */
+    push(m)
+    {
+        this._index++;
+        this.stateCounter++;
+
+        if (this._index == this._arr.length)
+        {
+            const copy = gl_matrix__WEBPACK_IMPORTED_MODULE_0__.create();
+            this._arr.push(copy);
+        }
+
+        gl_matrix__WEBPACK_IMPORTED_MODULE_0__.copy(this._arr[this._index], m || this._arr[this._index - 1]);
+
+        return this._arr[this._index];
+    }
+
+    pop()
+    {
+        this.stateCounter++;
+
+        this._index--;
+        if (this._index < 0) this._index = 0;
+
+        return this._arr[this._index];
+    }
+
+    length()
+    {
+        return this._index;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_mesh.js":
+/*!************************************!*\
+  !*** ./src/corelibs/cg/cg_mesh.js ***!
+  \************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CgMesh: () => (/* binding */ CgMesh)
+/* harmony export */ });
+class CgMesh
+{
+    _name = "unknown";
+
+    constructor()
+    {
+    }
+
+}
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_shader.js":
+/*!**************************************!*\
+  !*** ./src/corelibs/cg/cg_shader.js ***!
+  \**************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CgShader: () => (/* binding */ CgShader)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
+
+
+
+/**
+ * @typedef ShaderModule
+ * @property {String} title
+ * @property {String} name
+ * @property {Number} id
+ * @property {Number} numId
+ * @property {String} group
+ * @property {String} prefix
+ * @property {Number} priority
+ * @property {Number} num
+ * @property {String} attributes
+ * @property {String} srcBodyFrag
+ * @property {String} srcBodyVert
+ * @property {String} srcHeadFrag
+ * @property {String} srcHeadVert
+  */
+
+class CgShader extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
+{
+    id = cables__WEBPACK_IMPORTED_MODULE_1__.simpleId();
+    _isValid = true;
+
+    /** @type {Array<Array<String>>} */
+    _defines = [];
+
+    /** @type {Array<String>} */
+    _moduleNames = [];
+
+    _moduleNumId = 0;
+    _needsRecompile = true;
+    _compileReason = "initial";
+
+    /** @type {Array<ShaderModule>} */
+    _modules = [];
+
+    _compileCount = 0;
+
+    logError = true;
+    num = -1;
+    lastCompile = 0;
+
+    constructor()
+    {
+        super();
+    }
+
+    /**
+     * @param {string} reason
+     */
+    setWhyCompile(reason)
+    {
+        this._compileReason = reason;
+        this._needsRecompile = true;
+    }
+
+    getWhyCompile()
+    {
+        return this._compileReason;
+    }
+
+    needsRecompile()
+    {
+        return this._needsRecompile;
+    }
+
+    /**
+     * @param {string} name
+     */
+    removeUniform(name)
+    {
+        for (let i = 0; i < this._uniforms.length; i++)
+        {
+            if (this._uniforms[i].getName() == name)
+            {
+                this._uniforms.splice(i, 1);
+            }
+        }
+        this.setWhyCompile("remove uniform " + name);
+    }
+
+    /**
+     * @param {String} name
+     * @param {number} stage
+     */
+    hasUniformInStage(name, stage)
+    {
+
+        let binding = this.defaultUniBindingFrag;
+        if (stage == GPUShaderStage.VERTEX) binding = this.defaultUniBindingVert;
+        if (stage == GPUShaderStage.COMPUTE) binding = this.defaultUniBindingCompute;
+
+        for (let i = 0; i < this._uniforms.length; i++)
+        {
+
+            console.log("hasuniiiiiiiiiiiiiii", this._uniforms[i].getName(), name);
+            if (this._uniforms[i].getName() == name) return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param {String} name
+     */
+    hasUniform(name)
+    {
+    }
+
+    /**
+     * easily enable/disable a define without a value
+     * @param {String} name
+     * @param {Port|boolean} enabled value or port
+     */
+    toggleDefine(name, enabled)
+    {
+        if (enabled && typeof (enabled) == "object" && enabled.addEventListener) // port
+        {
+            if (enabled.changeListener)enabled.off(enabled.changeListener);
+
+            enabled.onToggleDefine = (v) =>
+            {
+                this.toggleDefine(name, v);
+            };
+
+            enabled.changeListener = enabled.on("change", enabled.onToggleDefine);
+            enabled = enabled.get();
+        }
+
+        if (enabled) this.define(name);
+        else this.removeDefine(name);
+    }
+
+    /**
+     * add a define to a shader, e.g.  #define DO_THIS_THAT 1
+     * @param {String} name
+     * @param {any} value (can be empty)
+     */
+    define(name, value = "")
+    {
+        if (value === null || value === undefined) value = "";
+
+        if (typeof (value) == "object") // port
+        {
+            value.removeEventListener("change", value.onDefineChange);
+            value.onDefineChange = (v) =>
+            {
+                this.define(name, v);
+            };
+            value.on("change", value.onDefineChange);
+
+            value = value.get();
+        }
+
+        for (let i = 0; i < this._defines.length; i++)
+        {
+            if (this._defines[i][0] == name && this._defines[i][1] == value) return;
+            if (this._defines[i][0] == name)
+            {
+                this._defines[i][1] = value;
+                this.setWhyCompile("define " + name + " " + value);
+                return;
+            }
+        }
+        this.setWhyCompile("define " + name + " " + value);
+
+        this._defines.push([name, value]);
+    }
+
+    getDefines()
+    {
+        return this._defines;
+    }
+
+    /**
+     * @param {string} name
+     */
+    getDefine(name)
+    {
+        for (let i = 0; i < this._defines.length; i++)
+            if (this._defines[i][0] == name) return this._defines[i][1];
+        return null;
+    }
+
+    /**
+     * return true if shader has define
+     * @function hasDefine
+     * @memberof Shader
+     * @instance
+     * @param {String} name
+     * @return {Boolean}
+     */
+    hasDefine(name)
+    {
+        for (let i = 0; i < this._defines.length; i++)
+            if (this._defines[i][0] == name) return true;
+    }
+
+    /**
+     * remove a define from a shader
+     * @param {string} name
+     */
+    removeDefine(name)
+    {
+        for (let i = 0; i < this._defines.length; i++)
+        {
+            if (this._defines[i][0] == name)
+            {
+                this._defines.splice(i, 1);
+                this.setWhyCompile("define removed:" + name);
+                return;
+            }
+        }
+    }
+
+    /**
+     * @param {any} modId
+     */
+    hasModule(modId)
+    {
+        for (let i = 0; i < this._modules.length; i++)
+            if (this._modules[i].id == modId) return true;
+
+        return false;
+    }
+
+    /**
+     *
+     * @param {Array<String>} names
+     */
+    setModules(names)
+    {
+        this._moduleNames = names;
+    }
+
+    /**
+     * remove a module from shader
+     * @param {ShaderModule} mod the module to be removed
+     */
+    removeModule(mod)
+    {
+        for (let i = 0; i < this._modules.length; i++)
+        {
+            if (mod && mod.id)
+            {
+                if (this._modules[i].id == mod.id || !this._modules[i])
+                {
+                    let found = true;
+                    while (found)
+                    {
+                        found = false;
+                        for (let j = 0; j < this._uniforms.length; j++)
+                        {
+                            if (this._uniforms[j].getName().startsWith(mod.prefix))
+                            {
+                                this._uniforms.splice(j, 1);
+                                found = true;
+                                continue;
+                            }
+                        }
+                    }
+
+                    this.setWhyCompile("remove module " + mod.title);
+                    this._modules.splice(i, 1);
+                    break;
+                }
+            }
+        }
+    }
+
+    getNumModules()
+    {
+        return this._modules.length;
+    }
+
+    getCurrentModules() { return this._modules; }
+
+    /**
+     * add a module
+     * @param {ShaderModule} mod the module to be added
+     * @param {ShaderModule} [sibling] sibling module, new module will share the same group
+     */
+    addModule(mod, sibling)
+    {
+        if (this.hasModule(mod.id)) return;
+        if (!mod.id) mod.id = cables__WEBPACK_IMPORTED_MODULE_1__.simpleId();
+        if (!mod.numId) mod.numId = this._moduleNumId;
+        if (!mod.num)mod.num = this._modules.length;
+        if (sibling && !sibling.group) sibling.group = cables__WEBPACK_IMPORTED_MODULE_1__.simpleId();
+
+        if (!mod.group)
+            if (sibling) mod.group = sibling.group;
+            else mod.group = cables__WEBPACK_IMPORTED_MODULE_1__.simpleId();
+
+        mod.prefix = "mod" + mod.group + "_";
+        this._modules.push(mod);
+
+        this.setWhyCompile("add module " + mod.title);
+        this._moduleNumId++;
+
+        return mod;
+    }
+
+    isValid()
+    {
+        return this._isValid;
+    }
+
+}
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_texture.js":
+/*!***************************************!*\
+  !*** ./src/corelibs/cg/cg_texture.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CgTexture: () => (/* binding */ CgTexture)
+/* harmony export */ });
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
+
+
 const DEFAULT_TEXTURE_SIZE = 8;
 
 /**
@@ -11491,7 +18087,7 @@ class CgTexture
      */
     constructor(options = {})
     {
-        this.id = CABLES.uuid();
+        this.id = cables__WEBPACK_IMPORTED_MODULE_0__.uuid();
         this.width = 0;
         this.height = 0;
         this.name = "unknown";
@@ -11655,15 +18251,2158 @@ CgTexture.PIXELFORMATS = [
 
 ];
 
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_texture.js
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/cg_uniform.js":
+/*!***************************************!*\
+  !*** ./src/corelibs/cg/cg_uniform.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CgUniform: () => (/* binding */ CgUniform)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables */ "./src/core/core_port.js");
+
+
+
+
+class CgUniform
+{
+
+    /**
+     * Description
+     * @param {CgShader|CgpShader|Shader} __shader
+     * @param {string} __type
+     * @param {string} __name
+     * @param {Number|Port} _value
+     * @param {Port} _port2
+     * @param {Port} _port3
+     * @param {Port} _port4
+     */
+    constructor(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName)
+    {
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]("cg_uniform");
+        this._type = __type;
+        this._name = __name;
+
+        /** @type {CgShader} */
+        this._shader = __shader;
+        this._value = 0.00001;
+        this._oldValue = null;
+        this._port = null;
+
+        this._structName = _structName;
+        this._structUniformName = _structUniformName;
+        this._propertyName = _propertyName;
+
+        if (this._shader._addUniform) this._shader._addUniform(this);
+        this.needsUpdate = true;
+        this.shaderType = null;
+        this.comment = null;
+
+        if (__type == "f")
+        {
+            this.set = this.setValue = this.setValueF.bind(this);
+            this.updateValue = this.updateValueF.bind(this);
+        }
+        else if (__type == "f[]")
+        {
+            this.set = this.setValue = this.setValueArrayF.bind(this);
+            this.updateValue = this.updateValueArrayF.bind(this);
+        }
+        else if (__type == "2f[]")
+        {
+            this.set = this.setValue = this.setValueArray2F.bind(this);
+            this.updateValue = this.updateValueArray2F.bind(this);
+        }
+        else if (__type == "3f[]")
+        {
+            this.set = this.setValue = this.setValueArray3F.bind(this);
+            this.updateValue = this.updateValueArray3F.bind(this);
+        }
+        else if (__type == "4f[]")
+        {
+            this.set = this.setValue = this.setValueArray4F.bind(this);
+            this.updateValue = this.updateValueArray4F.bind(this);
+        }
+        else if (__type == "i")
+        {
+            this.set = this.setValue = this.setValueI.bind(this);
+            this.updateValue = this.updateValueI.bind(this);
+        }
+        else if (__type == "2i")
+        {
+            this.set = this.setValue = this.setValue2I.bind(this);
+            this.updateValue = this.updateValue2I.bind(this);
+        }
+        else if (__type == "3i")
+        {
+            this.set = this.setValue = this.setValue3I.bind(this);
+            this.updateValue = this.updateValue3I.bind(this);
+        }
+        else if (__type == "4i")
+        {
+            this.set = this.setValue = this.setValue4I.bind(this);
+            this.updateValue = this.updateValue4I.bind(this);
+        }
+        else if (__type == "b")
+        {
+            this.set = this.setValue = this.setValueBool.bind(this);
+            this.updateValue = this.updateValueBool.bind(this);
+        }
+        else if (__type == "4f")
+        {
+            this.set = this.setValue = this.setValue4F.bind(this);
+            this.updateValue = this.updateValue4F.bind(this);
+        }
+        else if (__type == "3f")
+        {
+            this.set = this.setValue = this.setValue3F.bind(this);
+            this.updateValue = this.updateValue3F.bind(this);
+        }
+        else if (__type == "2f")
+        {
+            this.set = this.setValue = this.setValue2F.bind(this);
+            this.updateValue = this.updateValue2F.bind(this);
+        }
+        else if (__type == "t")
+        {
+            this.set = this.setValue = this.setValueT.bind(this);
+            this.updateValue = this.updateValueT.bind(this);
+        }
+        else if (__type == "sampler")
+        {
+            if (this.setValueAny)
+            {
+                this.set = this.setValue = this.setValueAny.bind(this);
+                this.updateValue = this.updateValueAny.bind(this);
+            }
+        }
+        else if (__type == "tc")
+        {
+            this.set = this.setValue = this.setValueT.bind(this);
+            this.updateValue = this.updateValueT.bind(this);
+        }
+        else if (__type == "t[]")
+        {
+            this.set = this.setValue = this.setValueArrayT.bind(this);
+            this.updateValue = this.updateValueArrayT.bind(this);
+        }
+        else if (__type == "m4" || __type == "m4[]")
+        {
+            this.set = this.setValue = this.setValueM4.bind(this);
+            this.updateValue = this.updateValueM4.bind(this);
+        }
+        else
+        {
+            // console.error("unknown");
+            this._log.error("Unknown uniform type " + __type, __name, typeof this._shader);
+        }
+
+        if (typeof _value == "object" && _value instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port)
+        {
+            this._port = _value;
+            this._value = this._port.get();
+
+            if (_port2 && _port3 && _port4)
+            {
+                if (!(_port2 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port) || !(_port3 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port) || !(_port4 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port))
+                {
+                    this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ", this._name);
+                }
+
+                this._value = [0, 0, 0, 0];
+                this._port2 = _port2;
+                this._port3 = _port3;
+                this._port4 = _port4;
+
+                this._port.on("change", this.updateFromPort4f.bind(this));
+                this._port2.on("change", this.updateFromPort4f.bind(this));
+                this._port3.on("change", this.updateFromPort4f.bind(this));
+                this._port4.on("change", this.updateFromPort4f.bind(this));
+
+                // this._port.onChange = this._port2.onChange = this._port3.onChange = this._port4.onChange = this.updateFromPort4f.bind(this);
+                this.updateFromPort4f();
+            }
+            else if (_port2 && _port3)
+            {
+                if (!(_port2 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port) || !(_port3 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port))
+                {
+                    this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ", this._name);
+                }
+
+                this._value = [0, 0, 0];
+                this._port2 = _port2;
+                this._port3 = _port3;
+                // this._port.onChange = this._port2.onChange = this._port3.onChange = this.updateFromPort3f.bind(this);
+                this._port.on("change", this.updateFromPort3f.bind(this));
+                this._port2.on("change", this.updateFromPort3f.bind(this));
+                this._port3.on("change", this.updateFromPort3f.bind(this));
+
+                this.updateFromPort3f();
+            }
+            else if (_port2)
+            {
+                if (!(_port2 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port))
+                {
+                    this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ", this._name);
+                }
+
+                this._value = [0, 0];
+                this._port2 = _port2;
+                // this._port.onChange = this._port2.onChange = this.updateFromPort2f.bind(this);
+                this._port.on("change", this.updateFromPort2f.bind(this));
+                this._port2.on("change", this.updateFromPort2f.bind(this));
+
+                this.updateFromPort2f();
+            }
+            else
+            {
+                // this._port.on = this.updateFromPort.bind(this);
+                this._port.on("change", this.updateFromPort.bind(this));
+            }
+        }
+        else this._value = _value;
+
+        if (this._value == undefined)
+        {
+            this._value = 0;
+        }
+
+        this.setValue(this._value);
+
+        this.needsUpdate = true;
+    }
+
+    getType()
+    {
+        return this._type;
+    }
+
+    get type()
+    {
+        return this._type;
+    }
+
+    get name()
+    {
+        return this._name;
+    }
+
+    getName()
+    {
+        return this._name;
+    }
+
+    getValue()
+    {
+        return this._value;
+    }
+
+    getShaderType()
+    {
+        return this.shaderType;
+    }
+
+    isStructMember()
+    {
+        return !!this._structName;
+    }
+
+    updateFromPort4f()
+    {
+        this._value[0] = this._port.get();
+        this._value[1] = this._port2.get();
+        this._value[2] = this._port3.get();
+        this._value[3] = this._port4.get();
+        this.setValue(this._value);
+    }
+
+    updateFromPort3f()
+    {
+        this._value[0] = this._port.get();
+        this._value[1] = this._port2.get();
+        this._value[2] = this._port3.get();
+        this.setValue(this._value);
+    }
+
+    updateFromPort2f()
+    {
+        this._value[0] = this._port.get();
+        this._value[1] = this._port2.get();
+        this.setValue(this._value);
+    }
+
+    updateFromPort()
+    {
+        this.setValue(this._port.get());
+    }
+
+    get port()
+    {
+        return this._port;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cg/index.js":
+/*!**********************************!*\
+  !*** ./src/corelibs/cg/index.js ***!
+  \**********************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* unused harmony export CG */
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/common.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat2.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat2d.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat4.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/quat.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/quat2.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec2.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec4.js");
+/* harmony import */ var _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cg_boundingbox.js */ "./src/corelibs/cg/cg_boundingbox.js");
+/* harmony import */ var _cg_canvas_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cg_canvas.js */ "./src/corelibs/cg/cg_canvas.js");
+/* harmony import */ var _cg_geom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cg_geom.js */ "./src/corelibs/cg/cg_geom.js");
+/* harmony import */ var _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cg_fpscounter.js */ "./src/corelibs/cg/cg_fpscounter.js");
 
 
 
 
 
-const cgl_texture_DEFAULT_TEXTURE_SIZE = 8;
 
-const log = new Logger("cgl_texture");
+
+
+
+
+
+
+const CG = {
+
+    "DEPTH_COMPARE_NEVER": 0,
+    "DEPTH_COMPARE_LESS": 1,
+    "DEPTH_COMPARE_EQUAL": 2,
+    "DEPTH_COMPARE_LESSEQUAL": 3,
+    "DEPTH_COMPARE_GREATER": 4,
+    "DEPTH_COMPARE_NOTEQUAL": 5,
+    "DEPTH_COMPARE_GREATEREQUAL": 6,
+    "DEPTH_COMPARE_ALWAYS": 7,
+
+    "CULL_NONE": 0,
+    "CULL_BACK": 1,
+    "CULL_FRONT": 2,
+    "CULL_BOTH": 3,
+
+    "Geometry": _cg_geom_js__WEBPACK_IMPORTED_MODULE_0__.Geometry,
+    "BoundingBox": _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_1__.BoundingBox,
+    "FpsCounter": _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__.FpsCounter,
+
+    "CgCanvas": _cg_canvas_js__WEBPACK_IMPORTED_MODULE_3__.CgCanvas
+};
+
+window.CABLES = window.CABLES || {};
+window.CABLES.CG = window.CABLES.CG || CG;
+window.CG = window.CG || CG;
+
+window.glMatrix = gl_matrix__WEBPACK_IMPORTED_MODULE_4__;
+window.mat2 = gl_matrix__WEBPACK_IMPORTED_MODULE_5__;
+window.mat2d = gl_matrix__WEBPACK_IMPORTED_MODULE_6__;
+window.mat3 = gl_matrix__WEBPACK_IMPORTED_MODULE_7__;
+window.mat4 = gl_matrix__WEBPACK_IMPORTED_MODULE_8__;
+window.quat = gl_matrix__WEBPACK_IMPORTED_MODULE_9__;
+window.quat2 = gl_matrix__WEBPACK_IMPORTED_MODULE_10__;
+window.vec2 = gl_matrix__WEBPACK_IMPORTED_MODULE_11__;
+
+window.vec3 = gl_matrix__WEBPACK_IMPORTED_MODULE_12__;
+window.vec4 = gl_matrix__WEBPACK_IMPORTED_MODULE_13__;
+
+
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cgl/cgl_mesh.js":
+/*!**************************************!*\
+  !*** ./src/corelibs/cgl/cgl_mesh.js ***!
+  \**************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MESH: () => (/* binding */ MESH),
+/* harmony export */   Mesh: () => (/* binding */ Mesh)
+/* harmony export */ });
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
+/* harmony import */ var _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cgl_shader_uniform.js */ "./src/corelibs/cgl/cgl_shader_uniform.js");
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants.js */ "./src/corelibs/cgl/constants.js");
+/* harmony import */ var _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cg/cg_mesh.js */ "./src/corelibs/cg/cg_mesh.js");
+
+
+
+
+
+
+
+
+
+
+const MESH = {};
+MESH.lastMesh = null;
+
+/**
+ * @typedef {Object} CglMeshAttributeOptions
+ * @property {boolean} [instanced]
+ * @property {Function} [cb]
+ * @property {Function} [type]
+ */
+
+/**
+ * @type Object
+ * @typedef CglMeshOptions
+ * @property {Number} [glPrimitive]
+ * @property {String} [opId]
+ */
+
+/**
+ * webgl renderable 3d object
+ * @class
+ * @namespace external:CGL
+ * @hideconstructor
+ * @example
+ * const cgl=this._cgl
+ * const mesh=new CGL.Mesh(cgl, geometry);
+ *
+ * function render()
+ * {
+ *   mesh.render(cgl.getShader());
+ * }
+ *
+ */
+class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__.CgMesh
+{
+
+    /** @type {CglContext} */
+    #cgl = null;
+
+    /** @type {Geometry} */
+    #geom = null;
+
+    /** @type {WebGLBuffer} */
+    #bufVerticesIndizes = null;
+
+    /**
+     * @param {CglContext} _cgl cgl
+     * @param {Geometry} __geom geometry
+     * @param {CglMeshOptions} _options
+     */
+    constructor(_cgl, __geom, _options = {})
+    {
+        super();
+        this.#cgl = _cgl;
+
+        let options = _options || {};
+        if (cables__WEBPACK_IMPORTED_MODULE_1__.isNumeric(options))options = { "glPrimitive": _options }; // old constructor fallback...
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_2__["default"]("cgl_mesh");
+        this._bufVertexAttrib = null;
+        this.#bufVerticesIndizes = this.#cgl.gl.createBuffer();
+        this._indexType = this.#cgl.gl.UNSIGNED_SHORT;
+        this._attributes = [];
+        this._attribLocs = {};
+
+        this._lastShader = null;
+        this._numInstances = 0;
+        this._glPrimitive = options.glPrimitive;
+
+        this.opId = options.opId || "";
+        this._preWireframeGeom = null;
+        this.addVertexNumbers = false;
+
+        this.feedBackAttributes = [];
+        this.setGeom(__geom);
+
+        this._feedBacks = [];
+        this._feedBacksChanged = false;
+        this._transformFeedBackLoc = -1;
+        this._lastAttrUpdate = 0;
+
+        this.memFreed = false;
+
+        this.#cgl.profileData.addHeavyEvent("mesh constructed", this._name);
+
+        this._queryExt = null;
+    }
+
+    get geom()
+    {
+        return this.#geom;
+    }
+
+    get numInstances()
+    {
+        return this._numInstances;
+    }
+
+    set numInstances(v)
+    {
+        this.setNumInstances(v);
+    }
+
+    freeMem()
+    {
+        this.memFreed = true;
+
+        for (let i = 0; i < this._attributes.length; i++)
+            this._attributes[i].floatArray = null;
+    }
+
+    /**
+     * @function updateVertices
+     * @memberof Mesh
+     * @instance
+     * @description update vertices only from a geometry
+     * @param {Geometry} geom
+     */
+    updateVertices(geom)
+    {
+        this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_POSITION, geom.vertices, 3);
+        this._numVerts = geom.vertices.length / 3;
+    }
+
+    /**
+     * @param {String} attrName
+     * @param {String} name
+     * @param {Number} stride
+     * @param {Number} offset
+      */
+    setAttributePointer(attrName, name, stride, offset)
+    {
+        for (let i = 0; i < this._attributes.length; i++)
+        {
+            if (this._attributes[i].name == attrName)
+            {
+                if (!this._attributes[i].pointer) this._attributes[i].pointer = [];
+
+                this._attributes[i].pointer.push(
+                    {
+                        "loc": -1,
+                        "name": name,
+                        "stride": stride,
+                        "offset": offset,
+                        "instanced": attrName == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_INSTANCE_MMATRIX,
+                    }
+                );
+            }
+        }
+    }
+
+    /**
+     * @param {String} name
+     * @returns {AttributeObject}
+     */
+    getAttribute(name)
+    {
+        for (let i = 0; i < this._attributes.length; i++) if (this._attributes[i].name == name) return this._attributes[i];
+    }
+
+    setAttributeRange(attr, array, start, end)
+    {
+        if (!attr) return;
+        if (!start && !end) return;
+
+        if (!attr.name)
+            this._log.stack("no attrname?!");
+
+        const gl = this.#cgl.gl;
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, attr.buffer);
+        this.#cgl.profileData.profileMeshAttributes += (end - start) || 0;
+
+        this.#cgl.profileData.profileSingleMeshAttribute[this._name] = this.#cgl.profileData.profileSingleMeshAttribute[this._name] || 0;
+        this.#cgl.profileData.profileSingleMeshAttribute[this._name] += (end - start) || 0;
+
+        if (attr.numItems < array.length / attr.itemSize)
+        {
+            this._resizeAttr(array, attr);
+        }
+
+        if (end > array.length && !this.warned)
+        {
+            this.warned = true;
+            this._log.warn(this.#cgl.canvas.id + " " + attr.name + " buffersubdata out of bounds ?", array.length, end, start, attr);
+            return;
+        }
+
+        // if (glVersion == 1) gl.bufferSubData(gl.ARRAY_BUFFER, 0, array); // probably slow/ maybe create and array with only changed size ??
+        // else
+        gl.bufferSubData(gl.ARRAY_BUFFER, start * 4, array, start, (end - start));
+    }
+
+    _resizeAttr(array, attr)
+    {
+        const gl = this.#cgl.gl;
+
+        if (attr.buffer)
+            gl.deleteBuffer(attr.buffer);
+
+        attr.buffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, attr.buffer);
+        this._bufferArray(array, attr);
+        attr.numItems = array.length / attr.itemSize;// numItems;
+    }
+
+    _bufferArray(array, attr)
+    {
+        let floatArray = attr.floatArray || null;
+        if (!array) return;
+
+        if (this.#cgl.debugOneFrame)
+        {
+        console.log("_bufferArray", array.length, attr.name); // eslint-disable-line
+        }
+
+        if (!(array instanceof Float32Array))
+        {
+            if (attr && floatArray && floatArray.length == array.length)
+            {
+                floatArray.set(array);
+            }
+            else
+            {
+                floatArray = new Float32Array(array);
+
+                if (this.#cgl.debugOneFrame)
+                {
+                console.log("_bufferArray create new float32array", array.length, attr.name); // eslint-disable-line
+                }
+
+                if (array.length > 10000)
+                {
+                    this.#cgl.profileData.profileNonTypedAttrib++;
+                    this.#cgl.profileData.profileNonTypedAttribNames = "(" + this._name + ":" + attr.name + ")";
+                }
+            }
+        }
+        else floatArray = array;
+
+        attr.arrayLength = floatArray.length;
+        attr.floatArray = null;// floatArray;
+
+        this.#cgl.gl.bufferData(this.#cgl.gl.ARRAY_BUFFER, floatArray, this.#cgl.gl.DYNAMIC_DRAW);
+    }
+
+    /**
+     * @function setAttribute
+     * @description update attribute
+     * @memberof Mesh
+     * @instance
+     * @param {String} name
+     * @param {Array} array
+     * @param {Number} itemSize
+     * @param {Object} options
+     */
+    addAttribute(name, array, itemSize, options)
+    {
+        this.setAttribute(name, array, itemSize, options);
+    }
+
+    /**
+     * @param {String} name
+     * @param {Array|Float32Array} array
+     * @param {Number} itemSize Integer
+     * @param {CglMeshAttributeOptions} options
+     */
+    setAttribute(name, array, itemSize, options = {})
+    {
+        if (!array)
+        {
+            this._log.error("mesh addAttribute - no array given! " + name);
+            throw new Error();
+        }
+        let cb = null;
+        let instanced = false;
+        let i = 0;
+        const numItems = array.length / itemSize;
+
+        this.#cgl.profileData.profileMeshAttributes += numItems || 0;
+
+        if (typeof options == "function")
+        {
+            cb = options;
+        }
+
+        if (typeof options == "object")
+        {
+            if (options.cb) cb = options.cb;
+            if (options.instanced) instanced = options.instanced;
+        }
+
+        if (name == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_INSTANCE_MMATRIX) instanced = true;
+
+        for (i = 0; i < this._attributes.length; i++)
+        {
+            const attr = this._attributes[i];
+            if (attr.name == name)
+            {
+                if (attr.numItems === numItems)
+                {
+                }
+                else
+                {
+                    this._resizeAttr(array, attr);
+                }
+
+                this.#cgl.gl.bindBuffer(this.#cgl.gl.ARRAY_BUFFER, attr.buffer);
+                this._bufferArray(array, attr);
+
+                return attr;
+            }
+        }
+
+        // create new buffer...
+
+        const buffer = this.#cgl.gl.createBuffer();
+
+        this.#cgl.gl.bindBuffer(this.#cgl.gl.ARRAY_BUFFER, buffer);
+        // this._cgl.gl.bufferData(this._cgl.gl.ARRAY_BUFFER, floatArray, this._cgl.gl.DYNAMIC_DRAW);
+
+        let type = this.#cgl.gl.FLOAT;
+        if (options && options.type) type = options.type;
+        const attr = {
+            "buffer": buffer,
+            "name": name,
+            "cb": cb,
+            "itemSize": itemSize,
+            "numItems": numItems,
+            "startItem": 0,
+            "instanced": instanced,
+            "type": type
+        };
+
+        this._bufferArray(array, attr);
+
+        if (name == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_POSITION) this._bufVertexAttrib = attr;
+        this._attributes.push(attr);
+        this._attribLocs = {};
+
+        return attr;
+    }
+
+    getAttributes()
+    {
+        return this._attributes;
+    }
+
+    /**
+     * @function updateTexCoords
+     * @description update texture coordinates only from a geometry
+     * @memberof Mesh
+     * @instance
+     * @param {Geometry} geom
+     */
+    updateTexCoords(geom)
+    {
+        if (geom.texCoords && geom.texCoords.length > 0)
+        {
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_TEXCOORD, geom.texCoords, 2);
+        }
+        else
+        {
+            const tcBuff = new Float32Array(Math.round((geom.vertices.length / 3) * 2));
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_TEXCOORD, tcBuff, 2);
+        }
+    }
+
+    /**
+     * @function updateNormals
+     * @description update normals only from a geometry
+     * @memberof Mesh
+     * @instance
+     * @param {Geometry} geom
+     */
+    updateNormals(geom)
+    {
+        if (geom.vertexNormals && geom.vertexNormals.length > 0)
+        {
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_NORMAL, geom.vertexNormals, 3);
+        }
+        else
+        {
+            const tcBuff = new Float32Array(Math.round((geom.vertices.length)));
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_NORMAL, tcBuff, 3);
+        }
+    }
+
+    /**
+     * @param {Array} [arr]
+     */
+    _setVertexNumbers(arr = null)
+    {
+        if (!this._verticesNumbers || this._verticesNumbers.length != this._numVerts || arr)
+        {
+            if (arr) this._verticesNumbers = arr;
+            else
+            {
+                this._verticesNumbers = new Float32Array(this._numVerts);
+                for (let i = 0; i < this._numVerts; i++) this._verticesNumbers[i] = i;
+            }
+
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_NUMBER, this._verticesNumbers, 1, (_attr, _geom, shader) =>
+            {
+                if (!shader.uniformNumVertices) shader.uniformNumVertices = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_4__.Uniform(shader, "f", "numVertices", this._numVerts);
+                shader.uniformNumVertices.setValue(this._numVerts);
+            });
+        }
+    }
+
+    /**
+     * @function setVertexIndices
+     * @description update vertex indices / faces
+     * @memberof Mesh
+     * @instance
+     * @param {array} vertIndices
+     */
+    setVertexIndices(vertIndices)
+    {
+        if (!this.#bufVerticesIndizes)
+        {
+            this._log.warn("no bufVerticesIndizes: " + this._name);
+            return;
+        }
+        if (vertIndices.length > 0)
+        {
+            if (vertIndices instanceof Float32Array) this._log.warn("vertIndices float32Array: " + this._name);
+
+            for (let i = 0; i < vertIndices.length; i++)
+            {
+                if (vertIndices[i] >= this._numVerts)
+                {
+                    this._log.warn("invalid index in " + this._name, i, vertIndices[i]);
+                    return;
+                }
+            }
+
+            this.#cgl.gl.bindBuffer(this.#cgl.gl.ELEMENT_ARRAY_BUFFER, this.#bufVerticesIndizes);
+
+            /*
+             * todo cache this ?
+             * if(!this.vertIndicesTyped || this.vertIndicesTyped.length!=this._geom.verticesIndices.length)
+             */
+
+            if (vertIndices.length > 65535)
+            {
+                this.vertIndicesTyped = new Uint32Array(vertIndices);
+                this._indexType = this.#cgl.gl.UNSIGNED_INT;
+            }
+            else
+            if (vertIndices instanceof Uint32Array)
+            {
+                this.vertIndicesTyped = vertIndices;
+                this._indexType = this.#cgl.gl.UNSIGNED_INT;
+            }
+            else
+            if (!(vertIndices instanceof Uint16Array))
+            {
+                this.vertIndicesTyped = new Uint16Array(vertIndices);
+                this._indexType = this.#cgl.gl.UNSIGNED_SHORT;
+            }
+            else this.vertIndicesTyped = vertIndices;
+
+            this.#cgl.gl.bufferData(this.#cgl.gl.ELEMENT_ARRAY_BUFFER, this.vertIndicesTyped, this.#cgl.gl.DYNAMIC_DRAW);
+            this.#bufVerticesIndizes.itemSize = 1;
+            this.#bufVerticesIndizes.numItems = vertIndices.length;
+        }
+        else this.#bufVerticesIndizes.numItems = 0;
+    }
+
+    /**
+     * @function setGeom
+     * @memberof Mesh
+     * @instance
+     * @description set geometry for mesh
+     * @param {Geometry} geom
+     * @param {boolean} removeRef
+     */
+    setGeom(geom, removeRef = false)
+    {
+        this.#geom = geom;
+        if (geom.glPrimitive != null) this._glPrimitive = geom.glPrimitive;
+        if (this.#geom && this.#geom.name) this._name = "mesh " + this.#geom.name;
+
+        MESH.lastMesh = null;
+        this.#cgl.profileData.profileMeshSetGeom++;
+
+        this._disposeAttributes();
+
+        this.updateVertices(this.#geom);
+        this.setVertexIndices(this.#geom.verticesIndices);
+
+        if (this.addVertexNumbers) this._setVertexNumbers();
+
+        const geomAttribs = this.#geom.getAttributes();
+
+        const attribAssoc = {
+            "texCoords": _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_TEXCOORD,
+            "vertexNormals": _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_NORMAL,
+            "vertexColors": _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_COLOR,
+            "tangents": "attrTangent",
+            "biTangents": "attrBiTangent",
+        };
+
+        for (const index in geomAttribs)
+            if (geomAttribs[index].data && geomAttribs[index].data.length)
+                this.setAttribute(attribAssoc[index] || index, geomAttribs[index].data, geomAttribs[index].itemSize);
+
+        if (removeRef)
+        {
+            this.#geom = null;
+        }
+    }
+
+    _preBind(shader)
+    {
+        for (let i = 0; i < this._attributes.length; i++)
+            if (this._attributes[i].cb)
+                this._attributes[i].cb(this._attributes[i], this.#geom, shader);
+    }
+
+    _checkAttrLengths()
+    {
+        if (this.memFreed) return;
+        // check length
+        for (let i = 0; i < this._attributes.length; i++)
+        {
+            if (this._attributes[i].arrayLength / this._attributes[i].itemSize < this._attributes[0].arrayLength / this._attributes[0].itemSize)
+            {
+                let name = "unknown";
+                if (this.#geom)name = this.#geom.name;
+
+            /*
+             * this._log.warn(
+             *     name + ": " + this._attributes[i].name +
+             *     " wrong attr length. is:", this._attributes[i].arrayLength / this._attributes[i].itemSize,
+             *     " should be:", this._attributes[0].arrayLength / this._attributes[0].itemSize,
+             * );
+             */
+            }
+        }
+    }
+
+    _bind(shader)
+    {
+        if (!shader) return;
+        if (!shader.isValid()) return;
+
+        let attrLocs = [];
+        if (this._attribLocs[shader.id]) attrLocs = this._attribLocs[shader.id];
+        else this._attribLocs[shader.id] = attrLocs;
+
+        this._lastShader = shader;
+        if (shader.lastCompile > this._lastAttrUpdate || attrLocs.length != this._attributes.length)
+        {
+            this._lastAttrUpdate = shader.lastCompile;
+            for (let i = 0; i < this._attributes.length; i++) attrLocs[i] = -1;
+        }
+
+        for (let i = 0; i < this._attributes.length; i++)
+        {
+            const attribute = this._attributes[i];
+            if (attrLocs[i] == -1)
+            {
+                if (attribute._attrLocationLastShaderTime != shader.lastCompile)
+                {
+                    attribute._attrLocationLastShaderTime = shader.lastCompile;
+                    attrLocs[i] = this.#cgl.glGetAttribLocation(shader.getProgram(), attribute.name);
+                    // this._log.log('attribloc',attribute.name,attrLocs[i]);
+                    this.#cgl.profileData.profileAttrLoc++;
+                }
+            }
+
+            if (attrLocs[i] != -1)
+            {
+                this.#cgl.gl.enableVertexAttribArray(attrLocs[i]);
+                this.#cgl.gl.bindBuffer(this.#cgl.gl.ARRAY_BUFFER, attribute.buffer);
+
+                if (attribute.instanced)
+                {
+                // todo: easier way to fill mat4 attribs...
+                    if (attribute.itemSize <= 4)
+                    {
+                        if (!attribute.itemSize || attribute.itemSize == 0) this._log.warn("instanced attrib itemsize error", this.#geom.name, attribute);
+
+                        this.#cgl.gl.vertexAttribPointer(attrLocs[i], attribute.itemSize, attribute.type, false, attribute.itemSize * 4, 0);
+                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i], 1);
+                    }
+                    else if (attribute.itemSize == 16)
+                    {
+                        const stride = 16 * 4;
+
+                        this.#cgl.gl.vertexAttribPointer(attrLocs[i], 4, attribute.type, false, stride, 0);
+                        this.#cgl.gl.enableVertexAttribArray(attrLocs[i] + 1);
+                        this.#cgl.gl.vertexAttribPointer(attrLocs[i] + 1, 4, attribute.type, false, stride, 4 * 4 * 1);
+                        this.#cgl.gl.enableVertexAttribArray(attrLocs[i] + 2);
+                        this.#cgl.gl.vertexAttribPointer(attrLocs[i] + 2, 4, attribute.type, false, stride, 4 * 4 * 2);
+                        this.#cgl.gl.enableVertexAttribArray(attrLocs[i] + 3);
+                        this.#cgl.gl.vertexAttribPointer(attrLocs[i] + 3, 4, attribute.type, false, stride, 4 * 4 * 3);
+
+                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i], 1);
+                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 1, 1);
+                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 2, 1);
+                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 3, 1);
+                    }
+                    else
+                    {
+                        this._log.warn("unknown instance attrib size", attribute.name);
+                    }
+                }
+                else
+                {
+                    if (!attribute.itemSize || attribute.itemSize == 0) this._log.warn("attrib itemsize error", this._name, attribute);
+                    this.#cgl.gl.vertexAttribPointer(attrLocs[i], attribute.itemSize, attribute.type, false, attribute.itemSize * 4, 0);
+
+                    if (attribute.pointer)
+                    {
+                        for (let ip = 0; ip < attribute.pointer.length; ip++)
+                        {
+                            const pointer = attribute.pointer[ip];
+
+                            if (pointer.loc == -1)
+                                pointer.loc = this.#cgl.glGetAttribLocation(shader.getProgram(), pointer.name);
+
+                            this.#cgl.profileData.profileAttrLoc++;
+
+                            this.#cgl.gl.enableVertexAttribArray(pointer.loc);
+                            this.#cgl.gl.vertexAttribPointer(pointer.loc, attribute.itemSize, attribute.type, false, pointer.stride, pointer.offset);
+                        }
+                    }
+                    if (this.bindFeedback) this.bindFeedback(attribute);
+                }
+            }
+        }
+
+        if (this.#bufVerticesIndizes && this.#bufVerticesIndizes.numItems !== 0) this.#cgl.gl.bindBuffer(this.#cgl.gl.ELEMENT_ARRAY_BUFFER, this.#bufVerticesIndizes);
+    }
+
+    unBind()
+    {
+        const shader = this._lastShader;
+        this._lastShader = null;
+        if (!shader) return;
+
+        let attrLocs = [];
+        if (this._attribLocs[shader.id]) attrLocs = this._attribLocs[shader.id];
+        else this._attribLocs[shader.id] = attrLocs;
+
+        MESH.lastMesh = null;
+
+        for (let i = 0; i < this._attributes.length; i++)
+        {
+            if (this._attributes[i].instanced)
+            {
+            // todo: easier way to fill mat4 attribs...
+                if (this._attributes[i].itemSize <= 4)
+                {
+                    if (attrLocs[i] != -1) this.#cgl.gl.vertexAttribDivisor(attrLocs[i], 0);
+                    if (attrLocs[i] >= 0) this.#cgl.gl.disableVertexAttribArray(attrLocs[i]);
+                }
+                else
+                {
+                    this.#cgl.gl.vertexAttribDivisor(attrLocs[i], 0);
+                    this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 1, 0);
+                    this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 2, 0);
+                    this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 3, 0);
+                    this.#cgl.gl.disableVertexAttribArray(attrLocs[i] + 1);
+                    this.#cgl.gl.disableVertexAttribArray(attrLocs[i] + 2);
+                    this.#cgl.gl.disableVertexAttribArray(attrLocs[i] + 3);
+                }
+            }
+
+            if (attrLocs[i] != -1) this.#cgl.gl.disableVertexAttribArray(attrLocs[i]);
+
+        }
+    }
+
+    meshChanged()
+    {
+        return this.#cgl.lastMesh && this.#cgl.lastMesh != this;
+    }
+
+    printDebug()
+    {
+        console.log("--attributes");
+        for (let i = 0; i < this._attributes.length; i++)
+        {
+            console.log("attribute " + i + " " + this._attributes[i].name);
+        }
+    }
+
+    /**
+     * @param {Number} num
+     */
+    setNumVertices(num)
+    {
+        // this._bufVerticesIndizes.numItems = num;
+        this._bufVertexAttrib.numItems = num;
+    }
+
+    /**
+     * @returns {Number}
+     */
+    getNumVertices()
+    {
+        // return this._bufVerticesIndizes.numItems;
+        return this._bufVertexAttrib.numItems;
+    }
+
+    /**
+     * @param {Number} num
+     */
+    setNumIndices(num)
+    {
+        this.#bufVerticesIndizes.numItems = num;
+    }
+
+    /**
+     * @returns {Number}
+     */
+    getNumIndices()
+    {
+        return this.#bufVerticesIndizes.numItems;
+    }
+
+    /**
+     * @function render
+     * @memberof Mesh
+     * @instance
+     * @description draw mesh to screen
+     * @param {CgShader} shader
+     */
+    render(shader)
+    {
+        // TODO: enable/disablevertex only if the mesh has changed... think drawing 10000x the same mesh
+
+        if (this.#cgl.aborted) return;
+        shader = shader || this.#cgl.getShader();
+
+        if (!shader)
+        {
+            return console.log("shadern not valid");
+        }
+
+        if (!shader.isValid())
+        {
+            shader = this.#cgl.getErrorShader();
+        }
+
+        this._checkAttrLengths();
+
+        if (this.#geom)
+        {
+            if (this._preWireframeGeom && !shader.wireframe && !this.#geom.isIndexed())
+            {
+                this.setGeom(this._preWireframeGeom);
+                this._preWireframeGeom = null;
+            }
+
+            if (shader.wireframe)
+            {
+                let changed = false;
+
+                if (this.#geom.isIndexed())
+                {
+                    if (!this._preWireframeGeom)
+                    {
+                        this._preWireframeGeom = this.#geom;
+                        this.#geom = this.#geom.copy();
+                    }
+
+                    this.#geom.unIndex();
+                    changed = true;
+                }
+
+                if (!this.#geom.getAttribute("attrBarycentric"))
+                {
+                    if (!this._preWireframeGeom)
+                    {
+                        this._preWireframeGeom = this.#geom;
+                        this.#geom = this.#geom.copy();
+                    }
+                    changed = true;
+
+                    this.#geom.calcBarycentric();
+                }
+                if (changed) this.setGeom(this.#geom);
+            }
+        }
+
+        let needsBind = false;
+        if (MESH.lastMesh != this)
+        {
+            if (MESH.lastMesh) MESH.lastMesh.unBind();
+            needsBind = true;
+        }
+
+        if (needsBind) this._preBind(shader);
+
+        if (!shader.bind()) return;
+
+        this._bind(shader);
+        if (this.addVertexNumbers) this._setVertexNumbers();
+
+        MESH.lastMesh = this;
+
+        let prim = this.#cgl.gl.TRIANGLES;
+        if (this._glPrimitive !== undefined) prim = this._glPrimitive;
+        if (shader.glPrimitive !== null) prim = shader.glPrimitive;
+
+        let elementDiv = 1;
+        let doQuery = this.#cgl.profileData.doProfileGlQuery;
+        let queryStarted = false;
+        if (doQuery)
+        {
+            let id = this._name + " - " + shader.getName() + " #" + shader.id;
+            if (this._numInstances) id += " instanced " + this._numInstances + "x";
+
+            let queryProfilerData = this.#cgl.profileData.glQueryData[id];
+
+            if (!queryProfilerData) queryProfilerData = { "id": id, "num": 0 };
+
+            if (shader.opId)queryProfilerData.shaderOp = shader.opId;
+            if (this.opId)queryProfilerData.meshOp = this.opId;
+
+            this.#cgl.profileData.glQueryData[id] = queryProfilerData;
+
+            if (!this._queryExt && this._queryExt !== false) this._queryExt = this.#cgl.enableExtension("EXT_disjoint_timer_query_webgl2") || false;
+            if (this._queryExt)
+            {
+                if (queryProfilerData._drawQuery)
+                {
+                    const available = this.#cgl.gl.getQueryParameter(queryProfilerData._drawQuery, this.#cgl.gl.QUERY_RESULT_AVAILABLE);
+                    if (available)
+                    {
+                        const elapsedNanos = this.#cgl.gl.getQueryParameter(queryProfilerData._drawQuery, this.#cgl.gl.QUERY_RESULT);
+                        const currentTimeGPU = elapsedNanos / 1000000;
+
+                        queryProfilerData._times = queryProfilerData._times || 0;
+                        queryProfilerData._times += currentTimeGPU;
+                        queryProfilerData._numcount++;
+                        queryProfilerData.when = performance.now();
+                        queryProfilerData._drawQuery = null;
+                        queryProfilerData.queryStarted = false;
+                    }
+                }
+
+                if (!queryProfilerData.queryStarted)
+                {
+                    queryProfilerData._drawQuery = this.#cgl.gl.createQuery();
+                    this.#cgl.gl.beginQuery(this._queryExt.TIME_ELAPSED_EXT, queryProfilerData._drawQuery);
+                    queryStarted = queryProfilerData.queryStarted = true;
+                }
+            }
+        }
+
+        if (this.hasFeedbacks && this.hasFeedbacks()) this.drawFeedbacks(shader, prim);
+        else if (!this.#bufVerticesIndizes || this.#bufVerticesIndizes.numItems === 0)
+        {
+
+            /*
+             * for (let i = 0; i < this._attributes.length; i++)
+             * {
+             *     if (this._attributes[i].arrayLength / this._attributes[i].itemSize != this._bufVertexAttrib.floatArray.length / 3)
+             *     {
+             *         this._log.warn("attrib buffer length wrong! ", this._attributes[i].name, this._attributes[i].arrayLength / this._attributes[i].itemSize, this._bufVertexAttrib.floatArray.length / 3, this._attributes[i].itemSize);
+             *         // this._log.log(this);
+             *         // debugger;
+             *         return;
+             *     }
+             * }
+             */
+
+            if (prim == this.#cgl.gl.TRIANGLES)elementDiv = 3;
+
+            if (this._numInstances === 0) this.#cgl.gl.drawArrays(prim, this._bufVertexAttrib.startItem, this._bufVertexAttrib.numItems - this._bufVertexAttrib.startItem);
+            else this.#cgl.gl.drawArraysInstanced(prim, this._bufVertexAttrib.startItem, this._bufVertexAttrib.numItems, this._numInstances);
+        }
+        else
+        {
+            if (prim == this.#cgl.gl.TRIANGLES)elementDiv = 3;
+            if (this._numInstances === 0)
+            {
+                this.#cgl.gl.drawElements(prim, this.#bufVerticesIndizes.numItems, this._indexType, 0);
+            }
+            else
+            {
+                this.#cgl.gl.drawElementsInstanced(prim, this.#bufVerticesIndizes.numItems, this._indexType, 0, this._numInstances);
+            }
+        }
+
+        if (this.#cgl.debugOneFrame && this.#cgl.gl.getError() != this.#cgl.gl.NO_ERROR)
+        {
+            this._log.error("mesh draw gl error");
+            this._log.error("mesh", this);
+            this._log.error("shader", shader);
+
+            const attribNames = [];
+            for (let i = 0; i < this.#cgl.gl.getProgramParameter(shader.getProgram(), this.#cgl.gl.ACTIVE_ATTRIBUTES); i++)
+            {
+                const name = this.#cgl.gl.getActiveAttrib(shader.getProgram(), i).name;
+                this._log.error("attrib ", name);
+            }
+        }
+
+        this.#cgl.profileData.profileMeshNumElements += (this._bufVertexAttrib.numItems / elementDiv) * (this._numInstances || 1);
+        this.#cgl.profileData.profileMeshDraw++;
+
+        if (doQuery && queryStarted)
+        {
+            this.#cgl.gl.endQuery(this._queryExt.TIME_ELAPSED_EXT);
+        }
+
+        this.#cgl.printError("mesh render " + this._name);
+
+        this.unBind();
+    }
+
+    setNumInstances(n)
+    {
+        n = Math.max(0, n);
+        if (this._numInstances != n)
+        {
+            this._numInstances = n;
+            const indexArr = new Float32Array(n);
+            for (let i = 0; i < n; i++) indexArr[i] = i;
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_INSTANCE_INDEX, indexArr, 1, { "instanced": true });
+        }
+    }
+
+    _disposeAttributes()
+    {
+        if (!this._attributes) return;
+
+        for (let i = 0; i < this._attributes.length; i++)
+        {
+            if (this._attributes[i].buffer)
+            {
+                this.#cgl.gl.deleteBuffer(this._attributes[i].buffer);
+                this._attributes[i].buffer = null;
+            }
+        }
+        this._attributes.length = 0;
+    }
+
+    dispose()
+    {
+        if (this.#cgl.aborted) return;
+        if (this._bufVertexAttrib && this._bufVertexAttrib.buffer) this.#cgl.gl.deleteBuffer(this._bufVertexAttrib.buffer);
+        if (this.#bufVerticesIndizes) this.#cgl.gl.deleteBuffer(this.#bufVerticesIndizes);
+        this.#bufVerticesIndizes = null;
+
+        this._disposeAttributes();
+    }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cgl/cgl_profiledata.js":
+/*!*********************************************!*\
+  !*** ./src/corelibs/cgl/cgl_profiledata.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ProfileData: () => (/* binding */ ProfileData)
+/* harmony export */ });
+class ProfileData
+{
+    constructor(cgl)
+    {
+        this._cgl = cgl;
+        this._lastTime = 0;
+        this.pause = false;
+        this.profileUniformCount = 0;
+        this.profileShaderBinds = 0;
+        this.profileUniformCount = 0;
+        this.profileShaderCompiles = 0;
+        this.profileVideosPlaying = 0;
+        this.profileMVPMatrixCount = 0;
+        this.profileEffectBuffercreate = 0;
+        this.profileShaderGetUniform = 0;
+        this.profileFrameBuffercreate = 0;
+        this.profileMeshSetGeom = 0;
+        this.profileTextureNew = 0;
+        this.profileGenMipMap = 0;
+        this.profileOnAnimFrameOps = 0;
+
+        this.profileFencedPixelRead = 0;
+        this.profileMainloopMs = 0;
+        this.profileMeshDraw = 0;
+        this.profileTextureEffect = 0;
+        this.profileTexPreviews = 0;
+        this.shaderCompileTime = 0;
+        this.profileMeshNumElements = 0;
+        this.profileMeshAttributes = 0;
+        this.profileSingleMeshAttribute = [];
+        this.heavyEvents = [];
+
+        this.doProfileGlQuery = false;
+        this.glQueryData = {};
+        this.counts = {};
+    }
+
+    clear()
+    {
+        this.counts = {};
+        this.profileSingleMeshAttribute = {};
+        this.profileMeshAttributes = 0;
+        this.profileUniformCount = 0;
+        this.profileShaderGetUniform = 0;
+        this.profileShaderCompiles = 0;
+        this.profileShaderBinds = 0;
+        this.profileTextureResize = 0;
+        this.profileFrameBuffercreate = 0;
+        this.profileEffectBuffercreate = 0;
+        this.profileTextureDelete = 0;
+        this.profileMeshSetGeom = 0;
+        this.profileVideosPlaying = 0;
+        this.profileMVPMatrixCount = 0;
+        this.profileNonTypedAttrib = 0;
+        this.profileNonTypedAttribNames = "";
+        this.profileTextureNew = 0;
+        this.profileGenMipMap = 0;
+        this.profileFramebuffer = 0;
+        this.profileMeshDraw = 0;
+        this.profileTextureEffect = 0;
+        this.profileTexPreviews = 0;
+        this.profileMeshNumElements = 0;
+        this.profileFencedPixelRead = 0;
+    }
+
+    clearGlQuery()
+    {
+        for (let i in this.glQueryData)
+        {
+            if (!this.glQueryData[i].lastClear || performance.now() - this.glQueryData[i].lastClear > 1000)
+            {
+                this.glQueryData[i].time = this.glQueryData[i]._times / this.glQueryData[i]._numcount;
+                this.glQueryData[i].num = this.glQueryData[i]._numcount;
+
+                this.glQueryData[i]._times = 0;
+                this.glQueryData[i]._numcount = 0;
+                this.glQueryData[i].lastClear = performance.now();
+            }
+        }
+    }
+
+    /**
+     * @param {string} event
+     * @param {string} name
+     */
+    count(event, name)
+    {
+        this.counts[event] = this.counts[event] || [];
+        this.counts[event].push(name);
+    }
+
+    /**
+     * @param {string} event
+     * @param {string} name
+     * @param {string} [info]
+     */
+    addHeavyEvent(event, name, info)
+    {
+        const e = { "event": event, "name": name, "info": info, "date": performance.now() };
+        this.heavyEvents.push(e);
+        this._cgl.emitEvent("heavyEvent", e);
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cgl/cgl_shader_uniform.js":
+/*!************************************************!*\
+  !*** ./src/corelibs/cgl/cgl_shader_uniform.js ***!
+  \************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Uniform: () => (/* binding */ Uniform)
+/* harmony export */ });
+/* harmony import */ var _cg_cg_uniform_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cg/cg_uniform.js */ "./src/corelibs/cg/cg_uniform.js");
+
+
+
+
+/**
+ * Shader uniforms
+ *
+ * types:
+ * <pre>
+ * f    - float
+ * 2f   - vec2
+ * 3f   - vec3
+ * 4f   - vec4
+ * i    - integer
+ * t    - texture
+ * m4   - mat4, 4x4 float matrix
+ * f[]  - array of floats
+ * 2f[] - array of float vec2
+ * 3f[] - array of float vec3
+ * 4f[] - array of float vec4
+ * </pre>
+ *
+ * @namespace external:CGL
+ * @class
+ * @param {CgShader} shader
+ * @param {String} [type=f]
+ * @param {String} name
+ * @param {Number|Port} value  can be a Number,Matrix or Port
+ * @example
+ * // bind float uniform called myfloat and initialize with value 1.0
+ * const unir=new CGL.Uniform(shader,'f','myfloat',1.0);
+ * unir.setValue(1.0);
+ *
+ * // bind float uniform called myfloat and automatically set it to input port value
+ * const myPort=op.inFloat("input");
+ * const pv=new CGL.Uniform(shader,'f','myfloat',myPort);
+ *
+ */
+
+// export const Uniform(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName)
+
+class Uniform extends _cg_cg_uniform_js__WEBPACK_IMPORTED_MODULE_0__.CgUniform
+{
+    constructor(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName)
+    {
+        super(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName);
+        this._loc = -1;
+        this._cgl = __shader._cgl;
+    }
+
+    get name()
+    {
+        return this._name;
+    }
+
+    copy(newShader)
+    {
+        const uni = new Uniform(newShader, this._type, this._name, this._value, this._port2, this._port3, this._port4, this._structUniformName, this._structName, this._propertyName);
+        uni.shaderType = this.shaderType;
+        return uni;
+    }
+
+    /**
+     * returns type as glsl type string. e.g. 'f' returns 'float'
+     * @function getGlslTypeString
+     * @memberof Uniform
+     * @instance
+     * @return {string} type as string
+     */
+    getGlslTypeString()
+    {
+        return Uniform.glslTypeString(this._type);
+    }
+
+    _isValidLoc()
+    {
+        return this._loc != -1;// && this._loc != null;
+    }
+
+    resetLoc()
+    {
+        this._loc = -1;
+        this.needsUpdate = true;
+    }
+
+    bindTextures() {}
+
+    getLoc()
+    {
+        return this._loc;
+    }
+
+    updateFromPort4f()
+    {
+        this._value[0] = this._port.get();
+        this._value[1] = this._port2.get();
+        this._value[2] = this._port3.get();
+        this._value[3] = this._port4.get();
+        this.setValue(this._value);
+    }
+
+    updateFromPort3f()
+    {
+        this._value[0] = this._port.get();
+        this._value[1] = this._port2.get();
+        this._value[2] = this._port3.get();
+        this.setValue(this._value);
+    }
+
+    updateFromPort2f()
+    {
+        this._value[0] = this._port.get();
+        this._value[1] = this._port2.get();
+        this.setValue(this._value);
+    }
+
+    updateFromPort()
+    {
+        this.setValue(this._port.get());
+    }
+
+    updateValueF()
+    {
+        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+        else this.needsUpdate = false;
+
+        this._shader.getCgl().gl.uniform1f(this._loc, this._value);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValueF(v)
+    {
+        if (v != this._value)
+        {
+            this.needsUpdate = true;
+            this._value = v;
+        }
+    }
+
+    updateValueI()
+    {
+        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+        else this.needsUpdate = false;
+
+        this._shader.getCgl().gl.uniform1i(this._loc, this._value);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    updateValue2I()
+    {
+        if (!this._value) return;
+
+        if (!this._isValidLoc())
+        {
+            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+            this._cgl.profileData.profileShaderGetUniform++;
+            this._cgl.profileData.profileShaderGetUniformName = this._name;
+        }
+
+        this._shader.getCgl().gl.uniform2i(this._loc, this._value[0], this._value[1]);
+
+        this.needsUpdate = false;
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    updateValue3I()
+    {
+        if (!this._value) return;
+        if (!this._isValidLoc())
+        {
+            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+            this._cgl.profileData.profileShaderGetUniform++;
+            this._cgl.profileData.profileShaderGetUniformName = this._name;
+        }
+
+        this._shader.getCgl().gl.uniform3i(this._loc, this._value[0], this._value[1], this._value[2]);
+        this.needsUpdate = false;
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    updateValue4I()
+    {
+        if (!this._isValidLoc())
+        {
+            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+            this._cgl.profileData.profileShaderGetUniform++;
+            this._cgl.profileData.profileShaderGetUniformName = this._name;
+        }
+        this._shader.getCgl().gl.uniform4i(this._loc, this._value[0], this._value[1], this._value[2], this._value[3]);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValueI(v)
+    {
+        if (v != this._value)
+        {
+            this.needsUpdate = true;
+            this._value = v;
+        }
+    }
+
+    setValue2I(v)
+    {
+        if (!v) return;
+        if (!this._oldValue)
+        {
+            this._oldValue = [v[0] - 1, 1];
+            this.needsUpdate = true;
+        }
+        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1])
+        {
+            this._oldValue[0] = v[0];
+            this._oldValue[1] = v[1];
+            this.needsUpdate = true;
+        }
+
+        this._value = v;
+    }
+
+    setValue3I(v)
+    {
+        if (!v) return;
+        if (!this._oldValue)
+        {
+            this._oldValue = [v[0] - 1, 1, 2];
+            this.needsUpdate = true;
+        }
+        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1] || v[2] != this._oldValue[2])
+        {
+            this._oldValue[0] = v[0];
+            this._oldValue[1] = v[1];
+            this._oldValue[2] = v[2];
+            this.needsUpdate = true;
+        }
+
+        this._value = v;
+    }
+
+    setValue4I(v)
+    {
+        this.needsUpdate = true;
+        this._value = v || vec4.create();
+    }
+
+    updateValueBool()
+    {
+        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+        else this.needsUpdate = false;
+        this._shader.getCgl().gl.uniform1i(this._loc, this._value ? 1 : 0);
+
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValueBool(v)
+    {
+        if (v != this._value)
+        {
+            this.needsUpdate = true;
+            this._value = v;
+        }
+    }
+
+    setValueArray4F(v)
+    {
+        this.needsUpdate = true;
+        this._value = v;
+    }
+
+    updateValueArray4F()
+    {
+        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+        else this.needsUpdate = false;
+
+        if (!this._value) return;
+        this._shader.getCgl().gl.uniform4fv(this._loc, this._value);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValueArray3F(v)
+    {
+        this.needsUpdate = true;
+        this._value = v;
+    }
+
+    updateValueArray3F()
+    {
+        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+        else this.needsUpdate = false;
+
+        if (!this._value) return;
+        this._shader.getCgl().gl.uniform3fv(this._loc, this._value);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValueArray2F(v)
+    {
+        this.needsUpdate = true;
+        this._value = v;
+    }
+
+    updateValueArray2F()
+    {
+        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+        else this.needsUpdate = false;
+
+        if (!this._value) return;
+        this._shader.getCgl().gl.uniform2fv(this._loc, this._value);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValueArrayF(v)
+    {
+        this.needsUpdate = true;
+        this._value = v;
+    }
+
+    updateValueArrayF()
+    {
+        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+        else this.needsUpdate = false;
+
+        if (!this._value) return;
+        this._shader.getCgl().gl.uniform1fv(this._loc, this._value);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValueArrayT(v)
+    {
+        this.needsUpdate = true;
+        this._value = v;
+    }
+
+    updateValue3F()
+    {
+        if (!this._value) return;
+        if (!this._isValidLoc())
+        {
+            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+            this._cgl.profileData.profileShaderGetUniform++;
+            this._cgl.profileData.profileShaderGetUniformName = this._name;
+        }
+
+        this._shader.getCgl().gl.uniform3f(this._loc, this._value[0], this._value[1], this._value[2]);
+        this.needsUpdate = false;
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValue3F(v)
+    {
+        if (!v) return;
+        if (!this._oldValue)
+        {
+            this._oldValue = [v[0] - 1, 1, 2];
+            this.needsUpdate = true;
+        }
+        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1] || v[2] != this._oldValue[2])
+        {
+            this._oldValue[0] = v[0];
+            this._oldValue[1] = v[1];
+            this._oldValue[2] = v[2];
+            this.needsUpdate = true;
+        }
+
+        this._value = v;
+    }
+
+    updateValue2F()
+    {
+        if (!this._value) return;
+
+        if (!this._isValidLoc())
+        {
+            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+            this._cgl.profileData.profileShaderGetUniform++;
+            this._cgl.profileData.profileShaderGetUniformName = this._name;
+        }
+
+        this._shader.getCgl().gl.uniform2f(this._loc, this._value[0], this._value[1]);
+        this.needsUpdate = false;
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValue2F(v)
+    {
+        if (!v) return;
+        if (!this._oldValue)
+        {
+            this._oldValue = [v[0] - 1, 1];
+            this.needsUpdate = true;
+        }
+        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1])
+        {
+            this._oldValue[0] = v[0];
+            this._oldValue[1] = v[1];
+            this.needsUpdate = true;
+        }
+        this._value = v;
+    }
+
+    updateValue4F()
+    {
+        if (!this._isValidLoc())
+        {
+            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+            this._cgl.profileData.profileShaderGetUniform++;
+            this._cgl.profileData.profileShaderGetUniformName = this._name;
+        }
+
+        if (!this._value)
+        {
+            this._log.warn("no value for uniform", this._name, this);
+            this._value = [0, 0, 0, 0];
+        }
+
+        this.needsUpdate = false;
+        this._shader.getCgl().gl.uniform4f(this._loc, this._value[0], this._value[1], this._value[2], this._value[3]);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValue4F(v)
+    {
+        if (typeof this.value == "number") this.value = vec4.create(); // this should not be needed, but somehow it crashes with some shadermods
+
+        if (!v) return;
+        if (!this._oldValue)
+        {
+            this._oldValue = [v[0] - 1, 1, 2, 3];
+            this.needsUpdate = true;
+        }
+        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1] || v[2] != this._oldValue[2] || v[3] != this._oldValue[3])
+        {
+            this._oldValue[0] = v[0];
+            this._oldValue[1] = v[1];
+            this._oldValue[2] = v[2];
+            this.needsUpdate = true;
+        }
+
+        this._value = v;
+    }
+
+    updateValueM4()
+    {
+        if (!this._isValidLoc())
+        {
+            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+            this._cgl.profileData.profileShaderGetUniform++;
+            this._cgl.profileData.profileShaderGetUniformName = this._name;
+        }
+        if (!this._value || this._value.length % 16 != 0) return console.log("this.name", this._name, this._value);
+
+        this._shader.getCgl().gl.uniformMatrix4fv(this._loc, false, this._value);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    setValueM4(v)
+    {
+        this.needsUpdate = true;
+        this._value = v || mat4.create();
+    }
+
+    updateValueArrayT()
+    {
+        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+        else this.needsUpdate = false;
+
+        if (!this._value) return;
+        this._shader.getCgl().gl.uniform1iv(this._loc, this._value);
+        this._cgl.profileData.profileUniformCount++;
+    }
+
+    updateValueT()
+    {
+        if (!this._isValidLoc())
+        {
+            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
+            this._cgl.profileData.profileShaderGetUniform++;
+            this._cgl.profileData.profileShaderGetUniformName = this._name;
+        }
+
+        this._cgl.profileData.profileUniformCount++;
+        this._shader.getCgl().gl.uniform1i(this._loc, this._value);
+        this.needsUpdate = false;
+    }
+
+    setValueT(v)
+    {
+        this.needsUpdate = true;
+        this._value = v;
+    }
+}
+
+Uniform.glslTypeString = (t) =>
+{
+    if (t == "f") return "float";
+    if (t == "b") return "bool";
+    if (t == "i") return "int";
+    if (t == "2i") return "ivec2";
+    if (t == "2f") return "vec2";
+    if (t == "3f") return "vec3";
+    if (t == "4f") return "vec4";
+    if (t == "m4") return "mat4";
+
+    if (t == "t") return "sampler2D";
+    if (t == "tc") return "samplerCube";
+
+    if (t == "3f[]") return null; // ignore this for now...
+    if (t == "m4[]") return null; // ignore this for now...
+    if (t == "f[]") return null; // ignore this for now...
+
+    console.warn("[CGL UNIFORM] unknown glsl type string ", t);
+};
+
+/**
+ * @function setValue
+ * @memberof Uniform
+ * @instance
+ * @param {Number|Array|Matrix|Texture} value
+ */
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cgl/cgl_simplerect.js":
+/*!********************************************!*\
+  !*** ./src/corelibs/cgl/cgl_simplerect.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MESHES: () => (/* binding */ MESHES)
+/* harmony export */ });
+/* harmony import */ var _cg_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cg/index.js */ "./src/corelibs/cg/cg_geom.js");
+/* harmony import */ var _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cgl_mesh.js */ "./src/corelibs/cgl/cgl_mesh.js");
+
+
+
+const MESHES = {};
+
+MESHES.getSimpleRect = function (cgl, name, size = 1.0)
+{
+    const geom = new _cg_index_js__WEBPACK_IMPORTED_MODULE_0__.Geometry(name);
+
+    geom.vertices = [1.0 * size, 1.0 * size, 0.0, -1.0 * size, 1.0 * size, 0.0, 1.0 * size, -1.0 * size, 0.0, -1.0 * size, -1.0 * size, 0.0];
+    geom.texCoords = [1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0];
+    geom.verticesIndices = [0, 1, 2, 2, 1, 3];
+    geom.vertexNormals = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+
+    return cgl.createMesh(geom);
+};
+
+MESHES.getSimpleCube = function (cgl, name)
+{
+    const geom = new _cg_index_js__WEBPACK_IMPORTED_MODULE_0__.Geometry(name);
+    geom.vertices = [-1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, -1];
+    geom.setTexCoords([0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0,]);
+    geom.verticesIndices = [0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23];
+    geom.vertexNormals = new Float32Array([0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0]);
+    geom.tangents = new Float32Array([0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]);
+    geom.biTangents = new Float32Array([-1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1]);
+
+    return new _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_1__.Mesh(cgl, geom);
+};
+
+
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cgl/constants.js":
+/*!***************************************!*\
+  !*** ./src/corelibs/cgl/constants.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CONSTANTS: () => (/* binding */ CONSTANTS),
+/* harmony export */   nl: () => (/* binding */ nl)
+/* harmony export */ });
+const SHADER = {
+    // default attributes
+    "SHADERVAR_VERTEX_POSITION": "vPosition",
+    "SHADERVAR_VERTEX_NUMBER": "attrVertIndex",
+    "SHADERVAR_VERTEX_NORMAL": "attrVertNormal",
+    "SHADERVAR_VERTEX_TEXCOORD": "attrTexCoord",
+    "SHADERVAR_INSTANCE_MMATRIX": "instMat",
+    "SHADERVAR_VERTEX_COLOR": "attrVertColor",
+
+    "SHADERVAR_INSTANCE_INDEX": "instanceIndex",
+
+    // default uniforms
+    "SHADERVAR_UNI_PROJMAT": "projMatrix",
+    "SHADERVAR_UNI_VIEWMAT": "viewMatrix",
+    "SHADERVAR_UNI_MODELMAT": "modelMatrix",
+    "SHADERVAR_UNI_NORMALMAT": "normalMatrix",
+    "SHADERVAR_UNI_INVVIEWMAT": "inverseViewMatrix",
+    "SHADERVAR_UNI_INVPROJMAT": "invProjMatrix",
+    "SHADERVAR_UNI_MATERIALID": "materialId",
+    "SHADERVAR_UNI_OBJECTID": "objectId",
+
+    "SHADERVAR_UNI_VIEWPOS": "camPos",
+};
+
+const BLEND_MODES = {
+    "BLEND_NONE": 0,
+    "BLEND_NORMAL": 1,
+    "BLEND_ADD": 2,
+    "BLEND_SUB": 3,
+    "BLEND_MUL": 4,
+};
+
+const RAD2DEG = 180.0 / Math.PI;
+const DEG2RAD = Math.PI / 180.0;
+
+const CONSTANTS = {
+    "MATH": {
+        "DEG2RAD": DEG2RAD,
+        "RAD2DEG": RAD2DEG,
+    },
+    "SHADER": SHADER,
+    "BLEND_MODES": BLEND_MODES,
+};
+const nl = "\n";// newline
+
+
+
+/***/ }),
+
+/***/ "./src/corelibs/cgl/index.js":
+/*!***********************************************!*\
+  !*** ./src/corelibs/cgl/index.js + 9 modules ***!
+  \***********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  CGL: () => (/* binding */ cgl_CGL)
+});
+
+// UNUSED EXPORTS: Framebuffer2, Geometry, Mesh, Shader, Texture, Uniform
+
+// EXTERNAL MODULE: ./src/core/anim.js
+var anim = __webpack_require__("./src/core/anim.js");
+// EXTERNAL MODULE: ../shared/client/src/logger.js
+var logger = __webpack_require__("../shared/client/src/logger.js");
+// EXTERNAL MODULE: ./src/core/utils.js + 1 modules
+var utils = __webpack_require__("./src/core/utils.js");
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_texture.js
+var cg_texture = __webpack_require__("./src/corelibs/cg/cg_texture.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_texture.js
+
+
+
+
+
+const DEFAULT_TEXTURE_SIZE = 8;
+
+const log = new logger["default"]("cgl_texture");
 
 /**
  * A Texture
@@ -11682,7 +20421,7 @@ const log = new Logger("cgl_texture");
  * const tex=new CGL.Texture(cgl);
  * tex.initFromData(data,size,size,CGL.Texture.FILTER_NEAREST,CGL.Texture.WRAP_REPEAT);
  */
-class Texture extends CgTexture
+class Texture extends cg_texture.CgTexture
 {
 
     /**
@@ -11694,7 +20433,7 @@ class Texture extends CgTexture
         if (!__cgl) throw new Error("no cgl");
 
         this._cgl = __cgl;
-        this._log = new Logger("tex");
+        this._log = new logger["default"]("tex");
         this.tex = this._cgl.gl.createTexture();
         this.loading = false;
         this.flip = true;
@@ -11844,8 +20583,8 @@ class Texture extends CgTexture
     setSize(w, h)
     {
         if (this._cgl.aborted) return;
-        if (w != w || w <= 0 || !w) w = cgl_texture_DEFAULT_TEXTURE_SIZE;
-        if (h != h || h <= 0 || !h) h = cgl_texture_DEFAULT_TEXTURE_SIZE;
+        if (w != w || w <= 0 || !w) w = DEFAULT_TEXTURE_SIZE;
+        if (h != h || h <= 0 || !h) h = DEFAULT_TEXTURE_SIZE;
 
         if (w > this._cgl.maxTexSize || h > this._cgl.maxTexSize) this._log.error("texture size too big! " + w + "x" + h + " / max: " + this._cgl.maxTexSize);
 
@@ -12419,7 +21158,7 @@ Texture.getEmptyCubemapTexture = function (cgl)
     cgl.gl.bindTexture(target, null);
 
     return {
-        "id": CABLES.uuid(),
+        "id": utils.uuid(),
         "tex": tex,
         "cubemap": tex,
         "width": width,
@@ -12720,3251 +21459,509 @@ Texture.isPixelFormatHalfFloat =
         return (pxlFrmtStr || "").includes("float") && (pxlFrmtStr || "").includes("16bit");
     };
 
-;// CONCATENATED MODULE: ./src/core/core_op.js
+;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_framebuffer2.js
 
 
 
 
-
-
-
-
-
-
-/**
- * @typedef Translation
- * @property {number} [x]
- * @property {number} [y]
- */
-
-/**
- * configuration object for loading a patch
- * @typedef OpUiAttribs
- * @property {string} [title] overwrite op title
- * @property {string} [hidePort] hidePort
- * @property {string} [title] overwrite op title
- * @property {String} [title=''] overwrite title of port (by default this is portname)
- * @property {string} [extendTitle] extended op title, shown in grey next to op name
- * @property {object} [storage] internal - do not use manualy
- * @property {boolean} [working] internal - do not use manualy
- * @property {boolean} [bookmarked] internal - do not use manualy
- * @property {boolean} [selected] internal - do not use manualy
- * @property {boolean} [disabled] internal - do not use manualy
- * @property {boolean} [loading] internal - do not use manualy
- * @property {object} [uierrors] internal - do not use manualy - use op.setUiError
- * @property {string} [color]
- * @property {object} [area]
- * @property {string} [comment]
- * @property {number} [height]
- * @property {number} [width]
- * @property {Translation} [translate]
- * @property {string} [subPatch] internal - do not use manualy - use op.setUiError
- */
-
-/**
- * @typedef CorePatch
- * @type Patch
- */
-
-/**
- * @template {CorePatch} Patch
- */
-class Op extends Events
+class Framebuffer2
 {
-    static OP_VERSION_PREFIX = "_v";
-
-    #objName = "";
-    _log = new Logger("core_op");
-    //    #name = "";
-    #shortOpName = "";
-
-    opId = ""; // unique op id
-
-    /** @type {Array<Port>} */
-    portsOut = [];
-
-    /** @type {Patch} */
-    patch = null;
-
-    data = {}; // UNUSED, DEPRECATED, only left in for backwards compatibility with userops
-    storage = {}; // op-specific data to be included in export
-
-    /** @type {Array<Port>} */
-    portsIn = [];
-    portsInData = []; // original loaded patch data
-
-    /** @type {OpUiAttribs} */
-    uiAttribs = {};
-    enabled = true;
-
-    onAnimFrame = null;
-
-    preservedPortTitles = {};
-    preservedPortValues = {};
-    preservedPortLinks = {};
-
-    linkTimeRules = {
-        "needsLinkedToWork": [],
-        "needsStringToWork": [],
-        "needsParentOp": null
-    };
-
-    shouldWork = {};
-    hasUiErrors = 0;
-
-    /** @type {Object} */
-    uiErrors = {};
-    hasAnimPort = false;
-
-    /** @type {Port} */
-    patchId = null; // will be defined by subpatchops
 
     /**
-     * @param {Patch} _patch
-     * @param {String} _objName
-     * @param {String} _id=null
-    */
-    constructor(_patch, _objName, _id = null)
-    {
-        super();
-
-        // this.#name = _objName;
-        this.opId = _id;
-        this.#objName = _objName;
-        this.patch = _patch;
-
-        this.#shortOpName = CABLES.getShortOpName(_objName);
-        this.getTitle();
-
-        this.id = _id || shortId(); // instance id
-        this.onAddPort = null;
-        this.onCreate = null;
-        this.onResize = null;
-        this.onLoaded = null;
-        this.onDelete = null;
-        this.onError = null;
-
-        this._instances = null;
-
-        /**
-         * overwrite this to prerender shader and meshes / will be called by op `loadingStatus`
-         */
-        this.preRender = null;
-
-        /**
-         * overwrite this to initialize your op
-         */
-        this.init = null;
-
-        /**
-         * Implement to render 2d canvas based graphics from in an op - optionaly defined in op instance
-         * @param {CanvasRenderingContext2D} context of canvas 2d
-         * @param {Object} layer info
-         * @param {number} layer.x x position on canvas
-         * @param {number} layer.y y position on canvas
-         * @param {number} layer.width width of canvas
-         * @param {number} layer.height height of canvas
-         * @param {number} layer.scale current scaling of patchfield view
-         */
-        this.renderVizLayer = null;
-        this.checkLinkTimeWarnings = null;
-    }
-
-    isInBlueprint2() // will be overwritten in ui
-    {
-        return false;
-    }
-
-    get name()
-    {
-        return this.getTitle();
-    }
-
-    set name(n)
-    {
-        this.setTitle(n);
-    }
-
-    /**
-     * @param {string} on
+     * @param {CglContext} cgl
+     * @param {number} w
+     * @param {number} h
+     * @param {object} options
      */
-    set _objName(on)
+    constructor(cgl, w, h, options)
     {
-        this.#objName = on;
-        this._log = new Logger("op " + on);
-    }
+        this._log = new logger["default"]("cgl_framebuffer2");
+        if (cgl.glVersion == 1) this._log.error("framebuffer2 used on webgl1");
+        this.Framebuffer2DrawTargetsDefault = null;
+        this.Framebuffer2BlittingFramebuffer = null;
+        this.Framebuffer2FinalFramebuffer = null;
+        this._cgl = cgl;
 
-    get objName()
-    {
-        return this.#objName;
-    }
+        this._cgl.printError("before framebuffer2 constructor");
 
-    get shortName()
-    {
-        return this.#shortOpName;
-    }
+        this._width = 0;
+        this._height = 0;
+        this.valid = true;
 
-    /**
-     * op.require
-     *
-     * @param {String} _name - module name
-     * @returns {Object}
-     */
-    require(_name)
-    {
-        if (CABLES.platform && CABLES.StandaloneElectron && !CABLES.platform.frontendOptions.isElectron)
-            this.setUiError("notstandalone", "This op will only work in cables standalone version", 3);
+        this._depthRenderbuffer = null;
+        this._frameBuffer = null;
+        this._textureFrameBuffer = null;
+        this._colorRenderbuffers = [];
+        this._drawTargetArray = [];
+        this._disposed = false;
 
-        return null;
-    }
+        if (!this.Framebuffer2BlittingFramebuffer) this.Framebuffer2BlittingFramebuffer = cgl.gl.createFramebuffer();
+        if (!this.Framebuffer2FinalFramebuffer) this.Framebuffer2FinalFramebuffer = cgl.gl.createFramebuffer();
 
-    checkMainloopExists()
-    {
-        if (!CABLES.UI) return;
-        if (!this.patch.tempData.mainloopOp) this.setUiError("nomainloop", "patch should have a mainloop to use this op");
-        else this.setUiError("nomainloop", null);
-    }
+        if (!this.Framebuffer2DrawTargetsDefault) this.Framebuffer2DrawTargetsDefault = [cgl.gl.COLOR_ATTACHMENT0];
 
-    /** @returns {string} */
-    getTitle()
-    {
-        if (!this.uiAttribs) return "nouiattribs" + this.shortName;
+        this._options = options || {
+            "isFloatingPointTexture": false,
+        };
 
-        /*
-         * if ((this.uiAttribs.title === undefined || this.uiAttribs.title === "") && this.objName.indexOf("Ops.Ui.") == -1)
-         *     this.uiAttribs.title = this._shortOpName;
-         */
+        this.name = this._options.name || "unknown";
 
-        return this.uiAttribs.title || this.#shortOpName;
-    }
+        this._cgl.profileData.addHeavyEvent("framebuffer create", this.name);
 
-    /**
-     * @param {string} title
-     */
-    setTitle(title)
-    {
-
-        /*
-         * this._log.log("settitle", title);
-         * this._log.log(
-         *     (new Error()).stack
-         * );
-         */
-
-        if (title != this.getTitle()) this._setUiAttrib({ "title": title });
-    }
-
-    /**
-     * @param {Object} newAttribs
-     */
-    setStorage(newAttribs)
-    {
-        if (!newAttribs) return;
-        this.storage = this.storage || {};
-
-        let changed = false;
-        for (const p in newAttribs)
+        if (!this._options.hasOwnProperty("numRenderBuffers")) this._options.numRenderBuffers = 1;
+        if (!this._options.hasOwnProperty("depth")) this._options.depth = true;
+        if (!this._options.hasOwnProperty("clear")) this._options.clear = true;
+        if (!this._options.hasOwnProperty("multisampling"))
         {
-            if (this.storage[p] != newAttribs[p]) changed = true;
-            this.storage[p] = newAttribs[p];
+            this._options.multisampling = false;
+            this._options.multisamplingSamples = 0;
         }
 
-        if (changed) this.emitEvent("onStorageChange", newAttribs);
-    }
-
-    isSubPatchOp()
-    {
-        if (this.patchId && this.storage) return (this.storage.subPatchVer || this.storage.blueprintVer || 0);
-        return false;
-    }
-
-    /**
-     * setUiAttrib
-     * possible values:
-     * <pre>
-     * warning - warning message - showing up in op parameter panel
-     * error - error message - showing up in op parameter panel
-     * extendTitle - op title extension, e.g. [ + ]
-     * </pre>
-     // * @param {OpUiAttribs} newAttribs, e.g. {"attrib":value}
-     * @example
-     * op.setUiAttrib({"extendTitle":str});
-     */
-    setUiAttrib(newAttribs)
-    {
-        this._setUiAttrib(newAttribs);
-    }
-
-    /**
-     * @deprecated
-     * @param {OpUiAttribs} a
-     */
-    setUiAttribs(a)
-    {
-        this._setUiAttrib(a);
-    }
-
-    /**
-     * @deprecated
-     * @param {OpUiAttribs} a
-     */
-    uiAttr(a)
-    {
-        this._setUiAttrib(a);
-    }
-
-    /**
-     * @param {OpUiAttribs} newAttribs
-     */
-    _setUiAttrib(newAttribs)
-    {
-        if (!newAttribs) return;
-
-        if (typeof newAttribs != "object") this._log.error("op.uiAttrib attribs are not of type object");
-        if (!this.uiAttribs) this.uiAttribs = {};
-
-        let changed = false;
-        let emitMove = false;
-        if (
-            CABLES.UI &&
-            newAttribs.hasOwnProperty("translate") &&
-            (
-                !this.uiAttribs.translate ||
-                this.uiAttribs.translate.x != newAttribs.translate.x ||
-                this.uiAttribs.translate.y != newAttribs.translate.y
-            )) emitMove = true;
-
-        if (newAttribs.hasOwnProperty("title") && newAttribs.title != this.uiAttribs.title)
+        if (this._options.multisamplingSamples)
         {
-            // const doEmitEvent = newAttribs.title != this.getTitle();
-            this.uiAttribs.title = newAttribs.title;
-            // if (doEmitEvent) this.emitEvent("onTitleChange", newAttribs.title);
-            changed = true;
-            // this.setTitle(newAttribs.title);
+            if (this._cgl.glSlowRenderer) this._options.multisamplingSamples = 0;
+            if (!this._cgl.gl.MAX_SAMPLES) this._options.multisamplingSamples = 0;
+            else this._options.multisamplingSamples = Math.min(this._cgl.maxSamples, this._options.multisamplingSamples);
         }
 
-        if (newAttribs.hasOwnProperty("disabled")) this.setEnabled(!newAttribs.disabled);
+        if (!this._options.hasOwnProperty("filter")) this._options.filter = Texture.FILTER_LINEAR;
+        if (!this._options.hasOwnProperty("wrap")) this._options.wrap = Texture.WRAP_REPEAT;
 
-        for (const p in newAttribs)
+        this._numRenderBuffers = this._options.numRenderBuffers;
+        this._colorTextures = [];
+
+        this.clearColors = [];
+        for (let i = 0; i < this._numRenderBuffers; i++) this.clearColors.push([0, 0, 0, 1]);
+
+        if (!options.pixelFormat)
         {
-            if (this.uiAttribs[p] != newAttribs[p]) changed = true;
-            this.uiAttribs[p] = newAttribs[p];
+            if (options.isFloatingPointTexture) this._options.pixelFormat = Texture.PFORMATSTR_RGBA32F;
+            else this._options.pixelFormat = Texture.PFORMATSTR_RGBA8UB;
         }
 
-        if (this.uiAttribs.hasOwnProperty("selected") && this.uiAttribs.selected == false) delete this.uiAttribs.selected;
-
-        if (changed)
+        for (let i = 0; i < this._numRenderBuffers; i++)
         {
-            this.emitEvent("onUiAttribsChange", newAttribs);
-            this.patch.emitEvent("onUiAttribsChange", this, newAttribs);
+            this._colorTextures[i] = new Texture(cgl, {
+                "name": "fb2 " + this.name + " " + i,
+                "isFloatingPointTexture": this._options.isFloatingPointTexture,
+                "anisotropic": this._options.anisotropic || 0,
+                "pixelFormat": this._options.pixelFormat,
+                "filter": this._options.filter,
+                "wrap": this._options.wrap,
+            });
         }
 
-        if (emitMove) this.emitEvent("move");
+        let fil = Texture.FILTER_NEAREST;
+        if (this._options.shadowMap) fil = Texture.FILTER_LINEAR;
+
+        const defaultTexSize = 512;
+
+        if (this._options.depth)
+        {
+            this._textureDepth = new Texture(cgl,
+                {
+                    "name": "fb2 depth " + this.name,
+                    "isDepthTexture": true,
+                    "filter": fil,
+                    "shadowMap": this._options.shadowMap || false,
+                    "width": w || defaultTexSize,
+                    "height": h || defaultTexSize,
+                });
+        }
+
+        if (cgl.aborted) return;
+
+        this.setSize(w || defaultTexSize, h || defaultTexSize);
+
+        this._cgl.printError("framebuffer2 constructor");
     }
 
-    getName()
+    getWidth()
     {
-        // if (this.uiAttribs.name)
-        // {
-        //     console.log("uiattr name exist!");// otherwise delete
-        //     return this.uiAttribs.name;
-        // }
-        return this.#shortOpName;
+        return this._width;
     }
 
-    /**
-     * @param {Port} p
-     */
-    addOutPort(p)
+    getHeight()
     {
-        p.direction = CONSTANTS.PORT.PORT_DIR_OUT;
-        p._op = this;
-        this.portsOut.push(p);
-        this.emitEvent("onPortAdd", p);
-        return p;
+        return this._height;
     }
 
-    hasDynamicPort()
+    getGlFrameBuffer()
     {
+        return this._frameBuffer;
+    }
+
+    getDepthRenderBuffer()
+    {
+        return this._depthRenderbuffer;
+    }
+
+    getTextureColor()
+    {
+        return this._colorTextures[0];
+    }
+
+    getTextureColorNum(i)
+    {
+        return this._colorTextures[i];
+    }
+
+    getTextureDepth()
+    {
+        return this._textureDepth;
+    }
+
+    setFilter(f)
+    {
+        for (let i = 0; i < this._numRenderBuffers; i++)
+        {
+            this._colorTextures[i].filter = f;
+            this._colorTextures[i].setSize(this._width, this._height);
+        }
+    }
+
+    delete()
+    {
+        this.dispose();
+    }
+
+    dispose()
+    {
+        this._disposed = true;
         let i = 0;
-        for (i = 0; i < this.portsIn.length; i++)
+        for (i = 0; i < this._numRenderBuffers; i++) this._colorTextures[i].delete();
+        // this._texture.delete();
+        if (this._textureDepth) this._textureDepth.delete();
+        for (i = 0; i < this._numRenderBuffers; i++) this._cgl.gl.deleteRenderbuffer(this._colorRenderbuffers[i]);
+        this._cgl.gl.deleteRenderbuffer(this._depthRenderbuffer);
+        this._cgl.gl.deleteFramebuffer(this._frameBuffer);
+        this._cgl.gl.deleteFramebuffer(this._textureFrameBuffer);
+    }
+
+    /**
+     * @param {number} w
+     * @param {number} h
+     */
+    setSize(w, h)
+    {
+        if (this._disposed) return this._log.warn("disposed framebuffer setsize...");
+        this._cgl.profileData.addHeavyEvent("framebuffer resize", this.name);
+
+        let i = 0;
+
+        this._width = this._cgl.checkTextureSize(w);
+        this._height = this._cgl.checkTextureSize(h);
+
+        this._cgl.profileData.profileFrameBuffercreate++;
+
+        if (this._frameBuffer)
         {
-            if (this.portsIn[i].type == Port.TYPE_DYNAMIC) return true;
-            if (this.portsIn[i].getName() == "dyn") return true;
+            for (i = 0; i < this._numRenderBuffers; i++) this._cgl.gl.deleteRenderbuffer(this._colorRenderbuffers[i]);
+            // this._cgl.gl.deleteRenderbuffer(this._colorRenderbuffer);
+            this._cgl.gl.deleteRenderbuffer(this._depthRenderbuffer);
+            this._cgl.gl.deleteFramebuffer(this._frameBuffer);
+            this._cgl.gl.deleteFramebuffer(this._textureFrameBuffer);
         }
-        for (i = 0; i < this.portsOut.length; i++)
+
+        this._frameBuffer = this._cgl.gl.createFramebuffer();
+        this._textureFrameBuffer = this._cgl.gl.createFramebuffer();
+
+        const depth = this._options.depth;
+
+        for (i = 0; i < this._numRenderBuffers; i++)
         {
-            if (this.portsOut[i].type == Port.TYPE_DYNAMIC) return true;
-            if (this.portsOut[i].getName() == "dyn") return true;
+            this._colorTextures[i].setSize(this._width, this._height);
         }
 
-        return false;
-    }
+        for (i = 0; i < this._numRenderBuffers; i++)
+        {
+            const renderBuffer = this._cgl.gl.createRenderbuffer();
 
-    /**
-     * @param {any|Port | MultiPort} p
-     */
-    addInPort(p)
-    {
-        // if (!(p instanceof Port)) throw new Error("parameter is not a port!", p);
-        // if (!(p instanceof Port) && !(p instanceof MultiPort)) throw new Error("parameter is not a port!", p);
+            // color renderbuffer
 
-        // console.log("a", p.constructor.name);
+            this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._frameBuffer);
+            this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER, renderBuffer);
 
-        p.direction = Port.DIR_IN;
-        p._op = this;
+            const info = Texture.setUpGlPixelFormat(this._cgl, this._options.pixelFormat);
+            let internFormat = info.glInternalFormat;
 
-        this.portsIn.push(p);
-        this.emitEvent("onPortAdd", p);
-
-        return p;
-    }
-
-    /**
-     *
-     * @param {string} name
-     * @param {string} v
-     */
-    inFunction(name, v)
-    {
-        return this.inTrigger(name, v);
-    }
-
-    /**
-     * create a trigger input port
-     * @param {String} name
-     * @param {String} v
-     * @return {Port} created port
-     *
-     */
-    inTrigger(name, v)
-    {
-        const p = this.addInPort(new Port(this, name, Port.TYPE_FUNCTION));
-        if (v !== undefined) p.set(v);
-        return p;
-    }
-
-    /**
-     * create multiple UI trigger buttons
-     * @param {String} name
-     * @param {Array} v
-     * @return {Port} created port
-     */
-    inTriggerButton(name, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_FUNCTION, {
-                "display": "button"
-            })
-        );
-        if (v !== undefined) p.set(v);
-        return p;
-    }
-
-    /**
-     * @param {string} name
-     * @param {any} v
-     */
-    inUiTriggerButtons(name, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_FUNCTION, {
-                "display": "buttons"
-            })
-        );
-        if (v !== undefined) p.set(v);
-        return p;
-    }
-
-    /**
-     * @deprecated
-     */
-    inValueFloat(name, v)
-    {
-        return this.inFloat(name, v);
-    }
-
-    /**
-     * @deprecated
-     */
-    inValue(name, v)
-    {
-        return this.inFloat(name, v);
-    }
-
-    /**
-     * create a number value input port
-     * @param {String} name
-     * @param {Number} v
-     * @return {Port} created port
-     */
-    inFloat(name, v)
-    {
-        const p = this.addInPort(new Port(this, name, Port.TYPE_VALUE));
-
-        p.setInitialValue(v);
-
-        return p;
-    }
-
-    /**
-     * @deprecated
-     */
-    inValueBool(name, v)
-    {
-        return this.inBool(name, v);
-    }
-
-    /**
-     * create a boolean input port, displayed as a checkbox
-     * @param {String} name
-     * @param {Boolean|number} v
-     * @return {Port} created port
-     */
-    inBool(name, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_NUMBER, {
-                "display": "bool"
-            })
-        );
-
-        if (v === true)v = 1;
-        if (v === false)v = 0;
-        p.setInitialValue(v);
-
-        return p;
-    }
-
-    /**
-     * @param {string} name
-     * @param {number} type
-     */
-    inMultiPort(name, type)
-    {
-        const p = new MultiPort(
-            this,
-            name,
-            type,
-            Port.DIR_IN,
+            // if (this._options.isFloatingPointTexture)
+            // {
+            if (CGL.Texture.isPixelFormatHalfFloat(info.pixelFormat))
             {
-                "addPort": true,
-                "hidePort": true
-            }
-        );
-        p.ignoreValueSerialize = true;
-
-        this.addInPort(p);
-        p.initPorts();
-
-        return p;
-    }
-
-    /**
-     * @param {string} name
-     * @param {number} type
-     */
-    outMultiPort(name, type, uiAttribsPort = {})
-    {
-        const p = new MultiPort(
-            this,
-            name,
-            type,
-            CONSTANTS.PORT.PORT_DIR_OUT,
-            {
-                "display": "multiport",
-                "hidePort": true
-            },
-            uiAttribsPort
-        );
-        p.ignoreValueSerialize = true;
-
-        this.addOutPort(p);
-        p.initPorts();
-
-        return p;
-    }
-
-    /**
-     * @param {string} name
-     * @param {string} v
-     */
-    inValueString(name, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_VALUE, {
-                "type": "string"
-            })
-        );
-        p.value = "";
-
-        p.setInitialValue(v);
-        return p;
-    }
-
-    /**
-     * create a String value input port
-     * @param {String} name
-     * @param {String} v default value
-     * @return {Port} created port
-     */
-    inString(name, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_STRING, {
-                "type": "string"
-            })
-        );
-        v = v || "";
-        // p.value = v;
-
-        p.setInitialValue(v);
-        return p;
-    }
-
-    // /**
-    //  * create a String value input port displayed as TextArea
-    //  * @memberof Op
-    //  * @param {String} name
-    //  * @param {String} v default value
-    //  * @return {Port} created port
-    //  */
-    // inValueText(name, v)
-    // {
-    //     const p = this.addInPort(
-    //         new Port(this, name, Port.TYPE_VALUE, {
-    //             "type": "string",
-    //             "display": "text"
-    //         })
-    //     );
-    //     p.value = "";
-
-    //     p.setInitialValue(v);
-
-    //     /*
-    //      * if (v !== undefined)
-    //      * {
-    //      *     p.set(v);
-    //      *     p.defaultValue = v;
-    //      * }
-    //      */
-    //     return p;
-    // }
-
-    /**
-     * @param {string} name
-     * @param {string} v
-     */
-    inTextarea(name, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_STRING, {
-                "type": "string",
-                "display": "text"
-            })
-        );
-        p.value = "";
-        if (v !== undefined)
-        {
-            p.set(v);
-            p.defaultValue = v;
-        }
-        return p;
-    }
-
-    /**
-     * create a String value input port displayed as editor
-     * @param {String} name
-     * @param {String} v default value
-     * @param {String} syntax language
-     * @param {Boolean} hideFormatButton
-     * @return {Port} created port
-     */
-    inStringEditor(name, v, syntax, hideFormatButton = true)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_STRING, {
-                "type": "string",
-                "display": "editor",
-                "editShortcut": true,
-                "editorSyntax": syntax,
-                "hideFormatButton": hideFormatButton
-            }));
-
-        p.value = "";
-        if (v !== undefined)
-        {
-            p.set(v);
-            p.defaultValue = v;
-        }
-        return p;
-    }
-
-    /**
-     *
-     * @param {string} name
-     * @param {String} v
-     * @param {String} syntax
-     */
-    inValueEditor(name, v, syntax, hideFormatButton = true)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_NUMBER, {
-                "type": "string",
-                "display": "editor",
-                "editorSyntax": syntax,
-                "hideFormatButton": hideFormatButton
-            })
-        );
-        p.value = "";
-        if (v !== undefined)
-        {
-            p.set(v);
-            p.defaultValue = v;
-        }
-        return p;
-    }
-
-    /**
-     * @deprecated
-     * @param {string} name
-     * @param {any[]} values
-     * @param {string} v
-     * @param {boolean} noindex
-     */
-    inValueSelect(name, values, v, noindex)
-    {
-        return this.inDropDown(name, values, v, noindex);
-    }
-
-    /**
-     * create a string select box
-     * @param {String} name
-     * @param {Array} values
-     * @param {String} v default value
-     * @return {Port} created port
-     * @param {boolean} [noindex]
-     */
-    inDropDown(name, values, v, noindex)
-    {
-        let p = null;
-        if (!noindex)
-        {
-            const indexPort = new Port(this, name + " index", Port.TYPE_NUMBER, {
-                "increment": "integer",
-                "hideParam": true
-            });
-            const n = this.addInPort(indexPort);
-
-            if (values) for (let i = 0; i < values.length; i++) values[i] = String(values[i]);
-
-            const valuePort = new ValueSelectPort(
-                this,
-                name,
-                Port.TYPE_NUMBER,
+                if (!this._cgl.enableExtension("OES_texture_float_linear"))
                 {
-                    "display": "dropdown",
-                    "hidePort": true,
-                    "type": "string",
-                    "values": values
-                },
-                n
-
-            );
-
-            valuePort.indexPort = indexPort;
-
-            valuePort.on("change", (/** @type {any} */ val, /** @type {Port} */ thePort) =>
-            {
-                if (!thePort.indexPort.isLinked() && thePort.uiAttribs.values)
-                {
-                    const idx = thePort.uiAttribs.values.indexOf(val);
-                    if (idx > -1) thePort.indexPort.set(idx);
-                }
-            });
-
-            indexPort.onLinkChanged = () =>
-            {
-                valuePort.setUiAttribs({ "greyout": indexPort.isLinked() });
-            };
-
-            p = this.addInPort(valuePort);
-
-            if (v !== undefined)
-            {
-                p.set(v);
-                const index = values.findIndex((item) => { return item == v; });
-                n.setValue(index);
-                p.defaultValue = v;
-                n.defaultValue = index;
-            }
-        }
-        else
-        {
-            const valuePort = new Port(this, name, Port.TYPE_VALUE, {
-                "display": "dropdown",
-                "hidePort": true,
-                "type": "string",
-                "values": values
-            });
-
-            p = this.addInPort(valuePort);
-        }
-
-        return p;
-    }
-
-    /**
-     * create a string switch box
-     * @param {String} name
-     * @param {Array} values
-     * @param {String} v default value
-     * @param {boolean} noindex
-     * @return {Port} created port
-     */
-    inSwitch(name, values, v, noindex)
-    {
-        let p = null;
-        if (!noindex)
-        {
-            if (!v)v = values[0];
-            const indexPort = new Port(this, name + " index", Port.TYPE_VALUE, {
-                "increment": "integer",
-                "values": values,
-                "hideParam": true
-            });
-            const n = this.addInPort(indexPort);
-
-            if (values) for (let i = 0; i < values.length; i++) values[i] = String(values[i]);
-
-            const switchPort = new SwitchPort(
-                this,
-                name,
-                Port.TYPE_STRING,
-                {
-                    "display": "switch",
-                    "hidePort": true,
-                    "type": "string",
-                    "values": values
-                },
-                n
-            );
-
-            switchPort.indexPort = indexPort;
-
-            switchPort.on("change", (val, thePort) =>
-            {
-                if (!thePort.indexPort.isLinked() && thePort.uiAttribs.values)
-                {
-                    const idx = thePort.uiAttribs.values.indexOf(val);
-                    if (idx > -1) thePort.indexPort.set(idx);
-                }
-            });
-
-            indexPort.onLinkChanged = function ()
-            {
-                switchPort.setUiAttribs({ "greyout": indexPort.isLinked() });
-            };
-            p = this.addInPort(switchPort);
-
-            if (v !== undefined)
-            {
-                p.set(v);
-                const index = values.findIndex((item) => { return item == v; });
-                n.setValue(index);
-                p.defaultValue = v;
-                n.defaultValue = index;
-            }
-        }
-        else
-        {
-            const switchPort = new Port(this, name, Port.TYPE_STRING, {
-                "display": "switch",
-                "hidePort": true,
-                "type": "string",
-                "values": values
-            });
-            p = this.addInPort(switchPort);
-        }
-
-        return p;
-    }
-
-    /**
-     * @deprecated
-     */
-    inValueInt(name, v)
-    {
-        return this.inInt(name, v);
-    }
-
-    /**
-     * create a integer input port
-     * @param {String} name
-     * @param {number} v default value
-     * @return {Port} created port
-     */
-    inInt(name, v)
-    {
-        // old
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_VALUE, {
-                "increment": "integer" })
-        );
-        if (v !== undefined)
-        {
-            p.set(v);
-            p.defaultValue = v;
-        }
-        return p;
-    }
-
-    /**
-     * create a file/URL input port
-     * @param {String} name
-     * @param {String} filter
-     * @param {String} v
-     * @return {Port} created port
-     */
-    inFile(name, filter, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_VALUE, {
-                "display": "file",
-                "type": "string",
-                "filter": filter
-            })
-        );
-        if (v !== undefined)
-        {
-            p.set(v);
-            p.defaultValue = v;
-        }
-        return p;
-    }
-
-    /**
-     * @deprecated
-     */
-    inUrl(name, filter, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_STRING, {
-                "display": "file",
-                "type": "string",
-                "filter": filter
-            })
-        );
-        if (v !== undefined)
-        {
-            p.set(v);
-            p.defaultValue = v;
-        }
-        return p;
-    }
-
-    /**
-     * create a texture input port
-     * @param {String} name
-     * @return {Port} created port
-     */
-    inTexture(name, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_OBJECT, {
-                "display": "texture",
-                "objType": "texture",
-                "preview": true
-            })
-        );
-        p.ignoreValueSerialize = true;
-        if (v !== undefined) p.set(v);
-        return p;
-    }
-
-    /**
-     * create a object input port
-     * @param {String} name
-     * @param {Object} v
-     * @param {String} objType
-     * @return {Port} created port
-     */
-    inObject(name, v, objType)
-    {
-        const p = this.addInPort(new Port(this, name, Port.TYPE_OBJECT, { "objType": objType }));
-        p.ignoreValueSerialize = true;
-
-        if (v !== undefined) p.set(v);
-        return p;
-    }
-
-    /**
-     * @param {string} name
-     * @param {string} v
-     */
-    inGradient(name, v)
-    {
-        const p = this.addInPort(
-            new Port(this, name, Port.TYPE_VALUE, {
-                "display": "gradient"
-                // "hidePort": true
-            })
-        );
-        if (v !== undefined) p.set(v);
-        return p;
-    }
-
-    /**
-     * @param {Port} p
-     * returns {number}
-     */
-    getPortVisibleIndex(p)
-    {
-        let ports = this.portsIn;
-        if (p.direction == CONSTANTS.PORT_DIR_OUT)ports = this.portsOut;
-
-        let index = 0;
-        for (let i = 0; i < ports.length; i++)
-        {
-            if (ports[i].uiAttribs.hidePort) continue;
-            index++;
-            if (ports[i] == p) return index;
-        }
-    }
-
-    /**
-     * create a array input port
-     * @param {String} name
-     * @param {Array|Number} v
-     * @param {Number} _stride
-     * @return {Port} created port
-     */
-    inArray(name, v = undefined, _stride = undefined)
-    {
-        let stride = _stride;
-        // @ts-ignore
-        if (!_stride && CABLES.isNumeric(v))stride = v;
-
-        const p = this.addInPort(new Port(this, name, Port.TYPE_ARRAY, { "stride": stride }));
-
-        if (v !== undefined && (Array.isArray(v) || v == null)) p.set(v);
-
-        return p;
-    }
-
-    /**
-     * @deprecated
-     */
-    inValueSlider(name, v, min, max)
-    {
-        return this.inFloatSlider(name, v, min, max);
-    }
-
-    /**
-     * create a value slider input port
-     * @param {String} name
-     * @param {number} v
-     * @param {number} min
-     * @param {number} max
-     * @return {Port} created port
-     */
-    inFloatSlider(name, v, min, max)
-    {
-        const uiattribs = { "display": "range" };
-
-        if (min != undefined && max != undefined)
-        {
-            uiattribs.min = min;
-            uiattribs.max = max;
-        }
-
-        const p = this.addInPort(new Port(this, name, Port.TYPE_VALUE, uiattribs));
-        if (v !== undefined)
-        {
-            p.set(v);
-            p.defaultValue = v;
-        }
-        return p;
-    }
-
-    /**
-     * @deprecated
-     */
-    outFunction(name, v)
-    {
-        return this.outTrigger(name, v);
-    }
-
-    /**
-     * create output trigger port
-     * @param {String} name
-     * @param {String} v
-     * @return {Port} created port
-     */
-    outTrigger(name, v)
-    {
-        // old
-        const p = this.addOutPort(new Port(this, name, Port.TYPE_FUNCTION));
-        if (v !== undefined) p.set(v);
-        return p;
-    }
-
-    /**
-     * @deprecated
-     */
-    outValue(name, v)
-    {
-        return this.outNumber(name, v);
-    }
-
-    /**
-     * create output value port
-     * @param {String} name
-     * @param {number} v default value
-     * @return {Port} created port
-     */
-    outNumber(name, v)
-    {
-        const p = this.addOutPort(new Port(this, name, Port.TYPE_VALUE));
-        if (v !== undefined) p.set(v);
-        return p;
-    }
-
-    /**
-     * @deprecated
-     */
-    outValueBool(name, v)
-    {
-        return this.outBool(name, v);
-    }
-
-    /**
-     * deprecated create output boolean port
-     * @deprecated
-     * @param {String} name
-     * @param {boolean} v default value
-     * @return {Port} created port
-     */
-    outBool(name, v)
-    {
-        // old: use outBoolNum
-        const p = this.addOutPort(
-            new Port(this, name, Port.TYPE_VALUE, {
-                "display": "bool"
-            })
-        );
-        if (v !== undefined) p.set(v);
-        else p.set(0);
-        return p;
-    }
-
-    /**
-     * create output boolean port,value will be converted to 0 or 1
-     * @param {String} name
-     * @return {Port} created port
-     */
-    outBoolNum(name, v)
-    {
-        const p = this.addOutPort(
-            new Port(this, name, Port.TYPE_VALUE, {
-                "display": "boolnum"
-            })
-        );
-
-        p.set = function (b)
-        {
-            this.setValue(b ? 1 : 0);
-        }.bind(p);
-
-        if (v !== undefined) p.set(v);
-        else p.set(0);
-        return p;
-    }
-
-    /**
-     * @deprecated
-     * @param {string} name
-     * @param {string} v
-     */
-    outValueString(name, v)
-    {
-        const p = this.addOutPort(
-            new Port(this, name, Port.TYPE_VALUE, {
-                "type": "string"
-            })
-        );
-        if (v !== undefined) p.set(v);
-        return p;
-    }
-
-    /**
-     * create output string port
-     * @param {string} name
-     * @param {String} v
-     * @return {Port} created port
-     */
-    outString(name, v)
-    {
-        const p = this.addOutPort(
-            new Port(this, name, Port.TYPE_STRING, {
-                "type": "string"
-            })
-        );
-        if (v !== undefined) p.set(v);
-        else p.set("");
-        return p;
-    }
-
-    /**
-     * create output object port
-     * @param {String} name
-     * @return {Port} created port
-     * @param {object} v
-     * @param {string} objType
-     */
-    outObject(name, v, objType)
-    {
-        const p = this.addOutPort(new Port(this, name, Port.TYPE_OBJECT, { "objType": objType || null }));
-        p.set(v || null);
-        p.ignoreValueSerialize = true;
-        return p;
-    }
-
-    /**
-     * create output array port
-     * @param {String} name
-     * @return {Port} created port
-     * @param {array|number} v
-     * @param {number} stride
-     */
-    outArray(name, v, stride)
-    {
-        if (!stride && CABLES.isNumeric(v))stride = v;
-        const p = this.addOutPort(new Port(this, name, Port.TYPE_ARRAY, { "stride": stride }));
-        if (v !== undefined && (Array.isArray(v) || v == null)) p.set(v);
-
-        p.ignoreValueSerialize = true;
-        return p;
-    }
-
-    /**
-     * create output texture port
-     * @param {String} name
-     * @return {Port} created port
-     * @param {any} v
-     */
-    outTexture(name, v)
-    {
-        const p = this.addOutPort(
-            new Port(this, name, Port.TYPE_OBJECT, {
-                "preview": true,
-                "objType": "texture",
-                "display": "texture"
-            })
-        );
-        if (v !== undefined) p.setRef(v || Texture.getEmptyTexture(this.patch.cgl));
-
-        p.ignoreValueSerialize = true;
-        return p;
-    }
-
-    /**
-     * @deprecated
-     * @param {string} name
-     * @param {any} filter
-     * @param {any} options
-     * @param {any} v
-     */
-    inDynamic(name, filter, options, v)
-    {
-        const p = new Port(this, name, Port.TYPE_DYNAMIC, options);
-
-        p.shouldLink = (p1, p2) =>
-        {
-            if (filter && CABLES.isArray(filter))
-            {
-                // for (let i = 0; i < filter.length; i++)
-                // {
-                // if (p1 == this && p2.type === filter[i]) return true;
-                // if (p2 == this && p1.type === filter[i]) return true;
-                // }
-                return false; // types do not match
-            }
-            return true; // no filter set
-        };
-
-        this.addInPort(p);
-        if (v !== undefined)
-        {
-            p.set(v);
-            p.defaultValue = v;
-        }
-        return p;
-    }
-
-    removeLinks()
-    {
-        for (let i = 0; i < this.portsIn.length; i++) this.portsIn[i].removeLinks();
-        for (let i = 0; i < this.portsOut.length; i++) this.portsOut[i].removeLinks();
-    }
-
-    getSerialized()
-    {
-        const opObj = {};
-
-        if (this.opId) opObj.opId = this.opId;
-        if (this.patch.storeObjNames) opObj.objName = this.objName;
-
-        opObj.id = this.id;
-        opObj.uiAttribs = JSON.parse(JSON.stringify(this.uiAttribs)) || {};
-
-        if (this.storage && Object.keys(this.storage).length > 0) opObj.storage = JSON.parse(JSON.stringify(this.storage));
-        if (this.uiAttribs.hasOwnProperty("working") && this.uiAttribs.working == true) delete this.uiAttribs.working;
-        if (opObj.uiAttribs.hasOwnProperty("uierrors")) delete opObj.uiAttribs.uierrors;
-
-        if (opObj.uiAttribs.title === "") delete opObj.uiAttribs.title;
-        if (opObj.uiAttribs.color === null) delete opObj.uiAttribs.color;
-        if (opObj.uiAttribs.comment === null) delete opObj.uiAttribs.comment;
-
-        if (opObj.uiAttribs.title == this.#shortOpName ||
-            (this.uiAttribs.title || "").toLowerCase() == this.#shortOpName.toLowerCase()) delete opObj.uiAttribs.title;
-
-        opObj.portsIn = [];
-        opObj.portsOut = [];
-
-        for (let i = 0; i < this.portsIn.length; i++)
-        {
-            const s = this.portsIn[i].getSerialized();
-            if (s) opObj.portsIn.push(s);
-        }
-
-        for (let i = 0; i < this.portsOut.length; i++)
-        {
-            const s = this.portsOut[i].getSerialized();
-            if (s) opObj.portsOut.push(s);
-        }
-
-        if (opObj.portsIn.length == 0) delete opObj.portsIn;
-        if (opObj.portsOut.length == 0) delete opObj.portsOut;
-        cleanJson(opObj);
-
-        return opObj;
-    }
-
-    /**
-     * @param {number} type
-     */
-    getFirstOutPortByType(type)
-    {
-        for (const ipo in this.portsOut) if (this.portsOut[ipo].type == type) return this.portsOut[ipo];
-    }
-
-    /**
-     * @param {number} type
-     */
-    getFirstInPortByType(type)
-    {
-        for (const ipo in this.portsIn) if (this.portsIn[ipo].type == type) return this.portsIn[ipo];
-    }
-
-    /**
-     * return port by the name portName
-     * @param {String} name
-     * @param {boolean} [lowerCase]
-     * @return {Port}
-     */
-    getPort(name, lowerCase = false)
-    {
-        return this.getPortByName(name, lowerCase);
-    }
-
-    /**
-     * @param {string} name
-     * @param {boolean} [lowerCase]
-     * @returns {Port}
-     */
-    getPortByName(name, lowerCase = false)
-    {
-        if (lowerCase)
-        {
-            for (let ipi = 0; ipi < this.portsIn.length; ipi++)
-                if (this.portsIn[ipi].getName().toLowerCase() == name || this.portsIn[ipi].id.toLowerCase() == name)
-                    return this.portsIn[ipi];
-
-            for (let ipo = 0; ipo < this.portsOut.length; ipo++)
-                if (this.portsOut[ipo].getName().toLowerCase() == name || this.portsOut[ipo].id.toLowerCase() == name)
-                    return this.portsOut[ipo];
-        }
-        else
-        {
-            for (let ipi = 0; ipi < this.portsIn.length; ipi++)
-                if (this.portsIn[ipi].getName() == name || this.portsIn[ipi].id == name)
-                    return this.portsIn[ipi];
-
-            for (let ipo = 0; ipo < this.portsOut.length; ipo++)
-                if (this.portsOut[ipo].getName() == name || this.portsOut[ipo].id == name)
-                    return this.portsOut[ipo];
-        }
-    }
-
-    /**
-     * return port by the name id
-     * @param {String} id
-     * @return {Port}
-     */
-    getPortById(id)
-    {
-        for (let ipi = 0; ipi < this.portsIn.length; ipi++) if (this.portsIn[ipi].id == id) return this.portsIn[ipi];
-        for (let ipo = 0; ipo < this.portsOut.length; ipo++) if (this.portsOut[ipo].id == id) return this.portsOut[ipo];
-    }
-
-    updateAnims()
-    {
-        if (this.hasAnimPort)
-            for (let i = 0; i < this.portsIn.length; i++) this.portsIn[i].updateAnim();
-    }
-
-    log()
-    {
-        this._log.log(...arguments);
-    }
-
-    /**
-     * @deprecated
-     */
-    error()
-    {
-        this._log.error(...arguments);
-    }
-
-    logError()
-    {
-        this._log.error(...arguments);
-    }
-
-    /**
-     * @deprecated
-     */
-    warn()
-    {
-        this._log.warn(...arguments);
-    }
-
-    logWarn()
-    {
-        this._log.warn(...arguments);
-    }
-
-    /**
-     * @deprecated
-     */
-    verbose()
-    {
-        this._log.verbose(...arguments);
-    }
-
-    logVerbose()
-    {
-        this._log.verbose(...arguments);
-    }
-
-    profile()
-    {
-        for (let ipi = 0; ipi < this.portsIn.length; ipi++)
-        {
-            this.portsIn[ipi]._onTriggered = this.portsIn[ipi]._onTriggeredProfiling;
-            this.portsIn[ipi].set = this.portsIn[ipi]._onSetProfiling;
-        }
-    }
-
-    // findParent(objName)
-    // {
-    //     for (let ipi = 0; ipi < this.portsIn.length; ipi++)
-    //     {
-    //         if (this.portsIn[ipi].isLinked())
-    //         {
-    //             if (this.portsIn[ipi].links[0].portOut.parent.objName == objName)
-    //                 return this.portsIn[ipi].links[0].portOut.parent;
-
-    //             let found = null;
-    //             found = this.portsIn[ipi].links[0].portOut.parent.findParent(objName);
-    //             if (found) return found;
-    //         }
-    //     }
-    //     return null;
-    // }
-
-    // todo: check instancing stuff?
-    cleanUp()
-    {
-        if (this._instances)
-        {
-            for (let i = 0; i < this._instances.length; i++)
-                if (this._instances[i].onDelete) this._instances[i].onDelete();
-
-            this._instances.length = 0;
-        }
-
-        for (let i = 0; i < this.portsIn.length; i++)
-            this.portsIn[i].setAnimated(false);
-
-        if (this.onAnimFrame) this.patch.removeOnAnimFrame(this);
-    }
-
-    // todo: check instancing stuff?
-    instanced(triggerPort)
-    {
-        return false;
-
-        /*
-         * this._log.log("instanced", this.patch.instancing.numCycles());
-         * if (this.patch.instancing.numCycles() === 0) return false;
-         */
-
-        /*
-         * let i = 0;
-         * let ipi = 0;
-         * if (!this._instances || this._instances.length != this.patch.instancing.numCycles())
-         * {
-         *     if (!this._instances) this._instances = [];
-         *     this._.log("creating instances of ", this.objName, this.patch.instancing.numCycles(), this._instances.length);
-         *     this._instances.length = this.patch.instancing.numCycles();
-         */
-
-        /*
-         *     for (i = 0; i < this._instances.length; i++)
-         *     {
-         *         this._instances[i] = this.patch.createOp(this.objName, true);
-         *         this._instances[i].instanced ()
-         *         {
-         *             return false;
-         *         };
-         *         this._instances[i].uiAttr(this.uiAttribs);
-         */
-
-        /*
-         *         for (let ipo = 0; ipo < this.portsOut.length; ipo++)
-         *         {
-         *             if (this.portsOut[ipo].type == Port.TYPE_FUNCTION)
-         *             {
-         *                 this._instances[i].getPortByName(this.portsOut[ipo].name).trigger = this.portsOut[ipo].trigger.bind(this.portsOut[ipo]);
-         *             }
-         *         }
-         *     }
-         */
-
-        /*
-         *     for (ipi = 0; ipi < this.portsIn.length; ipi++)
-         *     {
-         *         this.portsIn[ipi].onChange = null;
-         *         this.portsIn[ipi].onValueChanged = null;
-         *     }
-         * }
-         */
-
-        /*
-         * const theTriggerPort = null;
-         * for (ipi = 0; ipi < this.portsIn.length; ipi++)
-         * {
-         *     if (
-         *         this.portsIn[ipi].type == Port.TYPE_VALUE ||
-         *         this.portsIn[ipi].type == Port.TYPE_ARRAY
-         *     )
-         *     {
-         *         this._instances[this.patch.instancing.index()].portsIn[ipi].set(this.portsIn[ipi].get());
-         *     }
-         *     if (this.portsIn[ipi].type == Port.TYPE_FUNCTION)
-         *     {
-         *         // if(this._instances[ this.patch.instancing.index() ].portsIn[ipi].name==triggerPort.name)
-         *         // theTriggerPort=this._instances[ this.patch.instancing.index() ].portsIn[ipi];
-         *     }
-         * }
-         */
-
-        // if (theTriggerPort) theTriggerPort.onTriggered();
-
-        /*
-         * for (ipi = 0; ipi < this.portsOut.length; ipi++)
-         * {
-         *     if (this.portsOut[ipi].type == Port.TYPE_VALUE)
-         *     {
-         *         this.portsOut[ipi].set(this._instances[this.patch.instancing.index()].portsOut[ipi].get());
-         *     }
-         * }
-         */
-
-        // return true;
-    }
-
-    // todo: check instancing stuff?
-    initInstancable()
-    {
-        //         if(this.isInstanced)
-        //         {
-        //             this._log.log('cancel instancing');
-        //             return;
-        //         }
-        //         this._instances=[];
-        //         for(var ipi=0;ipi<this.portsIn.length;ipi++)
-        //         {
-        //             if(this.portsIn[ipi].type==Port.TYPE_VALUE)
-        //             {
-        //
-        //             }
-        //             if(this.portsIn[ipi].type==Port.TYPE_FUNCTION)
-        //             {
-        //                 // var piIndex=ipi;
-        //                 this.portsIn[ipi].onTriggered=function(piIndex)
-        //                 {
-        //
-        //                     var i=0;
-        // // this._log.log('trigger',this._instances.length);
-        //
-        //                 }.bind(this,ipi );
-        //
-        //             }
-        // };
-        // this._instances=null;
-    }
-
-    // setValues(obj)
-    // {
-    //     for (const i in obj)
-    //     {
-    //         const port = this.getPortByName(i);
-    //         if (port) port.set(obj[i]);
-    //         else this._log.warn("op.setValues: port not found:", i);
-    //     }
-    // }
-
-    /**
-     * return true if op has this error message id
-     * @param {String} id
-     * @returns {Boolean} - has id
-     */
-    hasUiError(id)
-    {
-        return this.uiErrors.hasOwnProperty(id) && this.uiErrors[id];
-    }
-
-    /**
-     * show op error message - set message to null to remove error message
-     * @param {string} id error id
-     * @param {string} txt text message
-     * @param {number} level level
-     */
-    setUiError(id, txt, level = 2, options = {})
-    {
-        // overwritten in ui: core_extend_op
-    }
-
-    /**
-     * enable/disable op
-     * @function
-     * @param {boolean} b
-     */
-    setEnabled(b)
-    {
-        this.enabled = b;
-        this.emitEvent("onEnabledChange", b);
-    }
-
-    /**
-     * organize ports into a group
-     * @function
-     * @param {String} name
-     * @param {Array} ports
-     */
-    setPortGroup(name, ports)
-    {
-        for (let i = 0; i < ports.length; i++)
-        {
-            if (ports[i])
-                if (ports[i].setUiAttribs) ports[i].setUiAttribs({ "group": name });
-                else this._log.error("setPortGroup: invalid port!");
-        }
-    }
-
-    /**
-     * visually indicate ports that they are coordinate inputs
-     * @function
-     * @param {Port} px
-     * @param {Port} py
-     * @param {Port} pz
-     */
-    setUiAxisPorts(px, py, pz)
-    {
-        if (px) px.setUiAttribs({ "axis": "X" });
-        if (py) py.setUiAttribs({ "axis": "Y" });
-        if (pz) pz.setUiAttribs({ "axis": "Z" });
-    }
-
-    /**
-     * remove port from op
-     * @param {Port} port to remove
-     */
-    removePort(port)
-    {
-        for (let ipi = 0; ipi < this.portsIn.length; ipi++)
-        {
-            if (this.portsIn[ipi] == port)
-            {
-                this.portsIn.splice(ipi, 1);
-                this.emitEvent("onUiAttribsChange", {});
-                this.emitEvent("onPortRemoved", {});
-                return;
-            }
-        }
-        for (let ipi = 0; ipi < this.portsOut.length; ipi++)
-        {
-            if (this.portsOut[ipi] == port)
-            {
-                this.portsOut.splice(ipi, 1);
-                this.emitEvent("onUiAttribsChange", {});
-                this.emitEvent("onPortRemoved", {});
-                return;
-            }
-        }
-    }
-
-    _checkLinksNeededToWork() {}
-
-    /**
-     * show a warning of this op is not a child of parentOpName
-     * @function
-     * @param {String} parentOpName
-     */
-    toWorkNeedsParent(parentOpName)
-    {
-        this.linkTimeRules.needsParentOp = parentOpName;
-    }
-
-    /**
-     * show a warning of this op is a child of parentOpName
-     * @function
-     * @instance
-     * @memberof Op
-     * @param {String} parentOpName
-     * @param {number} type
-     */
-    toWorkShouldNotBeChild(parentOpName, type)
-    {
-        if (!this.patch.isEditorMode()) return;
-        this.linkTimeRules.forbiddenParent = parentOpName;
-        if (type != undefined) this.linkTimeRules.forbiddenParentType = type;
-    }
-
-    toWorkPortsNeedsString()
-    {
-        if (!this.patch.isEditorMode()) return;
-        for (let i = 0; i < arguments.length; i++)
-            if (this.linkTimeRules.needsStringToWork.indexOf(arguments[i]) == -1) this.linkTimeRules.needsStringToWork.push(arguments[i]);
-    }
-
-    /**
-     * show a small X to indicate op is not working when given ports are not linked
-     * @function
-     * @instance
-     * @memberof Op
-     * @param {Array<Port>} port
-     */
-    toWorkPortsNeedToBeLinked()
-    {
-        if (!this.patch.isEditorMode()) return;
-        for (let i = 0; i < arguments.length; i++)
-            if (this.linkTimeRules.needsLinkedToWork.indexOf(arguments[i]) == -1) this.linkTimeRules.needsLinkedToWork.push(arguments[i]);
-    }
-
-    toWorkPortsNeedToBeLinkedReset()
-    {
-        if (!this.patch.isEditorMode()) return;
-        this.linkTimeRules.needsLinkedToWork.length = 0;
-        if (this.checkLinkTimeWarnings) this.checkLinkTimeWarnings();
-    }
-
-    initVarPorts()
-    {
-        for (let i = 0; i < this.portsIn.length; i++)
-        {
-            if (this.portsIn[i].getVariableName()) this.portsIn[i].setVariable(this.portsIn[i].getVariableName());
-        }
-    }
-
-    checkLinkTimeWarnings() {}
-
-    /**
-     * refresh op parameters, if current op is selected
-     * @function
-     * @instance
-     * @memberof Op
-     */
-    refreshParams()
-    {
-        if (this.patch && this.patch.isEditorMode() && this.isCurrentUiOp()) gui.opParams.show(this);
-    }
-
-    /**
-     * Returns true if op is selected and parameter are shown in the editor, can only return true if in editor/ui
-     * @instance
-     * @memberof Op
-     * @returns {Boolean} - is current ui op
-     */
-    isCurrentUiOp()
-    {
-        if (this.patch.isEditorMode()) return gui.patchView.isCurrentOp(this);
-    }
-
-    checkGraphicsApi(api = 0)
-    {
-        if (this.patch.isEditorMode())
-            if (this.patch.cg && this.patch.cg.gApi != api)
-                this.setUiError("wronggapi", "Wrong graphics API", 2);
-    }
-}
-
-;// CONCATENATED MODULE: ./src/core/loadingstatus.js
-
-
-
-
-
-/**
- * LoadingStatus class, manages asynchronous loading jobs
- *
- * @namespace external:CABLES#LoadingStatus
- * @hideconstructor
- * @class
- * @param patch
- */
-
-class LoadingStatus extends Events
-{
-
-    /**
-     * @param {Patch} patch
-     */
-    constructor(patch)
-    {
-        super();
-        this._log = new Logger("LoadingStatus");
-        this._loadingAssets = {};
-        this._cbFinished = [];
-        this._assetTasks = [];
-        this._percent = 0;
-        this._count = 0;
-        this._countFinished = 0;
-        this._order = 0;
-        this._startTime = 0;
-        this._patch = patch;
-        this._wasFinishedPrinted = false;
-        this._loadingAssetTaskCb = false;
-    }
-
-    /**
-     * @param {Function} cb
-     */
-    setOnFinishedLoading(cb)
-    {
-        this._cbFinished.push(cb);
-    }
-
-    getNumAssets()
-    {
-        return this._countFinished;
-    }
-
-    getProgress()
-    {
-        return this._percent;
-    }
-
-    checkStatus()
-    {
-        this._countFinished = 0;
-        this._count = 0;
-
-        for (const i in this._loadingAssets)
-        {
-            this._count++;
-            if (!this._loadingAssets[i].finished)
-            {
-                this._countFinished++;
-            }
-        }
-
-        this._percent = (this._count - this._countFinished) / this._count;
-
-        if (this._countFinished === 0)
-        {
-            for (let j = 0; j < this._cbFinished.length; j++)
-            {
-                if (this._cbFinished[j])
-                {
-                    const cb = this._cbFinished[j];
-                    setTimeout(() => { cb(this._patch); this.emitEvent("finishedAll"); }, 100);
+                    this._options.filter = Texture.FILTER_NEAREST;
+                    this.setFilter(this._options.filter);
                 }
             }
-
-            if (!this._wasFinishedPrinted)
+            else if (CGL.Texture.isPixelFormatFloat(info.pixelFormat))
             {
-                this._wasFinishedPrinted = true;
-                this.print();
+                if (!this._cgl.enableExtension("OES_texture_float_linear"))
+                {
+                    this._log.warn("no linear pixelformat,using nearest");
+                    this._options.filter = Texture.FILTER_NEAREST;
+                    this.setFilter(this._options.filter);
+                }
             }
-            this.emitEvent("finishedAll");
-        }
-    }
+            // else if (info.pixelFormat == Texture.PFORMATSTR_RGBA32F || info.pixelFormat == Texture.PFORMATSTR_R11FG11FB10F
+            // else if (info.pixelFormat == Texture.PFORMATSTR_RGBA32F || info.pixelFormat == Texture.PFORMATSTR_R11FG11FB10F
+            // else if (info.pixelFormat == Texture.PFORMATSTR_RG16F)
+            // {
+            //     const extcb = this._cgl.enableExtension("EXT_color_buffer_float");
 
-    getList()
-    {
-        let arr = [];
-        for (const i in this._loadingAssets)
+            //     if (!this._cgl.enableExtension("OES_texture_float_linear"))
+            //     {
+            //         console.log("no linear pixelformat,switching to nearest");
+            //         this._options.filter = Texture.FILTER_NEAREST;
+            //         this.setFilter(this._options.filter);
+            //     }
+            // }
+            // }
+
+            if (this._options.multisampling && this._options.multisamplingSamples)
+            {
+                this._cgl.gl.renderbufferStorageMultisample(this._cgl.gl.RENDERBUFFER, this._options.multisamplingSamples, internFormat, this._width, this._height);
+            }
+            else
+            {
+                this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER, internFormat, this._width, this._height);
+            }
+
+            this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0 + i, this._cgl.gl.RENDERBUFFER, renderBuffer);
+            this._colorRenderbuffers[i] = renderBuffer;
+        }
+
+        // this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER, this._textureFrameBuffer);
+        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._textureFrameBuffer);
+
+        for (i = 0; i < this._numRenderBuffers; i++)
         {
-            arr.push(this._loadingAssets[i]);
+            this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0 + i, this._cgl.gl.TEXTURE_2D, this._colorTextures[i].tex, 0);
         }
 
-        return arr;
-    }
-
-    getListJobs()
-    {
-        let arr = [];
-        for (const i in this._loadingAssets)
+        if (this._options.depth)
         {
-            if (!this._loadingAssets[i].finished)arr.push(this._loadingAssets[i].name);
+            this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.DEPTH_ATTACHMENT, this._cgl.gl.TEXTURE_2D, this._textureDepth.tex, 0);
         }
 
-        return arr;
-    }
+        // depth renderbuffer
 
-    print()
-    {
-        if (this._patch.config.silent) return;
+        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._frameBuffer);
 
-        const rows = [];
+        let depthType = this._cgl.gl.DEPTH_COMPONENT32F;
 
-        for (const i in this._loadingAssets)
+        if (this._cgl.glSlowRenderer) depthType = this._cgl.gl.DEPTH_COMPONENT16;
+        if (depth)
         {
-            rows.push([
-                this._loadingAssets[i].order,
-                this._loadingAssets[i].type,
-                this._loadingAssets[i].name,
-                (this._loadingAssets[i].timeEnd - this._loadingAssets[i].timeStart) / 1000 + "s",
-            ]);
+            this._textureDepth.setSize(this._width, this._height);
+            this._depthRenderbuffer = this._cgl.gl.createRenderbuffer();
+
+            this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER, this._depthRenderbuffer);
+            if (this._options.isFloatingPointTexture)
+            {
+                if (this._options.multisampling) this._cgl.gl.renderbufferStorageMultisample(this._cgl.gl.RENDERBUFFER, this._options.multisamplingSamples, depthType, this._width, this._height);
+                else this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER, depthType, this._width, this._height);
+            }
+            else if (this._options.multisampling)
+            {
+                this._cgl.gl.renderbufferStorageMultisample(this._cgl.gl.RENDERBUFFER, this._options.multisamplingSamples, depthType, this._width, this._height);
+            // this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER,depthType, this._width, this._height);
+            }
+            else
+            {
+                this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER, depthType, this._width, this._height);
+            }
+
+            this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.DEPTH_ATTACHMENT, this._cgl.gl.RENDERBUFFER, this._depthRenderbuffer);
         }
 
-        this._log.groupCollapsed("finished loading " + this._order + " assets in " + (Date.now() - this._startTime) / 1000 + "s");
-        this._log.table(rows);
-        this._log.groupEnd();
-    }
+        // this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
+        // this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._textureFrameBuffer);
 
-    /**
-     * @param {string} id
-     */
-    finished(id)
-    {
-        const l = this._loadingAssets[id];
-        if (l)
+        this._drawTargetArray.length = 0;
+        for (i = 0; i < this._numRenderBuffers; i++) this._drawTargetArray.push(this._cgl.gl.COLOR_ATTACHMENT0 + i);
+
+        // this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
+
+        if (!this._cgl.gl.isFramebuffer(this._textureFrameBuffer)) this._log.warn("invalid framebuffer");// throw new Error("Invalid framebuffer");
+        const status = this._cgl.gl.checkFramebufferStatus(this._cgl.gl.FRAMEBUFFER);
+
+        if (status != this._cgl.gl.FRAMEBUFFER_COMPLETE)
         {
-            if (l.finished) this._log.warn("loading job was already finished", l);
+            this._log.error("framebuffer incomplete: " + this.name, this);
+            this._log.log("options", this._options);
+            this._log.log("options pixelformat", this._options.pixelFormat);
 
-            if (l.op) l.op.setUiAttribs({ "loading": false });
-            l.finished = true;
-            l.timeEnd = Date.now();
+            switch (status)
+            {
+            case this._cgl.gl.FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
+                this._log.warn("FRAMEBUFFER_INCOMPLETE_ATTACHMENT...", this);
+                throw new Error("Incomplete framebuffer: FRAMEBUFFER_INCOMPLETE_ATTACHMENT");
+            case this._cgl.gl.FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
+                this._log.warn("FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
+                throw new Error("Incomplete framebuffer: FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
+            case this._cgl.gl.FRAMEBUFFER_INCOMPLETE_DIMENSIONS:
+                this._log.warn("FRAMEBUFFER_INCOMPLETE_DIMENSIONS");
+                throw new Error("Incomplete framebuffer: FRAMEBUFFER_INCOMPLETE_DIMENSIONS");
+            case this._cgl.gl.FRAMEBUFFER_UNSUPPORTED:
+                this._log.warn("FRAMEBUFFER_UNSUPPORTED");
+                throw new Error("Incomplete framebuffer: FRAMEBUFFER_UNSUPPORTED");
+            default:
+                this.valid = false;
+                this._log.error("incomplete framebuffer", status, this._frameBuffer);
+                this._cgl.printError();
+
+                this._frameBuffer = null;
+                // debugger;
+                throw new Error("Incomplete framebuffer: " + status);
+
+        // throw("Incomplete framebuffer: " + status);
+            }
         }
 
-        this.checkStatus();
-        this.emitEvent("finishedTask");
-        return null;
+        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
+        this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER, null);
+
+    // this._cgl.printError("fb setsize");
     }
 
-    _startAssetTasks()
+    renderStart()
     {
-        for (let i = 0; i < this._assetTasks.length; i++) this._assetTasks[i]();
-        this._assetTasks.length = 0;
-    }
+        if (this._disposed) return this._log.warn("disposed framebuffer renderStart...");
+        this._cgl.checkFrameStarted("fb2 renderstart");
+        this._cgl.pushModelMatrix(); // needed ??
 
-    /**
-     * delay an asset loading task, mainly to wait for ui to be finished loading and showing, and only then start loading assets
-     * @function addAssetLoadingTask
-     * @instance
-     * @memberof LoadingStatus
-     * @param {function} cb callback
-     */
-    addAssetLoadingTask(cb)
-    {
-        if (this._patch.isEditorMode() && !CABLES.UI.loaded)
+        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._frameBuffer);
+        this._cgl.pushGlFrameBuffer(this._frameBuffer);
+        this._cgl.pushFrameBuffer(this);
+
+        this._cgl.pushPMatrix();
+        this._cgl.pushViewPort(0, 0, this._width, this._height);
+
+        this._cgl.gl.drawBuffers(this._drawTargetArray);
+
+        if (this._options.clear)
         {
-            this._assetTasks.push(cb);
-
-            if (!this._loadingAssetTaskCb)window.gui.addEventListener("uiloaded", this._startAssetTasks.bind(this));
-            this._loadingAssetTaskCb = true;
+            this._cgl.gl.clearColor(0, 0, 0, 0);
+            this._cgl.gl.clear(this._cgl.gl.COLOR_BUFFER_BIT | this._cgl.gl.DEPTH_BUFFER_BIT);
         }
-        else
-        {
-            cb();
-        }
-        this.emitEvent("addAssetTask");
-    }
-
-    /**
-     * @param {string} name
-     */
-    existByName(name)
-    {
-        for (let i in this._loadingAssets)
-        {
-            if (this._loadingAssets[i].name == name && !this._loadingAssets[i].finished)
-                return true;
-        }
-    }
-
-    /**
-     * @param {string} type
-     * @param {string} name
-     * @param {Op} [op]
-     */
-    start(type, name, op)
-    {
-        if (this._startTime == 0) this._startTime = Date.now();
-        const id = generateUUID();
-
-        name = name || "unknown";
-        if (name.length > 100)name = name.substring(0, 100);
-
-        if (op)op.setUiAttrib({ "loading": true });
-
-        this._loadingAssets[id] = {
-            "id": id,
-            "op": op,
-            "type": type,
-            "name": name,
-            "finished": false,
-            "timeStart": Date.now(),
-            "order": this._order,
-        };
-        this._order++;
-
-        this.emitEvent("startTask");
-
-        return id;
-    }
-}
-
-;// CONCATENATED MODULE: ./src/core/timer.js
-
-
-/**
- * @namespace CABLES
- */
-
-const internalNow = function ()
-{
-    return window.performance.now();
-};
-
-/*
- * current time in milliseconds
- * @memberof CABLES
- * @function now
- * @static
- *
- */
-const now = function ()
-{
-    return internalNow();
-};
-
-/**
- * Measuring time
- * @namespace external:CABLES#Timer
- * @hideconstructor
- * @class
- */
-class Timer extends Events
-{
-    constructor()
-    {
-        super();
-
-        /**
-         * @private
-         */
-        this._timeStart = internalNow();
-        this._timeOffset = 0;
-        this._currentTime = 0;
-        this._lastTime = 0;
-        this._paused = true;
-        this._delay = 0;
-        this.overwriteTime = -1;
-    }
-
-    _internalNow()
-    {
-        if (this._ts) return this._ts;
-        return internalNow();
-    }
-
-    _getTime()
-    {
-        this._lastTime = (this._internalNow() - this._timeStart) / 1000;
-        return this._lastTime + this._timeOffset;
-    }
-
-    setDelay(d)
-    {
-        this._delay = d;
-        this.emitEvent("timeChange");
-    }
-
-    /**
-     * @function
-     * @memberof Timer
-     * @instance
-     * @description returns true if timer is playing
-     * @return {Boolean} value
-     */
-    isPlaying()
-    {
-        return !this._paused;
-    }
-
-    /**
-     * @function
-     * @memberof Timer
-     * @instance
-     * @param ts
-     * @description update timer
-     * @return {Number} time
-     */
-    update(ts)
-    {
-        if (ts) this._ts = ts;
-        if (this._paused) return;
-        this._currentTime = this._getTime();
-
-        return this._currentTime;
-    }
-
-    /**
-     * @function
-     * @memberof Timer
-     * @instance
-     * @return {Number} time in milliseconds
-     */
-    getMillis()
-    {
-        return this.get() * 1000;
-    }
-
-    /**
-     * @function
-     * @memberof Timer
-     * @instance
-     * @return {Number} value time in seconds
-     */
-    get()
-    {
-        return this.getTime();
-    }
-
-    getTime()
-    {
-        if (this.overwriteTime >= 0) return this.overwriteTime - this._delay;
-        return this._currentTime - this._delay;
-    }
-
-    /**
-     * toggle between play/pause state
-     * @function
-     * @memberof Timer
-     * @instance
-     */
-    togglePlay()
-    {
-        if (this._paused) this.play();
-        else this.pause();
-    }
-
-    /**
-     * set current time
-     * @function
-     * @memberof Timer
-     * @instance
-     * @param {Number} t
-     */
-    setTime(t)
-    {
-        if (isNaN(t) || t < 0) t = 0;
-        this._timeStart = this._internalNow();
-        this._timeOffset = t;
-        this._currentTime = t;
-        this.emitEvent("timeChange");
-    }
-
-    setOffset(val)
-    {
-        if (this._currentTime + val < 0)
-        {
-            this._timeStart = this._internalNow();
-            this._timeOffset = 0;
-            this._currentTime = 0;
-        }
-        else
-        {
-            this._timeOffset += val;
-            this._currentTime = this._lastTime + this._timeOffset;
-        }
-        this.emitEvent("timeChange");
-    }
-
-    /**
-     * (re)starts the timer
-     * @function
-     * @memberof Timer
-     * @instance
-     */
-    play()
-    {
-        this._timeStart = this._internalNow();
-        this._paused = false;
-        this.emitEvent("playPause");
-    }
-
-    /**
-     * pauses the timer
-     * @function
-     * @memberof Timer
-     * @instance
-     */
-    pause()
-    {
-        this._timeOffset = this._currentTime;
-        this._paused = true;
-        this.emitEvent("playPause");
-    }
-}
-
-
-
-;// CONCATENATED MODULE: ./src/core/core_profiler.js
-
-
-
-class Profiler
-{
-
-    /**
-     * @param {Patch} patch
-     */
-    constructor(patch)
-    {
-        this.startFrame = patch.getFrameNum();
-        this.items = {};
-        this.currentId = null;
-        this.currentStart = 0;
-        this._patch = patch;
-    }
-
-    getItems()
-    {
-        return this.items;
     }
 
     clear()
     {
-        if (this.paused) return;
-        this.items = {};
+        if (this._numRenderBuffers <= 1)
+        {
+            this._cgl.gl.bindFramebuffer(this._cgl.gl.READ_FRAMEBUFFER, this._frameBuffer);
+            this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER, this._textureFrameBuffer);
+        }
+        else this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._frameBuffer);
+
+        this._cgl.gl.drawBuffers(this._drawTargetArray);
+
+        for (let i = 0; i < this._numRenderBuffers; i++)
+        {
+            this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0 + i, this._cgl.gl.TEXTURE_2D, this._colorTextures[i].tex, 0);
+            this._cgl.gl.clearBufferfv(this._cgl.gl.COLOR, i, this.clearColors[i]);
+        }
+        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
     }
 
-    togglePause()
+    renderEnd()
     {
-        this.paused = !this.paused;
-        if (!this.paused)
+        if (this._disposed) return this._log.warn("disposed framebuffer renderEnd...");
+        this._cgl.popPMatrix();
+
+        this._cgl.profileData.profileFramebuffer++;
+
+        if (this._numRenderBuffers <= 1)
         {
-            this.items = {};
-            this.currentStart = performance.now();
-        }
-    }
+            this._cgl.gl.bindFramebuffer(this._cgl.gl.READ_FRAMEBUFFER, this._frameBuffer);
+            this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER, this._textureFrameBuffer);
 
-    add(type, object)
-    {
-        if (this.paused) return;
-
-        if (this.currentId !== null)
-        {
-            if (!object || object.id != this.currentId)
-            {
-                if (this.items[this.currentId])
-                {
-                    this.items[this.currentId].timeUsed += performance.now() - this.currentStart;
-
-                    if (!this.items[this.currentId].peakTime || now() - this.items[this.currentId].peakTime > 5000)
-                    {
-                        this.items[this.currentId].peak = 0;
-                        this.items[this.currentId].peakTime = now();
-                    }
-                    this.items[this.currentId].peak = Math.max(this.items[this.currentId].peak, performance.now() - this.currentStart);
-                }
-            }
-        }
-
-        if (object !== null)
-        {
-            if (!this.items[object.id])
-            {
-                this.items[object.id] = {
-                    "numTriggers": 0,
-                    "timeUsed": 0,
-                };
-            }
-
-            if (this.items[object.id].lastFrame != this._patch.getFrameNum()) this.items[object.id].numTriggers = 0;
-
-            this.items[object.id].lastFrame = this._patch.getFrameNum();
-            this.items[object.id].numTriggers++;
-            this.items[object.id].opid = object.op.id;
-            this.items[object.id].title = object.op.name + "." + object.name;
-            this.items[object.id].subPatch = object.op.uiAttribs.subPatch;
-
-            this.currentId = object.id;
-            this.currentStart = performance.now();
+            this._cgl.gl.clearBufferfv(this._cgl.gl.COLOR, 0, [0.0, 0.0, 0.0, 1.0]);
+            this._cgl.gl.blitFramebuffer(0, 0, this._width, this._height, 0, 0, this._width, this._height, this._cgl.gl.COLOR_BUFFER_BIT | this._cgl.gl.DEPTH_BUFFER_BIT, this._cgl.gl.NEAREST);
         }
         else
         {
-            this.currentId = null;
-        }
-    }
+            this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this.Framebuffer2BlittingFramebuffer);
+            this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.DEPTH_ATTACHMENT, this._cgl.gl.RENDERBUFFER, this._depthRenderbuffer);
 
-    print()
-    {
-        console.log("--------");
-        for (const i in this.items)
+            this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this.Framebuffer2FinalFramebuffer);
+            this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.DEPTH_ATTACHMENT, this._cgl.gl.TEXTURE_2D, this._textureDepth.tex, 0);
+
+            for (let i = 0; i < this._numRenderBuffers; i++)
+            {
+                this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this.Framebuffer2BlittingFramebuffer);
+                this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0, this._cgl.gl.RENDERBUFFER, this._colorRenderbuffers[i]);
+
+                this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this.Framebuffer2FinalFramebuffer);
+                this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0, this._cgl.gl.TEXTURE_2D, this._colorTextures[i].tex, 0);
+
+                this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
+
+                this._cgl.gl.bindFramebuffer(this._cgl.gl.READ_FRAMEBUFFER, this.Framebuffer2BlittingFramebuffer);
+                this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER, this.Framebuffer2FinalFramebuffer);
+
+                // this._cgl.gl.clearBufferfv(this._cgl.gl.COLOR, i, [0.0, 0.0, 0.0, 1.0]);
+
+                let flags = this._cgl.gl.COLOR_BUFFER_BIT;
+                if (i == 0) flags |= this._cgl.gl.DEPTH_BUFFER_BIT;
+
+                this._cgl.gl.blitFramebuffer(0, 0, this._width, this._height, 0, 0, this._width, this._height, flags, this._cgl.gl.NEAREST);
+            }
+        }
+
+        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.popGlFrameBuffer());
+        this._cgl.popFrameBuffer();
+
+        this._cgl.popModelMatrix();
+        this._cgl.popViewPort();
+
+        if (this._colorTextures[0].filter == Texture.FILTER_MIPMAP)
         {
-            console.log(this.items[i].title + ": " + this.items[i].numTriggers + " / " + this.items[i].timeUsed);
+            for (let i = 0; i < this._numRenderBuffers; i++)
+            {
+                this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D, this._colorTextures[i].tex);
+                this._colorTextures[i].updateMipMap();
+                this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D, null);
+            }
         }
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/core_variable.js
-
-
-class PatchVariable extends Events
+;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_marker.js
+/** @type {function}
+ * @deprecated
+*/
+const Marker = function (_cgl) // deprecated...
 {
-
-    /**
-     * @param {String} name
-     * @param {String|Number} val
-     * @param {number} type
-     */
-    constructor(name, val, type)
-    {
-        super();
-        this._name = name;
-        this.type = type;
-        this.setValue(val);
-    }
-
-    /**
-     * keeping this for backwards compatibility in older
-     * exports before using eventtarget
-     *
-     * @param cb
-     */
-    addListener(cb)
-    {
-        this.on("change", cb, "var");
-    }
-
-    /**
-     * @function Variable.getValue
-     * @memberof PatchVariable
-     * @returns {String|Number|Boolean}
-     */
-    getValue()
-    {
-        return this._v;
-    }
-
-    /**
-     * @function getName
-     * @memberof PatchVariable
-     * @instance
-     * @returns {String|Number|Boolean}
-     * @function
-     */
-    getName()
-    {
-        return this._name;
-    }
-
-    /**
-     * @function setValue
-     * @memberof PatchVariable
-     * @instance
-     * @param v
-     * @returns {any}
-     * @function
-     */
-    setValue(v)
-    {
-        this._v = v;
-        this.emitEvent("change", v, this);
-    }
-}
-
-;// CONCATENATED MODULE: ./src/core/cgl/constants.js
-const SHADER = {
-    // default attributes
-    "SHADERVAR_VERTEX_POSITION": "vPosition",
-    "SHADERVAR_VERTEX_NUMBER": "attrVertIndex",
-    "SHADERVAR_VERTEX_NORMAL": "attrVertNormal",
-    "SHADERVAR_VERTEX_TEXCOORD": "attrTexCoord",
-    "SHADERVAR_INSTANCE_MMATRIX": "instMat",
-    "SHADERVAR_VERTEX_COLOR": "attrVertColor",
-
-    "SHADERVAR_INSTANCE_INDEX": "instanceIndex",
-
-    // default uniforms
-    "SHADERVAR_UNI_PROJMAT": "projMatrix",
-    "SHADERVAR_UNI_VIEWMAT": "viewMatrix",
-    "SHADERVAR_UNI_MODELMAT": "modelMatrix",
-    "SHADERVAR_UNI_NORMALMAT": "normalMatrix",
-    "SHADERVAR_UNI_INVVIEWMAT": "inverseViewMatrix",
-    "SHADERVAR_UNI_INVPROJMAT": "invProjMatrix",
-    "SHADERVAR_UNI_MATERIALID": "materialId",
-    "SHADERVAR_UNI_OBJECTID": "objectId",
-
-    "SHADERVAR_UNI_VIEWPOS": "camPos",
+    this.draw = function (cgl, _size, depthTest) {};
 };
 
-const BLEND_MODES = {
-    "BLEND_NONE": 0,
-    "BLEND_NORMAL": 1,
-    "BLEND_ADD": 2,
-    "BLEND_SUB": 3,
-    "BLEND_MUL": 4,
+/** @type {function}
+ * @deprecated
+*/
+const WirePoint = function (cgl) // deprecated...
+{
+    this.render = function (_cgl, _size) {};
 };
 
-const RAD2DEG = 180.0 / Math.PI;
-const DEG2RAD = Math.PI / 180.0;
-
-const constants_CONSTANTS = {
-    "MATH": {
-        "DEG2RAD": DEG2RAD,
-        "RAD2DEG": RAD2DEG,
-    },
-    "SHADER": SHADER,
-    "BLEND_MODES": BLEND_MODES,
-};
-const nl = "\n";// newline
-
-
-;// CONCATENATED MODULE: ./src/core/cg/cg_uniform.js
-
-
-
-
-
-
-class CgUniform
+/** @type {function}
+ * @deprecated
+*/
+const WireCube = function (cgl) // deprecated...
 {
-
-    /**
-     * Description
-     * @param {CgShader|CgpShader|Shader} __shader
-     * @param {string} __type
-     * @param {string} __name
-     * @param {Number|Port} _value
-     * @param {Port} _port2
-     * @param {Port} _port3
-     * @param {Port} _port4
-     */
-    constructor(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName)
-    {
-        this._log = new Logger("cg_uniform");
-        this._type = __type;
-        this._name = __name;
-
-        /** @type {CgShader} */
-        this._shader = __shader;
-        this._value = 0.00001;
-        this._oldValue = null;
-        this._port = null;
-
-        this._structName = _structName;
-        this._structUniformName = _structUniformName;
-        this._propertyName = _propertyName;
-
-        if (this._shader._addUniform) this._shader._addUniform(this);
-        this.needsUpdate = true;
-        this.shaderType = null;
-        this.comment = null;
-
-        if (__type == "f")
-        {
-            this.set = this.setValue = this.setValueF.bind(this);
-            this.updateValue = this.updateValueF.bind(this);
-        }
-        else if (__type == "f[]")
-        {
-            this.set = this.setValue = this.setValueArrayF.bind(this);
-            this.updateValue = this.updateValueArrayF.bind(this);
-        }
-        else if (__type == "2f[]")
-        {
-            this.set = this.setValue = this.setValueArray2F.bind(this);
-            this.updateValue = this.updateValueArray2F.bind(this);
-        }
-        else if (__type == "3f[]")
-        {
-            this.set = this.setValue = this.setValueArray3F.bind(this);
-            this.updateValue = this.updateValueArray3F.bind(this);
-        }
-        else if (__type == "4f[]")
-        {
-            this.set = this.setValue = this.setValueArray4F.bind(this);
-            this.updateValue = this.updateValueArray4F.bind(this);
-        }
-        else if (__type == "i")
-        {
-            this.set = this.setValue = this.setValueI.bind(this);
-            this.updateValue = this.updateValueI.bind(this);
-        }
-        else if (__type == "2i")
-        {
-            this.set = this.setValue = this.setValue2I.bind(this);
-            this.updateValue = this.updateValue2I.bind(this);
-        }
-        else if (__type == "3i")
-        {
-            this.set = this.setValue = this.setValue3I.bind(this);
-            this.updateValue = this.updateValue3I.bind(this);
-        }
-        else if (__type == "4i")
-        {
-            this.set = this.setValue = this.setValue4I.bind(this);
-            this.updateValue = this.updateValue4I.bind(this);
-        }
-        else if (__type == "b")
-        {
-            this.set = this.setValue = this.setValueBool.bind(this);
-            this.updateValue = this.updateValueBool.bind(this);
-        }
-        else if (__type == "4f")
-        {
-            this.set = this.setValue = this.setValue4F.bind(this);
-            this.updateValue = this.updateValue4F.bind(this);
-        }
-        else if (__type == "3f")
-        {
-            this.set = this.setValue = this.setValue3F.bind(this);
-            this.updateValue = this.updateValue3F.bind(this);
-        }
-        else if (__type == "2f")
-        {
-            this.set = this.setValue = this.setValue2F.bind(this);
-            this.updateValue = this.updateValue2F.bind(this);
-        }
-        else if (__type == "t")
-        {
-            this.set = this.setValue = this.setValueT.bind(this);
-            this.updateValue = this.updateValueT.bind(this);
-        }
-        else if (__type == "sampler")
-        {
-            if (this.setValueAny)
-            {
-                this.set = this.setValue = this.setValueAny.bind(this);
-                this.updateValue = this.updateValueAny.bind(this);
-            }
-        }
-        else if (__type == "tc")
-        {
-            this.set = this.setValue = this.setValueT.bind(this);
-            this.updateValue = this.updateValueT.bind(this);
-        }
-        else if (__type == "t[]")
-        {
-            this.set = this.setValue = this.setValueArrayT.bind(this);
-            this.updateValue = this.updateValueArrayT.bind(this);
-        }
-        else if (__type == "m4" || __type == "m4[]")
-        {
-            this.set = this.setValue = this.setValueM4.bind(this);
-            this.updateValue = this.updateValueM4.bind(this);
-        }
-        else
-        {
-            // console.error("unknown");
-            this._log.error("Unknown uniform type " + __type, __name, typeof this._shader);
-        }
-
-        if (typeof _value == "object" && _value instanceof CABLES.Port)
-        {
-            this._port = _value;
-            this._value = this._port.get();
-
-            if (_port2 && _port3 && _port4)
-            {
-                if (!(_port2 instanceof CABLES.Port) || !(_port3 instanceof CABLES.Port) || !(_port4 instanceof CABLES.Port))
-                {
-                    this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ", this._name);
-                }
-
-                this._value = [0, 0, 0, 0];
-                this._port2 = _port2;
-                this._port3 = _port3;
-                this._port4 = _port4;
-
-                this._port.on("change", this.updateFromPort4f.bind(this));
-                this._port2.on("change", this.updateFromPort4f.bind(this));
-                this._port3.on("change", this.updateFromPort4f.bind(this));
-                this._port4.on("change", this.updateFromPort4f.bind(this));
-
-                // this._port.onChange = this._port2.onChange = this._port3.onChange = this._port4.onChange = this.updateFromPort4f.bind(this);
-                this.updateFromPort4f();
-            }
-            else if (_port2 && _port3)
-            {
-                if (!(_port2 instanceof CABLES.Port) || !(_port3 instanceof CABLES.Port))
-                {
-                    this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ", this._name);
-                }
-
-                this._value = [0, 0, 0];
-                this._port2 = _port2;
-                this._port3 = _port3;
-                // this._port.onChange = this._port2.onChange = this._port3.onChange = this.updateFromPort3f.bind(this);
-                this._port.on("change", this.updateFromPort3f.bind(this));
-                this._port2.on("change", this.updateFromPort3f.bind(this));
-                this._port3.on("change", this.updateFromPort3f.bind(this));
-
-                this.updateFromPort3f();
-            }
-            else if (_port2)
-            {
-                if (!(_port2 instanceof CABLES.Port))
-                {
-                    this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ", this._name);
-                }
-
-                this._value = [0, 0];
-                this._port2 = _port2;
-                // this._port.onChange = this._port2.onChange = this.updateFromPort2f.bind(this);
-                this._port.on("change", this.updateFromPort2f.bind(this));
-                this._port2.on("change", this.updateFromPort2f.bind(this));
-
-                this.updateFromPort2f();
-            }
-            else
-            {
-                // this._port.on = this.updateFromPort.bind(this);
-                this._port.on("change", this.updateFromPort.bind(this));
-            }
-        }
-        else this._value = _value;
-
-        if (this._value == undefined)
-        {
-            this._value = 0;
-        }
-
-        this.setValue(this._value);
-
-        this.needsUpdate = true;
-    }
-
-    getType()
-    {
-        return this._type;
-    }
-
-    get type()
-    {
-        return this._type;
-    }
-
-    get name()
-    {
-        return this._name;
-    }
-
-    getName()
-    {
-        return this._name;
-    }
-
-    getValue()
-    {
-        return this._value;
-    }
-
-    getShaderType()
-    {
-        return this.shaderType;
-    }
-
-    isStructMember()
-    {
-        return !!this._structName;
-    }
-
-    updateFromPort4f()
-    {
-        this._value[0] = this._port.get();
-        this._value[1] = this._port2.get();
-        this._value[2] = this._port3.get();
-        this._value[3] = this._port4.get();
-        this.setValue(this._value);
-    }
-
-    updateFromPort3f()
-    {
-        this._value[0] = this._port.get();
-        this._value[1] = this._port2.get();
-        this._value[2] = this._port3.get();
-        this.setValue(this._value);
-    }
-
-    updateFromPort2f()
-    {
-        this._value[0] = this._port.get();
-        this._value[1] = this._port2.get();
-        this.setValue(this._value);
-    }
-
-    updateFromPort()
-    {
-        this.setValue(this._port.get());
-    }
-
-    get port()
-    {
-        return this._port;
-    }
-}
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_shader_uniform.js
-
-
-
-
-/**
- * Shader uniforms
- *
- * types:
- * <pre>
- * f    - float
- * 2f   - vec2
- * 3f   - vec3
- * 4f   - vec4
- * i    - integer
- * t    - texture
- * m4   - mat4, 4x4 float matrix
- * f[]  - array of floats
- * 2f[] - array of float vec2
- * 3f[] - array of float vec3
- * 4f[] - array of float vec4
- * </pre>
- *
- * @namespace external:CGL
- * @class
- * @param {CgShader} shader
- * @param {String} [type=f]
- * @param {String} name
- * @param {Number|Port} value  can be a Number,Matrix or Port
- * @example
- * // bind float uniform called myfloat and initialize with value 1.0
- * const unir=new CGL.Uniform(shader,'f','myfloat',1.0);
- * unir.setValue(1.0);
- *
- * // bind float uniform called myfloat and automatically set it to input port value
- * const myPort=op.inFloat("input");
- * const pv=new CGL.Uniform(shader,'f','myfloat',myPort);
- *
- */
-
-// export const Uniform(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName)
-
-class Uniform extends CgUniform
-{
-    constructor(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName)
-    {
-        super(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName);
-        this._loc = -1;
-        this._cgl = __shader._cgl;
-    }
-
-    get name()
-    {
-        return this._name;
-    }
-
-    copy(newShader)
-    {
-        const uni = new Uniform(newShader, this._type, this._name, this._value, this._port2, this._port3, this._port4, this._structUniformName, this._structName, this._propertyName);
-        uni.shaderType = this.shaderType;
-        return uni;
-    }
-
-    /**
-     * returns type as glsl type string. e.g. 'f' returns 'float'
-     * @function getGlslTypeString
-     * @memberof Uniform
-     * @instance
-     * @return {string} type as string
-     */
-    getGlslTypeString()
-    {
-        return Uniform.glslTypeString(this._type);
-    }
-
-    _isValidLoc()
-    {
-        return this._loc != -1;// && this._loc != null;
-    }
-
-    resetLoc()
-    {
-        this._loc = -1;
-        this.needsUpdate = true;
-    }
-
-    bindTextures() {}
-
-    getLoc()
-    {
-        return this._loc;
-    }
-
-    updateFromPort4f()
-    {
-        this._value[0] = this._port.get();
-        this._value[1] = this._port2.get();
-        this._value[2] = this._port3.get();
-        this._value[3] = this._port4.get();
-        this.setValue(this._value);
-    }
-
-    updateFromPort3f()
-    {
-        this._value[0] = this._port.get();
-        this._value[1] = this._port2.get();
-        this._value[2] = this._port3.get();
-        this.setValue(this._value);
-    }
-
-    updateFromPort2f()
-    {
-        this._value[0] = this._port.get();
-        this._value[1] = this._port2.get();
-        this.setValue(this._value);
-    }
-
-    updateFromPort()
-    {
-        this.setValue(this._port.get());
-    }
-
-    updateValueF()
-    {
-        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-        else this.needsUpdate = false;
-
-        this._shader.getCgl().gl.uniform1f(this._loc, this._value);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValueF(v)
-    {
-        if (v != this._value)
-        {
-            this.needsUpdate = true;
-            this._value = v;
-        }
-    }
-
-    updateValueI()
-    {
-        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-        else this.needsUpdate = false;
-
-        this._shader.getCgl().gl.uniform1i(this._loc, this._value);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    updateValue2I()
-    {
-        if (!this._value) return;
-
-        if (!this._isValidLoc())
-        {
-            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-            this._cgl.profileData.profileShaderGetUniform++;
-            this._cgl.profileData.profileShaderGetUniformName = this._name;
-        }
-
-        this._shader.getCgl().gl.uniform2i(this._loc, this._value[0], this._value[1]);
-
-        this.needsUpdate = false;
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    updateValue3I()
-    {
-        if (!this._value) return;
-        if (!this._isValidLoc())
-        {
-            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-            this._cgl.profileData.profileShaderGetUniform++;
-            this._cgl.profileData.profileShaderGetUniformName = this._name;
-        }
-
-        this._shader.getCgl().gl.uniform3i(this._loc, this._value[0], this._value[1], this._value[2]);
-        this.needsUpdate = false;
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    updateValue4I()
-    {
-        if (!this._isValidLoc())
-        {
-            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-            this._cgl.profileData.profileShaderGetUniform++;
-            this._cgl.profileData.profileShaderGetUniformName = this._name;
-        }
-        this._shader.getCgl().gl.uniform4i(this._loc, this._value[0], this._value[1], this._value[2], this._value[3]);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValueI(v)
-    {
-        if (v != this._value)
-        {
-            this.needsUpdate = true;
-            this._value = v;
-        }
-    }
-
-    setValue2I(v)
-    {
-        if (!v) return;
-        if (!this._oldValue)
-        {
-            this._oldValue = [v[0] - 1, 1];
-            this.needsUpdate = true;
-        }
-        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1])
-        {
-            this._oldValue[0] = v[0];
-            this._oldValue[1] = v[1];
-            this.needsUpdate = true;
-        }
-
-        this._value = v;
-    }
-
-    setValue3I(v)
-    {
-        if (!v) return;
-        if (!this._oldValue)
-        {
-            this._oldValue = [v[0] - 1, 1, 2];
-            this.needsUpdate = true;
-        }
-        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1] || v[2] != this._oldValue[2])
-        {
-            this._oldValue[0] = v[0];
-            this._oldValue[1] = v[1];
-            this._oldValue[2] = v[2];
-            this.needsUpdate = true;
-        }
-
-        this._value = v;
-    }
-
-    setValue4I(v)
-    {
-        this.needsUpdate = true;
-        this._value = v || vec4.create();
-    }
-
-    updateValueBool()
-    {
-        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-        else this.needsUpdate = false;
-        this._shader.getCgl().gl.uniform1i(this._loc, this._value ? 1 : 0);
-
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValueBool(v)
-    {
-        if (v != this._value)
-        {
-            this.needsUpdate = true;
-            this._value = v;
-        }
-    }
-
-    setValueArray4F(v)
-    {
-        this.needsUpdate = true;
-        this._value = v;
-    }
-
-    updateValueArray4F()
-    {
-        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-        else this.needsUpdate = false;
-
-        if (!this._value) return;
-        this._shader.getCgl().gl.uniform4fv(this._loc, this._value);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValueArray3F(v)
-    {
-        this.needsUpdate = true;
-        this._value = v;
-    }
-
-    updateValueArray3F()
-    {
-        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-        else this.needsUpdate = false;
-
-        if (!this._value) return;
-        this._shader.getCgl().gl.uniform3fv(this._loc, this._value);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValueArray2F(v)
-    {
-        this.needsUpdate = true;
-        this._value = v;
-    }
-
-    updateValueArray2F()
-    {
-        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-        else this.needsUpdate = false;
-
-        if (!this._value) return;
-        this._shader.getCgl().gl.uniform2fv(this._loc, this._value);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValueArrayF(v)
-    {
-        this.needsUpdate = true;
-        this._value = v;
-    }
-
-    updateValueArrayF()
-    {
-        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-        else this.needsUpdate = false;
-
-        if (!this._value) return;
-        this._shader.getCgl().gl.uniform1fv(this._loc, this._value);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValueArrayT(v)
-    {
-        this.needsUpdate = true;
-        this._value = v;
-    }
-
-    updateValue3F()
-    {
-        if (!this._value) return;
-        if (!this._isValidLoc())
-        {
-            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-            this._cgl.profileData.profileShaderGetUniform++;
-            this._cgl.profileData.profileShaderGetUniformName = this._name;
-        }
-
-        this._shader.getCgl().gl.uniform3f(this._loc, this._value[0], this._value[1], this._value[2]);
-        this.needsUpdate = false;
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValue3F(v)
-    {
-        if (!v) return;
-        if (!this._oldValue)
-        {
-            this._oldValue = [v[0] - 1, 1, 2];
-            this.needsUpdate = true;
-        }
-        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1] || v[2] != this._oldValue[2])
-        {
-            this._oldValue[0] = v[0];
-            this._oldValue[1] = v[1];
-            this._oldValue[2] = v[2];
-            this.needsUpdate = true;
-        }
-
-        this._value = v;
-    }
-
-    updateValue2F()
-    {
-        if (!this._value) return;
-
-        if (!this._isValidLoc())
-        {
-            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-            this._cgl.profileData.profileShaderGetUniform++;
-            this._cgl.profileData.profileShaderGetUniformName = this._name;
-        }
-
-        this._shader.getCgl().gl.uniform2f(this._loc, this._value[0], this._value[1]);
-        this.needsUpdate = false;
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValue2F(v)
-    {
-        if (!v) return;
-        if (!this._oldValue)
-        {
-            this._oldValue = [v[0] - 1, 1];
-            this.needsUpdate = true;
-        }
-        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1])
-        {
-            this._oldValue[0] = v[0];
-            this._oldValue[1] = v[1];
-            this.needsUpdate = true;
-        }
-        this._value = v;
-    }
-
-    updateValue4F()
-    {
-        if (!this._isValidLoc())
-        {
-            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-            this._cgl.profileData.profileShaderGetUniform++;
-            this._cgl.profileData.profileShaderGetUniformName = this._name;
-        }
-
-        if (!this._value)
-        {
-            this._log.warn("no value for uniform", this._name, this);
-            this._value = [0, 0, 0, 0];
-        }
-
-        this.needsUpdate = false;
-        this._shader.getCgl().gl.uniform4f(this._loc, this._value[0], this._value[1], this._value[2], this._value[3]);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValue4F(v)
-    {
-        if (typeof this.value == "number") this.value = vec4.create(); // this should not be needed, but somehow it crashes with some shadermods
-
-        if (!v) return;
-        if (!this._oldValue)
-        {
-            this._oldValue = [v[0] - 1, 1, 2, 3];
-            this.needsUpdate = true;
-        }
-        else if (v[0] != this._oldValue[0] || v[1] != this._oldValue[1] || v[2] != this._oldValue[2] || v[3] != this._oldValue[3])
-        {
-            this._oldValue[0] = v[0];
-            this._oldValue[1] = v[1];
-            this._oldValue[2] = v[2];
-            this.needsUpdate = true;
-        }
-
-        this._value = v;
-    }
-
-    updateValueM4()
-    {
-        if (!this._isValidLoc())
-        {
-            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-            this._cgl.profileData.profileShaderGetUniform++;
-            this._cgl.profileData.profileShaderGetUniformName = this._name;
-        }
-        if (!this._value || this._value.length % 16 != 0) return console.log("this.name", this._name, this._value);
-
-        this._shader.getCgl().gl.uniformMatrix4fv(this._loc, false, this._value);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    setValueM4(v)
-    {
-        this.needsUpdate = true;
-        this._value = v || mat4.create();
-    }
-
-    updateValueArrayT()
-    {
-        if (!this._isValidLoc()) this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-        else this.needsUpdate = false;
-
-        if (!this._value) return;
-        this._shader.getCgl().gl.uniform1iv(this._loc, this._value);
-        this._cgl.profileData.profileUniformCount++;
-    }
-
-    updateValueT()
-    {
-        if (!this._isValidLoc())
-        {
-            this._loc = this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(), this._name);
-            this._cgl.profileData.profileShaderGetUniform++;
-            this._cgl.profileData.profileShaderGetUniformName = this._name;
-        }
-
-        this._cgl.profileData.profileUniformCount++;
-        this._shader.getCgl().gl.uniform1i(this._loc, this._value);
-        this.needsUpdate = false;
-    }
-
-    setValueT(v)
-    {
-        this.needsUpdate = true;
-        this._value = v;
-    }
-}
-
-Uniform.glslTypeString = (t) =>
-{
-    if (t == "f") return "float";
-    if (t == "b") return "bool";
-    if (t == "i") return "int";
-    if (t == "2i") return "ivec2";
-    if (t == "2f") return "vec2";
-    if (t == "3f") return "vec3";
-    if (t == "4f") return "vec4";
-    if (t == "m4") return "mat4";
-
-    if (t == "t") return "sampler2D";
-    if (t == "tc") return "samplerCube";
-
-    if (t == "3f[]") return null; // ignore this for now...
-    if (t == "m4[]") return null; // ignore this for now...
-    if (t == "f[]") return null; // ignore this for now...
-
-    console.warn("[CGL UNIFORM] unknown glsl type string ", t);
+    this.render = function (_cgl, sizeX, sizeY, sizeZ) {};
 };
 
-/**
- * @function setValue
- * @memberof Uniform
- * @instance
- * @param {Number|Array|Matrix|Texture} value
- */
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_textureeffect.js
+// EXTERNAL MODULE: ./src/corelibs/cgl/cgl_mesh.js
+var cgl_mesh = __webpack_require__("./src/corelibs/cgl/cgl_mesh.js");
+// EXTERNAL MODULE: ./src/corelibs/cgl/cgl_shader_uniform.js
+var cgl_shader_uniform = __webpack_require__("./src/corelibs/cgl/cgl_shader_uniform.js");
+// EXTERNAL MODULE: ./src/corelibs/cgl/cgl_simplerect.js
+var cgl_simplerect = __webpack_require__("./src/corelibs/cgl/cgl_simplerect.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_textureeffect.js
 
 
 
@@ -15974,7 +21971,7 @@ class TextureEffect
     constructor(cgl, options)
     {
         this._cgl = cgl;
-        this._log = new Logger("cgl_TextureEffect");
+        this._log = new logger["default"]("cgl_TextureEffect");
 
         if (!cgl.TextureEffectMesh) this.createMesh();
 
@@ -16201,7 +22198,7 @@ class TextureEffect
 
     createMesh()
     {
-        this._cgl.TextureEffectMesh = CABLES.CGL.MESHES.getSimpleRect(this._cgl, "texEffectRect");
+        this._cgl.TextureEffectMesh = cgl_simplerect.MESHES.getSimpleRect(this._cgl, "texEffectRect");
     }
 
     // ---------------------------------------------------------------------------------
@@ -16486,7 +22483,8 @@ TextureEffect.setupBlending = function (op, shader, blendPort, amountPort, alpha
     TextureEffect.onChangeBlendSelect(shader, blendPort.get(), maskAlpha);
 };
 
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_shader_lib.js
+;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_shader_lib.js
+
 
 
 
@@ -16561,1319 +22559,62 @@ const ShaderLibMods = {
 
         this.initUniforms = function (shader)
         {
-            return [new Uniform(shader, "t", "CGLRNDTEX", 7)];
+            return [new cgl_shader_uniform.Uniform(shader, "t", "CGLRNDTEX", 7)];
         };
 
         this.onBind = function (cgl, shader)
         {
-            CABLES.CGL.Texture.getRandomTexture(cgl);
-            cgl.setTexture(7, CABLES.CGL.Texture.getRandomTexture(cgl).tex);
+            Texture.getRandomTexture(cgl);
+            cgl.setTexture(7, Texture.getRandomTexture(cgl).tex);
         };
     }
 
 };
 
-;// CONCATENATED MODULE: ./src/core/cg/cg_mesh.js
-class CgMesh
+;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_unicolorshader.js
+
+
+class UniColorShader
 {
-    _name = "unknown";
-
-    constructor()
+    constructor(_cgl)
     {
+        this.shader = new CGL.Shader(_cgl, "markermaterial");
+
+        const frag = ""
+            .endl() + "void main()"
+            .endl() + "{"
+            .endl() + "    outColor = vec4(color.rgb,1.0);"
+            .endl() + "}";
+
+        const vert = ""
+            .endl() + "IN vec3 vPosition;"
+            .endl() + "UNI mat4 projMatrix;"
+            .endl() + "UNI mat4 mvMatrix;"
+
+            .endl() + "void main()"
+            .endl() + "{"
+            .endl() + "   gl_Position = projMatrix * mvMatrix * vec4(vPosition,1.0);"
+            .endl() + "}";
+
+        this.shader.setSource(vert, frag);
+        this.coloruni = this.shader.addUniformFrag("4f", "color", [1, 0.777, 1, 1]);
     }
 
-}
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_mesh.js
-
-
-
-
-
-
-
-
-
-const MESH = {};
-MESH.lastMesh = null;
-
-/**
- * @typedef {Object} CglMeshAttributeOptions
- * @property {Number} [instanced]
- * @property {Function} [cb]
- * @property {Function} [type]
- */
-
-/**
- * @type Object
- * @typedef CglMeshOptions
- * @property {Number} [glPrimitive]
- * @property {String} [opId]
- */
-
-/**
- * webgl renderable 3d object
- * @class
- * @namespace external:CGL
- * @hideconstructor
- * @example
- * const cgl=this._cgl
- * const mesh=new CGL.Mesh(cgl, geometry);
- *
- * function render()
- * {
- *   mesh.render(cgl.getShader());
- * }
- *
- */
-class Mesh extends CgMesh
-{
-
-    /** @type {CglContext} */
-    #cgl = null;
-
-    /** @type {Geometry} */
-    #geom = null;
-
-    /** @type {WebGLBuffer} */
-    #bufVerticesIndizes = null;
-
-    /**
-     * @param {CglContext} _cgl cgl
-     * @param {Geometry} __geom geometry
-     * @param {CglMeshOptions} _options
-     */
-    constructor(_cgl, __geom, _options = {})
+    setColor(r, g, b, a)
     {
-        super();
-        this.#cgl = _cgl;
-
-        let options = _options || {};
-        if (CABLES.isNumeric(options))options = { "glPrimitive": _options }; // old constructor fallback...
-        this._log = new Logger("cgl_mesh");
-        this._bufVertexAttrib = null;
-        this.#bufVerticesIndizes = this.#cgl.gl.createBuffer();
-        this._indexType = this.#cgl.gl.UNSIGNED_SHORT;
-        this._attributes = [];
-        this._attribLocs = {};
-
-        this._lastShader = null;
-        this._numInstances = 0;
-        this._glPrimitive = options.glPrimitive;
-
-        this.opId = options.opId || "";
-        this._preWireframeGeom = null;
-        this.addVertexNumbers = false;
-
-        this.feedBackAttributes = [];
-        this.setGeom(__geom);
-
-        this._feedBacks = [];
-        this._feedBacksChanged = false;
-        this._transformFeedBackLoc = -1;
-        this._lastAttrUpdate = 0;
-
-        this.memFreed = false;
-
-        this.#cgl.profileData.addHeavyEvent("mesh constructed", this._name);
-
-        this._queryExt = null;
-    }
-
-    get geom()
-    {
-        return this.#geom;
-    }
-
-    get numInstances()
-    {
-        return this._numInstances;
-    }
-
-    set numInstances(v)
-    {
-        this.setNumInstances(v);
-    }
-
-    freeMem()
-    {
-        this.memFreed = true;
-
-        for (let i = 0; i < this._attributes.length; i++)
-            this._attributes[i].floatArray = null;
-    }
-
-    /**
-     * @function updateVertices
-     * @memberof Mesh
-     * @instance
-     * @description update vertices only from a geometry
-     * @param {Geometry} geom
-     */
-    updateVertices(geom)
-    {
-        this.setAttribute(constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_POSITION, geom.vertices, 3);
-        this._numVerts = geom.vertices.length / 3;
-    }
-
-    /**
-     * @param {String} attrName
-     * @param {String} name
-     * @param {Number} stride
-     * @param {Number} offset
-      */
-    setAttributePointer(attrName, name, stride, offset)
-    {
-        for (let i = 0; i < this._attributes.length; i++)
-        {
-            if (this._attributes[i].name == attrName)
-            {
-                if (!this._attributes[i].pointer) this._attributes[i].pointer = [];
-
-                this._attributes[i].pointer.push(
-                    {
-                        "loc": -1,
-                        "name": name,
-                        "stride": stride,
-                        "offset": offset,
-                        "instanced": attrName == constants_CONSTANTS.SHADER.SHADERVAR_INSTANCE_MMATRIX,
-                    }
-                );
-            }
-        }
-    }
-
-    /**
-     * @param {String} name
-     * @returns {AttributeObject}
-     */
-    getAttribute(name)
-    {
-        for (let i = 0; i < this._attributes.length; i++) if (this._attributes[i].name == name) return this._attributes[i];
-    }
-
-    setAttributeRange(attr, array, start, end)
-    {
-        if (!attr) return;
-        if (!start && !end) return;
-
-        if (!attr.name)
-            this._log.stack("no attrname?!");
-
-        const gl = this.#cgl.gl;
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, attr.buffer);
-        this.#cgl.profileData.profileMeshAttributes += (end - start) || 0;
-
-        this.#cgl.profileData.profileSingleMeshAttribute[this._name] = this.#cgl.profileData.profileSingleMeshAttribute[this._name] || 0;
-        this.#cgl.profileData.profileSingleMeshAttribute[this._name] += (end - start) || 0;
-
-        if (attr.numItems < array.length / attr.itemSize)
-        {
-            this._resizeAttr(array, attr);
-        }
-
-        if (end > array.length && !this.warned)
-        {
-            this.warned = true;
-            this._log.warn(this.#cgl.canvas.id + " " + attr.name + " buffersubdata out of bounds ?", array.length, end, start, attr);
-            return;
-        }
-
-        // if (glVersion == 1) gl.bufferSubData(gl.ARRAY_BUFFER, 0, array); // probably slow/ maybe create and array with only changed size ??
-        // else
-        gl.bufferSubData(gl.ARRAY_BUFFER, start * 4, array, start, (end - start));
-    }
-
-    _resizeAttr(array, attr)
-    {
-        const gl = this.#cgl.gl;
-
-        if (attr.buffer)
-            gl.deleteBuffer(attr.buffer);
-
-        attr.buffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, attr.buffer);
-        this._bufferArray(array, attr);
-        attr.numItems = array.length / attr.itemSize;// numItems;
-    }
-
-    _bufferArray(array, attr)
-    {
-        let floatArray = attr.floatArray || null;
-        if (!array) return;
-
-        if (this.#cgl.debugOneFrame)
-        {
-        console.log("_bufferArray", array.length, attr.name); // eslint-disable-line
-        }
-
-        if (!(array instanceof Float32Array))
-        {
-            if (attr && floatArray && floatArray.length == array.length)
-            {
-                floatArray.set(array);
-            }
-            else
-            {
-                floatArray = new Float32Array(array);
-
-                if (this.#cgl.debugOneFrame)
-                {
-                console.log("_bufferArray create new float32array", array.length, attr.name); // eslint-disable-line
-                }
-
-                if (array.length > 10000)
-                {
-                    this.#cgl.profileData.profileNonTypedAttrib++;
-                    this.#cgl.profileData.profileNonTypedAttribNames = "(" + this._name + ":" + attr.name + ")";
-                }
-            }
-        }
-        else floatArray = array;
-
-        attr.arrayLength = floatArray.length;
-        attr.floatArray = null;// floatArray;
-
-        this.#cgl.gl.bufferData(this.#cgl.gl.ARRAY_BUFFER, floatArray, this.#cgl.gl.DYNAMIC_DRAW);
-    }
-
-    /**
-     * @function setAttribute
-     * @description update attribute
-     * @memberof Mesh
-     * @instance
-     * @param {String} name
-     * @param {Array} array
-     * @param {Number} itemSize
-     * @param {Object} options
-     */
-    addAttribute(name, array, itemSize, options)
-    {
-        this.setAttribute(name, array, itemSize, options);
-    }
-
-    /**
-     * @param {String} name
-     * @param {Array} array
-     * @param {Number} itemSize Integer
-     * @param {CglMeshAttributeOptions} options
-     */
-    setAttribute(name, array, itemSize, options = {})
-    {
-        if (!array)
-        {
-            this._log.error("mesh addAttribute - no array given! " + name);
-            throw new Error();
-        }
-        let cb = null;
-        let instanced = false;
-        let i = 0;
-        const numItems = array.length / itemSize;
-
-        this.#cgl.profileData.profileMeshAttributes += numItems || 0;
-
-        if (typeof options == "function")
-        {
-            cb = options;
-        }
-
-        if (typeof options == "object")
-        {
-            if (options.cb) cb = options.cb;
-            if (options.instanced) instanced = options.instanced;
-        }
-
-        if (name == constants_CONSTANTS.SHADER.SHADERVAR_INSTANCE_MMATRIX) instanced = true;
-
-        for (i = 0; i < this._attributes.length; i++)
-        {
-            const attr = this._attributes[i];
-            if (attr.name == name)
-            {
-                if (attr.numItems === numItems)
-                {
-                }
-                else
-                {
-                    this._resizeAttr(array, attr);
-                }
-
-                this.#cgl.gl.bindBuffer(this.#cgl.gl.ARRAY_BUFFER, attr.buffer);
-                this._bufferArray(array, attr);
-
-                return attr;
-            }
-        }
-
-        // create new buffer...
-
-        const buffer = this.#cgl.gl.createBuffer();
-
-        this.#cgl.gl.bindBuffer(this.#cgl.gl.ARRAY_BUFFER, buffer);
-        // this._cgl.gl.bufferData(this._cgl.gl.ARRAY_BUFFER, floatArray, this._cgl.gl.DYNAMIC_DRAW);
-
-        let type = this.#cgl.gl.FLOAT;
-        if (options && options.type) type = options.type;
-        const attr = {
-            "buffer": buffer,
-            "name": name,
-            "cb": cb,
-            "itemSize": itemSize,
-            "numItems": numItems,
-            "startItem": 0,
-            "instanced": instanced,
-            "type": type
-        };
-
-        this._bufferArray(array, attr);
-
-        if (name == constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_POSITION) this._bufVertexAttrib = attr;
-        this._attributes.push(attr);
-        this._attribLocs = {};
-
-        return attr;
-    }
-
-    getAttributes()
-    {
-        return this._attributes;
-    }
-
-    /**
-     * @function updateTexCoords
-     * @description update texture coordinates only from a geometry
-     * @memberof Mesh
-     * @instance
-     * @param {Geometry} geom
-     */
-    updateTexCoords(geom)
-    {
-        if (geom.texCoords && geom.texCoords.length > 0)
-        {
-            this.setAttribute(constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_TEXCOORD, geom.texCoords, 2);
-        }
-        else
-        {
-            const tcBuff = new Float32Array(Math.round((geom.vertices.length / 3) * 2));
-            this.setAttribute(constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_TEXCOORD, tcBuff, 2);
-        }
-    }
-
-    /**
-     * @function updateNormals
-     * @description update normals only from a geometry
-     * @memberof Mesh
-     * @instance
-     * @param {Geometry} geom
-     */
-    updateNormals(geom)
-    {
-        if (geom.vertexNormals && geom.vertexNormals.length > 0)
-        {
-            this.setAttribute(constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_NORMAL, geom.vertexNormals, 3);
-        }
-        else
-        {
-            const tcBuff = new Float32Array(Math.round((geom.vertices.length)));
-            this.setAttribute(constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_NORMAL, tcBuff, 3);
-        }
-    }
-
-    /**
-     * @param {Array} arr
-     */
-    _setVertexNumbers(arr)
-    {
-        if (!this._verticesNumbers || this._verticesNumbers.length != this._numVerts || arr)
-        {
-            if (arr) this._verticesNumbers = arr;
-            else
-            {
-                this._verticesNumbers = new Float32Array(this._numVerts);
-                for (let i = 0; i < this._numVerts; i++) this._verticesNumbers[i] = i;
-            }
-
-            this.setAttribute(constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_NUMBER, this._verticesNumbers, 1, (attr, geom, shader) =>
-            {
-                if (!shader.uniformNumVertices) shader.uniformNumVertices = new Uniform(shader, "f", "numVertices", this._numVerts);
-                shader.uniformNumVertices.setValue(this._numVerts);
-            });
-        }
-    }
-
-    /**
-     * @function setVertexIndices
-     * @description update vertex indices / faces
-     * @memberof Mesh
-     * @instance
-     * @param {array} vertIndices
-     */
-    setVertexIndices(vertIndices)
-    {
-        if (!this.#bufVerticesIndizes)
-        {
-            this._log.warn("no bufVerticesIndizes: " + this._name);
-            return;
-        }
-        if (vertIndices.length > 0)
-        {
-            if (vertIndices instanceof Float32Array) this._log.warn("vertIndices float32Array: " + this._name);
-
-            for (let i = 0; i < vertIndices.length; i++)
-            {
-                if (vertIndices[i] >= this._numVerts)
-                {
-                    this._log.warn("invalid index in " + this._name, i, vertIndices[i]);
-                    return;
-                }
-            }
-
-            this.#cgl.gl.bindBuffer(this.#cgl.gl.ELEMENT_ARRAY_BUFFER, this.#bufVerticesIndizes);
-
-            /*
-             * todo cache this ?
-             * if(!this.vertIndicesTyped || this.vertIndicesTyped.length!=this._geom.verticesIndices.length)
-             */
-
-            if (vertIndices.length > 65535)
-            {
-                this.vertIndicesTyped = new Uint32Array(vertIndices);
-                this._indexType = this.#cgl.gl.UNSIGNED_INT;
-            }
-            else
-            if (vertIndices instanceof Uint32Array)
-            {
-                this.vertIndicesTyped = vertIndices;
-                this._indexType = this.#cgl.gl.UNSIGNED_INT;
-            }
-            else
-            if (!(vertIndices instanceof Uint16Array))
-            {
-                this.vertIndicesTyped = new Uint16Array(vertIndices);
-                this._indexType = this.#cgl.gl.UNSIGNED_SHORT;
-            }
-            else this.vertIndicesTyped = vertIndices;
-
-            this.#cgl.gl.bufferData(this.#cgl.gl.ELEMENT_ARRAY_BUFFER, this.vertIndicesTyped, this.#cgl.gl.DYNAMIC_DRAW);
-            this.#bufVerticesIndizes.itemSize = 1;
-            this.#bufVerticesIndizes.numItems = vertIndices.length;
-        }
-        else this.#bufVerticesIndizes.numItems = 0;
-    }
-
-    /**
-     * @function setGeom
-     * @memberof Mesh
-     * @instance
-     * @description set geometry for mesh
-     * @param {Geometry} geom
-     * @param {boolean} removeRef
-     */
-    setGeom(geom, removeRef = false)
-    {
-        this.#geom = geom;
-        if (geom.glPrimitive != null) this._glPrimitive = geom.glPrimitive;
-        if (this.#geom && this.#geom.name) this._name = "mesh " + this.#geom.name;
-
-        MESH.lastMesh = null;
-        this.#cgl.profileData.profileMeshSetGeom++;
-
-        this._disposeAttributes();
-
-        this.updateVertices(this.#geom);
-        this.setVertexIndices(this.#geom.verticesIndices);
-
-        if (this.addVertexNumbers) this._setVertexNumbers();
-
-        const geomAttribs = this.#geom.getAttributes();
-
-        const attribAssoc = {
-            "texCoords": constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_TEXCOORD,
-            "vertexNormals": constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_NORMAL,
-            "vertexColors": constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_COLOR,
-            "tangents": "attrTangent",
-            "biTangents": "attrBiTangent",
-        };
-
-        for (const index in geomAttribs)
-            if (geomAttribs[index].data && geomAttribs[index].data.length)
-                this.setAttribute(attribAssoc[index] || index, geomAttribs[index].data, geomAttribs[index].itemSize);
-
-        if (removeRef)
-        {
-            this.#geom = null;
-        }
-    }
-
-    _preBind(shader)
-    {
-        for (let i = 0; i < this._attributes.length; i++)
-            if (this._attributes[i].cb)
-                this._attributes[i].cb(this._attributes[i], this.#geom, shader);
-    }
-
-    _checkAttrLengths()
-    {
-        if (this.memFreed) return;
-        // check length
-        for (let i = 0; i < this._attributes.length; i++)
-        {
-            if (this._attributes[i].arrayLength / this._attributes[i].itemSize < this._attributes[0].arrayLength / this._attributes[0].itemSize)
-            {
-                let name = "unknown";
-                if (this.#geom)name = this.#geom.name;
-
-            /*
-             * this._log.warn(
-             *     name + ": " + this._attributes[i].name +
-             *     " wrong attr length. is:", this._attributes[i].arrayLength / this._attributes[i].itemSize,
-             *     " should be:", this._attributes[0].arrayLength / this._attributes[0].itemSize,
-             * );
-             */
-            }
-        }
-    }
-
-    _bind(shader)
-    {
-        if (!shader) return;
-        if (!shader.isValid()) return;
-
-        let attrLocs = [];
-        if (this._attribLocs[shader.id]) attrLocs = this._attribLocs[shader.id];
-        else this._attribLocs[shader.id] = attrLocs;
-
-        this._lastShader = shader;
-        if (shader.lastCompile > this._lastAttrUpdate || attrLocs.length != this._attributes.length)
-        {
-            this._lastAttrUpdate = shader.lastCompile;
-            for (let i = 0; i < this._attributes.length; i++) attrLocs[i] = -1;
-        }
-
-        for (let i = 0; i < this._attributes.length; i++)
-        {
-            const attribute = this._attributes[i];
-            if (attrLocs[i] == -1)
-            {
-                if (attribute._attrLocationLastShaderTime != shader.lastCompile)
-                {
-                    attribute._attrLocationLastShaderTime = shader.lastCompile;
-                    attrLocs[i] = this.#cgl.glGetAttribLocation(shader.getProgram(), attribute.name);
-                    // this._log.log('attribloc',attribute.name,attrLocs[i]);
-                    this.#cgl.profileData.profileAttrLoc++;
-                }
-            }
-
-            if (attrLocs[i] != -1)
-            {
-                this.#cgl.gl.enableVertexAttribArray(attrLocs[i]);
-                this.#cgl.gl.bindBuffer(this.#cgl.gl.ARRAY_BUFFER, attribute.buffer);
-
-                if (attribute.instanced)
-                {
-                // todo: easier way to fill mat4 attribs...
-                    if (attribute.itemSize <= 4)
-                    {
-                        if (!attribute.itemSize || attribute.itemSize == 0) this._log.warn("instanced attrib itemsize error", this.#geom.name, attribute);
-
-                        this.#cgl.gl.vertexAttribPointer(attrLocs[i], attribute.itemSize, attribute.type, false, attribute.itemSize * 4, 0);
-                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i], 1);
-                    }
-                    else if (attribute.itemSize == 16)
-                    {
-                        const stride = 16 * 4;
-
-                        this.#cgl.gl.vertexAttribPointer(attrLocs[i], 4, attribute.type, false, stride, 0);
-                        this.#cgl.gl.enableVertexAttribArray(attrLocs[i] + 1);
-                        this.#cgl.gl.vertexAttribPointer(attrLocs[i] + 1, 4, attribute.type, false, stride, 4 * 4 * 1);
-                        this.#cgl.gl.enableVertexAttribArray(attrLocs[i] + 2);
-                        this.#cgl.gl.vertexAttribPointer(attrLocs[i] + 2, 4, attribute.type, false, stride, 4 * 4 * 2);
-                        this.#cgl.gl.enableVertexAttribArray(attrLocs[i] + 3);
-                        this.#cgl.gl.vertexAttribPointer(attrLocs[i] + 3, 4, attribute.type, false, stride, 4 * 4 * 3);
-
-                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i], 1);
-                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 1, 1);
-                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 2, 1);
-                        this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 3, 1);
-                    }
-                    else
-                    {
-                        this._log.warn("unknown instance attrib size", attribute.name);
-                    }
-                }
-                else
-                {
-                    if (!attribute.itemSize || attribute.itemSize == 0) this._log.warn("attrib itemsize error", this._name, attribute);
-                    this.#cgl.gl.vertexAttribPointer(attrLocs[i], attribute.itemSize, attribute.type, false, attribute.itemSize * 4, 0);
-
-                    if (attribute.pointer)
-                    {
-                        for (let ip = 0; ip < attribute.pointer.length; ip++)
-                        {
-                            const pointer = attribute.pointer[ip];
-
-                            if (pointer.loc == -1)
-                                pointer.loc = this.#cgl.glGetAttribLocation(shader.getProgram(), pointer.name);
-
-                            this.#cgl.profileData.profileAttrLoc++;
-
-                            this.#cgl.gl.enableVertexAttribArray(pointer.loc);
-                            this.#cgl.gl.vertexAttribPointer(pointer.loc, attribute.itemSize, attribute.type, false, pointer.stride, pointer.offset);
-                        }
-                    }
-                    if (this.bindFeedback) this.bindFeedback(attribute);
-                }
-            }
-        }
-
-        if (this.#bufVerticesIndizes && this.#bufVerticesIndizes.numItems !== 0) this.#cgl.gl.bindBuffer(this.#cgl.gl.ELEMENT_ARRAY_BUFFER, this.#bufVerticesIndizes);
-    }
-
-    unBind()
-    {
-        const shader = this._lastShader;
-        this._lastShader = null;
-        if (!shader) return;
-
-        let attrLocs = [];
-        if (this._attribLocs[shader.id]) attrLocs = this._attribLocs[shader.id];
-        else this._attribLocs[shader.id] = attrLocs;
-
-        MESH.lastMesh = null;
-
-        for (let i = 0; i < this._attributes.length; i++)
-        {
-            if (this._attributes[i].instanced)
-            {
-            // todo: easier way to fill mat4 attribs...
-                if (this._attributes[i].itemSize <= 4)
-                {
-                    if (attrLocs[i] != -1) this.#cgl.gl.vertexAttribDivisor(attrLocs[i], 0);
-                    if (attrLocs[i] >= 0) this.#cgl.gl.disableVertexAttribArray(attrLocs[i]);
-                }
-                else
-                {
-                    this.#cgl.gl.vertexAttribDivisor(attrLocs[i], 0);
-                    this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 1, 0);
-                    this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 2, 0);
-                    this.#cgl.gl.vertexAttribDivisor(attrLocs[i] + 3, 0);
-                    this.#cgl.gl.disableVertexAttribArray(attrLocs[i] + 1);
-                    this.#cgl.gl.disableVertexAttribArray(attrLocs[i] + 2);
-                    this.#cgl.gl.disableVertexAttribArray(attrLocs[i] + 3);
-                }
-            }
-
-            if (attrLocs[i] != -1) this.#cgl.gl.disableVertexAttribArray(attrLocs[i]);
-
-        }
-    }
-
-    meshChanged()
-    {
-        return this.#cgl.lastMesh && this.#cgl.lastMesh != this;
-    }
-
-    printDebug(shader)
-    {
-        console.log("--attributes");
-        for (let i = 0; i < this._attributes.length; i++)
-        {
-            console.log("attribute " + i + " " + this._attributes[i].name);
-        }
-    }
-
-    /**
-     * @param {Number} num
-     */
-    setNumVertices(num)
-    {
-        // this._bufVerticesIndizes.numItems = num;
-        this._bufVertexAttrib.numItems = num;
-    }
-
-    /**
-     * @returns {Number}
-     */
-    getNumVertices()
-    {
-        // return this._bufVerticesIndizes.numItems;
-        return this._bufVertexAttrib.numItems;
-    }
-
-    /**
-     * @param {Number} num
-     */
-    setNumIndices(num)
-    {
-        this.#bufVerticesIndizes.numItems = num;
-    }
-
-    /**
-     * @returns {Number}
-     */
-    getNumIndices()
-    {
-        return this.#bufVerticesIndizes.numItems;
-    }
-
-    /**
-     * @function render
-     * @memberof Mesh
-     * @instance
-     * @description draw mesh to screen
-     * @param {CgShader} shader
-     */
-    render(shader)
-    {
-        // TODO: enable/disablevertex only if the mesh has changed... think drawing 10000x the same mesh
-
-        if (this.#cgl.aborted) return;
-        shader = shader || this.#cgl.getShader();
-
-        if (!shader)
-        {
-            return console.log("shadern not valid");
-        }
-
-        if (!shader.isValid())
-        {
-            shader = this.#cgl.getErrorShader();
-        }
-
-        this._checkAttrLengths();
-
-        if (this.#geom)
-        {
-            if (this._preWireframeGeom && !shader.wireframe && !this.#geom.isIndexed())
-            {
-                this.setGeom(this._preWireframeGeom);
-                this._preWireframeGeom = null;
-            }
-
-            if (shader.wireframe)
-            {
-                let changed = false;
-
-                if (this.#geom.isIndexed())
-                {
-                    if (!this._preWireframeGeom)
-                    {
-                        this._preWireframeGeom = this.#geom;
-                        this.#geom = this.#geom.copy();
-                    }
-
-                    this.#geom.unIndex();
-                    changed = true;
-                }
-
-                if (!this.#geom.getAttribute("attrBarycentric"))
-                {
-                    if (!this._preWireframeGeom)
-                    {
-                        this._preWireframeGeom = this.#geom;
-                        this.#geom = this.#geom.copy();
-                    }
-                    changed = true;
-
-                    this.#geom.calcBarycentric();
-                }
-                if (changed) this.setGeom(this.#geom);
-            }
-        }
-
-        let needsBind = false;
-        if (MESH.lastMesh != this)
-        {
-            if (MESH.lastMesh) MESH.lastMesh.unBind();
-            needsBind = true;
-        }
-
-        if (needsBind) this._preBind(shader);
-
-        if (!shader.bind()) return;
-
-        this._bind(shader);
-        if (this.addVertexNumbers) this._setVertexNumbers();
-
-        MESH.lastMesh = this;
-
-        let prim = this.#cgl.gl.TRIANGLES;
-        if (this._glPrimitive !== undefined) prim = this._glPrimitive;
-        if (shader.glPrimitive !== null) prim = shader.glPrimitive;
-
-        let elementDiv = 1;
-        let doQuery = this.#cgl.profileData.doProfileGlQuery;
-        let queryStarted = false;
-        if (doQuery)
-        {
-            let id = this._name + " - " + shader.getName() + " #" + shader.id;
-            if (this._numInstances) id += " instanced " + this._numInstances + "x";
-
-            let queryProfilerData = this.#cgl.profileData.glQueryData[id];
-
-            if (!queryProfilerData) queryProfilerData = { "id": id, "num": 0 };
-
-            if (shader.opId)queryProfilerData.shaderOp = shader.opId;
-            if (this.opId)queryProfilerData.meshOp = this.opId;
-
-            this.#cgl.profileData.glQueryData[id] = queryProfilerData;
-
-            if (!this._queryExt && this._queryExt !== false) this._queryExt = this.#cgl.enableExtension("EXT_disjoint_timer_query_webgl2") || false;
-            if (this._queryExt)
-            {
-                if (queryProfilerData._drawQuery)
-                {
-                    const available = this.#cgl.gl.getQueryParameter(queryProfilerData._drawQuery, this.#cgl.gl.QUERY_RESULT_AVAILABLE);
-                    if (available)
-                    {
-                        const elapsedNanos = this.#cgl.gl.getQueryParameter(queryProfilerData._drawQuery, this.#cgl.gl.QUERY_RESULT);
-                        const currentTimeGPU = elapsedNanos / 1000000;
-
-                        queryProfilerData._times = queryProfilerData._times || 0;
-                        queryProfilerData._times += currentTimeGPU;
-                        queryProfilerData._numcount++;
-                        queryProfilerData.when = performance.now();
-                        queryProfilerData._drawQuery = null;
-                        queryProfilerData.queryStarted = false;
-                    }
-                }
-
-                if (!queryProfilerData.queryStarted)
-                {
-                    queryProfilerData._drawQuery = this.#cgl.gl.createQuery();
-                    this.#cgl.gl.beginQuery(this._queryExt.TIME_ELAPSED_EXT, queryProfilerData._drawQuery);
-                    queryStarted = queryProfilerData.queryStarted = true;
-                }
-            }
-        }
-
-        if (this.hasFeedbacks && this.hasFeedbacks()) this.drawFeedbacks(shader, prim);
-        else if (!this.#bufVerticesIndizes || this.#bufVerticesIndizes.numItems === 0)
-        {
-
-            /*
-             * for (let i = 0; i < this._attributes.length; i++)
-             * {
-             *     if (this._attributes[i].arrayLength / this._attributes[i].itemSize != this._bufVertexAttrib.floatArray.length / 3)
-             *     {
-             *         this._log.warn("attrib buffer length wrong! ", this._attributes[i].name, this._attributes[i].arrayLength / this._attributes[i].itemSize, this._bufVertexAttrib.floatArray.length / 3, this._attributes[i].itemSize);
-             *         // this._log.log(this);
-             *         // debugger;
-             *         return;
-             *     }
-             * }
-             */
-
-            if (prim == this.#cgl.gl.TRIANGLES)elementDiv = 3;
-
-            if (this._numInstances === 0) this.#cgl.gl.drawArrays(prim, this._bufVertexAttrib.startItem, this._bufVertexAttrib.numItems - this._bufVertexAttrib.startItem);
-            else this.#cgl.gl.drawArraysInstanced(prim, this._bufVertexAttrib.startItem, this._bufVertexAttrib.numItems, this._numInstances);
-        }
-        else
-        {
-            if (prim == this.#cgl.gl.TRIANGLES)elementDiv = 3;
-            if (this._numInstances === 0)
-            {
-                this.#cgl.gl.drawElements(prim, this.#bufVerticesIndizes.numItems, this._indexType, 0);
-            }
-            else
-            {
-                this.#cgl.gl.drawElementsInstanced(prim, this.#bufVerticesIndizes.numItems, this._indexType, 0, this._numInstances);
-            }
-        }
-
-        if (this.#cgl.debugOneFrame && this.#cgl.gl.getError() != this.#cgl.gl.NO_ERROR)
-        {
-            this._log.error("mesh draw gl error");
-            this._log.error("mesh", this);
-            this._log.error("shader", shader);
-
-            const attribNames = [];
-            for (let i = 0; i < this.#cgl.gl.getProgramParameter(shader.getProgram(), this.#cgl.gl.ACTIVE_ATTRIBUTES); i++)
-            {
-                const name = this.#cgl.gl.getActiveAttrib(shader.getProgram(), i).name;
-                this._log.error("attrib ", name);
-            }
-        }
-
-        this.#cgl.profileData.profileMeshNumElements += (this._bufVertexAttrib.numItems / elementDiv) * (this._numInstances || 1);
-        this.#cgl.profileData.profileMeshDraw++;
-
-        if (doQuery && queryStarted)
-        {
-            this.#cgl.gl.endQuery(this._queryExt.TIME_ELAPSED_EXT);
-        }
-
-        this.#cgl.printError("mesh render " + this._name);
-
-        this.unBind();
-    }
-
-    setNumInstances(n)
-    {
-        n = Math.max(0, n);
-        if (this._numInstances != n)
-        {
-            this._numInstances = n;
-            const indexArr = new Float32Array(n);
-            for (let i = 0; i < n; i++) indexArr[i] = i;
-            this.setAttribute(constants_CONSTANTS.SHADER.SHADERVAR_INSTANCE_INDEX, indexArr, 1, { "instanced": true });
-        }
-    }
-
-    _disposeAttributes()
-    {
-        if (!this._attributes) return;
-
-        for (let i = 0; i < this._attributes.length; i++)
-        {
-            if (this._attributes[i].buffer)
-            {
-                this.#cgl.gl.deleteBuffer(this._attributes[i].buffer);
-                this._attributes[i].buffer = null;
-            }
-        }
-        this._attributes.length = 0;
-    }
-
-    dispose()
-    {
-        if (this._bufVertexAttrib && this._bufVertexAttrib.buffer) this.#cgl.gl.deleteBuffer(this._bufVertexAttrib.buffer);
-        if (this.#bufVerticesIndizes) this.#cgl.gl.deleteBuffer(this.#bufVerticesIndizes);
-        this.#bufVerticesIndizes = null;
-
-        this._disposeAttributes();
+        this.coloruni.set(r, g, b, a);
     }
 }
 
-
-
-;// CONCATENATED MODULE: ./src/core/cg/cg_shader.js
-
-
-
-
-
-
-/**
- * @typedef ShaderModule
- * @property {String} title
- * @property {String} name
- * @property {Number} id
- * @property {Number} numId
- * @property {String} group
- * @property {String} prefix
- * @property {Number} priority
- * @property {Number} num
- * @property {String} attributes
- * @property {String} srcBodyFrag
- * @property {String} srcBodyVert
- * @property {String} srcHeadFrag
- * @property {String} srcHeadVert
-  */
-
-class CgShader extends Events
-{
-    id = simpleId();
-    _isValid = true;
-
-    /** @type {Array<Array<String>>} */
-    _defines = [];
-
-    /** @type {Array<String>} */
-    _moduleNames = [];
-
-    _moduleNumId = 0;
-    _needsRecompile = true;
-    _compileReason = "initial";
-
-    /** @type {Array<ShaderModule>} */
-    _modules = [];
-
-    _compileCount = 0;
-
-    logError = true;
-    num = -1;
-    lastCompile = 0;
-
-    constructor()
-    {
-        super();
-    }
-
-    /**
-     * @param {string} reason
-     */
-    setWhyCompile(reason)
-    {
-        this._compileReason = reason;
-        this._needsRecompile = true;
-    }
-
-    getWhyCompile()
-    {
-        return this._compileReason;
-    }
-
-    needsRecompile()
-    {
-        return this._needsRecompile;
-    }
-
-    /**
-     * @param {string} name
-     */
-    removeUniform(name)
-    {
-        for (let i = 0; i < this._uniforms.length; i++)
-        {
-            if (this._uniforms[i].getName() == name)
-            {
-                this._uniforms.splice(i, 1);
-            }
-        }
-        this.setWhyCompile("remove uniform " + name);
-    }
-
-    /**
-     * @param {String} name
-     * @param {number} stage
-     */
-    hasUniformInStage(name, stage)
-    {
-
-        let binding = this.defaultUniBindingFrag;
-        if (stage == GPUShaderStage.VERTEX) binding = this.defaultUniBindingVert;
-        if (stage == GPUShaderStage.COMPUTE) binding = this.defaultUniBindingCompute;
-
-        for (let i = 0; i < this._uniforms.length; i++)
-        {
-
-            console.log("hasuniiiiiiiiiiiiiii", this._uniforms[i].getName(), name);
-            if (this._uniforms[i].getName() == name) return true;
-        }
-        return false;
-    }
-
-    /**
-     * @param {String} name
-     */
-    hasUniform(name)
-    {
-    }
-
-    /**
-     * easily enable/disable a define without a value
-     * @param {String} name
-     * @param {Port} enabled value or port
-     */
-    toggleDefine(name, enabled)
-    {
-        if (enabled && typeof (enabled) == "object" && enabled.addEventListener) // port
-        {
-            if (enabled.changeListener)enabled.off(enabled.changeListener);
-
-            enabled.onToggleDefine = (v) =>
-            {
-                this.toggleDefine(name, v);
-            };
-
-            enabled.changeListener = enabled.on("change", enabled.onToggleDefine);
-            enabled = enabled.get();
-        }
-
-        if (enabled) this.define(name);
-        else this.removeDefine(name);
-    }
-
-    /**
-     * add a define to a shader, e.g.  #define DO_THIS_THAT 1
-     * @param {String} name
-     * @param {any} value (can be empty)
-     */
-    define(name, value = "")
-    {
-        if (value === null || value === undefined) value = "";
-
-        if (typeof (value) == "object") // port
-        {
-            value.removeEventListener("change", value.onDefineChange);
-            value.onDefineChange = (v) =>
-            {
-                this.define(name, v);
-            };
-            value.on("change", value.onDefineChange);
-
-            value = value.get();
-        }
-
-        for (let i = 0; i < this._defines.length; i++)
-        {
-            if (this._defines[i][0] == name && this._defines[i][1] == value) return;
-            if (this._defines[i][0] == name)
-            {
-                this._defines[i][1] = value;
-                this.setWhyCompile("define " + name + " " + value);
-                return;
-            }
-        }
-        this.setWhyCompile("define " + name + " " + value);
-
-        this._defines.push([name, value]);
-    }
-
-    getDefines()
-    {
-        return this._defines;
-    }
-
-    /**
-     * @param {string} name
-     */
-    getDefine(name)
-    {
-        for (let i = 0; i < this._defines.length; i++)
-            if (this._defines[i][0] == name) return this._defines[i][1];
-        return null;
-    }
-
-    /**
-     * return true if shader has define
-     * @function hasDefine
-     * @memberof Shader
-     * @instance
-     * @param {String} name
-     * @return {Boolean}
-     */
-    hasDefine(name)
-    {
-        for (let i = 0; i < this._defines.length; i++)
-            if (this._defines[i][0] == name) return true;
-    }
-
-    /**
-     * remove a define from a shader
-     * @param {string} name
-     */
-    removeDefine(name)
-    {
-        for (let i = 0; i < this._defines.length; i++)
-        {
-            if (this._defines[i][0] == name)
-            {
-                this._defines.splice(i, 1);
-
-                this.setWhyCompile("define removed:" + name);
-
-                return;
-            }
-        }
-    }
-
-    /**
-     * @param {any} modId
-     */
-    hasModule(modId)
-    {
-        for (let i = 0; i < this._modules.length; i++)
-            if (this._modules[i].id == modId) return true;
-
-        return false;
-    }
-
-    /**
-     *
-     * @param {Array<String>} names
-     */
-    setModules(names)
-    {
-        this._moduleNames = names;
-    }
-
-    /**
-     * remove a module from shader
-     * @param {ShaderModule} mod the module to be removed
-     */
-    removeModule(mod)
-    {
-        for (let i = 0; i < this._modules.length; i++)
-        {
-            if (mod && mod.id)
-            {
-                if (this._modules[i].id == mod.id || !this._modules[i])
-                {
-                    let found = true;
-                    while (found)
-                    {
-                        found = false;
-                        for (let j = 0; j < this._uniforms.length; j++)
-                        {
-                            if (this._uniforms[j].getName().startsWith(mod.prefix))
-                            {
-                                this._uniforms.splice(j, 1);
-                                found = true;
-                                continue;
-                            }
-                        }
-                    }
-
-                    this.setWhyCompile("remove module " + mod.title);
-                    this._modules.splice(i, 1);
-                    break;
-                }
-            }
-        }
-    }
-
-    getNumModules()
-    {
-        return this._modules.length;
-    }
-
-    getCurrentModules() { return this._modules; }
-
-    /**
-     * add a module
-     * @param {ShaderModule} mod the module to be added
-     * @param {ShaderModule} [sibling] sibling module, new module will share the same group
-     */
-    addModule(mod, sibling)
-    {
-        if (this.hasModule(mod.id)) return;
-        if (!mod.id) mod.id = CABLES.simpleId();
-        if (!mod.numId) mod.numId = this._moduleNumId;
-        if (!mod.num)mod.num = this._modules.length;
-        if (sibling && !sibling.group) sibling.group = simpleId();
-
-        if (!mod.group)
-            if (sibling) mod.group = sibling.group;
-            else mod.group = simpleId();
-
-        mod.prefix = "mod" + mod.group + "_";
-        this._modules.push(mod);
-
-        this.setWhyCompile("add module " + mod.title);
-        this._moduleNumId++;
-
-        return mod;
-    }
-
-    isValid()
-    {
-        return this._isValid;
-    }
-
-}
-
-
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_shader_default_glsl.vert
-/* harmony default export */ const cgl_shader_default_glsl = ("{{MODULES_HEAD}}\nIN vec3 vPosition; //!@\nIN vec2 attrTexCoord;\nIN vec3 attrVertNormal;\nIN vec3 attrTangent,attrBiTangent;\n\nIN float attrVertIndex;\n\nOUT vec2 texCoord;\nOUT vec3 norm;\nUNI mat4 projMatrix;\nUNI mat4 viewMatrix;\nUNI mat4 modelMatrix;\n\nvoid main()\n{\n    texCoord=attrTexCoord;\n    norm=attrVertNormal;\n    vec4 pos=vec4(vPosition,  1.0);\n    vec3 tangent=attrTangent;\n    vec3 bitangent=attrBiTangent;\n    mat4 mMatrix=modelMatrix;\n    gl_PointSize=10.0;\n\n    {{MODULE_VERTEX_POSITION}}\n\n    mat4 modelViewMatrix=viewMatrix*mMatrix;\n    {{MODULE_VERTEX_MODELVIEW}}\n\n    gl_Position = projMatrix * modelViewMatrix * pos;\n}\n");
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_shader.js
-
-
-
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat4.js
+var esm_mat4 = __webpack_require__("./node_modules/gl-matrix/esm/mat4.js");
+// EXTERNAL MODULE: ./src/core/timer.js
+var timer = __webpack_require__("./src/core/timer.js");
+// EXTERNAL MODULE: ./src/corelibs/cgl/constants.js
+var constants = __webpack_require__("./src/corelibs/cgl/constants.js");
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_shader.js
+var cg_shader = __webpack_require__("./src/corelibs/cg/cg_shader.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_shader.js
 
 
 
@@ -17908,11 +22649,45 @@ uCamPosition - currently: camPos
 
 // ---------------------------------------------------------------------------
 
+// eslint-disable-next-line no-restricted-syntax
+const defaultShaderSrcVert = `
+{{MODULES_HEAD}}
+IN vec3 vPosition; //!@
+IN vec2 attrTexCoord;
+IN vec3 attrVertNormal;
+IN vec3 attrTangent,attrBiTangent;
+
+IN float attrVertIndex;
+
+OUT vec2 texCoord;
+OUT vec3 norm;
+UNI mat4 projMatrix;
+UNI mat4 viewMatrix;
+UNI mat4 modelMatrix;
+
+void main()
+{
+    texCoord=attrTexCoord;
+    norm=attrVertNormal;
+    vec4 pos=vec4(vPosition,  1.0);
+    vec3 tangent=attrTangent;
+    vec3 bitangent=attrBiTangent;
+    mat4 mMatrix=modelMatrix;
+    gl_PointSize=10.0;
+
+    {{MODULE_VERTEX_POSITION}}
+
+    mat4 modelViewMatrix=viewMatrix*mMatrix;
+    {{MODULE_VERTEX_MODELVIEW}}
+
+    gl_Position = projMatrix * modelViewMatrix * pos;
+}
+`;
 let materialIdCounter = 0;
 
 function getDefaultVertexShader()
 {
-    return cgl_shader_default_glsl;
+    return defaultShaderSrcVert;
 }
 
 /**
@@ -17929,15 +22704,15 @@ function getDefaultFragmentShader(r, g, b)
         b = 0.5;
     }
     return ""
-        + nl + "IN vec2 texCoord;"
-        + nl + "{{MODULES_HEAD}}"
-        + nl + "void main()"
-        + nl + "{"
+        + constants.nl + "IN vec2 texCoord;"
+        + constants.nl + "{{MODULES_HEAD}}"
+        + constants.nl + "void main()"
+        + constants.nl + "{"
 
-        + nl + "    vec4 col=vec4(" + r + "," + g + "," + b + ",1.0);"
-        + nl + "    {{MODULE_COLOR}}"
-        + nl + "    outColor = col;"
-        + nl + "}";
+        + constants.nl + "    vec4 col=vec4(" + r + "," + g + "," + b + ",1.0);"
+        + constants.nl + "    {{MODULE_COLOR}}"
+        + constants.nl + "    outColor = col;"
+        + constants.nl + "}";
 }
 
 /**
@@ -17951,7 +22726,7 @@ function getDefaultFragmentShader(r, g, b)
  * var shader=new CGL.Shader(cgl,'MinimalMaterial');
  * shader.setSource(attachments.shader_vert,attachments.shader_frag);
  */
-class CglShader extends CgShader
+class CglShader extends cg_shader.CgShader
 {
 
     /** @type {Uniform[]} */
@@ -17967,7 +22742,7 @@ class CglShader extends CgShader
         super();
         if (!_cgl) throw new Error("shader constructed without cgl " + _name);
 
-        this._log = new Logger("cgl_shader");
+        this._log = new logger["default"]("cgl_shader");
         this._cgl = _cgl;
 
         if (!_name) this._log.stack("no shader name given");
@@ -18019,10 +22794,10 @@ class CglShader extends CgShader
         this._textureStackType = [];
         this._textureStackTexCgl = [];
 
-        this._tempNormalMatrix = mat4_create();
-        this._tempCamPosMatrix = mat4_create();
-        this._tempInverseViewMatrix = mat4_create();
-        this._tempInverseProjMatrix = mat4_create();
+        this._tempNormalMatrix = esm_mat4.create();
+        this._tempCamPosMatrix = esm_mat4.create();
+        this._tempInverseViewMatrix = esm_mat4.create();
+        this._tempInverseProjMatrix = esm_mat4.create();
 
         this.setModules(["MODULE_VERTEX_POSITION", "MODULE_COLOR", "MODULE_NORMAL", "MODULE_BEGIN_FRAG", "MODULE_VERTEX_MODELVIEW"]);
     }
@@ -18180,9 +22955,9 @@ class CglShader extends CgShader
                 {
                     // * create struct definition with placeholder string to inject
                     const structDefinition = "struct "
-                        + this._uniforms[i]._structName + " {" + nl
+                        + this._uniforms[i]._structName + " {" + constants.nl
                         + injectionString
-                        + "};" + nl + nl;
+                        + "};" + constants.nl + constants.nl;
 
                     if (this._uniforms[i].getShaderType() === "both" || this._uniforms[i].getShaderType() === "frag")
                         structStrFrag = structStrFrag.concat(structDefinition);
@@ -18273,7 +23048,7 @@ class CglShader extends CgShader
         for (let i = 0; i < this._structUniformNamesIndicesFrag.length; i += 1)
         {
             const index = this._structUniformNamesIndicesFrag[i];
-            const uniDeclarationString = "UNI " + this._uniforms[index]._structName + " " + this._uniforms[index]._structUniformName + ";" + nl;
+            const uniDeclarationString = "UNI " + this._uniforms[index]._structName + " " + this._uniforms[index]._structUniformName + ";" + constants.nl;
 
             if (!this._uniDeclarationsFrag.includes(uniDeclarationString))
             {
@@ -18290,7 +23065,7 @@ class CglShader extends CgShader
         for (let i = 0; i < this._structUniformNamesIndicesVert.length; i += 1)
         {
             const index = this._structUniformNamesIndicesVert[i];
-            const uniDeclarationString = "UNI " + this._uniforms[index]._structName + " " + this._uniforms[index]._structUniformName + ";" + nl;
+            const uniDeclarationString = "UNI " + this._uniforms[index]._structName + " " + this._uniforms[index]._structUniformName + ";" + constants.nl;
 
             if (!this._uniDeclarationsVert.includes(uniDeclarationString))
             {
@@ -18311,26 +23086,26 @@ class CglShader extends CgShader
         if (attr.name && attr.type)
         {
             r.srcHeadVert = "";
-            if (!firstLevel) r.srcHeadVert += "#ifndef ATTRIB_" + attr.name + nl;
-            r.srcHeadVert += "#define ATTRIB_" + attr.name + nl;
-            r.srcHeadVert += "IN " + attr.type + " " + attr.name + ";" + nl;
-            if (!firstLevel) r.srcHeadVert += "#endif" + nl;
+            if (!firstLevel) r.srcHeadVert += "#ifndef ATTRIB_" + attr.name + constants.nl;
+            r.srcHeadVert += "#define ATTRIB_" + attr.name + constants.nl;
+            r.srcHeadVert += "IN " + attr.type + " " + attr.name + ";" + constants.nl;
+            if (!firstLevel) r.srcHeadVert += "#endif" + constants.nl;
 
             if (attr.nameFrag)
             {
                 r.srcHeadVert += "";
-                if (!firstLevel) r.srcHeadVert += "#ifndef ATTRIB_" + attr.nameFrag + nl;
-                r.srcHeadVert += "#define ATTRIB_" + attr.nameFrag + nl;
-                r.srcHeadVert += "OUT " + attr.type + " " + attr.nameFrag + ";" + nl;
-                if (!firstLevel) r.srcHeadVert += "#endif" + nl;
+                if (!firstLevel) r.srcHeadVert += "#ifndef ATTRIB_" + attr.nameFrag + constants.nl;
+                r.srcHeadVert += "#define ATTRIB_" + attr.nameFrag + constants.nl;
+                r.srcHeadVert += "OUT " + attr.type + " " + attr.nameFrag + ";" + constants.nl;
+                if (!firstLevel) r.srcHeadVert += "#endif" + constants.nl;
 
-                r.srcVert = "" + nl + attr.nameFrag + "=" + attr.name + ";";
+                r.srcVert = "" + constants.nl + attr.nameFrag + "=" + attr.name + ";";
 
                 r.srcHeadFrag = "";
-                if (!firstLevel) r.srcHeadFrag += "#ifndef ATTRIB_" + attr.nameFrag + nl;
-                r.srcHeadFrag += "#define ATTRIB_" + attr.nameFrag + nl;
-                r.srcHeadFrag += "IN " + attr.type + " " + attr.nameFrag + ";" + nl;
-                if (!firstLevel) r.srcHeadFrag += "#endif" + nl;
+                if (!firstLevel) r.srcHeadFrag += "#ifndef ATTRIB_" + attr.nameFrag + constants.nl;
+                r.srcHeadFrag += "#define ATTRIB_" + attr.nameFrag + constants.nl;
+                r.srcHeadFrag += "IN " + attr.type + " " + attr.nameFrag + ";" + constants.nl;
+                if (!firstLevel) r.srcHeadFrag += "#endif" + constants.nl;
             }
         }
         return r;
@@ -18347,12 +23122,12 @@ class CglShader extends CgShader
         let extensionString = "";
         if (this._extensions)
             for (let i = 0; i < this._extensions.length; i++)
-                extensionString += "#extension " + this._extensions[i] + " : enable" + nl;
+                extensionString += "#extension " + this._extensions[i] + " : enable" + constants.nl;
 
         let definesStr = "";
-        if (this._defines.length) definesStr = "\n// cgl generated" + nl;
+        if (this._defines.length) definesStr = "\n// cgl generated" + constants.nl;
         for (let i = 0; i < this._defines.length; i++)
-            definesStr += "#define " + this._defines[i][0] + " " + this._defines[i][1] + "" + nl;
+            definesStr += "#define " + this._defines[i][0] + " " + this._defines[i][1] + "" + constants.nl;
 
         const structStrings = this.createStructUniforms();
         this._cgl.profileData.addHeavyEvent("shader compile", this._name + " [" + this._compileReason + "]");
@@ -18385,7 +23160,7 @@ class CglShader extends CgShader
         this._cgl.printError("uniform resets");
 
         this._compileCount++;
-        if (this.hasTextureUniforms()) definesStr += "#define HAS_TEXTURES" + nl;
+        if (this.hasTextureUniforms()) definesStr += "#define HAS_TEXTURES" + constants.nl;
 
         let vs = "";
         let fs = "";
@@ -18398,37 +23173,37 @@ class CglShader extends CgShader
         }
 
         vs = "#version 300 es"
-            + nl + "// "
-            + nl + "// vertex shader " + this._name
-            + nl + "// "
-            + nl + "precision " + this.precision + " float;"
-            + nl + "precision " + this.precision + " sampler2D;"
-            + nl + ""
-            + nl + "#define WEBGL2"
-            + nl + "#define texture2D texture"
-            + nl + "#define UNI uniform"
-            + nl + "#define IN in"
-            + nl + "#define OUT out"
-            + nl;
+            + constants.nl + "// "
+            + constants.nl + "// vertex shader " + this._name
+            + constants.nl + "// "
+            + constants.nl + "precision " + this.precision + " float;"
+            + constants.nl + "precision " + this.precision + " sampler2D;"
+            + constants.nl + ""
+            + constants.nl + "#define WEBGL2"
+            + constants.nl + "#define texture2D texture"
+            + constants.nl + "#define UNI uniform"
+            + constants.nl + "#define IN in"
+            + constants.nl + "#define OUT out"
+            + constants.nl;
 
         fs = "#version 300 es"
-            + nl + "// "
-            + nl + "// fragment shader " + this._name
-            + nl + "// "
-            + nl + "precision " + this.precision + " float;"
-            + nl + "precision " + this.precision + " sampler2D;"
-            + nl + ""
-            + nl + "#define WEBGL2"
-            + nl + "#define texture2D texture"
-            + nl + "#define IN in"
-            + nl + "#define OUT out"
-            + nl + "#define UNI uniform"
-            + nl + "{{DRAWBUFFER}}"
+            + constants.nl + "// "
+            + constants.nl + "// fragment shader " + this._name
+            + constants.nl + "// "
+            + constants.nl + "precision " + this.precision + " float;"
+            + constants.nl + "precision " + this.precision + " sampler2D;"
+            + constants.nl + ""
+            + constants.nl + "#define WEBGL2"
+            + constants.nl + "#define texture2D texture"
+            + constants.nl + "#define IN in"
+            + constants.nl + "#define OUT out"
+            + constants.nl + "#define UNI uniform"
+            + constants.nl + "{{DRAWBUFFER}}"
 
-            + nl;
+            + constants.nl;
 
-        let uniformsStrVert = "\n// cgl generated" + nl;
-        let uniformsStrFrag = "\n// cgl generated" + nl;
+        let uniformsStrVert = "\n// cgl generated" + constants.nl;
+        let uniformsStrFrag = "\n// cgl generated" + constants.nl;
 
         fs += "\n// active mods: --------------- ";
         vs += "\n// active mods: --------------- ";
@@ -18471,11 +23246,11 @@ class CglShader extends CgShader
 
                 if (this._uniforms[i].shaderType == "vert" || this._uniforms[i].shaderType == "both")
                     if (!this.srcVert.includes(uniStr) && !this.srcVert.includes("uniform " + this._uniforms[i].getGlslTypeString() + " " + this._uniforms[i].getName()))
-                        uniformsStrVert += uniStr + ";" + comment + nl;
+                        uniformsStrVert += uniStr + ";" + comment + constants.nl;
 
                 if (this._uniforms[i].shaderType == "frag" || this._uniforms[i].shaderType == "both")
                     if (!this.srcFrag.includes(uniStr) && !this.srcFrag.includes("uniform " + this._uniforms[i].getGlslTypeString() + " " + this._uniforms[i].getName()))
-                        uniformsStrFrag += uniStr + ";" + comment + nl;
+                        uniformsStrFrag += uniStr + ";" + comment + constants.nl;
             }
         }
 
@@ -18492,12 +23267,12 @@ class CglShader extends CgShader
         if (countUniFrag >= this._cgl.maxUniformsFrag) this._log.warn("[cgl_shader] num uniforms frag: " + countUniFrag + " / " + this._cgl.maxUniformsFrag);
         if (countUniVert >= this._cgl.maxUniformsVert) this._log.warn("[cgl_shader] num uniforms vert: " + countUniVert + " / " + this._cgl.maxUniformsVert);
 
-        if (!fs.includes("precision")) fs = "precision " + this.precision + " float;" + nl + fs;
-        if (!vs.includes("precision")) vs = "precision " + this.precision + " float;" + nl + vs;
+        if (!fs.includes("precision")) fs = "precision " + this.precision + " float;" + constants.nl + fs;
+        if (!vs.includes("precision")) vs = "precision " + this.precision + " float;" + constants.nl + vs;
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
         {
-            fs += "#define MOBILE" + nl;
-            vs += "#define MOBILE" + nl;
+            fs += "#define MOBILE" + constants.nl;
+            vs += "#define MOBILE" + constants.nl;
         }
         vs = extensionString + vs + definesStr + structStrings[0] + uniformsStrVert + "\n// -- \n" + this.srcVert;
         fs = extensionString + fs + definesStr + structStrings[1] + uniformsStrFrag + "\n// -- \n" + this.srcFrag;
@@ -18591,19 +23366,19 @@ class CglShader extends CgShader
 
         if (this._drawBuffers.length == 1)
         {
-            drawBufferStr = "out vec4 outColor;" + nl;
-            drawBufferStr += "#define gl_FragColor outColor" + nl;
+            drawBufferStr = "out vec4 outColor;" + constants.nl;
+            drawBufferStr += "#define gl_FragColor outColor" + constants.nl;
         }
         else
         {
-            drawBufferStr += "#define MULTI_COLORTARGETS" + nl;
-            drawBufferStr += "vec4 outColor;" + nl;
+            drawBufferStr += "#define MULTI_COLORTARGETS" + constants.nl;
+            drawBufferStr += "vec4 outColor;" + constants.nl;
 
             let count = 0;
             for (let i = 0; i < this._drawBuffers.length; i++)
             {
-                if (count == 0) drawBufferStr += "#define gl_FragColor outColor" + i + "" + nl;
-                drawBufferStr += "layout(location = " + i + ") out vec4 outColor" + i + ";" + nl;
+                if (count == 0) drawBufferStr += "#define gl_FragColor outColor" + i + "" + constants.nl;
+                drawBufferStr += "layout(location = " + i + ") out vec4 outColor" + i + ";" + constants.nl;
                 count++;
             }
         }
@@ -18630,12 +23405,12 @@ class CglShader extends CgShader
         this.finalShaderFrag = fs;
         this.finalShaderVert = vs;
 
-        MESH.lastMesh = null;
-        MESH.lastShader = null;
+        cgl_mesh.MESH.lastMesh = null;
+        cgl_mesh.MESH.lastShader = null;
 
         this._countMissingUniforms = 0;
         this._needsRecompile = false;
-        this.lastCompile = now();
+        this.lastCompile = (0,timer.now)();
 
         this._cgl.profileData.shaderCompileTime += performance.now() - startTime;
     }
@@ -18644,7 +23419,7 @@ class CglShader extends CgShader
     {
         if (!this._isValid || this._cgl.aborted) return;
 
-        MESH.lastShader = this;
+        cgl_mesh.MESH.lastShader = this;
 
         if (!this._program || this.needsRecompile()) this.compile();
         if (!this._isValid) return;
@@ -18655,17 +23430,17 @@ class CglShader extends CgShader
             // if (this._countMissingUniforms == 10)this._log.log("stopping getlocation of missing uniforms...", this._name);
             if (this._countMissingUniforms < 10)
             {
-                this._projMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_UNI_PROJMAT);
-                this._attrVertexPos = this._cgl.glGetAttribLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_VERTEX_POSITION);
+                this._projMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_UNI_PROJMAT);
+                this._attrVertexPos = this._cgl.glGetAttribLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_VERTEX_POSITION);
                 this._mvMatrixUniform = this._cgl.gl.getUniformLocation(this._program, "mvMatrix");
-                this._vMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_UNI_VIEWMAT);
-                this._mMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_UNI_MODELMAT);
-                this._camPosUniform = this._cgl.gl.getUniformLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_UNI_VIEWPOS);
-                this._normalMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_UNI_NORMALMAT);
-                this._inverseViewMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_UNI_INVVIEWMAT);
-                this._inverseProjMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_UNI_INVPROJMAT);
-                this._materialIdUniform = this._cgl.gl.getUniformLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_UNI_MATERIALID);
-                this._objectIdUniform = this._cgl.gl.getUniformLocation(this._program, constants_CONSTANTS.SHADER.SHADERVAR_UNI_OBJECTID);
+                this._vMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_UNI_VIEWMAT);
+                this._mMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_UNI_MODELMAT);
+                this._camPosUniform = this._cgl.gl.getUniformLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_UNI_VIEWPOS);
+                this._normalMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_UNI_NORMALMAT);
+                this._inverseViewMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_UNI_INVVIEWMAT);
+                this._inverseProjMatrixUniform = this._cgl.gl.getUniformLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_UNI_INVPROJMAT);
+                this._materialIdUniform = this._cgl.gl.getUniformLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_UNI_MATERIALID);
+                this._objectIdUniform = this._cgl.gl.getUniformLocation(this._program, constants.CONSTANTS.SHADER.SHADERVAR_UNI_OBJECTID);
 
                 for (let i = 0; i < this._uniforms.length; i++) this._uniforms[i].needsUpdate = true;
             }
@@ -18704,13 +23479,13 @@ class CglShader extends CgShader
 
                 if (this._inverseViewMatrixUniform)
                 {
-                    mat4_invert(this._tempInverseViewMatrix, this._cgl.vMatrix);
+                    esm_mat4.invert(this._tempInverseViewMatrix, this._cgl.vMatrix);
                     this._cgl.gl.uniformMatrix4fv(this._inverseViewMatrixUniform, false, this._tempInverseViewMatrix);
                     this._cgl.profileData.profileMVPMatrixCount++;
                 }
                 if (this._inverseProjMatrixUniform)
                 {
-                    mat4_invert(this._tempInverseProjMatrix, this._cgl.pMatrix);
+                    esm_mat4.invert(this._tempInverseProjMatrix, this._cgl.pMatrix);
                     this._cgl.gl.uniformMatrix4fv(this._inverseProjMatrixUniform, false, this._tempInverseProjMatrix);
                     this._cgl.profileData.profileMVPMatrixCount++;
                 }
@@ -18720,7 +23495,7 @@ class CglShader extends CgShader
 
             if (this._camPosUniform)
             {
-                mat4_invert(this._tempCamPosMatrix, this._cgl.vMatrix);
+                esm_mat4.invert(this._tempCamPosMatrix, this._cgl.vMatrix);
                 this._cgl.gl.uniform3f(this._camPosUniform, this._tempCamPosMatrix[12], this._tempCamPosMatrix[13], this._tempCamPosMatrix[14]);
                 this._cgl.profileData.profileMVPMatrixCount++;
             }
@@ -18728,9 +23503,9 @@ class CglShader extends CgShader
         else
         {
             // mvmatrix deprecated....
-            const tempmv = mat4_create();
+            const tempmv = esm_mat4.create();
 
-            mat4_mul(tempmv, this._cgl.vMatrix, this._cgl.mMatrix);
+            esm_mat4.mul(tempmv, this._cgl.vMatrix, this._cgl.mMatrix);
             this._cgl.gl.uniformMatrix4fv(this._mvMatrixUniform, false, tempmv);
             this._cgl.profileData.profileMVPMatrixCount++;
         }
@@ -18738,8 +23513,8 @@ class CglShader extends CgShader
         if (this._normalMatrixUniform)
         {
             // mat4.mul(this._tempNormalMatrix, this._cgl.vMatrix, this._cgl.mMatrix);
-            mat4_invert(this._tempNormalMatrix, this._cgl.mMatrix);
-            mat4_transpose(this._tempNormalMatrix, this._tempNormalMatrix);
+            esm_mat4.invert(this._tempNormalMatrix, this._cgl.mMatrix);
+            esm_mat4.transpose(this._tempNormalMatrix, this._tempNormalMatrix);
 
             this._cgl.gl.uniformMatrix4fv(this._normalMatrixUniform, false, this._tempNormalMatrix);
             this._cgl.profileData.profileMVPMatrixCount++;
@@ -18761,7 +23536,8 @@ class CglShader extends CgShader
 
     dispose()
     {
-        if (this._program) this._cgl.gl.deleteProgram(this._program);
+
+        if (this._program && this._cgl && this._cgl.gl) this._cgl.gl.deleteProgram(this._program);
         this._program = null;
     }
 
@@ -18808,7 +23584,7 @@ class CglShader extends CgShader
      */
     addUniformFrag(type, name, valueOrPort, p2, p3, p4)
     {
-        const uni = new Uniform(this, type, name, valueOrPort, p2, p3, p4);
+        const uni = new cgl_shader_uniform.Uniform(this, type, name, valueOrPort, p2, p3, p4);
         uni.shaderType = "frag";
         return uni;
     }
@@ -18825,7 +23601,7 @@ class CglShader extends CgShader
      */
     addUniformVert(type, name, valueOrPort, p2, p3, p4)
     {
-        const uni = new Uniform(this, type, name, valueOrPort, p2, p3, p4);
+        const uni = new cgl_shader_uniform.Uniform(this, type, name, valueOrPort, p2, p3, p4);
         uni.shaderType = "vert";
         return uni;
     }
@@ -18842,7 +23618,7 @@ class CglShader extends CgShader
      */
     addUniformBoth(type, name, valueOrPort, p2, p3, p4)
     {
-        const uni = new Uniform(this, type, name, valueOrPort, p2, p3, p4);
+        const uni = new cgl_shader_uniform.Uniform(this, type, name, valueOrPort, p2, p3, p4);
         uni.shaderType = "both";
         return uni;
     }
@@ -18873,7 +23649,7 @@ class CglShader extends CgShader
             const member = members[i];
             if (!this.hasUniform(uniformName + "." + member.name))
             {
-                const uni = new Uniform(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
+                const uni = new cgl_shader_uniform.Uniform(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
                 uni.shaderType = "frag";
                 uniforms[uniformName + "." + member.name] = uni;
             }
@@ -18907,7 +23683,7 @@ class CglShader extends CgShader
             const member = members[i];
             if (!this.hasUniform(uniformName + "." + member.name))
             {
-                const uni = new Uniform(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
+                const uni = new cgl_shader_uniform.Uniform(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
                 uni.shaderType = "vert";
                 uniforms[uniformName + "." + member.name] = uni;
             }
@@ -18944,7 +23720,7 @@ class CglShader extends CgShader
                 this._log.error("Adding an integer struct member to both shaders can potentially error. Please use different structs for each shader. Error occured in struct:", structName, " with member:", member.name, " of type:", member.type, ".");
             if (!this.hasUniform(uniformName + "." + member.name))
             {
-                const uni = new Uniform(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
+                const uni = new cgl_shader_uniform.Uniform(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
                 uni.shaderType = "both";
                 uniforms[uniformName + "." + member.name] = uni;
             }
@@ -19256,12 +24032,12 @@ CglShader.getDefaultFragmentShader = getDefaultFragmentShader;
 CglShader.getErrorFragmentShader = function ()
 {
     return ""
-        + nl + "void main()"
-        + nl + "{"
-        + nl + "   float g=mod((gl_FragCoord.y+gl_FragCoord.x),50.0)/50.0;"
-        + nl + "   g= step(0.1,g);"
-        + nl + "   outColor = vec4( g+0.5, 0.0, 0.0, 1.0);"
-        + nl + "}";
+        + constants.nl + "void main()"
+        + constants.nl + "{"
+        + constants.nl + "   float g=mod((gl_FragCoord.y+gl_FragCoord.x),50.0)/50.0;"
+        + constants.nl + "   g= step(0.1,g);"
+        + constants.nl + "   outColor = vec4( g+0.5, 0.0, 0.0, 1.0);"
+        + constants.nl + "}";
 };
 
 /**
@@ -19290,718 +24066,84 @@ CglShader.createShader = function (cgl, str, type, cglShader)
             cglShader._log.warn("empty shader info log", this._name);
             return;
         }
-
         cglShader.setSource(CglShader.getDefaultVertexShader(), CglShader.getErrorFragmentShader());
-
-        // CABLES.UI.showShaderError(shader);
-
     }
     return shader;
 };
 
 
 
-;// CONCATENATED MODULE: ./src/core/cg/cg_canvas.js
+;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_utils.js
+/**
+ * @namespace CGL
+ */
 
+/**
+ * multiply to get radians from degree, e.g. `360 * CGL.DEG2RAD`
+ * @const {Number}
+ * @memberof CGL
+ * @static
+ */
+const DEG2RAD = Math.PI / 180.0;
 
-class CgCanvas
+/**
+ * to get degrees from radians, e.g. `3.14 * CGL.RAD2DEG`
+ * @const {number}
+ * @memberof CGL
+ */
+const RAD2DEG = 180.0 / Math.PI;
+
+const onLoadingAssetsFinished = null; // deprecated / remove later
+
+/**
+ * get normalized mouse wheel delta (including browser specific adjustment)
+ * @function getWheelDelta
+ * @static
+ * @memberof CGL
+ * @param {MouseEvent} event
+ * @return {Number} normalized delta
+ */
+const isWindows = window.navigator.userAgent.includes("Windows");
+const getWheelDelta_ = function (event)
 {
-    constructor(options)
+    let normalized;
+    if (event.wheelDelta)
     {
-        this._log = new Logger("CgCanvas");
-        if (!options)
-        {
-            this._log.error("CgCanvas no options");
-        }
-        else
-        {
-            this._canvasEle = options.canvasEle;
-        }
-
-        if (!options.cg) this._log.error("CgCanvas options has no cg");
-        if (!options.canvasEle) this._log.error("CgCanvas options has no canvasEle");
-
-        this._cg = options.cg;
-        this.pixelDensity = 1;
-        this.canvasWidth = this.canvasEle.clientWidth;
-        this.canvasHeight = this.canvasEle.clientHeight;
-
-        this._oldWidthRp = -1;
-        this._oldHeightRp = -1;
-
-        this.setSize(this.canvasWidth, this.canvasHeight);
+        // chrome
+        normalized = (event.wheelDelta % 120) - 0 == -0 ? event.wheelDelta / 120 : event.wheelDelta / 30;
+        normalized *= -1.5;
+        if (isWindows) normalized *= 2;
+    }
+    else
+    {
+        // firefox
+        let d = event.deltaY;
+        if (event.shiftKey) d = event.deltaX;
+        const rawAmmount = d || event.detail;
+        normalized = -(rawAmmount % 3 ? rawAmmount * 10 : rawAmmount / 3);
+        normalized *= -3;
     }
 
-    get canvasEle() { return this._canvasEle; }
-
-    setWhyCompile(why)
-    {
-        this._compileReason = why;
-    }
-
-    /**
-     * @param {Number} w
-     * @param {Number} h
-     * @param {any} ignorestyle
-     * @returns {any}
-     */
-    setSize(w, h, ignorestyle = false)
-    {
-        if (this._oldWidthRp != w * this.pixelDensity || this._oldHeightRp != h * this.pixelDensity)
-        {
-            this._oldWidthRp = this.canvasEle.width = w * this.pixelDensity;
-            this._oldHeightRp = this.canvasEle.height = h * this.pixelDensity;
-
-            if (!ignorestyle)
-            {
-                this.canvasEle.style.width = w + "px";
-                this.canvasEle.style.height = h + "px";
-            }
-
-            this.updateSize();
-
-            this._cg.emitEvent("resize");
-        }
-    }
-
-    updateSize()
-    {
-        this.canvasEle.width = this.canvasWidth = this.canvasEle.clientWidth * this.pixelDensity;
-        this.canvasEle.height = this.canvasHeight = this.canvasEle.clientHeight * this.pixelDensity;
-    }
-
-    dispose()
-    {
-        if (this._canvasEle) this._canvasEle.remove();
-        this._canvasEle = null;
-    }
-}
-
-
-
-;// CONCATENATED MODULE: ./src/core/cg/cg_matrixstack.js
-
-
-class MatrixStack
-{
-    constructor()
-    {
-        this._arr = [mat4_create()];
-        this._index = 0;
-        this.stateCounter = 0;
-    }
-
-    /**
-     * @param {mat4} m
-     */
-    push(m)
-    {
-        this._index++;
-        this.stateCounter++;
-
-        if (this._index == this._arr.length)
-        {
-            const copy = mat4_create();
-            this._arr.push(copy);
-        }
-
-        mat4_copy(this._arr[this._index], m || this._arr[this._index - 1]);
-
-        return this._arr[this._index];
-    }
-
-    pop()
-    {
-        this.stateCounter++;
-
-        this._index--;
-        if (this._index < 0) this._index = 0;
-
-        return this._arr[this._index];
-    }
-
-    length()
-    {
-        return this._index;
-    }
-}
-
-
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_profiledata.js
-class ProfileData
-{
-    constructor(cgl)
-    {
-        this._cgl = cgl;
-        this._lastTime = 0;
-        this.pause = false;
-        this.profileUniformCount = 0;
-        this.profileShaderBinds = 0;
-        this.profileUniformCount = 0;
-        this.profileShaderCompiles = 0;
-        this.profileVideosPlaying = 0;
-        this.profileMVPMatrixCount = 0;
-        this.profileEffectBuffercreate = 0;
-        this.profileShaderGetUniform = 0;
-        this.profileFrameBuffercreate = 0;
-        this.profileMeshSetGeom = 0;
-        this.profileTextureNew = 0;
-        this.profileGenMipMap = 0;
-        this.profileOnAnimFrameOps = 0;
-
-        this.profileFencedPixelRead = 0;
-        this.profileMainloopMs = 0;
-        this.profileMeshDraw = 0;
-        this.profileTextureEffect = 0;
-        this.profileTexPreviews = 0;
-        this.shaderCompileTime = 0;
-        this.profileMeshNumElements = 0;
-        this.profileMeshAttributes = 0;
-        this.profileSingleMeshAttribute = [];
-        this.heavyEvents = [];
-
-        this.doProfileGlQuery = false;
-        this.glQueryData = {};
-        this.counts = {};
-    }
-
-    clear()
-    {
-        this.counts = {};
-        this.profileSingleMeshAttribute = {};
-        this.profileMeshAttributes = 0;
-        this.profileUniformCount = 0;
-        this.profileShaderGetUniform = 0;
-        this.profileShaderCompiles = 0;
-        this.profileShaderBinds = 0;
-        this.profileTextureResize = 0;
-        this.profileFrameBuffercreate = 0;
-        this.profileEffectBuffercreate = 0;
-        this.profileTextureDelete = 0;
-        this.profileMeshSetGeom = 0;
-        this.profileVideosPlaying = 0;
-        this.profileMVPMatrixCount = 0;
-        this.profileNonTypedAttrib = 0;
-        this.profileNonTypedAttribNames = "";
-        this.profileTextureNew = 0;
-        this.profileGenMipMap = 0;
-        this.profileFramebuffer = 0;
-        this.profileMeshDraw = 0;
-        this.profileTextureEffect = 0;
-        this.profileTexPreviews = 0;
-        this.profileMeshNumElements = 0;
-        this.profileFencedPixelRead = 0;
-    }
-
-    clearGlQuery()
-    {
-        for (let i in this.glQueryData)
-        {
-            if (!this.glQueryData[i].lastClear || performance.now() - this.glQueryData[i].lastClear > 1000)
-            {
-                this.glQueryData[i].time = this.glQueryData[i]._times / this.glQueryData[i]._numcount;
-                this.glQueryData[i].num = this.glQueryData[i]._numcount;
-
-                this.glQueryData[i]._times = 0;
-                this.glQueryData[i]._numcount = 0;
-                this.glQueryData[i].lastClear = performance.now();
-            }
-        }
-    }
-
-    /**
-     * @param {string} event
-     * @param {string} name
-     */
-    count(event, name)
-    {
-        this.counts[event] = this.counts[event] || [];
-        this.counts[event].push(name);
-    }
-
-    /**
-     * @param {string} event
-     * @param {string} name
-     * @param {string} [info]
-     */
-    addHeavyEvent(event, name, info)
-    {
-        const e = { "event": event, "name": name, "info": info, "date": performance.now() };
-        this.heavyEvents.push(e);
-        this._cgl.emitEvent("heavyEvent", e);
-    }
-}
-
-
-
-;// CONCATENATED MODULE: ./src/core/cg/cg_state.js
-
-
-
-
-
-
-
-class CgContext extends Events
-{
-
-    static API_WEBGL = 0;
-    static API_WEBGPU = 1;
-
-    gApi = "unknown";
-
-    /**
-     * Description
-     * @param {Patch} _patch
-     */
-    constructor(_patch)
-    {
-        super();
-
-        this._log = new Logger("cg_context", { "onError": _patch.config.onError });
-
-        /** @type {object} */
-        this.tempData = this.frameStore = this.frameStore || {};
-        this.fpsCounter = new CABLES.CG.FpsCounter();
-        this._identView = vec3_create();
-        this._ident = vec3_create();
-        vec3_set(this._identView, 0, 0, -2);
-        vec3_set(this._ident, 0, 0, 0);
-        this._onetimeCallbacks = [];
-        this.maxTexSize = 2048;
-        this._viewPort = [0, 0, 1, 1];
-        this._viewPortStack = [];
-        this.patch = _patch;
-        this.autoReSize = true;
-
-        this.DEPTH_COMPARE_FUNC_NEVER = 0;
-        this.DEPTH_COMPARE_FUNC_LESS = 1;
-        this.DEPTH_COMPARE_FUNC_EQUAL = 2;
-        this.DEPTH_COMPARE_FUNC_LESSEQUAL = 3;
-        this.DEPTH_COMPARE_FUNC_GREATER = 4;
-        this.DEPTH_COMPARE_FUNC_NOTEQUAL = 5;
-        this.DEPTH_COMPARE_FUNC_GREATEREQUAL = 6;
-        this.DEPTH_COMPARE_FUNC_ALWAYS = 7;
-
-        this.profileData = new ProfileData(this);
-
-        /**
-         * Current projection matrix
-         * @memberof Context
-         * @instance
-         * @type {mat4}
-         */
-        this.pMatrix = mat4_create();
-
-        /**
-         * Current model matrix
-         * @memberof Context
-         * @instance
-         * @type {mat4}
-         */
-        this.mMatrix = mat4_create();
-
-        /**
-         * Current view matrix
-         * @memberof Context
-         * @instance
-         * @type {mat4}
-         */
-        this.vMatrix = mat4_create();
-        this._textureslots = [];
-
-        this._pMatrixStack = new MatrixStack();
-        this._mMatrixStack = new MatrixStack();
-        this._vMatrixStack = new MatrixStack();
-
-        this.canvasScale = 1;
-
-        mat4_identity(this.mMatrix);
-        mat4_identity(this.vMatrix);
-
-        window.matchMedia("screen and (min-resolution: 2dppx)")
-            .addEventListener("change", () =>
-            {
-                this.emitEvent("resize");
-            });
-    }
-
-    get canvasWidth()
-    {
-        return this.cgCanvas.canvasWidth;
-    }
-
-    get canvasHeight()
-    {
-        return this.cgCanvas.canvasHeight;
-    }
-
-    set pixelDensity(p)
-    {
-        if (this.cgCanvas.pixelDensity != p)
-        {
-            this.cgCanvas.pixelDensity = p;
-            this.cgCanvas.updateSize();
-            this.emitEvent("resize");
-        }
-    }
-
-    get pixelDensity()
-    {
-        return this.cgCanvas.pixelDensity;
-    }
-
-    getGApiName()
-    {
-        return ["WebGL", "WebGPU"][this.gApi];
-    }
-
-    get canvas()
-    {
-        return this.cgCanvas.canvasEle;
-    }
-
-    get viewPort()
-    {
-        // TODO: add stack...
-        return [0, 0, this.canvasWidth, this.canvasHeight];
-    }
-
-    /**
-     * @param {HTMLElement} canvEle
-     */
-    setCanvas(canvEle)
-    {
-        if (this.cgCanvas && canvEle == this.cgCanvas.canvasEle) return;
-        if (typeof canvEle === "string") canvEle = document.getElementById(canvEle);
-
-        this.cgCanvas = new CgCanvas({ "canvasEle": canvEle, "cg": this });
-
-        canvEle.parentElement.classList.add("cablesContainer");
-        if (this._setCanvas) this._setCanvas(canvEle);
-
-        this.updateSize();
-    }
-
-    /**
-     * @param {HTMLElement} _canvEle
-     */
-    _setCanvas(_canvEle)
-    {
-    }
-
-    updateSize()
-    {
-        this.cgCanvas.updateSize();
-    }
-
-    /**
-     * @param {number} w
-     * @param {number} h
-     * @param {boolean} ignorestyle
-     */
-    setSize(w, h, ignorestyle = false)
-    {
-        this.cgCanvas.setSize(w, h, ignorestyle);
-    }
-
-    _resizeToWindowSize()
-    {
-        if (this.autoReSize)
-        {
-            this.setSize(window.innerWidth, window.innerHeight);
-            this.updateSize();
-        }
-    }
-
-    _resizeToParentSize()
-    {
-        if (this.autoReSize)
-        {
-            const p = this.canvas.parentElement;
-            if (!p)
-            {
-                this._log.error("cables: can not resize to container element");
-                return;
-            }
-
-            this.setSize(p.clientWidth, p.clientHeight);
-            this.updateSize();
-        }
-    }
-
-    setAutoResize(parent)
-    {
-        window.removeEventListener("resize", this._resizeToWindowSize.bind(this));
-        window.removeEventListener("resize", this._resizeToParentSize.bind(this));
-
-        if (parent == "window")
-        {
-            window.addEventListener("resize", this._resizeToWindowSize.bind(this));
-            window.addEventListener("orientationchange", this._resizeToWindowSize.bind(this));
-            this._resizeToWindowSize();
-        }
-        if (parent == "parent")
-        {
-            window.addEventListener("resize", this._resizeToParentSize.bind(this));
-            this._resizeToParentSize();
-        }
-    }
-
-    /**
-     * push a matrix to the projection matrix stack
-     * @function pushPMatrix
-     * @memberof Context
-     * @instance
-     */
-    pushPMatrix()
-    {
-        this.pMatrix = this._pMatrixStack.push(this.pMatrix);
-    }
-
-    /**
-      * pop projection matrix stack
-      * @function popPMatrix
-      * @memberof Context
-      * @instance
-      * @returns {mat4} current projectionmatrix
-      */
-    popPMatrix()
-    {
-        this.pMatrix = this._pMatrixStack.pop();
-        return this.pMatrix;
-    }
-
-    getProjectionMatrixStateCount()
-    {
-        return this._pMatrixStack.stateCounter;
-    }
-
-    /**
-      * push a matrix to the model matrix stack
-      * @function pushModelMatrix
-      * @memberof Context
-      * @instance
-      * @example
-      * // see source code of translate op:
-      * cgl.pushModelMatrix();
-      * mat4.translate(cgl.mMatrix,cgl.mMatrix, vec);
-      * trigger.trigger();
-      * cgl.popModelMatrix();
-      */
-    pushModelMatrix()
-    {
-        this.mMatrix = this._mMatrixStack.push(this.mMatrix);
-    }
-
-    /**
-      * pop model matrix stack
-      * @function popModelMatrix
-      * @memberof Context
-      * @instance
-      * @returns {mat4} current modelmatrix
-      */
-    popModelMatrix()
-    {
-        // todo: DEPRECATE
-        // if (this._mMatrixStack.length === 0) throw "Invalid modelview popMatrix!";
-        this.mMatrix = this._mMatrixStack.pop();
-        return this.mMatrix;
-    }
-
-    /**
-      * get model matrix
-      * @function modelMatrix
-      * @memberof Context
-      * @instance
-      * @returns {mat4} current modelmatrix
-      */
-    modelMatrix()
-    {
-        return this.mMatrix;
-    }
-
-    /**
-     * push a matrix to the view matrix stack
-     * @function pushviewMatrix
-     * @memberof Context
-     * @instance
-     */
-    pushViewMatrix()
-    {
-        this.vMatrix = this._vMatrixStack.push(this.vMatrix);
-    }
-
-    /**
-      * pop view matrix stack
-      * @function popViewMatrix
-      * @memberof Context
-      * @instance
-      * @returns {mat4} current viewmatrix
-      * @function
-      */
-    popViewMatrix()
-    {
-        this.vMatrix = this._vMatrixStack.pop();
-    }
-
-    getViewMatrixStateCount()
-    {
-        return this._vMatrixStack.stateCounter;
-    }
-
-    /**
-     * @param {vec3} identTranslate
-     * @param {vec3} identTranslateView
-     */
-    _startMatrixStacks(identTranslate, identTranslateView)
-    {
-        identTranslate = identTranslate || this._ident;
-        identTranslateView = identTranslateView || this._identView;
-
-        perspective(this.pMatrix, 45, this.canvasWidth / this.canvasHeight, 0.1, 1000.0);
-
-        mat4_identity(this.mMatrix);
-        mat4_identity(this.vMatrix);
-        mat4_translate(this.mMatrix, this.mMatrix, identTranslate);
-        mat4_translate(this.vMatrix, this.vMatrix, identTranslateView);
-
-        this.pushPMatrix();
-        this.pushModelMatrix();
-        this.pushViewMatrix();
-    }
-
-    _endMatrixStacks()
-    {
-        this.popViewMatrix();
-        this.popModelMatrix();
-        this.popPMatrix();
-    }
-
-    dispose()
-    {
-        this.aborted = true;
-        if (this.cgCanvas) this.cgCanvas.dispose();
-        if (this._dispose) this._dispose();
-    }
-
-    _dispose()
-    {
-    }
-
-    /**
-     * @param {any} _op
-     */
-    shouldDrawHelpers(_op)
-    {
-        return false;
-    }
-
-    /**
-     * execute the callback next frame, once
-     * @param {function} cb
-     */
-    addNextFrameOnceCallback(cb)
-    {
-        if (cb && this._onetimeCallbacks.indexOf(cb) == -1) this._onetimeCallbacks.push(cb);
-    }
-
-    _execOneTimeCallbacks()
-    {
-        if (this._onetimeCallbacks.length > 0)
-        {
-            for (let i = 0; i < this._onetimeCallbacks.length; i++) this._onetimeCallbacks[i]();
-            this._onetimeCallbacks.length = 0;
-        }
-    }
-
-    /**
-     * @param {number} x
-     */
-    checkTextureSize(x)
-    {
-        x = x || 1;
-        x = Math.floor(x);
-        x = Math.min(x, this.maxTexSize);
-        x = Math.max(x, 1);
-        return x;
-    }
-
-    // should be overwritten...
-    screenShot(cb, doScreenshotClearAlpha, mimeType, quality)
-    {
-        console.log("no screenshot function implemented");
-    }
-
-    /**
-     * @param {string} [filename]
-     * @param {function} [cb]
-     * @param {number} [pw]
-     * @param {number} [ph]
-     * @param {boolean} [noclearalpha]
-     */
-    saveScreenshot(filename, cb, pw, ph, noclearalpha)
-    {
-        this.patch.renderOneFrame();
-
-        let w = this.canvas.clientWidth * this.pixelDensity;
-        let h = this.canvas.clientHeight * this.pixelDensity;
-
-        if (pw)
-        {
-            this.canvas.width = pw;
-            w = pw;
-        }
-        if (ph)
-        {
-            this.canvas.height = ph;
-            h = ph;
-        }
-
-        function padLeft(nr, n, str)
-        {
-            return Array(n - String(nr).length + 1).join(str || "0") + nr;
-        }
-
-        const d = new Date();
-        const dateStr = "".concat(String(d.getFullYear()) + String(d.getMonth() + 1) + String(d.getDate()), "_").concat(padLeft(d.getHours(), 2)).concat(padLeft(d.getMinutes(), 2)).concat(padLeft(d.getSeconds(), 2));
-
-        if (!filename) filename = "cables_" + dateStr + ".png";
-        else filename += ".png";
-
-        this.screenShot((blob) =>
-        {
-            this.canvas.width = w;
-            this.canvas.height = h;
-
-            if (blob)
-            {
-                const anchor = document.createElement("a");
-
-                anchor.download = filename;
-                anchor.href = URL.createObjectURL(blob);
-
-                console.log("scrrenshot");
-                setTimeout(function ()
-                {
-                    anchor.click();
-                    if (cb) cb(blob);
-                }, 100);
-            }
-            else
-            {
-                this._log.log("screenshot: no blob");
-            }
-        });
-    }
-
-}
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_state.js
-
-
-
+    if (normalized > 20) normalized = 20;
+    if (normalized < -20) normalized = -20;
+
+    return normalized;
+};
+
+const getWheelSpeed = getWheelDelta_;
+const getWheelDelta = getWheelDelta_;
+
+// EXTERNAL MODULE: ./src/corelibs/cgl/cgl_profiledata.js
+var cgl_profiledata = __webpack_require__("./src/corelibs/cgl/cgl_profiledata.js");
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_geom.js
+var cg_geom = __webpack_require__("./src/corelibs/cg/cg_geom.js");
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_boundingbox.js
+var cg_boundingbox = __webpack_require__("./src/corelibs/cg/cg_boundingbox.js");
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_matrixstack.js
+var cg_matrixstack = __webpack_require__("./src/corelibs/cg/cg_matrixstack.js");
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_context.js
+var cg_context = __webpack_require__("./src/corelibs/cg/cg_context.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_state.js
 
 
 
@@ -20027,13 +24169,13 @@ const BLENDS = {
  * @hideconstructor
  */
 // const Context(_patch)
-class CglContext extends CgContext
+class CglContext extends cg_context.CgContext
 {
     constructor(_patch)
     {
         super(_patch);
 
-        this.gApi = CgContext.API_WEBGL;
+        this.gApi = cg_context.CgContext.API_WEBGL;
         this.aborted = false;
 
         /** @deprecated */
@@ -20041,7 +24183,7 @@ class CglContext extends CgContext
         /** @deprecated */
         this.popMvMatrix = this.popmMatrix = this.popModelMatrix;// deprecated and wrong... still used??
 
-        this._log = new Logger("cgl_context", { "onError": _patch.config.onError });
+        this._log = new logger["default"]("cgl_context", { "onError": _patch.config.onError });
 
         this.glVersion = 0;
         this.glUseHalfFloatTex = false;
@@ -20578,7 +24720,7 @@ class CglContext extends CgContext
 
         this._startMatrixStacks(identTranslate, identTranslateView);
 
-        cgl.pushBlendMode(constants_CONSTANTS.BLEND_MODES.BLEND_NORMAL, false);
+        cgl.pushBlendMode(constants.CONSTANTS.BLEND_MODES.BLEND_NORMAL, false);
 
         for (let i = 0; i < this._textureslots.length; i++) this._textureslots[i] = null;
 
@@ -20637,6 +24779,9 @@ class CglContext extends CgContext
         if (!this._frameStarted)
         {
             this._log.warn("frame not started " + string);
+
+            Error.stackTraceLimit = 25;
+            utils.logStack();
             this.patch.printTriggerStack();
         }
     }
@@ -20982,7 +25127,7 @@ class CglContext extends CgContext
 
         const n = this._stackBlendMode.length - 1;
 
-        this.pushBlend(this._stackBlendMode[n] !== constants_CONSTANTS.BLEND_MODES.BLEND_NONE);
+        this.pushBlend(this._stackBlendMode[n] !== constants.CONSTANTS.BLEND_MODES.BLEND_NONE);
         this._setBlendMode(this._stackBlendMode[n], this._stackBlendModePremul[n]);
     }
 
@@ -21056,26 +25201,18 @@ class CglContext extends CgContext
     {
         if (this.tempData.shadowPass) return false;
         if (!op.patch.isEditorMode()) return false;
-
-        // const fb = this.getCurrentFrameBuffer();
-        // if (fb && fb.getWidth)
-        // {
-        //     const fbshould = this.canvasWidth / this.canvasHeight == fb.getWidth() / fb.getHeight();
-        //     if (!fbshould) return false;
-        // }
-
-        return gui.shouldDrawOverlay;// || (CABLES.UI.renderHelperCurrent && op.isCurrentUiOp());
+        return gui.shouldDrawOverlay;
     }
 
     _setBlendMode(blendMode, premul)
     {
         const gl = this.gl;
 
-        if (blendMode == constants_CONSTANTS.BLEND_MODES.BLEND_NONE)
+        if (blendMode == constants.CONSTANTS.BLEND_MODES.BLEND_NONE)
         {
             // this.gl.disable(this.gl.BLEND);
         }
-        else if (blendMode == constants_CONSTANTS.BLEND_MODES.BLEND_ADD)
+        else if (blendMode == constants.CONSTANTS.BLEND_MODES.BLEND_ADD)
         {
             if (premul)
             {
@@ -21088,7 +25225,7 @@ class CglContext extends CgContext
                 gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
             }
         }
-        else if (blendMode == constants_CONSTANTS.BLEND_MODES.BLEND_SUB)
+        else if (blendMode == constants.CONSTANTS.BLEND_MODES.BLEND_SUB)
         {
             if (premul)
             {
@@ -21101,7 +25238,7 @@ class CglContext extends CgContext
                 gl.blendFunc(gl.ZERO, gl.ONE_MINUS_SRC_COLOR);
             }
         }
-        else if (blendMode == constants_CONSTANTS.BLEND_MODES.BLEND_MUL)
+        else if (blendMode == constants.CONSTANTS.BLEND_MODES.BLEND_MUL)
         {
             if (premul)
             {
@@ -21114,7 +25251,7 @@ class CglContext extends CgContext
                 gl.blendFunc(gl.ZERO, gl.SRC_COLOR);
             }
         }
-        else if (blendMode == constants_CONSTANTS.BLEND_MODES.BLEND_NORMAL)
+        else if (blendMode == constants.CONSTANTS.BLEND_MODES.BLEND_NORMAL)
         {
             if (premul)
             {
@@ -21139,8 +25276,8 @@ class CglContext extends CgContext
      */
     createMesh(geom, options)
     {
-        if (CABLES.isNumeric(options))options = { "glPrimitive": options }; // old constructor fallback...
-        return new Mesh(this, geom, options);
+        if (utils.isNumeric(options))options = { "glPrimitive": options }; // old constructor fallback...
+        return new cgl_mesh.Mesh(this, geom, options);
     }
 
     /**
@@ -21189,7 +25326,7 @@ class CglContext extends CgContext
 
 }
 
-;// CONCATENATED MODULE: ./src/core/core_patch.js
+;// CONCATENATED MODULE: ./src/corelibs/cgl/index.js
 
 
 
@@ -21201,2293 +25338,116 @@ class CglContext extends CgContext
 
 
 
-/** @global CABLES.OPS  */
 
-/**
- * @typedef {import("./core_op.js").OpUiAttribs} OpUiAttribs
- */
 
-/**
- * @typedef PatchConfig
- * @property {String} [prefixAssetPath=''] prefix for path to assets
- * @property {String} [assetPath=''] path to assets
- * @property {String} [jsPath=''] path to javascript files
- * @property {String} [glCanvasId='glcanvas'] dom element id of canvas element
- * @property {Function} [onError=null] called when an error occurs
- * @property {Function} [onFinishedLoading=null] called when patch finished loading all assets
- * @property {Function} [onFirstFrameRendered=null] called when patch rendered it's first frame
- * @property {Boolean} [glCanvasResizeToWindow=false] resize canvas automatically to window size
- * @property {Boolean} [glCanvasResizeToParent] resize canvas automatically to parent element
- * @property {Boolean} [doRequestAnimation=true] do requestAnimationFrame set to false if you want to trigger exec() from outside (only do if you know what you are doing)
- * @property {Boolean} [clearCanvasColor=true] clear canvas in transparent color every frame
- * @property {Boolean} [clearCanvasDepth=true] clear depth every frame
- * @property {Boolean} [glValidateShader=true] enable/disable validation of shaders *
- * @property {Boolean} [silent=false]
- * @property {Number} [fpsLimit=0] 0 for maximum possible frames per second
- * @property {String} [glslPrecision='mediump'] default precision for glsl shader
- * @property {String} [prefixJsPath]
- * @property {Function} [onPatchLoaded]
- * @property {Object} [canvas]
- * @property {Object} [patch]
- * @property {String} [patchFile]
- * @property {String} [subPatch] internal use
- * @property {Number} [masterVolume] 0 for maximum possible frames per second
- * @property {HTMLCanvasElement} [glCanvas]
-*/
 
-/**
- * @typedef CoreOp
- * @type Op
- */
 
-/**
- * @template {CoreOp} Op
- *
- * Patch class, contains all operators,values,links etc. manages loading and running of the whole patch
- *
- * see {@link PatchConfig}
- *
- * @example
- * CABLES.patch=new CABLES.Patch(
- * {
- *     patch:pStr,
- *     glCanvasId:'glcanvas',
- *     glCanvasResizeToWindow:true,
- *     canvas:{powerPreference:"high-performance"},
- *     prefixAssetPath:'/assets/',
- *     prefixJsPath:'/js/',
- *     onError:function(e){console.log(e);}
- *     glslPrecision:'highp'
- * });
- */
-class Patch extends Events
-{
-    static EVENT_OP_DELETED = "onOpDelete";
-    static EVENT_OP_ADDED = "onOpAdd";
-    static EVENT_PAUSE = "pause";
-    static EVENT_RESUME = "resume";
-    static EVENT_PATCHLOADEND = "patchLoadEnd";
-    static EVENT_VARIABLES_CHANGED = "variablesChanged";
 
-    #renderOneFrame = false;
-    #initialDeserialize = true;
 
-    /** @param {PatchConfig} cfg */
-    constructor(cfg)
-    {
-        super();
-
-        this._log = new Logger("core_patch", { "onError": cfg.onError });
-
-        /** @type {Array<Op>} */
-        this.ops = [];
-        this.settings = {};
-
-        /** @type {PatchConfig} */
-        this.config = cfg ||
-        {
-            "glCanvasResizeToWindow": false,
-            "prefixAssetPath": "",
-            "prefixJsPath": "",
-            "silent": true,
-            "onError": null,
-            "onFinishedLoading": null,
-            "onFirstFrameRendered": null,
-            "onPatchLoaded": null,
-            "fpsLimit": 0,
-
-        };
-
-        this.timer = new Timer();
-        this.freeTimer = new Timer();
-        this.animFrameOps = [];
-        this.animFrameCallbacks = [];
-        this.gui = false;
-        CABLES.logSilent = this.silent = true;
-        this.profiler = null;
-        this.aborted = false;
-        this._crashedOps = [];
-
-        this._animReq = null;
-        this._opIdCache = {};
-        this._triggerStack = [];
-        this.storeObjNames = false; // remove after may release
-
-        /** @type {LoadingStatus} */
-        this.loading = new LoadingStatus(this);
-
-        this._volumeListeners = [];
-        this._paused = false;
-        this._frameNum = 0;
-        this.onOneFrameRendered = null;
-        this.namedTriggers = {};
-
-        this._origData = null;
-        this._frameNext = 0;
-        this._frameInterval = 0;
-        this._lastFrameTime = 0;
-        this._frameWasdelayed = true;
-        this.tempData = this.frameStore = {};
-        this.reqAnimTimeStamp = 0;
-
-        this.cgCanvas = null;
-
-        if (!(function () { return !this; }())) console.log("not in strict mode: core patch");
-
-        if (this.config.hasOwnProperty("silent")) this.silent = CABLES.logSilent = this.config.silent;
-        if (!this.config.hasOwnProperty("doRequestAnimation")) this.config.doRequestAnimation = true;
-
-        if (!this.config.prefixAssetPath) this.config.prefixAssetPath = "";
-        if (!this.config.prefixJsPath) this.config.prefixJsPath = "";
-        if (!this.config.masterVolume) this.config.masterVolume = 1.0;
-
-        this._variables = {};
-
-        this.vars = {};
-        if (cfg && cfg.vars) this.vars = cfg.vars; // vars is old!
-
-        this.cgl = new CglContext(this);
-        this.cgp = null;
-
-        this._subpatchOpCache = {};
-
-        this.cgl.setCanvas(this.config.glCanvasId || this.config.glCanvas || "glcanvas");
-        if (this.config.glCanvasResizeToWindow === true) this.cgl.setAutoResize("window");
-        if (this.config.glCanvasResizeToParent === true) this.cgl.setAutoResize("parent");
-        this.loading.setOnFinishedLoading(this.config.onFinishedLoading);
-
-        if (this.cgl.aborted) this.aborted = true;
-        if (this.cgl.silent) this.silent = true;
-
-        if (!CABLES.OPS)
-        {
-            this.aborted = true;
-            throw new Error("no CABLES.OPS found");
-        }
-        this.freeTimer.play();
-        this.exec();
-
-        if (!this.aborted)
-        {
-            if (this.config.patch)
-            {
-                this.deSerialize(this.config.patch);
-            }
-            else if (this.config.patchFile)
-            {
-                ajax(
-                    this.config.patchFile,
-                    (err, _data) =>
-                    {
-                        try
-                        {
-                            const data = JSON.parse(_data);
-                            if (err)
-                            {
-                                const txt = "";
-                                this._log.error("err", err);
-                                this._log.error("data", data);
-                                this._log.error("data", data.msg);
-                                return;
-                            }
-                            this.deSerialize(data);
-                        }
-                        catch (e)
-                        {
-                            this._log.error("could not load/parse patch ", e);
-                        }
-                    }
-                );
-            }
-            this.timer.play();
-        }
-
-        console.log("made with https://cables.gl"); // eslint-disable-line
-
-    }
-
-    isPlaying()
-    {
-        return !this._paused;
-    }
-
-    /** @deprecated */
-    renderOneFrame()
-    {
-        this._paused = true;
-        this._renderOneFrame = true;
-        this.exec();
-        this._renderOneFrame = false;
-    }
-
-    /**
-     * returns true if patch is opened in editor/gui mode
-     * @function isEditorMode
-     * @memberof Patch
-     * @instance
-     * @return {Boolean} editor mode
-     */
-    isEditorMode()
-    {
-        return this.config.editorMode === true;
-    }
-
-    /**
-     * pauses patch execution
-     * @function pause
-     * @memberof Patch
-     * @instance
-     */
-    pause()
-    {
-        cancelAnimationFrame(this._animReq);
-        this.emitEvent(Patch.EVENT_PAUSE);
-        this._animReq = null;
-        this._paused = true;
-        this.freeTimer.pause();
-    }
-
-    /**
-     * resumes patch execution
-     * @function resume
-     * @memberof Patch
-     * @instance
-     */
-    resume()
-    {
-        if (this._paused)
-        {
-            cancelAnimationFrame(this._animReq);
-            this._paused = false;
-            this.freeTimer.play();
-            this.emitEvent(Patch.EVENT_RESUME);
-            this.exec();
-        }
-    }
-
-    /**
-     * set volume [0-1]
-     * @function setVolume
-     * @param {Number} v volume
-     * @memberof Patch
-     * @instance
-     */
-    setVolume(v)
-    {
-        this.config.masterVolume = v;
-        for (let i = 0; i < this._volumeListeners.length; i++) this._volumeListeners[i].onMasterVolumeChanged(v);
-    }
-
-    /**
-     * get asset path
-     * @function getAssetPath
-     * @memberof Patch
-     * @param patchId
-     * @instance
-     */
-    getAssetPath(patchId = null)
-    {
-        if (this.config.hasOwnProperty("assetPath"))
-        {
-            return this.config.assetPath;
-        }
-        else if (this.isEditorMode())
-        {
-            let id = patchId || gui.project()._id;
-            return "/assets/" + id + "/";
-        }
-        else if (document.location.href.indexOf("cables.gl") > 0 || document.location.href.indexOf("cables.local") > 0)
-        {
-            const parts = document.location.pathname.split("/");
-            let id = patchId || parts[parts.length - 1];
-            return "/assets/" + id + "/";
-        }
-        else
-        {
-            return "assets/";
-        }
-    }
-
-    /**
-     * get js path
-     * @function getJsPath
-     * @memberof Patch
-     * @instance
-     */
-    getJsPath()
-    {
-        if (this.config.hasOwnProperty("jsPath"))
-        {
-            return this.config.jsPath;
-        }
-        else
-        {
-            return "js/";
-        }
-    }
-
-    /**
-     * get url/filepath for a filename
-     * this uses prefixAssetpath in exported patches
-     * @function getFilePath
-     * @memberof Patch
-     * @instance
-     * @param {String} filename
-     * @return {String} url
-     */
-    getFilePath(filename)
-    {
-        if (!filename) return filename;
-        filename = String(filename);
-        if (filename.indexOf("https:") === 0 || filename.indexOf("http:") === 0) return filename;
-        if (filename.indexOf("data:") === 0) return filename;
-        if (filename.indexOf("file:") === 0) return filename;
-        filename = filename.replace("//", "/");
-        if (filename.startsWith(this.config.prefixAssetPath)) filename = filename.replace(this.config.prefixAssetPath, "");
-        return this.config.prefixAssetPath + filename + (this.config.suffixAssetPath || ""); //
-    }
-
-    clear()
-    {
-        this.emitEvent("patchClearStart");
-        this.cgl.TextureEffectMesh = null;
-        this.animFrameOps.length = 0;
-        this.timer = new Timer();
-        while (this.ops.length > 0) this.deleteOp(this.ops[0].id);
-
-        this._opIdCache = {};
-        this.emitEvent("patchClearEnd");
-    }
-
-    /**
-     * @param {string} identifier
-     * @param {string} id
-     * @param {string} [opName]
-     * @returns {Op}
-     */
-    createOp(identifier, id, opName = null)
-    {
-
-        /**
-         * @type {Op}
-         */
-        let op = null;
-        let objName = "";
-
-        try
-        {
-            if (!identifier)
-            {
-                console.error("createop identifier false", identifier);
-                console.log((new Error()).stack);
-                return;
-            }
-            if (identifier.indexOf("Ops.") === -1)
-            {
-
-                /*
-                 * this should be a uuid, not a namespace
-                 * creating ops by id should be the default way from now on!
-                 */
-                const opId = identifier;
-
-                if (CABLES.OPS[opId])
-                {
-                    objName = CABLES.OPS[opId].objName;
-                    op = new CABLES.OPS[opId].f(this, objName, id, opId);
-                    op.opId = opId;
-                }
-                else
-                {
-                    if (opName)
-                    {
-                        identifier = opName;
-                        this._log.warn("could not find op by id: " + opId);
-                    }
-                    else
-                    {
-                        throw new Error("could not find op by id: " + opId, { "cause": "opId:" + opId });
-                    }
-                }
-            }
-
-            if (!op)
-            {
-                // fallback: create by objname!
-                objName = identifier;
-                const parts = identifier.split(".");
-                const opObj = Patch.getOpClass(objName);
-
-                if (!opObj)
-                {
-                    this.emitEvent("criticalError", { "title": "unknown op" + objName, "text": "unknown op: " + objName });
-
-                    this._log.error("unknown op: " + objName);
-                    throw new Error("unknown op: " + objName);
-                }
-                else
-                {
-                    if (parts.length == 2) op = new window[parts[0]][parts[1]](this, objName, id);
-                    else if (parts.length == 3) op = new window[parts[0]][parts[1]][parts[2]](this, objName, id);
-                    else if (parts.length == 4) op = new window[parts[0]][parts[1]][parts[2]][parts[3]](this, objName, id);
-                    else if (parts.length == 5) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]](this, objName, id);
-                    else if (parts.length == 6) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]](this, objName, id);
-                    else if (parts.length == 7) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]](this, objName, id);
-                    else if (parts.length == 8) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]](this, objName, id);
-                    else if (parts.length == 9) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]][parts[8]](this, objName, id);
-                    else if (parts.length == 10) op = new window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]][parts[8]][parts[9]](this, objName, id);
-                    else console.log("parts.length", parts.length);
-                }
-
-                if (op)
-                {
-                    op.opId = null;
-                    for (const i in CABLES.OPS)
-                    {
-                        if (CABLES.OPS[i].objName == objName) op.opId = i;
-                    }
-                }
-            }
-        }
-        catch (e)
-        {
-            this._crashedOps.push(objName);
-
-            this._log.error("[instancing error] " + objName, e);
-
-            if (!this.isEditorMode())
-            {
-                this._log.error("INSTANCE_ERR", "Instancing Error: " + objName, e);
-                // throw new Error("instancing error 1" + objName);
-            }
-        }
-
-        if (op)
-        {
-            op._objName = objName;
-            op.patch = this;
-        }
-        else
-        {
-            this._log.log("no op was created!?", identifier, id);
-        }
-        return op;
-    }
-
-    /**
-     * create a new op in patch
-     * @function addOp
-     * @memberof Patch
-     * @instance
-     * @param {string} opIdentifier uuid or name, e.g. Ops.Math.Sum
-     * @param {OpUiAttribs} uiAttribs Attributes
-     * @param {string} id
-     * @param {boolean} [fromDeserialize]
-     * @param {string} [opName] e.g. Ops.Math.Sum
-     * @example
-     * // add invisible op
-     * patch.addOp('Ops.Math.Sum', { showUiAttribs: false });
-     */
-    addOp(opIdentifier, uiAttribs, id, fromDeserialize = false, opName = null)
-    {
-        const op = this.createOp(opIdentifier, id, opName);
-
-        if (op)
-        {
-            uiAttribs = uiAttribs || {};
-            if (uiAttribs.hasOwnProperty("errors")) delete uiAttribs.errors;
-            if (uiAttribs.hasOwnProperty("error")) delete uiAttribs.error;
-            uiAttribs.subPatch = uiAttribs.subPatch || 0;
-            op.setUiAttribs(uiAttribs);
-            if (op.onCreate) op.onCreate();
-
-            if (op.hasOwnProperty("onAnimFrame")) this.addOnAnimFrame(op);
-            if (op.hasOwnProperty("onMasterVolumeChanged")) this._volumeListeners.push(op);
-
-            if (this._opIdCache[op.id])
-            {
-                this._log.warn("opid with id " + op.id + " already exists in patch!");
-                this.deleteOp(op.id); // strange with subpatch ops: why is this needed, somehow ops get added twice ???.....
-                // return;
-            }
-
-            this.ops.push(op);
-            this._opIdCache[op.id] = op;
-
-            if (this._subPatchCacheAdd) this._subPatchCacheAdd(uiAttribs.subPatch, op);
-            this.emitEvent(Patch.EVENT_OP_ADDED, op, fromDeserialize);
-
-            if (op.init) op.init();
-
-            op.emitEvent("init", fromDeserialize);
-        }
-        else
-        {
-            this._log.error("addop: op could not be created: ", opIdentifier);
-        }
-
-        return op;
-    }
-
-    addOnAnimFrame(op)
-    {
-        for (let i = 0; i < this.animFrameOps.length; i++) if (this.animFrameOps[i] == op) { return; }
-
-        this.animFrameOps.push(op);
-    }
-
-    removeOnAnimFrame(op)
-    {
-        for (let i = 0; i < this.animFrameOps.length; i++)
-        {
-            if (this.animFrameOps[i] == op)
-            {
-                this.animFrameOps.splice(i, 1);
-                return;
-            }
-        }
-    }
-
-    addOnAnimFrameCallback(cb)
-    {
-        this.animFrameCallbacks.push(cb);
-    }
-
-    removeOnAnimCallback(cb)
-    {
-        for (let i = 0; i < this.animFrameCallbacks.length; i++)
-        {
-            if (this.animFrameCallbacks[i] == cb)
-            {
-                this.animFrameCallbacks.splice(i, 1);
-                return;
-            }
-        }
-    }
-
-    deleteOp(opid, tryRelink, reloadingOp)
-    {
-        let found = false;
-        for (const i in this.ops)
-        {
-            if (this.ops[i].id == opid)
-            {
-                const op = this.ops[i];
-
-                /** @type {Port} */
-                let reLinkP1 = null;
-
-                /** @type {Port} */
-                let reLinkP2 = null;
-
-                if (op)
-                {
-                    found = true;
-                    if (tryRelink)
-                    {
-                        if (op.portsIn.length > 0 && op.portsIn[0].isLinked() && (op.portsOut.length > 0 && op.portsOut[0].isLinked()))
-                        {
-                            if (op.portsIn[0].getType() == op.portsOut[0].getType() && op.portsIn[0].links[0])
-                            {
-                                reLinkP1 = op.portsIn[0].links[0].getOtherPort(op.portsIn[0]);
-                                reLinkP2 = op.portsOut[0].links[0].getOtherPort(op.portsOut[0]);
-                            }
-                        }
-                    }
-
-                    const opToDelete = this.ops[i];
-                    opToDelete.removeLinks();
-
-                    this.ops.splice(i, 1);
-                    opToDelete.emitEvent("delete", opToDelete);
-                    this.emitEvent(Patch.EVENT_OP_DELETED, opToDelete, reloadingOp);
-
-                    if (this.clearSubPatchCache) this.clearSubPatchCache(opToDelete.uiAttribs.subPatch);
-
-                    if (opToDelete.onDelete) opToDelete.onDelete(reloadingOp);
-                    opToDelete.cleanUp();
-
-                    if (reLinkP1 !== null && reLinkP2 !== null)
-                    {
-                        this.link(reLinkP1.op, reLinkP1.getName(), reLinkP2.op, reLinkP2.getName());
-                    }
-
-                    delete this._opIdCache[opid];
-                    break;
-                }
-            }
-        }
-
-        if (!found) this._log.warn("core patch deleteop: not found...", opid);
-    }
-
-    getFrameNum()
-    {
-        return this._frameNum;
-    }
-
-    emitOnAnimFrameEvent(time, delta)
-    {
-        time = time || this.timer.getTime();
-
-        for (let i = 0; i < this.animFrameCallbacks.length; ++i)
-            if (this.animFrameCallbacks[i])
-                this.animFrameCallbacks[i](time, this._frameNum, delta);
-
-        for (let i = 0; i < this.animFrameOps.length; ++i)
-            if (this.animFrameOps[i].onAnimFrame)
-                this.animFrameOps[i].onAnimFrame(time, this._frameNum, delta);
-    }
-
-    renderFrame(timestamp)
-    {
-        this.timer.update(this.reqAnimTimeStamp);
-        this.freeTimer.update(this.reqAnimTimeStamp);
-        const time = this.timer.getTime();
-        const startTime = performance.now();
-        this.cgl.frameStartTime = this.timer.getTime();
-
-        const delta = timestamp - this.reqAnimTimeStamp || timestamp;
-
-        this.emitOnAnimFrameEvent(null, delta);
-
-        this.cgl.profileData.profileFrameDelta = delta;
-        this.reqAnimTimeStamp = timestamp;
-        this.cgl.profileData.profileOnAnimFrameOps = performance.now() - startTime;
-
-        this.emitEvent("onRenderFrame", time);
-
-        this._frameNum++;
-        if (this._frameNum == 1)
-        {
-            if (this.config.onFirstFrameRendered) this.config.onFirstFrameRendered();
-        }
-    }
-
-    /**
-     * @param {number} [timestamp]
-     */
-    exec(timestamp)
-    {
-        if (!this.#renderOneFrame && (this._paused || this.aborted)) return;
-        this.emitEvent("reqAnimFrame");
-        cancelAnimationFrame(this._animReq);
-
-        this.config.fpsLimit = this.config.fpsLimit || 0;
-        if (this.config.fpsLimit)
-        {
-            this._frameInterval = 1000 / this.config.fpsLimit;
-        }
-
-        const now = CABLES.now();
-        const frameDelta = now - this._frameNext;
-
-        if (this.isEditorMode())
-        {
-            if (!this.#renderOneFrame)
-            {
-                if (now - this._lastFrameTime >= 500 && this._lastFrameTime !== 0 && !this._frameWasdelayed)
-                {
-                    this._lastFrameTime = 0;
-                    setTimeout(this.exec.bind(this), 500);
-                    this.emitEvent("renderDelayStart");
-                    this._frameWasdelayed = true;
-                    return;
-                }
-            }
-        }
-
-        if (this.#renderOneFrame || this.config.fpsLimit === 0 || frameDelta > this._frameInterval || this._frameWasdelayed)
-        {
-            this.renderFrame(timestamp);
-
-            if (this._frameInterval) this._frameNext = now - (frameDelta % this._frameInterval);
-        }
-
-        if (this._frameWasdelayed)
-        {
-            this.emitEvent("renderDelayEnd");
-            this._frameWasdelayed = false;
-        }
-
-        if (this.#renderOneFrame)
-        {
-            if (this.onOneFrameRendered) this.onOneFrameRendered(); // todo remove everywhere and use propper event...
-            this.emitEvent("renderedOneFrame");
-            this._renderOneFrame = false;
-        }
-
-        if (this.config.doRequestAnimation) this._animReq = this.cgl.canvas.ownerDocument.defaultView.requestAnimationFrame(this.exec.bind(this));
-    }
-
-    /**
-     * link two ops/ports
-     * @function link
-     * @memberof Patch
-     * @instance
-     * @param {Op} op1
-     * @param {String} port1Name
-     * @param {Op} op2
-     * @param {String} port2Name
-     * @param {boolean} lowerCase
-     * @param {boolean} fromDeserialize
-     */
-    link(op1, port1Name, op2, port2Name, lowerCase = false, fromDeserialize = false)
-    {
-        if (!op1) return this._log.warn("link: op1 is null ");
-        if (!op2) return this._log.warn("link: op2 is null");
-
-        const port1 = op1.getPort(port1Name, lowerCase);
-        const port2 = op2.getPort(port2Name, lowerCase);
-
-        if (!port1) return this._log.warn("port1 not found! " + port1Name + " (" + op1.objName + ")");
-        if (!port2) return this._log.warn("port2 not found! " + port2Name + " of " + op2.name + "(" + op2.objName + ")", op2);
-
-        if (!port1.shouldLink(port1, port2) || !port2.shouldLink(port1, port2)) return false;
-
-        if (Link.canLink(port1, port2))
-        {
-            const link = new Link(this);
-            link.link(port1, port2);
-
-            this.emitEvent("onLink", port1, port2, link, fromDeserialize);
-            return link;
-        }
-    }
-
-    /**
-     * @param {Object} options
-     * @returns {Object|String}
-     */
-    serialize(options)
-    {
-        const obj = {};
-
-        options = options || {};
-        obj.ops = [];
-        obj.settings = this.settings;
-        for (const i in this.ops)
-        {
-            const op = this.ops[i];
-            if (op && op.getSerialized)obj.ops.push(op.getSerialized());
-        }
-
-        cleanJson(obj);
-
-        if (options.asObject) return obj;
-        return JSON.stringify(obj);
-    }
-
-    getOpsByRefId(refId) // needed for instancing ops ?
-    {
-        const perf = gui.uiProfiler.start("[corepatchetend] getOpsByRefId");
-        const refOps = [];
-        const ops = gui.corePatch().ops;
-        for (let i = 0; i < ops.length; i++)
-            if (ops[i].storage && ops[i].storage.ref == refId) refOps.push(ops[i]);
-        perf.finish();
-        return refOps;
-    }
-
-    /**
-     * @param {String} opid
-     * @returns {Op}
-     */
-    getOpById(opid)
-    {
-        return this._opIdCache[opid];
-    }
-
-    /**
-     * @param {String} name
-     */
-    getOpsByObjName(name)
-    {
-        const arr = [];
-        for (const i in this.ops)
-            if (this.ops[i].objName == name) arr.push(this.ops[i]);
-        return arr;
-    }
-
-    /**
-     * @param {String} opid
-     */
-    getOpsByOpId(opid)
-    {
-        const arr = [];
-        for (const i in this.ops)
-            if (this.ops[i].opId == opid) arr.push(this.ops[i]);
-        return arr;
-    }
-
-    /**
-     * @param {String} which
-     */
-    loadLib(which)
-    {
-        ajaxSync(
-            "/ui/libs/" + which + ".js",
-            (_err, res) =>
-            {
-                const se = document.createElement("script");
-                se.type = "text/javascript";
-                se.text = res;
-                document.getElementsByTagName("head")[0].appendChild(se);
-            },
-            "GET",
-        );
-    }
-
-    getSubPatchOpsByName(patchId, objName)
-    {
-        const arr = [];
-        for (const i in this.ops)
-            if (this.ops[i].uiAttribs && this.ops[i].uiAttribs.subPatch == patchId && this.ops[i].objName == objName)
-                arr.push(this.ops[i]);
-
-        return arr;
-    }
-
-    getSubPatchOp(patchId, objName)
-    {
-        return this.getFirstSubPatchOpByName(patchId, objName);
-    }
-
-    /**
-     * @param {string} patchId
-     * @param {string} objName
-     * @returns {Op}
-     */
-    getFirstSubPatchOpByName(patchId, objName)
-    {
-        for (const i in this.ops)
-            if (this.ops[i].uiAttribs && this.ops[i].uiAttribs.subPatch == patchId && this.ops[i].objName == objName)
-                return this.ops[i];
-
-        return false;
-    }
-
-    _addLink(opinid, opoutid, inName, outName)
-    {
-        return this.link(this.getOpById(opinid), inName, this.getOpById(opoutid), outName, false, true);
-    }
-
-    /**
-     * @param {String} s
-     */
-    logStartup(s)
-    {
-        if (window.logStartup)window.logStartup(s);
-    }
-
-    /**
-     * @typedef DeserializeOptions
-     * @property {boolean} [genIds]
-     * @property {boolean} [createRef]
-     */
-
-    /**
-     * Description
-     * @param {Object} obj
-     * @param {DeserializeOptions} options
-     * @returns {any}
-     */
-    deSerialize(obj, options = { "genIds": false, "createRef": false })
-    {
-        if (this.aborted) return;
-        const newOps = [];
-        const loadingId = this.loading.start("core", "deserialize");
-
-        if (typeof obj === "string") obj = JSON.parse(obj);
-
-        if (this.#initialDeserialize)
-        {
-            this.#initialDeserialize = false;
-            this.namespace = obj.namespace || "";
-            this.name = obj.name || "";
-            this.settings = obj.settings;
-        }
-
-        this.emitEvent("patchLoadStart");
-
-        obj.ops = obj.ops || [];
-
-        this.logStartup("add " + obj.ops.length + " ops... ");
-
-        const addedOps = [];
-
-        // add ops...
-        for (let iop = 0; iop < obj.ops.length; iop++)
-        {
-            const start = CABLES.now();
-            const opData = obj.ops[iop];
-            let op = null;
-
-            try
-            {
-                if (opData.opId) op = this.addOp(opData.opId, opData.uiAttribs, opData.id, true, opData.objName);
-                else op = this.addOp(opData.objName, opData.uiAttribs, opData.id, true);
-            }
-            catch (e)
-            {
-                this._log.error("[instancing error] op data:", opData, e);
-                // throw new Error("could not create op by id: <b>" + (opData.objName || opData.opId) + "</b> (" + opData.id + ")");
-            }
-
-            if (op)
-            {
-                addedOps.push(op);
-                if (options.genIds) op.id = shortId();
-                op.portsInData = opData.portsIn;
-                op._origData = JSON.parse(JSON.stringify(opData));
-                op.storage = opData.storage;
-                // if (opData.hasOwnProperty("disabled"))op.setEnabled(!opData.disabled);
-
-                for (const ipi in opData.portsIn)
-                {
-                    const objPort = opData.portsIn[ipi];
-                    if (objPort && objPort.hasOwnProperty("name"))
-                    {
-                        const port = op.getPort(objPort.name);
-
-                        if (port && (port.uiAttribs.display == "bool" || port.uiAttribs.type == "bool") && !isNaN(objPort.value)) objPort.value = objPort.value == true ? 1 : 0;
-                        if (port && objPort.value !== undefined && port.type != Port.TYPE_TEXTURE) port.set(objPort.value);
-
-                        if (port)
-                        {
-                            port.deSerializeSettings(objPort);
-                        }
-                        else
-                        {
-
-                            /*
-                             * if (port.uiAttribs.hasOwnProperty("title"))
-                             * {
-                             *     op.preservedPortTitles = op.preservedPortTitles || {};
-                             *     op.preservedPortTitles[port.name] = port.uiAttribs.title;
-                             * }
-                             */
-                            op.preservedPortValues = op.preservedPortValues || {};
-                            op.preservedPortValues[objPort.name] = objPort.value;
-                        }
-                    }
-                }
-
-                for (const ipo in opData.portsOut)
-                {
-                    const objPort = opData.portsOut[ipo];
-                    if (objPort && objPort.hasOwnProperty("name"))
-                    {
-                        const port2 = op.getPort(objPort.name);
-
-                        if (port2)
-                        {
-                            port2.deSerializeSettings(objPort);
-
-                            if (port2.uiAttribs.hasOwnProperty("title"))
-                            {
-                                op.preservedPortTitles = op.preservedPortTitles || {};
-                                op.preservedPortTitles[port2.name] = port2.uiAttribs.title;
-                            }
-
-                            if (port2.type != Port.TYPE_TEXTURE && objPort.hasOwnProperty("value"))
-                                port2.set(obj.ops[iop].portsOut[ipo].value);
-
-                            if (objPort.expose) port2.setUiAttribs({ "expose": true });
-                        }
-                    }
-                }
-                newOps.push(op);
-            }
-
-            const timeused = Math.round(100 * (CABLES.now() - start)) / 100;
-            if (!this.silent && timeused > 5) console.log("long op init ", obj.ops[iop].objName, timeused);
-        }
-        this.logStartup("add ops done");
-
-        for (const i in this.ops)
-        {
-            if (this.ops[i].onLoadedValueSet)
-            {
-                this.ops[i].onLoadedValueSet(this.ops[i]._origData);
-                this.ops[i].onLoadedValueSet = null;
-                this.ops[i]._origData = null;
-            }
-            this.ops[i].emitEvent("loadedValueSet");
-        }
-
-        this.logStartup("creating links");
-
-        if (options.opsCreated)options.opsCreated(addedOps);
-        // create links...
-        if (obj.ops)
-        {
-            for (let iop = 0; iop < obj.ops.length; iop++)
-            {
-                if (obj.ops[iop].portsIn)
-                {
-                    for (let ipi2 = 0; ipi2 < obj.ops[iop].portsIn.length; ipi2++)
-                    {
-                        if (obj.ops[iop].portsIn[ipi2] && obj.ops[iop].portsIn[ipi2].links)
-                        {
-                            for (let ili = 0; ili < obj.ops[iop].portsIn[ipi2].links.length; ili++)
-                            {
-                                this._addLink(
-                                    obj.ops[iop].portsIn[ipi2].links[ili].objIn,
-                                    obj.ops[iop].portsIn[ipi2].links[ili].objOut,
-                                    obj.ops[iop].portsIn[ipi2].links[ili].portIn,
-                                    obj.ops[iop].portsIn[ipi2].links[ili].portOut);
-
-                                /*
-                                 * const took = performance.now - startTime;
-                                 * if (took > 100)console.log(obj().ops[iop].portsIn[ipi2].links[ili].objIn, obj.ops[iop].portsIn[ipi2].links[ili].objOut, took);
-                                 */
-                            }
-                        }
-                    }
-                }
-                if (obj.ops[iop].portsOut)
-                    for (let ipi2 = 0; ipi2 < obj.ops[iop].portsOut.length; ipi2++)
-                        if (obj.ops[iop].portsOut[ipi2] && obj.ops[iop].portsOut[ipi2].links)
-                        {
-                            for (let ili = 0; ili < obj.ops[iop].portsOut[ipi2].links.length; ili++)
-                            {
-                                if (obj.ops[iop].portsOut[ipi2].links[ili])
-                                {
-                                    if (obj.ops[iop].portsOut[ipi2].links[ili].subOpRef)
-                                    {
-                                        // lost link
-                                        const outOp = this.getOpById(obj.ops[iop].portsOut[ipi2].links[ili].objOut);
-                                        let dstOp = null;
-                                        let theSubPatch = 0;
-
-                                        for (let i = 0; i < this.ops.length; i++)
-                                        {
-                                            if (
-                                                this.ops[i].storage &&
-                                                this.ops[i].storage.ref == obj.ops[iop].portsOut[ipi2].links[ili].subOpRef &&
-                                                outOp.uiAttribs.subPatch == this.ops[i].uiAttribs.subPatch
-                                            )
-                                            {
-                                                theSubPatch = this.ops[i].patchId.get();
-                                                break;
-                                            }
-                                        }
-
-                                        for (let i = 0; i < this.ops.length; i++)
-                                        {
-                                            if (
-                                                this.ops[i].storage &&
-                                                this.ops[i].storage.ref == obj.ops[iop].portsOut[ipi2].links[ili].refOp &&
-                                                this.ops[i].uiAttribs.subPatch == theSubPatch)
-                                            {
-                                                dstOp = this.ops[i];
-                                                break;
-                                            }
-                                        }
-
-                                        if (!dstOp) this._log.warn("could not find op for lost link");
-                                        else
-                                        {
-                                            this._addLink(
-                                                dstOp.id,
-                                                obj.ops[iop].portsOut[ipi2].links[ili].objOut,
-
-                                                obj.ops[iop].portsOut[ipi2].links[ili].portIn,
-                                                obj.ops[iop].portsOut[ipi2].links[ili].portOut);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        const l = this._addLink(obj.ops[iop].portsOut[ipi2].links[ili].objIn, obj.ops[iop].portsOut[ipi2].links[ili].objOut, obj.ops[iop].portsOut[ipi2].links[ili].portIn, obj.ops[iop].portsOut[ipi2].links[ili].portOut);
-
-                                        if (!l)
-                                        {
-                                            const op1 = this.getOpById(obj.ops[iop].portsOut[ipi2].links[ili].objIn);
-                                            const op2 = this.getOpById(obj.ops[iop].portsOut[ipi2].links[ili].objOut);
-
-                                            if (!op1)console.log("could not find link op1");
-                                            if (!op2)console.log("could not find link op2");
-
-                                            const p1Name = obj.ops[iop].portsOut[ipi2].links[ili].portIn;
-
-                                            if (op1 && !op1.getPort(p1Name))
-                                            {
-                                                // console.log("PRESERVE port 1 not found", p1Name);
-
-                                                op1.preservedPortLinks[p1Name] = op1.preservedPortLinks[p1Name] || [];
-                                                op1.preservedPortLinks[p1Name].push(obj.ops[iop].portsOut[ipi2].links[ili]);
-                                            }
-
-                                            const p2Name = obj.ops[iop].portsOut[ipi2].links[ili].portOut;
-                                            if (op2 && !op2.getPort(p2Name))
-                                            {
-                                                // console.log("PRESERVE port 2 not found", obj.ops[iop].portsOut[ipi2].links[ili].portOut);
-                                                op2.preservedPortLinks[p1Name] = op2.preservedPortLinks[p1Name] || [];
-                                                op2.preservedPortLinks[p1Name].push(obj.ops[iop].portsOut[ipi2].links[ili]);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-            }
-        }
-
-        this.logStartup("calling ops onloaded");
-
-        for (const i in this.ops)
-        {
-            if (this.ops[i].onLoaded)
-            {
-                // TODO: deprecate!!!
-                this.ops[i].onLoaded();
-                this.ops[i].onLoaded = null;
-            }
-        }
-
-        this.logStartup("initializing ops...");
-        for (const i in this.ops)
-        {
-            if (this.ops[i].init)
-            {
-                try
-                {
-                    this.ops[i].init();
-                    this.ops[i].init = null;
-                }
-                catch (e)
-                {
-                    console.error("op.init crash", e);
-                }
-            }
-        }
-
-        this.logStartup("initializing vars...");
-
-        if (this.config.variables)
-            for (const varName in this.config.variables)
-                this.setVarValue(varName, this.config.variables[varName]);
-
-        this.logStartup("initializing var ports");
-
-        for (const i in this.ops)
-        {
-            this.ops[i].initVarPorts();
-            delete this.ops[i].uiAttribs.pasted;
-        }
-
-        setTimeout(() => { this.loading.finished(loadingId); }, 100);
-
-        if (this.config.onPatchLoaded) this.config.onPatchLoaded(this);
-
-        this.emitEvent(Patch.EVENT_PATCHLOADEND, newOps, obj, options.genIds);
-    }
-
-    profile(enable)
-    {
-        this.profiler = new Profiler(this);
-        for (const i in this.ops)
-        {
-            this.ops[i].profile(enable);
-        }
-    }
-
-    // ----------------------
-
-    /**
-     * set variable value
-     * @function setVariable
-     * @memberof Patch
-     * @instance
-     * @param {String} name of variable
-     * @param {Number|String|Boolean} val value
-     */
-    setVariable(name, val)
-    {
-        if (this._variables[name] !== undefined)
-        {
-            this._variables[name].setValue(val);
-        }
-        else
-        {
-            this._log.warn("variable " + name + " not found!");
-        }
-    }
-
-    _sortVars()
-    {
-        if (!this.isEditorMode()) return;
-        const ordered = {};
-        Object.keys(this._variables).sort(
-            (a, b) =>
-            { return a.localeCompare(b, "en", { "sensitivity": "base" }); }
-        ).forEach((key) =>
-        {
-            ordered[key] = this._variables[key];
-        });
-        this._variables = ordered;
-    }
-
-    /**
-     * has variable
-     * @function hasVariable
-     * @memberof Patch
-     * @instance
-     * @param {String} name of variable
-     */
-    hasVar(name)
-    {
-        return this._variables[name] !== undefined;
-    }
-
-    // used internally
-    setVarValue(name, val, type)
-    {
-        if (this.hasVar(name))
-        {
-            this._variables[name].setValue(val);
-        }
-        else
-        {
-            this._variables[name] = new PatchVariable(name, val, type);
-            this._sortVars();
-            this.emitEvent(Patch.EVENT_VARIABLES_CHANGED);
-        }
-        return this._variables[name];
-    }
-
-    // old?
-    getVarValue(name, val)
-    {
-        if (this._variables.hasOwnProperty(name)) return this._variables[name].getValue();
-    }
-
-    /**
-     * @function getVar
-     * @memberof Patch
-     * @instance
-     * @param {String} name
-     * @return {PatchVariable} variable
-     */
-    getVar(name)
-    {
-        if (this._variables.hasOwnProperty(name)) return this._variables[name];
-    }
-
-    deleteVar(name)
-    {
-        for (let i = 0; i < this.ops.length; i++)
-            for (let j = 0; j < this.ops[i].portsIn.length; j++)
-                if (this.ops[i].portsIn[j].getVariableName() == name)
-                    this.ops[i].portsIn[j].setVariable(null);
-
-        delete this._variables[name];
-        this.emitEvent("variableDeleted", name);
-        this.emitEvent("variablesChanged");
-    }
-
-    /**
-     * @param {number} t
-     * @returns {Object}
-     */
-    getVars(t)
-    {
-        if (t === undefined) return this._variables;
-        if (t === 1) return {};
-
-        const perf = gui.uiProfiler.start("[corepatchetend] getVars");
-
-        const vars = [];
-        let tStr = "";
-        if (t == Port.TYPE_STRING) tStr = "string";
-        else if (t == Port.TYPE_VALUE) tStr = "number";
-        else if (t == Port.TYPE_ARRAY) tStr = "array";
-        else if (t == Port.TYPE_OBJECT) tStr = "object";
-        else
-        {
-            console.log("unknown,,,", t);
-            console.log(new Error().stack);
-        }
-
-        for (const i in this._variables)
-        {
-            if (!this._variables[i].type || this._variables[i].type == tStr || this._variables[i].type == t) vars.push(this._variables[i]);
-        }
-
-        perf.finish();
-
-        return vars;
-    }
-
-    // getVars(t)
-    // {
-    //     if (t === undefined) return this._variables;
-
-    //     const vars = [];
-    //     let tStr = "";
-    //     if (t == Port.TYPE_STRING) tStr = "string";
-    //     if (t == Port.TYPE_VALUE) tStr = "number";
-    //     if (t == Port.TYPE_ARRAY) tStr = "array";
-    //     if (t == Port.TYPE_OBJECT) tStr = "object";
-
-    //     for (const i in this._variables)
-    //     {
-    //         if (!this._variables[i].type || this._variables[i].type == tStr || this._variables[i].type == t) vars.push(this._variables[i]);
-    //     }
-    //     return vars;
-    // }
-
-    /**
-     * @function preRenderOps
-     * @memberof Patch
-     * @instance
-     * @description invoke pre rendering of ops
-     * @function
-     */
-    preRenderOps()
-    {
-        this._log.log("prerendering...");
-
-        for (let i = 0; i < this.ops.length; i++)
-        {
-            if (this.ops[i].preRender)
-            {
-                this.ops[i].preRender();
-                this._log.log("prerender " + this.ops[i].objName);
-            }
-        }
-    }
-
-    /**
-     * @function dispose
-     * @memberof Patch
-     * @instance
-     * @description stop, dispose and cleanup patch
-     */
-    dispose()
-    {
-        this.pause();
-        this.clear();
-        this.cgl.dispose();
-    }
-
-    pushTriggerStack(p)
-    {
-        this._triggerStack.push(p);
-    }
-
-    popTriggerStack()
-    {
-        this._triggerStack.pop();
-    }
-
-    printTriggerStack()
-    {
-        if (this._triggerStack.length == 0)
-        {
-            // console.log("stack length", this._triggerStack.length); // eslint-disable-line
-            return;
-        }
-        console.groupCollapsed( // eslint-disable-line
-            "trigger port stack " + this._triggerStack[this._triggerStack.length - 1].op.objName + "." + this._triggerStack[this._triggerStack.length - 1].name,
-        );
-
-        const rows = [];
-        for (let i = 0; i < this._triggerStack.length; i++)
-        {
-            rows.push(i + ". " + this._triggerStack[i].op.objName + " " + this._triggerStack[i].name);
-        }
-
-        console.table(rows); // eslint-disable-line
-        console.groupEnd(); // eslint-disable-line
-    }
-
-    /**
-     * returns document object of the patch could be != global document object when opening canvas ina popout window
-     * @function getDocument
-     * @memberof Patch
-     * @instance
-     * @return {Object} document
-     */
-    getDocument()
-    {
-        return this.cgl.canvas.ownerDocument;
-    }
-}
-
-Patch.getOpClass = function (objName)
-{
-    const parts = objName.split(".");
-    let opObj = null;
-
-    try
-    {
-        if (parts.length == 2) opObj = window[parts[0]][parts[1]];
-        else if (parts.length == 3) opObj = window[parts[0]][parts[1]][parts[2]];
-        else if (parts.length == 4) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]];
-        else if (parts.length == 5) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]];
-        else if (parts.length == 6) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]];
-        else if (parts.length == 7) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]];
-        else if (parts.length == 8) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]];
-        else if (parts.length == 9) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]][parts[8]];
-        else if (parts.length == 10) opObj = window[parts[0]][parts[1]][parts[2]][parts[3]][parts[4]][parts[5]][parts[6]][parts[7]][parts[8]][parts[9]];
-        return opObj;
-    }
-    catch (e)
-    {
-        return null;
-    }
+const cgl_CGL = {
+    "Framebuffer2": Framebuffer2,
+    "Geometry": cg_geom.Geometry,
+    "BoundingBox": cg_boundingbox.BoundingBox,
+    "Marker": Marker,
+    "WirePoint": WirePoint,
+    "WireCube": WireCube,
+    "MatrixStack": cg_matrixstack.MatrixStack,
+    "Mesh": cgl_mesh.Mesh,
+    "MESH": cgl_mesh.MESH,
+    "ShaderLibMods": ShaderLibMods,
+    "Shader": CglShader,
+    "Uniform": cgl_shader_uniform.Uniform,
+    "MESHES": cgl_simplerect.MESHES,
+    "getWheelSpeed": getWheelSpeed,
+    "getWheelDelta": getWheelDelta,
+    "Context": CglContext,
+    "Texture": Texture,
+    "TextureEffect": TextureEffect,
+    "onLoadingAssetsFinished": onLoadingAssetsFinished,
+    "ProfileData": cgl_profiledata.ProfileData,
+    "UniColorShader": UniColorShader,
+    ...constants.CONSTANTS.BLEND_MODES,
+    ...constants.CONSTANTS.SHADER,
+    ...constants.CONSTANTS.MATH,
+    ...constants.CONSTANTS.BLEND_MODES,
 };
 
-Patch.replaceOpIds = function (json, options)
+window.CABLES = window.CABLES || {};
+window.CABLES.CGL = window.CABLES.CGL || cgl_CGL;
+window.CGL = window.CGL || cgl_CGL;
+
+/**
+ * @param {number} time
+ * @param {quat} q
+ * @param {Anim} animx
+ * @param {Anim} animy
+ * @param {Anim} animz
+ * @param {Anim} animw
+ */
+anim.Anim.slerpQuaternion = function (time, q, animx, animy, animz, animw)
 {
-    const opids = {};
-    for (const i in json.ops)
+    if (!anim.Anim.slerpQuaternion.q1)
     {
-        opids[json.ops[i].id] = json.ops[i];
+        anim.Anim.slerpQuaternion.q1 = quat.create();
+        anim.Anim.slerpQuaternion.q2 = quat.create();
     }
 
-    for (const j in json.ops)
+    const i1 = animx.getKeyIndex(time);
+    let i2 = i1 + 1;
+    if (i2 >= animx.keys.length) i2 = animx.keys.length - 1;
+
+    if (i1 == i2)
     {
-        for (const k in json.ops[j].portsOut)
-        {
-            const links = json.ops[j].portsOut[k].links;
-            if (links)
-            {
-                let l = links.length;
-
-                while (l--)
-                {
-                    if (links[l] && (!opids[links[l].objIn] || !opids[links[l].objOut]))
-                    {
-                        if (!options.doNotUnlinkLostLinks)
-                        {
-                            links.splice(l, 1);
-                        }
-                        else
-                        {
-                            if (options.fixLostLinks)
-                            {
-                                const op = gui.corePatch().getOpById(links[l].objIn);
-                                if (!op) console.log("op not found!");
-                                else
-                                {
-                                    const outerOp = gui.patchView.getSubPatchOuterOp(op.uiAttribs.subPatch);
-                                    if (outerOp)
-                                    {
-                                        op.storage = op.storage || {};
-                                        op.storage.ref = op.storage.ref || shortId();
-                                        links[l].refOp = op.storage.ref;
-                                        links[l].subOpRef = outerOp.storage.ref;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    for (const i in json.ops)
-    {
-        const op = json.ops[i];
-        const oldId = op.id;
-        let newId = shortId();
-
-        if (options.prefixHash) newId = prefixedHash(options.prefixHash + oldId);
-
-        else if (options.prefixId) newId = options.prefixId + oldId;
-        else if (options.refAsId) // when saving json
-        {
-            if (op.storage && op.storage.ref)
-            {
-                newId = op.storage.ref;
-                delete op.storage.ref;
-            }
-            else
-            {
-                op.storage = op.storage || {};
-                op.storage.ref = newId = shortId();
-            }
-        }
-
-        const newID = op.id = newId;
-
-        if (options.oldIdAsRef) // when loading json
-        {
-            op.storage = op.storage || {};
-            op.storage.ref = oldId;
-        }
-
-        for (const j in json.ops)
-        {
-            if (json.ops[j].portsIn)
-                for (const k in json.ops[j].portsIn)
-                {
-                    if (json.ops[j].portsIn[k].links)
-                    {
-                        let l = json.ops[j].portsIn[k].links.length;
-
-                        while (l--) if (json.ops[j].portsIn[k].links[l] === null) json.ops[j].portsIn[k].links.splice(l, 1);
-
-                        for (l in json.ops[j].portsIn[k].links)
-                        {
-                            if (json.ops[j].portsIn[k].links[l].objIn === oldId) json.ops[j].portsIn[k].links[l].objIn = newID;
-                            if (json.ops[j].portsIn[k].links[l].objOut === oldId) json.ops[j].portsIn[k].links[l].objOut = newID;
-                        }
-                    }
-                }
-
-            if (json.ops[j].portsOut)
-                for (const k in json.ops[j].portsOut)
-                {
-                    if (json.ops[j].portsOut[k].links)
-                    {
-                        let l = json.ops[j].portsOut[k].links.length;
-
-                        while (l--) if (json.ops[j].portsOut[k].links[l] === null) json.ops[j].portsOut[k].links.splice(l, 1);
-
-                        for (l in json.ops[j].portsOut[k].links)
-                        {
-                            if (json.ops[j].portsOut[k].links[l].objIn === oldId) json.ops[j].portsOut[k].links[l].objIn = newID;
-                            if (json.ops[j].portsOut[k].links[l].objOut === oldId) json.ops[j].portsOut[k].links[l].objOut = newID;
-                        }
-                    }
-                }
-        }
-    }
-
-    // set correct subpatch
-    const subpatchIds = [];
-    const fixedSubPatches = [];
-
-    for (let i = 0; i < json.ops.length; i++)
-    {
-        // if (CABLES.Op.isSubPatchOpName(json.ops[i].objName))
-        if (json.ops[i].storage && json.ops[i].storage.subPatchVer)
-        {
-            for (const k in json.ops[i].portsIn)
-            {
-                if (json.ops[i].portsIn[k].name === "patchId")
-                {
-                    let newId = shortId();
-
-                    if (options.prefixHash) newId = prefixedHash(options.prefixHash + json.ops[i].portsIn[k].value);
-
-                    const oldSubPatchId = json.ops[i].portsIn[k].value;
-                    const newSubPatchId = json.ops[i].portsIn[k].value = newId;
-
-                    subpatchIds.push(newSubPatchId);
-
-                    for (let j = 0; j < json.ops.length; j++)
-                    {
-                        // op has no uiAttribs in export, we don't care about subpatches in export though
-                        if (json.ops[j].uiAttribs)
-                        {
-                            if (json.ops[j].uiAttribs.subPatch === oldSubPatchId)
-                            {
-                                json.ops[j].uiAttribs.subPatch = newSubPatchId;
-                                fixedSubPatches.push(json.ops[j].id);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    for (const kk in json.ops)
-    {
-        let found = false;
-        for (let j = 0; j < fixedSubPatches.length; j++)
-        {
-            if (json.ops[kk].id === fixedSubPatches[j])
-            {
-                found = true;
-                break;
-            }
-        }
-        // op has no uiAttribs in export, we don't care about subpatches in export though
-        if (!found && json.ops[kk].uiAttribs && options.parentSubPatchId != null)
-            json.ops[kk].uiAttribs.subPatch = options.parentSubPatchId;
-    }
-
-    return json;
-};
-
-/**
- * remove an eventlistener
- * @instance
- * @function addEventListener
- * @param {String} name of event
- * @param {function} callback
- */
-
-/**
- * remove an eventlistener
- * @instance
- * @function removeEventListener
- * @param {String} name of event
- * @param {function} callback
- */
-
-/**
- * op added to patch event
- * @event onOpAdd
- *
- * @memberof Patch
- * @type {Object}
- * @property {Op} op new op
- */
-
-/**
- * op deleted from patch
- * @event onOpDelete
- * @memberof Patch
- * @type {Object}
- * @property {Op} op that will be deleted
- */
-
-/**
- * link event - two ports will be linked
- * @event onLink
- * @memberof Patch
- * @type {Object}
- * @property {Port} port1
- * @property {Port} port2
- */
-
-/**
- * unlink event - a link was deleted
- * @event onUnLink
- * @memberof Patch
- * @type {Object}
- */
-
-/**
- * variables has been changed / a variable has been added to the patch
- * @event variablesChanged
- * @memberof Patch
- * @type {Object}
- * @property {Port} port1
- * @property {Port} port2
- */
-
-;// CONCATENATED MODULE: ./src/core/embedding.js
-
-
-
-const EMBED = {};
-
-/**
- * add patch into html element (will create canvas and set size to fill containerElement)
- * @name CABLES.EMBED#addPatch
- * @param {object|string} _element containerElement dom element or id of element
- * @param {Object} options patch options
- * @function
- */
-EMBED.addPatch = function (_element, options)
-{
-    let el = _element;
-    let id = generateUUID();
-    if (typeof _element == "string")
-    {
-        id = _element;
-        el = document.getElementById(id);
-
-        if (!el)
-        {
-            console.error(id + " Polyshape Container Element not found!");
-            return;
-        }
-    }
-
-    const canvEl = document.createElement("canvas");
-    canvEl.id = "glcanvas_" + id;
-    canvEl.width = el.clientWidth;
-    canvEl.height = el.clientHeight;
-
-    window.addEventListener(
-        "resize",
-        function ()
-        {
-            this.setAttribute("width", el.clientWidth);
-            this.height = el.clientHeight;
-        }.bind(canvEl),
-    );
-
-    el.appendChild(canvEl);
-
-    options = options || {};
-    options.glCanvasId = canvEl.id;
-
-    if (!options.onError)
-    {
-        options.onError = function (err)
-        {
-            console.error(err);
-        };
-    }
-
-    CABLES.patch = new Patch(options);
-    return canvEl;
-};
-
-
-
-;// CONCATENATED MODULE: ./src/core/webaudio.js
-/** @namespace WEBAUDIO */
-
-
-
-
-const WEBAUDIO = {};
-
-WEBAUDIO.toneJsInitialized = false;
-
-/*
- * External JSDoc definitions
- */
-
-/**
- * Part of the Web Audio API, the AudioBuffer interface represents a short audio asset residing in memory.
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer}
- */
-
-/**
- * Part of the Web Audio API, the AudioNode interface is a generic interface for representing an audio processing module.
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioNode}
- */
-
-/**
- * The AudioContext interface represents an audio-processing graph built from audio modules linked together
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioContext}
- */
-
-/**
- * Checks if a global audio context has been created and creates
- * it if necessary. This audio context can be used for native Web Audio as well as Tone.js ops.
- * Associates the audio context with Tone.js if it is being used
- * @param {Op} op - The operator which needs the Audio Context
- */
-WEBAUDIO.createAudioContext = function (op)
-{
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (window.AudioContext)
-    {
-        if (!window.audioContext)
-        {
-            window.audioContext = new AudioContext();
-        }
-        // check if tone.js lib is being used
-        if (window.Tone && !WEBAUDIO.toneJsInitialized)
-        {
-            // set current audio context in tone.js
-            Tone.setContext(window.audioContext);
-            WEBAUDIO.toneJsInitialized = true;
-        }
+        quat.set(q, animx.keys[i1].value, animy.keys[i1].value, animz.keys[i1].value, animw.keys[i1].value);
     }
     else
     {
-        if (op.patch.config.onError)op.logError("NO_WEBAUDIO", "Web Audio is not supported in this browser.");
-        return;
+        const key1Time = animx.keys[i1].time;
+        const key2Time = animx.keys[i2].time;
+        const perc = (time - key1Time) / (key2Time - key1Time);
+
+        quat.set(anim.Anim.slerpQuaternion.q1, animx.keys[i1].value, animy.keys[i1].value, animz.keys[i1].value, animw.keys[i1].value);
+
+        quat.set(anim.Anim.slerpQuaternion.q2, animx.keys[i2].value, animy.keys[i2].value, animz.keys[i2].value, animw.keys[i2].value);
+
+        quat.slerp(q, anim.Anim.slerpQuaternion.q1, anim.Anim.slerpQuaternion.q2, perc);
     }
-    return window.audioContext;
-};
-
-/**
- * Returns the audio context.
- * Before `createAudioContext` must have been called at least once.
- * It most cases you should use `createAudioContext`, which just returns the audio context
- * when it has been created already.
- */
-WEBAUDIO.getAudioContext = function ()
-{
-    return window.audioContext;
-};
-
-/**
- * Creates an audio in port for the op with name `portName`
- * When disconnected it will disconnect the previous connected audio node
- * from the op's audio node.
- * @param {Op} op - The operator to create the audio port in
- * @param {string} portName - The name of the port
- * @param {AudioNode} audioNode - The audionode incoming connections should connect to
- * @param {number} [inputChannelIndex=0] - If the audio node has multiple inputs, this is the index of the input channel to connect to
- * @returns {Port|undefined} - The newly created audio in port or `undefined` if there was an error
- */
-WEBAUDIO.createAudioInPort = function (op, portName, audioNode, inputChannelIndex)
-{
-    if (!op || !portName || !audioNode)
-    {
-        const msg = "ERROR: createAudioInPort needs three parameters, op, portName and audioNode";
-        op.log(msg);
-        throw new Error(msg);
-        // return;
-    }
-    if (!inputChannelIndex)
-    {
-        inputChannelIndex = 0;
-    }
-    op.webAudio = op.webAudio || {};
-    op.webAudio.audioInPorts = op.webAudio.audioInPorts || [];
-    const port = op.inObject(portName);
-    port.webAudio = {};
-    port.webAudio.previousAudioInNode = null;
-    port.webAudio.audioNode = audioNode;
-
-    op.webAudio.audioInPorts[portName] = port;
-
-    port.onChange = function ()
-    {
-        const audioInNode = port.get();
-        // when port disconnected, disconnect audio nodes
-        if (!audioInNode)
-        {
-            if (port.webAudio.previousAudioInNode)
-            {
-                try
-                {
-                    if (port.webAudio.previousAudioInNode.disconnect) port.webAudio.previousAudioInNode.disconnect(port.webAudio.audioNode, 0, inputChannelIndex);
-                    op.setUiError("audioCtx", null);
-                }
-                catch (e)
-                {
-                    try
-                    {
-                        port.webAudio.previousAudioInNode.disconnect(port.webAudio.audioNode);
-                    }
-                    catch (er)
-                    {
-                        op.log(
-                            "Disconnecting audio node with in/out port index, as well as without in/out-port-index did not work ",
-                            e,
-                        );
-                        if (e.printStackTrace)
-                        {
-                            e.printStackTrace();
-                        }
-                        throw e;
-                    }
-                }
-            }
-        }
-        else
-        {
-            try
-            {
-                if (audioInNode.connect)
-                {
-                    audioInNode.connect(port.webAudio.audioNode, 0, inputChannelIndex);
-                    op.setUiError("audioCtx", null);
-                }
-                else op.setUiError("audioCtx", "The passed input is not an audio context. Please make sure you connect an audio context to the input.", 2);
-            }
-            catch (e)
-            {
-                op.log("Error: Failed to connect web audio node!", e);
-                op.log("port.webAudio.audioNode", port.webAudio.audioNode);
-                op.log("audioInNode: ", audioInNode);
-                op.log("inputChannelIndex:", inputChannelIndex);
-                op.log("audioInNode.connect: ", audioInNode.connect);
-                throw e;
-            }
-        }
-        port.webAudio.previousAudioInNode = audioInNode;
-    };
-    // TODO: Maybe add subtype to audio-node-object?
-    return port;
-};
-
-/**
- * Sometimes it is necessary to replace a node of a port, if so all
- * connections to this node must be disconnected and connections to the new
- * node must be made.
- * Can be used for both Audio ports as well as AudioParam ports
- * if used with an AudioParam pass e.g. `synth.frequency` as newNode
- * @param {Port} port - The port where the audio node needs to be replaced
- * @param oldNode
- * @param newNode
- */
-WEBAUDIO.replaceNodeInPort = function (port, oldNode, newNode)
-{
-    const connectedNode = port.webAudio.previousAudioInNode;
-    // check if connected
-    if (connectedNode && connectedNode.disconnect)
-    {
-        try
-        {
-            connectedNode.disconnect(oldNode);
-        }
-        catch (e)
-        {
-            if (e.printStackTrace)
-            {
-                e.printStackTrace();
-            }
-            throw new Error("replaceNodeInPort: Could not disconnect old audio node. " + e.name + " " + e.message);
-        }
-        port.webAudio.audioNode = newNode;
-        try
-        {
-            connectedNode.connect(newNode);
-        }
-        catch (e)
-        {
-            if (e.printStackTrace)
-            {
-                e.printStackTrace();
-            }
-            throw new Error("replaceNodeInPort: Could not connect to new node. " + e.name + " " + e.message);
-        }
-    }
-};
-
-/**
- * Creates an audio out port which takes care of (dis-)connecting on it’s own
- * @param {Op} op - The op to create an audio out port for
- * @param {string} portName - The name of the port to be created
- * @param {AudioNode} audioNode - The audio node to link to the port
- * @returns {(CABLES.Port|undefined)} - The newly created audio out port or `undefined` if there was an error
- */
-WEBAUDIO.createAudioOutPort = function (op, portName, audioNode)
-{
-    if (!op || !portName || !audioNode)
-    {
-        const msg = "ERROR: createAudioOutPort needs three parameters, op, portName and audioNode";
-        op.log(msg);
-        throw new Error(msg);
-    }
-
-    const port = op.outObject(portName);
-    // TODO: Maybe add subtype to audio-node-object?
-    port.set(audioNode);
-    return port;
-};
-
-/**
- * Creates an audio param in port for the op with name portName.
- * The port accepts other audio nodes as signals as well as values (numbers)
- * When the port is disconnected it will disconnect the previous connected audio node
- * from the op's audio node and restore the number value set before.
- * @param {Op} op - The operator to create an audio param input port for
- * @param {string} portName - The name of the port to create
- * @param audioNode
- * @param options
- * @param defaultValue
- * @returns {(CABLES.Port|undefined)} - The newly created port, which takes care of (dis-)connecting on its own, or `undefined` if there was an error
- */
-WEBAUDIO.createAudioParamInPort = function (op, portName, audioNode, options, defaultValue)
-{
-    if (!op || !portName || !audioNode)
-    {
-        op.log("ERROR: createAudioParamInPort needs three parameters, op, portName and audioNode");
-        if (op && op.name) op.log("opname: ", op.name);
-        op.log("portName", portName);
-        op.log("audioNode: ", audioNode);
-        return;
-    }
-    op.webAudio = op.webAudio || {};
-    op.webAudio.audioInPorts = op.webAudio.audioInPorts || [];
-    // var port = op.inObject(portName);
-    const port = op.inDynamic(
-        portName,
-        [CONSTANTS.OP.OP_PORT_TYPE_VALUE, CONSTANTS.OP.OP_PORT_TYPE_OBJECT],
-        options,
-        defaultValue,
-    );
-    port.webAudio = {};
-    port.webAudio.previousAudioInNode = null;
-    port.webAudio.audioNode = audioNode;
-
-    op.webAudio.audioInPorts[portName] = port;
-
-    /*
-     * port.onLinkChanged = function() {
-     *   op.log("onLinkChanged");
-     *   if(port.isLinked()) {
-     *
-     *       if(port.links[0].portOut.type === CABLES.CONSTANTS.OP.OP_PORT_TYPE_) { // value
-     *
-     *       } else if(port.links[0].portOut.type === CABLES.CONSTANTS.OP.OP_PORT_TYPE_OBJECT) { // object
-     *
-     *       }
-     *   } else { // unlinked
-     *
-     *   }
-     * };
-     */
-
-    port.onChange = function ()
-    {
-        const audioInNode = port.get();
-        const node = port.webAudio.audioNode;
-        const audioCtx = WEBAUDIO.getAudioContext();
-
-        if (audioInNode != undefined)
-        {
-            if (typeof audioInNode === "object" && audioInNode.connect)
-            {
-                try
-                {
-                    audioInNode.connect(node);
-                }
-                catch (e)
-                {
-                    op.log("Could not connect audio node: ", e);
-                    if (e.printStackTrace)
-                    {
-                        e.printStackTrace();
-                    }
-                    throw e;
-                }
-                port.webAudio.previousAudioInNode = audioInNode;
-            }
-            else
-            {
-                // tone.js audio param
-                if (node._param && node._param.minValue && node._param.maxValue)
-                {
-                    if (audioInNode >= node._param.minValue && audioInNode <= node._param.maxValue)
-                    {
-                        try
-                        {
-                            if (node.setValueAtTime)
-                            {
-                                node.setValueAtTime(audioInNode, audioCtx.currentTime);
-                            }
-                            else
-                            {
-                                node.value = audioInNode;
-                            }
-                        }
-                        catch (e)
-                        {
-                            op.log("Possible AudioParam problem with tone.js op: ", e);
-                            if (e.printStackTrace)
-                            {
-                                e.printStackTrace();
-                            }
-                            throw e;
-                        }
-                    }
-                    else
-                    {
-                        op.log("Warning: The value for an audio parameter is out of range!");
-                    }
-                } // native Web Audio param
-                else if (node.minValue && node.maxValue)
-                {
-                    if (audioInNode >= node.minValue && audioInNode <= node.maxValue)
-                    {
-                        try
-                        {
-                            if (node.setValueAtTime)
-                            {
-                                node.setValueAtTime(audioInNode, audioCtx.currentTime);
-                            }
-                            else
-                            {
-                                node.value = audioInNode;
-                            }
-                        }
-                        catch (e)
-                        {
-                            op.log(
-                                "AudioParam has minValue / maxValue defined, and value is in range, but setting the value failed! ",
-                                e,
-                            );
-                            if (e.printStackTrace)
-                            {
-                                e.printStackTrace();
-                            }
-                            throw e;
-                        }
-                    }
-                    else
-                    {
-                        op.log("Warning: The value for an audio parameter is out of range!");
-                    }
-                } // no min-max values, try anyway
-                else
-                {
-                    try
-                    {
-                        if (node.setValueAtTime)
-                        {
-                            node.setValueAtTime(audioInNode, audioCtx.currentTime);
-                        }
-                        else
-                        {
-                            node.value = audioInNode;
-                        }
-                    }
-                    catch (e)
-                    {
-                        op.log("Possible AudioParam problem (without minValue / maxValue): ", e);
-                        if (e.printStackTrace)
-                        {
-                            e.printStackTrace();
-                        }
-                        throw e;
-                    }
-                }
-
-                if (port.webAudio.previousAudioInNode && port.webAudio.previousAudioInNode.disconnect)
-                {
-                    try
-                    {
-                        port.webAudio.previousAudioInNode.disconnect(node);
-                    }
-                    catch (e)
-                    {
-                        op.log("Could not disconnect previous audio node: ", e);
-                        throw e;
-                    }
-                    port.webAudio.previousAudioInNode = undefined;
-                }
-            }
-        }
-        else
-        {
-            // disconnected
-            if (port.webAudio.previousAudioInNode)
-            {
-            }
-        }
-    };
-    return port;
-};
-
-/**
- * Loads an audio file and updates the loading indicators when cables is run in the editor.
- * @param {Patch} patch - The cables patch, when called from inside an op this is `op.patch`
- * @param {string} url - The url of the audio file to load
- * @param {function} onFinished - The callback to be called when the loading is finished, passes the AudioBuffer
- * @param {function} onError - The callback when there was an error loading the file, the rror message is passed
- * @param loadingTask
- * @see {@link https://developer.mozilla.org/de/docs/Web/API/AudioContext/decodeAudioData}
- */
-WEBAUDIO.loadAudioFile = function (patch, url, onFinished, onError, loadingTask)
-{
-    const audioContext = WEBAUDIO.createAudioContext();
-
-    if (!audioContext) onError(new Error("No Audiocontext"));
-
-    let loadingId = null;
-    if (loadingTask || loadingTask === undefined)
-    {
-        loadingId = patch.loading.start("audio", url);
-        if (patch.isEditorMode()) gui.jobs().start({ "id": "loadaudio" + loadingId, "title": " loading audio (" + url + ")" });
-    }
-    const request = new XMLHttpRequest();
-
-    if (!url) return;
-
-    request.open("GET", url, true);
-    request.responseType = "arraybuffer";
-
-    request.onload = function ()
-    {
-        patch.loading.finished(loadingId);
-        if (patch.isEditorMode()) gui.jobs().finish("loadaudio" + loadingId);
-
-        audioContext.decodeAudioData(request.response, onFinished, onError).catch((e) =>
-        {
-            onError(e);
-        });
-    };
-    request.send();
-};
-
-/**
- * Checks if the passed time is a valid time to be used in any of the Tone.js ops.
- * @param {(string|number)} t - The time to check
- * @returns {boolean} - True if time is valid, false if not
- */
-WEBAUDIO.isValidToneTime = function (t)
-{
-    try
-    {
-        const time = new Tone.Time(t);
-    }
-    catch (e)
-    {
-        return false;
-    }
-    return true;
-};
-
-/**
- * Checks if the passed note is a valid note to be used with Tone.js
- * @param {string} note - The note to be checked, e.g. `"C4"`
- * @returns {boolean} - True if the note is a valid note, false otherwise
- */
-WEBAUDIO.isValidToneNote = function (note)
-{
-    try
-    {
-        Tone.Frequency(note);
-    }
-    catch (e)
-    {
-        return false;
-    }
-    return true;
+    return q;
 };
 
 
 
-;// CONCATENATED MODULE: ./src/core/sessionvar.js
-// todo: old... remove this from ops...
 
-/**
- * todo: old... remove this from ops...
- *
- * @class
- */
-const Variable = function ()
-{
-    let value = null;
-    const changedCallbacks = [];
+/***/ }),
 
-    this.onChanged = function (f)
-    {
-        changedCallbacks.push(f);
-    };
+/***/ "./src/corelibs/cgp/index.js":
+/*!************************************************!*\
+  !*** ./src/corelibs/cgp/index.js + 18 modules ***!
+  \************************************************/
+/***/ ((__unused_webpack___webpack_module__, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
-    this.getValue = function ()
-    {
-        return value;
-    };
+"use strict";
 
-    this.setValue = function (v)
-    {
-        value = v;
-        this.emitChanged();
-    };
+// UNUSED EXPORTS: CGP
 
-    this.emitChanged = function ()
-    {
-        for (let i = 0; i < changedCallbacks.length; i++)
-        {
-            changedCallbacks[i]();
-        }
-    };
-};
-
-
-
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_shader_default.wgsl
-/* harmony default export */ const cgp_shader_default = ("\nstruct MyVSInput\n{\n    @location(0) position: vec3<f32>,\n    @location(1) normal: vec3<f32>,\n    @location(2) texcoord: vec2<f32>,\n};\n\nstruct MyVSOutput\n{\n    @builtin(position) position: vec4<f32>,\n    @location(0) normal: vec3<f32>,\n    @location(1) texcoord: vec2<f32>,\n};\n\n@vertex\nfn myVSMain(v: MyVSInput) -> MyVSOutput\n{\n    var vsOut: MyVSOutput;\n    var pos =vec4<f32>(v.position, 1.0);\n\n    var mvMatrix=uniVert.viewMatrix * uniVert.modelMatrix;\n    vsOut.position = uniVert.projMatrix * mvMatrix * pos;\n\n    vsOut.normal = v.normal;\n    vsOut.texcoord = v.texcoord;\n    return vsOut;\n}\n\n@fragment\nfn myFSMain(v: MyVSOutput) -> @location(0) vec4<f32>\n{\n    return vec4<f32>(.5,.5,.5,1.0);\n}\n\n");
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_uniform.js
+// EXTERNAL MODULE: ../shared/client/src/logger.js
+var logger = __webpack_require__("../shared/client/src/logger.js");
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_context.js
+var cg_context = __webpack_require__("./src/corelibs/cg/cg_context.js");
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_texture.js
+var cg_texture = __webpack_require__("./src/corelibs/cg/cg_texture.js");
+// EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat4.js
+var mat4 = __webpack_require__("./node_modules/gl-matrix/esm/mat4.js");
+// EXTERNAL MODULE: ./src/core/timer.js
+var timer = __webpack_require__("./src/core/timer.js");
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_uniform.js
+var cg_uniform = __webpack_require__("./src/corelibs/cg/cg_uniform.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_uniform.js
 
 
 
 
-class CgpUniform extends CgUniform
+class CgpUniform extends cg_uniform.CgUniform
 {
 
     /** @type {CgpContext} */
@@ -23705,7 +25665,7 @@ class CgpUniform extends CgUniform
 
 }
 
-;// CONCATENATED MODULE: ./src/core/cg/preproc.js
+;// CONCATENATED MODULE: ./src/corelibs/cg/preproc.js
 /**
  * @param {string} str
  * @param {object} vars
@@ -23760,7 +25720,9 @@ function preproc(str, vars)
     return outLines.join("\n");
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/binding/bindgroup.js
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_shader.js
+var cg_shader = __webpack_require__("./src/corelibs/cg/cg_shader.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgp/binding/bindgroup.js
 
 
 
@@ -24038,7 +26000,11 @@ class BindGroup
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/binding/binding.js
+// EXTERNAL MODULE: ./src/core/utils.js + 1 modules
+var utils = __webpack_require__("./src/core/utils.js");
+// EXTERNAL MODULE: ./src/corelibs/cgl/constants.js
+var constants = __webpack_require__("./src/corelibs/cgl/constants.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgp/binding/binding.js
 
 
 
@@ -24047,12 +26013,12 @@ class BindGroup
 
 class Binding
 {
-    id = simpleId();
+    id = utils.simpleId();
     name = "";
     bindNum = 0;
     stage = GPUShaderStage.VERTEX | GPUShaderStage.FRAGMENT;
     define = "";
-    log = new Logger("binding");
+    log = new logger["default"]("binding");
     needsRebuildBindgroup = false;
 
     /** @type {CgpContext} */
@@ -24137,7 +26103,7 @@ class Binding
      */
     getShaderHeaderCode(_shader, _bindGroupNum)
     {
-        return "//getShaderHeaderCode function not emplemented " + nl;
+        return "//getShaderHeaderCode function not emplemented " + constants.nl;
     }
 
     /**
@@ -24157,7 +26123,10 @@ class Binding
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_gpubuffer.js
+// EXTERNAL MODULE: ../shared/client/src/eventtarget.js + 2 modules
+var eventtarget = __webpack_require__("../shared/client/src/eventtarget.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_gpubuffer.js
+
 
 
 
@@ -24166,7 +26135,7 @@ class Binding
  * @property {GPUBufferDescriptor} [buffCfg]
 */
 
-class CgpGguBuffer extends Events
+class CgpGguBuffer extends eventtarget["default"]
 {
     #name = "unknown";
 
@@ -24180,7 +26149,7 @@ class CgpGguBuffer extends Events
     buffCfg = null;
 
     #length = 0;
-    id = CABLES.shortId();
+    id = utils.shortId();
     floatArr = null;
     needsUpdate = true;
     #log;
@@ -24199,7 +26168,7 @@ class CgpGguBuffer extends Events
     constructor(cgp, name, data = null, options = {})
     {
         super();
-        this.#log = new Logger("cgpGpubuffer");
+        this.#log = new logger["default"]("cgpGpubuffer");
         if (!cgp.supported) return;
 
         this.#name = name;
@@ -24321,8 +26290,7 @@ class CgpGguBuffer extends Events
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/binding/binding_uniform.js
-
+;// CONCATENATED MODULE: ./src/corelibs/cgp/binding/binding_uniform.js
 
 
 
@@ -24350,7 +26318,6 @@ class BindingUniform extends Binding
         super(cgp, name, options);
 
         console.log("new binding uniform", this.id);
-        // CABLES.logStack();
     }
 
     /**
@@ -24388,7 +26355,6 @@ class BindingUniform extends Binding
         this.#uniforms.push(u);
         this.needsRebuildBindgroup = true;
         console.log(this.#uniforms, this);
-        // CABLES.logStack();
         return u;
     }
 
@@ -24595,7 +26561,7 @@ class BindingUniform extends Binding
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/binding/binding_sampler.js
+;// CONCATENATED MODULE: ./src/corelibs/cgp/binding/binding_sampler.js
 
 
 
@@ -24655,8 +26621,7 @@ class BindingSampler extends Binding
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/binding/binding_texture.js
-
+;// CONCATENATED MODULE: ./src/corelibs/cgp/binding/binding_texture.js
 
 
 
@@ -24727,8 +26692,7 @@ class BindingTexture extends Binding
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_shader.js
-
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_shader.js
 
 
 
@@ -24747,7 +26711,7 @@ class BindingTexture extends Binding
  * @property {String} [entryPoint]
  */
 
-class CgpShader extends CgShader
+class CgpShader extends cg_shader.CgShader
 {
 
     #lastCompileReason = "first";
@@ -24775,7 +26739,7 @@ class CgpShader extends CgShader
     {
         super();
         if (!_cgp) throw new Error("shader constructed without cgp " + _name);
-        this._log = new Logger("cgp_shader");
+        this._log = new logger["default"]("cgp_shader");
         this._cgp = _cgp;
         this._name = _name;
         this.options = options;
@@ -24822,8 +26786,8 @@ class CgpShader extends CgShader
             this.uniProjMatrix = this.addUniform(new CgpUniform(this, "m4", "projMatrix"), GPUShaderStage.VERTEX);
             this.uniNormalMatrix = this.addUniform(new CgpUniform(this, "m4", "normalMatrix"), GPUShaderStage.VERTEX);
             this.uniModelViewMatrix = this.addUniform(new CgpUniform(this, "m4", "modelViewMatrix"), GPUShaderStage.VERTEX);
-            this._tempNormalMatrix = mat4_create();
-            this._tempModelViewMatrix = mat4_create();
+            this._tempNormalMatrix = mat4.create();
+            this._tempModelViewMatrix = mat4.create();
             this.worldUniforms.push(this.uniModelMatrix, this.uniViewMatrix, this.uniProjMatrix, this.uniNormalMatrix, this.uniModelViewMatrix);
         }
 
@@ -24904,9 +26868,9 @@ class CgpShader extends CgShader
                 const mod = this._modules[j];
                 if (mod.name == this._moduleNames[i])
                 {
-                    srcHeadVert += nl + nl + "//---- MOD: group:" + mod.group + ": idx:" + j + " - prfx:" + mod.prefix + " - " + mod.title + " ------" + nl;
+                    srcHeadVert += constants.nl + constants.nl + "//---- MOD: group:" + mod.group + ": idx:" + j + " - prfx:" + mod.prefix + " - " + mod.title + " ------" + constants.nl;
 
-                    srcVert += nl + nl + "//---- MOD: " + mod.title + " / " + mod.priority + " ------" + nl;
+                    srcVert += constants.nl + constants.nl + "//---- MOD: " + mod.title + " / " + mod.priority + " ------" + constants.nl;
 
                     if (mod.attributes)
                         for (let k = 0; k < mod.attributes.length; k++)
@@ -24919,9 +26883,9 @@ class CgpShader extends CgShader
                     srcHeadVert += mod.srcHead || "";
                     srcVert += mod.srcBody || "";
 
-                    srcHeadVert += nl + "//---- end mod ------" + nl;
+                    srcHeadVert += constants.nl + "//---- end mod ------" + constants.nl;
 
-                    srcVert += nl + "//---- end mod ------" + nl;
+                    srcVert += constants.nl + "//---- end mod ------" + constants.nl;
 
                     srcVert = this._replaceModPrefixes(mod, srcVert);
                     srcHeadVert = this._replaceModPrefixes(mod, srcHeadVert);
@@ -25034,12 +26998,12 @@ class CgpShader extends CgShader
         }
         src = strDefs + "\n" + src;
 
-        let srcHead = "//" + nl + "// ";
+        let srcHead = "//" + constants.nl + "// ";
         if (this.options.compute)srcHead += "Compute ";
         else srcHead += "Render ";
 
-        srcHead += "Shader: " + this._name + " - " + this.id + nl;
-        srcHead += "//" + nl;
+        srcHead += "Shader: " + this._name + " - " + this.id + constants.nl;
+        srcHead += "//" + constants.nl;
 
         return srcHead + src;
     }
@@ -25088,7 +27052,7 @@ class CgpShader extends CgShader
 
         this.#lastCompileReason = this._compileReason;
 
-        this.lastCompile = now();
+        this.lastCompile = (0,timer.now)();
         // console.log("#lastCompileReason", this.#lastCompileReason);
 
         this.emitEvent("compiled", this._compileReason);
@@ -25116,12 +27080,12 @@ class CgpShader extends CgShader
 
             // mat4.invert(this._tempNormalMatrix, this._cgp.mMatrix);
             // mat4.transpose(this._tempNormalMatrix, this._tempNormalMatrix);
-            mat4_mul(this._tempModelViewMatrix, this._cgp.vMatrix, this._cgp.mMatrix);
+            mat4.mul(this._tempModelViewMatrix, this._cgp.vMatrix, this._cgp.mMatrix);
             this.uniModelViewMatrix.setValue(this._tempModelViewMatrix);
 
-            mat4_copy(this._tempNormalMatrix, this._cgp.mMatrix);
-            mat4_invert(this._tempNormalMatrix, this._tempNormalMatrix);
-            mat4_transpose(this._tempNormalMatrix, this._tempNormalMatrix);
+            mat4.copy(this._tempNormalMatrix, this._cgp.mMatrix);
+            mat4.invert(this._tempNormalMatrix, this._tempNormalMatrix);
+            mat4.transpose(this._tempNormalMatrix, this._tempNormalMatrix);
 
             // cpu billboarding?
             // this._tempModelViewMatrix[0 * 4 + 0] = 1.0;
@@ -25316,14 +27280,14 @@ class CgpShader extends CgShader
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_texture.js
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_texture.js
 
 
 
 
-class cgp_texture_Texture extends CgTexture
+class Texture extends cg_texture.CgTexture
 {
-    #log = new Logger("cgp_texture");
+    #log = new logger["default"]("cgp_texture");
 
     /** @type {CgpContext} */
     #cgp = null;
@@ -25503,11 +27467,11 @@ class cgp_texture_Texture extends CgTexture
  * @param {Function} onFinished
  * @param {Object} settings
  */
-cgp_texture_Texture.load = function (cgp, url, onFinished, settings)
+Texture.load = function (cgp, url, onFinished, settings)
 {
     fetch(url).then((response) =>
     {
-        const texture = new cgp_texture_Texture(cgp, { "name": url });
+        const texture = new Texture(cgp, { "name": url });
 
         response.blob().then((blob) =>
         {
@@ -25524,9 +27488,8 @@ cgp_texture_Texture.load = function (cgp, url, onFinished, settings)
     });
 };
 
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_pipeline.js
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_pipeline.js
 /// <reference types="@webgpu/types" />
-
 
 
 
@@ -25536,7 +27499,7 @@ class Pipeline
     static TYPE_RENDER = 0;
     static TYPE_COMPUTE = 1;
 
-    #log = new Logger("pipeline");
+    #log = new logger["default"]("pipeline");
     name = "";
 
     /** @type {CgpContext} */
@@ -25661,9 +27624,8 @@ class Pipeline
 
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_renderpipeline.js
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_renderpipeline.js
 /// <reference types="@webgpu/types" />
-
 
 
 
@@ -25952,16 +27914,17 @@ class RenderPipeline extends Pipeline
 
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_mesh.js
+// EXTERNAL MODULE: ./src/corelibs/cg/cg_mesh.js
+var cg_mesh = __webpack_require__("./src/corelibs/cg/cg_mesh.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_mesh.js
 
 
 
 
 
-
-class CgpMesh extends CgMesh
+class CgpMesh extends cg_mesh.CgMesh
 {
-    #log = new Logger("cgl_mesh");
+    #log = new logger["default"]("cgl_mesh");
     needsPipelineUpdate = false;
 
     /**
@@ -26135,10 +28098,7 @@ class CgpMesh extends CgMesh
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_state.js
-
-
-
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_state.js
 
 
 
@@ -26152,13 +28112,50 @@ class CgpMesh extends CgMesh
 // https://developer.chrome.com/blog/from-webgl-to-webgpu/
 // https://gpuweb.github.io/gpuweb/explainer/
 
+// eslint-disable-next-line no-restricted-syntax
+const defaultShaderSrcVert = `
+struct MyVSInput
+{
+    @location(0) position: vec3<f32>,
+    @location(1) normal: vec3<f32>,
+    @location(2) texcoord: vec2<f32>,
+};
+
+struct MyVSOutput
+{
+    @builtin(position) position: vec4<f32>,
+    @location(0) normal: vec3<f32>,
+    @location(1) texcoord: vec2<f32>,
+};
+
+@vertex
+fn myVSMain(v: MyVSInput) -> MyVSOutput
+{
+    var vsOut: MyVSOutput;
+    var pos =vec4<f32>(v.position, 1.0);
+
+    var mvMatrix=uniVert.viewMatrix * uniVert.modelMatrix;
+    vsOut.position = uniVert.projMatrix * mvMatrix * pos;
+
+    vsOut.normal = v.normal;
+    vsOut.texcoord = v.texcoord;
+    return vsOut;
+}
+
+@fragment
+fn myFSMain(v: MyVSOutput) -> @location(0) vec4<f32>
+{
+    return vec4<f32>(.5,.5,.5,1.0);
+}
+`;
+
 /**
  * cables webgpu context/state manager
  * @class
  * @namespace external:CGP
  * @hideconstructor
  */
-class CgpContext extends CgContext
+class CgpContext extends cg_context.CgContext
 {
 
     branchProfiler = null;
@@ -26173,8 +28170,8 @@ class CgpContext extends CgContext
 
         this.lastErrorMsg = "";
 
-        this._log = new Logger("WebGpuContext");
-        this.gApi = CgContext.API_WEBGPU;
+        this._log = new logger["default"]("WebGpuContext");
+        this.gApi = cg_context.CgContext.API_WEBGPU;
         this._viewport = [0, 0, 256, 256];
         this._shaderStack = [];
         this._simpleShader = null;
@@ -26259,7 +28256,7 @@ class CgpContext extends CgContext
         if (!this._simpleShader)
         {
             this._simpleShader = new CgpShader(this, "simple default shader");
-            this._simpleShader.setSource(cgp_shader_default);
+            this._simpleShader.setSource(defaultShaderSrcVert);
 
             this._simpleShader.addUniform(new CgpUniform(this._simpleShader, "4f", "color", [1, 1, 0, 1]), GPUShaderStage.FRAGMENT);
         }
@@ -26672,8 +28669,8 @@ class CgpContext extends CgContext
     {
         if (this._emptyTexture) return this._emptyTexture;
         const size = 8;
-        this._emptyTexture = new cgp_texture_Texture(this, {});
-        this._emptyTexture.initFromData(CgTexture.getDefaultTextureData("empty", size), size, size);
+        this._emptyTexture = new Texture(this, {});
+        this._emptyTexture.initFromData(cg_texture.CgTexture.getDefaultTextureData("empty", size), size, size);
         return this._emptyTexture;
     }
 
@@ -26681,8 +28678,8 @@ class CgpContext extends CgContext
     {
         // if (this._errorTexture) return this._errorTexture;
         const size = 256;
-        this._errorTexture = new cgp_texture_Texture(this, {});
-        this._errorTexture.initFromData(CgTexture.getDefaultTextureData("stripes", size, { "r": 1, "g": 0, "b": 0 }), size, size);
+        this._errorTexture = new Texture(this, {});
+        this._errorTexture.initFromData(cg_texture.CgTexture.getDefaultTextureData("stripes", size, { "r": 1, "g": 0, "b": 0 }), size, size);
         return this._errorTexture;
     }
 
@@ -26690,8 +28687,8 @@ class CgpContext extends CgContext
     {
         if (this._defaultTexture) return this._defaultTexture;
         const size = 256;
-        this._defaultTexture = new cgp_texture_Texture(this, {});
-        this._defaultTexture.initFromData(CgTexture.getDefaultTextureData("stripes", size), size, size);
+        this._defaultTexture = new Texture(this, {});
+        this._defaultTexture.initFromData(cg_texture.CgTexture.getDefaultTextureData("stripes", size), size, size);
         return this._defaultTexture;
     }
 
@@ -26716,1190 +28713,9 @@ class CgpContext extends CgContext
 
 }
 
-;// CONCATENATED MODULE: ./src/core/cg/cg_boundingbox.js
-
-
-
-
-
-
-
-
-/**
- * bounding box
- *
- * @namespace external:CGL
- * @param {Geometry} geometry or bounding box
- */
-class BoundingBox
-{
-
-    /**
-     * @param {Geometry} geom
-     */
-    constructor(geom)
-    {
-        this._init();
-        this._first = true;
-        this._wireMesh = null;
-
-        if (geom) this.apply(geom);
-    }
-
-    _init()
-    {
-        this._max = [-0, -0, -0];
-        this._min = [0, 0, 0];
-        this._center = [0, 0, 0];
-        this._size = [0, 0, 0];
-        this._maxAxis = 0.0;
-        this._first = true;
-    }
-
-    /**
-     * get biggest number of maxX,maxY,maxZ
-     * @type {Number}
-     */
-    get maxAxis() { return this._maxAxis || 1; }
-
-    /**
-     * size of bounding box
-     * @type {vec3}
-     */
-    get size() { return this._size; }
-
-    /**
-     * center of bounding box
-     * @type {vec3}
-     */
-    get center() { return this._center; }
-
-    /**
-     * center x
-     * @type {Number}
-     */
-    get x() { return this._center[0]; }
-
-    /**
-     * center y
-     * @type {Number}
-     */
-    get y() { return this._center[1]; }
-
-    /**
-     * center z
-     * @type {Number}
-     */
-    get z() { return this._center[2]; }
-
-    /**
-     * minimum x
-     * @type {Number}
-     */
-    get minX() { return this._min[0]; }
-
-    /**
-     * minimum y
-     * @type {Number}
-     */
-    get minY() { return this._min[1]; }
-
-    /**
-     * minimum z
-     * @type {Number}
-     */
-    get minZ() { return this._min[2]; }
-
-    /**
-     * maximum x
-     * @type {Number}
-     */
-    get maxX() { return this._max[0]; }
-
-    /**
-     * maximum y
-     * @type {Number}
-     */
-    get maxY() { return this._max[1]; }
-
-    /**
-     * maximum z
-     * @type {Number}
-     */
-    get maxZ() { return this._max[2]; }
-
-    /**
-     * @param {Geometry} geom
-     */
-    apply(geom)
-    {
-        if (!geom) return;
-
-        if (geom instanceof BoundingBox)
-        {
-            const bb = geom;
-
-            this.applyPos(bb.maxX, bb.maxY, bb.maxZ);
-            this.applyPos(bb.minX, bb.minY, bb.minZ);
-        }
-        else
-        {
-            for (let i = 0; i < geom.vertices.length; i += 3)
-                this.applyPos(geom.vertices[i], geom.vertices[i + 1], geom.vertices[i + 2]);
-        }
-        this.calcCenterSize();
-    }
-
-    /**
-     * returns a copy of the bounding box
-     * @function copy
-     * @memberof BoundingBox
-     * @instance
-     */
-    copy()
-    {
-        return new BoundingBox(this);
-    }
-
-    get changed()
-    {
-        return !(this._max[0] == -Number.MAX_VALUE && this._max[1] == -Number.MAX_VALUE && this._max[2] == -Number.MAX_VALUE);
-    }
-
-    /**
-     * @param {number} x
-     * @param {number} y
-     * @param {number} z
-     */
-    applyPos(x, y, z)
-    {
-        if (x == Number.MAX_VALUE || x == -Number.MAX_VALUE ||
-            y == Number.MAX_VALUE || y == -Number.MAX_VALUE ||
-            z == Number.MAX_VALUE || z == -Number.MAX_VALUE) return;
-
-        if (!CABLES.isNumeric(x) || !CABLES.isNumeric(y) || !CABLES.isNumeric(z)) return;
-
-        if (this._first)
-        {
-            this._max[0] = x;
-            this._max[1] = y;
-            this._max[2] = z;
-
-            this._min[0] = x;
-            this._min[1] = y;
-            this._min[2] = z;
-            this._first = false;
-            return;
-        }
-
-        this._max[0] = Math.max(this._max[0], x);
-        this._max[1] = Math.max(this._max[1], y);
-        this._max[2] = Math.max(this._max[2], z);
-
-        this._min[0] = Math.min(this._min[0], x);
-        this._min[1] = Math.min(this._min[1], y);
-        this._min[2] = Math.min(this._min[2], z);
-    }
-
-    calcCenterSize()
-    {
-        if (this._first) return;
-
-        this._size[0] = this._max[0] - this._min[0];
-        this._size[1] = this._max[1] - this._min[1];
-        this._size[2] = this._max[2] - this._min[2];
-
-        this._center[0] = (this._min[0] + this._max[0]) / 2;
-        this._center[1] = (this._min[1] + this._max[1]) / 2;
-        this._center[2] = (this._min[2] + this._max[2]) / 2;
-
-        this._maxAxis = Math.max(this._size[2], Math.max(this._size[0], this._size[1]));
-    }
-
-    /**
-     * @param {mat4} m
-     */
-    mulMat4(m)
-    {
-        if (this._first)
-        {
-            this._max[0] = 0;
-            this._max[1] = 0;
-            this._max[2] = 0;
-
-            this._min[0] = 0;
-            this._min[1] = 0;
-            this._min[2] = 0;
-            this._first = false;
-        }
-        transformMat4(this._max, this._max, m);
-        transformMat4(this._min, this._min, m);
-        this.calcCenterSize();
-    }
-
-    /**
-     * @param {CglContext} cgl
-     * @param {Shader} _shader
-     * @param {Op} op
-     */
-    render(cgl, _shader, op)
-    {
-        if (!this._wireMesh) this._wireMesh = new CGL.WireCube(cgl);
-
-        cgl.pushModelMatrix();
-        mat4_translate(cgl.mMatrix, cgl.mMatrix, this._center);
-
-        if (CABLES.UI && op)
-        {
-            CABLES.UI.OverlayMeshes.drawCube(op, this._size[0] / 2, this._size[1] / 2, this._size[2] / 2);
-        }
-
-        cgl.popModelMatrix();
-    }
-}
-
-;// CONCATENATED MODULE: ./src/core/cg/cg_geom.js
-
-
-
-
-/**
- * a geometry contains all information about a mesh, vertices, texturecoordinates etc. etc.
- * @param {String} name
- * @example
- * // create a triangle with all attributes
- * const geom=new Geometry("triangle"),
- *
- * geom.vertices = [
- *      0.0,           sizeH.get(),  0.0,
- *     -sizeW.get(),  -sizeH.get(),  0.0,
- *      sizeW.get(),  -sizeH.get(),  0.0 ];
- *
- * geom.vertexNormals = [
- *      0.0,  0.0,  1.0,
- *      0.0,  0.0,  1.0,
- *      0.0,  0.0,  1.0 ];
- *
- * geom.tangents = [
- *     1,0,0,
- *     1,0,0,
- *     1,0,0 ];
- *
- * geom.biTangents = [
- *     0,1,0,
- *     0,1,0,
- *     0,1,0 ];
- *
- * geom.texCoords = [
- *      0.5,  0.0,
- *      1.0,  1.0,
- *      0.0,  1.0, ];
- *
- * geom.verticesIndices = [
- *     0, 1, 2 ];
- *
- */
-
-class Geometry
-{
-
-    /**
-     * @param {String} name
-    */
-    constructor(name)
-    {
-        this.name = name || "unknown";
-        this._log = new Logger("cgl_geometry");
-
-        this.faceVertCount = 3;
-        this.glPrimitive = null;
-        this._attributes = {};
-
-        /** @type {Array|Float32Array} */
-        this._vertices = [];
-        this.verticesIndices = [];
-
-        this.isGeometry = true;
-
-        this.morphTargets = [];
-    }
-
-    get vertices()
-    {
-        return this._vertices;
-    }
-
-    set vertices(v)
-    {
-        this.setVertices(v);
-    }
-
-    get texCoords()
-    {
-        const att = this.getAttribute("texCoords");
-        if (!att) return [];
-        return att.data;
-    }
-
-    set texCoords(v)
-    {
-        this.setAttribute("texCoords", v, 2);
-    }
-
-    get vertexNormals()
-    {
-        const att = this.getAttribute("vertexNormals");
-        if (!att) return [];
-        return att.data;
-    }
-
-    set vertexNormals(v)
-    {
-        this.setAttribute("vertexNormals", v, 3);
-    }
-
-    get tangents()
-    {
-        const att = this.getAttribute("tangents");
-        if (!att) return [];
-        return att.data;
-    }
-
-    set tangents(v)
-    {
-        this.setAttribute("tangents", v, 3);
-    }
-
-    get biTangents()
-    {
-        const att = this.getAttribute("biTangents");
-        if (!att) return [];
-        return att.data;
-    }
-
-    set biTangents(v)
-    {
-        this.setAttribute("biTangents", v, 3);
-    }
-
-    get vertexColors()
-    {
-        const att = this.getAttribute("vertexColors");
-        if (!att) return [];
-        return att.data;
-    }
-
-    set vertexColors(v)
-    {
-        this.setAttribute("vertexColors", v, 4);
-    }
-
-    /**
-     * @description clear all buffers/set them to length 0
-     */
-    clear()
-    {
-        this._vertices = new Float32Array([]);
-        this.verticesIndices = [];
-        this.texCoords = new Float32Array([]);
-        this.vertexNormals = new Float32Array([]);
-        this.tangents = [];
-        this.biTangents = [];
-        this._attributes = {};
-    }
-
-    /**
-    * @return {Object} returns array of attribute objects
-    */
-    getAttributes()
-    {
-        return this._attributes;
-    }
-
-    /**
-     * @function getAttribute
-     * @memberof Geometry
-     * @instance
-     * @param {String} name
-     * @return {Object}
-     */
-    getAttribute(name)
-    {
-        for (const i in this._attributes)
-        {
-            if (this._attributes[i].name == name) return this._attributes[i];
-        }
-        return null;
-    }
-
-    /**
-     * @function setAttribute
-     * @description create an attribute
-     * @memberof Geometry
-     * @instance
-     * @param {String} name
-     * @param {Array} arr
-     * @param {Number} itemSize
-     */
-    setAttribute(name, arr, itemSize)
-    {
-        let attrType = "";
-        if (!itemSize || itemSize > 4)
-        {
-            this._log.warn("itemsize wrong?", itemSize, name);
-            this._log.stack("itemsize");
-
-            itemSize = 3;
-        }
-
-        if (itemSize == 1) attrType = "float";
-        else if (itemSize == 2) attrType = "vec2";
-        else if (itemSize == 3) attrType = "vec3";
-        else if (itemSize == 4) attrType = "vec4";
-
-        const attr = {
-            "name": name,
-            "data": arr,
-            "itemSize": itemSize,
-            "type": attrType,
-        };
-
-        this._attributes[name] = attr;
-    }
-
-    /**
-     * @param {string} name
-     * @param {Geometry} newgeom
-     */
-    copyAttribute(name, newgeom)
-    {
-        const attr = this.getAttribute(name);
-        newgeom.setAttribute(name, new Float32Array(attr.data), attr.itemSize);
-    }
-
-    /**
-     * @function setVertices
-     * @memberof Geometry
-     * @instance
-     * @description set vertices
-     * @param {Array|Float32Array} arr [x,y,z,x,y,z,...]
-     */
-    setVertices(arr)
-    {
-        if (arr instanceof Float32Array) this._vertices = arr;
-        else this._vertices = new Float32Array(arr);
-    }
-
-    /**
-     * set texcoords
-     * @param {Array|Float32Array} arr [u,v,u,v,...]
-     */
-    setTexCoords(arr)
-    {
-        if (arr instanceof Float32Array) this.texCoords = arr;
-        else this.texCoords = new Float32Array(arr);
-    }
-
-    // deprecated
-    calcNormals(smooth)
-    {
-        const options = { "smooth": smooth };
-        this.calculateNormals(options);
-    }
-
-    /**
-     * @param {number} x
-     * @param {number} y
-     * @param {number} z
-     */
-    flipNormals(x, y, z)
-    {
-        let vec = vec3_create();
-
-        if (x == undefined)x = 1;
-        if (y == undefined)y = 1;
-        if (z == undefined)z = 1;
-
-        for (let i = 0; i < this.vertexNormals.length; i += 3)
-        {
-            vec3_set(vec,
-                this.vertexNormals[i + 0],
-                this.vertexNormals[i + 1],
-                this.vertexNormals[i + 2]);
-
-            vec[0] *= -x;
-            vec[1] *= -y;
-            vec[2] *= -z;
-
-            normalize(vec, vec);
-
-            this.vertexNormals[i + 0] = vec[0];
-            this.vertexNormals[i + 1] = vec[1];
-            this.vertexNormals[i + 2] = vec[2];
-        }
-    }
-
-    getNumTriangles()
-    {
-        if (this.verticesIndices && this.verticesIndices.length) return this.verticesIndices.length / 3;
-        return this.vertices.length / 3;
-    }
-
-    /**
-     * flip order of vertices in geom faces
-     */
-    flipVertDir()
-    {
-        const newInd = [];
-        newInd.length = this.verticesIndices.length;
-        for (let i = 0; i < this.verticesIndices.length; i += 3)
-        {
-            newInd[i] = this.verticesIndices[i + 2];
-            newInd[i + 1] = this.verticesIndices[i + 1];
-            newInd[i + 2] = this.verticesIndices[i];
-        }
-        this.verticesIndices = newInd;
-    }
-
-    /**
-     * @param {Array} verts
-     */
-    setPointVertices(verts)
-    {
-        if (verts.length % 3 !== 0)
-        {
-            this._log.error("SetPointVertices: Array must be multiple of three.");
-            return;
-        }
-
-        if (!(verts instanceof Float32Array)) this.vertices = new Float32Array(verts);
-        else this.vertices = verts;
-
-        if (!(this.texCoords instanceof Float32Array)) this.texCoords = new Float32Array((verts.length / 3) * 2);
-
-        // this.texCoords.length=verts.length/3*2;
-        this.verticesIndices.length = verts.length / 3;
-        // this.verticesIndices=[];
-
-        for (let i = 0; i < verts.length / 3; i++)
-        {
-            this.verticesIndices[i] = i;
-            this.texCoords[i * 2] = 0;
-            this.texCoords[i * 2 + 1] = 0;
-        }
-    }
-
-    /**
-     * merge a different geometry into the this geometry
-     * @param {Geometry} geom
-     */
-    merge(geom)
-    {
-        if (!geom) return;
-
-        if (this.isIndexed() != geom.isIndexed())
-        {
-            if (this.isIndexed())
-            {
-                this.unIndex(false, true);
-            }
-            if (geom.isIndexed())
-            {
-                const g = geom.copy();
-                g.unIndex(false, true);
-                geom = g;
-            }
-        }
-
-        const oldIndizesLength = this.verticesIndices.length;
-        const vertLength = this._vertices.length / 3;
-
-        this.verticesIndices.length += geom.verticesIndices.length;
-        for (let i = 0; i < geom.verticesIndices.length; i++)
-            this.verticesIndices[oldIndizesLength + i] = geom.verticesIndices[i] + vertLength;
-
-        this.vertices = CABLES.float32Concat(this._vertices, geom.vertices);
-        this.texCoords = CABLES.float32Concat(this.texCoords, geom.texCoords);
-        this.vertexNormals = CABLES.float32Concat(this.vertexNormals, geom.vertexNormals);
-        this.tangents = CABLES.float32Concat(this.tangents, geom.tangents);
-        this.biTangents = CABLES.float32Concat(this.biTangents, geom.biTangents);
-    }
-
-    /**
-     *   a copy of the geometry
-     * @function copy
-     * @memberof Geometry
-     * @instance
-     */
-    copy()
-    {
-        const geom = new Geometry(this.name + " copy");
-        geom.faceVertCount = this.faceVertCount;
-        geom.glPrimitive = this.glPrimitive;
-
-        geom.setVertices(this._vertices.slice(0));
-
-        if (this.verticesIndices)
-        {
-            geom.verticesIndices.length = this.verticesIndices.length;
-            for (let i = 0; i < this.verticesIndices.length; i++) geom.verticesIndices[i] = this.verticesIndices[i];
-        }
-
-        for (let i in this._attributes) this.copyAttribute(i, geom);
-
-        geom.morphTargets.length = this.morphTargets.length;
-        for (let i = 0; i < this.morphTargets.length; i++) geom.morphTargets[i] = this.morphTargets[i];
-
-        return geom;
-    }
-
-    /**
-     * Calculaten normals
-     * @function calculateNormals
-     * @param {{ smooth?: any; forceZUp?: any; }} options
-     */
-    calculateNormals(options = null)
-    {
-        // todo: should check angle of normals to get edges    https://community.khronos.org/t/calculating-accurate-vertex-normals/28152
-        options = options || {};
-        if (options.smooth === false) this.unIndex();
-
-        const u = vec3_create();
-        const v = vec3_create();
-        const n = vec3_create();
-
-        function calcNormal(triangle)
-        {
-            vec3_subtract(u, triangle[0], triangle[1]);
-            vec3_subtract(v, triangle[0], triangle[2]);
-            cross(n, u, v);
-            normalize(n, n);
-
-            if (options && options.forceZUp)
-            {
-                if (n[2] < 0)
-                {
-                    n[0] *= -1;
-                    n[1] *= -1;
-                    n[2] *= -1;
-                }
-            }
-            return n;
-        }
-
-        this.getVertexVec = function (which)
-        {
-            const vec = [0, 0, 0];
-            vec[0] = this.vertices[which * 3 + 0];
-            vec[1] = this.vertices[which * 3 + 1];
-            vec[2] = this.vertices[which * 3 + 2];
-            return vec;
-        };
-
-        if (!(this.vertexNormals instanceof Float32Array) || this.vertexNormals.length != this.vertices.length) this.vertexNormals = new Float32Array(this.vertices.length);
-
-        for (let i = 0; i < this.vertices.length; i++)
-        {
-            this.vertexNormals[i] = 0;
-        }
-
-        if (!this.isIndexed())
-        {
-            const norms = [];
-            for (let i = 0; i < this.vertices.length; i += 9)
-            {
-                const triangle = [[this.vertices[i + 0], this.vertices[i + 1], this.vertices[i + 2]], [this.vertices[i + 3], this.vertices[i + 4], this.vertices[i + 5]], [this.vertices[i + 6], this.vertices[i + 7], this.vertices[i + 8]]];
-                const nn = calcNormal(triangle);
-                norms.push(nn[0], nn[1], nn[2], nn[0], nn[1], nn[2], nn[0], nn[1], nn[2]);
-            }
-            this.vertexNormals = norms;
-        }
-        else
-        {
-            const faceNormals = [];
-
-            faceNormals.length = Math.floor(this.verticesIndices.length / 3);
-
-            for (let i = 0; i < this.verticesIndices.length; i += 3)
-            {
-                const triangle = [this.getVertexVec(this.verticesIndices[i + 0]), this.getVertexVec(this.verticesIndices[i + 1]), this.getVertexVec(this.verticesIndices[i + 2])];
-
-                faceNormals[i / 3] = calcNormal(triangle);
-
-                this.vertexNormals[this.verticesIndices[i + 0] * 3 + 0] += faceNormals[i / 3][0];
-                this.vertexNormals[this.verticesIndices[i + 0] * 3 + 1] += faceNormals[i / 3][1];
-                this.vertexNormals[this.verticesIndices[i + 0] * 3 + 2] += faceNormals[i / 3][2];
-
-                this.vertexNormals[this.verticesIndices[i + 1] * 3 + 0] += faceNormals[i / 3][0];
-                this.vertexNormals[this.verticesIndices[i + 1] * 3 + 1] += faceNormals[i / 3][1];
-                this.vertexNormals[this.verticesIndices[i + 1] * 3 + 2] += faceNormals[i / 3][2];
-
-                this.vertexNormals[this.verticesIndices[i + 2] * 3 + 0] += faceNormals[i / 3][0];
-                this.vertexNormals[this.verticesIndices[i + 2] * 3 + 1] += faceNormals[i / 3][1];
-                this.vertexNormals[this.verticesIndices[i + 2] * 3 + 2] += faceNormals[i / 3][2];
-            }
-
-            for (let i = 0; i < this.verticesIndices.length; i += 3) // faces
-            {
-                for (let k = 0; k < 3; k++) // triangles
-                {
-                    const vv = [this.vertexNormals[this.verticesIndices[i + k] * 3 + 0], this.vertexNormals[this.verticesIndices[i + k] * 3 + 1], this.vertexNormals[this.verticesIndices[i + k] * 3 + 2]];
-                    normalize(vv, vv);
-                    this.vertexNormals[this.verticesIndices[i + k] * 3 + 0] = vv[0];
-                    this.vertexNormals[this.verticesIndices[i + k] * 3 + 1] = vv[1];
-                    this.vertexNormals[this.verticesIndices[i + k] * 3 + 2] = vv[2];
-                }
-            }
-        }
-    }
-
-    /**
-     * Calculates tangents & bitangents with the help of uv-coordinates. Adapted from
-     * Lengyel, Eric. “Computing Tangent Space Basis Vectors for an Arbitrary Mesh”.
-     * Terathon Software 3D Graphics Library.
-     * https://fenix.tecnico.ulisboa.pt/downloadFile/845043405449073/Tangent%20Space%20Calculation.pdf
-     *
-     * @function calcTangentsBitangents
-     */
-    calcTangentsBitangents()
-    {
-        if (!this.vertices.length)
-        {
-            // this._log.error("Cannot calculate tangents/bitangents without vertices.");
-            return;
-        }
-        if (!this.vertexNormals.length)
-        {
-            // this._log.error("Cannot calculate tangents/bitangents without normals.");
-            return;
-        }
-        if (!this.texCoords.length)
-        {
-            const texCoordLength = (this.vertices.length / 3) * 2;
-            this.texCoords = new Float32Array(texCoordLength);
-            for (let i = 0; i < texCoordLength; i += 1) this.texCoords[i] = 0;
-        }
-        if (!this.verticesIndices || !this.verticesIndices.length)
-        {
-            // this._log.error("Cannot calculate tangents/bitangents without vertex indices.");
-            return;
-        }
-        // this code assumes that we have three indices per triangle
-        if (this.verticesIndices.length % 3 !== 0)
-        {
-            this._log.error("Vertex indices mismatch!");
-            return;
-        }
-
-        const triangleCount = this.verticesIndices.length / 3;
-        const vertexCount = this.vertices.length / 3;
-
-        this.tangents = new Float32Array(this.vertexNormals.length);
-        this.biTangents = new Float32Array(this.vertexNormals.length);
-
-        // temporary buffers
-        const tempVertices = [];
-        tempVertices.length = vertexCount * 2;
-        const v1 = vec3_create();
-        const v2 = vec3_create();
-        const v3 = vec3_create();
-
-        const w1 = vec2_create();
-        const w2 = vec2_create();
-        const w3 = vec2_create();
-
-        const sdir = vec3_create();
-        const tdir = vec3_create();
-
-        // for details on calculation, see article referenced above
-        for (let tri = 0; tri < triangleCount; tri += 1)
-        {
-            // indices of the three vertices for a triangle
-            const i1 = this.verticesIndices[tri * 3];
-            const i2 = this.verticesIndices[tri * 3 + 1];
-            const i3 = this.verticesIndices[tri * 3 + 2];
-
-            // vertex position as vec3
-            vec3_set(v1, this.vertices[i1 * 3], this.vertices[i1 * 3 + 1], this.vertices[i1 * 3 + 2]);
-            vec3_set(v2, this.vertices[i2 * 3], this.vertices[i2 * 3 + 1], this.vertices[i2 * 3 + 2]);
-            vec3_set(v3, this.vertices[i3 * 3], this.vertices[i3 * 3 + 1], this.vertices[i3 * 3 + 2]);
-
-            // texture coordinate as vec2
-            vec2_set(w1, this.texCoords[i1 * 2], this.texCoords[i1 * 2 + 1]);
-            vec2_set(w2, this.texCoords[i2 * 2], this.texCoords[i2 * 2 + 1]);
-            vec2_set(w3, this.texCoords[i3 * 2], this.texCoords[i3 * 2 + 1]);
-
-            const x1 = v2[0] - v1[0];
-            const x2 = v3[0] - v1[0];
-            const y1 = v2[1] - v1[1];
-            const y2 = v3[1] - v1[1];
-            const z1 = v2[2] - v1[2];
-            const z2 = v3[2] - v1[2];
-
-            const s1 = w2[0] - w1[0];
-            const s2 = w3[0] - w1[0];
-            const t1 = w2[1] - w1[1];
-            const t2 = w3[1] - w1[1];
-
-            const r = 1.0 / (s1 * t2 - s2 * t1);
-
-            vec3_set(sdir, (t2 * x1 - t1 * x2) * r, (t2 * y1 - t1 * y2) * r, (t2 * z1 - t1 * z2) * r);
-            vec3_set(tdir, (s1 * x2 - s2 * x1) * r, (s1 * y2 - s2 * y1) * r, (s1 * z2 - s2 * z1) * r);
-
-            tempVertices[i1] = sdir;
-            tempVertices[i2] = sdir;
-            tempVertices[i3] = sdir;
-
-            tempVertices[i1 + vertexCount] = tdir;
-            tempVertices[i2 + vertexCount] = tdir;
-            tempVertices[i3 + vertexCount] = tdir;
-        }
-
-        const normal = vec3_create();
-        const tempVert = vec3_create();
-        const tan = vec3_create();
-        const bitan = vec3_create();
-        const temp1 = vec3_create();
-        const temp2 = vec3_create();
-        const crossPd = vec3_create();
-        const normalized = vec3_create();
-
-        for (let vert = 0; vert < vertexCount; vert += 1)
-        {
-            // NOTE: some meshes don't have index 0 - n in their indexbuffer, if this is the case, skip calculation of this vertex
-            if (!tempVertices[vert]) continue;
-
-            vec3_set(normal, this.vertexNormals[vert * 3], this.vertexNormals[vert * 3 + 1], this.vertexNormals[vert * 3 + 2]);
-            vec3_set(tempVert, tempVertices[vert][0], tempVertices[vert][1], tempVertices[vert][2]);
-
-            // Gram-Schmidt orthagonalize
-            const _dp = vec3_dot(normal, tempVert);
-            vec3_scale(temp1, normal, _dp);
-            vec3_subtract(temp2, tempVert, temp1);
-
-            normalize(normalized, temp2);
-            cross(crossPd, normal, tempVert);
-
-            // const intermDot = vec3.dot(crossPd, tempVertices[vert + vertexCount]);
-            const w = 1.0;// intermDot < 0.0 ? -1.0 : 1.0;
-
-            vec3_scale(tan, normalized, 1 / w);
-            cross(bitan, normal, tan);
-
-            this.tangents[vert * 3 + 0] = tan[0];
-            this.tangents[vert * 3 + 1] = tan[1];
-            this.tangents[vert * 3 + 2] = tan[2];
-            this.biTangents[vert * 3 + 0] = bitan[0];
-            this.biTangents[vert * 3 + 1] = bitan[1];
-            this.biTangents[vert * 3 + 2] = bitan[2];
-        }
-    }
-
-    isIndexed()
-    {
-        if (this._vertices.length == 0) return true;
-        return this.verticesIndices.length != 0;
-    }
-
-    /**
-     * @function unIndex
-     * @memberof Geometry
-     * @instance
-     * @description remove all vertex indizes, vertices array will contain 3*XYZ for every triangle
-     * @param {boolean} reIndex
-     * @param {boolean} dontCalcNormals
-     */
-    unIndex(reIndex = false, dontCalcNormals = false)
-    {
-        const newVerts = [];
-        const newIndizes = [];
-        let count = 0;
-
-        for (let j in this._attributes)
-        {
-            const attr = this._attributes[j];
-            let na = [];
-
-            for (let i = 0; i < this.verticesIndices.length; i += 3)
-            {
-                for (let s = 0; s < 3; s++)
-                {
-                    if (attr.itemSize == 3)
-                        na.push(
-                            attr.data[this.verticesIndices[i + s] * 3 + 0],
-                            attr.data[this.verticesIndices[i + s] * 3 + 1],
-                            attr.data[this.verticesIndices[i + s] * 3 + 2]);
-                    else if (attr.itemSize == 4)
-                        na.push(
-                            attr.data[this.verticesIndices[i + s] * 4 + 0],
-                            attr.data[this.verticesIndices[i + s] * 4 + 1],
-                            attr.data[this.verticesIndices[i + s] * 4 + 2],
-                            attr.data[this.verticesIndices[i + s] * 4 + 3]);
-                    else if (attr.itemSize == 2)
-                        na.push(
-                            attr.data[this.verticesIndices[i + s] * 2 + 0],
-                            attr.data[this.verticesIndices[i + s] * 2 + 1]);
-                    else if (attr.itemSize == 1)
-                        na.push(
-                            attr.data[this.verticesIndices[i + s]]);
-                    else this._log.warn("unknown attr", attr);
-                }
-            }
-            this.setAttribute(attr.name, na, attr.itemSize);
-        }
-
-        for (let i = 0; i < this.verticesIndices.length; i += 3)
-        {
-            newVerts.push(
-                this.vertices[this.verticesIndices[i + 0] * 3 + 0],
-                this.vertices[this.verticesIndices[i + 0] * 3 + 1],
-                this.vertices[this.verticesIndices[i + 0] * 3 + 2]);
-
-            newIndizes.push(count);
-            count++;
-
-            newVerts.push(
-                this.vertices[this.verticesIndices[i + 1] * 3 + 0],
-                this.vertices[this.verticesIndices[i + 1] * 3 + 1],
-                this.vertices[this.verticesIndices[i + 1] * 3 + 2]);
-
-            newIndizes.push(count);
-            count++;
-
-            newVerts.push(
-                this.vertices[this.verticesIndices[i + 2] * 3 + 0],
-                this.vertices[this.verticesIndices[i + 2] * 3 + 1],
-                this.vertices[this.verticesIndices[i + 2] * 3 + 2]);
-
-            newIndizes.push(count);
-            count++;
-        }
-
-        this.vertices = newVerts;
-
-        this.verticesIndices = [];
-        if (reIndex) this.verticesIndices = newIndizes;
-
-        if (!dontCalcNormals) this.calculateNormals();
-    }
-
-    calcBarycentric()
-    {
-        let barycentrics = [];
-        barycentrics.length = this.vertices.length;
-        for (let i = 0; i < this.vertices.length; i++) barycentrics[i] = 0;
-
-        let count = 0;
-        for (let i = 0; i < this.vertices.length; i += 3)
-        {
-            barycentrics[i + count] = 1;
-            count++;
-            if (count == 3) count = 0;
-        }
-
-        this.setAttribute("attrBarycentric", barycentrics, 3);
-    }
-
-    getBounds()
-    {
-        return new BoundingBox(this);
-    }
-
-    /**
-     * @param {number} x
-     * @param {number} y
-     * @param {number} z
-     * @returns {Array} offset
-     */
-    center(x, y, z)
-    {
-        if (x === undefined)
-        {
-            x = true;
-            y = true;
-            z = true;
-        }
-
-        let i = 0;
-        const bounds = this.getBounds();
-        const offset = [bounds.minX + (bounds.maxX - bounds.minX) / 2, bounds.minY + (bounds.maxY - bounds.minY) / 2, bounds.minZ + (bounds.maxZ - bounds.minZ) / 2];
-
-        for (i = 0; i < this.vertices.length; i += 3)
-        {
-            if (this.vertices[i + 0] == this.vertices[i + 0])
-            {
-                if (x) this.vertices[i + 0] -= offset[0];
-                if (y) this.vertices[i + 1] -= offset[1];
-                if (z) this.vertices[i + 2] -= offset[2];
-            }
-        }
-
-        return offset;
-    }
-
-    mapTexCoords2d()
-    {
-        const bounds = this.getBounds();
-        const num = this.vertices.length / 3;
-
-        this.texCoords = new Float32Array(num * 2);
-
-        for (let i = 0; i < num; i++)
-        {
-            const vertX = this.vertices[i * 3 + 0];
-            const vertY = this.vertices[i * 3 + 1];
-            this.texCoords[i * 2 + 0] = vertX / (bounds.maxX - bounds.minX) + 0.5;
-            this.texCoords[i * 2 + 1] = 1.0 - vertY / (bounds.maxY - bounds.minY) + 0.5;
-        }
-    }
-
-    getInfoOneLine()
-    {
-        let txt = "";
-        if (this.faceVertCount == 3 && this.verticesIndices)txt += this.verticesIndices.length / 3;
-        else txt += 0;
-
-        txt += " tris ";
-
-        if (this.vertices)txt += this.vertices.length / 3;
-        else txt += 0;
-
-        txt += " verts";
-
-        return txt;
-    }
-
-    getInfo()
-    {
-        const info = {};
-
-        info.name = this.name;
-        info.class = this.constructor.name;
-
-        if (this.faceVertCount == 3 && this.verticesIndices)info.numFaces = this.verticesIndices.length / 3;
-        else info.numFaces = 0;
-
-        if (this.verticesIndices && this.verticesIndices.length)info.indices = this.verticesIndices.length;
-
-        if (this.vertices)info.numVerts = this.vertices.length / 3;
-        else info.numVerts = 0;
-
-        if (this.vertexNormals) info.numNormals = this.vertexNormals.length / 3;
-        else info.numNormals = 0;
-
-        if (this.texCoords) info.numTexCoords = this.texCoords.length / 2;
-        else info.numTexCoords = 0;
-
-        if (this.tangents) info.numTangents = this.tangents.length / 3;
-        else info.numTangents = 0;
-
-        if (this.biTangents) info.numBiTangents = this.biTangents.length / 3;
-        else info.numBiTangents = 0;
-
-        if (this.biTangents) info.numBiTangents = this.biTangents.length / 3;
-        else info.numBiTangents = 0;
-
-        if (this.vertexColors) info.numVertexColors = this.vertexColors.length / 4;
-        else info.numVertexColors = 0;
-
-        if (this.getAttributes()) info.numAttribs = Object.keys(this.getAttributes()).length;
-        else info.numAttribs = 0;
-
-        info.isIndexed = this.isIndexed();
-
-        return info;
-    }
-
-    // -----------------
-}
-
-// TODO : rewritwe circle op 1
-/** @deprecated */
-Geometry.buildFromFaces = function (arr, name, optimize)
-{
-    const vertices = [];
-    const verticesIndices = [];
-
-    for (let i = 0; i < arr.length; i += 3)
-    {
-        const a = arr[i + 0];
-        const b = arr[i + 1];
-        const c = arr[i + 2];
-        const face = [-1, -1, -1];
-
-        if (optimize)
-            for (let iv = 0; iv < vertices.length; iv += 3)
-            {
-                if (vertices[iv + 0] == a[0] && vertices[iv + 1] == a[1] && vertices[iv + 2] == a[2]) face[0] = iv / 3;
-                if (vertices[iv + 0] == b[0] && vertices[iv + 1] == b[1] && vertices[iv + 2] == b[2]) face[1] = iv / 3;
-                if (vertices[iv + 0] == c[0] && vertices[iv + 1] == c[1] && vertices[iv + 2] == c[2]) face[2] = iv / 3;
-            }
-
-        if (face[0] == -1)
-        {
-            vertices.push(a[0], a[1], a[2]);
-            face[0] = (vertices.length - 1) / 3;
-        }
-
-        if (face[1] == -1)
-        {
-            vertices.push(b[0], b[1], b[2]);
-            face[1] = (vertices.length - 1) / 3;
-        }
-
-        if (face[2] == -1)
-        {
-            vertices.push(c[0], c[1], c[2]);
-            face[2] = (vertices.length - 1) / 3;
-        }
-
-        verticesIndices.push(face[0]);
-        verticesIndices.push(face[1]);
-        verticesIndices.push(face[2]);
-    }
-
-    const geom = new Geometry(name);
-    geom.name = name;
-    geom.vertices = vertices;
-    geom.verticesIndices = verticesIndices;
-
-    return geom;
-};
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_simplerect.js
-
-
-
-const MESHES = {};
-
-MESHES.getSimpleRect = function (cgl, name, size = 1.0)
-{
-    const geom = new Geometry(name);
-
-    geom.vertices = [1.0 * size, 1.0 * size, 0.0, -1.0 * size, 1.0 * size, 0.0, 1.0 * size, -1.0 * size, 0.0, -1.0 * size, -1.0 * size, 0.0];
-    geom.texCoords = [1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0];
-    geom.verticesIndices = [0, 1, 2, 2, 1, 3];
-    geom.vertexNormals = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
-
-    return cgl.createMesh(geom);
-};
-
-MESHES.getSimpleCube = function (cgl, name)
-{
-    const geom = new Geometry(name);
-    geom.vertices = [-1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, -1];
-    geom.setTexCoords([0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0,]);
-    geom.verticesIndices = [0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23];
-    geom.vertexNormals = new Float32Array([0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0]);
-    geom.tangents = new Float32Array([0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]);
-    geom.biTangents = new Float32Array([-1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1]);
-
-    return new Mesh(cgl, geom);
-};
-
-
-
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_canvasattachment.js
+// EXTERNAL MODULE: ./src/corelibs/cgl/cgl_simplerect.js
+var cgl_simplerect = __webpack_require__("./src/corelibs/cgl/cgl_simplerect.js");
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_canvasattachment.js
 
 
 class WebGpuCanvasAttachment
@@ -27996,7 +28812,7 @@ class WebGpuCanvasAttachment
 
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/binding/binding_storagebuffer.js
+;// CONCATENATED MODULE: ./src/corelibs/cgp/binding/binding_storagebuffer.js
 
 
 
@@ -28089,9 +28905,8 @@ class BindingStorage extends Binding
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_computepipeline.js
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_computepipeline.js
 /// <reference types="@webgpu/types" />
-
 
 
 
@@ -28294,9 +29109,7 @@ class ComputePipeline extends Pipeline
 
 }
 
-;// CONCATENATED MODULE: ./src/core/cgp/cgp_shadermodifier.js
-
-
+;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_shadermodifier.js
 
 
 
@@ -28826,7 +29639,7 @@ class ShaderModifier
 
 
 
-;// CONCATENATED MODULE: ./src/core/cgp/index.js
+;// CONCATENATED MODULE: ./src/corelibs/cgp/index.js
 
 
 
@@ -28847,15 +29660,16 @@ const CGP = {
     "Context": CgpContext,
     "Shader": CgpShader,
     "Mesh": CgpMesh,
-    "Texture": cgp_texture_Texture,
+    "Texture": Texture,
     "Uniform": CgpUniform,
-    "MESHES": MESHES,
+    "MESHES": cgl_simplerect.MESHES,
     "GPUBuffer": CgpGguBuffer
 };
 
 window.CABLES = window.CABLES || {};
-window.CABLES.CGP = CGP;
-window.CGP = CGP;
+window.CABLES.CGP = window.CABLES.CGP || CGP;
+window.CGP = window.CGP || CGP;
+
 window.CGP.WebGpuCanvasAttachment = WebGpuCanvasAttachment;
 window.CGP.RenderPipeline = RenderPipeline;
 window.CGP.ComputePipeline = ComputePipeline;
@@ -28868,863 +29682,976 @@ window.CGP.BindingSampler = BindingSampler;
 
 
 
-;// CONCATENATED MODULE: ./src/core/cg/cg_fpscounter.js
+
+/***/ }),
+
+/***/ "./src/corelibs/webaudio/webaudio.js":
+/*!*******************************************!*\
+  !*** ./src/corelibs/webaudio/webaudio.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* unused harmony exports WebAudio, WEBAUDIO */
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables */ "./src/core/constants.js");
+/** @namespace WEBAUDIO */
 
 
-class FpsCounter extends Events
+
+/**
+ * Part of the Web Audio API, the AudioBuffer interface represents a short audio asset residing in memory.
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer}
+ */
+
+/**
+ * Part of the Web Audio API, the AudioNode interface is a generic interface for representing an audio processing module.
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioNode}
+ */
+
+/**
+ * The AudioContext interface represents an audio-processing graph built from audio modules linked together
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioContext}
+ */
+
+class WebAudio
 {
+
     constructor()
     {
-        super();
-        this._timeStartFrame = 0;
-        this._timeStartSecond = 0;
-        this._fpsCounter = 0;
-        this._msCounter = 0;
-        this._frameCount = 0;
-
-        this.stats = { "ms": 0, "fps": 0 };
-    }
-
-    get frameCount()
-    {
-        return this._frameCount;
-    }
-
-    startFrame()
-    {
-        this._timeStartFrame = CABLES.now();
-    }
-
-    endFrame()
-    {
-        this._frameCount++;
-        this._fpsCounter++;
-
-        const timeFrame = CABLES.now() - this._timeStartFrame;
-        this._msCounter += timeFrame;
-
-        if (CABLES.now() - this._timeStartSecond > 1000) this.endSecond();
-    }
-
-    endSecond()
-    {
-        this.stats.fps = this._fpsCounter;
-        this.stats.ms = Math.round(this._msCounter / this._fpsCounter * 100) / 100;
-
-        this.emitEvent("performance", this.stats);
-
-        // reset
-        this._fpsCounter = 0;
-        this._msCounter = 0;
-        this._timeStartSecond = CABLES.now();
-    }
-}
-
-;// CONCATENATED MODULE: ./src/core/cg/cg_constants.js
-
-
-
-
-
-const CG = {
-
-    "DEPTH_COMPARE_NEVER": 0,
-    "DEPTH_COMPARE_LESS": 1,
-    "DEPTH_COMPARE_EQUAL": 2,
-    "DEPTH_COMPARE_LESSEQUAL": 3,
-    "DEPTH_COMPARE_GREATER": 4,
-    "DEPTH_COMPARE_NOTEQUAL": 5,
-    "DEPTH_COMPARE_GREATEREQUAL": 6,
-    "DEPTH_COMPARE_ALWAYS": 7,
-
-    "CULL_NONE": 0,
-    "CULL_BACK": 1,
-    "CULL_FRONT": 2,
-    "CULL_BOTH": 3,
-
-    "Geometry": Geometry,
-    "BoundingBox": BoundingBox,
-    "FpsCounter": FpsCounter,
-
-    "CgCanvas": CgCanvas
-};
-
-
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_framebuffer2.js
-
-
-
-
-class Framebuffer2
-{
-
-    /**
-     * @param {CglContext} cgl
-     * @param {number} w
-     * @param {number} h
-     * @param {object} options
-     */
-    constructor(cgl, w, h, options)
-    {
-        this._log = new Logger("cgl_framebuffer2");
-        if (cgl.glVersion == 1) this._log.error("framebuffer2 used on webgl1");
-        this.Framebuffer2DrawTargetsDefault = null;
-        this.Framebuffer2BlittingFramebuffer = null;
-        this.Framebuffer2FinalFramebuffer = null;
-        this._cgl = cgl;
-
-        this._cgl.printError("before framebuffer2 constructor");
-
-        this._width = 0;
-        this._height = 0;
-        this.valid = true;
-
-        this._depthRenderbuffer = null;
-        this._frameBuffer = null;
-        this._textureFrameBuffer = null;
-        this._colorRenderbuffers = [];
-        this._drawTargetArray = [];
-        this._disposed = false;
-
-        if (!this.Framebuffer2BlittingFramebuffer) this.Framebuffer2BlittingFramebuffer = cgl.gl.createFramebuffer();
-        if (!this.Framebuffer2FinalFramebuffer) this.Framebuffer2FinalFramebuffer = cgl.gl.createFramebuffer();
-
-        if (!this.Framebuffer2DrawTargetsDefault) this.Framebuffer2DrawTargetsDefault = [cgl.gl.COLOR_ATTACHMENT0];
-
-        this._options = options || {
-            "isFloatingPointTexture": false,
-        };
-
-        this.name = this._options.name || "unknown";
-
-        this._cgl.profileData.addHeavyEvent("framebuffer create", this.name);
-
-        if (!this._options.hasOwnProperty("numRenderBuffers")) this._options.numRenderBuffers = 1;
-        if (!this._options.hasOwnProperty("depth")) this._options.depth = true;
-        if (!this._options.hasOwnProperty("clear")) this._options.clear = true;
-        if (!this._options.hasOwnProperty("multisampling"))
-        {
-            this._options.multisampling = false;
-            this._options.multisamplingSamples = 0;
-        }
-
-        if (this._options.multisamplingSamples)
-        {
-            if (this._cgl.glSlowRenderer) this._options.multisamplingSamples = 0;
-            if (!this._cgl.gl.MAX_SAMPLES) this._options.multisamplingSamples = 0;
-            else this._options.multisamplingSamples = Math.min(this._cgl.maxSamples, this._options.multisamplingSamples);
-        }
-
-        if (!this._options.hasOwnProperty("filter")) this._options.filter = Texture.FILTER_LINEAR;
-        if (!this._options.hasOwnProperty("wrap")) this._options.wrap = Texture.WRAP_REPEAT;
-
-        this._numRenderBuffers = this._options.numRenderBuffers;
-        this._colorTextures = [];
-
-        this.clearColors = [];
-        for (let i = 0; i < this._numRenderBuffers; i++) this.clearColors.push([0, 0, 0, 1]);
-
-        if (!options.pixelFormat)
-        {
-            if (options.isFloatingPointTexture) this._options.pixelFormat = Texture.PFORMATSTR_RGBA32F;
-            else this._options.pixelFormat = Texture.PFORMATSTR_RGBA8UB;
-        }
-
-        for (let i = 0; i < this._numRenderBuffers; i++)
-        {
-            this._colorTextures[i] = new Texture(cgl, {
-                "name": "fb2 " + this.name + " " + i,
-                "isFloatingPointTexture": this._options.isFloatingPointTexture,
-                "anisotropic": this._options.anisotropic || 0,
-                "pixelFormat": this._options.pixelFormat,
-                "filter": this._options.filter,
-                "wrap": this._options.wrap,
-            });
-        }
-
-        let fil = Texture.FILTER_NEAREST;
-        if (this._options.shadowMap) fil = Texture.FILTER_LINEAR;
-
-        const defaultTexSize = 512;
-
-        if (this._options.depth)
-        {
-            this._textureDepth = new Texture(cgl,
-                {
-                    "name": "fb2 depth " + this.name,
-                    "isDepthTexture": true,
-                    "filter": fil,
-                    "shadowMap": this._options.shadowMap || false,
-                    "width": w || defaultTexSize,
-                    "height": h || defaultTexSize,
-                });
-        }
-
-        if (cgl.aborted) return;
-
-        this.setSize(w || defaultTexSize, h || defaultTexSize);
-
-        this._cgl.printError("framebuffer2 constructor");
-    }
-
-    getWidth()
-    {
-        return this._width;
-    }
-
-    getHeight()
-    {
-        return this._height;
-    }
-
-    getGlFrameBuffer()
-    {
-        return this._frameBuffer;
-    }
-
-    getDepthRenderBuffer()
-    {
-        return this._depthRenderbuffer;
-    }
-
-    getTextureColor()
-    {
-        return this._colorTextures[0];
-    }
-
-    getTextureColorNum(i)
-    {
-        return this._colorTextures[i];
-    }
-
-    getTextureDepth()
-    {
-        return this._textureDepth;
-    }
-
-    setFilter(f)
-    {
-        for (let i = 0; i < this._numRenderBuffers; i++)
-        {
-            this._colorTextures[i].filter = f;
-            this._colorTextures[i].setSize(this._width, this._height);
-        }
-    }
-
-    delete()
-    {
-        this.dispose();
-    }
-
-    dispose()
-    {
-        this._disposed = true;
-        let i = 0;
-        for (i = 0; i < this._numRenderBuffers; i++) this._colorTextures[i].delete();
-        // this._texture.delete();
-        if (this._textureDepth) this._textureDepth.delete();
-        for (i = 0; i < this._numRenderBuffers; i++) this._cgl.gl.deleteRenderbuffer(this._colorRenderbuffers[i]);
-        this._cgl.gl.deleteRenderbuffer(this._depthRenderbuffer);
-        this._cgl.gl.deleteFramebuffer(this._frameBuffer);
-        this._cgl.gl.deleteFramebuffer(this._textureFrameBuffer);
+        this.toneJsInitialized = false;
     }
 
     /**
-     * @param {number} w
-     * @param {number} h
+     * Checks if a global audio context has been created and creates
+     * it if necessary. This audio context can be used for native Web Audio as well as Tone.js ops.
+     * Associates the audio context with Tone.js if it is being used
+     * @param {Op} op - The operator which needs the Audio Context
      */
-    setSize(w, h)
+    createAudioContext(op)
     {
-        if (this._disposed) return this._log.warn("disposed framebuffer setsize...");
-        this._cgl.profileData.addHeavyEvent("framebuffer resize", this.name);
-
-        let i = 0;
-
-        this._width = this._cgl.checkTextureSize(w);
-        this._height = this._cgl.checkTextureSize(h);
-
-        this._cgl.profileData.profileFrameBuffercreate++;
-
-        if (this._frameBuffer)
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (window.AudioContext)
         {
-            for (i = 0; i < this._numRenderBuffers; i++) this._cgl.gl.deleteRenderbuffer(this._colorRenderbuffers[i]);
-            // this._cgl.gl.deleteRenderbuffer(this._colorRenderbuffer);
-            this._cgl.gl.deleteRenderbuffer(this._depthRenderbuffer);
-            this._cgl.gl.deleteFramebuffer(this._frameBuffer);
-            this._cgl.gl.deleteFramebuffer(this._textureFrameBuffer);
-        }
-
-        this._frameBuffer = this._cgl.gl.createFramebuffer();
-        this._textureFrameBuffer = this._cgl.gl.createFramebuffer();
-
-        const depth = this._options.depth;
-
-        for (i = 0; i < this._numRenderBuffers; i++)
-        {
-            this._colorTextures[i].setSize(this._width, this._height);
-        }
-
-        for (i = 0; i < this._numRenderBuffers; i++)
-        {
-            const renderBuffer = this._cgl.gl.createRenderbuffer();
-
-            // color renderbuffer
-
-            this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._frameBuffer);
-            this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER, renderBuffer);
-
-            const info = Texture.setUpGlPixelFormat(this._cgl, this._options.pixelFormat);
-            let internFormat = info.glInternalFormat;
-
-            // if (this._options.isFloatingPointTexture)
-            // {
-            if (CGL.Texture.isPixelFormatHalfFloat(info.pixelFormat))
+            if (!window.audioContext)
             {
-                if (!this._cgl.enableExtension("OES_texture_float_linear"))
-                {
-                    this._options.filter = Texture.FILTER_NEAREST;
-                    this.setFilter(this._options.filter);
-                }
+                window.audioContext = new AudioContext();
             }
-            else if (CGL.Texture.isPixelFormatFloat(info.pixelFormat))
+            // check if tone.js lib is being used
+            if (window.Tone && !this.toneJsInitialized)
             {
-                if (!this._cgl.enableExtension("OES_texture_float_linear"))
-                {
-                    this._log.warn("no linear pixelformat,using nearest");
-                    this._options.filter = Texture.FILTER_NEAREST;
-                    this.setFilter(this._options.filter);
-                }
+                // set current audio context in tone.js
+                Tone.setContext(window.audioContext);
+                this.toneJsInitialized = true;
             }
-            // else if (info.pixelFormat == Texture.PFORMATSTR_RGBA32F || info.pixelFormat == Texture.PFORMATSTR_R11FG11FB10F
-            // else if (info.pixelFormat == Texture.PFORMATSTR_RGBA32F || info.pixelFormat == Texture.PFORMATSTR_R11FG11FB10F
-            // else if (info.pixelFormat == Texture.PFORMATSTR_RG16F)
-            // {
-            //     const extcb = this._cgl.enableExtension("EXT_color_buffer_float");
-
-            //     if (!this._cgl.enableExtension("OES_texture_float_linear"))
-            //     {
-            //         console.log("no linear pixelformat,switching to nearest");
-            //         this._options.filter = Texture.FILTER_NEAREST;
-            //         this.setFilter(this._options.filter);
-            //     }
-            // }
-            // }
-
-            if (this._options.multisampling && this._options.multisamplingSamples)
-            {
-                this._cgl.gl.renderbufferStorageMultisample(this._cgl.gl.RENDERBUFFER, this._options.multisamplingSamples, internFormat, this._width, this._height);
-            }
-            else
-            {
-                this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER, internFormat, this._width, this._height);
-            }
-
-            this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0 + i, this._cgl.gl.RENDERBUFFER, renderBuffer);
-            this._colorRenderbuffers[i] = renderBuffer;
-        }
-
-        // this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER, this._textureFrameBuffer);
-        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._textureFrameBuffer);
-
-        for (i = 0; i < this._numRenderBuffers; i++)
-        {
-            this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0 + i, this._cgl.gl.TEXTURE_2D, this._colorTextures[i].tex, 0);
-        }
-
-        if (this._options.depth)
-        {
-            this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.DEPTH_ATTACHMENT, this._cgl.gl.TEXTURE_2D, this._textureDepth.tex, 0);
-        }
-
-        // depth renderbuffer
-
-        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._frameBuffer);
-
-        let depthType = this._cgl.gl.DEPTH_COMPONENT32F;
-
-        if (this._cgl.glSlowRenderer) depthType = this._cgl.gl.DEPTH_COMPONENT16;
-        if (depth)
-        {
-            this._textureDepth.setSize(this._width, this._height);
-            this._depthRenderbuffer = this._cgl.gl.createRenderbuffer();
-
-            this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER, this._depthRenderbuffer);
-            if (this._options.isFloatingPointTexture)
-            {
-                if (this._options.multisampling) this._cgl.gl.renderbufferStorageMultisample(this._cgl.gl.RENDERBUFFER, this._options.multisamplingSamples, depthType, this._width, this._height);
-                else this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER, depthType, this._width, this._height);
-            }
-            else if (this._options.multisampling)
-            {
-                this._cgl.gl.renderbufferStorageMultisample(this._cgl.gl.RENDERBUFFER, this._options.multisamplingSamples, depthType, this._width, this._height);
-            // this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER,depthType, this._width, this._height);
-            }
-            else
-            {
-                this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER, depthType, this._width, this._height);
-            }
-
-            this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.DEPTH_ATTACHMENT, this._cgl.gl.RENDERBUFFER, this._depthRenderbuffer);
-        }
-
-        // this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
-        // this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._textureFrameBuffer);
-
-        this._drawTargetArray.length = 0;
-        for (i = 0; i < this._numRenderBuffers; i++) this._drawTargetArray.push(this._cgl.gl.COLOR_ATTACHMENT0 + i);
-
-        // this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
-
-        if (!this._cgl.gl.isFramebuffer(this._textureFrameBuffer)) this._log.warn("invalid framebuffer");// throw new Error("Invalid framebuffer");
-        const status = this._cgl.gl.checkFramebufferStatus(this._cgl.gl.FRAMEBUFFER);
-
-        if (status != this._cgl.gl.FRAMEBUFFER_COMPLETE)
-        {
-            this._log.error("framebuffer incomplete: " + this.name, this);
-            this._log.log("options", this._options);
-            this._log.log("options pixelformat", this._options.pixelFormat);
-
-            switch (status)
-            {
-            case this._cgl.gl.FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
-                this._log.warn("FRAMEBUFFER_INCOMPLETE_ATTACHMENT...", this);
-                throw new Error("Incomplete framebuffer: FRAMEBUFFER_INCOMPLETE_ATTACHMENT");
-            case this._cgl.gl.FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
-                this._log.warn("FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
-                throw new Error("Incomplete framebuffer: FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
-            case this._cgl.gl.FRAMEBUFFER_INCOMPLETE_DIMENSIONS:
-                this._log.warn("FRAMEBUFFER_INCOMPLETE_DIMENSIONS");
-                throw new Error("Incomplete framebuffer: FRAMEBUFFER_INCOMPLETE_DIMENSIONS");
-            case this._cgl.gl.FRAMEBUFFER_UNSUPPORTED:
-                this._log.warn("FRAMEBUFFER_UNSUPPORTED");
-                throw new Error("Incomplete framebuffer: FRAMEBUFFER_UNSUPPORTED");
-            default:
-                this.valid = false;
-                this._log.error("incomplete framebuffer", status, this._frameBuffer);
-                this._cgl.printError();
-
-                this._frameBuffer = null;
-                // debugger;
-                throw new Error("Incomplete framebuffer: " + status);
-
-        // throw("Incomplete framebuffer: " + status);
-            }
-        }
-
-        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
-        this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER, null);
-
-    // this._cgl.printError("fb setsize");
-    }
-
-    renderStart()
-    {
-        if (this._disposed) return this._log.warn("disposed framebuffer renderStart...");
-        this._cgl.checkFrameStarted("fb2 renderstart");
-        this._cgl.pushModelMatrix(); // needed ??
-
-        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._frameBuffer);
-        this._cgl.pushGlFrameBuffer(this._frameBuffer);
-        this._cgl.pushFrameBuffer(this);
-
-        this._cgl.pushPMatrix();
-        this._cgl.pushViewPort(0, 0, this._width, this._height);
-
-        this._cgl.gl.drawBuffers(this._drawTargetArray);
-
-        if (this._options.clear)
-        {
-            this._cgl.gl.clearColor(0, 0, 0, 0);
-            this._cgl.gl.clear(this._cgl.gl.COLOR_BUFFER_BIT | this._cgl.gl.DEPTH_BUFFER_BIT);
-        }
-    }
-
-    clear()
-    {
-        if (this._numRenderBuffers <= 1)
-        {
-            this._cgl.gl.bindFramebuffer(this._cgl.gl.READ_FRAMEBUFFER, this._frameBuffer);
-            this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER, this._textureFrameBuffer);
-        }
-        else this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._frameBuffer);
-
-        this._cgl.gl.drawBuffers(this._drawTargetArray);
-
-        for (let i = 0; i < this._numRenderBuffers; i++)
-        {
-            this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0 + i, this._cgl.gl.TEXTURE_2D, this._colorTextures[i].tex, 0);
-            this._cgl.gl.clearBufferfv(this._cgl.gl.COLOR, i, this.clearColors[i]);
-        }
-        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
-    }
-
-    renderEnd()
-    {
-        if (this._disposed) return this._log.warn("disposed framebuffer renderEnd...");
-        this._cgl.popPMatrix();
-
-        this._cgl.profileData.profileFramebuffer++;
-
-        if (this._numRenderBuffers <= 1)
-        {
-            this._cgl.gl.bindFramebuffer(this._cgl.gl.READ_FRAMEBUFFER, this._frameBuffer);
-            this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER, this._textureFrameBuffer);
-
-            this._cgl.gl.clearBufferfv(this._cgl.gl.COLOR, 0, [0.0, 0.0, 0.0, 1.0]);
-            this._cgl.gl.blitFramebuffer(0, 0, this._width, this._height, 0, 0, this._width, this._height, this._cgl.gl.COLOR_BUFFER_BIT | this._cgl.gl.DEPTH_BUFFER_BIT, this._cgl.gl.NEAREST);
         }
         else
         {
-            this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this.Framebuffer2BlittingFramebuffer);
-            this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.DEPTH_ATTACHMENT, this._cgl.gl.RENDERBUFFER, this._depthRenderbuffer);
-
-            this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this.Framebuffer2FinalFramebuffer);
-            this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.DEPTH_ATTACHMENT, this._cgl.gl.TEXTURE_2D, this._textureDepth.tex, 0);
-
-            for (let i = 0; i < this._numRenderBuffers; i++)
-            {
-                this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this.Framebuffer2BlittingFramebuffer);
-                this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0, this._cgl.gl.RENDERBUFFER, this._colorRenderbuffers[i]);
-
-                this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this.Framebuffer2FinalFramebuffer);
-                this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER, this._cgl.gl.COLOR_ATTACHMENT0, this._cgl.gl.TEXTURE_2D, this._colorTextures[i].tex, 0);
-
-                this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, null);
-
-                this._cgl.gl.bindFramebuffer(this._cgl.gl.READ_FRAMEBUFFER, this.Framebuffer2BlittingFramebuffer);
-                this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER, this.Framebuffer2FinalFramebuffer);
-
-                // this._cgl.gl.clearBufferfv(this._cgl.gl.COLOR, i, [0.0, 0.0, 0.0, 1.0]);
-
-                let flags = this._cgl.gl.COLOR_BUFFER_BIT;
-                if (i == 0) flags |= this._cgl.gl.DEPTH_BUFFER_BIT;
-
-                this._cgl.gl.blitFramebuffer(0, 0, this._width, this._height, 0, 0, this._width, this._height, flags, this._cgl.gl.NEAREST);
-            }
+            if (op.patch.config.onError)op.logError("NO_WEBAUDIO", "Web Audio is not supported in this browser.");
+            return;
         }
+        return window.audioContext;
+    }
 
-        this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._cgl.popGlFrameBuffer());
-        this._cgl.popFrameBuffer();
+    /**
+     * Returns the audio context.
+     * Before `createAudioContext` must have been called at least once.
+     * It most cases you should use `createAudioContext`, which just returns the audio context
+     * when it has been created already.
+     */
+    _getAudioContext()
+    {
+        return window.audioContext;
+    }
 
-        this._cgl.popModelMatrix();
-        this._cgl.popViewPort();
-
-        if (this._colorTextures[0].filter == Texture.FILTER_MIPMAP)
+    /**
+     * Creates an audio in port for the op with name `portName`
+     * When disconnected it will disconnect the previous connected audio node
+     * from the op's audio node.
+     * @param {Op} op - The operator to create the audio port in
+     * @param {string} portName - The name of the port
+     * @param {AudioNode} audioNode - The audionode incoming connections should connect to
+     * @param {number} [inputChannelIndex=0] - If the audio node has multiple inputs, this is the index of the input channel to connect to
+     * @returns {Port|undefined} - The newly created audio in port or `undefined` if there was an error
+     */
+    createAudioInPort(op, portName, audioNode, inputChannelIndex)
+    {
+        if (!op || !portName || !audioNode)
         {
-            for (let i = 0; i < this._numRenderBuffers; i++)
-            {
-                this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D, this._colorTextures[i].tex);
-                this._colorTextures[i].updateMipMap();
-                this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D, null);
-            }
+            const msg = "ERROR: createAudioInPort needs three parameters, op, portName and audioNode";
+            op.log(msg);
+            throw new Error(msg);
+            // return;
         }
+        if (!inputChannelIndex)
+        {
+            inputChannelIndex = 0;
+        }
+        op.webAudio = op.webAudio || {};
+        op.webAudio.audioInPorts = op.webAudio.audioInPorts || [];
+        const port = op.inObject(portName);
+        port.webAudio = {};
+        port.webAudio.previousAudioInNode = null;
+        port.webAudio.audioNode = audioNode;
+
+        op.webAudio.audioInPorts[portName] = port;
+
+        port.onChange = function ()
+        {
+            const audioInNode = port.get();
+            // when port disconnected, disconnect audio nodes
+            if (!audioInNode)
+            {
+                if (port.webAudio.previousAudioInNode)
+                {
+                    try
+                    {
+                        if (port.webAudio.previousAudioInNode.disconnect) port.webAudio.previousAudioInNode.disconnect(port.webAudio.audioNode, 0, inputChannelIndex);
+                        op.setUiError("audioCtx", null);
+                    }
+                    catch (e)
+                    {
+                        try
+                        {
+                            port.webAudio.previousAudioInNode.disconnect(port.webAudio.audioNode);
+                        }
+                        catch (er)
+                        {
+                            op.log(
+                                "Disconnecting audio node with in/out port index, as well as without in/out-port-index did not work ",
+                                e,
+                            );
+                            if (e.printStackTrace)
+                            {
+                                e.printStackTrace();
+                            }
+                            throw e;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    if (audioInNode.connect)
+                    {
+                        audioInNode.connect(port.webAudio.audioNode, 0, inputChannelIndex);
+                        op.setUiError("audioCtx", null);
+                    }
+                    else op.setUiError("audioCtx", "The passed input is not an audio context. Please make sure you connect an audio context to the input.", 2);
+                }
+                catch (e)
+                {
+                    op.log("Error: Failed to connect web audio node!", e);
+                    op.log("port.webAudio.audioNode", port.webAudio.audioNode);
+                    op.log("audioInNode: ", audioInNode);
+                    op.log("inputChannelIndex:", inputChannelIndex);
+                    op.log("audioInNode.connect: ", audioInNode.connect);
+                    throw e;
+                }
+            }
+            port.webAudio.previousAudioInNode = audioInNode;
+        };
+        // TODO: Maybe add subtype to audio-node-object?
+        return port;
+    }
+
+    /**
+     * Creates an audio out port which takes care of (dis-)connecting on it’s own
+     * @param {Op} op - The op to create an audio out port for
+     * @param {string} portName - The name of the port to be created
+     * @param {AudioNode} audioNode - The audio node to link to the port
+     * @returns {(CABLES.Port|undefined)} - The newly created audio out port or `undefined` if there was an error
+     */
+    createAudioOutPort(op, portName, audioNode)
+    {
+        if (!op || !portName || !audioNode)
+        {
+            const msg = "ERROR: createAudioOutPort needs three parameters, op, portName and audioNode";
+            op.log(msg);
+            throw new Error(msg);
+        }
+
+        const port = op.outObject(portName);
+        // TODO: Maybe add subtype to audio-node-object?
+        port.set(audioNode);
+        return port;
+    }
+
+    /**
+     * Creates an audio param in port for the op with name portName.
+     * The port accepts other audio nodes as signals as well as values (numbers)
+     * When the port is disconnected it will disconnect the previous connected audio node
+     * from the op's audio node and restore the number value set before.
+     *
+     * @deprecated
+     * @param {Op} op - The operator to create an audio param input port for
+     * @param {string} portName - The name of the port to create
+     * @param audioNode
+     * @param options
+     * @param defaultValue
+     * @returns {(CABLES.Port|undefined)} - The newly created port, which takes care of (dis-)connecting on its own, or `undefined` if there was an error
+     */
+    createAudioParamInPort(op, portName, audioNode, options, defaultValue)
+    {
+        if (!op || !portName || !audioNode)
+        {
+            op.log("ERROR: createAudioParamInPort needs three parameters, op, portName and audioNode");
+            if (op && op.name) op.log("opname: ", op.name);
+            op.log("portName", portName);
+            op.log("audioNode: ", audioNode);
+            return;
+        }
+        op.webAudio = op.webAudio || {};
+        op.webAudio.audioInPorts = op.webAudio.audioInPorts || [];
+        // var port = op.inObject(portName);
+        const port = op.inDynamic(
+            portName,
+            [cables__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.OP.OP_PORT_TYPE_VALUE, cables__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.OP.OP_PORT_TYPE_OBJECT],
+            options,
+            defaultValue,
+        );
+        port.webAudio = {};
+        port.webAudio.previousAudioInNode = null;
+        port.webAudio.audioNode = audioNode;
+
+        op.webAudio.audioInPorts[portName] = port;
+
+        port.onChange = () =>
+        {
+            const audioInNode = port.get();
+            const node = port.webAudio.audioNode;
+            const audioCtx = this._getAudioContext();
+
+            if (audioInNode != undefined)
+            {
+                if (typeof audioInNode === "object" && audioInNode.connect)
+                {
+                    try
+                    {
+                        audioInNode.connect(node);
+                    }
+                    catch (e)
+                    {
+                        op.log("Could not connect audio node: ", e);
+                        if (e.printStackTrace)
+                        {
+                            e.printStackTrace();
+                        }
+                        throw e;
+                    }
+                    port.webAudio.previousAudioInNode = audioInNode;
+                }
+                else
+                {
+                    // tone.js audio param
+                    if (node._param && node._param.minValue && node._param.maxValue)
+                    {
+                        if (audioInNode >= node._param.minValue && audioInNode <= node._param.maxValue)
+                        {
+                            try
+                            {
+                                if (node.setValueAtTime)
+                                {
+                                    node.setValueAtTime(audioInNode, audioCtx.currentTime);
+                                }
+                                else
+                                {
+                                    node.value = audioInNode;
+                                }
+                            }
+                            catch (e)
+                            {
+                                op.log("Possible AudioParam problem with tone.js op: ", e);
+                                if (e.printStackTrace)
+                                {
+                                    e.printStackTrace();
+                                }
+                                throw e;
+                            }
+                        }
+                        else
+                        {
+                            op.log("Warning: The value for an audio parameter is out of range!");
+                        }
+                    } // native Web Audio param
+                    else if (node.minValue && node.maxValue)
+                    {
+                        if (audioInNode >= node.minValue && audioInNode <= node.maxValue)
+                        {
+                            try
+                            {
+                                if (node.setValueAtTime)
+                                {
+                                    node.setValueAtTime(audioInNode, audioCtx.currentTime);
+                                }
+                                else
+                                {
+                                    node.value = audioInNode;
+                                }
+                            }
+                            catch (e)
+                            {
+                                op.log(
+                                    "AudioParam has minValue / maxValue defined, and value is in range, but setting the value failed! ",
+                                    e,
+                                );
+                                if (e.printStackTrace)
+                                {
+                                    e.printStackTrace();
+                                }
+                                throw e;
+                            }
+                        }
+                        else
+                        {
+                            op.log("Warning: The value for an audio parameter is out of range!");
+                        }
+                    } // no min-max values, try anyway
+                    else
+                    {
+                        try
+                        {
+                            if (node.setValueAtTime)
+                            {
+                                node.setValueAtTime(audioInNode, audioCtx.currentTime);
+                            }
+                            else
+                            {
+                                node.value = audioInNode;
+                            }
+                        }
+                        catch (e)
+                        {
+                            op.log("Possible AudioParam problem (without minValue / maxValue): ", e);
+                            if (e.printStackTrace)
+                            {
+                                e.printStackTrace();
+                            }
+                            throw e;
+                        }
+                    }
+
+                    if (port.webAudio.previousAudioInNode && port.webAudio.previousAudioInNode.disconnect)
+                    {
+                        try
+                        {
+                            port.webAudio.previousAudioInNode.disconnect(node);
+                        }
+                        catch (e)
+                        {
+                            op.log("Could not disconnect previous audio node: ", e);
+                            throw e;
+                        }
+                        port.webAudio.previousAudioInNode = undefined;
+                    }
+                }
+            }
+            else
+            {
+                // disconnected
+                if (port.webAudio.previousAudioInNode)
+                {
+                }
+            }
+        };
+        return port;
+    }
+
+    /**
+     * Loads an audio file and updates the loading indicators when cables is run in the editor.
+     * @param {Patch} patch - The cables patch, when called from inside an op this is `op.patch`
+     * @param {string} url - The url of the audio file to load
+     * @param {function} onFinished - The callback to be called when the loading is finished, passes the AudioBuffer
+     * @param {function} onError - The callback when there was an error loading the file, the rror message is passed
+     * @param loadingTask
+     * @see {@link https://developer.mozilla.org/de/docs/Web/API/AudioContext/decodeAudioData}
+     */
+    loadAudioFile(patch, url, onFinished, onError, loadingTask)
+    {
+        const audioContext = this.createAudioContext();
+
+        if (!audioContext) onError(new Error("No Audiocontext"));
+
+        let loadingId = null;
+        if (loadingTask || loadingTask === undefined)
+        {
+            loadingId = patch.loading.start("audio", url);
+            if (patch.isEditorMode()) gui.jobs().start({ "id": "loadaudio" + loadingId, "title": " loading audio (" + url + ")" });
+        }
+        const request = new XMLHttpRequest();
+
+        if (!url) return;
+
+        request.open("GET", url, true);
+        request.responseType = "arraybuffer";
+
+        request.onload = function ()
+        {
+            patch.loading.finished(loadingId);
+            if (patch.isEditorMode()) gui.jobs().finish("loadaudio" + loadingId);
+
+            audioContext.decodeAudioData(request.response, onFinished, onError).catch((e) =>
+            {
+                onError(e);
+            });
+        };
+        request.send();
+    }
+
+    /**
+     * Checks if the passed time is a valid time to be used in any of the Tone.js ops.
+     * @deprecated
+     * @param {(string|number)} t - The time to check
+     * @returns {boolean} - True if time is valid, false if not
+     */
+    isValidToneTime(t)
+    {
+        try
+        {
+            const time = new Tone.Time(t);
+        }
+        catch (e)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Checks if the passed note is a valid note to be used with Tone.js
+     * @deprecated
+     * @param {string} note - The note to be checked, e.g. `"C4"`
+     * @returns {boolean} - True if the note is a valid note, false otherwise
+     */
+    isValidToneNote(note)
+    {
+        try
+        {
+            Tone.Frequency(note);
+        }
+        catch (e)
+        {
+            return false;
+        }
+        return true;
     }
 }
 
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_marker.js
-/** @type {function}
- * @deprecated
-*/
-const Marker = function (_cgl) // deprecated...
-{
-    this.draw = function (cgl, _size, depthTest) {};
-};
-
-/** @type {function}
- * @deprecated
-*/
-const WirePoint = function (cgl) // deprecated...
-{
-    this.render = function (_cgl, _size) {};
-};
-
-/** @type {function}
- * @deprecated
-*/
-const WireCube = function (cgl) // deprecated...
-{
-    this.render = function (_cgl, sizeX, sizeY, sizeZ) {};
-};
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_unicolorshader.js
-
-
-class UniColorShader
-{
-    constructor(_cgl)
-    {
-        this.shader = new CGL.Shader(_cgl, "markermaterial");
-
-        const frag = ""
-            .endl() + "void main()"
-            .endl() + "{"
-            .endl() + "    outColor = vec4(color.rgb,1.0);"
-            .endl() + "}";
-
-        const vert = ""
-            .endl() + "IN vec3 vPosition;"
-            .endl() + "UNI mat4 projMatrix;"
-            .endl() + "UNI mat4 mvMatrix;"
-
-            .endl() + "void main()"
-            .endl() + "{"
-            .endl() + "   gl_Position = projMatrix * mvMatrix * vec4(vPosition,1.0);"
-            .endl() + "}";
-
-        this.shader.setSource(vert, frag);
-        this.coloruni = this.shader.addUniformFrag("4f", "color", [1, 0.777, 1, 1]);
-    }
-
-    setColor(r, g, b, a)
-    {
-        this.coloruni.set(r, g, b, a);
-    }
-}
-
-;// CONCATENATED MODULE: ./src/core/cgl/cgl_utils.js
-/**
- * @namespace CGL
- */
-
-/**
- * multiply to get radians from degree, e.g. `360 * CGL.DEG2RAD`
- * @const {Number}
- * @memberof CGL
- * @static
- */
-const cgl_utils_DEG2RAD = Math.PI / 180.0;
-
-/**
- * to get degrees from radians, e.g. `3.14 * CGL.RAD2DEG`
- * @const {number}
- * @memberof CGL
- */
-const cgl_utils_RAD2DEG = 180.0 / Math.PI;
-
-const onLoadingAssetsFinished = null; // deprecated / remove later
-
-/**
- * get normalized mouse wheel delta (including browser specific adjustment)
- * @function getWheelDelta
- * @static
- * @memberof CGL
- * @param {MouseEvent} event
- * @return {Number} normalized delta
- */
-const isWindows = window.navigator.userAgent.includes("Windows");
-const getWheelDelta_ = function (event)
-{
-    let normalized;
-    if (event.wheelDelta)
-    {
-        // chrome
-        normalized = (event.wheelDelta % 120) - 0 == -0 ? event.wheelDelta / 120 : event.wheelDelta / 30;
-        normalized *= -1.5;
-        if (isWindows) normalized *= 2;
-    }
-    else
-    {
-        // firefox
-        let d = event.deltaY;
-        if (event.shiftKey) d = event.deltaX;
-        const rawAmmount = d || event.detail;
-        normalized = -(rawAmmount % 3 ? rawAmmount * 10 : rawAmmount / 3);
-        normalized *= -3;
-    }
-
-    if (normalized > 20) normalized = 20;
-    if (normalized < -20) normalized = -20;
-
-    return normalized;
-};
-
-const getWheelSpeed = getWheelDelta_;
-const getWheelDelta = getWheelDelta_;
-
-// from https://github.com/lodash/lodash/blob/master/escape.js
-
-const htmlEscapes = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    "\"": "&quot;",
-    "'": "&#39;",
-};
-
-/** Used to match HTML entities and HTML characters. */
-const reUnescapedHtml = /[&<>"']/g;
-const reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
-
-/*  eslint-disable */
-const escapeHTML = function(string)
-{
-    return string && reHasUnescapedHtml.test(string) ?
-        string.replace(reUnescapedHtml, function(chr) { return htmlEscapes[chr]; })
-        : string || "";
-}
-/* eslint-enable */
-
-;// CONCATENATED MODULE: ./src/core/cgl/index.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const cgl_CGL = {
-    "Framebuffer2": Framebuffer2,
-    "Geometry": Geometry,
-    "BoundingBox": BoundingBox,
-    "Marker": Marker,
-    "WirePoint": WirePoint,
-    "WireCube": WireCube,
-    "MatrixStack": MatrixStack,
-    "Mesh": Mesh,
-    "MESH": MESH,
-    "ShaderLibMods": ShaderLibMods,
-    "Shader": CglShader,
-    "Uniform": Uniform,
-    "MESHES": MESHES,
-    "Context": CglContext,
-    "Texture": Texture,
-    "TextureEffect": TextureEffect,
-    "isWindows": isWindows,
-    "getWheelSpeed": getWheelSpeed,
-    "getWheelDelta": getWheelDelta,
-    "onLoadingAssetsFinished": onLoadingAssetsFinished,
-    "ProfileData": ProfileData,
-    "UniColorShader": UniColorShader,
-    ...constants_CONSTANTS.BLEND_MODES,
-    ...constants_CONSTANTS.SHADER,
-    ...constants_CONSTANTS.MATH,
-    ...constants_CONSTANTS.BLEND_MODES,
-};
-
-window.CGL = cgl_CGL;
-
-
-
-;// CONCATENATED MODULE: ./src/core/index.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-window.glMatrix = common_namespaceObject;
-window.mat2 = mat2_namespaceObject;
-window.mat2d = mat2d_namespaceObject;
-window.mat3 = mat3_namespaceObject;
-window.mat4 = mat4_namespaceObject;
-window.quat = quat_namespaceObject;
-window.quat2 = quat2_namespaceObject;
-window.vec2 = vec2_namespaceObject;
-
-window.vec3 = vec3_namespaceObject;
-window.vec4 = vec4_namespaceObject;
+const WEBAUDIO = new WebAudio();
 
 window.CABLES = window.CABLES || {};
-
-CABLES.CGL = cgl_CGL;
-CABLES.CG = CG;
-CABLES.CGP = CGP;
-CABLES.EMBED = EMBED;
-CABLES.Link = Link;
-CABLES.Port = Port;
-CABLES.Op = Op;
-CABLES.Profiler = Profiler;
-CABLES.Patch = Patch;
-CABLES.Timer = Timer;
-CABLES.WEBAUDIO = WEBAUDIO;
-CABLES.Variable = Variable;
-CABLES.LoadingStatus = LoadingStatus;
-CABLES.now = now;
-CABLES.internalNow = internalNow;
-CABLES.Anim = Anim;
-CABLES.AnimKey = AnimKey;
-
-CABLES.shortId = shortId;
-CABLES.uuid = uuid;
-CABLES.getShortOpName = getShortOpName;
-CABLES.simpleId = simpleId;
-CABLES.clamp = clamp;
-CABLES.map = map;
-CABLES.shuffleArray = shuffleArray;
-CABLES.generateUUID = generateUUID;
-CABLES.prefixedHash = prefixedHash;
-CABLES.smoothStep = smoothStep;
-CABLES.smootherStep = smootherStep;
-CABLES.cacheBust = cacheBust;
-CABLES.copyArray = copyArray;
-CABLES.basename = basename;
-CABLES.logStack = logStack;
-CABLES.filename = filename;
-CABLES.ajaxSync = ajaxSync;
-CABLES.ajax = ajax;
-CABLES.request = request;
-CABLES.logErrorConsole = logErrorConsole;
-CABLES.isNumeric = isNumeric;
-CABLES.isArray = isArray;
-CABLES.float32Concat = float32Concat;
-CABLES.uniqueArray = uniqueArray;
-CABLES.CGState = CgContext;
-CABLES.CgContext = CgContext;
-
-/** @type {Array<Op>} */
-CABLES.OPS = [];
-
-CABLES = Object.assign(CABLES,
-    CONSTANTS.PORT,
-    CONSTANTS.PACO,
-    CONSTANTS.ANIM,
-    CONSTANTS.OP
-);
-
-/* harmony default export */ const core = (CABLES);
+window.CABLES.WEBAUDIO = WEBAUDIO;
 
 
 
-if (!(function () { return !this; }())) console.warn("not in strict mode: index core"); // eslint-disable-line
 
-CABLES = __webpack_exports__["default"];
+/***/ }),
+
+/***/ "../shared/client/src/eventtarget.js":
+/*!*******************************************************!*\
+  !*** ../shared/client/src/eventtarget.js + 2 modules ***!
+  \*******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ Events)
+});
+
+;// CONCATENATED MODULE: ../shared/client/src/eventlistener.js
+class EventListener
+{
+
+    /**
+     * @param {Object} emitter
+     * @param {string} id
+     * @param {string} eventName
+     * @param {Function} cb
+     */
+    constructor(emitter, id, eventName, cb)
+    {
+        this.targetObj = emitter;
+        this.id = id;
+        this.eventName = eventName;
+        this.cb = cb;
+    }
+
+    remove()
+    {
+        this.targetObj.off(this.id);
+    }
+}
+
+;// CONCATENATED MODULE: ../shared/client/src/helper.js
+/**
+ * Shared helper methods for cables uis
+ */
+class Helper
+{
+    constructor()
+    {
+        this._simpleIdCounter = 0;
+    }
+
+    /**
+     * generate a random v4 uuid
+     *
+     * @return {string}
+     */
+    uuid()
+    {
+        let d = new Date().getTime();
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) =>
+        {
+            const r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+        });
+    }
+
+    /**
+     * checks value for !isNan and isFinite
+     *
+     * @param {string} n
+     * @return {boolean}
+     */
+    isNumeric(n)
+    {
+        const nn = parseFloat(n);
+        return !isNaN(nn) && isFinite(nn);
+    }
+
+    /**
+     * generate a simple ID using an internal counter
+     *
+     * @return {Number} new id
+     * @static
+     */
+    simpleId()
+    {
+        this._simpleIdCounter++;
+        return this._simpleIdCounter;
+    }
+
+    pathLookup(obj, path)
+    {
+        const parts = path.split(".");
+        if (parts.length == 1)
+        {
+            return obj[parts[0]];
+        }
+        return this.pathLookup(obj[parts[0]], parts.slice(1).join("."));
+    }
+
+}
+/* harmony default export */ const helper = (new Helper());
+
+// EXTERNAL MODULE: ../shared/client/src/logger.js
+var logger = __webpack_require__("../shared/client/src/logger.js");
+;// CONCATENATED MODULE: ../shared/client/src/eventtarget.js
+
+
+
+
+/**
+ * add eventlistener functionality to classes
+ */
+class Events
+{
+    #eventLog = new logger["default"]("eventtarget");
+
+    /** @type {Object<string,EventListener>} */
+    #listeners = {};
+    #logEvents = false;
+    #logName = "";
+    #eventCallbacks = {};
+    #countErrorUnknowns = 0;
+
+    constructor()
+    {
+    }
+
+    /**
+     * add event listener
+     * @param {string} eventName event name
+     * @param {function} cb callback
+     * @param {string} idPrefix prefix for id, default empty
+     * @return {EventListener} eventlistener
+     */
+    on(eventName, cb, idPrefix = "")
+    {
+        const newId = (idPrefix || "") + helper.simpleId();
+
+        const event = new EventListener(this, newId, eventName, cb);
+
+        if (!this.#eventCallbacks[eventName]) this.#eventCallbacks[eventName] = [event];
+        else this.#eventCallbacks[eventName].push(event);
+
+        this.#listeners[event.id] = event;
+
+        return event;
+    }
+
+    removeAllEventListeners()
+    {
+        for (const i in this.#listeners)
+        {
+            this.off(this.#listeners[i]);
+        }
+    }
+
+    /**
+     *
+     * @param {string} which
+     * @param {Function} cb
+     */
+    addEventListener(which, cb, idPrefix = "")
+    {
+        return this.on(which, cb, idPrefix);
+    }
+
+    /**
+     * check event listener registration
+     * @param {string|EventListener} id event id
+     * @param {function} cb callback - deprecated
+     * @return {boolean}
+     */
+    hasEventListener(id, cb = null)
+    {
+        if (id && !cb)
+        {
+            if (typeof id == "string") // check by id
+                return !!this.#listeners[id];
+            else
+                return !!this.#listeners[id.id];
+
+        }
+        else
+        {
+            this.#eventLog.warn("old eventtarget function haseventlistener!");
+            if (id && cb)
+            {
+                if (this.#eventCallbacks[id])
+                {
+                    const idx = this.#eventCallbacks[id].indexOf(cb);
+                    return idx !== -1;
+                }
+            }
+        }
+    }
+
+    /**
+     * check event listener by name
+     * @param {string } eventName event name
+     * @return {boolean}
+     */
+    hasListenerForEventName(eventName)
+    {
+        return this.#eventCallbacks[eventName] && this.#eventCallbacks[eventName].length > 0;
+    }
+
+    /** @deprecated */
+    removeEventListener(id)
+    {
+        return this.off(id);
+    }
+
+    /**
+     * remove event listener registration
+     * @param {EventListener} listenerParam
+     */
+    off(listenerParam)
+    {
+        if (listenerParam === null || listenerParam === undefined)
+        {
+            this.#eventLog.warn("removeEventListener id null", listenerParam);
+            return;
+        }
+
+        let id = listenerParam; // old off was using id strings directly, now uses eventlistener class
+        // @ts-ignore
+        if (listenerParam.eventName) id = listenerParam.id;
+
+        if (typeof id != "string")
+        {
+            console.log("old function signature: removeEventListener! use listener id");
+            return;
+        }
+
+        const event = this.#listeners[id];
+        if (!event)
+        {
+            if (this.#countErrorUnknowns == 20) this.#eventLog.warn("stopped reporting unknown events");
+            if (this.#countErrorUnknowns < 20) this.#eventLog.warn("could not find event...", id);
+            this.#countErrorUnknowns++;
+            return;
+        }
+
+        let removeCount = 0;
+
+        let found = true;
+        while (found)
+        {
+            found = false;
+            let index = -1;
+            for (let i = 0; i < this.#eventCallbacks[event.eventName].length; i++)
+            {
+                if (this.#eventCallbacks[event.eventName][i].id.indexOf(id) === 0) // this._eventCallbacks[event.eventName][i].id == which ||
+                {
+                    found = true;
+                    index = i;
+                }
+            }
+
+            if (index !== -1)
+            {
+                this.#eventCallbacks[event.eventName].splice(index, 1);
+                delete this.#listeners[id];
+                removeCount++;
+            }
+        }
+
+        if (removeCount == 0)console.log("no events removed", event.eventName, id);
+
+        return;
+    }
+
+    /**
+     * enable/disable logging of events for the class
+     *
+     * @param {boolean} enabled
+     * @param {string} logName
+     */
+    logEvents(enabled, logName)
+    {
+        this.#logEvents = enabled;
+        this.#logName = logName;
+    }
+
+    /**
+     * emit event
+     *
+     * @param {string} which event name
+     * @param {*} param1
+     * @param {*} param2
+     * @param {*} param3
+     * @param {*} param4
+     * @param {*} param5
+     * @param {*} param6
+     */
+    emitEvent(which, param1 = null, param2 = null, param3 = null, param4 = null, param5 = null, param6 = null, param7 = null, param8 = null)
+    {
+        if (this.#logEvents) this.#eventLog.log("[event] ", this.#logName, which, this.#eventCallbacks);
+
+        if (this.#eventCallbacks[which])
+        {
+            for (let i = 0; i < this.#eventCallbacks[which].length; i++)
+            {
+                if (this.#eventCallbacks[which][i])
+                {
+                    this.#eventCallbacks[which][i].cb(param1, param2, param3, param4, param5, param6, param7, param8);
+                }
+            }
+        }
+        else
+        {
+            if (this.#logEvents) this.#eventLog.log("[event] has no event callback", which, this.#eventCallbacks);
+        }
+    }
+}
+
+
+/***/ }),
+
+/***/ "../shared/client/src/logger.js":
+/*!**************************************!*\
+  !*** ../shared/client/src/logger.js ***!
+  \**************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Logger)
+/* harmony export */ });
+/* eslint-disable no-console */
+class Logger
+{
+
+    /**
+     * @param {any} initiator
+     * @param {Object} options
+     */
+    constructor(initiator, options)
+    {
+        this.initiator = initiator;
+        this._options = options;
+    }
+
+    /**
+     * @param {string} t
+     */
+    stack(t)
+    {
+        console.info("[" + this.initiator + "] ", t);
+        console.log((new Error()).stack);
+    }
+
+    /**
+     * @param {string} t
+     */
+    groupCollapsed(t)
+    {
+        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments)) || !CABLES.logSilent) console.log("[" + this.initiator + "]", ...arguments);
+
+        console.groupCollapsed("[" + this.initiator + "] " + t);
+    }
+
+    /**
+     * @param {any[][]} t
+     */
+    table(t)
+    {
+        console.table(t);
+    }
+
+    groupEnd()
+    {
+        console.groupEnd();
+    }
+
+    error()
+    {
+        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 2 }, ...arguments)) || !CABLES.UI)
+        {
+            console.error("[" + this.initiator + "]", ...arguments);
+        }
+
+        if (this._options && this._options.onError)
+        {
+            this._options.onError(this.initiator, ...arguments);
+            // console.log("emitevent onerror...");
+            // CABLES.patch.emitEvent("onError", this.initiator, ...arguments);
+            // CABLES.logErrorConsole("[" + this.initiator + "]", ...arguments);
+        }
+    }
+
+    errorGui()
+    {
+        if (CABLES.UI) CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 2 }, ...arguments);
+    }
+
+    warn()
+    {
+        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 1 }, ...arguments)) || !CABLES.logSilent)
+            console.warn("[" + this.initiator + "]", ...arguments);
+    }
+
+    verbose()
+    {
+        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments)) || !CABLES.logSilent)
+            console.log("[" + this.initiator + "]", ...arguments);
+    }
+
+    info()
+    {
+        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments)) || !CABLES.logSilent)
+            console.info("[" + this.initiator + "]", ...arguments);
+    }
+
+    log()
+    {
+        if ((CABLES.UI && CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments)) || !CABLES.logSilent)
+            console.log("[" + this.initiator + "]", ...arguments);
+    }
+
+    logGui()
+    {
+        if (CABLES.UI) CABLES.UI.logFilter.filterLog({ "initiator": this.initiator, "level": 0 }, ...arguments);
+    }
+
+    userInteraction(text)
+    {
+        // this.log({ "initiator": "userinteraction", "text": text });
+    }
+}
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	__webpack_require__("./src/corelibs/cg/index.js");
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	__webpack_require__("./src/corelibs/cgl/index.js");
+/******/ 	__webpack_require__("./src/corelibs/cgp/index.js");
+/******/ 	__webpack_require__("./src/corelibs/webaudio/webaudio.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/core/index.js");
+/******/ 	var __webpack_export_target__ = (CABLES = typeof CABLES === "undefined" ? {} : CABLES);
+/******/ 	for(var i in __webpack_exports__) __webpack_export_target__[i] = __webpack_exports__[i];
+/******/ 	if(__webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target__, "__esModule", { value: true });
+/******/ 	
 /******/ })()
 ;
 
 
-var CABLES = CABLES || {}; CABLES.build = {"timestamp":1745398635770,"created":"2025-04-23T08:57:15.770Z","git":{"branch":"develop","commit":"3bbbd9211b25ea2c4ace7e3c7a87f0680ca8dd86","date":"1745335350","message":"screenshot fix"}};
+var CABLES = CABLES || {}; CABLES.build = {"timestamp":1750234933647,"created":"2025-06-18T08:22:13.647Z","git":{"branch":"master","commit":"93cda46efc322de76ba749290b531d99f4402652","date":"1750169125","message":"tri"}};
