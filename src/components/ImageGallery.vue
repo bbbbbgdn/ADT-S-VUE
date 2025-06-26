@@ -230,7 +230,34 @@ export default {
       if (gallery) {
         this.galleryWidth = gallery.scrollWidth;
       }
-    }
+    },
+    // setupIntersectionObserver() {
+    //   if (!this.$refs.galleryContainer) return;
+    //   
+    //   this.observer = new IntersectionObserver(
+    //     (entries) => {
+    //       entries.forEach((entry) => {
+    //         if (entry.isIntersecting) {
+    //           // Gallery is visible, trigger image loading
+    //           this.startImageLoading();
+    //         }
+    //       });
+    //     },
+    //     {
+    //       rootMargin: '100px', // Start loading 100px before gallery comes into view
+    //       threshold: 0.1
+    //     }
+    //   );
+    //   
+    //   this.observer.observe(this.$refs.galleryContainer);
+    // },
+    // startImageLoading() {
+    //   // Trigger the lazy loading directive to start loading images
+    //   // by forcing a reactive update
+    //   this.$nextTick(() => {
+    //     this.$forceUpdate();
+    //   });
+    // }
   },
   computed: {
     processedImages() {
@@ -332,6 +359,13 @@ export default {
       } else {
         this.stopAutoScroll();
       }
+    },
+    images: {
+      handler() {
+        // Images changed, update dimensions
+        this.updateDimensions();
+      },
+      deep: true
     }
   }
 };
@@ -417,6 +451,8 @@ export default {
   z-index: 1;
   backface-visibility: hidden;
   transform: translateZ(0);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .gallery-image.image-loading {
@@ -425,7 +461,6 @@ export default {
 
 .gallery-image.image-loaded {
   opacity: 1;
-  transition: none;
 }
 
 .gallery-image.image-error {

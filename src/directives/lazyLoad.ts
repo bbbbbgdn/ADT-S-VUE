@@ -17,7 +17,7 @@ interface LazyLoadOptions {
   preload?: boolean; // Whether to preload the image immediately
 }
 
-// Global loading queue to track image loading status
+// Global loading queue to track image loading status (for sequential loading)
 const loadingQueue = {
   currentIndex: 0,
   observers: new Set<Function>(),
@@ -68,7 +68,7 @@ export default {
     el.classList.add('image-loading')
     // Set initial opacity
     el.style.opacity = '0'
-    el.style.transition = 'opacity 0.5s ease-in-out'
+    el.style.transition = 'opacity 0.3s ease-in-out'
     
     // Function to load the image
     function loadImage() {
@@ -90,8 +90,8 @@ export default {
           el.style.opacity = '1'
         })
         
-        // Only increment queue for gallery images
-        if (typeof options.index === 'number' && !options.rootMargin) {
+        // Only increment queue for gallery images (when index is provided)
+        if (typeof options.index === 'number') {
           loadingQueue.currentIndex++
           loadingQueue.observers.forEach(callback => callback(loadingQueue.currentIndex))
         }
@@ -103,8 +103,8 @@ export default {
         el.classList.remove('image-loading')
         el.classList.add('image-loaded', 'image-error')
         
-        // Only increment queue for gallery images
-        if (typeof options.index === 'number' && !options.rootMargin) {
+        // Only increment queue for gallery images (when index is provided)
+        if (typeof options.index === 'number') {
           loadingQueue.currentIndex++
           loadingQueue.observers.forEach(callback => callback(loadingQueue.currentIndex))
         }
@@ -117,12 +117,25 @@ export default {
       return
     }
     
-    // Use Intersection Observer for project cards (when rootMargin is specified)
-    if (hasIntersectionObserver && options.rootMargin) {
+    // Use queue-based approach for gallery images (when index is provided)
+    if (typeof options.index === 'number') {
+      const checkAndLoad = (currentIndex: number) => {
+        if (options.index === currentIndex) {
+          loadImage()
+        }
+      }
+      
+      loadingQueue.observers.add(checkAndLoad)
+      checkAndLoad(loadingQueue.currentIndex)
+      return
+    }
+    
+    // Use Intersection Observer for lazy loading (default behavior)
+    if (hasIntersectionObserver) {
       const observerOptions = {
         root: null,
-        rootMargin: options.rootMargin,
-        threshold: options.threshold || 0
+        rootMargin: options.rootMargin || '100px',
+        threshold: options.threshold || 0.1
       }
       
       el._observer = new IntersectionObserver((entries) => {
@@ -141,23 +154,17 @@ export default {
       return
     }
     
-    // Use queue-based approach only for gallery images
-    if (typeof options.index === 'number') {
-      const checkAndLoad = (currentIndex: number) => {
-        if (options.index === currentIndex) {
-          loadImage()
-        }
-      }
-      
-      loadingQueue.observers.add(checkAndLoad)
-      checkAndLoad(loadingQueue.currentIndex)
-    }
+    // Fallback: load immediately if Intersection Observer is not supported
+    loadImage()
   },
   
   unmounted(el: HTMLElementWithCleanup) {
     // Clean up when directive is unmounted
     if (el._cleanup) {
       el._cleanup()
+    }
+    if (el._observer) {
+      el._observer.disconnect()
     }
   }
 } 
