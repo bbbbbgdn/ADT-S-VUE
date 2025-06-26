@@ -5,8 +5,8 @@
       v-for="(story, index) in stories"
       :key="story.id"
       :image="formatImage(story)"
-      :projectName="story.content.title_tag"
-      :year="story.content.year_tag"
+      :projectName="story.content?.title_tag"
+      :year="story.content?.year_tag"
       :slug="story.slug"
       @click="navigateToProject"
       :style="{ 

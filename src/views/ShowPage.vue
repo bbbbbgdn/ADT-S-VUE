@@ -113,7 +113,7 @@ const formatOtherShowsImages = (visuals) => {
               :location="show.content?.location_tag || ''"
               :date="show.content?.date_tag || ''"
               :slug="show.slug"
-              :images="formatOtherShowsImages(show.content.visuals)"
+              :images="formatOtherShowsImages(show.content?.visuals)"
               :repeatCount="1"
               :imageHeight="otherShowsImageSettings.height + 'rem'"
               :imageWidth="'auto'"

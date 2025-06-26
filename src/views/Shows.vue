@@ -23,7 +23,9 @@ onMounted(async () => {
     const response = await storyblokApi.get('cdn/stories', {
       starts_with: 'shows/',
     });
-    stories.value = response.data.stories; 
+    if (response?.data?.stories) {
+      stories.value = response.data.stories;
+    }
   } catch (error) {
     console.error('Error fetching stories:', error);
   }
@@ -46,7 +48,7 @@ const formatImages = (visuals, customOptions = {}) => {
   <div class="shows">
     <div v-for="story in stories" :key="story.uuid">
       <ImageGallery 
-        :images="formatImages(story.content.visuals)"
+        :images="formatImages(story.content?.visuals)"
         :name="story.content?.title_tag"
         :location="story.content?.location_tag"
         :date="story.content?.date_tag"

@@ -24,7 +24,7 @@
             threshold: 0.1,
             rootMargin: '100px'
           }"
-          :alt="image.alt"
+          :alt="image.alt || 'Image'"
           :style="imageStyle"
           :data-index="index"
           class="gallery-image"

@@ -105,10 +105,10 @@ export default {
           <BaseButton 
             v-if="story.content?.title_tag?.trim()" 
             :to="`/projects/${story.slug.split('/').pop()}`" 
-            variant="active">{{ story.content.title_tag }}</BaseButton>
+            variant="active">{{ story.content?.title_tag }}</BaseButton>
           <BaseButton 
             v-if="story.content?.location_tag?.trim()" 
-            variant="grey">{{ story.content.location_tag }}</BaseButton>
+            variant="grey">{{ story.content?.location_tag }}</BaseButton>
           <BaseButton 
             v-if="(story.content?.date_tag || story.content?.year_tag)?.trim()" 
             variant="grey">{{ story.content?.date_tag || story.content?.year_tag }}</BaseButton>
