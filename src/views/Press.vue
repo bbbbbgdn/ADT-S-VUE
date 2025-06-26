@@ -220,12 +220,12 @@ export default {
 
 @media screen and (max-width: 768px) {
   .press-container {
-    padding: var(--space-sm);
+    /* padding: var(--space-sm); */
   }
   
   .year-group {
-    grid-template-columns: 1fr;
-    gap: var(--space-sm);
+    /* grid-template-columns: 1fr; */
+    /* gap: var(--space-sm); */
   }
 
   .press-item {
@@ -235,7 +235,7 @@ export default {
 
   .media-outlet,
   .press-title {
-    width: 100%;
+    /* width: 100%; */
   }
 }
 </style>
