@@ -73,7 +73,8 @@ const handleClick = (event) => {
 
 <style scoped>
 .base-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   position: relative;
 
   padding-top: var(--button-padding-y);
@@ -88,11 +89,24 @@ const handleClick = (event) => {
   line-height: 1;
 
   text-align: left;
+  max-width: 99vw;
+  text-overflow: ellipsis;
+  overflow: visible;
+
 }
 
 .button-text {
-  display: inline-block;
-  transform: translateY(var(--text-y-offset, -1.5rem));
+  display: block;
+  line-height: 1.2;
+  /* Remove transform approach - use flexbox instead */
+  transform: translateY(var(--text-y-offset, -1rem));
+  
+  /* Ensure text truncation works properly */
+
+  white-space: nowrap;
+  overflow: visible;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Black Button */
@@ -145,5 +159,12 @@ const handleClick = (event) => {
 body.page-transitioning .button-black {
   background-color: black !important;
   color: white !important;
+}
+
+
+@media screen and (max-width: 768px) {
+  /* .button-text {
+    display: block;
+  } */
 }
 </style> 
