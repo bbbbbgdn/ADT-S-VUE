@@ -46,7 +46,15 @@ const router = useRouter()
 
 // Computed
 const hasContent = computed(() => {
-  return slots.default && slots.default().length > 0
+  if (!slots.default) return false;
+  // Check if any slot content is not just whitespace or empty
+  const content = slots.default().map(vnode => {
+    if (typeof vnode.children === 'string') {
+      return vnode.children.trim();
+    }
+    return vnode.children ? String(vnode.children).trim() : '';
+  }).join('');
+  return content.length > 0;
 })
 
 // Methods
