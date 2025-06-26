@@ -1,5 +1,5 @@
 <template>
-  <div class="main-text">
+  <div class="main-text" :class="{ 'single-line': isSingleLine }">
     <slot v-if="$slots.default"></slot>
     <p v-else-if="text && text.length > 0">{{ text }}</p>
     <p v-else class="empty-text">No content available</p>
@@ -18,6 +18,15 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  computed: {
+    isSingleLine() {
+      if (this.text) {
+        // Check if text contains line breaks or is short enough to be single line
+        return !this.text.includes('\n') && this.text.length < 50;
+      }
+      return false;
+    }
   }
 };
 </script>
@@ -35,6 +44,10 @@ export default {
   line-height: var(--text-4xl);
   text-indent: var(--space-3xl);
   margin-bottom: var(--space-2xl);
+}
+
+.main-text.single-line {
+  text-indent: 0;
 }
 
 .main-text p {

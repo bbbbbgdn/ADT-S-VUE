@@ -189,7 +189,7 @@ export default {
 
 .profile-description {
   margin-bottom: calc(var(--space-4xl)*1.5);
-  /* text-indent: var(--space-2xl); */
+  text-indent: var(--space-3xl);
 }
 
 .contact-info {

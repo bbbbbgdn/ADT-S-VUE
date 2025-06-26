@@ -1,10 +1,10 @@
 <template>
   <div class="info-text-container" v-if="hasContent">
-    <div class="info-text" v-if="$slots.default" :style="columnStyle">
+    <div class="info-text" v-if="$slots.default">
       <slot></slot>
     </div>
-    <div class="info-text" v-else-if="html" v-html="html" :style="columnStyle"></div>
-    <div class="info-text" v-else-if="text" :style="columnStyle">{{ text }}</div>
+    <div class="info-text" v-else-if="html" v-html="html"></div>
+    <div class="info-text" v-else-if="text">{{ text }}</div>
   </div>
 </template>
 
@@ -26,11 +26,6 @@ export default {
     }
   },
   computed: {
-    columnStyle() {
-      return {
-        columnCount: this.columnCount
-      };
-    },
     hasContent() {
       return (this.text && this.text.trim().length > 0) || 
              (this.html && this.html.trim().length > 0) ||
@@ -53,11 +48,11 @@ export default {
   column-gap: var(--space-3xl);
   /* max-width: 1000px; */
   width: 100%;
-  padding: var(--space-xl) var(--space-sm);
+  padding: var(--space-xl) var(--space-3xl);
   text-align: left;
   margin: 0 auto;
   box-sizing: border-box;
-  text-indent: var(--space-3xl);
+  /* text-indent: var(--space-3xl); */
 }
 
 .info-text p {
