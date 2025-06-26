@@ -70,7 +70,7 @@ export default {
   text-align: center;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .info-text {
     column-count: 1;
     max-width: 100%;

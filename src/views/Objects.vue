@@ -117,7 +117,7 @@ export default {
 }
 
 /* Responsive layout for mobile devices */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .objects-grid {
     grid-template-columns: 1fr;
     padding: var(--space-sm);

@@ -82,7 +82,7 @@ export default {
 }
 
 /* Responsive layout for mobile devices */
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }

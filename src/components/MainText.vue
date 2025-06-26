@@ -66,7 +66,7 @@ export default {
 }
 
 /* Responsive adjustments for mobile */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .main-text {
   }
 }

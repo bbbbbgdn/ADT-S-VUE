@@ -74,7 +74,7 @@ export default {
   color: white;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .filter-container {
     padding: var(--space-sm);
     justify-content: center;

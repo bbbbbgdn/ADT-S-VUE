@@ -250,7 +250,7 @@ export default {
 .button-hover {
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
   .project-card {
     min-height: 30vh;
   }

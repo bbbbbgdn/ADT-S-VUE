@@ -189,7 +189,7 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .lazy-image-container {
     min-height: 30px;
   }

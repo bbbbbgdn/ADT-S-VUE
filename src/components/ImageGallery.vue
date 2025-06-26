@@ -434,7 +434,7 @@ export default {
   border: 1px dashed #ccc;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .gallery {
     min-height: auto !important;
     height: auto !important;
