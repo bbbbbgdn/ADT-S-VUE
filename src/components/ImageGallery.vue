@@ -64,8 +64,16 @@ export default {
     images: { type: Array, required: true },
     repeatCount: { type: Number, required: true },
     isActive: { type: Boolean, default: false },
-    imageHeight: { type: String, default: '230rem' },
-    imageWidth: { type: String, default: 'auto' },
+    imageHeight: { 
+      type: String, 
+      default: '230rem',
+      validator: value => /^\d+(rem|vh|px)$/.test(value)
+    },
+    imageWidth: { 
+      type: String, 
+      default: 'auto',
+      validator: value => value === 'auto' || /^\d+(rem|vh|px)$/.test(value)
+    },
     imageQuality: { type: Number, default: 85 },
     imageFormat: { type: String, default: null },
     resolutionRatio: { type: Number, default: 2, validator: value => value > 0 },

@@ -30,7 +30,11 @@ export default {
       validator: (value) => ['black', 'grey', 'active'].includes(value)
     },
     disabled: { type: Boolean, default: false },
-    to: { type: String, default: null },
+    to: { 
+      type: String, 
+      default: null,
+      validator: value => value === null || /^\/(?!\/)|^https?:\/\//.test(value)
+    },
     keepClickable: { type: Boolean, default: false }
   },
   emits: ['click'],
