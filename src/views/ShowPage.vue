@@ -156,17 +156,14 @@ h1 {
 }
 
 .image-gallery {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  /* gap: 10px; */
-}
+  }
 
-.image-container img {
-  width: 200px;
-  height: 600px;
-  object-fit: cover;
-  border-radius: 5px;
-}
+  .image-container img {
+    width: 200px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
 
 .gallery-item img{
   /* height: 55vh; */

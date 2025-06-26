@@ -72,7 +72,6 @@ export default {
   text-align: center;
   color: white;
   padding: var(--space-md);
-  /* background-color: rgba(0, 0, 0, 0.5); */
   border-radius: 8px;
 }
 
@@ -80,37 +79,6 @@ h1 {
   font-size: var(--text-3xl);
   margin: 0;
 }
-
-/* .iframe-demo {
-  height: 100%;
-  width: 100%;
-  border: none;
-} */
-
-/* h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-} */
-
-/* @media screen and (orientation: portrait) {
-  .home {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100vh;
-    height: 100vw;
-    transform: translate(-50%, -50%) rotate(-90deg) scale(1.1);
-    transform-origin: center center;
-  }
-  
-  .video-background {
-    transform: rotate(90deg) scale(1.1);
-    transform-origin: center center;
-  }
-} */
 
 .title-text {
   position: absolute;
