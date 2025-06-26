@@ -85,7 +85,7 @@ export default {
       scrollStartX: 0,
       isHovering: false,
       autoScrollInterval: null,
-      scrollSpeed: 0.15,
+      scrollSpeed: 0.2,
       currentPosition: 0,
       isManualScrolling: false,
       galleryWidth: 0,
@@ -151,7 +151,7 @@ export default {
         this.lastTimestamp = timestamp;
         
         // Calculate smooth movement based on time delta
-        const movement = (this.scrollSpeed * deltaTime) / 16;
+        const movement = (this.scrollSpeed * deltaTime) / 50;
         this.currentPosition += movement;
         
         // When we've scrolled past one set of images, reset to start
