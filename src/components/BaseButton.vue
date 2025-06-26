@@ -10,7 +10,9 @@
     :disabled="disabled"
     @click="handleClick"
   >
-    <slot></slot>
+    <span class="button-text">
+      <slot></slot>
+    </span>
   </button>
 </template>
 
@@ -99,17 +101,25 @@ export default {
 <style scoped>
 .base-button {
   display: inline-block;
-  padding: var(--button-padding-y) var(--button-padding-x);
+  position: relative;
+
+  padding-top: var(--button-padding-y);
+  padding-bottom: var(--button-padding-y);
+  padding-right: var(--button-padding-x);
+  padding-left: var(--button-padding-x);
+
   white-space: nowrap;
   border-radius: var(--button-border-radius);
   
   min-height: var(--button-min-height);
-  line-height: 1.2;
+  line-height: 1;
 
   text-align: left;
+}
 
-  /* Set initial transition properties */
-  /* transition: background-color 0.5s ease-in-out !important; */
+.button-text {
+  display: inline-block;
+  transform: translateY(var(--text-y-offset, -1.5rem));
 }
 
 /* Black Button */
