@@ -3,7 +3,6 @@ import { useRoute, useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import ProjectCard from '../components/ProjectCard.vue';
-import LoadingIndicator from '../components/LoadingIndicator.vue';
 import MainText from '../components/MainText.vue';
 import InfoText from '../components/InfoText.vue';
 import useStoryblok from '../utils/useStoryblok';
@@ -20,7 +19,6 @@ export default {
     BaseButton,
     ImageGallery,
     ProjectCard,
-    LoadingIndicator,
     MainText,
     InfoText
   },

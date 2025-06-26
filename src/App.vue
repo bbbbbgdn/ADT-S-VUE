@@ -22,8 +22,7 @@ export default {
   },
   data() {
     return {
-      transitionCSS,
-      preloadedImages: []
+      transitionCSS
     }
   },
   mounted() {
@@ -60,7 +59,6 @@ export default {
       imagesToPreload.forEach(src => {
         const img = new Image();
         img.src = src;
-        this.preloadedImages.push(img); // Keep reference to prevent garbage collection
       });
     }
   }

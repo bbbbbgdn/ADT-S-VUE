@@ -29,7 +29,6 @@ export default {
     const router = useRouter()
     const route = useRoute()
     const currentPath = ref(route.path)
-    const clickedPath = ref(null) // Track which button was last clicked
     
     // Watch for route changes
     watch(
@@ -50,10 +49,6 @@ export default {
 
     // Get button variant considering both the current route and the clicked button
     const getButtonVariant = (path) => {
-      // If this is the button that was just clicked, make it active immediately
-      // if (clickedPath.value === path) {
-        // return 'active'
-      // }
       // Otherwise, use the normal active state logic
       return navigationManager.isActive(route, path) ? 'active' : 'black'
     }
@@ -61,9 +56,6 @@ export default {
     const navigateTo = (path, event) => {
       // Don't navigate if we're already on this page
       if (currentPath.value === path) return;
-      
-      // Set this path as the clicked path immediately
-      clickedPath.value = path;
       
       // Use navigation manager for consistent transitions
       navigationManager.navigateTo(router, path);

@@ -2,7 +2,6 @@
 import { useRoute, useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
-import LoadingIndicator from '../components/LoadingIndicator.vue';
 import MainText from '../components/MainText.vue';
 import InfoText from '../components/InfoText.vue';
 import { renderRichText } from "@storyblok/vue";
@@ -38,12 +37,6 @@ const randomOtherShows = computed(() => {
     .sort(() => 0.5 - Math.random()) // перемішати
     .slice(0, 4); // взяти перші 4
 });
-
-
-// Handle navigation to another show
-const navigateToShow = (slug) => {
-  navigateTo(slug);
-};
 
 // Format images with preset settings
 const formatMainShowImages = (visuals) => {

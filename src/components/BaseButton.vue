@@ -23,7 +23,6 @@ import navigationManager from '../utils/navigationManager'
 
 // Props
 const props = defineProps({
-  outlined: { type: Boolean, default: false },
   variant: {
     type: String,
     default: 'black',

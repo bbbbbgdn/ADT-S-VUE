@@ -51,7 +51,6 @@
 import ButtonBase from './BaseButton.vue';
 import { createImageUrl, getOptimalImageDimensions } from '../utils/storyblok';
 import { useRouter, useRoute } from 'vue-router';
-import navigationManager from '../utils/navigationManager';
 
 export default {
   name: 'ImageGallery',
