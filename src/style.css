@@ -151,7 +151,7 @@
 @media screen and (max-width: 768px) {
   :root {
     /* --base-font-size: clamp(0.5px, 0.65vw, 0.8px); */
-    --base-font-size: clamp(0.1px, 0.15vw, 2px);
+    --base-font-size: clamp(0.1px, 0.21vw, 2px);
     /* --scale-factor: 0.7; */
   }
 } 

@@ -120,7 +120,7 @@ export default {
           :slug="story.slug"
           :images="formatMainProjectImages(story.content.visuals)" 
           :repeatCount="1"
-          :imageHeight="'100vh'"
+          :imageHeight="'calc(100vh - 97rem)'"
           :imageQuality="mainProjectImageSettings.quality"
           :imageFormat="mainProjectImageSettings.format"
           :resolutionRatio="mainProjectImageSettings.resolutionRatio"
