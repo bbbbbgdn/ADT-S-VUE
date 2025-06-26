@@ -8,7 +8,7 @@
       :projectName="story.content?.title_tag"
       :year="story.content?.year_tag"
       :slug="story.slug"
-      @click="navigateToProject"
+      @click="navigateToProject(story.slug)"
       :style="{ 
         // transitionDelay: shouldAnimate ? `${index * 5}s` : '0s',
         // opacity: isLoading ? '0' : '1'

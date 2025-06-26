@@ -14,7 +14,7 @@
     >
       <div 
         v-for="(image, index) in processedImages" 
-        :key="index" 
+        :key="`${image.url}-${index}`" 
         class="gallery-item"
         :style="galleryItemStyle"
       >
