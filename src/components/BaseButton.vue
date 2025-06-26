@@ -16,87 +16,49 @@
   </button>
 </template>
 
-<script>
+<script setup>
+import { computed, useSlots } from 'vue'
 import { useRouter } from 'vue-router'
 import navigationManager from '../utils/navigationManager'
 
-export default {
-  name: 'BaseButton',
-  props: {
-    outlined: { type: Boolean, default: false },
-    variant: {
-      type: String,
-      default: 'black',
-      validator: (value) => ['black', 'grey', 'active'].includes(value)
-    },
-    disabled: { type: Boolean, default: false },
-    to: { 
-      type: String, 
-      default: null,
-      validator: value => value === null || /^\/(?!\/)|^https?:\/\//.test(value)
-    },
-    keepClickable: { type: Boolean, default: false }
+// Props
+const props = defineProps({
+  outlined: { type: Boolean, default: false },
+  variant: {
+    type: String,
+    default: 'black',
+    validator: (value) => ['black', 'grey', 'active'].includes(value)
   },
-  emits: ['click'],
-  setup(props, { emit }) {
-    const router = useRouter()
+  disabled: { type: Boolean, default: false },
+  to: { 
+    type: String, 
+    default: null,
+    validator: value => value === null || /^\/(?!\/)|^https?:\/\//.test(value)
+  },
+  keepClickable: { type: Boolean, default: false }
+})
 
-    const handleClick = (event) => {
-      if (props.disabled) return;
+// Emits
+const emit = defineEmits(['click'])
 
-      if (props.to) {
-        event.preventDefault()
-        navigationManager.navigateTo(router, props.to)
-      } else {
-        emit('click')
-      }
-    }
+// Slots
+const slots = useSlots()
+const router = useRouter()
 
-    return { handleClick }
-  },
-  data() {
-    return {
-      slotContent: ''
-    }
-  },
-  computed: {
-    hasContent() {
-      return this.slotContent.trim().length > 0
-    }
-  },
-  methods: {
-    updateSlotContent() {
-      const slotElement = this.$slots.default && this.$slots.default()
-      if (slotElement && slotElement.length > 0) {
-        this.slotContent = this.getTextFromVNode(slotElement[0])
-        if (!this.slotContent || this.slotContent.trim().length === 0) {
-          console.warn('Empty button content detected', {
-            variant: this.variant,
-            to: this.to
-          })
-        }
-      } else {
-        this.slotContent = ''
-        console.warn('Empty button content detected (no slot content)', {
-          variant: this.variant,
-          to: this.to
-        })
-      }
-    },
-    getTextFromVNode(vnode) {
-      if (!vnode) return ''
-      if (typeof vnode.children === 'string') return vnode.children
-      if (Array.isArray(vnode.children)) {
-        return vnode.children.map(child => this.getTextFromVNode(child)).join('')
-      }
-      return ''
-    }
-  },
-  mounted() {
-    this.updateSlotContent()
-  },
-  updated() {
-    this.updateSlotContent()
+// Computed
+const hasContent = computed(() => {
+  return slots.default && slots.default().length > 0
+})
+
+// Methods
+const handleClick = (event) => {
+  if (props.disabled) return;
+
+  if (props.to) {
+    event.preventDefault()
+    navigationManager.navigateTo(router, props.to)
+  } else {
+    emit('click')
   }
 }
 </script>

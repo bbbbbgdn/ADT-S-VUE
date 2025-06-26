@@ -1,13 +1,10 @@
-<script>
-export default {
-  name: 'LoadingIndicator',
-  props: {
-    isLoading: {
-      type: Boolean,
-      default: false
-    }
+<script setup>
+defineProps({
+  isLoading: {
+    type: Boolean,
+    default: false
   }
-}
+})
 </script>
 
 <template>

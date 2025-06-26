@@ -11,27 +11,25 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Home',
-  data() {
-    return {
-      isLoaded: false
-    }
-  },
-  methods: {
-    onIframeLoad() {
-      this.isLoaded = true;
-    }
-  },
-  beforeUnmount() {
-    this.isLoaded = false;
-    const homeElement = document.querySelector('.home');
-    if (homeElement) {
-      homeElement.style.display = 'none';
-    }
-  }
+<script setup>
+import { ref, onBeforeUnmount } from 'vue'
+
+// Reactive data
+const isLoaded = ref(false)
+
+// Methods
+const onIframeLoad = () => {
+  isLoaded.value = true
 }
+
+// Lifecycle
+onBeforeUnmount(() => {
+  isLoaded.value = false
+  const homeElement = document.querySelector('.home')
+  if (homeElement) {
+    homeElement.style.display = 'none'
+  }
+})
 </script>
 
 <style scoped>

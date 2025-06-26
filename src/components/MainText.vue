@@ -6,29 +6,27 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'MainText',
-  props: {
-    text: {
-      type: String,
-      default: ''
-    },
-    useSpan: {
-      type: Boolean,
-      default: false
-    }
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  text: {
+    type: String,
+    default: ''
   },
-  computed: {
-    isSingleLine() {
-      if (this.text) {
-        // Check if text contains line breaks or is short enough to be single line
-        return !this.text.includes('\n') && this.text.length < 50;
-      }
-      return false;
-    }
+  useSpan: {
+    type: Boolean,
+    default: false
   }
-};
+})
+
+const isSingleLine = computed(() => {
+  if (props.text) {
+    // Check if text contains line breaks or is short enough to be single line
+    return !props.text.includes('\n') && props.text.length < 50
+  }
+  return false
+})
 </script>
 
 <style>
