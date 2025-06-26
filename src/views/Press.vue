@@ -92,12 +92,10 @@ export default {
 
     // Modified functions to manage image opacity instead of DOM manipulation
     const showImage = (pressId) => {
-      console.log('Show image called with press ID:', pressId)
       activeImageId.value = pressId
     }
 
     const hideImage = () => {
-      console.log('Hide image called')
       activeImageId.value = null
     }
 
@@ -111,8 +109,6 @@ export default {
         
         if (response?.data?.stories) {
           pressItems.value = response.data.stories
-          // Добавляем подробный лог первого элемента
-          console.log('First press item full content:', pressItems.value[0]?.content)
         }
       } catch (error) {
         console.error('Error fetching press items:', error)

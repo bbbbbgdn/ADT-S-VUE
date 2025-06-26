@@ -48,8 +48,9 @@ export default {
           starts_with: 'projects/',
           version: 'published'
         });
-        stories.value = response.data.stories;
-        console.log('Projects loaded:', stories.value);
+        if (response?.data?.stories) {
+          stories.value = response.data.stories;
+        }
         isLoading.value = false;
       } catch (error) {
         console.error('Error fetching stories:', error);

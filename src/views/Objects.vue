@@ -54,12 +54,10 @@ export default {
     };
 
     const formatImage = (visual) => {
-      console.log('Visual data:', visual); // для отладки
       if (!visual || !visual.filename) {
         return '';
       }
       const formattedUrl = `${visual.filename}`;
-      console.log('Formatted URL:', formattedUrl); // для отладки
       return formattedUrl;
     };
   
@@ -75,7 +73,6 @@ export default {
         // Добавим проверку перед присвоением
         if (response.data && response.data.stories) {
           stories.value = response.data.stories;
-          console.log('Loaded stories:', stories); // для отладки
         }
       } catch (error) {
         console.error('Error fetching stories:', error);

@@ -31,7 +31,6 @@ export const loadStory = async (path, options = {}) => {
   
   // Check cache first if enabled
   if (cacheEnabled && storyCache.value[path]) {
-    console.log(`Loading story from cache: ${path}`);
     return {
       data: storyCache.value[path],
       status: 'success',
@@ -136,11 +135,6 @@ export const preloadProjects = async () => {
     startsWith: 'projects/'
   });
   
-  if (result.status === 'success') {
-    console.log('Preloaded projects to cache:', 
-      result.data.map(project => project.slug.split('/').pop()));
-  }
-  
   return result;
 };
 
@@ -212,7 +206,6 @@ export const formatImage = (project, options = {}) => {
   
   if (project.content.visuals && Array.isArray(project.content.visuals) && project.content.visuals.length > 0) {
     const filename = project.content.visuals[0].filename;
-    console.log(`Found image filename: ${filename} for project: ${project.name || project.slug}`);
     
     // Build transformation string
     let transform = `/m/${width}x${height}`;
@@ -237,8 +230,6 @@ export const formatImage = (project, options = {}) => {
     } else {
       finalUrl = `${filename}${transform}`;
     }
-    
-    console.log(`Generated image URL: ${finalUrl}`);
     
     // Force a unique URL to prevent caching issues
     finalUrl = finalUrl + (finalUrl.includes('?') ? '&' : '?') + 'v=' + Date.now();
@@ -321,8 +312,6 @@ export const clearCache = (type = 'all') => {
   if (type === 'all' || type === 'stories') {
     storyCache.value = {};
   }
-  
-  console.log(`Cache cleared: ${type}`);
 };
 
 /**

@@ -34,12 +34,6 @@ export default {
     // Add smooth scrolling to the root HTML element
     document.documentElement.style.scrollBehavior = 'smooth';
     
-    // Log the transition settings for debugging
-    console.log('Transition settings applied:', {
-      duration: transitionCSS.duration,
-      easing: transitionCSS.easing
-    });
-    
     // Safety check: If page loads with transition class stuck, remove it
     if (document.body.classList.contains('page-transitioning')) {
       document.body.classList.remove('page-transitioning');

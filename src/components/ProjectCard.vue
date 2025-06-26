@@ -149,29 +149,7 @@ export default {
   },
   
   mounted() {
-    // Check if this is the first visit
-    this.shouldAnimate = !localStorage.getItem('hasSeenAnimation');
-    
-    // Log the image URL for debugging
-    console.log(`ProjectCard mounted - Image URL: ${this.image}, Slug: ${this.slug}`);
-    
-    // Set animation as seen
-    if (this.shouldAnimate) {
-      localStorage.setItem('hasSeenAnimation', 'true');
-    }
-    
-    // Manually preload the image to ensure it works
-    if (!this.useImgTag) {
-      const img = new Image();
-      img.onload = () => {
-        this.setBackgroundImage(this.image);
-      };
-      img.onerror = () => {
-        console.error(`Failed to load image: ${this.image}`);
-        this.setErrorState();
-      };
-      img.src = this.image;
-    }
+    // Component is ready
   }
 }
 </script>
