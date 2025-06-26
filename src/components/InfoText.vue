@@ -71,6 +71,7 @@ export default {
     max-width: 100%;
     padding: 5vh var(--space-md);
     margin: 0 auto;
+    text-indent: var(--space-3xl);
   }
 }
 </style>

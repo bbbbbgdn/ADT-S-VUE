@@ -82,7 +82,7 @@ const formatOtherShowsImages = (visuals) => {
           :slug="story.slug"
           :images="formatMainShowImages(story.content.visuals)" 
           :repeatCount="1"
-          :imageHeight="`${mainShowImageSettings.height}px`"
+          :imageHeight="'calc(100vh - 48.4rem)'"
           :imageQuality="mainShowImageSettings.quality"
           :imageFormat="mainShowImageSettings.format"
           :resolutionRatio="mainShowImageSettings.resolutionRatio"

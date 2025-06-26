@@ -7,7 +7,12 @@ import LoadingIndicator from '../components/LoadingIndicator.vue';
 import MainText from '../components/MainText.vue';
 import InfoText from '../components/InfoText.vue';
 import useStoryblok from '../utils/useStoryblok';
+import { createImageSettings } from '../utils/imageSettings';
 import { computed } from 'vue';
+
+// Create image settings using our utility - high quality for main project, thumbnail for others
+const mainProjectImageSettings = createImageSettings('high');
+const otherProjectsImageSettings = createImageSettings('thumbnail');
 
 export default {
   name: 'ProjectPage',
@@ -54,6 +59,15 @@ export default {
       navigateTo(slug);
     };
 
+    // Format images with preset settings
+    const formatMainProjectImages = (visuals) => {
+      return formatImages(visuals, mainProjectImageSettings);
+    };
+
+    const formatOtherProjectsImages = (visuals) => {
+      return formatImages(visuals, otherProjectsImageSettings);
+    };
+
     return {
       story,
       stories,
@@ -63,6 +77,10 @@ export default {
       errorMessage,
       formatImage,
       formatImages,
+      formatMainProjectImages,
+      formatOtherProjectsImages,
+      mainProjectImageSettings,
+      otherProjectsImageSettings,
       navigateToProject
     };
   }
@@ -101,12 +119,15 @@ export default {
 
         <ImageGallery 
           v-if="story.content?.visuals && story.content.visuals.length > 0"
-          :slug="story.slug" 
-          :images="formatImages(story.content.visuals, { width: 0, height: 690, quality: 85 })" 
+          :slug="story.slug"
+          :images="formatMainProjectImages(story.content.visuals)" 
           :repeatCount="1"
-          :imageHeight="'690rem'"
-          :imageQuality="85"
+          :imageHeight="'calc(100vh - 97rem)'"
+          :imageQuality="mainProjectImageSettings.quality"
+          :imageFormat="mainProjectImageSettings.format"
+          :resolutionRatio="mainProjectImageSettings.resolutionRatio"
           :isActive="true"
+          :enable-hover-scroll="false"
         />
 
         <div v-else class="no-images-message">
