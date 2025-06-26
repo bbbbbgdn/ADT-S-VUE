@@ -82,12 +82,13 @@ export default {
 
 <style scoped>
 .menu {
-  padding: var(--space-md);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-md);
   z-index: 100;
   position: relative;
+  padding: var(--space-md);
+  padding-top: var(--space-md);
 }
 
 .components-button {

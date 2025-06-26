@@ -95,7 +95,7 @@ h1 {
     text-align: center;
 } */
 
-@media screen and (orientation: portrait) {
+/* @media screen and (orientation: portrait) {
   .home {
     position: fixed;
     top: 50%;
@@ -110,7 +110,7 @@ h1 {
     transform: rotate(90deg) scale(1.1);
     transform-origin: center center;
   }
-}
+} */
 
 .title-text {
   position: absolute;

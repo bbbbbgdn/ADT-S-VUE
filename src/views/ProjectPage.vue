@@ -163,6 +163,7 @@ export default {
   display: flex;
   gap: var(--space-md);
   margin-left: var(--space-md);
+  margin-bottom: var(--space-md);
   flex-wrap: wrap;
   align-items: center;
 }
@@ -212,7 +213,7 @@ export default {
   border-radius: 8px;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
   .image-grid {
     grid-template-columns: repeat(2, 1fr);
     padding: var(--space-md);
@@ -221,5 +222,12 @@ export default {
   .project-card {
     min-height: 100% !important;
   }
+
+  .image-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  /* padding: var(--space-md); */
+}
 }
 </style>

@@ -67,9 +67,10 @@
   --space-xs: 1rem;
   --space-sm: 2rem;
   --space-md: 3rem;
-  --space-lg: 4rem;
-  --space-xl: 6rem;
+  --space-lg: 10rem;
+  --space-xl: 20rem;
   --space-2xl: 40rem;
+  --space-3xl: 60rem;
   --space-4xl: 80rem;
   
   /* Typography scale */
@@ -145,10 +146,10 @@
 }
 */
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
   :root {
     /* --base-font-size: clamp(0.5px, 0.65vw, 0.8px); */
-    --base-font-size: clamp(0.1px, 0.2vw, 2px);
+    --base-font-size: clamp(0.1px, 0.15vw, 2px);
     /* --scale-factor: 0.7; */
   }
 } 
@@ -184,6 +185,7 @@ h1 {
 p {
   font-family: inherit;
   margin-bottom: 1em;
+  text-indent: var(--space-3xl);
 }
 
 button {

@@ -33,7 +33,7 @@ export default {
   font-weight: 670;
   font-size: var(--text-4xl);
   line-height: var(--text-4xl);
-  text-indent: var(--space-2xl);
+  text-indent: var(--space-3xl);
   margin-bottom: var(--space-2xl);
 }
 

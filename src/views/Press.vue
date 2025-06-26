@@ -218,7 +218,7 @@ export default {
   /* transition: all 0.3s ease; */
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .press-container {
     padding: var(--space-sm);
   }
@@ -237,5 +237,5 @@ export default {
   .press-title {
     width: 100%;
   }
-}
+} */
 </style>

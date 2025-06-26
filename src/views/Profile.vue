@@ -189,7 +189,7 @@ export default {
 
 .profile-description {
   margin-bottom: calc(var(--space-4xl)*1.5);
-  text-indent: var(--space-2xl);
+  /* text-indent: var(--space-2xl); */
 }
 
 .contact-info {
@@ -232,7 +232,7 @@ export default {
   padding-left: var(--space-4xl)
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 768px) {
   .profile-container{
     flex-direction: column-reverse;
   }

@@ -78,7 +78,7 @@ export default {
 }
 
 .project-card {
-  /* transition: opacity 0.5s ease-out; */
+  transition: opacity 0.5s ease-out;
 }
 
 /* Responsive layout for mobile devices */

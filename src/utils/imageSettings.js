@@ -17,7 +17,7 @@ export const defaultSettings = {
   // Lower quality settings for thumbnails and gallery previews
   thumbnail: {
     width: 0,
-    height: 260,
+    height: 360,
     quality: 85, // Slightly increased quality for better thumbnails
     format: 'webp',
     resolutionRatio: 2

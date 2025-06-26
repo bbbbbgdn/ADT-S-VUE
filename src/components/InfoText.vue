@@ -50,13 +50,14 @@ export default {
 
 .info-text {
   column-count: 2;
-  column-gap: var(--space-xl);
-  max-width: 1000px;
+  column-gap: var(--space-3xl);
+  /* max-width: 1000px; */
   width: 100%;
-  padding: 5vh var(--space-sm);
+  padding: var(--space-xl) var(--space-sm);
   text-align: left;
   margin: 0 auto;
   box-sizing: border-box;
+  text-indent: var(--space-3xl);
 }
 
 .info-text p {
