@@ -119,21 +119,18 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  transform: translateZ(0); /* Force GPU acceleration */
-  backface-visibility: hidden; /* Prevent flickering */
-  perspective: 1000px; /* Enhance 3D context */
+  min-height: 100svh;
 }
 
 /* Ensure transitions are smooth by forcing GPU rendering */
-.page-transition-enter-active,
+/* .page-transition-enter-active,
 .page-transition-leave-active,
 .image-loaded,
 .image-visible {
   backface-visibility: hidden;
   transform: translateZ(0);
   will-change: opacity;
-}
+} */
 
 /* main { */
   /* margin-top: 2rem; */

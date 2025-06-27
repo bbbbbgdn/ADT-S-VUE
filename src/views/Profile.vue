@@ -92,10 +92,6 @@ export default {
   },
   mounted() {
     this.preloadImage();
-    
-    if (!this.imageLoaded) {
-      this.imageLoaded = true;
-    }
   },
   methods: {
     preloadImage() {
@@ -149,10 +145,7 @@ export default {
   object-fit: contain;
   padding: 0 var(--space-md) 0 var(--space-md);
   opacity: 0;
-  transition: opacity 300ms ease;
-  /* position: absolute; */
-  /* top: 0; */
-  /* left: 0; */
+  transition: opacity 0.3s ease-in-out;
   display: block;
 }
 
@@ -185,7 +178,7 @@ export default {
 }
 
 .profile-description {
-  margin-bottom: calc(var(--space-4xl)*1.5);
+  margin-bottom: calc(var(--space-4xl));
   text-indent: var(--space-3xl);
 }
 
@@ -210,6 +203,9 @@ export default {
 .social-links {
   display: flex;
   gap: var(--space-md);
+}
+.small-text{
+  padding-bottom: var(--space-lg);
 }
 
 .footer-info {
