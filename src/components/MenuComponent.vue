@@ -68,7 +68,7 @@ export default {
     // Get menu text based on screen size
     const getMenuText = (item) => {
       if (item.path === '/' && isMobile.value) {
-        return 'A.D.T.'
+        return 'ADT'
       }
       return item.name
     }
