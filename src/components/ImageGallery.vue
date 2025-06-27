@@ -2,6 +2,7 @@
   <div 
     class="gallery-container" 
     :class="{ 'clickable': !isActive }"
+    ref="galleryContainer"
   >
     <div 
       class="gallery" 
@@ -21,6 +22,8 @@
         <img 
           v-lazy-load="{
             url: image.url,
+            index: index,
+            resetQueue: index === 0,
             threshold: 0.1,
             rootMargin: '100px'
           }"
@@ -90,7 +93,9 @@ export default {
       isManualScrolling: false,
       galleryWidth: 0,
       lastTimestamp: 0,
-      screenWidth: 0
+      screenWidth: 0,
+      observer: null,
+      isGalleryVisible: false
     };
   },
   setup() {
@@ -154,14 +159,11 @@ export default {
         const movement = (this.scrollSpeed * deltaTime) / 50;
         this.currentPosition += movement;
         
-        // When we've scrolled past one set of images, reset to start
-        const singleSetWidth = this.galleryWidth / this.processedImages.length * this.images.length;
-        if (this.currentPosition >= singleSetWidth) {
+        // When we've scrolled to the end, reset to start
+        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+        if (this.currentPosition >= maxScroll) {
           this.currentPosition = 0;
         }
-        
-        // Preload next set of images while scrolling
-        this.preloadNextImages();
         
         if (this.isHovering && this.enableHoverScroll) {
           this.autoScrollInterval = requestAnimationFrame(animate);
@@ -205,32 +207,6 @@ export default {
         ...options
       };
     },
-    preloadNextImages() {
-      const gallery = this.$refs.gallery;
-      if (!gallery) return;
-
-      const images = gallery.querySelectorAll('img.gallery-image');
-      const visibleImages = Array.from(images).filter(img => {
-        const rect = img.getBoundingClientRect();
-        return rect.left < window.innerWidth && rect.right > 0;
-      });
-
-      // Preload next set of images
-      const lastVisibleIndex = visibleImages.length - 1;
-      if (lastVisibleIndex >= 0) {
-        const nextImages = Array.from(images).slice(lastVisibleIndex + 1, lastVisibleIndex + this.images.length + 1);
-        nextImages.forEach(img => {
-          if (!img.dataset.preloaded) {
-            const src = img.getAttribute('src');
-            if (src) {
-              const preloadImg = new Image();
-              preloadImg.src = src;
-              img.dataset.preloaded = 'true';
-            }
-          }
-        });
-      }
-    },
     updateDimensions() {
       this.screenWidth = window.innerWidth;
       const gallery = this.$refs.gallery;
@@ -238,33 +214,49 @@ export default {
         this.galleryWidth = gallery.scrollWidth;
       }
     },
-    // setupIntersectionObserver() {
-    //   if (!this.$refs.galleryContainer) return;
-    //   
-    //   this.observer = new IntersectionObserver(
-    //     (entries) => {
-    //       entries.forEach((entry) => {
-    //         if (entry.isIntersecting) {
-    //           // Gallery is visible, trigger image loading
-    //           this.startImageLoading();
-    //         }
-    //       });
-    //     },
-    //     {
-    //       rootMargin: '100px', // Start loading 100px before gallery comes into view
-    //       threshold: 0.1
-    //     }
-    //   );
-    //   
-    //   this.observer.observe(this.$refs.galleryContainer);
-    // },
-    // startImageLoading() {
-    //   // Trigger the lazy loading directive to start loading images
-    //   // by forcing a reactive update
-    //   this.$nextTick(() => {
-    //     this.$forceUpdate();
-    //   });
-    // }
+    setupIntersectionObserver() {
+      if (!this.$refs.galleryContainer) return;
+      
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Gallery is visible, trigger image loading
+              this.isGalleryVisible = true;
+              this.startImageLoading();
+              this.showImagesInSequence();
+            } else {
+              this.isGalleryVisible = false;
+            }
+          });
+        },
+        {
+          rootMargin: '100px', // Start loading 100px before gallery comes into view
+          threshold: 0.1
+        }
+      );
+      
+      this.observer.observe(this.$refs.galleryContainer);
+    },
+    startImageLoading() {
+      // Trigger the lazy loading directive to start loading images
+      // by forcing a reactive update
+      this.$nextTick(() => {
+        this.$forceUpdate();
+      });
+    },
+    showImagesInSequence() {
+      // This method ensures images are shown in order as they load
+      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
+      if (!images) return;
+      
+      // The lazy loading directive will handle the sequential display
+      // We just need to ensure the queue is properly managed
+      this.$nextTick(() => {
+        // Force a re-render to trigger the lazy loading directive
+        this.$forceUpdate();
+      });
+    }
   },
   computed: {
     processedImages() {
@@ -275,22 +267,12 @@ export default {
         const imageParams = this.customizeImageParams();
         return {
           url: createImageUrl(image.url, imageParams),
-          alt: image.alt || 'Image',
-          preload: false
+          alt: image.alt || 'Image'
         };
       });
 
-      // Calculate how many copies we need to fill the screen
-      const singleSetWidth = this.galleryWidth;
-      const copiesNeeded = Math.ceil((this.screenWidth * 2) / singleSetWidth) + 2; // Added +2 for extra buffer
-      
-      // Create enough copies to fill the screen
-      const repeated = [];
-      for (let i = 0; i < copiesNeeded; i++) {
-        repeated.push(...processed);
-      }
-      
-      return repeated;
+      // Return only one set of images (no repetition)
+      return processed;
     },
     imageStyle() {
       return {
@@ -331,17 +313,17 @@ export default {
       gallery.addEventListener('touchstart', this.handleScrollStart);
       gallery.addEventListener('touchmove', this.handleScrollMove);
       gallery.addEventListener('touchend', this.handleScrollEnd);
-      gallery.addEventListener('scroll', this.preloadNextImages);
       
       this.galleryWidth = gallery.scrollWidth;
     }
 
-    this.$nextTick(() => {
-      setTimeout(() => this.preloadNextImages(), 300);
-    });
-
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
+    
+    // Setup intersection observer
+    this.$nextTick(() => {
+      this.setupIntersectionObserver();
+    });
   },
   beforeUnmount() {
     const gallery = this.$refs.gallery;
@@ -353,11 +335,15 @@ export default {
       gallery.removeEventListener('touchstart', this.handleScrollStart);
       gallery.removeEventListener('touchmove', this.handleScrollMove);
       gallery.removeEventListener('touchend', this.handleScrollEnd);
-      gallery.removeEventListener('scroll', this.preloadNextImages);
     }
     clearTimeout(this.scrollTimeout);
     window.removeEventListener('resize', this.updateDimensions);
     this.stopAutoScroll();
+    
+    // Clean up observer
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   },
   watch: {
     isHovering(newValue) {
@@ -373,6 +359,14 @@ export default {
         this.updateDimensions();
       },
       deep: true
+    },
+    isGalleryVisible(newValue) {
+      if (newValue) {
+        // Gallery is visible, ensure images load in sequence
+        this.$nextTick(() => {
+          this.showImagesInSequence();
+        });
+      }
     }
   }
 };
@@ -386,6 +380,10 @@ export default {
   line-height: 0;
   position: relative;
   --gallery-hover-shift-amount: 0px;
+  /* Hide scrollbars for all browsers */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
 }
 
 .gallery-container.clickable .gallery,
@@ -396,8 +394,16 @@ export default {
 .gallery {
   display: flex;
   width: 100%;
-  transition: transform 0.1s linear;
+  transition: transform 0.35s ease-in-out;
   will-change: transform;
+  /* Hide scrollbars for all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow: -moz-scrollbars-none; /* Firefox (older versions) */
+}
+
+.gallery::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .gallery.manual-scroll {
@@ -406,6 +412,7 @@ export default {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
 }
 
 .gallery.manual-scroll::-webkit-scrollbar {
@@ -433,6 +440,7 @@ export default {
   display: flex;
   gap: var(--gallery-tags-gap);
   padding: var(--gallery-tags-padding);
+  
 }
 
 .gallery-container.clickable .gallery-tags {
@@ -484,5 +492,10 @@ export default {
   .gallery-image {
     height: 40vh !important;
   }
+}
+
+/* Also hide scrollbars on the gallery container */
+.gallery-container::-webkit-scrollbar {
+  display: none;
 }
 </style>

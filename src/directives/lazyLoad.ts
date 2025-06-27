@@ -20,10 +20,12 @@ interface LazyLoadOptions {
 // Global loading queue to track image loading status (for sequential loading)
 const loadingQueue = {
   currentIndex: 0,
+  loadedImages: new Set<number>(),
   observers: new Set<Function>(),
   // Add a reset method to clear the queue when navigating
   reset: function() {
     this.currentIndex = 0
+    this.loadedImages.clear()
     this.observers.clear()
   }
 }
@@ -64,9 +66,8 @@ export default {
       options = binding.value as LazyLoadOptions
     }
     
-    // Add loading class
+    // Add loading class and set initial state
     el.classList.add('image-loading')
-    // Set initial opacity
     el.style.opacity = '0'
     el.style.transition = 'opacity 0.3s ease-in-out'
     
@@ -83,12 +84,33 @@ export default {
           const imageElement = el as HTMLImageElement
           imageElement.src = options.url
         }
+        
+        // Mark this image as loaded
+        if (typeof options.index === 'number') {
+          loadingQueue.loadedImages.add(options.index)
+        }
+        
         el.classList.remove('image-loading')
         el.classList.add('image-loaded')
-        // Trigger opacity transition
-        requestAnimationFrame(() => {
-          el.style.opacity = '1'
-        })
+        
+        // Only show image if it's the next one in sequence
+        if (typeof options.index === 'number') {
+          // Check if this image should be visible (it's the next one to show)
+          const loadedIndices = Array.from(loadingQueue.loadedImages).sort((a, b) => a - b);
+          const nextToShow = loadedIndices.find(index => index >= options.index!);
+          
+          if (nextToShow === options.index) {
+            requestAnimationFrame(() => {
+              el.style.opacity = '1'
+            })
+          } else {
+          }
+        } else {
+          // For non-queued images, show immediately
+          requestAnimationFrame(() => {
+            el.style.opacity = '1'
+          })
+        }
         
         // Only increment queue for gallery images (when index is provided)
         if (typeof options.index === 'number') {
@@ -102,6 +124,11 @@ export default {
         
         el.classList.remove('image-loading')
         el.classList.add('image-loaded', 'image-error')
+        
+        // Mark as loaded even if it failed (to maintain sequence)
+        if (typeof options.index === 'number') {
+          loadingQueue.loadedImages.add(options.index)
+        }
         
         // Only increment queue for gallery images (when index is provided)
         if (typeof options.index === 'number') {

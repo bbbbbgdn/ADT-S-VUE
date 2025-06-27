@@ -33,6 +33,9 @@
           class="press-item"
           @mouseenter="showImage(press.id)"
           @mouseleave="hideImage"
+          @touchstart="handleTouchStart(press.id)"
+          @touchend="handleTouchEnd"
+          @touchcancel="hideImage"
           @click="openPressUrl(press.content.URL.url)"
         >
           <BaseButton 
@@ -93,10 +96,26 @@ export default {
     // Modified functions to manage image opacity instead of DOM manipulation
     const showImage = (pressId) => {
       activeImageId.value = pressId
+      // Freeze scroll
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
     }
 
     const hideImage = () => {
       activeImageId.value = null
+      // Restore scroll
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
+
+    const handleTouchStart = (pressId) => {
+      showImage(pressId)
+    }
+
+    const handleTouchEnd = () => {
+      hideImage()
     }
 
     onMounted(async () => {
@@ -120,7 +139,9 @@ export default {
       openPressUrl,
       activeImageId,
       showImage,
-      hideImage
+      hideImage,
+      handleTouchStart,
+      handleTouchEnd
     }
   }
 }
@@ -184,6 +205,13 @@ export default {
   /* transition: all 0.3s ease; */
   position: relative;
   z-index: 1;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 .press-item:hover .press-title {

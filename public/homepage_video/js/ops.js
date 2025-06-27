@@ -5397,6 +5397,52 @@ CABLES.OPS["cedffacf-0f09-4342-bd21-540bd9c8037d"]={f:Ops.Devices.TouchScreen,ob
 
 
 
+
+// **************************************************************
+// 
+// Ops.Trigger.TriggerOnce
+// 
+// **************************************************************
+
+Ops.Trigger.TriggerOnce= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTriggerButton("Exec"),
+    reset = op.inTriggerButton("Reset"),
+    next = op.outTrigger("Next"),
+    outTriggered = op.outBoolNum("Was Triggered");
+
+let triggered = false;
+
+op.toWorkPortsNeedToBeLinked(exe);
+
+reset.onTriggered = function ()
+{
+    triggered = false;
+    outTriggered.set(triggered);
+};
+
+exe.onTriggered = function ()
+{
+    if (triggered) return;
+
+    triggered = true;
+    next.trigger();
+    outTriggered.set(triggered);
+};
+
+}
+};
+
+CABLES.OPS["cf3544e4-e392-432b-89fd-fcfb5c974388"]={f:Ops.Trigger.TriggerOnce,objName:"Ops.Trigger.TriggerOnce"};
+
+
+
 window.addEventListener('load', function(event) {
 CABLES.jsLoaded=new Event('CABLES.jsLoaded');
 document.dispatchEvent(CABLES.jsLoaded);

@@ -59,7 +59,7 @@
                 },
                 {
                     "name": "Show Interaction needed Button",
-                    "value": 1
+                    "value": 0
                 }
             ],
             "portsOut": [
@@ -91,7 +91,7 @@
                 },
                 {
                     "name": "progress",
-                    "value": 0
+                    "value": 0.010791478129713424
                 },
                 {
                     "name": "Interaction Needed",
@@ -99,7 +99,7 @@
                 },
                 {
                     "name": "CurrentTime",
-                    "value": 0
+                    "value": 0.57238
                 },
                 {
                     "name": "Loading",
@@ -630,11 +630,11 @@
                 },
                 {
                     "name": "current time",
-                    "value": 123.0635
+                    "value": 162.296006679
                 },
                 {
                     "name": "current frame",
-                    "value": 3692
+                    "value": 4869
                 }
             ],
             "objName": "Ops.TimeLine.TimeLinePlayer"
@@ -979,6 +979,12 @@
                             "portOut": "click",
                             "objIn": "741yxuubt",
                             "objOut": "henwqfvtq"
+                        },
+                        {
+                            "portIn": "Exec",
+                            "portOut": "click",
+                            "objIn": "9uv66wy9u",
+                            "objOut": "henwqfvtq"
                         }
                     ]
                 },
@@ -988,15 +994,15 @@
                 },
                 {
                     "name": "Mouse is hovering",
-                    "value": 1
+                    "value": 0
                 },
                 {
                     "name": "Movement X",
-                    "value": -138.5
+                    "value": -5.5
                 },
                 {
                     "name": "Movement Y",
-                    "value": 6.5
+                    "value": -1.5
                 }
             ],
             "objName": "Ops.Devices.Mouse.Mouse_v4"
@@ -1059,7 +1065,7 @@
                 },
                 {
                     "name": "finished",
-                    "value": false
+                    "value": true
                 }
             ],
             "objName": "Ops.Anim.SimpleAnim"
@@ -1668,7 +1674,7 @@
                 },
                 {
                     "name": "FPS",
-                    "value": 31
+                    "value": 29
                 }
             ],
             "objName": "Ops.Gl.Performance"
@@ -1909,7 +1915,7 @@
             "portsOut": [
                 {
                     "name": "Current Value",
-                    "value": 0.42157698876808536
+                    "value": 1
                 },
                 {
                     "name": "Dragging",
@@ -2253,7 +2259,7 @@
                 },
                 {
                     "name": "Number",
-                    "value": -0.1031316277439609
+                    "value": 0.02806849567436731
                 }
             ],
             "objName": "Ops.Number.TriggerOnChangeNumber_v2"
@@ -2287,7 +2293,7 @@
                 },
                 {
                     "name": "Delaying",
-                    "value": true
+                    "value": false
                 }
             ],
             "objName": "Ops.Trigger.DelayedTrigger"
@@ -2387,6 +2393,17 @@
                 {
                     "name": "Finger 2 Force",
                     "value": 0
+                },
+                {
+                    "name": "Touch Start",
+                    "links": [
+                        {
+                            "portIn": "Exec",
+                            "portOut": "Touch Start",
+                            "objIn": "9uv66wy9u",
+                            "objOut": "thmjldu1o"
+                        }
+                    ]
                 }
             ],
             "objName": "Ops.Devices.TouchScreen"
@@ -2432,10 +2449,32 @@
                 }
             ],
             "objName": "Ops.Math.Compare.GreaterThan"
+        },
+        {
+            "id": "9uv66wy9u",
+            "uiAttribs": {},
+            "portsOut": [
+                {
+                    "name": "Next",
+                    "links": [
+                        {
+                            "portIn": "Rewind",
+                            "portOut": "Next",
+                            "objIn": "3phev729b",
+                            "objOut": "9uv66wy9u"
+                        }
+                    ]
+                },
+                {
+                    "name": "Was Triggered",
+                    "value": 0
+                }
+            ],
+            "objName": "Ops.Trigger.TriggerOnce"
         }
     ],
     "export": {
-        "time": "2025-06-27 03:32",
+        "time": "2025-06-27 03:55",
         "service": "html",
         "exportNumber": 19
     }
