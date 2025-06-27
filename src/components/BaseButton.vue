@@ -82,16 +82,15 @@ const handleClick = (event) => {
   padding-right: var(--button-padding-x);
   padding-left: var(--button-padding-x);
 
-  white-space: nowrap;
+  /* white-space: nowrap; */
   border-radius: var(--button-border-radius);
   
   min-height: var(--button-min-height);
   line-height: 1;
 
   text-align: left;
-  max-width: 99vw;
-  text-overflow: ellipsis;
-  overflow: visible;
+  /* text-overflow: ellipsis; */
+  /* overflow: scroll; */
 
 }
 
@@ -166,5 +165,9 @@ body.page-transitioning .button-black {
   /* .button-text {
     display: block;
   } */
+  .base-button {
+    max-width: 98.5vw;
+  }
+  
 }
 </style> 

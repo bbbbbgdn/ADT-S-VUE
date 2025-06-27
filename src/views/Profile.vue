@@ -44,10 +44,8 @@
           
           <div class="contact-section">
             <div class="section-title">MAILING ADDRESS:</div>
-            <BaseButton class="mailing-address" >
-              De Constant Rebecqueplein 20-B
-              2518RA 's-Gravenhage,
-              Netherlands
+            <BaseButton class=" mailing-address" variant="grey">
+              De Constant Rebecqueplein 20-B 2518RA 's-Gravenhage, Netherlands
             </BaseButton>
           </div>
           
@@ -55,7 +53,6 @@
             <div class="section-title">LINKS:</div>
             <div class="social-links">
               <BaseButton @click="openLink('https://www.instagram.com/atelier__dashatsapenko/')">Instagram</BaseButton>
-              <!-- <BaseButton @click="openLink('https://linkedin.com')">Linkedin</BaseButton> -->
               <BaseButton @click="openLink('https://www.linkedin.com/in/dasha-tsapenko-66b1838b/')">Linkedin</BaseButton>
             </div>
           </div>
@@ -207,6 +204,7 @@ export default {
 }
 
 .mailing-address {
+  overflow-x: scroll;
 }
 
 .social-links {

@@ -212,6 +212,11 @@ export default {
   border: none !important;
   justify-content: flex-start !important;
   cursor: pointer !important;
+
+  /* margin-left: -81rem; */
+
+  /* max-width: 98.5vw; */
+  max-width: 81.5vw;
   /* transition: all 0.3s ease; */
 }
 
