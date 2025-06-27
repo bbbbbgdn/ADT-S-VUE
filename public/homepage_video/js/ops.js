@@ -14,9 +14,7 @@ Ops.Vars=Ops.Vars || {};
 Ops.Cables=Ops.Cables || {};
 Ops.Number=Ops.Number || {};
 Ops.String=Ops.String || {};
-Ops.Boolean=Ops.Boolean || {};
 Ops.Devices=Ops.Devices || {};
-Ops.Sidebar=Ops.Sidebar || {};
 Ops.Trigger=Ops.Trigger || {};
 Ops.Html.CSS=Ops.Html.CSS || {};
 Ops.TimeLine=Ops.TimeLine || {};
@@ -44,7 +42,7 @@ constructor()
 {
 super(...arguments);
 const op=this;
-const attachments=op.attachments={"inc_gen_ports_js":"op.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\n    }\nif(addedOps[i].innerOutput)\n{\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"kvgaeow77\",\"uiAttribs\":{\"subPatch\":\"ckkrez6ct\"},\"storage\":{},\"portsIn\":[{\"name\":\"Nesting Parent\",\"value\":\".cablesContainer\"},{\"name\":\"Active\",\"value\":1}],\"objName\":\"Ops.Html.CSS.CSS_v3\"},{\"id\":\"u8r6xh6oq\",\"uiAttribs\":{\"subPatch\":\"ckkrez6ct\"},\"storage\":{},\"portsIn\":[{\"name\":\"value\",\"value\":\"/* General Sidebar Styling */\\n.sidebar-cables {\\n    transform-origin: top left;\\n    font-size: 12px !important;\\n    overflow: scroll;\\n    scrollbar-color: rgba(255,255,255,0) rgba(255,165,0,0);\\n    scrollbar-width: 0;\\n    max-height: 90%;\\n    border-radius: 2em;\\n}\\n\\n.sidebar--closed{\\n    background: none !important;\\n    backdrop-filter: none !important;\\n}\\n\\n.sidebar__items{\\n    border: none;\\n    background: rgba(50,50,50,0.6) !important;\\n\\n}\\n\\n.sidebar__items > .sidebar__item .minus,\\n.sidebar__items > .sidebar__item .plus {\\n    width: 0;\\n    padding-left: 0.65em;\\n    line-height: 0;\\n    margin: 0 auto;\\n    height: 24px;\\n    width: 24px;\\n    transform: scale(1.1);\\n}\\n\\n\\n\\n/* Sidebar Close Button */\\n.sidebar__close-button {\\n    background: rgba(50,50,50,0.6) !important;\\n\\n    margin: 0 !important;\\n    border: none !important;\\n    background-image: none !important;\\n    min-height:20px;\\n    transition: opacity 0.3s ease;\\n    cursor: pointer;\\n}\\n\\n.sidebar__close-button:hover {\\n     opacity: 90% !important;\\n}\\n\\n/* Sidebar Icons */\\n.iconsidebar-chevron-up,\\n.sidebar__group-header-icon {\\n}\\n\\n/* Sidebar Tabs */\\n.sidebar_tabs {\\n    background: none;\\n    width: 95%;\\n    margin: 0 auto;\\n    border-bottom: 1px solid rgba(255,255,255,0.2) !important;\\n    \\n}\\n\\n.sidebar_tab {\\n    font-family: monospace;\\n    color: rgb(255,255,255) !important;\\n    background: none;\\n    border: none !important;\\n    height:1.5em;\\n    padding: 6px 10px 0px 10px;\\n}\\n\\n.sidebar_tab_active {\\n    font-style: italic;\\n    background: rgb(35,35,35) !important;\\n    color: rgb(255,255,255) !important;\\n    border: none;\\n    pointer-events: none;\\n    padding: 6px 10px 0px 10px;\\n    margin-bottom: -5px; \\n}\\n\\n.sidebar_tab_active:hover {\\n    background-color: white !important;\\n    color: black;\\n}\\n\\n/* Sidebar Header */\\n.iconsidebar-minimizebutton {\\nheight: 10px;\\n\\n}\\n\\n.iconsidebar-minimizebutton:hover{\\n    \\n}\\n\\n/* GUI Items Colors */\\n\\n.sidebar__item-label {\\n    color: white !important;\\n    font-family: monospace;\\n}\\n\\n.sidebar__slider .sidebar__text-input-input{\\n    background: transparent !important;\\n}\\n\\n.sidebar__slider-input {\\n    border: 1px solid rgba(255,255,255,0.2) !important;\\n    \\n    height: 18px;\\n    background: transparent;\\n    transition: all 0.3s ease;\\n    border-radius: 1em;\\n}\\n\\n.sidebar__slider-input:hover {\\n     background: black;\\n    opacity: 0.8;\\n}\\n\\n\\n.sidebar__color-picker-input{\\n    border: 1px solid rgba(255,255,255,0.2) !important;\\n    font-size: inherit;\\n    background: transparent !important;\\n}\\n\\n.sidebar__color-picker-input:hover, .sidebar__text-input-input:hover{\\n    opacity: 0.8;\\n    background: black !important;\\n\\n}\\n\\n.sidebar__text-input-input {\\n    margin: 1.3em;\\n    position: relative;\\n    background: transparent !important;\\n    border: 1px solid rgba(255,255,255,0.2) !important;\\n    color: white !important;\\n    font-family: monospace;\\n    font-size: 1em;\\n    margin-bottom: 10px;\\n    margin-left: 0px;\\n    min-width: 95px;\\n}\\n\\n\\n\\n.sidebar__slider-input-active-track {\\n    background: black !important;\\n    margin-top: .15em;\\n    height: 1em;\\n    filter: blur(2px);\\n    opacity: 0;\\n}\\n\\n.sidebar__button-input {\\n    font-family: monospace;\\n    color: white !important;\\n    background-color: rgba(255,255,255,0.1);\\n    line-height: 100%;\\n    height: 3em;\\n    border: none;\\n    border-radius: .4em;\\n    padding: 1em 1.2em;\\n    transition: all .3s ease;\\n    mix-blend-mode: difference;\\n}\\n\\n.sidebar__button-input:hover {\\n    font-style: italic;\\n    opacity: 1;\\n    color: black;\\n    border: none;\\n}\\n.sidebar__button-input:active {\\n    font-style: italic;\\n}\\n\\n.sidebar__color-picker-input {\\n    color: white !important;\\n    font-family: monospace;\\n    margin-left: -1em !important;\\n    transition: all 0.2s ease;\\n}\\n\\n.sidebar__select-select {\\n    color: white;\\n    background-color: transparent;\\n    border: 1px solid rgba(255,255,255,0.2) !important;\\n    width: 50%;\\n    border-radius: 10px;\\n    min-height: 19px;\\n    position: relative;\\n    right: 15px;\\n}\\n\\n#file{\\n    padding-top: 1em;\\n}\\n\\n.sidebar__select-select:hover {\\n    background-color: black;\\n    color: black;\\n   opacity: 0.8;\\n    transition: all 0.2s ease;\\n}\\n\\n.sidebar__color-picker-color-input {\\n    transform: scale(2);\\n    margin-left: 1em;\\n}\\n\\n/* Single Items */\\n.sidebar__items {\\n    background-color: black;\\n    padding-top: 1em;\\n    padding-bottom: 1em;\\n}\\n\\n/* Grouped Items */\\n\\n.sidebar__group {\\nmin-height: 40px;\\ntransition: all .4s ease;\\nbackground: none !important;\\n}\\n\\n.sidebar__group-header  {\\n    background: none;\\n    background: rgba(50,50,50,0.6) !important;\\n    height: 40px !important;\\n    font-family: serif;\\n    color: white;\\n    padding-top:1em;\\n    transition: background .5s ease;\\n     padding: 7px;\\n    border: 1px solid transparent;\\n}\\n\\n\\n.sidebar__group-header.cablesEle{\\n     background: transparent !important;\\n}\\n\\n.sidebar__group--closed .sidebar__group-header {\\n   \\n}\\n\\n.sidebar__group-header:hover {\\n    opacity: 90%;\\n}\\n\\n.sidebar__group-header-title{\\n}\\n\\n\\n.sidebar__group-header-title-text {\\n    color: white !important;\\n    font-family: monospace;\\n    font-size: 1em;\\n    opacity: 0.5;   \\n}\\n\\n.sidebar__group-header-title-text::before{\\n  content: '.';\\n}\\n\\n.sidebar__group-header-title-text::after{\\n  content: '.';\\n}\\n\\n.sidebar__group--closed{\\n    margin-top: 4px ;\\n    margin-left:15px;\\n    margin-right:15px;\\n\\n    border: 1px solid white;\\n}\\n\\n.sidebar__group--closed  .sidebar__group-header-title-text{\\n    color: rgb(255,255,255) !important;\\n    opacity: 1;\\n    border:none !important;\\n}\\n\\n.sidebar__group-header-title-text::after{\\n}\\n\\n\\n.sidebar__group-header-icon{\\n    opacity: 0 !important;\\n}\\n\\n.sidebar__greyout {\\n    background-color: rgba(50, 50, 50, 0.5);\\n    filter: contrast(40%);\\n    \\n    /*mix-blend-mode: exclude;*/\\n    opacity: 100%;\\n    width: 95%;\\n    margin: 0 2.5%;\\n\\n}\\n\\n.sidebar__greyout:hover{\\n\\n}\\n\\n/* Canvas Element */\\n.cablesEle canvas {\\n/*     filter: invert(100%); */\\n    cursor: crosshair;\\n    margin: 0 auto;\\n}\\n\\n.cablesEle{\\n    margin-bottom: .6em;\\n}\\n\"},{\"name\":\"Syntax index\",\"value\":2},{\"name\":\"Syntax\",\"value\":\"css\"}],\"portsOut\":[{\"name\":\"Result\",\"links\":[{\"portIn\":\"css code\",\"portOut\":\"Result\",\"objIn\":\"kvgaeow77\",\"objOut\":\"u8r6xh6oq\"}]}],\"objName\":\"Ops.String.StringEditor\"},{\"id\":\"xd6o11fhy\",\"uiAttribs\":{\"subPatch\":\"ckkrez6ct\"},\"storage\":{},\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"lgxx7r4od\",\"uiAttribs\":{\"subPatch\":\"ckkrez6ct\"},\"storage\":{},\"objName\":\"Ops.Ui.SubPatchOutput\"},{\"id\":\"049hedq4x\",\"uiAttribs\":{\"subPatch\":\"ckkrez6ct\"},\"storage\":{},\"portsIn\":[{\"name\":\"css code\",\"value\":\"#cablescanvas>div, .sidebar--closed{\\nbackground: rgba(30,30,30,.5);\\n   backdrop-filter: blur(15px);\\n   margin: 0 !important;\\n}\\n\\n#cablescanvas>div.sidebar--closed{\\n    border-radius: 100% !important;\\n}\\n\\n\\n#cablescanvas>div{\\n    /*background: none;*/\\n}\\n\\n.feather-volume-2{\\n    transform: scale(.8);\\n}\\n\\n.sidebar__close-button {\\n    \\n}\"},{\"name\":\"Nesting Parent\",\"value\":\"\"},{\"name\":\"Active\",\"value\":1}],\"objName\":\"Ops.Html.CSS.CSS_v3\"},{\"id\":\"urbc44kq4\",\"uiAttribs\":{\"subPatch\":\"ckkrez6ct\"},\"storage\":{},\"portsIn\":[{\"name\":\"css code\",\"value\":\".progressUI{\\nposition: absolute;\\nleft: 50%;\\n}\"},{\"name\":\"Nesting Parent\",\"value\":\"\"},{\"name\":\"Active\",\"value\":1}],\"objName\":\"Ops.Html.CSS.CSS_v3\"},{\"id\":\"cjw7ca0pl\",\"uiAttribs\":{\"subPatch\":\"ckkrez6ct\"},\"storage\":{},\"portsIn\":[{\"name\":\"css code\",\"value\":\"#glcanvas{\\n    image-rendering: pixelated;\\n}\"},{\"name\":\"Nesting Parent\",\"value\":\"\"},{\"name\":\"Active\",\"value\":true}],\"objName\":\"Ops.Html.CSS.CSS_v3\"}]}",};
+const attachments=op.attachments={"inc_gen_ports_js":"op.initInnerPorts=function(addedOps)\n{\n  for(let i=0;i<addedOps.length;i++)\n  {\n    if(addedOps[i].innerInput)\n    {\n    }\nif(addedOps[i].innerOutput)\n{\n}\n}\n};\n","subpatch_json":"{\"ops\":[{\"id\":\"kvgaeow77\",\"uiAttribs\":{\"subPatch\":\"557eba43w\"},\"storage\":{},\"portsIn\":[{\"name\":\"Nesting Parent\",\"value\":\".cablesContainer\"},{\"name\":\"Active\",\"value\":1}],\"objName\":\"Ops.Html.CSS.CSS_v3\"},{\"id\":\"u8r6xh6oq\",\"uiAttribs\":{\"subPatch\":\"557eba43w\"},\"storage\":{},\"portsIn\":[{\"name\":\"value\",\"value\":\"/* General Sidebar Styling */\\n.sidebar-cables {\\n    transform-origin: top left;\\n    font-size: 12px !important;\\n    overflow: scroll;\\n    scrollbar-color: rgba(255,255,255,0) rgba(255,165,0,0);\\n    scrollbar-width: 0;\\n    max-height: 90%;\\n    border-radius: 2em;\\n}\\n\\n.sidebar--closed{\\n    background: none !important;\\n    backdrop-filter: none !important;\\n}\\n\\n.sidebar__items{\\n    border: none;\\n    background: rgba(50,50,50,0.6) !important;\\n\\n}\\n\\n.sidebar__items > .sidebar__item .minus,\\n.sidebar__items > .sidebar__item .plus {\\n    width: 0;\\n    padding-left: 0.65em;\\n    line-height: 0;\\n    margin: 0 auto;\\n    height: 24px;\\n    width: 24px;\\n    transform: scale(1.1);\\n}\\n\\n\\n\\n/* Sidebar Close Button */\\n.sidebar__close-button {\\n    background: rgba(50,50,50,0.6) !important;\\n\\n    margin: 0 !important;\\n    border: none !important;\\n    background-image: none !important;\\n    min-height:20px;\\n    transition: opacity 0.3s ease;\\n    cursor: pointer;\\n}\\n\\n.sidebar__close-button:hover {\\n     opacity: 90% !important;\\n}\\n\\n/* Sidebar Icons */\\n.iconsidebar-chevron-up,\\n.sidebar__group-header-icon {\\n}\\n\\n/* Sidebar Tabs */\\n.sidebar_tabs {\\n    background: none;\\n    width: 95%;\\n    margin: 0 auto;\\n    border-bottom: 1px solid rgba(255,255,255,0.2) !important;\\n    \\n}\\n\\n.sidebar_tab {\\n    font-family: monospace;\\n    color: rgb(255,255,255) !important;\\n    background: none;\\n    border: none !important;\\n    height:1.5em;\\n    padding: 6px 10px 0px 10px;\\n}\\n\\n.sidebar_tab_active {\\n    font-style: italic;\\n    background: rgb(35,35,35) !important;\\n    color: rgb(255,255,255) !important;\\n    border: none;\\n    pointer-events: none;\\n    padding: 6px 10px 0px 10px;\\n    margin-bottom: -5px; \\n}\\n\\n.sidebar_tab_active:hover {\\n    background-color: white !important;\\n    color: black;\\n}\\n\\n/* Sidebar Header */\\n.iconsidebar-minimizebutton {\\nheight: 10px;\\n\\n}\\n\\n.iconsidebar-minimizebutton:hover{\\n    \\n}\\n\\n/* GUI Items Colors */\\n\\n.sidebar__item-label {\\n    color: white !important;\\n    font-family: monospace;\\n}\\n\\n.sidebar__slider .sidebar__text-input-input{\\n    background: transparent !important;\\n}\\n\\n.sidebar__slider-input {\\n    border: 1px solid rgba(255,255,255,0.2) !important;\\n    \\n    height: 18px;\\n    background: transparent;\\n    transition: all 0.3s ease;\\n    border-radius: 1em;\\n}\\n\\n.sidebar__slider-input:hover {\\n     background: black;\\n    opacity: 0.8;\\n}\\n\\n\\n.sidebar__color-picker-input{\\n    border: 1px solid rgba(255,255,255,0.2) !important;\\n    font-size: inherit;\\n    background: transparent !important;\\n}\\n\\n.sidebar__color-picker-input:hover, .sidebar__text-input-input:hover{\\n    opacity: 0.8;\\n    background: black !important;\\n\\n}\\n\\n.sidebar__text-input-input {\\n    margin: 1.3em;\\n    position: relative;\\n    background: transparent !important;\\n    border: 1px solid rgba(255,255,255,0.2) !important;\\n    color: white !important;\\n    font-family: monospace;\\n    font-size: 1em;\\n    margin-bottom: 10px;\\n    margin-left: 0px;\\n    min-width: 95px;\\n}\\n\\n\\n\\n.sidebar__slider-input-active-track {\\n    background: black !important;\\n    margin-top: .15em;\\n    height: 1em;\\n    filter: blur(2px);\\n    opacity: 0;\\n}\\n\\n.sidebar__button-input {\\n    font-family: monospace;\\n    color: white !important;\\n    background-color: rgba(255,255,255,0.1);\\n    line-height: 100%;\\n    height: 3em;\\n    border: none;\\n    border-radius: .4em;\\n    padding: 1em 1.2em;\\n    transition: all .3s ease;\\n    mix-blend-mode: difference;\\n}\\n\\n.sidebar__button-input:hover {\\n    font-style: italic;\\n    opacity: 1;\\n    color: black;\\n    border: none;\\n}\\n.sidebar__button-input:active {\\n    font-style: italic;\\n}\\n\\n.sidebar__color-picker-input {\\n    color: white !important;\\n    font-family: monospace;\\n    margin-left: -1em !important;\\n    transition: all 0.2s ease;\\n}\\n\\n.sidebar__select-select {\\n    color: white;\\n    background-color: transparent;\\n    border: 1px solid rgba(255,255,255,0.2) !important;\\n    width: 50%;\\n    border-radius: 10px;\\n    min-height: 19px;\\n    position: relative;\\n    right: 15px;\\n}\\n\\n#file{\\n    padding-top: 1em;\\n}\\n\\n.sidebar__select-select:hover {\\n    background-color: black;\\n    color: black;\\n   opacity: 0.8;\\n    transition: all 0.2s ease;\\n}\\n\\n.sidebar__color-picker-color-input {\\n    transform: scale(2);\\n    margin-left: 1em;\\n}\\n\\n/* Single Items */\\n.sidebar__items {\\n    background-color: black;\\n    padding-top: 1em;\\n    padding-bottom: 1em;\\n}\\n\\n/* Grouped Items */\\n\\n.sidebar__group {\\nmin-height: 40px;\\ntransition: all .4s ease;\\nbackground: none !important;\\n}\\n\\n.sidebar__group-header  {\\n    background: none;\\n    background: rgba(50,50,50,0.6) !important;\\n    height: 40px !important;\\n    font-family: serif;\\n    color: white;\\n    padding-top:1em;\\n    transition: background .5s ease;\\n     padding: 7px;\\n    border: 1px solid transparent;\\n}\\n\\n\\n.sidebar__group-header.cablesEle{\\n     background: transparent !important;\\n}\\n\\n.sidebar__group--closed .sidebar__group-header {\\n   \\n}\\n\\n.sidebar__group-header:hover {\\n    opacity: 90%;\\n}\\n\\n.sidebar__group-header-title{\\n}\\n\\n\\n.sidebar__group-header-title-text {\\n    color: white !important;\\n    font-family: monospace;\\n    font-size: 1em;\\n    opacity: 0.5;   \\n}\\n\\n.sidebar__group-header-title-text::before{\\n  content: '.';\\n}\\n\\n.sidebar__group-header-title-text::after{\\n  content: '.';\\n}\\n\\n.sidebar__group--closed{\\n    margin-top: 4px ;\\n    margin-left:15px;\\n    margin-right:15px;\\n\\n    border: 1px solid white;\\n}\\n\\n.sidebar__group--closed  .sidebar__group-header-title-text{\\n    color: rgb(255,255,255) !important;\\n    opacity: 1;\\n    border:none !important;\\n}\\n\\n.sidebar__group-header-title-text::after{\\n}\\n\\n\\n.sidebar__group-header-icon{\\n    opacity: 0 !important;\\n}\\n\\n.sidebar__greyout {\\n    background-color: rgba(50, 50, 50, 0.5);\\n    filter: contrast(40%);\\n    \\n    /*mix-blend-mode: exclude;*/\\n    opacity: 100%;\\n    width: 95%;\\n    margin: 0 2.5%;\\n\\n}\\n\\n.sidebar__greyout:hover{\\n\\n}\\n\\n/* Canvas Element */\\n.cablesEle canvas {\\n/*     filter: invert(100%); */\\n    cursor: crosshair;\\n    margin: 0 auto;\\n}\\n\\n.cablesEle{\\n    margin-bottom: .6em;\\n}\\n\"},{\"name\":\"Syntax index\",\"value\":2},{\"name\":\"Syntax\",\"value\":\"css\"}],\"portsOut\":[{\"name\":\"Result\",\"links\":[{\"portIn\":\"css code\",\"portOut\":\"Result\",\"objIn\":\"kvgaeow77\",\"objOut\":\"u8r6xh6oq\"}]}],\"objName\":\"Ops.String.StringEditor\"},{\"id\":\"xd6o11fhy\",\"uiAttribs\":{\"subPatch\":\"557eba43w\"},\"storage\":{},\"objName\":\"Ops.Ui.SubPatchInput\"},{\"id\":\"lgxx7r4od\",\"uiAttribs\":{\"subPatch\":\"557eba43w\"},\"storage\":{},\"objName\":\"Ops.Ui.SubPatchOutput\"},{\"id\":\"049hedq4x\",\"uiAttribs\":{\"subPatch\":\"557eba43w\"},\"storage\":{},\"portsIn\":[{\"name\":\"css code\",\"value\":\"#cablescanvas>div, .sidebar--closed{\\nbackground: rgba(30,30,30,.5);\\n   backdrop-filter: blur(15px);\\n   margin: 0 !important;\\n}\\n\\n#cablescanvas>div.sidebar--closed{\\n    border-radius: 100% !important;\\n}\\n\\n\\n#cablescanvas>div{\\n    /*background: none;*/\\n}\\n\\n.feather-volume-2{\\n    transform: scale(.8);\\n}\\n\\n.sidebar__close-button {\\n    \\n}\"},{\"name\":\"Nesting Parent\",\"value\":\"\"},{\"name\":\"Active\",\"value\":1}],\"objName\":\"Ops.Html.CSS.CSS_v3\"},{\"id\":\"urbc44kq4\",\"uiAttribs\":{\"subPatch\":\"557eba43w\"},\"storage\":{},\"portsIn\":[{\"name\":\"css code\",\"value\":\".progressUI{\\nposition: absolute;\\nleft: 50%;\\n}\"},{\"name\":\"Nesting Parent\",\"value\":\"\"},{\"name\":\"Active\",\"value\":1}],\"objName\":\"Ops.Html.CSS.CSS_v3\"},{\"id\":\"cjw7ca0pl\",\"uiAttribs\":{\"subPatch\":\"557eba43w\"},\"storage\":{},\"portsIn\":[{\"name\":\"css code\",\"value\":\"#glcanvas{\\n    image-rendering: pixelated;\\n}\"},{\"name\":\"Nesting Parent\",\"value\":\"\"},{\"name\":\"Active\",\"value\":1}],\"objName\":\"Ops.Html.CSS.CSS_v3\"}]}",};
 op.initInnerPorts=function(addedOps)
 {
   for(let i=0;i<addedOps.length;i++)
@@ -1907,1310 +1905,6 @@ CABLES.OPS["61ed277f-d096-43b2-9de8-dc87fb3a9169"]={f:Ops.Gl.ImageCompose.FastBl
 
 // **************************************************************
 // 
-// Ops.Sidebar.Sidebar
-// 
-// **************************************************************
-
-Ops.Sidebar.Sidebar= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={"style_css":" /*\n * SIDEBAR\n  http://danielstern.ca/range.css/#/\n  https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-progress-value\n */\n\n.sidebar-icon-undo\n{\n    width:10px;\n    height:10px;\n    background-image: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='grey' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7v6h6'/%3E%3Cpath d='M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13'/%3E%3C/svg%3E\");\n    background-size: 19px;\n    background-repeat: no-repeat;\n    top: -19px;\n    margin-top: -7px;\n}\n\n.icon-chevron-down {\n    top: 2px;\n    right: 9px;\n}\n\n.iconsidebar-chevron-up,.sidebar__close-button {\n\tbackground-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ODg4ODgiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWNoZXZyb24tdXAiPjxwb2x5bGluZSBwb2ludHM9IjE4IDE1IDEyIDkgNiAxNSI+PC9wb2x5bGluZT48L3N2Zz4=);\n}\n\n.iconsidebar-minimizebutton {\n    background-position: 98% center;\n    background-repeat: no-repeat;\n}\n\n.sidebar-cables-right\n{\n    right: 15px;\n    left: initial !important;\n}\n\n.sidebar-cables *\n{\n    color: #BBBBBB !important;\n    font-family: Arial;\n}\n\n.sidebar-cables {\n    --sidebar-color: #07f78c;\n    --sidebar-width: 220px;\n    --sidebar-border-radius: 10px;\n    --sidebar-monospace-font-stack: \"SFMono-Regular\", Consolas, \"Liberation Mono\", Menlo, Courier, monospace;\n    --sidebar-hover-transition-time: .2s;\n\n    position: absolute;\n    top: 15px;\n    left: 15px;\n    border-radius: var(--sidebar-border-radius);\n    z-index: 100000;\n    width: var(--sidebar-width);\n    max-height: 100%;\n    box-sizing: border-box;\n    overflow-y: auto;\n    overflow-x: hidden;\n    font-size: 13px;\n    line-height: 1em; /* prevent emojis from breaking height of the title */\n}\n\n.sidebar-cables::selection {\n    background-color: var(--sidebar-color);\n    color: #EEEEEE;\n}\n\n.sidebar-cables::-webkit-scrollbar {\n    background-color: transparent;\n    --cables-scrollbar-width: 8px;\n    width: var(--cables-scrollbar-width);\n}\n\n.sidebar-cables::-webkit-scrollbar-track {\n    background-color: transparent;\n    width: var(--cables-scrollbar-width);\n}\n\n.sidebar-cables::-webkit-scrollbar-thumb {\n    background-color: #333333;\n    border-radius: 4px;\n    width: var(--cables-scrollbar-width);\n}\n\n.sidebar-cables--closed {\n    width: auto;\n}\n\n.sidebar__close-button {\n    background-color: #222;\n    /*-webkit-user-select: none;  */\n    /*-moz-user-select: none;     */\n    /*-ms-user-select: none;      */\n    /*user-select: none;          */\n    /*transition: background-color var(--sidebar-hover-transition-time);*/\n    /*color: #CCCCCC;*/\n    height: 2px;\n    /*border-bottom:20px solid #222;*/\n\n    /*box-sizing: border-box;*/\n    /*padding-top: 2px;*/\n    /*text-align: center;*/\n    /*cursor: pointer;*/\n    /*border-radius: 0 0 var(--sidebar-border-radius) var(--sidebar-border-radius);*/\n    /*opacity: 1.0;*/\n    /*transition: opacity 0.3s;*/\n    /*overflow: hidden;*/\n}\n\n.sidebar__close-button-icon {\n    display: inline-block;\n    /*opacity: 0;*/\n    width: 20px;\n    height: 20px;\n    /*position: relative;*/\n    /*top: -1px;*/\n\n\n}\n\n.sidebar--closed {\n    width: auto;\n    margin-right: 20px;\n}\n\n.sidebar--closed .sidebar__close-button {\n    margin-top: 8px;\n    margin-left: 8px;\n    padding:10px;\n\n    height: 25px;\n    width:25px;\n    border-radius: 50%;\n    cursor: pointer;\n    opacity: 0.3;\n    background-repeat: no-repeat;\n    background-position: center center;\n    transform:rotate(180deg);\n}\n\n.sidebar--closed .sidebar__group\n{\n    display:none;\n\n}\n.sidebar--closed .sidebar__close-button-icon {\n    background-position: 0px 0px;\n}\n\n.sidebar__close-button:hover {\n    background-color: #111111;\n    opacity: 1.0 !important;\n}\n\n/*\n * SIDEBAR ITEMS\n */\n\n.sidebar__items {\n    /* max-height: 1000px; */\n    /* transition: max-height 0.5;*/\n    background-color: #222;\n    padding-bottom: 20px;\n}\n\n.sidebar--closed .sidebar__items {\n    /* max-height: 0; */\n    height: 0;\n    display: none;\n    pointer-interactions: none;\n}\n\n.sidebar__item__right {\n    float: right;\n}\n\n/*\n * SIDEBAR GROUP\n */\n\n.sidebar__group {\n    /*background-color: #1A1A1A;*/\n    overflow: hidden;\n    box-sizing: border-box;\n    animate: height;\n    /*background-color: #151515;*/\n    /* max-height: 1000px; */\n    /* transition: max-height 0.5s; */\n--sidebar-group-header-height: 33px;\n}\n\n.sidebar__group-items\n{\n    padding-top: 15px;\n    padding-bottom: 15px;\n}\n\n.sidebar__group--closed {\n    /* max-height: 13px; */\n    height: var(--sidebar-group-header-height);\n}\n\n.sidebar__group-header {\n    box-sizing: border-box;\n    color: #EEEEEE;\n    background-color: #151515;\n    -webkit-user-select: none;  /* Chrome all / Safari all */\n    -moz-user-select: none;     /* Firefox all */\n    -ms-user-select: none;      /* IE 10+ */\n    user-select: none;          /* Likely future */\n\n    /*height: 100%;//var(--sidebar-group-header-height);*/\n\n    padding-top: 7px;\n    text-transform: uppercase;\n    letter-spacing: 0.08em;\n    cursor: pointer;\n    /*transition: background-color var(--sidebar-hover-transition-time);*/\n    position: relative;\n}\n\n.sidebar__group-header:hover {\n  background-color: #111111;\n}\n\n.sidebar__group-header-title {\n  /*float: left;*/\n  overflow: hidden;\n  padding: 0 15px;\n  padding-top:5px;\n  padding-bottom:10px;\n  font-weight:bold;\n}\n\n.sidebar__group-header-undo {\n    float: right;\n    overflow: hidden;\n    padding-right: 15px;\n    padding-top:5px;\n    font-weight:bold;\n  }\n\n.sidebar__group-header-icon {\n    width: 17px;\n    height: 14px;\n    background-repeat: no-repeat;\n    display: inline-block;\n    position: absolute;\n    background-size: cover;\n\n    /* icon open */\n    /* feather icon: chevron up */\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ODg4ODgiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWNoZXZyb24tdXAiPjxwb2x5bGluZSBwb2ludHM9IjE4IDE1IDEyIDkgNiAxNSI+PC9wb2x5bGluZT48L3N2Zz4=);\n    top: 4px;\n    right: 5px;\n    opacity: 0.0;\n    transition: opacity 0.3;\n}\n\n.sidebar__group-header:hover .sidebar__group-header-icon {\n    opacity: 1.0;\n}\n\n/* icon closed */\n.sidebar__group--closed .sidebar__group-header-icon {\n    /* feather icon: chevron down */\n    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ODg4ODgiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWNoZXZyb24tZG93biI+PHBvbHlsaW5lIHBvaW50cz0iNiA5IDEyIDE1IDE4IDkiPjwvcG9seWxpbmU+PC9zdmc+);\n    top: 4px;\n    right: 5px;\n}\n\n/*\n * SIDEBAR ITEM\n */\n\n.sidebar__item\n{\n    box-sizing: border-box;\n    padding: 7px;\n    padding-left:15px;\n    padding-right:15px;\n\n    overflow: hidden;\n    position: relative;\n}\n\n.sidebar__item-label {\n    display: inline-block;\n    -webkit-user-select: none;  /* Chrome all / Safari all */\n    -moz-user-select: none;     /* Firefox all */\n    -ms-user-select: none;      /* IE 10+ */\n    user-select: none;          /* Likely future */\n    width: calc(50% - 7px);\n    margin-right: 7px;\n    margin-top: 2px;\n    text-overflow: ellipsis;\n    /* overflow: hidden; */\n}\n\n.sidebar__item-value-label {\n    font-family: var(--sidebar-monospace-font-stack);\n    display: inline-block;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    white-space: nowrap;\n    max-width: 60%;\n}\n\n.sidebar__item-value-label::selection {\n    background-color: var(--sidebar-color);\n    color: #EEEEEE;\n}\n\n.sidebar__item + .sidebar__item,\n.sidebar__item + .sidebar__group,\n.sidebar__group + .sidebar__item,\n.sidebar__group + .sidebar__group {\n    /*border-top: 1px solid #272727;*/\n}\n\n/*\n * SIDEBAR ITEM TOGGLE\n */\n\n/*.sidebar__toggle */\n.icon_toggle{\n    cursor: pointer;\n}\n\n.sidebar__toggle-input {\n    --sidebar-toggle-input-color: #CCCCCC;\n    --sidebar-toggle-input-color-hover: #EEEEEE;\n    --sidebar-toggle-input-border-size: 2px;\n    display: inline;\n    float: right;\n    box-sizing: border-box;\n    border-radius: 50%;\n    /*outline-style: solid;*/\n    /*outline-color:red;*/\n    cursor: pointer;\n    --toggle-size: 11px;\n    margin-top: 2px;\n    background-color: transparent !important;\n    border: var(--sidebar-toggle-input-border-size) solid var(--sidebar-toggle-input-color);\n    width: var(--toggle-size);\n    height: var(--toggle-size);\n    transition: background-color var(--sidebar-hover-transition-time);\n    transition: border-color var(--sidebar-hover-transition-time);\n}\n.sidebar__toggle:hover .sidebar__toggle-input {\n    border-color: var(--sidebar-toggle-input-color-hover);\n}\n\n.sidebar__toggle .sidebar__item-value-label {\n    -webkit-user-select: none;  /* Chrome all / Safari all */\n    -moz-user-select: none;     /* Firefox all */\n    -ms-user-select: none;      /* IE 10+ */\n    user-select: none;          /* Likely future */\n    max-width: calc(50% - 12px);\n}\n.sidebar__toggle-input::after { clear: both; }\n\n.sidebar__toggle--active .icon_toggle\n{\n\n    background-image: url(data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE1cHgiIHdpZHRoPSIzMHB4IiBmaWxsPSIjMDZmNzhiIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwIDEwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGcgZGlzcGxheT0ibm9uZSI+PGcgZGlzcGxheT0iaW5saW5lIj48Zz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzA2Zjc4YiIgZD0iTTMwLDI3QzE3LjM1LDI3LDcsMzcuMzUsNyw1MGwwLDBjMCwxMi42NSwxMC4zNSwyMywyMywyM2g0MCBjMTIuNjUsMCwyMy0xMC4zNSwyMy0yM2wwLDBjMC0xMi42NS0xMC4zNS0yMy0yMy0yM0gzMHogTTcwLDY3Yy05LjM4OSwwLTE3LTcuNjEtMTctMTdzNy42MTEtMTcsMTctMTdzMTcsNy42MSwxNywxNyAgICAgUzc5LjM4OSw2Nyw3MCw2N3oiPjwvcGF0aD48L2c+PC9nPjwvZz48Zz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTMwLDI3QzE3LjM1LDI3LDcsMzcuMzUsNyw1MGwwLDBjMCwxMi42NSwxMC4zNSwyMywyMywyM2g0MCAgIGMxMi42NSwwLDIzLTEwLjM1LDIzLTIzbDAsMGMwLTEyLjY1LTEwLjM1LTIzLTIzLTIzSDMweiBNNzAsNjdjLTkuMzg5LDAtMTctNy42MS0xNy0xN3M3LjYxMS0xNywxNy0xN3MxNyw3LjYxLDE3LDE3ICAgUzc5LjM4OSw2Nyw3MCw2N3oiPjwvcGF0aD48L2c+PGcgZGlzcGxheT0ibm9uZSI+PGcgZGlzcGxheT0iaW5saW5lIj48cGF0aCBmaWxsPSIjMDZmNzhiIiBzdHJva2U9IiMwNmY3OGIiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNNyw1MGMwLDEyLjY1LDEwLjM1LDIzLDIzLDIzaDQwICAgIGMxMi42NSwwLDIzLTEwLjM1LDIzLTIzbDAsMGMwLTEyLjY1LTEwLjM1LTIzLTIzLTIzSDMwQzE3LjM1LDI3LDcsMzcuMzUsNyw1MEw3LDUweiI+PC9wYXRoPjwvZz48Y2lyY2xlIGRpc3BsYXk9ImlubGluZSIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiMwNmY3OGIiIHN0cm9rZT0iIzA2Zjc4YiIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGN4PSI3MCIgY3k9IjUwIiByPSIxNyI+PC9jaXJjbGU+PC9nPjxnIGRpc3BsYXk9Im5vbmUiPjxwYXRoIGRpc3BsYXk9ImlubGluZSIgZD0iTTcwLDI1SDMwQzE2LjIxNSwyNSw1LDM2LjIxNSw1LDUwczExLjIxNSwyNSwyNSwyNWg0MGMxMy43ODUsMCwyNS0xMS4yMTUsMjUtMjVTODMuNzg1LDI1LDcwLDI1eiBNNzAsNzEgICBIMzBDMTguNDIxLDcxLDksNjEuNTc5LDksNTBzOS40MjEtMjEsMjEtMjFoNDBjMTEuNTc5LDAsMjEsOS40MjEsMjEsMjFTODEuNTc5LDcxLDcwLDcxeiBNNzAsMzFjLTEwLjQ3NywwLTE5LDguNTIzLTE5LDE5ICAgczguNTIzLDE5LDE5LDE5czE5LTguNTIzLDE5LTE5UzgwLjQ3NywzMSw3MCwzMXogTTcwLDY1Yy04LjI3MSwwLTE1LTYuNzI5LTE1LTE1czYuNzI5LTE1LDE1LTE1czE1LDYuNzI5LDE1LDE1Uzc4LjI3MSw2NSw3MCw2NXoiPjwvcGF0aD48L2c+PC9zdmc+);\n    opacity: 1;\n    transform: rotate(0deg);\n    background-position: -4px -9px;\n}\n\n\n.icon_toggle\n{\n    float: right;\n    width:40px;\n    height:18px;\n    background-image: url(data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE1cHgiIHdpZHRoPSIzMHB4IiBmaWxsPSIjYWFhYWFhIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwIDEwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGcgZGlzcGxheT0ibm9uZSI+PGcgZGlzcGxheT0iaW5saW5lIj48Zz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI2FhYWFhYSIgZD0iTTMwLDI3QzE3LjM1LDI3LDcsMzcuMzUsNyw1MGwwLDBjMCwxMi42NSwxMC4zNSwyMywyMywyM2g0MCBjMTIuNjUsMCwyMy0xMC4zNSwyMy0yM2wwLDBjMC0xMi42NS0xMC4zNS0yMy0yMy0yM0gzMHogTTcwLDY3Yy05LjM4OSwwLTE3LTcuNjEtMTctMTdzNy42MTEtMTcsMTctMTdzMTcsNy42MSwxNywxNyAgICAgUzc5LjM4OSw2Nyw3MCw2N3oiPjwvcGF0aD48L2c+PC9nPjwvZz48Zz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTMwLDI3QzE3LjM1LDI3LDcsMzcuMzUsNyw1MGwwLDBjMCwxMi42NSwxMC4zNSwyMywyMywyM2g0MCAgIGMxMi42NSwwLDIzLTEwLjM1LDIzLTIzbDAsMGMwLTEyLjY1LTEwLjM1LTIzLTIzLTIzSDMweiBNNzAsNjdjLTkuMzg5LDAtMTctNy42MS0xNy0xN3M3LjYxMS0xNywxNy0xN3MxNyw3LjYxLDE3LDE3ICAgUzc5LjM4OSw2Nyw3MCw2N3oiPjwvcGF0aD48L2c+PGcgZGlzcGxheT0ibm9uZSI+PGcgZGlzcGxheT0iaW5saW5lIj48cGF0aCBmaWxsPSIjYWFhYWFhIiBzdHJva2U9IiNhYWFhYWEiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNNyw1MGMwLDEyLjY1LDEwLjM1LDIzLDIzLDIzaDQwICAgIGMxMi42NSwwLDIzLTEwLjM1LDIzLTIzbDAsMGMwLTEyLjY1LTEwLjM1LTIzLTIzLTIzSDMwQzE3LjM1LDI3LDcsMzcuMzUsNyw1MEw3LDUweiI+PC9wYXRoPjwvZz48Y2lyY2xlIGRpc3BsYXk9ImlubGluZSIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNhYWFhYWEiIHN0cm9rZT0iI2FhYWFhYSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGN4PSI3MCIgY3k9IjUwIiByPSIxNyI+PC9jaXJjbGU+PC9nPjxnIGRpc3BsYXk9Im5vbmUiPjxwYXRoIGRpc3BsYXk9ImlubGluZSIgZD0iTTcwLDI1SDMwQzE2LjIxNSwyNSw1LDM2LjIxNSw1LDUwczExLjIxNSwyNSwyNSwyNWg0MGMxMy43ODUsMCwyNS0xMS4yMTUsMjUtMjVTODMuNzg1LDI1LDcwLDI1eiBNNzAsNzEgICBIMzBDMTguNDIxLDcxLDksNjEuNTc5LDksNTBzOS40MjEtMjEsMjEtMjFoNDBjMTEuNTc5LDAsMjEsOS40MjEsMjEsMjFTODEuNTc5LDcxLDcwLDcxeiBNNzAsMzFjLTEwLjQ3NywwLTE5LDguNTIzLTE5LDE5ICAgczguNTIzLDE5LDE5LDE5czE5LTguNTIzLDE5LTE5UzgwLjQ3NywzMSw3MCwzMXogTTcwLDY1Yy04LjI3MSwwLTE1LTYuNzI5LTE1LTE1czYuNzI5LTE1LDE1LTE1czE1LDYuNzI5LDE1LDE1Uzc4LjI3MSw2NSw3MCw2NXoiPjwvcGF0aD48L2c+PC9zdmc+);\n    background-size: 50px 37px;\n    background-position: -6px -10px;\n    transform: rotate(180deg);\n    opacity: 0.4;\n}\n\n\n\n/*.sidebar__toggle--active .sidebar__toggle-input {*/\n/*    transition: background-color var(--sidebar-hover-transition-time);*/\n/*    background-color: var(--sidebar-toggle-input-color);*/\n/*}*/\n/*.sidebar__toggle--active .sidebar__toggle-input:hover*/\n/*{*/\n/*    background-color: var(--sidebar-toggle-input-color-hover);*/\n/*    border-color: var(--sidebar-toggle-input-color-hover);*/\n/*    transition: background-color var(--sidebar-hover-transition-time);*/\n/*    transition: border-color var(--sidebar-hover-transition-time);*/\n/*}*/\n\n/*\n * SIDEBAR ITEM BUTTON\n */\n\n.sidebar__button {}\n\n.sidebar__button-input:active\n{\n    background-color: #555 !important;\n}\n\n.sidebar__button-input {\n    -webkit-user-select: none;  /* Chrome all / Safari all */\n    -moz-user-select: none;     /* Firefox all */\n    -ms-user-select: none;      /* IE 10+ */\n    user-select: none;          /* Likely future */\n    min-height: 24px;\n    background-color: transparent;\n    color: #CCCCCC;\n    box-sizing: border-box;\n    padding-top: 3px;\n    text-align: center;\n    border-radius: 125px;\n    border:2px solid #555;\n    cursor: pointer;\n    padding-bottom: 3px;\n    display:block;\n}\n\n.sidebar__button-input.plus, .sidebar__button-input.minus {\n    display: inline-block;\n    min-width: 20px;\n}\n\n.sidebar__button-input:hover {\n  background-color: #333;\n  border:2px solid var(--sidebar-color);\n}\n\n/*\n * VALUE DISPLAY (shows a value)\n */\n\n.sidebar__value-display {}\n\n/*\n * SLIDER\n */\n\n.sidebar__slider {\n    --sidebar-slider-input-height: 3px;\n}\n\n.sidebar__slider-input-wrapper {\n    width: 100%;\n\n    margin-top: 8px;\n    position: relative;\n}\n\n.sidebar__slider-input {\n    -webkit-appearance: none;\n    appearance: none;\n    margin: 0;\n    width: 100%;\n    height: var(--sidebar-slider-input-height);\n    background: #555;\n    cursor: pointer;\n    /*outline: 0;*/\n\n    -webkit-transition: .2s;\n    transition: background-color .2s;\n    border: none;\n}\n\n.sidebar__slider-input:focus, .sidebar__slider-input:hover {\n    border: none;\n}\n\n.sidebar__slider-input-active-track {\n    user-select: none;\n    position: absolute;\n    z-index: 11;\n    top: 0;\n    left: 0;\n    background-color: var(--sidebar-color);\n    pointer-events: none;\n    height: var(--sidebar-slider-input-height);\n    max-width: 100%;\n}\n\n/* Mouse-over effects */\n.sidebar__slider-input:hover {\n    /*background-color: #444444;*/\n}\n\n/*.sidebar__slider-input::-webkit-progress-value {*/\n/*    background-color: green;*/\n/*    color:green;*/\n\n/*    }*/\n\n/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */\n\n.sidebar__slider-input::-moz-range-thumb\n{\n    position: absolute;\n    height: 15px;\n    width: 15px;\n    z-index: 900 !important;\n    border-radius: 20px !important;\n    cursor: pointer;\n    background: var(--sidebar-color) !important;\n    user-select: none;\n\n}\n\n.sidebar__slider-input::-webkit-slider-thumb\n{\n    position: relative;\n    appearance: none;\n    -webkit-appearance: none;\n    user-select: none;\n    height: 15px;\n    width: 15px;\n    display: block;\n    z-index: 900 !important;\n    border: 0;\n    border-radius: 20px !important;\n    cursor: pointer;\n    background: #777 !important;\n}\n\n.sidebar__slider-input:hover ::-webkit-slider-thumb {\n    background-color: #EEEEEE !important;\n}\n\n/*.sidebar__slider-input::-moz-range-thumb {*/\n\n/*    width: 0 !important;*/\n/*    height: var(--sidebar-slider-input-height);*/\n/*    background: #EEEEEE;*/\n/*    cursor: pointer;*/\n/*    border-radius: 0 !important;*/\n/*    border: none;*/\n/*    outline: 0;*/\n/*    z-index: 100 !important;*/\n/*}*/\n\n.sidebar__slider-input::-moz-range-track {\n    background-color: transparent;\n    z-index: 11;\n}\n\n.sidebar__slider input[type=text],\n.sidebar__slider input[type=paddword]\n{\n    box-sizing: border-box;\n    /*background-color: #333333;*/\n    text-align: right;\n    color: #BBBBBB;\n    display: inline-block;\n    background-color: transparent !important;\n\n    width: 40%;\n    height: 18px;\n    /*outline: none;*/\n    border: none;\n    border-radius: 0;\n    padding: 0 0 0 4px !important;\n    margin: 0;\n}\n\n.sidebar__slider input[type=text]:active,\n.sidebar__slider input[type=text]:focus,\n.sidebar__slider input[type=text]:hover\n.sidebar__slider input[type=password]:active,\n.sidebar__slider input[type=password]:focus,\n.sidebar__slider input[type=password]:hover\n{\n\n    color: #EEEEEE;\n}\n\n/*\n * TEXT / DESCRIPTION\n */\n\n.sidebar__text .sidebar__item-label {\n    width: auto;\n    display: block;\n    max-height: none;\n    margin-right: 0;\n    line-height: 1.1em;\n}\n\n/*\n * SIDEBAR INPUT\n */\n.sidebar__text-input textarea,\n.sidebar__text-input input[type=date],\n.sidebar__text-input input[type=datetime-local],\n.sidebar__text-input input[type=text],\n.sidebar__text-input input[type=password] {\n    box-sizing: border-box;\n    background-color: #333333;\n    color: #BBBBBB;\n    display: inline-block;\n    width: 50%;\n    height: 18px;\n\n\n    border: none;\n    border-radius: 0;\n    border:1px solid #666;\n    padding: 0 0 0 4px !important;\n    margin: 0;\n    color-scheme: dark;\n}\n\n.sidebar__text-input textarea:focus::placeholder {\n  color: transparent;\n}\n\n\n\n\n\n.sidebar__color-picker .sidebar__item-label\n{\n    width:45%;\n}\n\n.sidebar__text-input textarea,\n.sidebar__text-input input[type=text]:active,\n.sidebar__text-input input[type=text]:focus,\n.sidebar__text-input input[type=text]:hover,\n.sidebar__text-input input[type=password]:active,\n.sidebar__text-input input[type=password]:focus,\n.sidebar__text-input input[type=password]:hover {\n    background-color: transparent;\n    color: #EEEEEE;\n\n}\n\n.sidebar__text-input textarea\n{\n    margin-top:10px;\n    height:60px;\n    width:100%;\n}\n\n/*\n * SIDEBAR SELECT\n */\n\n\n\n .sidebar__select {}\n .sidebar__select-select {\n    color: #BBBBBB;\n    /*-webkit-appearance: none;*/\n    /*-moz-appearance: none;*/\n    appearance: none;\n    /*box-sizing: border-box;*/\n    width: 50%;\n    /*height: 20px;*/\n    background-color: #333333;\n    /*background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ODg4ODgiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWNoZXZyb24tZG93biI+PHBvbHlsaW5lIHBvaW50cz0iNiA5IDEyIDE1IDE4IDkiPjwvcG9seWxpbmU+PC9zdmc+);*/\n    background-repeat: no-repeat;\n    background-position: right center;\n    background-size: 16px 16px;\n    margin: 0;\n    /*padding: 0 2 2 6px;*/\n    border-radius: 5px;\n    border: 1px solid #777;\n    background-color: #444;\n    cursor: pointer;\n    /*outline: none;*/\n    padding-left: 5px;\n\n }\n\n.sidebar__select-select:hover,\n.sidebar__select-select:active,\n.sidebar__select-select:inactive {\n    background-color: #444444;\n    color: #EEEEEE;\n}\n\n/*.sidebar__select-select option*/\n/*{*/\n/*    background-color: #444444;*/\n/*    color: #bbb;*/\n/*}*/\n\n.sidebar__select-select option:checked\n{\n    background-color: #000;\n    color: #FFF;\n}\n\n\n/*\n * COLOR PICKER\n */\n\n\n .sidebar__color-picker input[type=text] {\n    box-sizing: border-box;\n    background-color: #333333;\n    color: #BBBBBB;\n    display: inline-block;\n    width: calc(50% - 21px); /* 50% minus space of picker circle */\n    height: 18px;\n    /*outline: none;*/\n    border: none;\n    border-radius: 0;\n    padding: 0 0 0 4px !important;\n    margin: 0;\n    margin-right: 7px;\n}\n\n.sidebar__color-picker input[type=text]:active,\n.sidebar__color-picker input[type=text]:focus,\n.sidebar__color-picker input[type=text]:hover {\n    background-color: #444444;\n    color: #EEEEEE;\n}\n\ndiv.sidebar__color-picker-color-input,\n.sidebar__color-picker input[type=color],\n.sidebar__palette-picker input[type=color] {\n    display: inline-block;\n    border-radius: 100%;\n    height: 14px;\n    width: 14px;\n\n    padding: 0;\n    border: none;\n    /*border:2px solid red;*/\n    border-color: transparent;\n    outline: none;\n    background: none;\n    appearance: none;\n    -moz-appearance: none;\n    -webkit-appearance: none;\n    cursor: pointer;\n    position: relative;\n    top: 3px;\n}\n.sidebar__color-picker input[type=color]:focus,\n.sidebar__palette-picker input[type=color]:focus {\n    outline: none;\n}\n.sidebar__color-picker input[type=color]::-moz-color-swatch,\n.sidebar__palette-picker input[type=color]::-moz-color-swatch {\n    border: none;\n}\n.sidebar__color-picker input[type=color]::-webkit-color-swatch-wrapper,\n.sidebar__palette-picker input[type=color]::-webkit-color-swatch-wrapper {\n    padding: 0;\n}\n.sidebar__color-picker input[type=color]::-webkit-color-swatch,\n.sidebar__palette-picker input[type=color]::-webkit-color-swatch {\n    border: none;\n    border-radius: 100%;\n}\n\n/*\n * Palette Picker\n */\n.sidebar__palette-picker .sidebar__palette-picker-color-input.first {\n    margin-left: 0;\n}\n.sidebar__palette-picker .sidebar__palette-picker-color-input.last {\n    margin-right: 0;\n}\n.sidebar__palette-picker .sidebar__palette-picker-color-input {\n    margin: 0 4px;\n}\n\n.sidebar__palette-picker .circlebutton {\n    width: 14px;\n    height: 14px;\n    border-radius: 1em;\n    display: inline-block;\n    top: 3px;\n    position: relative;\n}\n\n/*\n * Preset\n */\n.sidebar__item-presets-preset\n{\n    padding:4px;\n    cursor:pointer;\n    padding-left:8px;\n    padding-right:8px;\n    margin-right:4px;\n    background-color:#444;\n}\n\n.sidebar__item-presets-preset:hover\n{\n    background-color:#666;\n}\n\n.sidebar__greyout\n{\n    background: #222;\n    opacity: 0.8;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    z-index: 1000;\n    right: 0;\n    top: 0;\n}\n\n.sidebar_tabs\n{\n    background-color: #151515;\n    padding-bottom: 0px;\n}\n\n.sidebar_switchs\n{\n    float: right;\n}\n\n.sidebar_tab\n{\n    float:left;\n    background-color: #151515;\n    border-bottom:1px solid transparent;\n    padding-right:7px;\n    padding-left:7px;\n    padding-bottom: 5px;\n    padding-top: 5px;\n    cursor:pointer;\n}\n\n.sidebar_tab_active\n{\n    background-color: #272727;\n    color:white;\n}\n\n.sidebar_tab:hover\n{\n    border-bottom:1px solid #777;\n    color:white;\n}\n\n\n.sidebar_switch\n{\n    float:left;\n    background-color: #444;\n    padding-right:7px;\n    padding-left:7px;\n    padding-bottom: 5px;\n    padding-top: 5px;\n    cursor:pointer;\n}\n\n.sidebar_switch:last-child\n{\n    border-top-right-radius: 7px;\n    border-bottom-right-radius: 7px;\n}\n\n.sidebar_switch:first-child\n{\n    border-top-left-radius: 7px;\n    border-bottom-left-radius: 7px;\n}\n\n\n.sidebar_switch_active\n{\n    background-color: #999;\n    color:white;\n}\n\n.sidebar_switch:hover\n{\n    color:white;\n}\n\n.sidebar__text-input-input::focus-visible,\n/*.sidebar__text-input-input:active,*/\n.sidebar__button-input:focus-visible,\n.sidebar__text-input:focus-visible\n/*.sidebar__text-input:active*/\n{\n    outline-style: solid;\n    outline-color:white;\n    outline-width: 1px;\n\n}\n\n",};
-// vars
-const CSS_ELEMENT_CLASS = "cables-sidebar-style"; /* class for the style element to be generated */
-const CSS_ELEMENT_DYNAMIC_CLASS = "cables-sidebar-dynamic-style"; /* things which can be set via op-port, but not attached to the elements themselves, e.g. minimized opacity */
-const SIDEBAR_CLASS = "sidebar-cables";
-const SIDEBAR_ID = "sidebar" + CABLES.uuid();
-const SIDEBAR_ITEMS_CLASS = "sidebar__items";
-const SIDEBAR_OPEN_CLOSE_BTN_CLASS = "sidebar__close-button";
-
-const BTN_TEXT_OPEN = ""; // 'Close';
-const BTN_TEXT_CLOSED = ""; // 'Show Controls';
-
-let openCloseBtn = null;
-let openCloseBtnIcon = null;
-let headerTitleText = null;
-
-// inputs
-const visiblePort = op.inValueBool("Visible", true);
-const opacityPort = op.inValueSlider("Opacity", 1);
-const defaultMinimizedPort = op.inValueBool("Default Minimized");
-const minimizedOpacityPort = op.inValueSlider("Minimized Opacity", 0.5);
-const undoButtonPort = op.inValueBool("Show undo button", false);
-const inMinimize = op.inValueBool("Show Minimize", false);
-
-const inTitle = op.inString("Title", "");
-const side = op.inValueBool("Side");
-const addCss = op.inValueBool("Default CSS", true);
-
-let doc = op.patch.cgl.canvas.ownerDocument;
-
-// outputs
-const childrenPort = op.outObject("childs");
-childrenPort.setUiAttribs({ "title": "Children" });
-
-const isOpenOut = op.outBool("Opfened");
-isOpenOut.setUiAttribs({ "title": "Opened" });
-
-let sidebarEl = doc.querySelector("." + SIDEBAR_ID);
-if (!sidebarEl) sidebarEl = initSidebarElement();
-
-const sidebarItemsEl = sidebarEl.querySelector("." + SIDEBAR_ITEMS_CLASS);
-childrenPort.set({
-    "parentElement": sidebarItemsEl,
-    "parentOp": op,
-});
-onDefaultMinimizedPortChanged();
-initSidebarCss();
-updateDynamicStyles();
-
-addCss.onChange = () =>
-{
-    initSidebarCss();
-    updateDynamicStyles();
-};
-visiblePort.onChange = onVisiblePortChange;
-opacityPort.onChange = onOpacityPortChange;
-defaultMinimizedPort.onChange = onDefaultMinimizedPortChanged;
-minimizedOpacityPort.onChange = onMinimizedOpacityPortChanged;
-undoButtonPort.onChange = onUndoButtonChange;
-op.onDelete = onDelete;
-
-function onMinimizedOpacityPortChanged()
-{
-    updateDynamicStyles();
-}
-
-inMinimize.onChange = updateMinimize;
-
-function updateMinimize(header)
-{
-    if (!header || header.uiAttribs) header = doc.querySelector(".sidebar-cables .sidebar__group-header");
-    if (!header) return;
-
-    const undoButton = doc.querySelector(".sidebar-cables .sidebar__group-header .sidebar__group-header-undo");
-
-    if (inMinimize.get())
-    {
-        header.classList.add("iconsidebar-chevron-up");
-        header.classList.add("iconsidebar-minimizebutton");
-
-        if (undoButton)undoButton.style.marginRight = "20px";
-    }
-    else
-    {
-        header.classList.remove("iconsidebar-chevron-up");
-        header.classList.remove("iconsidebar-minimizebutton");
-
-        if (undoButton)undoButton.style.marginRight = "initial";
-    }
-}
-
-side.onChange = function ()
-{
-    if (!sidebarEl) return;
-    if (side.get()) sidebarEl.classList.add("sidebar-cables-right");
-    else sidebarEl.classList.remove("sidebar-cables-right");
-};
-
-function onUndoButtonChange()
-{
-    const header = doc.querySelector(".sidebar-cables .sidebar__group-header");
-    if (header)
-    {
-        initUndoButton(header);
-    }
-}
-
-function initUndoButton(header)
-{
-    if (header)
-    {
-        const undoButton = doc.querySelector(".sidebar-cables .sidebar__group-header .sidebar__group-header-undo");
-        if (undoButton)
-        {
-            if (!undoButtonPort.get())
-            {
-                // header.removeChild(undoButton);
-                undoButton.remove();
-            }
-        }
-        else
-        {
-            if (undoButtonPort.get())
-            {
-                const headerUndo = doc.createElement("span");
-                headerUndo.classList.add("sidebar__group-header-undo");
-                headerUndo.classList.add("sidebar-icon-undo");
-
-                headerUndo.addEventListener("click", function (event)
-                {
-                    event.stopPropagation();
-                    const reloadables = doc.querySelectorAll(".sidebar-cables .sidebar__reloadable");
-                    const doubleClickEvent = doc.createEvent("MouseEvents");
-                    doubleClickEvent.initEvent("dblclick", true, true);
-                    reloadables.forEach((reloadable) =>
-                    {
-                        reloadable.dispatchEvent(doubleClickEvent);
-                    });
-                });
-                header.appendChild(headerUndo);
-            }
-        }
-    }
-    updateMinimize(header);
-}
-
-function onDefaultMinimizedPortChanged()
-{
-    if (!openCloseBtn) { return; }
-    if (defaultMinimizedPort.get())
-    {
-        sidebarEl.classList.add("sidebar--closed");
-        if (visiblePort.get()) isOpenOut.set(false);
-    }
-    else
-    {
-        sidebarEl.classList.remove("sidebar--closed");
-        if (visiblePort.get()) isOpenOut.set(true);
-    }
-}
-
-function onOpacityPortChange()
-{
-    const opacity = opacityPort.get();
-    sidebarEl.style.opacity = opacity;
-}
-
-function onVisiblePortChange()
-{
-    if (!sidebarEl) return;
-    if (visiblePort.get())
-    {
-        sidebarEl.style.display = "block";
-        if (!sidebarEl.classList.contains("sidebar--closed")) isOpenOut.set(true);
-    }
-    else
-    {
-        sidebarEl.style.display = "none";
-        isOpenOut.set(false);
-    }
-}
-
-side.onChanged = function ()
-{
-
-};
-
-/**
- * Some styles cannot be set directly inline, so a dynamic stylesheet is needed.
- * Here hover states can be set later on e.g.
- */
-function updateDynamicStyles()
-{
-    const dynamicStyles = doc.querySelectorAll("." + CSS_ELEMENT_DYNAMIC_CLASS);
-    if (dynamicStyles)
-    {
-        dynamicStyles.forEach(function (e)
-        {
-            e.parentNode.removeChild(e);
-        });
-    }
-
-    if (!addCss.get()) return;
-
-    const newDynamicStyle = doc.createElement("style");
-    newDynamicStyle.classList.add("cablesEle");
-    newDynamicStyle.classList.add(CSS_ELEMENT_DYNAMIC_CLASS);
-    let cssText = ".sidebar--closed .sidebar__close-button { ";
-    cssText += "opacity: " + minimizedOpacityPort.get();
-    cssText += "}";
-    const cssTextEl = doc.createTextNode(cssText);
-    newDynamicStyle.appendChild(cssTextEl);
-    doc.body.appendChild(newDynamicStyle);
-}
-
-function initSidebarElement()
-{
-    const element = doc.createElement("div");
-    element.classList.add(SIDEBAR_CLASS);
-    element.classList.add(SIDEBAR_ID);
-    const canvasWrapper = op.patch.cgl.canvas.parentElement; /* maybe this is bad outside cables!? */
-
-    // header...
-    const headerGroup = doc.createElement("div");
-    headerGroup.classList.add("sidebar__group");
-
-    element.appendChild(headerGroup);
-    const header = doc.createElement("div");
-    header.classList.add("sidebar__group-header");
-
-    element.appendChild(header);
-    const headerTitle = doc.createElement("span");
-    headerTitle.classList.add("sidebar__group-header-title");
-    headerTitleText = doc.createElement("span");
-    headerTitleText.classList.add("sidebar__group-header-title-text");
-    headerTitleText.innerHTML = inTitle.get();
-    headerTitle.appendChild(headerTitleText);
-    header.appendChild(headerTitle);
-
-    initUndoButton(header);
-    updateMinimize(header);
-
-    headerGroup.appendChild(header);
-    element.appendChild(headerGroup);
-    headerGroup.addEventListener("click", onOpenCloseBtnClick);
-
-    if (!canvasWrapper)
-    {
-        op.warn("[sidebar] no canvas parentelement found...");
-        return;
-    }
-    canvasWrapper.appendChild(element);
-    const items = doc.createElement("div");
-    items.classList.add(SIDEBAR_ITEMS_CLASS);
-    element.appendChild(items);
-    openCloseBtn = doc.createElement("div");
-    openCloseBtn.classList.add(SIDEBAR_OPEN_CLOSE_BTN_CLASS);
-    openCloseBtn.addEventListener("click", onOpenCloseBtnClick);
-    element.appendChild(openCloseBtn);
-
-    return element;
-}
-
-inTitle.onChange = function ()
-{
-    if (headerTitleText)headerTitleText.innerHTML = inTitle.get();
-};
-
-function setClosed(b)
-{
-
-}
-
-function onOpenCloseBtnClick(ev)
-{
-    ev.stopPropagation();
-    if (!sidebarEl) { op.logError("Sidebar could not be closed..."); return; }
-    sidebarEl.classList.toggle("sidebar--closed");
-    const btn = ev.target;
-    let btnText = BTN_TEXT_OPEN;
-    if (sidebarEl.classList.contains("sidebar--closed"))
-    {
-        btnText = BTN_TEXT_CLOSED;
-        isOpenOut.set(false);
-    }
-    else
-    {
-        isOpenOut.set(true);
-    }
-}
-
-function initSidebarCss()
-{
-    const cssElements = doc.querySelectorAll("." + CSS_ELEMENT_CLASS);
-    // remove old script tag
-    if (cssElements)
-    {
-        cssElements.forEach((e) =>
-        {
-            e.parentNode.removeChild(e);
-        });
-    }
-
-    if (!addCss.get()) return;
-
-    const newStyle = doc.createElement("style");
-
-    newStyle.innerHTML = attachments.style_css;
-    newStyle.classList.add(CSS_ELEMENT_CLASS);
-    newStyle.classList.add("cablesEle");
-    doc.body.appendChild(newStyle);
-}
-
-function onDelete()
-{
-    removeElementFromDOM(sidebarEl);
-}
-
-function removeElementFromDOM(el)
-{
-    if (el && el.parentNode && el.parentNode.removeChild) el.parentNode.removeChild(el);
-}
-
-}
-};
-
-CABLES.OPS["5a681c35-78ce-4cb3-9858-bc79c34c6819"]={f:Ops.Sidebar.Sidebar,objName:"Ops.Sidebar.Sidebar"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Devices.Mouse.Mouse_v3
-// 
-// **************************************************************
-
-Ops.Devices.Mouse.Mouse_v3= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inCoords = op.inSwitch("Coordinates", ["-1 to 1", "Pixel Display", "Pixel", "0 to 1"], "-1 to 1"),
-    area = op.inValueSelect("Area", ["Canvas", "Document", "Parent Element", "Canvas Area"], "Canvas"),
-    flipY = op.inValueBool("flip y", true),
-    rightClickPrevDef = op.inBool("right click prevent default", true),
-    touchscreen = op.inValueBool("Touch support", true),
-    inPassive = op.inValueBool("Passive Events", false),
-    active = op.inValueBool("Active", true),
-    outMouseX = op.outNumber("x", 0),
-    outMouseY = op.outNumber("y", 0),
-    mouseClick = op.outTrigger("click"),
-    mouseClickRight = op.outTrigger("click right"),
-    mouseDown = op.outBoolNum("Button is down"),
-    mouseOver = op.outBoolNum("Mouse is hovering"),
-    outMovementX = op.outNumber("Movement X", 0),
-    outMovementY = op.outNumber("Movement Y", 0);
-
-const cgl = op.patch.cgl;
-let normalize = 1;
-let listenerElement = null;
-let areaElement = null;
-
-inPassive.onChange =
-area.onChange = addListeners;
-
-inCoords.onChange = updateCoordNormalizing;
-op.onDelete = removeListeners;
-
-addListeners();
-
-op.on("loadedValueSet", onStart);
-
-function onStart()
-{
-    if (normalize == 0)
-    {
-        if (areaElement.clientWidth === 0) setTimeout(onStart, 50);
-
-        outMouseX.set(areaElement.clientWidth / 2);
-        outMouseY.set(areaElement.clientHeight / 2);
-    }
-    else if (normalize == 1)
-    {
-        outMouseX.set(0);
-        outMouseY.set(0);
-    }
-    else if (normalize == 2)
-    {
-        outMouseX.set(0.5);
-        outMouseY.set(0.5);
-    }
-    else if (normalize == 3)
-    {
-        if (areaElement.clientWidth === 0)
-        {
-            setTimeout(onStart, 50);
-        }
-
-        outMouseX.set(areaElement.clientWidth / 2 / cgl.pixelDensity);
-        outMouseY.set(areaElement.clientHeight / 2 / cgl.pixelDensity);
-    }
-    else console.error("unknown normalize mouse", normalize);
-}
-
-function setValue(x, y)
-{
-    x = x || 0;
-    y = y || 0;
-
-    if (normalize == 0) // pixel
-    {
-        outMouseX.set(x);
-        outMouseY.set(y);
-    }
-    else
-    if (normalize == 3) // pixel css
-    {
-        outMouseX.set(x * cgl.pixelDensity);
-        outMouseY.set(y * cgl.pixelDensity);
-    }
-    else
-    {
-        let w = areaElement.clientWidth / cgl.pixelDensity;
-        let h = areaElement.clientHeight / cgl.pixelDensity;
-
-        w = w || 1;
-        h = h || 1;
-
-        if (normalize == 1) // -1 to 1
-        {
-            let xx = (x / w * 2.0 - 1.0);
-            let yy = (y / h * 2.0 - 1.0);
-            xx = CABLES.clamp(xx, -1, 1);
-            yy = CABLES.clamp(yy, -1, 1);
-
-            outMouseX.set(xx);
-            outMouseY.set(yy);
-        }
-        else if (normalize == 2) // 0 to 1
-        {
-            let xx = x / w;
-            let yy = y / h;
-
-            xx = CABLES.clamp(xx, 0, 1);
-            yy = CABLES.clamp(yy, 0, 1);
-
-            outMouseX.set(xx);
-            outMouseY.set(yy);
-        }
-    }
-}
-
-function checkHovering(e)
-{
-    if (!areaElement) return;
-    const r = areaElement.getBoundingClientRect();
-
-    return (
-        e.clientX > r.left &&
-        e.clientX < r.left + r.width &&
-        e.clientY > r.top &&
-        e.clientY < r.top + r.height
-    );
-}
-
-touchscreen.onChange = function ()
-{
-    removeListeners();
-    addListeners();
-};
-
-active.onChange = function ()
-{
-    if (listenerElement)removeListeners();
-    if (active.get())addListeners();
-};
-
-function updateCoordNormalizing()
-{
-    if (inCoords.get() == "Pixel") normalize = 0;
-    else if (inCoords.get() == "-1 to 1") normalize = 1;
-    else if (inCoords.get() == "0 to 1") normalize = 2;
-    else if (inCoords.get() == "Pixel Display") normalize = 3;
-}
-
-function onMouseEnter(e)
-{
-    mouseDown.set(false);
-    mouseOver.set(checkHovering(e));
-}
-
-function onMouseDown(e)
-{
-    if (!checkHovering(e)) return;
-    mouseDown.set(true);
-}
-
-function onMouseUp(e)
-{
-    mouseDown.set(false);
-}
-
-function onClickRight(e)
-{
-    if (!checkHovering(e)) return;
-    mouseClickRight.trigger();
-    if (rightClickPrevDef.get()) e.preventDefault();
-}
-
-function onmouseclick(e)
-{
-    if (!checkHovering(e)) return;
-    mouseClick.trigger();
-}
-
-function onMouseLeave(e)
-{
-    mouseDown.set(false);
-    mouseOver.set(checkHovering(e));
-}
-
-function setCoords(e)
-{
-    let x = e.clientX;
-    let y = e.clientY;
-
-    if (area.get() != "Document")
-    {
-        x = e.offsetX;
-        y = e.offsetY;
-    }
-    if (area.get() === "Canvas Area")
-    {
-        const r = areaElement.getBoundingClientRect();
-        x = e.clientX - r.left;
-        y = e.clientY - r.top;
-
-        if (x < 0 || x > r.width || y > r.height || y < 0) return;
-        x = CABLES.clamp(x, 0, r.width);
-        y = CABLES.clamp(y, 0, r.height);
-    }
-
-    if (flipY.get()) y = areaElement.clientHeight - y;
-
-    setValue(x / cgl.pixelDensity, y / cgl.pixelDensity);
-}
-
-function onmousemove(e)
-{
-    mouseOver.set(checkHovering(e));
-    if (area.get() === "Canvas Area")
-    {
-        const r = areaElement.getBoundingClientRect();
-        const x = e.clientX - r.left;
-        const y = e.clientY - r.top;
-
-        if (x < 0 || x > r.width || y > r.height || y < 0) return;
-    }
-
-    setCoords(e);
-
-    outMovementX.set(e.movementX / cgl.pixelDensity);
-    outMovementY.set(e.movementY / cgl.pixelDensity);
-}
-
-function ontouchmove(e)
-{
-    if (event.touches && event.touches.length > 0) setCoords(e.touches[0]);
-}
-
-function ontouchstart(event)
-{
-    mouseDown.set(true);
-
-    if (event.touches && event.touches.length > 0) onMouseDown(event.touches[0]);
-}
-
-function ontouchend(event)
-{
-    mouseDown.set(false);
-    onMouseUp();
-}
-
-function removeListeners()
-{
-    if (!listenerElement) return;
-    listenerElement.removeEventListener("touchend", ontouchend);
-    listenerElement.removeEventListener("touchstart", ontouchstart);
-    listenerElement.removeEventListener("touchmove", ontouchmove);
-
-    listenerElement.removeEventListener("click", onmouseclick);
-    listenerElement.removeEventListener("mousemove", onmousemove);
-    listenerElement.removeEventListener("mouseleave", onMouseLeave);
-    listenerElement.removeEventListener("mousedown", onMouseDown);
-    listenerElement.removeEventListener("mouseup", onMouseUp);
-    listenerElement.removeEventListener("mouseenter", onMouseEnter);
-    listenerElement.removeEventListener("contextmenu", onClickRight);
-    listenerElement = null;
-}
-
-function addListeners()
-{
-    if (listenerElement || !active.get())removeListeners();
-    if (!active.get()) return;
-
-    listenerElement = areaElement = cgl.canvas;
-
-    if (area.get() == "Canvas Area")
-    {
-        areaElement = cgl.canvas.parentElement;
-        listenerElement = document.body;
-    }
-    if (area.get() == "Document") areaElement = listenerElement = document.body;
-    if (area.get() == "Parent Element") listenerElement = areaElement = cgl.canvas.parentElement;
-
-    if (!areaElement)
-    {
-        op.setUiError("noarea", "could not find area element for mouse", 2);
-        return;
-    }
-    op.setUiError("noarea", null);
-
-    let passive = false;
-    if (inPassive.get())passive = { "passive": true };
-
-    if (touchscreen.get())
-    {
-        listenerElement.addEventListener("touchend", ontouchend, passive);
-        listenerElement.addEventListener("touchstart", ontouchstart, passive);
-        listenerElement.addEventListener("touchmove", ontouchmove, passive);
-    }
-
-    listenerElement.addEventListener("mousemove", onmousemove, passive);
-    listenerElement.addEventListener("mouseleave", onMouseLeave, passive);
-    listenerElement.addEventListener("mousedown", onMouseDown, passive);
-    listenerElement.addEventListener("mouseup", onMouseUp, passive);
-    listenerElement.addEventListener("mouseenter", onMouseEnter, passive);
-    listenerElement.addEventListener("contextmenu", onClickRight, passive);
-    listenerElement.addEventListener("click", onmouseclick, passive);
-}
-
-//
-
-}
-};
-
-CABLES.OPS["6d1edbc0-088a-43d7-9156-918fb3d7f24b"]={f:Ops.Devices.Mouse.Mouse_v3,objName:"Ops.Devices.Mouse.Mouse_v3"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Boolean.ToggleBool_v2
-// 
-// **************************************************************
-
-Ops.Boolean.ToggleBool_v2= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    trigger = op.inTriggerButton("trigger"),
-    reset = op.inTriggerButton("reset"),
-    inDefault = op.inBool("Default", false),
-    next = op.outTrigger("Next"),
-    outBool = op.outBoolNum("result");
-
-let theBool = false;
-
-op.onLoadedValueSet = () =>
-{
-    theBool = inDefault.get();
-    outBool.set(inDefault.get());
-    next.trigger();
-};
-
-trigger.onTriggered = function ()
-{
-    theBool = !theBool;
-    outBool.set(theBool);
-    next.trigger();
-};
-
-reset.onTriggered = function ()
-{
-    theBool = inDefault.get();
-    outBool.set(theBool);
-    next.trigger();
-};
-
-}
-};
-
-CABLES.OPS["4313d9bb-96b6-43bc-9190-6068cfb2593c"]={f:Ops.Boolean.ToggleBool_v2,objName:"Ops.Boolean.ToggleBool_v2"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Boolean.TriggerChangedTrue
-// 
-// **************************************************************
-
-Ops.Boolean.TriggerChangedTrue= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-let val = op.inValueBool("Value", false);
-let next = op.outTrigger("Next");
-let oldVal = 0;
-
-val.onChange = function ()
-{
-    let newVal = val.get();
-    if (!oldVal && newVal)
-    {
-        oldVal = true;
-        next.trigger();
-    }
-    else
-    {
-        oldVal = false;
-    }
-};
-
-}
-};
-
-CABLES.OPS["385197e1-8b34-4d1c-897f-d1386d99e3b3"]={f:Ops.Boolean.TriggerChangedTrue,objName:"Ops.Boolean.TriggerChangedTrue"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Sidebar.Slider_v3
-// 
-// **************************************************************
-
-Ops.Sidebar.Slider_v3= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-// constants
-const STEP_DEFAULT = 0.00001;
-
-// inputs
-const parentPort = op.inObject("link");
-const labelPort = op.inString("Text", "Slider");
-const minPort = op.inValue("Min", 0);
-const maxPort = op.inValue("Max", 1);
-const stepPort = op.inValue("Step", STEP_DEFAULT);
-const labelSuffix = op.inString("Suffix", "");
-
-const inGreyOut = op.inBool("Grey Out", false);
-const inVisible = op.inBool("Visible", true);
-
-const inputValuePort = op.inValue("Input", 0.5);
-const setDefaultValueButtonPort = op.inTriggerButton("Set Default");
-const reset = op.inTriggerButton("Reset");
-
-let parent = null;
-
-const defaultValuePort = op.inValue("Default", 0.5);
-defaultValuePort.setUiAttribs({ "hidePort": true, "greyout": true });
-
-// outputs
-const siblingsPort = op.outObject("childs");
-const valuePort = op.outNumber("Result", defaultValuePort.get());
-
-op.toWorkNeedsParent("Ops.Sidebar.Sidebar");
-op.setPortGroup("Range", [minPort, maxPort, stepPort]);
-op.setPortGroup("Display", [inGreyOut, inVisible]);
-
-// vars
-const el = document.createElement("div");
-el.addEventListener("dblclick", function ()
-{
-    valuePort.set(parseFloat(defaultValuePort.get()));
-    inputValuePort.set(parseFloat(defaultValuePort.get()));
-    setValueFieldValue(defaultValuePort.get());
-});
-
-el.dataset.op = op.id;
-el.classList.add("cablesEle");
-
-el.classList.add("sidebar__item");
-el.classList.add("sidebar__slider");
-el.classList.add("sidebar__reloadable");
-
-op.patch.on("sidebarStylesChanged", () => { updateActiveTrack(); });
-
-const label = document.createElement("div");
-label.classList.add("sidebar__item-label");
-
-const greyOut = document.createElement("div");
-greyOut.classList.add("sidebar__greyout");
-el.appendChild(greyOut);
-greyOut.style.display = "none";
-
-const labelText = document.createTextNode(labelPort.get());
-label.appendChild(labelText);
-el.appendChild(label);
-
-const value = document.createElement("input");
-value.value = defaultValuePort.get();
-value.classList.add("sidebar__text-input-input");
-value.setAttribute("type", "text");
-
-value.oninput = onTextInputChanged;
-el.appendChild(value);
-
-const suffixEle = document.createElement("span");
-// setValueFieldValue(defaultValuePort).get();
-// value.setAttribute("type", "text");
-// value.oninput = onTextInputChanged;
-
-el.appendChild(suffixEle);
-
-labelSuffix.onChange = () =>
-{
-    suffixEle.innerHTML = labelSuffix.get();
-};
-
-const inputWrapper = document.createElement("div");
-inputWrapper.classList.add("sidebar__slider-input-wrapper");
-el.appendChild(inputWrapper);
-
-const activeTrack = document.createElement("div");
-activeTrack.classList.add("sidebar__slider-input-active-track");
-inputWrapper.appendChild(activeTrack);
-const input = document.createElement("input");
-input.classList.add("sidebar__slider-input");
-input.setAttribute("min", minPort.get());
-input.setAttribute("max", maxPort.get());
-input.setAttribute("type", "range");
-input.setAttribute("step", stepPort.get());
-input.setAttribute("value", defaultValuePort.get());
-input.style.display = "block"; /* needed because offsetWidth returns 0 otherwise */
-inputWrapper.appendChild(input);
-
-updateActiveTrack();
-input.addEventListener("input", onSliderInput);
-
-// events
-parentPort.onChange = onParentChanged;
-labelPort.onChange = onLabelTextChanged;
-inputValuePort.onChange = onInputValuePortChanged;
-defaultValuePort.onChange = onDefaultValueChanged;
-setDefaultValueButtonPort.onTriggered = onSetDefaultValueButtonPress;
-minPort.onChange = onMinPortChange;
-maxPort.onChange = onMaxPortChange;
-stepPort.onChange = stepPortChanged;
-op.onDelete = onDelete;
-
-// op.onLoadedValueSet=function()
-op.onLoaded = op.onInit = function ()
-{
-    if (op.patch.config.sidebar)
-    {
-        op.patch.config.sidebar[labelPort.get()];
-        valuePort.set(op.patch.config.sidebar[labelPort.get()]);
-    }
-    else
-    {
-        valuePort.set(parseFloat(defaultValuePort.get()));
-        inputValuePort.set(parseFloat(defaultValuePort.get()));
-        // onInputValuePortChanged();
-    }
-};
-
-reset.onTriggered = function ()
-{
-    const newValue = parseFloat(defaultValuePort.get());
-    valuePort.set(newValue);
-    setValueFieldValue(newValue);
-    setInputFieldValue(newValue);
-    inputValuePort.set(newValue);
-    updateActiveTrack();
-};
-
-inGreyOut.onChange = function ()
-{
-    greyOut.style.display = inGreyOut.get() ? "block" : "none";
-};
-
-inVisible.onChange = function ()
-{
-    el.style.display = inVisible.get() ? "block" : "none";
-};
-
-function onTextInputChanged(ev)
-{
-    let newValue = parseFloat(ev.target.value);
-    if (isNaN(newValue)) newValue = 0;
-    const min = minPort.get();
-    const max = maxPort.get();
-    if (newValue < min) { newValue = min; }
-    else if (newValue > max) { newValue = max; }
-    // setInputFieldValue(newValue);
-    valuePort.set(newValue);
-    updateActiveTrack();
-    inputValuePort.set(newValue);
-    op.refreshParams();
-}
-
-function onInputValuePortChanged()
-{
-    let newValue = parseFloat(inputValuePort.get());
-    const minValue = minPort.get();
-    const maxValue = maxPort.get();
-    if (newValue > maxValue) { newValue = maxValue; }
-    else if (newValue < minValue) { newValue = minValue; }
-    // setValueFieldValue(newValue);
-    setInputFieldValue(newValue);
-    valuePort.set(newValue);
-    updateActiveTrack();
-}
-
-function onSetDefaultValueButtonPress()
-{
-    let newValue = parseFloat(inputValuePort.get());
-    const minValue = minPort.get();
-    const maxValue = maxPort.get();
-    if (newValue > maxValue) { newValue = maxValue; }
-    else if (newValue < minValue) { newValue = minValue; }
-    setValueFieldValue(newValue);
-    setInputFieldValue(newValue);
-    valuePort.set(newValue);
-    defaultValuePort.set(newValue);
-    op.refreshParams();
-
-    updateActiveTrack();
-}
-
-function onSliderInput(ev)
-{
-    ev.preventDefault();
-    ev.stopPropagation();
-    setValueFieldValue(ev.target.value);
-    const inputFloat = parseFloat(ev.target.value);
-    valuePort.set(inputFloat);
-    inputValuePort.set(inputFloat);
-    op.refreshParams();
-
-    updateActiveTrack();
-    return false;
-}
-
-function stepPortChanged()
-{
-    const step = stepPort.get();
-    input.setAttribute("step", step);
-    updateActiveTrack();
-}
-
-function updateActiveTrack(val)
-{
-    let valueToUse = parseFloat(input.value);
-    if (typeof val !== "undefined") valueToUse = val;
-    let availableWidth = activeTrack.parentElement.getBoundingClientRect().width || 220;
-    if (parent) availableWidth = parseInt(getComputedStyle(parent.parentElement).getPropertyValue("--sidebar-width")) - 20;
-
-    const trackWidth = CABLES.map(
-        valueToUse,
-        parseFloat(input.min),
-        parseFloat(input.max),
-        0,
-        availableWidth - 16 /* subtract slider thumb width */
-    );
-    activeTrack.style.width = trackWidth + "px";
-}
-
-function onMinPortChange()
-{
-    const min = minPort.get();
-    input.setAttribute("min", min);
-    updateActiveTrack();
-}
-
-function onMaxPortChange()
-{
-    const max = maxPort.get();
-    input.setAttribute("max", max);
-    updateActiveTrack();
-}
-
-function onDefaultValueChanged()
-{
-    const defaultValue = defaultValuePort.get();
-    valuePort.set(parseFloat(defaultValue));
-    onMinPortChange();
-    onMaxPortChange();
-    setInputFieldValue(defaultValue);
-    setValueFieldValue(defaultValue);
-
-    updateActiveTrack(defaultValue); // needs to be passed as argument, is this async?
-}
-
-function onLabelTextChanged()
-{
-    const labelText = labelPort.get();
-    label.textContent = labelText;
-    if (CABLES.UI) op.setUiAttrib({ "extendTitle": labelText });
-    value.setAttribute("aria-label", "slider " + labelPort.get());
-    input.setAttribute("aria-label", "slider " + labelPort.get());
-}
-
-function onParentChanged()
-{
-    siblingsPort.set(null);
-    parent = parentPort.get();
-    if (parent && parent.parentElement)
-    {
-        parent.parentElement.appendChild(el);
-        siblingsPort.set(parent);
-    }
-    else if (el.parentElement) el.parentElement.removeChild(el);
-
-    updateActiveTrack();
-}
-
-function setValueFieldValue(v)
-{
-    value.value = v;
-}
-
-function setInputFieldValue(v)
-{
-    input.value = v;
-}
-
-function showElement(el)
-{
-    if (el)el.style.display = "block";
-}
-
-function hideElement(el)
-{
-    if (el)el.style.display = "none";
-}
-
-function onDelete()
-{
-    removeElementFromDOM(el);
-}
-
-function removeElementFromDOM(el)
-{
-    if (el && el.parentNode && el.parentNode.removeChild) el.parentNode.removeChild(el);
-}
-
-}
-};
-
-CABLES.OPS["74730122-5cba-4d0d-b610-df334ec6220a"]={f:Ops.Sidebar.Slider_v3,objName:"Ops.Sidebar.Slider_v3"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Sidebar.Toggle_v4
-// 
-// **************************************************************
-
-Ops.Sidebar.Toggle_v4= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    parentPort = op.inObject("link"),
-    labelPort = op.inString("Text", "Toggle"),
-    inputValue = op.inBool("Input", true),
-    storeDefaultValueButton = op.inTriggerButton("Set Default"),
-    defaultValuePort = op.inBool("Default"),
-    inGreyOut = op.inBool("Grey Out", false),
-    inVisible = op.inBool("Visible", true),
-    siblingsPort = op.outObject("childs"),
-    valuePort = op.outBoolNum("Value", defaultValuePort.get()),
-    outToggled = op.outTrigger("Toggled");
-
-defaultValuePort.setUiAttribs({ "hidePort": true, "greyout": true });
-
-const classNameActive = "sidebar__toggle--active";
-
-const el = document.createElement("div");
-el.dataset.op = op.id;
-el.classList.add("cablesEle");
-el.classList.add("sidebar__item");
-el.classList.add("sidebar__toggle");
-el.classList.add("sidebar__reloadable");
-el.classList.add(classNameActive);
-
-const labelText = document.createTextNode(labelPort.get());
-const label = document.createElement("div");
-label.classList.add("sidebar__item-label");
-label.appendChild(labelText);
-
-const icon = document.createElement("a");
-
-valuePort.set(defaultValuePort.get());
-
-icon.classList.add("icon_toggle");
-icon.addEventListener("click", onInputClick);
-icon.addEventListener("keypress", onKeyPress);
-
-icon.setAttribute("tabindex", 0);
-icon.setAttribute("aria-label", "toggle " + labelPort.get());
-
-const greyOut = document.createElement("div");
-greyOut.classList.add("sidebar__greyout");
-greyOut.style.display = "none";
-
-el.appendChild(greyOut);
-el.appendChild(icon);
-el.appendChild(label);
-el.addEventListener("dblclick", reset);
-
-op.init = () =>
-{
-    reset();
-    updateClass();
-};
-op.onDelete = onDelete;
-parentPort.onChange = onParentChanged;
-labelPort.onChange = onLabelTextChanged;
-inputValue.onChange = onInputValueChanged;
-storeDefaultValueButton.onTriggered = storeDefaultValue;
-
-function reset()
-{
-    valuePort.set(defaultValuePort.get());
-    inputValue.set(defaultValuePort.get());
-    outToggled.trigger();
-}
-
-function storeDefaultValue()
-{
-    const defaultValue = inputValue.get();
-
-    defaultValuePort.set(defaultValue);
-    valuePort.set(defaultValue);
-    outToggled.trigger();
-    op.refreshParams();
-}
-
-function updateClass()
-{
-    const isActive = valuePort.get();
-    if (isActive)
-    {
-        icon.classList.add("icon_toggle_true");
-        icon.classList.remove("icon_toggle_false");
-    }
-    else
-    {
-        icon.classList.remove("icon_toggle_true");
-        icon.classList.add("icon_toggle_false");
-    }
-}
-
-function onKeyPress(e)
-{
-    if (e.code === "Enter") onInputClick();
-}
-
-function onInputClick()
-{
-    el.classList.toggle(classNameActive);
-
-    const isActive = el.classList.contains(classNameActive);
-    valuePort.set(isActive);
-    inputValue.set(isActive);
-
-    updateClass();
-    outToggled.trigger();
-    op.refreshParams();
-}
-
-function onInputValueChanged()
-{
-    if (inputValue.get()) el.classList.add(classNameActive);
-    else el.classList.remove(classNameActive);
-
-    valuePort.set(inputValue.get());
-    outToggled.trigger();
-}
-
-function onLabelTextChanged()
-{
-    const text = labelPort.get();
-    label.textContent = text;
-    icon.setAttribute("aria-label", "toggle " + labelPort.get());
-    if (CABLES.UI) op.setUiAttrib({ "extendTitle": text });
-}
-
-function onParentChanged()
-{
-    siblingsPort.set(null);
-    const parent = parentPort.get();
-    if (parent && parent.parentElement)
-    {
-        parent.parentElement.appendChild(el);
-        siblingsPort.set(parent);
-    }
-    else if (el.parentElement) el.parentElement.removeChild(el);
-}
-
-function showElement(element)
-{
-    if (element) element.style.display = "block";
-}
-
-function hideElement(element)
-{
-    if (element) element.style.display = "none";
-}
-
-function onDelete()
-{
-    if (el && el.parentNode && el.parentNode.removeChild) el.parentNode.removeChild(el);
-}
-
-inGreyOut.onChange = function ()
-{
-    greyOut.style.display = inGreyOut.get() ? "block" : "none";
-};
-
-inVisible.onChange = function ()
-{
-    el.style.display = inVisible.get() ? "block" : "none";
-};
-
-}
-};
-
-CABLES.OPS["247f5aaf-6438-4a37-9649-4c0fe9cc78c9"]={f:Ops.Sidebar.Toggle_v4,objName:"Ops.Sidebar.Toggle_v4"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Boolean.Not
-// 
-// **************************************************************
-
-Ops.Boolean.Not= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    bool = op.inValueBool("Boolean"),
-    outbool = op.outBoolNum("Result");
-
-bool.changeAlways = true;
-
-bool.onChange = function ()
-{
-    outbool.set((!bool.get()));
-};
-
-}
-};
-
-CABLES.OPS["6d123c9f-7485-4fd9-a5c2-76e59dcbeb34"]={f:Ops.Boolean.Not,objName:"Ops.Boolean.Not"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.TimeLine.TimeLinePlayer
 // 
 // **************************************************************
@@ -3656,86 +2350,6 @@ function exec()
 };
 
 CABLES.OPS["b250d606-f7f8-44d3-b099-c29efff2608a"]={f:Ops.Math.Compare.GreaterThan,objName:"Ops.Math.Compare.GreaterThan"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Anim.BoolAnim
-// 
-// **************************************************************
-
-Ops.Anim.BoolAnim= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const anim = new CABLES.Anim();
-
-const
-    exe = op.inTrigger("exe"),
-    bool = op.inValueBool("bool"),
-    pease = anim.createPort(op, "easing"),
-    duration = op.inValue("duration", 0.25),
-    dir = op.inValueSelect("Direction", ["Both", "Only True", "Only False"], "Both"),
-    valueFalse = op.inValue("value false", 0),
-    valueTrue = op.inValue("value true", 1),
-    next = op.outTrigger("trigger"),
-    value = op.outNumber("value"),
-    finished = op.outBoolNum("finished"),
-    finishedTrigger = op.outTrigger("Finished Trigger");
-
-const startTime = CABLES.now();
-op.toWorkPortsNeedToBeLinked(exe);
-op.setPortGroup("Animation", [duration, pease]);
-op.setPortGroup("Values", [valueFalse, valueTrue]);
-
-dir.onChange = bool.onChange = valueFalse.onChange = valueTrue.onChange = duration.onChange = setAnim;
-setAnim();
-
-function setAnim()
-{
-    if (dir.get() == "Animate Both")dir.set("Both");
-    finished.set(false);
-    const now = (CABLES.now() - startTime) / 1000;
-    const oldValue = anim.getValue(now);
-    anim.clear();
-
-    anim.setValue(now, oldValue);
-
-    if (!bool.get())
-    {
-        if (dir.get() != "Only True") anim.setValue(now + duration.get(), valueFalse.get());
-        else anim.setValue(now, valueFalse.get());
-    }
-    else
-    {
-        if (dir.get() != "Only False") anim.setValue(now + duration.get(), valueTrue.get());
-        else anim.setValue(now, valueTrue.get());
-    }
-}
-
-exe.onTriggered = function ()
-{
-    const t = (CABLES.now() - startTime) / 1000;
-    value.set(anim.getValue(t));
-
-    if (anim.hasEnded(t))
-    {
-        if (!finished.get()) finishedTrigger.trigger();
-        finished.set(true);
-    }
-
-    next.trigger();
-};
-
-}
-};
-
-CABLES.OPS["06ad9d35-ccf5-4d31-889c-e23fa062588a"]={f:Ops.Anim.BoolAnim,objName:"Ops.Anim.BoolAnim"};
 
 
 
@@ -4377,43 +2991,6 @@ exec.onTriggered = function ()
 };
 
 CABLES.OPS["5677b5b5-753a-4fbf-9e91-64c81ec68a2f"]={f:Ops.Anim.Smooth,objName:"Ops.Anim.Smooth"};
-
-
-
-
-// **************************************************************
-// 
-// Ops.Number.TriggerOnChangeNumber_v2
-// 
-// **************************************************************
-
-Ops.Number.TriggerOnChangeNumber_v2= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={};
-const
-    inval = op.inFloat("Value"),
-    next = op.outTrigger("Next"),
-    number = op.outNumber("Number");
-
-inval.onChange = function ()
-{
-    number.set(inval.get());
-    next.trigger();
-};
-
-op.init = () =>
-{
-    if (inval.isLinked())next.trigger();
-};
-
-}
-};
-
-CABLES.OPS["63ec7ad7-a436-4f72-8b5e-257cc20049d4"]={f:Ops.Number.TriggerOnChangeNumber_v2,objName:"Ops.Number.TriggerOnChangeNumber_v2"};
 
 
 
@@ -5779,424 +4356,6 @@ CABLES.OPS["f1029550-d877-42da-9b1e-63a5163a0350"]={f:Ops.Gl.MainLoop_v2,objName
 
 // **************************************************************
 // 
-// Ops.Ui.VizTexture
-// 
-// **************************************************************
-
-Ops.Ui.VizTexture= class extends CABLES.Op 
-{
-constructor()
-{
-super(...arguments);
-const op=this;
-const attachments=op.attachments={"viztex_frag":"IN vec2 texCoord;\nUNI sampler2D tex;\nUNI samplerCube cubeMap;\nUNI float width;\nUNI float height;\nUNI float type;\nUNI float time;\n\nfloat LinearizeDepth(float d,float zNear,float zFar)\n{\n    float z_n = 2.0 * d - 1.0;\n    return 2.0 * zNear / (zFar + zNear - z_n * (zFar - zNear));\n}\n\nvoid main()\n{\n    vec4 col=vec4(vec3(0.),0.0);\n\n    vec4 colTex=texture(tex,texCoord);\n\n\n\n    if(type==1.0)\n    {\n        vec4 depth=vec4(0.);\n        vec2 localST=texCoord;\n        localST.y = 1. - localST.y;\n\n        localST.t = mod(localST.t*3.,1.);\n        localST.s = mod(localST.s*4.,1.);\n\n        #ifdef WEBGL2\n            #define texCube texture\n        #endif\n        #ifdef WEBGL1\n            #define texCube textureCube\n        #endif\n\n//         //Due to the way my depth-cubeMap is rendered, objects to the -x,y,z side is projected to the positive x,y,z side\n//         //Inside where top/bottom is to be drawn?\n        if (texCoord.s*4.> 1. && texCoord.s*4.<2.)\n        {\n            //Bottom (-y) quad\n            if (texCoord.t*3. < 1.)\n            {\n                vec3 dir=vec3(localST.s*2.-1.,-1.,-localST.t*2.+1.);//Due to the (arbitrary) way I choose as up in my depth-viewmatrix, i her emultiply the latter coordinate with -1\n                depth = texCube(cubeMap, dir);\n            }\n            //top (+y) quad\n            else if (texCoord.t*3. > 2.)\n            {\n                vec3 dir=vec3(localST.s*2.-1.,1.,localST.t*2.-1.);//Get lower y texture, which is projected to the +y part of my cubeMap\n                depth = texCube(cubeMap, dir);\n            }\n            else//Front (-z) quad\n            {\n                vec3 dir=vec3(localST.s*2.-1.,-localST.t*2.+1.,1.);\n                depth = texCube(cubeMap, dir);\n            }\n        }\n//         //If not, only these ranges should be drawn\n        else if (texCoord.t*3. > 1. && texCoord.t*3. < 2.)\n        {\n            if (texCoord.x*4. < 1.)//left (-x) quad\n            {\n                vec3 dir=vec3(-1.,-localST.t*2.+1.,localST.s*2.-1.);\n                depth = texCube(cubeMap, dir);\n            }\n            else if (texCoord.x*4. < 3.)//right (+x) quad (front was done above)\n            {\n                vec3 dir=vec3(1,-localST.t*2.+1.,-localST.s*2.+1.);\n                depth = texCube(cubeMap, dir);\n            }\n            else //back (+z) quad\n            {\n                vec3 dir=vec3(-localST.s*2.+1.,-localST.t*2.+1.,-1.);\n                depth = texCube(cubeMap, dir);\n            }\n        }\n        // colTex = vec4(vec3(depth),1.);\n        colTex = vec4(depth);\n    }\n\n    if(type==2.0)\n    {\n       float near = 0.1;\n       float far = 50.;\n       float depth = LinearizeDepth(colTex.r, near, far);\n       colTex.rgb = vec3(depth);\n    }\n\n\n\n\n    #ifdef ANIM_RANGE\n\n        if(colTex.r>1.0 || colTex.r<0.0)\n            colTex.r=mod(colTex.r,1.0)*0.5+(sin(colTex.r+mod(colTex.r*3.0,1.0)+time*5.0)*0.5+0.5)*0.5;\n        if(colTex.g>1.0 || colTex.g<0.0)\n            colTex.g=mod(colTex.g,1.0)*0.5+(sin(colTex.g+mod(colTex.g*3.0,1.0)+time*5.0)*0.5+0.5)*0.5;\n        if(colTex.b>1.0 || colTex.b<0.0)\n            colTex.b=mod(colTex.b,1.0)*0.5+(sin(colTex.b+mod(colTex.b*3.0,1.0)+time*5.0)*0.5+0.5)*0.5;\n\n    #endif\n\n\n    // #ifdef ANIM_RANGE\n    //     if(colTex.r>1.0 || colTex.r<0.0)\n    //     {\n    //         float r=mod( time+colTex.r,1.0)*0.5+0.5;\n    //         colTex.r=r;\n    //     }\n    //     if(colTex.g>1.0 || colTex.g<0.0)\n    //     {\n    //         float r=mod( time+colTex.g,1.0)*0.5+0.5;\n    //         colTex.g=r;\n    //     }\n    //     if(colTex.b>1.0 || colTex.b<0.0)\n    //     {\n    //         float r=mod( time+colTex.b,1.0)*0.5+0.5;\n    //         colTex.b=r;\n    //     }\n    // #endif\n\n    #ifdef MOD_RANGE\n        colTex.r=mod(colTex.r,1.0001);\n        colTex.g=mod(colTex.g,1.0001);\n        colTex.b=mod(colTex.b,1.0001);\n\n    #endif\n\n    #ifdef ALPHA_ONE\n        colTex.a=1.0;\n    #endif\n    #ifdef ALPHA_INV\n        colTex.a=1.0-colTex.a;\n    #endif\n\n    outColor = mix(col,colTex,colTex.a);\n}\n\n","viztex_vert":"IN vec3 vPosition;\nIN vec2 attrTexCoord;\nOUT vec2 texCoord;\nUNI mat4 projMatrix;\nUNI mat4 modelMatrix;\nUNI mat4 viewMatrix;\n\nvoid main()\n{\n    texCoord=vec2(attrTexCoord.x,1.0-attrTexCoord.y);\n    vec4 pos = vec4( vPosition, 1. );\n    mat4 mvMatrix=viewMatrix * modelMatrix;\n    gl_Position = projMatrix * mvMatrix * pos;\n}",};
-const
-    inTex = op.inTexture("Texture In"),
-    inShowInfo = op.inBool("Show Info", false),
-    inVizRange = op.inSwitch("Visualize outside 0-1", ["Off", "Anim", "Modulo"], "Anim"),
-    inAlpha = op.inSwitch("Alpha", ["A", "1", "1-A"], "A"),
-    inPickColor = op.inBool("Show Color", false),
-    inX = op.inFloatSlider("X", 0.5),
-    inY = op.inFloatSlider("Y", 0.5),
-    outTex = op.outTexture("Texture Out"),
-    outInfo = op.outString("Info");
-
-op.setUiAttrib({ "height": 150, "resizable": true });
-
-const timer = new CABLES.Timer();
-let shader = null;
-let fb = null;
-let pixelReader = null;
-let colorString = "";
-let firstTime = true;
-
-inAlpha.onChange =
-    inVizRange.onChange = updateDefines;
-
-inPickColor.onChange = updateUi;
-updateUi();
-
-if (CABLES.UI)
-{
-    timer.play();
-}
-
-function updateUi()
-{
-    inX.setUiAttribs({ "greyout": !inPickColor.get() });
-    inY.setUiAttribs({ "greyout": !inPickColor.get() });
-}
-
-inTex.onChange = () =>
-{
-    const t = inTex.get();
-
-    outTex.setRef(t);
-
-    let title = "";
-
-    if (inTex.get() && inTex.isLinked()) title = inTex.links[0].getOtherPort(inTex).name;
-
-    op.setUiAttrib({ "extendTitle": title });
-};
-
-function updateDefines()
-{
-    if (!shader) return;
-
-    shader.toggleDefine("MOD_RANGE", inVizRange.get() == "Modulo");
-    shader.toggleDefine("ANIM_RANGE", inVizRange.get() == "Anim");
-    shader.toggleDefine("ALPHA_INV", inAlpha.get() == "1-A");
-    shader.toggleDefine("ALPHA_ONE", inAlpha.get() == "1");
-    // op.checkMainloopExists();
-}
-
-op.renderVizLayerGl = (ctx, layer) =>
-{
-    if (!inTex.isLinked()) return;
-    if (!layer.useGl) return;
-
-    const port = inTex;
-    const texSlot = 5;
-    const texSlotCubemap = texSlot + 1;
-
-    const perf = gui.uiProfiler.start("previewlayer texture");
-    const cgl = port.op.patch.cgl;
-
-    if (!this._emptyCubemap) this._emptyCubemap = CGL.Texture.getEmptyCubemapTexture(cgl);
-    port.op.patch.cgl.profileData.profileTexPreviews++;
-
-    const portTex = port.get() || CGL.Texture.getEmptyTexture(cgl);
-
-    if (!this._mesh)
-    {
-        const geom = new CGL.Geometry("vizTexture rect");
-        geom.vertices = [1.0, 1.0, 0.0, -1.0, 1.0, 0.0, 1.0, -1.0, 0.0, -1.0, -1.0, 0.0];
-        geom.texCoords = [
-            1.0, 1.0,
-            0.0, 1.0,
-            1.0, 0.0,
-            0.0, 0.0];
-        geom.verticesIndices = [0, 1, 2, 3, 1, 2];
-        this._mesh = new CGL.Mesh(cgl, geom);
-    }
-    if (!this._shader)
-    {
-        this._shader = new CGL.Shader(cgl, "glpreviewtex");
-        this._shader.setModules(["MODULE_VERTEX_POSITION", "MODULE_COLOR", "MODULE_BEGIN_FRAG"]);
-        this._shader.setSource(attachments.viztex_vert, attachments.viztex_frag);
-        this._shaderTexUniform = new CGL.Uniform(this._shader, "t", "tex", texSlot);
-        this._shaderTexCubemapUniform = new CGL.Uniform(this._shader, "tc", "cubeMap", texSlotCubemap);
-        shader = this._shader;
-        updateDefines();
-
-        this._shaderTexUniformW = new CGL.Uniform(this._shader, "f", "width", portTex.width);
-        this._shaderTexUniformH = new CGL.Uniform(this._shader, "f", "height", portTex.height);
-        this._shaderTypeUniform = new CGL.Uniform(this._shader, "f", "type", 0);
-        this._shaderTimeUniform = new CGL.Uniform(this._shader, "f", "time", 0);
-    }
-
-    cgl.pushPMatrix();
-    const sizeTex = [portTex.width, portTex.height];
-    const small = port.op.patch.cgl.canvasWidth > sizeTex[0] && port.op.patch.cgl.canvasHeight > sizeTex[1];
-
-    if (small)
-    {
-        mat4.ortho(cgl.pMatrix, 0, port.op.patch.cgl.canvasWidth, port.op.patch.cgl.canvasHeight, 0, 0.001, 11);
-    }
-    else mat4.ortho(cgl.pMatrix, -1, 1, 1, -1, 0.001, 11);
-
-    const oldTex = cgl.getTexture(texSlot);
-    const oldTexCubemap = cgl.getTexture(texSlotCubemap);
-
-    let texType = 0;
-    if (portTex)
-    {
-        if (portTex.cubemap) texType = 1;
-        if (portTex.textureType == CGL.Texture.TYPE_DEPTH) texType = 2;
-
-        if (texType == 0 || texType == 2)
-        {
-            cgl.setTexture(texSlot, portTex.tex);
-            cgl.setTexture(texSlotCubemap, this._emptyCubemap.cubemap, cgl.gl.TEXTURE_CUBE_MAP);
-        }
-        else if (texType == 1)
-        {
-            cgl.setTexture(texSlotCubemap, portTex.cubemap, cgl.gl.TEXTURE_CUBE_MAP);
-        }
-
-        timer.update();
-        this._shaderTimeUniform.setValue(timer.get());
-
-        this._shaderTypeUniform.setValue(texType);
-        let s = [port.op.patch.cgl.canvasWidth, port.op.patch.cgl.canvasHeight];
-
-        cgl.gl.clearColor(0, 0, 0, 0);
-        cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT | cgl.gl.DEPTH_BUFFER_BIT);
-
-        cgl.pushModelMatrix();
-        if (small)
-        {
-            s = sizeTex;
-            mat4.translate(cgl.mMatrix, cgl.mMatrix, [sizeTex[0] / 2, sizeTex[1] / 2, 0]);
-            mat4.scale(cgl.mMatrix, cgl.mMatrix, [sizeTex[0] / 2, sizeTex[1] / 2, 0]);
-        }
-        this._mesh.render(this._shader);
-        cgl.popModelMatrix();
-
-        if (texType == 0) cgl.setTexture(texSlot, oldTex);
-        if (texType == 1) cgl.setTexture(texSlotCubemap, oldTexCubemap);
-
-        cgl.popPMatrix();
-        cgl.resetViewPort();
-
-        const sizeImg = [layer.width, layer.height];
-
-        const stretch = false;
-        // if (!stretch)
-        // {
-        if (portTex.width > portTex.height) sizeImg[1] = layer.width * sizeTex[1] / sizeTex[0];
-        else
-        {
-            sizeImg[1] = layer.width * (sizeTex[1] / sizeTex[0]);
-
-            if (sizeImg[1] > layer.height)
-            {
-                const r = layer.height / sizeImg[1];
-                sizeImg[0] *= r;
-                sizeImg[1] *= r;
-            }
-        }
-
-        const scaledDown = sizeImg[0] > sizeTex[0] && sizeImg[1] > sizeTex[1];
-
-        // ctx.imageSmoothingEnabled = !small || !scaledDown;
-        ctx.imageSmoothingEnabled = true;
-
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(layer.x, layer.y - 10, 10, 10);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(layer.x, layer.y - 10, 5, 5);
-        ctx.fillRect(layer.x + 5, layer.y - 10 + 5, 5, 5);
-
-        let layerHeight = layer.height;
-        let numX = (10 * layer.width / layerHeight);
-        let stepY = (layerHeight / 10);
-        let stepX = (layer.width / numX);
-        for (let x = 0; x < numX; x++)
-            for (let y = 0; y < 10; y++)
-            {
-                if ((x + y) % 2 == 0)ctx.fillStyle = "#333333";
-                else ctx.fillStyle = "#393939";
-                ctx.fillRect(layer.x + stepX * x, layer.y + stepY * y, stepX, stepY);
-            }
-
-        ctx.fillStyle = "#222";
-        const borderLeft = (layer.width - sizeImg[0]) / 2;
-        const borderTop = (layerHeight - sizeImg[1]) / 2;
-
-        let imgPosX = layer.x + (layer.width - sizeImg[0]) / 2;
-        let imgPosY = layer.y + (layerHeight - sizeImg[1]) / 2;
-        let imgSizeW = sizeImg[0];
-        let imgSizeH = sizeImg[1];
-
-        if (layerHeight - sizeImg[1] < 0)
-        {
-            imgPosX = layer.x + (layer.width - sizeImg[0] * layerHeight / sizeImg[1]) / 2;
-            imgPosY = layer.y;
-            imgSizeW = sizeImg[0] * layerHeight / sizeImg[1];
-            imgSizeH = layerHeight;
-        }
-
-        ctx.fillRect(layer.x, layer.y, imgPosX - layer.x, layerHeight);
-        ctx.fillRect(layer.x + imgSizeW + imgPosX - layer.x, layer.y, imgSizeW, layerHeight);
-        ctx.fillRect(layer.x, layer.y, layer.width, borderTop);
-        ctx.fillRect(layer.x, layer.y + sizeImg[1] + borderTop, layer.width, borderTop);
-
-        if (cgl.canvas && cgl.canvasWidth > 0 && cgl.canvasHeight > 0 && cgl.canvas.width > 0 && cgl.canvas.height > 0)
-        {
-            try
-            {
-                const bigPixels = imgSizeW / s[0] > 3 || imgSizeH / s[1] > 3;
-                const veryBigPixels = imgSizeW / s[0] > 10 || imgSizeH / s[1] > 10;
-
-                if (sizeTex[1] == 1)
-                {
-                    ctx.imageSmoothingEnabled = false;// workaround filtering problems
-                    ctx.drawImage(cgl.canvas,
-                        0,
-                        0,
-                        s[0],
-                        s[1],
-                        layer.x,
-                        layer.y,
-                        layer.width,
-                        layerHeight);// workaround filtering problems
-                    ctx.imageSmoothingEnabled = true;
-                }
-                else
-                if (sizeTex[0] == 1)
-                {
-                    ctx.imageSmoothingEnabled = false;// workaround filtering problems
-                    ctx.drawImage(cgl.canvas,
-                        0,
-                        0,
-                        s[0],
-                        s[1],
-                        layer.x,
-                        layer.y,
-                        layer.width,
-                        layerHeight);
-                    ctx.imageSmoothingEnabled = true;
-                }
-                else
-                if (sizeImg[0] != 0 && sizeImg[1] != 0 && layer.width != 0 && layerHeight != 0 && imgSizeW != 0 && imgSizeH != 0)
-                {
-                    ctx.imageSmoothingEnabled = !bigPixels;
-
-                    ctx.drawImage(cgl.canvas,
-                        0,
-                        0,
-                        s[0],
-                        s[1],
-                        imgPosX,
-                        imgPosY,
-                        imgSizeW,
-                        imgSizeH);
-                }
-
-                if (veryBigPixels)
-                {
-                    const stepx = imgSizeW / s[0];
-                    const stepy = imgSizeH / s[1];
-
-                    ctx.imageSmoothingEnabled = true;
-                    ctx.lineWidth = 1;
-                    ctx.globalAlpha = 0.5;
-                    ctx.beginPath();
-
-                    for (let x = 0; x <= s[0]; x++)
-                    {
-                        ctx.moveTo(imgPosX + x * stepx, imgPosY);
-                        ctx.lineTo(imgPosX + x * stepx, imgPosY + imgSizeH);
-                    }
-
-                    for (let y = 0; y <= s[1]; y++)
-                    {
-                        ctx.moveTo(imgPosX, imgPosY + y * stepy);
-                        ctx.lineTo(imgPosX + imgSizeW, imgPosY + y * stepy);
-                    }
-
-                    ctx.strokeStyle = "#555";
-                    ctx.stroke();
-                    ctx.globalAlpha = 1;
-                }
-            }
-            catch (e)
-            {
-                console.error("canvas drawimage exception...", e);
-            }
-            // }
-        }
-
-        let info = "";
-        if (inShowInfo.get() && port.get() && port.get().getInfoOneLine) info += port.get().getInfoOneLine() + "\n";
-        outInfo.set(info);
-
-        if (inPickColor.get())
-        {
-            info += colorString + "\n";
-
-            const x = imgPosX + imgSizeW * inX.get();
-            const y = imgPosY + imgSizeH * inY.get();
-
-            for (let ii = 0; ii < 2; ii++)
-            {
-                if (ii == 0)ctx.fillStyle = "#000";
-                else ctx.fillStyle = "#fff";
-
-                ctx.fillRect(
-                    x - 1 + ii,
-                    y - 10 + ii,
-                    1,
-                    20);
-
-                ctx.fillRect(
-                    x - 10 + ii,
-                    y - 1 + ii,
-                    20,
-                    1);
-            }
-        }
-
-        if (inShowInfo.get() || inPickColor.get())
-        {
-            op.setUiAttrib({ "comment": info });
-        }
-
-        if (inPickColor.get())
-        {
-            const gl = cgl.gl;
-
-            const realTexture = inTex.get();
-            if (!realTexture)
-            {
-                colorString = "";
-                return;
-            }
-            if (!fb) fb = gl.createFramebuffer();
-            if (!pixelReader) pixelReader = new CGL.PixelReader();
-
-            gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
-            gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, realTexture.tex, 0);
-            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-
-            pixelReader.read(cgl, fb, realTexture.pixelFormat, inX.get() * realTexture.width, realTexture.height - inY.get() * realTexture.height, 1, 1, (pixel) =>
-            {
-                if (!CGL.Texture.isPixelFormatFloat(realTexture.pixelFormat))
-                {
-                    colorString = "Pixel Float: " + Math.floor(pixel[0] / 255 * 100) / 100;
-                    if (!isNaN(pixel[1]))colorString += ", " + Math.floor(pixel[1] / 255 * 100) / 100;
-                    if (!isNaN(pixel[2]))colorString += ", " + Math.floor(pixel[2] / 255 * 100) / 100;
-                    if (!isNaN(pixel[3]))colorString += ", " + Math.floor(pixel[3] / 255 * 100) / 100;
-                    colorString += "\n";
-
-                    if (realTexture.pixelFormat.indexOf("ubyte") > 0)
-                    {
-                        colorString += "Pixel UByte: ";
-                        colorString += Math.round(pixel[0]);
-                        if (!isNaN(pixel[1]))colorString += ", " + Math.round(pixel[1]);
-                        if (!isNaN(pixel[2]))colorString += ", " + Math.round(pixel[2]);
-                        if (!isNaN(pixel[3]))colorString += ", " + Math.round(pixel[3]);
-
-                        colorString += "\n";
-                    }
-                }
-                else
-                {
-                    colorString = "Pixel Float: " + Math.round(pixel[0] * 100) / 100 + ", " + Math.round(pixel[1] * 100) / 100 + ", " + Math.round(pixel[2] * 100) / 100 + ", " + Math.round(pixel[3] * 100) / 100;
-                    colorString += "\n";
-                }
-            });
-        }
-    }
-
-    cgl.gl.clearColor(0, 0, 0, 0);
-    cgl.gl.clear(cgl.gl.COLOR_BUFFER_BIT | cgl.gl.DEPTH_BUFFER_BIT);
-
-    perf.finish();
-};
-
-}
-};
-
-CABLES.OPS["4ea2d7b0-ca74-45db-962b-4d1965ac20c0"]={f:Ops.Ui.VizTexture,objName:"Ops.Ui.VizTexture"};
-
-
-
-
-// **************************************************************
-// 
 // Ops.Gl.ImageCompose.ImageComposeSnapshot
 // 
 // **************************************************************
@@ -6685,315 +4844,556 @@ CABLES.OPS["a4ffe852-d200-4b96-9347-68feb01122ca"]={f:Ops.Math.Subtract,objName:
 
 // **************************************************************
 // 
-// Ops.Gl.Textures.CopyTexture_v3
+// Ops.Math.Max
 // 
 // **************************************************************
 
-Ops.Gl.Textures.CopyTexture_v3= class extends CABLES.Op 
+Ops.Math.Max= class extends CABLES.Op 
 {
 constructor()
 {
 super(...arguments);
 const op=this;
-const attachments=op.attachments={"copytexture_frag":"UNI float a;\nUNI sampler2D tex;\n\n#ifdef TEX_MASK\nUNI sampler2D texMask;\n#endif\n\nIN vec2 texCoord;\n\nvoid main()\n{\n    vec2 tc=texCoord;\n\n    #ifdef FLIPX\n        tc.x=1.0-tc.x;\n    #endif\n    #ifdef FLIPY\n        tc.y=1.0-tc.y;\n    #endif\n\n    vec4 col=texture(tex,tc);\n\n    #ifdef TEX_MASK\n        col.a=texture(texMask,tc).r;\n    #endif\n\n    #ifdef GREY_R\n        col.rgb=vec3(col.r);\n    #endif\n\n    #ifdef GREY_G\n        col.rgb=vec3(col.g);\n    #endif\n\n    #ifdef GREY_B\n        col.rgb=vec3(col.b);\n    #endif\n\n    #ifdef GREY_A\n        col.rgb=vec3(col.a);\n    #endif\n\n    #ifdef GREY_LUMI\n        col.rgb=vec3( dot(vec3(0.2126,0.7152,0.0722), col.rgb) );\n    #endif\n\n\n    #ifdef INVERT_A\n        col.a=1.0-col.a;\n    #endif\n\n    #ifdef INVERT_R\n        col.r=1.0-col.r;\n    #endif\n\n    #ifdef INVERT_G\n        col.g=1.0-col.g;\n    #endif\n\n    #ifdef INVERT_B\n        col.b=1.0-col.b;\n    #endif\n\n    #ifdef ALPHA_1\n        col.a=1.0;\n    #endif\n\n\n\n\n    outColor= col;\n}",};
+const attachments=op.attachments={};
 const
-    render = op.inTriggerButton("render"),
-    inTexture = op.inTexture("Texture"),
-    inTextureMask = op.inTexture("Alpha Mask"),
-    useVPSize = op.inValueBool("use original size", true),
-    width = op.inValueInt("width", 640),
-    height = op.inValueInt("height", 360),
-    tfilter = op.inSwitch("filter", ["nearest", "linear", "mipmap"], "linear"),
-    inPixelFormat = op.inDropDown("Pixel Format", CGL.Texture.PIXELFORMATS, CGL.Texture.PFORMATSTR_RGBA8UB),
-    aniso = op.inSwitch("Anisotropic", ["0", "1", "2", "4", "8", "16"], "0"),
+    value = op.inValueFloat("value", 1),
+    max = op.inValueFloat("Maximum", 1),
+    result = op.outNumber("result");
 
-    twrap = op.inValueSelect("wrap", ["clamp to edge", "repeat", "mirrored repeat"], "clamp to edge"),
-    alphaMaskMethod = op.inSwitch("Alpha Mask Source", ["A", "1"], "A"),
-    greyscale = op.inSwitch("Convert Greyscale", ["Off", "R", "G", "B", "A", "Luminance"], "Off"),
-    invertR = op.inBool("Invert R", false),
-    invertG = op.inBool("Invert G", false),
-    invertB = op.inBool("Invert B", false),
-    invertA = op.inBool("Invert A", false),
+max.onChange =
+    value.onChange = exec;
 
-    flipX = op.inBool("Flip X", false),
-    flipY = op.inBool("Flip Y", false),
+exec();
 
-    trigger = op.outTrigger("trigger"),
-    texOut = op.outTexture("texture_out", null),
-    outRatio = op.outNumber("Aspect Ratio");
-
-alphaMaskMethod.setUiAttribs({ "hidePort": true });
-greyscale.setUiAttribs({ "hidePort": true });
-invertR.setUiAttribs({ "hidePort": true });
-invertG.setUiAttribs({ "hidePort": true });
-invertB.setUiAttribs({ "hidePort": true });
-
-let autoRefreshTimeout = null;
-const cgl = op.patch.cgl;
-let lastTex = null;
-let effect = null;
-let tex = null;
-let needsResUpdate = true;
-let oldTex = null;
-
-let w = 2, h = 2;
-const prevViewPort = [0, 0, 0, 0];
-let reInitEffect = true;
-
-op.toWorkPortsNeedToBeLinked(render, inTexture);
-op.setPortGroup("Size", [useVPSize, width, height]);
-
-const bgShader = new CGL.Shader(cgl, "copytexture");
-bgShader.setSource(bgShader.getDefaultVertexShader(), attachments.copytexture_frag);
-const textureUniform = new CGL.Uniform(bgShader, "t", "tex", 0);
-let textureMaskUniform = new CGL.Uniform(bgShader, "t", "texMask", 1);
-
-let selectedFilter = CGL.Texture.FILTER_LINEAR;
-let selectedWrap = CGL.Texture.WRAP_CLAMP_TO_EDGE;
-
-flipX.onChange =
-flipY.onChange =
-alphaMaskMethod.onChange =
-    aniso.onChange =
-    greyscale.onChange =
-    invertR.onChange =
-    invertG.onChange =
-    invertB.onChange =
-    twrap.onChange =
-    tfilter.onChange =
-    inPixelFormat.onChange =
-    render.onLinkChanged =
-    inTextureMask.onChange =
-    inTexture.onLinkChanged = () => { updateSoon(); };
-
-inTexture.onChange = () =>
+function exec()
 {
-    if (oldTex != inTexture.get()) { updateSoon(); }
-    oldTex = inTexture.get();
+    let v = Math.max(value.get(), max.get());
+    if (v == v) result.set(v);
+}
+
+}
 };
 
-render.onTriggered = doRender;
-updateUi();
+CABLES.OPS["07f0be49-c226-4029-8039-3b620145dc2a"]={f:Ops.Math.Max,objName:"Ops.Math.Max"};
 
-function initEffect()
+
+
+
+// **************************************************************
+// 
+// Ops.Math.Delta
+// 
+// **************************************************************
+
+Ops.Math.Delta= class extends CABLES.Op 
 {
-    if (effect)effect.delete();
-    if (tex)
-    {
-        tex.delete();
-        tex = null;
-    }
-    effect = new CGL.TextureEffect(cgl, { "pixelFormat": inPixelFormat.get(), "clear": false });
-
-    if (!tex ||
-        tex.width != Math.floor(width.get()) ||
-        tex.height != Math.floor(height.get()) ||
-        tex.wrap != selectedWrap ||
-        tex.pixelFormat != inPixelFormat.get()
-    )
-    {
-        const cgl_aniso = Math.min(cgl.maxAnisotropic, parseFloat(aniso.get()));
-
-        if (tex) tex.delete();
-        tex = new CGL.Texture(cgl,
-            {
-                "name": "copytexture_" + op.id,
-                "pixelFormat": inPixelFormat.get(),
-                "anisotropic": cgl_aniso,
-                "filter": selectedFilter,
-                "wrap": selectedWrap,
-                "width": Math.floor(width.get()),
-                "height": Math.floor(height.get()),
-            });
-    }
-
-    effect.setSourceTexture(tex);
-    updateUi();
-    // texOut.set(CGL.Texture.getEmptyTexture(cgl));
-    reInitEffect = false;
-}
-
-function updateSoon()
+constructor()
 {
-    updateParams();
-    reInitEffect = true;
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    val = op.inValue("Value"),
+    changeAlwaysPort = op.inValueBool("Change Always", false),
+    inReset = op.inTrigger("Reset"),
+    result = op.outNumber("Delta");
 
-    if (!render.isLinked() || !inTexture.isLinked()) texOut.setRef(CGL.Texture.getEmptyTexture(cgl));
-}
+val.changeAlways = false;
 
-function updateResolution()
+let oldVal = 0;
+let firstTime = true;
+
+changeAlwaysPort.onChange = function ()
 {
-    if (!inTexture.get() || inTexture.get() == CGL.Texture.getEmptyTexture(cgl)) return;
-    if (!effect)initEffect();
-
-    if (useVPSize.get())
-    {
-        w = inTexture.get().width;
-        h = inTexture.get().height;
-    }
-    else
-    {
-        w = Math.floor(width.get());
-        h = Math.floor(height.get());
-    }
-
-    if ((w != tex.width || h != tex.height) && (w !== 0 && h !== 0))
-    {
-        height.set(h);
-        width.set(w);
-        tex.filter = selectedFilter;
-        tex.setSize(w, h);
-        outRatio.set(w / h);
-        effect.setSourceTexture(tex);
-    }
-
-    // if (texOut.get() && selectedFilter != CGL.Texture.FILTER_NEAREST)
-    // {
-    //     if (!texOut.get().isPowerOfTwo()) op.setUiError("hintnpot", "texture dimensions not power of two! - texture filtering when scaling will not work on ios devices.", 0);
-    //     else op.setUiError("hintnpot", null, 0);
-    // }
-    // else op.setUiError("hintnpot", null, 0);
-
-    needsResUpdate = false;
-}
-
-function updateUi()
-{
-    if (!CABLES.UI) return;
-    aniso.setUiAttribs({ "greyout": tfilter.get() != "mipmap" });
-    width.setUiAttribs({ "greyout": useVPSize.get() });
-    height.setUiAttribs({ "greyout": useVPSize.get() });
-}
-
-function updateResolutionLater()
-{
-    needsResUpdate = true;
-    updateSoon();
-}
-
-useVPSize.onChange = function ()
-{
-    updateUi();
-    if (useVPSize.get())
-    {
-        width.onChange = null;
-        height.onChange = null;
-    }
-    else
-    {
-        width.onChange = updateResolutionLater;
-        height.onChange = updateResolutionLater;
-    }
-    updateResolution();
+    val.changeAlways = changeAlwaysPort.get();
 };
 
-function doRender()
+inReset.onTriggered = function ()
 {
-    // op.patch.removeOnAnimCallback(doRender);
-    // if (!inTexture.get())
+    firstTime = true;
+};
 
-    if (!inTexture.get() || inTexture.get() == CGL.Texture.getEmptyTexture(cgl)) texOut.setRef(CGL.Texture.getEmptyTexture(cgl));
-
-    if (!inTexture.get() || inTexture.get() == CGL.Texture.getEmptyTexture(cgl))
+val.onChange = function ()
+{
+    let change = oldVal - val.get();
+    oldVal = val.get();
+    if (firstTime)
     {
-        lastTex = null;// CGL.Texture.getEmptyTexture(cgl);
-        trigger.trigger();
+        firstTime = false;
         return;
     }
-    else
-    if (!effect || reInitEffect || lastTex != inTexture.get())
-    {
-        initEffect();
-    }
-    const vp = cgl.getViewPort();
-    prevViewPort[0] = vp[0];
-    prevViewPort[1] = vp[1];
-    prevViewPort[2] = vp[2];
-    prevViewPort[3] = vp[3];
+    result.set(change);
+};
 
-    updateResolution();
-
-    lastTex = inTexture.get();
-    const oldEffect = cgl.currentTextureEffect;
-    cgl.currentTextureEffect = effect;
-    effect.setSourceTexture(tex);
-
-    effect.startEffect();
-
-    // render background color...
-    cgl.pushShader(bgShader);
-    cgl.currentTextureEffect.bind();
-    cgl.setTexture(0, inTexture.get().tex);
-    if (inTextureMask.get())cgl.setTexture(1, inTextureMask.get().tex);
-
-    cgl.pushBlend(false);
-
-    cgl.currentTextureEffect.finish();
-    cgl.popShader();
-
-    cgl.popBlend();
-
-    texOut.setRef(effect.getCurrentSourceTexture());
-
-    effect.endEffect();
-
-    cgl.setViewPort(prevViewPort[0], prevViewPort[1], prevViewPort[2], prevViewPort[3]);
-
-    cgl.currentTextureEffect = oldEffect;
-
-    cgl.setTexture(0, CGL.Texture.getEmptyTexture(cgl).tex);
-
-    trigger.trigger();
 }
+};
 
-function updateParams()
+CABLES.OPS["0f203337-e13c-47ec-a09f-b309212540b0"]={f:Ops.Math.Delta,objName:"Ops.Math.Delta"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.Multiply
+// 
+// **************************************************************
+
+Ops.Math.Multiply= class extends CABLES.Op 
 {
-    bgShader.toggleDefine("FLIPX", flipX.get());
-    bgShader.toggleDefine("FLIPY", flipY.get());
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    number1 = op.inValueFloat("number1", 1),
+    number2 = op.inValueFloat("number2", 1),
+    result = op.outNumber("result");
 
-    bgShader.toggleDefine("TEX_MASK", inTextureMask.get());
+op.setUiAttribs({ "mathTitle": true });
 
-    bgShader.toggleDefine("GREY_R", greyscale.get() === "R");
-    bgShader.toggleDefine("GREY_G", greyscale.get() === "G");
-    bgShader.toggleDefine("GREY_B", greyscale.get() === "B");
-    bgShader.toggleDefine("GREY_A", greyscale.get() === "A");
-    bgShader.toggleDefine("GREY_LUMI", greyscale.get() === "Luminance");
+number1.onChange = number2.onChange = update;
+update();
 
-    bgShader.toggleDefine("ALPHA_1", alphaMaskMethod.get() === "1");
-    bgShader.toggleDefine("ALPHA_A", alphaMaskMethod.get() === "A");
+function update()
+{
+    const n1 = number1.get();
+    const n2 = number2.get();
 
-    bgShader.toggleDefine("INVERT_R", invertR.get());
-    bgShader.toggleDefine("INVERT_G", invertG.get());
-    bgShader.toggleDefine("INVERT_B", invertB.get());
-    bgShader.toggleDefine("INVERT_A", invertA.get());
-
-    if (twrap.get() == "repeat") selectedWrap = CGL.Texture.WRAP_REPEAT;
-    else if (twrap.get() == "mirrored repeat") selectedWrap = CGL.Texture.WRAP_MIRRORED_REPEAT;
-    else if (twrap.get() == "clamp to edge") selectedWrap = CGL.Texture.WRAP_CLAMP_TO_EDGE;
-
-    if (tfilter.get() == "nearest") selectedFilter = CGL.Texture.FILTER_NEAREST;
-    else if (tfilter.get() == "linear") selectedFilter = CGL.Texture.FILTER_LINEAR;
-    else if (tfilter.get() == "mipmap") selectedFilter = CGL.Texture.FILTER_MIPMAP;
-
-    if (bgShader.needsRecompile())
-    {
-        reInitEffect = true;
-    }
-    if (tex && (
-        tex.width != Math.floor(width.get()) ||
-        tex.height != Math.floor(height.get()) ||
-        tex.wrap != selectedWrap ||
-        tex.pixelFormat != inPixelFormat.get()
-    ))
-    {
-        reInitEffect = true;
-    }
+    result.set(n1 * n2);
 }
 
 }
 };
 
-CABLES.OPS["25d77a01-ccfe-4b2e-b3c3-a09a8a018d0c"]={f:Ops.Gl.Textures.CopyTexture_v3,objName:"Ops.Gl.Textures.CopyTexture_v3"};
+CABLES.OPS["1bbdae06-fbb2-489b-9bcc-36c9d65bd441"]={f:Ops.Math.Multiply,objName:"Ops.Math.Multiply"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.DeltaSum
+// 
+// **************************************************************
+
+Ops.Math.DeltaSum= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inVal = op.inValue("Delta Value"),
+    defVal = op.inValue("Default Value", 0),
+    inMul = op.inValue("Multiply", 1),
+    inReset = op.inTriggerButton("Reset"),
+    inLimit = op.inValueBool("Limit", false),
+    inMin = op.inValue("Min", 0),
+    inMax = op.inValue("Max", 100),
+    inRubber = op.inValue("Rubberband", 0),
+    outVal = op.outNumber("Absolute Value");
+
+inVal.changeAlways = true;
+
+op.setPortGroup("Limit", [inLimit, inMin, inMax, inRubber]);
+
+let value = 0;
+let lastEvent = CABLES.now();
+let rubTimeout = null;
+
+inLimit.onChange = updateLimit;
+defVal.onChange =
+    inReset.onTriggered = resetValue;
+
+inMax.onChange =
+    inMin.onChange = updateValue;
+
+updateLimit();
+
+function resetValue()
+{
+    let v = defVal.get();
+
+    if (inLimit.get())
+    {
+        v = Math.max(inMin.get(), v);
+        v = Math.min(inMax.get(), v);
+    }
+
+    value = v;
+    outVal.set(value);
+}
+
+function updateLimit()
+{
+    inMin.setUiAttribs({ "greyout": !inLimit.get() });
+    inMax.setUiAttribs({ "greyout": !inLimit.get() });
+    inRubber.setUiAttribs({ "greyout": !inLimit.get() });
+
+    updateValue();
+}
+
+function releaseRubberband()
+{
+    const min = inMin.get();
+    const max = inMax.get();
+
+    if (value < min) value = min;
+    if (value > max) value = max;
+
+    outVal.set(value);
+}
+
+function updateValue()
+{
+    if (inLimit.get())
+    {
+        const min = inMin.get();
+        const max = inMax.get();
+        const rubber = inRubber.get();
+        const minr = inMin.get() - rubber;
+        const maxr = inMax.get() + rubber;
+
+        if (value < minr) value = minr;
+        if (value > maxr) value = maxr;
+
+        if (rubber !== 0.0)
+        {
+            clearTimeout(rubTimeout);
+            rubTimeout = setTimeout(releaseRubberband.bind(this), 300);
+        }
+    }
+
+    outVal.set(value);
+}
+
+inVal.onChange = function ()
+{
+    let v = inVal.get();
+
+    const rubber = inRubber.get();
+
+    if (rubber !== 0.0)
+    {
+        const min = inMin.get();
+        const max = inMax.get();
+        const minr = inMin.get() - rubber;
+        const maxr = inMax.get() + rubber;
+
+        if (value < min)
+        {
+            const aa = Math.abs(value - minr) / rubber;
+            v *= (aa * aa);
+        }
+        if (value > max)
+        {
+            const aa = Math.abs(maxr - value) / rubber;
+            v *= (aa * aa);
+        }
+    }
+
+    lastEvent = CABLES.now();
+    value += v * inMul.get();
+    updateValue();
+};
+
+}
+};
+
+CABLES.OPS["d9d4b3db-c24b-48da-b798-9e6230d861f7"]={f:Ops.Math.DeltaSum,objName:"Ops.Math.DeltaSum"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Math.Abs
+// 
+// **************************************************************
+
+Ops.Math.Abs= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    number = op.inValue("number"),
+    result = op.outNumber("result");
+
+number.onChange = function ()
+{
+    result.set(Math.abs(number.get()));
+};
+
+}
+};
+
+CABLES.OPS["6b5af21d-065f-44d2-9442-8b7a254753f6"]={f:Ops.Math.Abs,objName:"Ops.Math.Abs"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Number.TriggerOnChangeNumber_v2
+// 
+// **************************************************************
+
+Ops.Number.TriggerOnChangeNumber_v2= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    inval = op.inFloat("Value"),
+    next = op.outTrigger("Next"),
+    number = op.outNumber("Number");
+
+inval.onChange = function ()
+{
+    number.set(inval.get());
+    next.trigger();
+};
+
+op.init = () =>
+{
+    if (inval.isLinked())next.trigger();
+};
+
+}
+};
+
+CABLES.OPS["63ec7ad7-a436-4f72-8b5e-257cc20049d4"]={f:Ops.Number.TriggerOnChangeNumber_v2,objName:"Ops.Number.TriggerOnChangeNumber_v2"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Trigger.DelayedTrigger
+// 
+// **************************************************************
+
+Ops.Trigger.DelayedTrigger= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    exe = op.inTriggerButton("exe"),
+    delay = op.inValueFloat("delay", 1),
+    cancel = op.inTriggerButton("Cancel"),
+    next = op.outTrigger("next"),
+    outDelaying = op.outBool("Delaying");
+
+let lastTimeout = null;
+
+cancel.onTriggered = function ()
+{
+    if (lastTimeout)clearTimeout(lastTimeout);
+    lastTimeout = null;
+};
+
+exe.onTriggered = function ()
+{
+    outDelaying.set(true);
+    if (lastTimeout)clearTimeout(lastTimeout);
+
+    lastTimeout = setTimeout(
+        function ()
+        {
+            outDelaying.set(false);
+            lastTimeout = null;
+            next.trigger();
+        },
+        delay.get() * 1000);
+};
+
+}
+};
+
+CABLES.OPS["f4ff66b0-8500-46f7-9117-832aea0c2750"]={f:Ops.Trigger.DelayedTrigger,objName:"Ops.Trigger.DelayedTrigger"};
+
+
+
+
+// **************************************************************
+// 
+// Ops.Devices.TouchScreen
+// 
+// **************************************************************
+
+Ops.Devices.TouchScreen= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const
+    disableScaleWeb = op.inValueBool("Disable Scaling", true),
+    disableDefault = op.inValueBool("Disable Scroll", true),
+    hdpi = op.inValueBool("HDPI Coordinates", false),
+    active = op.inValueBool("Active", true),
+
+    outTouched = op.outNumber("Touched", false),
+    numFingers = op.outNumber("Fingers", 0),
+
+    f1x = op.outNumber("Finger 1 X", 0),
+    f1y = op.outNumber("Finger 1 Y", 0),
+    f1f = op.outNumber("Finger 1 Force", 0),
+
+    f2x = op.outNumber("Finger 2 X", 0),
+    f2y = op.outNumber("Finger 2 Y", 0),
+    f2f = op.outNumber("Finger 2 Force", 0),
+    area = op.inSwitch("Area", ["Canvas", "Document"], "Canvas"),
+
+    outEvents = op.outArray("Events"),
+    normalize = op.inValueBool("Normalize Coordinates"),
+    flipY = op.inValueBool("Flip Y"),
+    outTouchStart = op.outTrigger("Touch Start"),
+    outTouchEnd = op.outTrigger("Touch End");
+
+area.onChange = updateArea;
+
+function setPos(event)
+{
+    if (event.touches && event.touches.length > 0)
+    {
+        var rect = event.target.getBoundingClientRect();
+        var x = event.touches[0].clientX - event.touches[0].target.offsetLeft;
+        var y = event.touches[0].clientY - event.touches[0].target.offsetTop;
+
+        if (flipY.get()) y = rect.height - y;
+
+        if (hdpi.get())
+        {
+            x *= (op.patch.cgl.pixelDensity || 1);
+            y *= (op.patch.cgl.pixelDensity || 1);
+        }
+
+        if (normalize.get())
+        {
+            x = (x / rect.width * 2.0 - 1.0);
+            y = (y / rect.height * 2.0 - 1.0);
+        }
+
+        f1x.set(x);
+        f1y.set(y);
+
+        if (event.touches[0].force)f1f.set(event.touches[0].force);
+    }
+
+    if (event.touches && event.touches.length > 1)
+    {
+        var rect = event.target.getBoundingClientRect();
+        var x = event.touches[1].clientX - event.touches[1].target.offsetLeft;
+        var y = event.touches[1].clientY - event.touches[1].target.offsetTop;
+
+        if (hdpi.get())
+        {
+            x *= (op.patch.cgl.pixelDensity || 1);
+            y *= (op.patch.cgl.pixelDensity || 1);
+        }
+
+        if (normalize.get())
+        {
+            x = (x / rect.width * 2.0 - 1.0);
+            y = (y / rect.height * 2.0 - 1.0);
+        }
+
+        f2x.set(x);
+        f2y.set(y);
+
+        if (event.touches[1].force)f2f.set(event.touches[1].force);
+    }
+    outEvents.set(event.touches);
+}
+
+const ontouchstart = function (event)
+{
+    outTouched.set(true);
+    setPos(event);
+    numFingers.set(event.touches.length);
+    outTouchStart.trigger();
+};
+
+const ontouchend = function (event)
+{
+    outTouched.set(false);
+    f1f.set(0);
+    f2f.set(0);
+    setPos(event);
+
+    numFingers.set(event.touches.length);
+    outTouchEnd.trigger();
+};
+
+const ontouchmove = function (event)
+{
+    setPos(event);
+    numFingers.set(event.touches.length);
+    if (disableDefault.get() || (disableScaleWeb.get() && event.scale !== 1))
+    {
+        event.preventDefault();
+        document.body.style["touch-action"] = "none";
+    }
+    else
+    {
+        document.body.style["touch-action"] = "initial";
+    }
+};
+
+const cgl = op.patch.cgl;
+let listenerElement = null;
+function addListeners()
+{
+    listenerElement.addEventListener("touchmove", ontouchmove, { "passive": false });
+    listenerElement.addEventListener("touchstart", ontouchstart, { "passive": false });
+    listenerElement.addEventListener("touchend", ontouchend, { "passive": false });
+}
+
+function updateArea()
+{
+    removeListeners();
+
+    if (area.get() == "Document") listenerElement = document;
+    else listenerElement = cgl.canvas;
+
+    if (active.get()) addListeners();
+}
+
+function removeListeners()
+{
+    if (listenerElement)
+    {
+        listenerElement.removeEventListener("touchmove", ontouchmove);
+        listenerElement.removeEventListener("touchstart", ontouchstart);
+        listenerElement.removeEventListener("touchend", ontouchend);
+    }
+    listenerElement = null;
+}
+
+active.onChange = function ()
+{
+    updateArea();
+};
+
+updateArea();
+
+}
+};
+
+CABLES.OPS["cedffacf-0f09-4342-bd21-540bd9c8037d"]={f:Ops.Devices.TouchScreen,objName:"Ops.Devices.TouchScreen"};
 
 
 

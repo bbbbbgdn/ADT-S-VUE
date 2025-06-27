@@ -38,7 +38,7 @@ onBeforeUnmount(() => {
   top: 0;
   left: 0;
   z-index: -1;
-  height: 100vh;
+  height: 100svh;
   width: 100vw;
   margin: 0;
   padding: 0;
