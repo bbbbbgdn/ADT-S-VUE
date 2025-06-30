@@ -151,7 +151,7 @@ export default {
 .press-container {
   margin: 0rem var(--space-md);
   position: relative;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
 }
 
 /* Modified styles for background images */
