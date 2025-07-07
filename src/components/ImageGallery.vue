@@ -261,7 +261,6 @@ export default {
   computed: {
     processedImages() {
       if (!this.images || !Array.isArray(this.images) || this.images.length === 0) return [];
-      
       const processed = this.images.map((image) => {
         if (!image || !image.url) return { url: '', alt: 'Missing image' };
         const imageParams = this.customizeImageParams();
@@ -270,9 +269,16 @@ export default {
           alt: image.alt || 'Image'
         };
       });
-
-      // Return only one set of images (no repetition)
-      return processed;
+      // Repeat images to fill the visible width
+      const galleryWidth = this.galleryWidth || this.screenWidth || window.innerWidth;
+      const imageWidth = this.imageWidth !== 'auto' ? parseInt(this.imageWidth) : 200; // fallback 200px
+      const minCount = Math.ceil(galleryWidth / imageWidth) + 1;
+      const repeatTimes = Math.max(1, Math.ceil(minCount / processed.length));
+      let repeated = [];
+      for (let i = 0; i < repeatTimes; i++) {
+        repeated = repeated.concat(processed);
+      }
+      return repeated;
     },
     imageStyle() {
       return {
@@ -294,52 +300,19 @@ export default {
       return (this.name && this.name.trim()) || (this.location && this.location.trim()) || (this.date && this.date.trim());
     },
     galleryStyle() {
-      if (this.enableHoverScroll) {
-        return {
-          transform: `translateX(${-this.currentPosition}px)`,
-          willChange: 'transform'
-        };
-      }
+      // Only use CSS transform for hover movement
       return {};
     }
   },
   mounted() {
-    const gallery = this.$refs.gallery;
-    if (gallery) {
-      gallery.addEventListener('mousedown', this.handleScrollStart);
-      gallery.addEventListener('mousemove', this.handleScrollMove);
-      gallery.addEventListener('mouseup', this.handleScrollEnd);
-      gallery.addEventListener('mouseleave', this.handleScrollEnd);
-      gallery.addEventListener('touchstart', this.handleScrollStart);
-      gallery.addEventListener('touchmove', this.handleScrollMove);
-      gallery.addEventListener('touchend', this.handleScrollEnd);
-      
-      this.galleryWidth = gallery.scrollWidth;
-    }
-
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
-    
-    // Setup intersection observer
     this.$nextTick(() => {
       this.setupIntersectionObserver();
     });
   },
   beforeUnmount() {
-    const gallery = this.$refs.gallery;
-    if (gallery) {
-      gallery.removeEventListener('mousedown', this.handleScrollStart);
-      gallery.removeEventListener('mousemove', this.handleScrollMove);
-      gallery.removeEventListener('mouseup', this.handleScrollEnd);
-      gallery.removeEventListener('mouseleave', this.handleScrollEnd);
-      gallery.removeEventListener('touchstart', this.handleScrollStart);
-      gallery.removeEventListener('touchmove', this.handleScrollMove);
-      gallery.removeEventListener('touchend', this.handleScrollEnd);
-    }
-    clearTimeout(this.scrollTimeout);
     window.removeEventListener('resize', this.updateDimensions);
-    this.stopAutoScroll();
-    
     // Clean up observer
     if (this.observer) {
       this.observer.disconnect();
@@ -393,8 +366,8 @@ export default {
 
 .gallery {
   display: flex;
-  width: 100%;
-  transition: transform 0.35s ease-in-out;
+  width: max-content;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
   will-change: transform;
   /* Hide scrollbars for all browsers */
   scrollbar-width: none; /* Firefox */
@@ -497,5 +470,10 @@ export default {
 /* Also hide scrollbars on the gallery container */
 .gallery-container::-webkit-scrollbar {
   display: none;
+}
+
+.gallery-container:hover .gallery {
+  /* Move gallery to the left by the overflow amount */
+  transform: translateX(calc(-1 * (100% - min(100vw, 100%))));
 }
 </style>
