@@ -420,4 +420,18 @@ export default {
 .gallery-container::-webkit-scrollbar {
   display: none;
 }
+
+.gallery-item:not(:last-of-type)::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 100%;
+  width: 200px;   /* or your desired size */
+  height: 100%;
+
+  background: #ccc; /* or your desired style */
+
+  vertical-align: middle;
+  /* You can use border-radius, background-image, etc. for custom shapes */
+}
 </style>
