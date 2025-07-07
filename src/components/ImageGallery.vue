@@ -10,7 +10,7 @@
       :style="[galleryContainerStyle, galleryStyle]" 
       @mouseenter="isHovering = true" 
       @mouseleave="isHovering = false"
-      :class="{ 'manual-scroll': !enableHoverScroll }"
+      :class="[{ 'manual-scroll': !enableHoverScroll }, { 'auto-scrolling': isHovering && enableHoverScroll }]"
       @click="handleGalleryClick"
     >
       <div 
@@ -78,8 +78,7 @@ export default {
     },
     imageQuality: { type: Number, default: 85 },
     imageFormat: { type: String, default: null },
-    resolutionRatio: { type: Number, default: 2, validator: value => value > 0 },
-    enableHoverScroll: { type: Boolean, default: true }
+    resolutionRatio: { type: Number, default: 2, validator: value => value > 0 }
   },
   data() {
     return {
@@ -87,8 +86,6 @@ export default {
       scrollTimeout: null,
       scrollStartX: 0,
       isHovering: false,
-      autoScrollInterval: null,
-      scrollSpeed: 0.2,
       currentPosition: 0,
       isManualScrolling: false,
       galleryWidth: 0,
@@ -107,76 +104,6 @@ export default {
     handleGalleryClick() {
       if (!this.isActive) {
         this.router.push(`/shows/${this.slug}`);
-      }
-    },
-    handleScrollStart(event) {
-      if (this.isActive) return;
-      this.isManualScrolling = true;
-      this.stopAutoScroll();
-      this.scrollStartX = event.touches ? event.touches[0].clientX : event.clientX;
-      this.isScrolling = false;
-    },
-    handleScrollMove(event) {
-      if (this.isActive || !this.scrollStartX) return;
-      const currentX = event.touches ? event.touches[0].clientX : event.clientX;
-      const diffX = Math.abs(currentX - this.scrollStartX);
-      if (diffX > 5) {
-        this.isScrolling = true;
-        this.isManualScrolling = true;
-        const gallery = this.$refs.gallery;
-        if (gallery) {
-          this.currentPosition = gallery.scrollLeft;
-        }
-      }
-    },
-    handleScrollEnd() {
-      if (this.isActive) return;
-      clearTimeout(this.scrollTimeout);
-      this.scrollTimeout = setTimeout(() => {
-        this.isScrolling = false;
-        this.scrollStartX = 0;
-        this.isManualScrolling = false;
-        if (this.isHovering) {
-          this.startAutoScroll();
-        }
-      }, 100);
-    },
-    startAutoScroll() {
-      if (this.autoScrollInterval || !this.enableHoverScroll) return;
-      
-      const gallery = this.$refs.gallery;
-      if (!gallery) return;
-      
-      this.lastTimestamp = performance.now();
-      
-      const animate = (timestamp) => {
-        if (!gallery) return;
-        
-        const deltaTime = timestamp - this.lastTimestamp;
-        this.lastTimestamp = timestamp;
-        
-        // Calculate smooth movement based on time delta
-        const movement = (this.scrollSpeed * deltaTime) / 50;
-        this.currentPosition += movement;
-        
-        // When we've scrolled to the end, reset to start
-        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-        if (this.currentPosition >= maxScroll) {
-          this.currentPosition = 0;
-        }
-        
-        if (this.isHovering && this.enableHoverScroll) {
-          this.autoScrollInterval = requestAnimationFrame(animate);
-        }
-      };
-      
-      this.autoScrollInterval = requestAnimationFrame(animate);
-    },
-    
-    stopAutoScroll() {
-      if (this.autoScrollInterval) {
-        cancelAnimationFrame(this.autoScrollInterval);
-        this.autoScrollInterval = null;
       }
     },
     customizeImageParams(options = {}) {
@@ -269,13 +196,33 @@ export default {
           alt: image.alt || 'Image'
         };
       });
-      // Repeat images to fill the visible width
-      const galleryWidth = this.galleryWidth || this.screenWidth || window.innerWidth;
-      const imageWidth = this.imageWidth !== 'auto' ? parseInt(this.imageWidth) : 200; // fallback 200px
-      const minCount = Math.ceil(galleryWidth / imageWidth) + 1;
-      const repeatTimes = Math.max(1, Math.ceil(minCount / processed.length));
+
+      // Calculate the width of each image
+      let imageWidthPx;
+      if (this.imageWidth !== 'auto') {
+        if (this.imageWidth.endsWith('px')) {
+          imageWidthPx = parseInt(this.imageWidth);
+        } else if (this.imageWidth.endsWith('rem')) {
+          const baseFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+          imageWidthPx = parseFloat(this.imageWidth) * baseFontSize;
+        } else if (this.imageWidth.endsWith('vh')) {
+          imageWidthPx = (parseFloat(this.imageWidth) / 100) * window.innerHeight;
+        } else {
+          imageWidthPx = parseInt(this.imageWidth) || 200;
+        }
+      } else {
+        // Fallback estimate for 'auto' (use 200px per image as a guess)
+        imageWidthPx = 200;
+      }
+      const totalWidth = processed.length * imageWidthPx;
+      const minWidth = 2 * window.innerWidth;
+      if (totalWidth >= minWidth) {
+        return processed;
+      }
+      // Repeat images until at least 2x window width
+      const repeatCount = Math.ceil(minWidth / totalWidth);
       let repeated = [];
-      for (let i = 0; i < repeatTimes; i++) {
+      for (let i = 0; i < repeatCount; i++) {
         repeated = repeated.concat(processed);
       }
       return repeated;
@@ -300,42 +247,41 @@ export default {
       return (this.name && this.name.trim()) || (this.location && this.location.trim()) || (this.date && this.date.trim());
     },
     galleryStyle() {
-      // Only use CSS transform for hover movement
       return {};
+    },
+    enableHoverScroll() {
+      return false;
     }
   },
   mounted() {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
+    
+    // Setup intersection observer
     this.$nextTick(() => {
       this.setupIntersectionObserver();
     });
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
+    
     // Clean up observer
     if (this.observer) {
       this.observer.disconnect();
     }
   },
   watch: {
-    isHovering(newValue) {
-      if (newValue && this.enableHoverScroll) {
-        this.startAutoScroll();
-      } else {
-        this.stopAutoScroll();
-      }
+    isHovering() {
+      // No-op for now
     },
     images: {
       handler() {
-        // Images changed, update dimensions
         this.updateDimensions();
       },
       deep: true
     },
     isGalleryVisible(newValue) {
       if (newValue) {
-        // Gallery is visible, ensure images load in sequence
         this.$nextTick(() => {
           this.showImagesInSequence();
         });
@@ -366,8 +312,7 @@ export default {
 
 .gallery {
   display: flex;
-  width: max-content;
-  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  width: 100%;
   will-change: transform;
   /* Hide scrollbars for all browsers */
   scrollbar-width: none; /* Firefox */
@@ -375,8 +320,8 @@ export default {
   overflow: -moz-scrollbars-none; /* Firefox (older versions) */
 }
 
-.gallery::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+.gallery.auto-scrolling {
+  transition: transform 0.35s ease-in-out;
 }
 
 .gallery.manual-scroll {
@@ -407,6 +352,10 @@ export default {
 
 .gallery-item:first-of-type {
   padding-left: var(--gallery-item-margin);
+}
+
+.gallery-item:last-of-type {
+  padding-right: var(--gallery-item-margin);
 }
 
 .gallery-tags {
@@ -470,10 +419,5 @@ export default {
 /* Also hide scrollbars on the gallery container */
 .gallery-container::-webkit-scrollbar {
   display: none;
-}
-
-.gallery-container:hover .gallery {
-  /* Move gallery to the left by the overflow amount */
-  transform: translateX(calc(-1 * (100% - min(100vw, 100%))));
 }
 </style>
