@@ -89,9 +89,6 @@ const handleClick = (event) => {
   line-height: 1;
 
   text-align: left;
-  /* text-overflow: ellipsis; */
-  /* overflow: scroll; */
-
 }
 
 .button-text {

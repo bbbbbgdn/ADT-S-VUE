@@ -14,41 +14,52 @@
       
       <div class="profile-content">
         <div class="profile-header">
-          <MainText>Atelier Dasha Tsapenko is an artistic practise focusing on bio-design, based in The Hague, NL.</MainText>
+          <MainText>Where fashion grows with nature.</MainText>
         </div>
         
         <div class="profile-description">
+            <p>
+              Atelier Dasha Tsapenko explores the future of (fashion) design through living systems, cultivating garments and materials in collaboration with fungi, plants, and time. Founded on a strong belief in a bio-based, post-industrial approach to design, the atelier develops sustainable concepts, techniques, and surfaces using self-grown flexible matter.
+            </p>
+            
+            <p>
+              Working between microbiology labs and open fields, the studio maintains close ties with scientists and farmers to grow its own textiles and coatings. After a period of cultivation, these living materials are hand-processed into garments, tapestries, and collectible design objects—offering a new language for design expression that is both ecological and deeply embodied.
+            </p>
+            
+            <p>
+              At the heart of the atelier's practice lies the intersection of (fashion) design and agriculture. The studio views these disciplines not only as parallel in their challenges, but also in their methods—embracing slowness, seasonality, and regeneration. Projects include dyeing with local crop waste, crafting fur-like fibers and developing fungal felts grown into form.
+            </p>
+            
+            <p>
+              Beyond its own research and collections, Atelier Dasha Tsapenko is evolving into a fully-fledged bio-atelier—where garments are grown. Alongside bespoke, site-specific bio-material development for (fashion) brands, the atelier also works directly with fashion-conscious clients to cultivate one-of-a-kind, haute couture pieces. Each garment is a living collaboration with fungi, plants, and time—offering a radically new, deeply approach to wearable design.
+            </p>
 
-            <p>
-              With a strong believe in the bio-based future of fashion, the founder of the atelier Dasha Tsapenko, develops sustainable concepts, products, and innovative techniques, using self-grown flexible matter as a medium. Fascinated by nature and her non-human inhabitants, Dasha uses natural cycles & rythms as guidelines and frameworks for design.
-            </p>
-            
-            <p>
-              To produce surfaces by letting them grow, the atelier collaborates with diverse living organisms like fungi and plants, often working between the microbiology lab and a farm—in close contact with scientists and local farmers. After the growth period, the harvested surfaces are hand-processed and transformed into garments, tapestries and flexible interior items.
-            </p>
-            
-            <p>
-              The intersection of fashion and agriculture is another major topic of investigation. Both fields share similar problems, but most importantly - methods and principles that can be learned and benefited from. Textile dyes from local crop waste, fur from regional bean pods and fungal felt are few examples of projects, the Atelier is currently busy with.
-            </p>
-            
-            <p>
-              Besides growing (art) pieces and developing alternative production procecess, Atelier Dasha Tsapenko offers artistic direction, curation and tailored workshops in fields of bio-based fashion and textile design.
-            </p>
+            <div class="contact-section">
+            <div class="section-title">TEAM:</div>
+            Dasha Tsapenko, Maria Kitaeva
+          </div>
+          <br>
+          <div class="contact-section">
+            <div class="section-title">SELECTED CLIENTS & PARTNERS:</div>
+            Atmos, TG Botanical, YOD Group, Biobased Creations, Utrecht University, UFEG, Design Academy Eindhoven, Blue City Lab, Stichting DOEN, Haagse Hogeschool.
+          </div>
+          <br>
         </div>
         
         <div class="contact-info">
+
           <div class="contact-section">
             <div class="section-title">EMAIL:</div>
             <BaseButton @click="sendEmail">tsapenkodash@gmail.com</BaseButton>
           </div>
-          
+          <br>
           <div class="contact-section">
-            <div class="section-title">MAILING ADDRESS:</div>
-            <BaseButton class=" mailing-address" variant="grey">
-              De Constant Rebecqueplein 20-B 2518RA 's-Gravenhage, Netherlands
+            <div class="section-title">ADDRESS:</div>
+            <BaseButton class="mailing-address" variant="grey">
+              De Constant Rebecqueplein 20-B, 2518RA Den Haag, Netherlands
             </BaseButton>
           </div>
-          
+          <br>
           <div class="contact-section">
             <div class="section-title">LINKS:</div>
             <div class="social-links">
@@ -62,11 +73,12 @@
     
     <div class="footer-info">
       <div class="footer-left">
-        <p class="small-text">KVK: 70382514, VAT: NL002491950B87</p>
-        <p>2025 © Atelier Dasha Tsapenko</p>
+        <span class="small-text">KVK: 70382514, VAT: NL002491950B87</span>
+        <br>
+        <span>2025 © Atelier Dasha Tsapenko</span>
       </div>
       <div class="footer-right">
-        <p>This website is still cultivating its final form.</p>
+        <span>This website is still cultivating its final form.</span>
       </div>
     </div>
   </div>
@@ -87,7 +99,7 @@ export default {
   data() {
     return {
       imageLoaded: false,
-      profileImage: '/main/assets/profile-image.webp'
+      profileImage: '/main/assets/IMG_0943.JPG'
     }
   },
   mounted() {
@@ -121,6 +133,7 @@ export default {
 
 .profile-container {
   flex: 1 0 auto;
+  margin-bottom: var(--space-4xl);
 }
 
 .profile-container {
@@ -179,7 +192,6 @@ export default {
 
 .profile-description {
   margin-bottom: calc(var(--space-4xl));
-  text-indent: var(--space-3xl);
 }
 
 .contact-info {
