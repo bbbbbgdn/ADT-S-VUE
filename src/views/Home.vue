@@ -1,28 +1,45 @@
 <template>
   <div class="home" :class="{ 'image-loaded': isLoaded }">
-    <div class="title-text">Atelier Dasha Tsapenko</div>
+    <div class="title-text" :class="{ 'title-fade-in': isLoaded }">Atelier Dasha Tsapenko</div>
     <iframe
       class="video-background"
-      src="/homepage_video/index.html"
+      src="/public/homepage_vid/index.html"
       frameborder="0"
       allowfullscreen
       @load="onIframeLoad"
+      @error="onIframeError"
     ></iframe>
   </div>
 </template>
 
 <script setup>
-import { ref, onBeforeUnmount } from 'vue'
+import { ref, onBeforeUnmount, onMounted } from 'vue'
 
 // Reactive data
 const isLoaded = ref(false)
 
 // Methods
 const onIframeLoad = () => {
+  console.log('Iframe loaded, triggering fade-in')
+  isLoaded.value = true
+}
+
+const onIframeError = () => {
+  console.error('Iframe error, showing content anyway')
   isLoaded.value = true
 }
 
 // Lifecycle
+onMounted(() => {
+  // Fallback: if iframe doesn't load within 3 seconds, still show the content
+  setTimeout(() => {
+    if (!isLoaded.value) {
+      console.log('Iframe load timeout, showing content anyway')
+      isLoaded.value = true
+    }
+  }, 3000)
+})
+
 onBeforeUnmount(() => {
   isLoaded.value = false
   const homeElement = document.querySelector('.home')
@@ -59,7 +76,8 @@ onBeforeUnmount(() => {
 }
 
 .home:not(.image-loaded) {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .image-loaded {
@@ -90,5 +108,11 @@ h1 {
   white-space: nowrap;
   font-weight: bold;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out 0.1s;
+}
+
+.title-fade-in {
+  opacity: 1;
 }
 </style> 

@@ -91,7 +91,7 @@
                 },
                 {
                     "name": "progress",
-                    "value": 0.010791478129713424
+                    "value": 0.1358058446455505
                 },
                 {
                     "name": "Interaction Needed",
@@ -99,7 +99,7 @@
                 },
                 {
                     "name": "CurrentTime",
-                    "value": 0.57238
+                    "value": 7.203142
                 },
                 {
                     "name": "Loading",
@@ -630,11 +630,11 @@
                 },
                 {
                     "name": "current time",
-                    "value": 162.296006679
+                    "value": 250.331954595
                 },
                 {
                     "name": "current frame",
-                    "value": 4869
+                    "value": 7510
                 }
             ],
             "objName": "Ops.TimeLine.TimeLinePlayer"
@@ -998,11 +998,11 @@
                 },
                 {
                     "name": "Movement X",
-                    "value": -5.5
+                    "value": -8
                 },
                 {
                     "name": "Movement Y",
-                    "value": -1.5
+                    "value": 8.5
                 }
             ],
             "objName": "Ops.Devices.Mouse.Mouse_v4"
@@ -1013,7 +1013,7 @@
             "portsIn": [
                 {
                     "name": "start",
-                    "value": 0.7
+                    "value": 0.6
                 },
                 {
                     "name": "end",
@@ -1085,7 +1085,7 @@
                 },
                 {
                     "name": "Dec factor",
-                    "value": 8
+                    "value": 2
                 }
             ],
             "portsOut": [
@@ -1674,7 +1674,7 @@
                 },
                 {
                     "name": "FPS",
-                    "value": 29
+                    "value": 31
                 }
             ],
             "objName": "Ops.Gl.Performance"
@@ -1915,7 +1915,7 @@
             "portsOut": [
                 {
                     "name": "Current Value",
-                    "value": 1
+                    "value": 0.27538812911408495
                 },
                 {
                     "name": "Dragging",
@@ -2082,7 +2082,7 @@
             "portsIn": [
                 {
                     "name": "value",
-                    "value": 0.1
+                    "value": 0.5
                 }
             ],
             "portsOut": [
@@ -2259,7 +2259,7 @@
                 },
                 {
                     "name": "Number",
-                    "value": 0.02806849567436731
+                    "value": -0.9215346260304831
                 }
             ],
             "objName": "Ops.Number.TriggerOnChangeNumber_v2"
@@ -2293,7 +2293,7 @@
                 },
                 {
                     "name": "Delaying",
-                    "value": false
+                    "value": true
                 }
             ],
             "objName": "Ops.Trigger.DelayedTrigger"
@@ -2467,15 +2467,15 @@
                 },
                 {
                     "name": "Was Triggered",
-                    "value": 0
+                    "value": 1
                 }
             ],
             "objName": "Ops.Trigger.TriggerOnce"
         }
     ],
     "export": {
-        "time": "2025-06-27 03:55",
+        "time": "2025-07-08 15:50",
         "service": "html",
-        "exportNumber": 19
+        "exportNumber": 20
     }
 }

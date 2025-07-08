@@ -18,7 +18,7 @@ export const defaultSettings = {
   thumbnail: {
     width: 0,
     height: 360,
-    quality: 85, // Slightly increased quality for better thumbnails
+    quality: 85, // Consistent quality for all images
     format: 'webp',
     resolutionRatio: 2
   }
@@ -33,13 +33,9 @@ export const defaultSettings = {
 export const createImageSettings = (preset = 'thumbnail', customSettings = {}) => {
   const baseSettings = defaultSettings[preset] || defaultSettings.thumbnail;
   
-  // If we're on mobile, only adjust quality
+  // If we're on mobile, maintain consistent quality
   if (typeof window !== 'undefined' && window.innerWidth <= 768) {
-    if (preset === 'high') {
-      baseSettings.quality = Math.min(baseSettings.quality, 85);
-    } else {
-      baseSettings.quality = Math.min(baseSettings.quality, 70);
-    }
+    baseSettings.quality = 85; // Consistent quality on all devices
   }
   
   // Merge settings without applying resolution ratio
@@ -63,12 +59,12 @@ export const optimizeForDevice = (settings) => {
     resolutionRatio: settings.resolutionRatio
   });
   
-  // Apply optimized values while maintaining minimum quality thresholds
+  // Apply optimized values while maintaining consistent quality
   return {
     ...settings,
     width: optimized.width,
     height: optimized.height,
-    quality: Math.max(optimized.quality, settings.preset === 'high' ? 85 : 70) // Ensure minimum quality
+    quality: 85 // Consistent quality across all optimizations
   };
 };
 

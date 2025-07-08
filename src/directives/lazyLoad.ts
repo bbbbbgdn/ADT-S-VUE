@@ -114,7 +114,7 @@ export default {
     // Function to load the image
     function loadImage() {
       const galleryId = options.galleryId || 'default';
-      console.debug(`[LazyLoad] Start loading: galleryId=${galleryId}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
+      // console.debug(`[LazyLoad] Start loading: galleryId=${galleryId}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
       
       const img = new Image()
       img.src = options.url
@@ -165,7 +165,7 @@ export default {
     
     // If preload is true, load immediately without intersection observer
     if (options.preload) {
-      console.debug(`[LazyLoad] Preload: galleryId=${options.galleryId || 'default'}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
+      // console.debug(`[LazyLoad] Preload: galleryId=${options.galleryId || 'default'}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
       loadImage()
       return
     }

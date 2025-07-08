@@ -158,7 +158,7 @@ export const formatImages = (visuals, options = {}) => {
   const {
     width = 0,
     height = 230,
-    quality = 70,
+    quality = 85,
     format = 'webp'
   } = options;
   
@@ -200,7 +200,7 @@ export const formatImage = (project, options = {}) => {
   const {
     width = 0,  // Default width for thumbnails
     height = 690, // Default height for thumbnails
-    quality = 75,
+    quality = 85,
     format = null
   } = options;
   
@@ -267,7 +267,7 @@ export const createImageUrl = (filename, options = {}) => {
   const {
     width = 0,
     height = 230,
-    quality = 70,
+    quality = 85,
     format = null,
     crop = null,
     fit = null
@@ -342,7 +342,7 @@ export const getOptimalImageDimensions = (options = {}) => {
   const {
     width = 0,
     height = 230,
-    quality = 70
+    quality = 85
   } = options;
   
   // Return dimensions without modification
