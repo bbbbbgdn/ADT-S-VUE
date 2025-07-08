@@ -53,6 +53,26 @@
   font-style: normal;
 }
 
+/* Prevent double-tap zoom on mobile */
+html, body {
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection on specific elements if needed */
+input, textarea, [contenteditable] {
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
 :root {
   /* Responsive scaling system */
   /* clamp(min, preferred, max) sets a responsive value that:
