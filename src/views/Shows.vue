@@ -6,10 +6,17 @@ import { useRouter } from 'vue-router';
 import { formatImages as storyblokFormatImages } from '../utils/storyblok';
 import { createImageSettings } from '../utils/imageSettings';
 
-const storyblokApi = useStoryblokApi();
+let storyblokApi = null;
 const stories = ref([]);
 const router = useRouter();
 const visibleStories = ref(new Set());
+
+// Try to get Storyblok API only if it's available
+try {
+  storyblokApi = useStoryblokApi();
+} catch (error) {
+  console.warn('Storyblok API is not available:', error);
+}
 
 // Create image settings using our utility with the thumbnail preset for gallery
 const imageSettings = createImageSettings('thumbnail');
@@ -21,7 +28,7 @@ const containerHeight = computed(() => {
 
 onMounted(async () => {
   // Check if Storyblok is available
-  if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN) {
+  if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN || !storyblokApi) {
     console.warn('Storyblok is not available. Shows page will be empty.');
     return;
   }

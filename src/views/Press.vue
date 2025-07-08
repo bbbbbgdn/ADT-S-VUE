@@ -68,9 +68,16 @@ export default {
     BaseButton
   },
   setup() {
-    const storyblokApi = useStoryblokApi()
+    let storyblokApi = null;
     const pressItems = ref([])
     const activeImageId = ref(null)
+
+    // Try to get Storyblok API only if it's available
+    try {
+      storyblokApi = useStoryblokApi();
+    } catch (error) {
+      console.warn('Storyblok API is not available:', error);
+    }
 
     const groupedPress = computed(() => {
       const groups = {}
@@ -120,7 +127,7 @@ export default {
 
     onMounted(async () => {
       // Check if Storyblok is available
-      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN) {
+      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN || !storyblokApi) {
         console.warn('Storyblok is not available. Press page will be empty.');
         return;
       }

@@ -10,6 +10,7 @@ publish = "dist"
 command = "pnpm run build"
 
 [build.environment]
+VITE_STORYBLOK_PREVIEW_TOKEN = "jVwJlAUbh5ZbmDF1SC5OHQtt"
 
 [build.processing]
 

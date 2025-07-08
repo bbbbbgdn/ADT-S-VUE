@@ -28,9 +28,16 @@ export default {
     FilterComponent
   },
   setup() {
-    const storyblokApi = useStoryblokApi();
+    let storyblokApi = null;
     const stories = ref([]);
     const currentFilter = ref('all');
+
+    // Try to get Storyblok API only if it's available
+    try {
+      storyblokApi = useStoryblokApi();
+    } catch (error) {
+      console.warn('Storyblok API is not available:', error);
+    }
 
     const filteredStories = computed(() => {
       switch (currentFilter.value) {
@@ -65,7 +72,7 @@ export default {
 
     onMounted(async () => {
       // Check if Storyblok is available
-      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN) {
+      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN || !storyblokApi) {
         console.warn('Storyblok is not available. Objects page will be empty.');
         return;
       }

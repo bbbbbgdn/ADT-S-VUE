@@ -33,10 +33,17 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const storyblokApi = useStoryblokApi();
+    let storyblokApi = null;
     const stories = ref([]);
     const isLoading = ref(true);
     const shouldAnimate = ref(!localStorage.getItem('hasSeenAnimation'));
+
+    // Try to get Storyblok API only if it's available
+    try {
+      storyblokApi = useStoryblokApi();
+    } catch (error) {
+      console.warn('Storyblok API is not available:', error);
+    }
     
     const navigateToProject = (slug) => {
       // Use navigation manager for consistent transitions
@@ -45,7 +52,7 @@ export default {
 
     onMounted(async () => {
       // Check if Storyblok is available
-      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN) {
+      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN || !storyblokApi) {
         console.warn('Storyblok is not available. Projects page will be empty.');
         isLoading.value = false;
         return;
