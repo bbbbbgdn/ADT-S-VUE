@@ -167,7 +167,6 @@ export default {
   pointer-events: none;
   z-index: -1;
   transition: opacity .3s ease-out;
-  display: none;
 }
 
 
@@ -250,6 +249,9 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .background-image {
+    display: none;
+  }
   .press-container {
     /* padding: var(--space-sm); */
   }
