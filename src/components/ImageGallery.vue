@@ -112,7 +112,33 @@ export default {
     },
     customizeImageParams(options = {}) {
       let parsedHeight;
-      if (this.imageHeight.includes('vh')) {
+      
+      // Handle calc() expressions by getting the computed style
+      if (this.imageHeight.includes('calc(')) {
+        // Get the actual computed height from the gallery container
+        const galleryContainer = this.$refs.galleryContainer;
+        if (galleryContainer) {
+          const computedStyle = window.getComputedStyle(galleryContainer);
+          parsedHeight = parseFloat(computedStyle.height);
+        } else {
+          // Fallback: try to parse calc() manually for common cases
+          const calcMatch = this.imageHeight.match(/calc\(([^)]+)\)/);
+          if (calcMatch) {
+            const calcExpression = calcMatch[1];
+            // Handle common calc expressions like "100vh - 97rem"
+            if (calcExpression.includes('100vh') && calcExpression.includes('97rem')) {
+              const vhHeight = window.innerHeight;
+              const remValue = 97 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+              parsedHeight = vhHeight - remValue;
+            } else {
+              // Generic fallback
+              parsedHeight = window.innerHeight * 0.8; // 80vh as fallback
+            }
+          } else {
+            parsedHeight = window.innerHeight * 0.8; // 80vh as fallback
+          }
+        }
+      } else if (this.imageHeight.includes('vh')) {
         const vhValue = parseFloat(this.imageHeight);
         parsedHeight = Math.round((vhValue / 100) * window.innerHeight);
       } else if (this.imageHeight.includes('rem')) {
@@ -121,15 +147,21 @@ export default {
       } else {
         parsedHeight = parseInt(this.imageHeight) || 100;
       }
-      let parsedWidth = this.imageWidth !== 'auto' ? parseInt(this.imageWidth) || 0 : 0;
+      
+      // Width should always be 0 for adaptive aspect ratio
+      const parsedWidth = 0;
+      
+      // Apply resolution ratio for high-DPI displays
       const scaledHeight = Math.round(parsedHeight * this.resolutionRatio);
-      const scaledWidth = parsedWidth ? Math.round(parsedWidth * this.resolutionRatio) : 0;
+      const scaledWidth = 0; // Keep width at 0 for adaptive aspect ratio
+      
       const optimalDimensions = getOptimalImageDimensions({
         width: scaledWidth,
         height: scaledHeight,
         quality: this.imageQuality,
         resolutionRatio: this.resolutionRatio
       });
+      
       return {
         width: optimalDimensions.width,
         height: optimalDimensions.height,
@@ -144,6 +176,12 @@ export default {
       if (gallery) {
         this.galleryWidth = gallery.scrollWidth;
       }
+      
+      // Force re-calculation of image parameters when dimensions change
+      // This ensures images are requested at the correct height after resize
+      this.$nextTick(() => {
+        this.$forceUpdate();
+      });
     },
     setupIntersectionObserver() {
       if (!this.$refs.galleryContainer) return;
@@ -267,6 +305,11 @@ export default {
     // Setup intersection observer
     this.$nextTick(() => {
       this.setupIntersectionObserver();
+      
+      // Force a re-render after DOM is ready to ensure correct image dimensions
+      this.$nextTick(() => {
+        this.$forceUpdate();
+      });
     });
   },
   beforeUnmount() {

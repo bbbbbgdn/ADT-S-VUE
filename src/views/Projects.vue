@@ -8,6 +8,7 @@
       :projectName="story.content?.title_tag"
       :year="story.content?.year_tag"
       :slug="story.slug"
+      :preload="true"
       @click="navigateToProject(story.slug)"
       :style="{ 
         // transitionDelay: shouldAnimate ? `${index * 5}s` : '0s',
@@ -79,7 +80,7 @@ export default {
 }
 
 .project-card {
-  transition: opacity 0.5s ease-out;
+  /* transition: opacity 0.5s ease-out; */
 }
 
 /* Responsive layout for mobile devices */

@@ -10,8 +10,8 @@
       url: image, 
       index: 0, 
       resetQueue: true, 
-      preload: preload,
-      rootMargin: '200px 0px',
+      preload: true,
+      rootMargin: '1000px 0px',
       threshold: 0.1,
       galleryId: slug
     }"
@@ -31,7 +31,7 @@
       url: image, 
       index: 0, 
       resetQueue: true, 
-      preload: preload,
+      preload: true,
       rootMargin: '1000px 0px',
       threshold: 0.1,
       galleryId: slug
@@ -185,6 +185,7 @@ export default {
   cursor: pointer;
   opacity: 0;
   will-change: opacity;
+  transition: opacity 0.2s ease-out;
 }
 
 .project-card-background {
@@ -199,6 +200,7 @@ export default {
   cursor: pointer;
   opacity: 0;
   will-change: opacity;
+  transition: opacity 0.2s ease-out;
 }
 
 /* Loading states */

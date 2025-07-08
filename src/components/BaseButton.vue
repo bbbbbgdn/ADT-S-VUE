@@ -111,6 +111,7 @@ const handleClick = (event) => {
   color: white;
   pointer-events: all;
   cursor: pointer;
+  transition: all 0.4s ease-out !important;
 }
 
 /* Grey Button */
@@ -135,7 +136,6 @@ const handleClick = (event) => {
 .button-black:hover {
   background-color: var(--color-pink-primary);
   color: black;
-  /* transition: background-color 0.5s ease !important; */
 }
 
 /* Active Button */
