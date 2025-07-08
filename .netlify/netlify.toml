@@ -6,9 +6,7 @@ headers = []
 [functions."*"]
 
 [build]
-publish = "/Users/bohdank/Documents/GitHub/ADT-VUE-CMS/ADT-S-VUE/dist"
-publishOrigin = "ui"
-commandOrigin = "ui"
+publish = "dist"
 command = "pnpm run build"
 
 [build.environment]
