@@ -240,7 +240,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .profile-container{
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .profile-content {
