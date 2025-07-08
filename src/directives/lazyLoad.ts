@@ -120,7 +120,7 @@ export default {
       img.src = options.url
       
       img.onload = () => {
-        console.debug(`[LazyLoad] Loaded: galleryId=${galleryId}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
+        // console.debug(`[LazyLoad] Loaded: galleryId=${galleryId}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
         
         if (options.background || el.tagName !== 'IMG') {
           el.style.backgroundImage = `url(${options.url})`
