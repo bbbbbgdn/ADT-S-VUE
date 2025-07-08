@@ -167,6 +167,7 @@ export default {
   pointer-events: none;
   z-index: -1;
   transition: opacity .3s ease-out;
+  display: none;
 }
 
 
@@ -252,20 +253,28 @@ export default {
   .press-container {
     /* padding: var(--space-sm); */
   }
-  
+
   .year-group {
-    /* grid-template-columns: 1fr; */
-    /* gap: var(--space-sm); */
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none; /* Remove grid on mobile */
+  }
+
+  .press-items {
+    display: flex;
+    flex-direction: column;
   }
 
   .press-item {
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
   }
 
   .media-outlet,
   .press-title {
     /* width: 100%; */
+    max-width: 100%;
   }
 }
 </style>

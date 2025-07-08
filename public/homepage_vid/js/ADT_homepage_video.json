@@ -91,7 +91,7 @@
                 },
                 {
                     "name": "progress",
-                    "value": 0.1358058446455505
+                    "value": 0.6517287518853695
                 },
                 {
                     "name": "Interaction Needed",
@@ -99,7 +99,7 @@
                 },
                 {
                     "name": "CurrentTime",
-                    "value": 7.203142
+                    "value": 34.567693
                 },
                 {
                     "name": "Loading",
@@ -630,11 +630,11 @@
                 },
                 {
                     "name": "current time",
-                    "value": 250.331954595
+                    "value": 36.131766022
                 },
                 {
                     "name": "current frame",
-                    "value": 7510
+                    "value": 1084
                 }
             ],
             "objName": "Ops.TimeLine.TimeLinePlayer"
@@ -1674,7 +1674,7 @@
                 },
                 {
                     "name": "FPS",
-                    "value": 31
+                    "value": 30
                 }
             ],
             "objName": "Ops.Gl.Performance"
@@ -1915,7 +1915,7 @@
             "portsOut": [
                 {
                     "name": "Current Value",
-                    "value": 0.27538812911408495
+                    "value": 1
                 },
                 {
                     "name": "Dragging",
@@ -2082,7 +2082,7 @@
             "portsIn": [
                 {
                     "name": "value",
-                    "value": 0.5
+                    "value": 0.1
                 }
             ],
             "portsOut": [
@@ -2293,7 +2293,7 @@
                 },
                 {
                     "name": "Delaying",
-                    "value": true
+                    "value": false
                 }
             ],
             "objName": "Ops.Trigger.DelayedTrigger"
@@ -2474,8 +2474,8 @@
         }
     ],
     "export": {
-        "time": "2025-07-08 15:50",
+        "time": "2025-07-08 16:14",
         "service": "html",
-        "exportNumber": 20
+        "exportNumber": 21
     }
 }
