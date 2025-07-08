@@ -61,8 +61,9 @@ export default {
 
     // Get button variant considering both the current route and the clicked button
     const getButtonVariant = (path) => {
-      // Otherwise, use the normal active state logic
-      return navigationManager.isActive(route, path) ? 'active' : 'black'
+      // Check if this is the current path (either from route or from currentPath ref)
+      const isActive = path === currentPath.value || navigationManager.isActive(route, path);
+      return isActive ? 'active' : 'black'
     }
 
     // Get menu text based on screen size
@@ -76,6 +77,9 @@ export default {
     const navigateTo = (path, event) => {
       // Don't navigate if we're already on this page
       if (currentPath.value === path) return;
+      
+      // Immediately update current path to ensure active state is applied instantly
+      currentPath.value = path;
       
       // Use navigation manager for consistent transitions
       navigationManager.navigateTo(router, path);
@@ -115,6 +119,17 @@ export default {
 .menu-button {
   transition: background-color var(--transition-duration) var(--transition-easing), 
               color var(--transition-duration) var(--transition-easing);
+}
+
+/* Ensure active state is applied immediately during navigation */
+.menu-button.button-active {
+  transition: none !important;
+}
+
+/* During page transitions, ensure active buttons stay active */
+body.page-transitioning .menu-button.button-active {
+  background-color: var(--color-pink-primary) !important;
+  color: black !important;
 }
 
 </style>    
