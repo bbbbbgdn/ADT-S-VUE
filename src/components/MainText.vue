@@ -32,7 +32,7 @@ const isSingleLine = computed(() => {
 <style>
 .main-text {
   width: 100%;
-  padding: var(--space-md);
+  /* padding: var(--space-md); */
   margin: 0;
   box-sizing: border-box;
   /* overflow-y: visible; */
