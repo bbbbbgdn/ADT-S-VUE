@@ -120,7 +120,7 @@ watch(stories, async () => {
 }
 
 .story-placeholder {
-  width: 100%;
+  width: 10
 }
 
 .gallery-placeholder {

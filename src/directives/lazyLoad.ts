@@ -17,22 +17,14 @@ interface LazyLoadOptions {
   preload?: boolean; // Whether to preload the image immediately
 }
 
-// Global loading queue to track image loading status (for sequential loading)
-const loadingQueue = {
-  currentIndex: 0,
-  loadedImages: new Set<number>(),
-  observers: new Set<Function>(),
-  // Add a reset method to clear the queue when navigating
-  reset: function() {
-    this.currentIndex = 0
-    this.loadedImages.clear()
-    this.observers.clear()
-  }
-}
+// Per-gallery loading queues
+const galleryQueues: Record<string, { revealedIndex: number, loadedImages: Set<number> }> = {};
 
-// Reset queue when the page loads/reloads
-if (typeof window !== 'undefined') {
-  window.addEventListener('load', () => loadingQueue.reset())
+function getGalleryQueue(galleryId: string) {
+  if (!galleryQueues[galleryId]) {
+    galleryQueues[galleryId] = { revealedIndex: -1, loadedImages: new Set<number>() };
+  }
+  return galleryQueues[galleryId];
 }
 
 // Check if Intersection Observer is supported
@@ -41,132 +33,151 @@ const hasIntersectionObserver = typeof window !== 'undefined' && 'IntersectionOb
 export default {
   beforeMount(el: HTMLElementWithCleanup, binding: DirectiveBinding) {
     // Reset the queue if this is the first image in a new gallery
-    // This ensures images load properly when navigating between pages
     if (binding.value && 
         typeof binding.value === 'object' && 
         binding.value.index === 0 && 
         binding.value.resetQueue) {
-      loadingQueue.reset()
+      const galleryId = binding.value.galleryId || 'default';
+      console.debug(`[LazyLoad] beforeMount: Reset queue for new gallery ${galleryId}`);
+      galleryQueues[galleryId] = { revealedIndex: -1, loadedImages: new Set<number>() };
     }
   },
   
   mounted(el: HTMLElementWithCleanup, binding: DirectiveBinding) {
     // Parse binding value
-    let options: LazyLoadOptions;
-    
+    let options: LazyLoadOptions & { galleryId?: string };
     if (typeof binding.value === 'string') {
-      // Legacy string format
       options = {
         url: binding.value,
         index: parseInt(el.dataset.index || '0'),
-        resetQueue: el.dataset.index === '0'
+        resetQueue: el.dataset.index === '0',
+        galleryId: el.dataset.galleryId || 'default'
       }
     } else {
-      // Object format
-      options = binding.value as LazyLoadOptions
+      options = binding.value as LazyLoadOptions & { galleryId?: string };
     }
-    
+    const galleryId = options.galleryId || 'default';
+    const queue = getGalleryQueue(galleryId);
     // Add loading class and set initial state
     el.classList.add('image-loading')
+    el.classList.remove('image-loaded', 'image-error')
     el.style.opacity = '0'
     el.style.transition = 'opacity 0.3s ease-in-out'
     
+    // Function to reveal images from left to right
+    function revealImages() {
+      // Fallback for single-image galleries (including ProjectCard)
+      if (queue.loadedImages.has(0) && queue.revealedIndex < 0) {
+        const imgEl = document.querySelector(
+          `[data-gallery-id='${galleryId}'][data-index='0'].gallery-image, ` +
+          `[data-gallery-id='${galleryId}'][data-index='0'].project-card-image, ` +
+          `[data-gallery-id='${galleryId}'][data-index='0'].project-card-background`
+        );
+        if (imgEl) {
+          imgEl.classList.remove('image-loading');
+          imgEl.classList.add('image-loaded');
+          requestAnimationFrame(() => {
+            imgEl['style'].opacity = '1';
+          });
+        }
+        queue.revealedIndex = 0;
+        return;
+      }
+      let next = queue.revealedIndex + 1;
+      while (queue.loadedImages.has(next)) {
+        const imgEl = document.querySelector(`[data-gallery-id='${galleryId}'][data-index='${next}'].gallery-image`);
+        if (imgEl) {
+          imgEl.classList.remove('image-loading');
+          imgEl.classList.add('image-loaded');
+          requestAnimationFrame(() => {
+            imgEl['style'].opacity = '1';
+          });
+        }
+        queue.revealedIndex = next;
+        next++;
+      }
+    }
+    
     // Function to load the image
     function loadImage() {
-      // Create new image object
+      console.debug(`[LazyLoad] Start loading: galleryId=${galleryId}, index=${options.index}, url=${options.url}`);
       const img = new Image()
       img.src = options.url
       
       img.onload = () => {
+        console.debug(`[LazyLoad] Loaded: galleryId=${galleryId}, index=${options.index}, url=${options.url}`);
         if (options.background || el.tagName !== 'IMG') {
           el.style.backgroundImage = `url(${options.url})`
         } else {
           const imageElement = el as HTMLImageElement
           imageElement.src = options.url
         }
-        
-        // Mark this image as loaded
         if (typeof options.index === 'number') {
-          loadingQueue.loadedImages.add(options.index)
+          queue.loadedImages.add(options.index)
         }
-        
-        el.classList.remove('image-loading')
-        el.classList.add('image-loaded')
-        
-        // Only show image if it's the next one in sequence
-        if (typeof options.index === 'number') {
-          // Check if this image should be visible (it's the next one to show)
-          const loadedIndices = Array.from(loadingQueue.loadedImages).sort((a, b) => a - b);
-          const nextToShow = loadedIndices.find(index => index >= options.index!);
-          
-          if (nextToShow === options.index) {
-            requestAnimationFrame(() => {
-              el.style.opacity = '1'
-            })
-          } else {
-          }
-        } else {
-          // For non-queued images, show immediately
-          requestAnimationFrame(() => {
-            el.style.opacity = '1'
-          })
-        }
-        
-        // Only increment queue for gallery images (when index is provided)
-        if (typeof options.index === 'number') {
-          loadingQueue.currentIndex++
-          loadingQueue.observers.forEach(callback => callback(loadingQueue.currentIndex))
-        }
+        // Always call revealImages, even for single-image galleries
+        revealImages();
       }
       
       img.onerror = () => {
-        console.error(`Failed to load image: ${options.url}`)
-        
+        console.error(`[LazyLoad] Failed to load: galleryId=${galleryId}, index=${options.index}, url=${options.url}`)
         el.classList.remove('image-loading')
         el.classList.add('image-loaded', 'image-error')
-        
-        // Mark as loaded even if it failed (to maintain sequence)
         if (typeof options.index === 'number') {
-          loadingQueue.loadedImages.add(options.index)
+          queue.loadedImages.add(options.index)
         }
-        
-        // Only increment queue for gallery images (when index is provided)
-        if (typeof options.index === 'number') {
-          loadingQueue.currentIndex++
-          loadingQueue.observers.forEach(callback => callback(loadingQueue.currentIndex))
-        }
+        // Always call revealImages, even for single-image galleries
+        revealImages();
       }
     }
     
     // If preload is true, load immediately without intersection observer
     if (options.preload) {
+      console.debug(`[LazyLoad] Preload: galleryId=${galleryId}, index=${options.index}, url=${options.url}`);
       loadImage()
       return
     }
     
-    // Use queue-based approach for gallery images (when index is provided)
+    // For gallery images (when index is provided), start loading as soon as observed
     if (typeof options.index === 'number') {
-      const checkAndLoad = (currentIndex: number) => {
-        if (options.index === currentIndex) {
-          loadImage()
+      console.debug(`[LazyLoad] Queued: galleryId=${galleryId}, index=${options.index}, url=${options.url}`);
+      if (hasIntersectionObserver) {
+        const observerOptions = {
+          root: null,
+          rootMargin: options.rootMargin || '700px', // Preload earlier
+          threshold: options.threshold || 0.1
         }
+        el._observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            console.debug(`[LazyLoad] IO load: galleryId=${galleryId}, url=${options.url}`);
+            loadImage()
+            // Disconnect observer after loading
+            if (el._observer) {
+              el._observer.disconnect()
+              el._observer = undefined
+            }
+          }
+        }, observerOptions)
+        el._observer.observe(el)
+        return
+      } else {
+        // Fallback: load immediately if Intersection Observer is not supported
+        console.debug(`[LazyLoad] Fallback load: galleryId=${galleryId}, url=${options.url}`);
+        loadImage()
+        return
       }
-      
-      loadingQueue.observers.add(checkAndLoad)
-      checkAndLoad(loadingQueue.currentIndex)
-      return
     }
     
     // Use Intersection Observer for lazy loading (default behavior)
     if (hasIntersectionObserver) {
       const observerOptions = {
         root: null,
-        rootMargin: options.rootMargin || '100px',
+        rootMargin: options.rootMargin || '500px',
         threshold: options.threshold || 0.1
       }
-      
       el._observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
+          console.debug(`[LazyLoad] IO load: galleryId=${galleryId}, url=${options.url}`);
           loadImage()
           // Disconnect observer after loading
           if (el._observer) {
@@ -175,13 +186,11 @@ export default {
           }
         }
       }, observerOptions)
-      
-      // Start observing
       el._observer.observe(el)
       return
     }
-    
     // Fallback: load immediately if Intersection Observer is not supported
+    console.debug(`[LazyLoad] Fallback load: galleryId=${galleryId}, url=${options.url}`);
     loadImage()
   },
   

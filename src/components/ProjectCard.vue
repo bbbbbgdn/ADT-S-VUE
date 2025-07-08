@@ -12,9 +12,11 @@
       resetQueue: true, 
       preload: preload,
       rootMargin: '200px 0px',
-      threshold: 0.1
+      threshold: 0.1,
+      galleryId: slug
     }"
     :data-index="0"
+    :data-gallery-id="slug"
     class="project-card-image"
     alt="Project thumbnail"
     @click="navigateToProject"
@@ -30,10 +32,12 @@
       index: 0, 
       resetQueue: true, 
       preload: preload,
-      rootMargin: '200px 0px',
-      threshold: 0.1
+      rootMargin: '1000px 0px',
+      threshold: 0.1,
+      galleryId: slug
     }"
     :data-index="0"
+    :data-gallery-id="slug"
     class="project-card-background"
     @click="navigateToProject"
     @mouseenter="isHovering = true"

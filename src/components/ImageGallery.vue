@@ -25,11 +25,13 @@
             index: index,
             resetQueue: index === 0,
             threshold: 0.1,
-            rootMargin: '100px'
+            rootMargin: '750px',
+            galleryId: internalGalleryId
           }"
           :alt="image.alt || 'Image'"
           :style="imageStyle"
           :data-index="index"
+          :data-gallery-id="internalGalleryId"
           class="gallery-image"
         />
       </div>
@@ -68,8 +70,7 @@ export default {
     isActive: { type: Boolean, default: false },
     imageHeight: { 
       type: String, 
-      default: '230rem',
-      validator: value => /^\d+(rem|vh|px)$/.test(value)
+      default: '230rem'
     },
     imageWidth: { 
       type: String, 
@@ -78,7 +79,9 @@ export default {
     },
     imageQuality: { type: Number, default: 85 },
     imageFormat: { type: String, default: null },
-    resolutionRatio: { type: Number, default: 2, validator: value => value > 0 }
+    resolutionRatio: { type: Number, default: 2, validator: value => value > 0 },
+    repeatToFill: { type: Boolean, default: true },
+    galleryId: { type: String, default: null },
   },
   data() {
     return {
@@ -92,7 +95,8 @@ export default {
       lastTimestamp: 0,
       screenWidth: 0,
       observer: null,
-      isGalleryVisible: false
+      isGalleryVisible: false,
+      internalGalleryId: this.galleryId || `gallery-${Math.random().toString(36).substr(2, 9)}`,
     };
   },
   setup() {
@@ -197,6 +201,9 @@ export default {
         };
       });
 
+      if (!this.repeatToFill) {
+        return processed;
+      }
       // Calculate the width of each image
       let imageWidthPx;
       if (this.imageWidth !== 'auto') {
@@ -305,6 +312,16 @@ export default {
   overflow: -moz-scrollbars-none;
 }
 
+/* .gallery-container::before{
+  height: calc(100% - var(--gallery-item-margin) * 2 - var(--button-min-height));
+  margin-left: var(--gallery-item-margin);
+  margin-right: var(--gallery-item-margin);
+  background: linear-gradient(90deg, #ffffff, rgba(195, 195, 195, 0.6), #ffffff);
+  pointer-events: none;
+  background-size: 50% 100%;
+  animation: move-gradient 5s linear infinite;
+} */
+
 .gallery-container.clickable .gallery,
 .gallery-container.clickable .gallery-item {
   cursor: pointer;
@@ -336,6 +353,17 @@ export default {
 .gallery.manual-scroll::-webkit-scrollbar {
   display: none;
 }
+
+
+
+/* @keyframes move-gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+} */
 
 .gallery-item {
   flex: 0 0 auto;
@@ -419,19 +447,5 @@ export default {
 /* Also hide scrollbars on the gallery container */
 .gallery-container::-webkit-scrollbar {
   display: none;
-}
-
-.gallery-item:not(:last-of-type)::after {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 100%;
-  width: 200px;   /* or your desired size */
-  height: 100%;
-
-  background: #ccc; /* or your desired style */
-
-  vertical-align: middle;
-  /* You can use border-radius, background-image, etc. for custom shapes */
 }
 </style>

@@ -125,7 +125,7 @@ export default {
           :imageFormat="mainProjectImageSettings.format"
           :resolutionRatio="mainProjectImageSettings.resolutionRatio"
           :isActive="true"
-          :enable-hover-scroll="false"
+          :repeatToFill="false"
         />
 
         <div v-else class="no-images-message">
