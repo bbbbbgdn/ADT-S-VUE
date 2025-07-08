@@ -119,6 +119,12 @@ export default {
     }
 
     onMounted(async () => {
+      // Check if Storyblok is available
+      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN) {
+        console.warn('Storyblok is not available. Press page will be empty.');
+        return;
+      }
+      
       try {
         const response = await storyblokApi.get('cdn/stories', {
           starts_with: 'press/',

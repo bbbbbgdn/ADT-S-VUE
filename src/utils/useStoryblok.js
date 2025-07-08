@@ -3,6 +3,15 @@ import { useRoute, useRouter } from 'vue-router';
 import * as storyblokUtils from './storyblok';
 import navigationManager from './navigationManager';
 
+// Check if Storyblok is available
+const isStoryblokAvailable = () => {
+  try {
+    return !!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN;
+  } catch {
+    return false;
+  }
+};
+
 /**
  * Composable for working with Storyblok in Vue components
  * @param {Object} options - Configuration options
@@ -40,6 +49,14 @@ export default function useStoryblok(options = {}) {
     isLoading.value = true;
     contentReady.value = false;
     errorMessage.value = '';
+    
+    // Check if Storyblok is available
+    if (!isStoryblokAvailable()) {
+      errorMessage.value = 'Content management system is not available.';
+      isLoading.value = false;
+      contentReady.value = true;
+      return;
+    }
     
     // Determine the path based on the type
     const path = `${type}s/${slug}`;
@@ -88,6 +105,12 @@ export default function useStoryblok(options = {}) {
    * @param {string} currentSlug - Current slug to exclude
    */
   const loadOtherStories = async (currentSlug) => {
+    // Check if Storyblok is available
+    if (!isStoryblokAvailable()) {
+      stories.value = [];
+      return;
+    }
+    
     const result = await storyblokUtils.loadStories({
       startsWith: `${type}s/`
     });
@@ -112,6 +135,15 @@ export default function useStoryblok(options = {}) {
   
   // Initialize
   onMounted(async () => {
+    // Check if Storyblok is available
+    if (!isStoryblokAvailable()) {
+      console.warn('Storyblok is not available. Running in fallback mode.');
+      errorMessage.value = 'Content management system is not available. Please check your configuration.';
+      isLoading.value = false;
+      contentReady.value = true;
+      return;
+    }
+
     if (preload) {
       if (type === 'project') {
         await storyblokUtils.preloadProjects();

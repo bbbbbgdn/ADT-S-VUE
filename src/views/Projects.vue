@@ -44,6 +44,13 @@ export default {
     };
 
     onMounted(async () => {
+      // Check if Storyblok is available
+      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN) {
+        console.warn('Storyblok is not available. Projects page will be empty.');
+        isLoading.value = false;
+        return;
+      }
+      
       try {
         const response = await storyblokApi.get('cdn/stories', {
           starts_with: 'projects/',

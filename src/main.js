@@ -11,17 +11,19 @@ import LazyBackground from './components/LazyBackground.vue';
 
 const app = createApp(App);
 
-// Ensure the token exists
+// Get the access token
 const accessToken = import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN;
-if (!accessToken) {
-  throw new Error('Storyblok access token is missing');
-}
 
-// Initialize Storyblok
-app.use(StoryblokVue, {
-  accessToken,
-  use: [apiPlugin]
-});
+// Initialize Storyblok only if token is available
+if (accessToken) {
+  app.use(StoryblokVue, {
+    accessToken,
+    use: [apiPlugin]
+  });
+} else {
+  console.warn('Storyblok access token is missing. The app will run in fallback mode.');
+  // You can add fallback data or mock components here if needed
+}
 
 app.component('StoryblokComponent', DynamicComponent);
 app.component('LazyImage', LazyImage);
