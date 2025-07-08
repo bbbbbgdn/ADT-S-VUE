@@ -8,10 +8,14 @@
       class="gallery" 
       ref="gallery" 
       :style="[galleryContainerStyle, galleryStyle]" 
-      @mouseenter="isHovering = true" 
-      @mouseleave="isHovering = false"
-      :class="[{ 'manual-scroll': !enableHoverScroll }, { 'auto-scrolling': isHovering && enableHoverScroll }]"
+      @mouseenter="handleMouseEnter" 
+      @mouseleave="handleMouseLeave"
+      :class="[{ 'manual-scroll': !enableHoverScroll }, { 'auto-scrolling': isHovering && enableHoverScroll }, { 'auto-scroll-active': isAutoScrolling }]"
       @click="handleGalleryClick"
+      @scroll="handleScroll"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @wheel="handleWheel"
     >
       <div 
         v-for="(image, index) in processedImages" 
@@ -82,6 +86,10 @@ export default {
     resolutionRatio: { type: Number, default: 2, validator: value => value > 0 },
     repeatToFill: { type: Boolean, default: true },
     galleryId: { type: String, default: null },
+    enableAutoScroll: { type: Boolean, default: false },
+    autoScrollSpeed: { type: Number, default: 1 },
+    autoScrollPauseOnHover: { type: Boolean, default: true },
+    autoScrollPauseOnTouch: { type: Boolean, default: true },
   },
   data() {
     return {
@@ -97,6 +105,12 @@ export default {
       observer: null,
       isGalleryVisible: false,
       internalGalleryId: this.galleryId || `gallery-${Math.random().toString(36).substr(2, 9)}`,
+      // Auto-scroll data
+      autoScrollAnimationId: null,
+      autoScrollPosition: 0,
+      isAutoScrolling: false,
+      isUserInteracting: false,
+      lastUserInteractionTime: 0,
     };
   },
   setup() {
@@ -110,6 +124,99 @@ export default {
         this.router.push(`/shows/${this.slug}`);
       }
     },
+    
+    // Auto-scroll methods
+    startAutoScroll() {
+      if (!this.enableAutoScroll || this.isAutoScrolling) return;
+      
+      this.isAutoScrolling = true;
+      this.autoScrollPosition = 0;
+      this.animateAutoScroll();
+    },
+    
+    stopAutoScroll() {
+      this.isAutoScrolling = false;
+      if (this.autoScrollAnimationId) {
+        cancelAnimationFrame(this.autoScrollAnimationId);
+        this.autoScrollAnimationId = null;
+      }
+    },
+    
+    animateAutoScroll() {
+      if (!this.isAutoScrolling || this.isUserInteracting) {
+        this.autoScrollAnimationId = requestAnimationFrame(() => this.animateAutoScroll());
+        return;
+      }
+      
+      const gallery = this.$refs.gallery;
+      if (!gallery) return;
+      
+      // Calculate max scroll position
+      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+      
+      // Update position
+      this.autoScrollPosition += this.autoScrollSpeed;
+      
+      // Reset position when reaching the end
+      if (this.autoScrollPosition >= maxScroll) {
+        this.autoScrollPosition = 0;
+      }
+      
+      // Apply transform
+      gallery.style.transform = `translateX(-${this.autoScrollPosition}px)`;
+      
+      // Continue animation
+      this.autoScrollAnimationId = requestAnimationFrame(() => this.animateAutoScroll());
+    },
+    
+    handleUserInteraction() {
+      this.isUserInteracting = true;
+      this.lastUserInteractionTime = Date.now();
+      
+      // Resume auto-scroll after a delay if user stops interacting
+      clearTimeout(this.userInteractionTimeout);
+      this.userInteractionTimeout = setTimeout(() => {
+        this.isUserInteracting = false;
+      }, 2000); // 2 second delay
+    },
+    
+    handleScroll() {
+      this.handleUserInteraction();
+    },
+    
+    handleTouchStart() {
+      if (this.autoScrollPauseOnTouch) {
+        this.handleUserInteraction();
+      }
+    },
+    
+    handleTouchMove() {
+      if (this.autoScrollPauseOnTouch) {
+        this.handleUserInteraction();
+      }
+    },
+    
+    handleWheel() {
+      this.handleUserInteraction();
+    },
+    
+    handleMouseEnter() {
+      this.isHovering = true;
+      if (this.autoScrollPauseOnHover && this.isAutoScrolling) {
+        this.isUserInteracting = true;
+      }
+    },
+    
+    handleMouseLeave() {
+      this.isHovering = false;
+      if (this.autoScrollPauseOnHover && this.isAutoScrolling) {
+        // Resume auto-scroll after a short delay
+        setTimeout(() => {
+          this.isUserInteracting = false;
+        }, 500);
+      }
+    },
+    
     customizeImageParams(options = {}) {
       let parsedHeight;
       
@@ -194,6 +301,9 @@ export default {
               this.isGalleryVisible = true;
               this.startImageLoading();
               this.showImagesInSequence();
+              
+              // Check if gallery is in center of viewport
+              this.checkIfInCenter();
             } else {
               this.isGalleryVisible = false;
             }
@@ -206,6 +316,35 @@ export default {
       );
       
       this.observer.observe(this.$refs.galleryContainer);
+    },
+    checkIfInCenter() {
+      if (!this.$refs.galleryContainer) return;
+      
+      const rect = this.$refs.galleryContainer.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const viewportWidth = window.innerWidth;
+      
+      // Calculate center of viewport
+      const viewportCenterY = viewportHeight / 2;
+      const viewportCenterX = viewportWidth / 2;
+      
+      // Calculate center of gallery
+      const galleryCenterY = rect.top + rect.height / 2;
+      const galleryCenterX = rect.left + rect.width / 2;
+      
+      // Check if gallery is roughly in the center (within 20% of viewport)
+      const centerThresholdY = viewportHeight * 0.2;
+      const centerThresholdX = viewportWidth * 0.2;
+      
+      const isInCenterY = Math.abs(galleryCenterY - viewportCenterY) < centerThresholdY;
+      const isInCenterX = Math.abs(galleryCenterX - viewportCenterX) < centerThresholdX;
+      
+      const isInCenter = isInCenterY && isInCenterX;
+      
+      // Emit event for parent components to react
+      this.$emit('center-visibility-changed', isInCenter);
+      
+      return isInCenter;
     },
     startImageLoading() {
       // Trigger the lazy loading directive to start loading images
@@ -225,6 +364,27 @@ export default {
         // Force a re-render to trigger the lazy loading directive
         this.$forceUpdate();
       });
+    },
+    
+    // Public methods for external control
+    startAutoScrollProgrammatically() {
+      this.startAutoScroll();
+    },
+    
+    stopAutoScrollProgrammatically() {
+      this.stopAutoScroll();
+    },
+    
+    pauseAutoScroll() {
+      this.isUserInteracting = true;
+    },
+    
+    resumeAutoScroll() {
+      this.isUserInteracting = false;
+    },
+    
+    isAutoScrollActive() {
+      return this.isAutoScrolling && !this.isUserInteracting;
     }
   },
   computed: {
@@ -311,6 +471,13 @@ export default {
         this.$forceUpdate();
       });
     });
+    
+    // Start auto-scroll if enabled
+    if (this.enableAutoScroll) {
+      this.$nextTick(() => {
+        this.startAutoScroll();
+      });
+    }
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
@@ -318,6 +485,12 @@ export default {
     // Clean up observer
     if (this.observer) {
       this.observer.disconnect();
+    }
+    
+    // Clean up auto-scroll
+    this.stopAutoScroll();
+    if (this.userInteractionTimeout) {
+      clearTimeout(this.userInteractionTimeout);
     }
   },
   watch: {
@@ -336,6 +509,18 @@ export default {
           this.showImagesInSequence();
         });
       }
+    },
+    enableAutoScroll(newValue) {
+      if (newValue) {
+        this.$nextTick(() => {
+          this.startAutoScroll();
+        });
+      } else {
+        this.stopAutoScroll();
+      }
+    },
+    autoScrollSpeed() {
+      // Speed change will take effect on next animation frame
     }
   }
 };
@@ -382,6 +567,15 @@ export default {
 
 .gallery.auto-scrolling {
   transition: transform 0.35s ease-in-out;
+}
+
+.gallery.auto-scroll-active {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.gallery.auto-scroll-active:hover {
+  transition: transform 0.2s ease-out;
 }
 
 .gallery.manual-scroll {
