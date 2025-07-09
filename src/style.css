@@ -199,6 +199,11 @@ body {
   overflow-y: visible;
 }
 
+/* Hide alt text for all images */
+img {
+  font-size: 0;
+}
+
 
 
 h1 {
