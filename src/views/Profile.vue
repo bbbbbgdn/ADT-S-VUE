@@ -238,10 +238,11 @@ export default {
 .profile-image img {
   width: 100%;
   object-fit: contain;
-  padding: 0 0 0 var(--space-md);
+  padding: 0 var(--space-md);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   display: block;
+  background: transparent;
 }
 
 .image-placeholder {

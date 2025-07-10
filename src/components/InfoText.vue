@@ -72,6 +72,8 @@ export default {
 
     margin: 0 auto;
     text-indent: var(--space-3xl);
+
+    padding: var(--space-xl) var(--space-md);
   }
 }
 </style>
