@@ -111,6 +111,10 @@ export default {
       isAutoScrolling: false,
       isUserInteracting: false,
       lastUserInteractionTime: 0,
+      userInteractionTimeout: null,
+      lastScrollLeft: 0,
+      scrollCheckInterval: null,
+      wheelTimeout: null,
     };
   },
   setup() {
@@ -127,10 +131,13 @@ export default {
     
     // Auto-scroll methods
     startAutoScroll() {
-      if (!this.enableAutoScroll || this.isAutoScrolling) return;
+      if (this.isAutoScrolling) return;
+      
+      const gallery = this.$refs.gallery;
+      if (!gallery) return;
       
       this.isAutoScrolling = true;
-      this.autoScrollPosition = 0;
+      this.autoScrollPosition = gallery.scrollLeft;
       this.animateAutoScroll();
     },
     
@@ -140,10 +147,12 @@ export default {
         cancelAnimationFrame(this.autoScrollAnimationId);
         this.autoScrollAnimationId = null;
       }
+      // Keep the current scroll position when stopping
+      this.autoScrollPosition = this.$refs.gallery?.scrollLeft || 0;
     },
     
     animateAutoScroll() {
-      if (!this.isAutoScrolling || this.isUserInteracting) {
+      if (!this.isAutoScrolling) {
         this.autoScrollAnimationId = requestAnimationFrame(() => this.animateAutoScroll());
         return;
       }
@@ -151,19 +160,29 @@ export default {
       const gallery = this.$refs.gallery;
       if (!gallery) return;
       
+      // Pause auto-scroll if user is interacting
+      if (this.isUserInteracting) {
+        this.autoScrollAnimationId = requestAnimationFrame(() => this.animateAutoScroll());
+        return;
+      }
+      
       // Calculate max scroll position
       const maxScroll = gallery.scrollWidth - gallery.clientWidth;
       
-      // Update position
-      this.autoScrollPosition += this.autoScrollSpeed;
+      // Update position - 10px per second (divide by 60 for 60fps)
+      this.autoScrollPosition += 10 / 60;
       
       // Reset position when reaching the end
       if (this.autoScrollPosition >= maxScroll) {
         this.autoScrollPosition = 0;
       }
       
-      // Apply transform
-      gallery.style.transform = `translateX(-${this.autoScrollPosition}px)`;
+      // Use native scroll instead of transform, but only if not being manually scrolled
+      if (Math.abs(gallery.scrollLeft - this.lastScrollLeft) < 1) {
+        gallery.scrollLeft = this.autoScrollPosition;
+      }
+      
+      this.lastScrollLeft = gallery.scrollLeft;
       
       // Continue animation
       this.autoScrollAnimationId = requestAnimationFrame(() => this.animateAutoScroll());
@@ -177,44 +196,64 @@ export default {
       clearTimeout(this.userInteractionTimeout);
       this.userInteractionTimeout = setTimeout(() => {
         this.isUserInteracting = false;
-      }, 2000); // 2 second delay
+      }, 1000); // 1 second delay for smoother experience
     },
     
     handleScroll() {
-      this.handleUserInteraction();
+      const gallery = this.$refs.gallery;
+      if (!gallery) return;
+      
+      // Detect if this is manual scrolling
+      const currentScrollLeft = gallery.scrollLeft;
+      const scrollDifference = Math.abs(currentScrollLeft - this.lastScrollLeft);
+      
+      if (scrollDifference > 5) { // Threshold to detect manual scrolling
+        this.isUserInteracting = true;
+        this.autoScrollPosition = currentScrollLeft;
+      }
+      
+      this.lastScrollLeft = currentScrollLeft;
+      
+      // Clear existing timeout and set new one to detect when scrolling stops
+      clearTimeout(this.scrollTimeout);
+      this.scrollTimeout = setTimeout(() => {
+        // Scrolling has stopped, resume auto-scroll smoothly
+        if (this.isAutoScrolling) {
+          this.isUserInteracting = false;
+        }
+      }, 300); // Slightly longer delay for better detection
     },
     
     handleTouchStart() {
-      if (this.autoScrollPauseOnTouch) {
-        this.handleUserInteraction();
-      }
+      this.isUserInteracting = true;
     },
     
     handleTouchMove() {
-      if (this.autoScrollPauseOnTouch) {
-        this.handleUserInteraction();
-      }
+      this.isUserInteracting = true;
     },
     
-    handleWheel() {
-      this.handleUserInteraction();
+    handleWheel(event) {
+      // Handle horizontal scrolling
+      if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+        this.isUserInteracting = true;
+        // Resume auto-scroll after wheel interaction
+        clearTimeout(this.wheelTimeout);
+        this.wheelTimeout = setTimeout(() => {
+          this.isUserInteracting = false;
+        }, 500);
+      }
     },
     
     handleMouseEnter() {
       this.isHovering = true;
-      if (this.autoScrollPauseOnHover && this.isAutoScrolling) {
-        this.isUserInteracting = true;
-      }
+      // Start auto-scroll on hover
+      this.startAutoScroll();
     },
     
     handleMouseLeave() {
       this.isHovering = false;
-      if (this.autoScrollPauseOnHover && this.isAutoScrolling) {
-        // Resume auto-scroll after a short delay
-        setTimeout(() => {
-          this.isUserInteracting = false;
-        }, 500);
-      }
+      // Stop auto-scroll when not hovering
+      this.stopAutoScroll();
     },
     
     customizeImageParams(options = {}) {
@@ -492,6 +531,15 @@ export default {
     if (this.userInteractionTimeout) {
       clearTimeout(this.userInteractionTimeout);
     }
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout);
+    }
+    if (this.scrollCheckInterval) {
+      clearInterval(this.scrollCheckInterval);
+    }
+    if (this.wheelTimeout) {
+      clearTimeout(this.wheelTimeout);
+    }
   },
   watch: {
     isHovering() {
@@ -559,10 +607,17 @@ export default {
   display: flex;
   width: 100%;
   will-change: transform;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
   /* Hide scrollbars for all browsers */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   overflow: -moz-scrollbars-none; /* Firefox (older versions) */
+}
+
+.gallery::-webkit-scrollbar {
+  display: none;
 }
 
 .gallery.auto-scrolling {
