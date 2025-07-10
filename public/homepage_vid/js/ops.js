@@ -5443,6 +5443,59 @@ CABLES.OPS["cf3544e4-e392-432b-89fd-fcfb5c974388"]={f:Ops.Trigger.TriggerOnce,ob
 
 
 
+
+// **************************************************************
+// 
+// Ops.Ui.VizNumber
+// 
+// **************************************************************
+
+Ops.Ui.VizNumber= class extends CABLES.Op 
+{
+constructor()
+{
+super(...arguments);
+const op=this;
+const attachments=op.attachments={};
+const inNum = op.inFloat("Number", 0);
+const outNum = op.outNumber("Result");
+
+op.setUiAttrib({ "widthOnlyGrow": true });
+
+inNum.onChange = update;
+
+update();
+
+function update()
+{
+    let n = inNum.get();
+    // if (op.patch.isEditorMode())
+    // {
+    //     let str = "";
+    //     if (n === null)str = "null";
+    //     else if (isNaN(n))str = "NaN";
+    //     else if (n === undefined)str = "undefined";
+    //     else
+    //     {
+    //         str = "" + Math.round(n * 10000) / 10000;
+
+    //         if (str[0] != "-")str = " " + str;
+    //     }
+
+    //     op.setUiAttribs({ "extendTitle": str });
+    // }
+    op.setUiAttribs({ "extendTitle": inNum.getValueForDisplay() });
+
+    outNum.set(n);
+}
+
+}
+};
+
+CABLES.OPS["2b60d12d-2884-4ad0-bda4-0caeb6882f5c"]={f:Ops.Ui.VizNumber,objName:"Ops.Ui.VizNumber"};
+
+
+
 window.addEventListener('load', function(event) {
 CABLES.jsLoaded=new Event('CABLES.jsLoaded');
 document.dispatchEvent(CABLES.jsLoaded);

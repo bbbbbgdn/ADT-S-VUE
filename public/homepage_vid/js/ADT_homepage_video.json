@@ -19,7 +19,7 @@
                 },
                 {
                     "name": "mute",
-                    "value": 1
+                    "value": 0
                 },
                 {
                     "name": "Update FPS",
@@ -91,7 +91,7 @@
                 },
                 {
                     "name": "progress",
-                    "value": 0.6517287518853695
+                    "value": 0.2073464177978884
                 },
                 {
                     "name": "Interaction Needed",
@@ -99,7 +99,7 @@
                 },
                 {
                     "name": "CurrentTime",
-                    "value": 34.567693
+                    "value": 10.997654
                 },
                 {
                     "name": "Loading",
@@ -382,11 +382,11 @@
                 },
                 {
                     "name": "Texture Width",
-                    "value": 1024
+                    "value": 2048
                 },
                 {
                     "name": "Texture Height",
-                    "value": 512
+                    "value": 1024
                 }
             ],
             "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
@@ -437,7 +437,7 @@
                 },
                 {
                     "name": "Stretch Axis",
-                    "value": "Y"
+                    "value": "X"
                 },
                 {
                     "name": "Position",
@@ -630,11 +630,11 @@
                 },
                 {
                     "name": "current time",
-                    "value": 36.131766022
+                    "value": 332.54000504199996
                 },
                 {
                     "name": "current frame",
-                    "value": 1084
+                    "value": 9976
                 }
             ],
             "objName": "Ops.TimeLine.TimeLinePlayer"
@@ -787,6 +787,12 @@
                             "portOut": "Trigger Loading Finished ",
                             "objIn": "741yxuubt",
                             "objOut": "zj13yr39a"
+                        },
+                        {
+                            "portIn": "Play",
+                            "portOut": "Trigger Loading Finished ",
+                            "objIn": "xvljooj5f",
+                            "objOut": "zj13yr39a"
                         }
                     ]
                 }
@@ -823,11 +829,11 @@
             "portsOut": [
                 {
                     "name": "CSS Width",
-                    "value": 568
+                    "value": 1032
                 },
                 {
                     "name": "CSS Height",
-                    "value": 326
+                    "value": 573
                 },
                 {
                     "name": "Pixel Ratio",
@@ -998,11 +1004,11 @@
                 },
                 {
                     "name": "Movement X",
-                    "value": -8
+                    "value": -13.5
                 },
                 {
                     "name": "Movement Y",
-                    "value": 8.5
+                    "value": 4
                 }
             ],
             "objName": "Ops.Devices.Mouse.Mouse_v4"
@@ -1013,7 +1019,7 @@
             "portsIn": [
                 {
                     "name": "start",
-                    "value": 0.6
+                    "value": 0.9
                 },
                 {
                     "name": "end",
@@ -1080,12 +1086,12 @@
                 },
                 {
                     "name": "Inc factor",
-                    "value": 32,
+                    "value": 40,
                     "title": "Inc factor"
                 },
                 {
                     "name": "Dec factor",
-                    "value": 2
+                    "value": 1
                 }
             ],
             "portsOut": [
@@ -1252,15 +1258,15 @@
                 },
                 {
                     "name": "Aspect Ratio",
-                    "value": 1.7423312883435582
+                    "value": 1.801047120418848
                 },
                 {
                     "name": "Texture Width",
-                    "value": 1136
+                    "value": 2064
                 },
                 {
                     "name": "Texture Height",
-                    "value": 652
+                    "value": 1146
                 }
             ],
             "objName": "Ops.Gl.ImageCompose.ImageCompose_v4"
@@ -1718,11 +1724,11 @@
                 },
                 {
                     "name": "width",
-                    "value": 1136
+                    "value": 2064
                 },
                 {
                     "name": "height",
-                    "value": 652
+                    "value": 1146
                 },
                 {
                     "name": "Pixel Density",
@@ -1915,7 +1921,7 @@
             "portsOut": [
                 {
                     "name": "Current Value",
-                    "value": 1
+                    "value": -0.2266233869020977
                 },
                 {
                     "name": "Dragging",
@@ -2004,6 +2010,12 @@
                             "portOut": "result",
                             "objIn": "ogkcoiae9",
                             "objOut": "nv4an2zpi"
+                        },
+                        {
+                            "portIn": "Number",
+                            "portOut": "result",
+                            "objIn": "ip9s62bcq",
+                            "objOut": "nv4an2zpi"
                         }
                     ]
                 }
@@ -2082,7 +2094,7 @@
             "portsIn": [
                 {
                     "name": "value",
-                    "value": 0.1
+                    "value": 0.8
                 }
             ],
             "portsOut": [
@@ -2259,7 +2271,7 @@
                 },
                 {
                     "name": "Number",
-                    "value": -0.9215346260304831
+                    "value": -0.9892460954542975
                 }
             ],
             "objName": "Ops.Number.TriggerOnChangeNumber_v2"
@@ -2293,7 +2305,7 @@
                 },
                 {
                     "name": "Delaying",
-                    "value": false
+                    "value": true
                 }
             ],
             "objName": "Ops.Trigger.DelayedTrigger"
@@ -2471,10 +2483,21 @@
                 }
             ],
             "objName": "Ops.Trigger.TriggerOnce"
+        },
+        {
+            "id": "ip9s62bcq",
+            "uiAttribs": {},
+            "portsOut": [
+                {
+                    "name": "Result",
+                    "value": 1.2266233869020977
+                }
+            ],
+            "objName": "Ops.Ui.VizNumber"
         }
     ],
     "export": {
-        "time": "2025-07-08 16:14",
+        "time": "2025-07-10 22:24",
         "service": "html",
         "exportNumber": 21
     }
