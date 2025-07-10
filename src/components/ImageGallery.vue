@@ -499,12 +499,12 @@ export default {
       // Clear existing timeout
       clearTimeout(this.tagsScrollTimeout);
       
-      // Set timeout to detect when scrolling stops
+      // Set timeout to detect when scrolling stops - increased to 1 second
       this.tagsScrollTimeout = setTimeout(() => {
         console.log('Scrolling stopped, triggering spring animation');
         this.isTagsScrolling = false;
         this.animateTagsSpringReturn();
-      }, 150); // Detect when scrolling stops
+      }, 1000); // Changed from 150ms to 1000ms (1 second)
     },
     
     handleTagsTouchStart() {
@@ -512,11 +512,11 @@ export default {
     },
     
     handleTagsTouchEnd() {
-      // Small delay to allow for momentum scrolling
+      // Increased delay to allow for momentum scrolling and match the 1-second delay
       setTimeout(() => {
         this.isTagsScrolling = false;
         this.animateTagsSpringReturn();
-      }, 100);
+      }, 1000); // Changed from 100ms to 1000ms (1 second)
     },
     
     handleTagsMouseEnter() {
@@ -865,6 +865,7 @@ export default {
   display: flex;
   gap: var(--gallery-tags-gap);
   padding: var(--gallery-tags-padding);
+  /* padding: 0 var(--space-lg) 0 0; */
   overflow-X: scroll;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -926,6 +927,9 @@ export default {
   }
   .gallery-image {
     height: 40vh !important;
+  }
+  .gallery-tags {
+    /* padding: 0 var(--space-lg) 0 0; */
   }
 }
 

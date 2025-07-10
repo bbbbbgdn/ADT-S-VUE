@@ -162,9 +162,9 @@ body.page-transitioning .button-black {
   /* .button-text {
     display: block;
   } */
-  .base-button {
+  /* .base-button {
     max-width: 98.5vw;
   }
-  
+   */
 }
 </style> 

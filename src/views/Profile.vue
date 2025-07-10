@@ -53,21 +53,39 @@
 
           <div class="contact-section">
             <div class="section-title">EMAIL:</div>
-            <BaseButton @click="sendEmail">tsapenkodash@gmail.com</BaseButton>
+            <div class="button-divider" 
+                 ref="emailDivider"
+                 @scroll="handleDividerScroll('email')"
+                 @touchstart="handleDividerTouchStart('email')"
+                 @touchend="handleDividerTouchEnd('email')">
+              <BaseButton @click="sendEmail">tsapenkodash@gmail.com</BaseButton>
+            </div>
           </div>
           <br>
           <div class="contact-section">
             <div class="section-title">ADDRESS:</div>
-            <BaseButton class="mailing-address" variant="grey">
-              De Constant Rebecqueplein 20-B, 2518RA Den Haag, Netherlands
-            </BaseButton>
+            <div class="button-divider" 
+                 ref="addressDivider"
+                 @scroll="handleDividerScroll('address')"
+                 @touchstart="handleDividerTouchStart('address')"
+                 @touchend="handleDividerTouchEnd('address')">
+              <BaseButton class="mailing-address" variant="grey">
+                De Constant Rebecqueplein 20-B, 2518RA Den Haag, Netherlands
+              </BaseButton>
+            </div>
           </div>
           <br>
           <div class="contact-section">
             <div class="section-title">LINKS:</div>
-            <div class="social-links">
-              <BaseButton @click="openLink('https://www.instagram.com/atelier__dashatsapenko/')">Instagram</BaseButton>
-              <BaseButton @click="openLink('https://www.linkedin.com/in/dasha-tsapenko-66b1838b/')">Linkedin</BaseButton>
+            <div class="button-divider" 
+                 ref="linksDivider"
+                 @scroll="handleDividerScroll('links')"
+                 @touchstart="handleDividerTouchStart('links')"
+                 @touchend="handleDividerTouchEnd('links')">
+              <div class="social-links">
+                <BaseButton @click="openLink('https://www.instagram.com/atelier__dashatsapenko/')">Instagram</BaseButton>
+                <BaseButton @click="openLink('https://www.linkedin.com/in/dasha-tsapenko-66b1838b/')">Linkedin</BaseButton>
+              </div>
             </div>
           </div>
         </div>
@@ -105,7 +123,11 @@ export default {
       profileImage: '/main/assets/IMG_0943.JPG',
       isSticky: false,
       initialTop: 0,
-      placeholderHeight: 0
+      placeholderHeight: 0,
+      // Scrollback data
+      dividerScrollTimeouts: {},
+      isDividerScrolling: {},
+      dividerSpringAnimationIds: {}
     }
   },
   mounted() {
@@ -117,6 +139,20 @@ export default {
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.handleResize);
+    
+    // Clean up scrollback animations
+    Object.values(this.dividerSpringAnimationIds).forEach(animationId => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    });
+    
+    // Clean up timeouts
+    Object.values(this.dividerScrollTimeouts).forEach(timeout => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    });
   },
   methods: {
     preloadImage() {
@@ -203,6 +239,76 @@ export default {
     },
     openLink(url) {
       window.open(url, '_blank')
+    },
+    // Scrollback methods for button dividers
+    handleDividerScroll(dividerType) {
+      this.isDividerScrolling[dividerType] = true;
+      
+      // Clear existing timeout
+      clearTimeout(this.dividerScrollTimeouts[dividerType]);
+      
+      // Set timeout to detect when scrolling stops - increased to 1 second
+      this.dividerScrollTimeouts[dividerType] = setTimeout(() => {
+        this.isDividerScrolling[dividerType] = false;
+        this.animateDividerSpringReturn(dividerType);
+      }, 1000); // Changed from 150ms to 1000ms (1 second)
+    },
+    
+    handleDividerTouchStart(dividerType) {
+      this.isDividerScrolling[dividerType] = true;
+    },
+    
+    handleDividerTouchEnd(dividerType) {
+      // Increased delay to allow for momentum scrolling and match the 1-second delay
+      setTimeout(() => {
+        this.isDividerScrolling[dividerType] = false;
+        this.animateDividerSpringReturn(dividerType);
+      }, 1000); // Changed from 100ms to 1000ms (1 second)
+    },
+    
+    animateDividerSpringReturn(dividerType) {
+      const dividerElement = this.$refs[`${dividerType}Divider`];
+      if (!dividerElement) return;
+      
+      const currentScrollLeft = dividerElement.scrollLeft;
+      const targetPosition = 0;
+      
+      // Start spring animation
+      this.startDividerSpringAnimation(dividerType, currentScrollLeft, targetPosition);
+    },
+    
+    startDividerSpringAnimation(dividerType, startPosition, targetPosition) {
+      if (this.dividerSpringAnimationIds[dividerType]) {
+        cancelAnimationFrame(this.dividerSpringAnimationIds[dividerType]);
+      }
+      
+      const dividerElement = this.$refs[`${dividerType}Divider`];
+      if (!dividerElement) return;
+      
+      const startTime = performance.now();
+      const duration = 600; // Animation duration in milliseconds
+      const distance = targetPosition - startPosition;
+      
+      // Cubic ease-out
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const easedProgress = easeOutCubic(progress);
+        const currentPosition = startPosition + (distance * easedProgress);
+        
+        dividerElement.scrollLeft = currentPosition;
+        
+        if (progress < 1) {
+          this.dividerSpringAnimationIds[dividerType] = requestAnimationFrame(animate);
+        } else {
+          this.dividerSpringAnimationIds[dividerType] = null;
+        }
+      };
+      
+      this.dividerSpringAnimationIds[dividerType] = requestAnimationFrame(animate);
     }
   }
 }
@@ -312,6 +418,8 @@ export default {
   grid-template-columns: 1fr 1fr;
   align-items: end;
   padding: var(--space-sm);
+  z-index: 10;
+  background-color: white;
 }
 
 .footer-left p, .footer-right p {
@@ -322,6 +430,29 @@ export default {
 
 .footer-right {
   padding-left: var(--space-4xl)
+}
+
+.button-divider {
+  width: 100vw;
+  /* margin-left: calc(-50vw + 50%); */
+  padding: 0 var(--space-lg) 0 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  /* Hide scrollbars for all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow: -moz-scrollbars-none; /* Firefox (older versions) */
+}
+
+.button-divider::-webkit-scrollbar {
+  display: none;
+}
+
+.button-divider .social-links {
+  display: flex;
+  gap: var(--space-md);
+  min-width: max-content;
 }
 
 @media screen and (max-width: 768px) {
@@ -340,6 +471,10 @@ export default {
 
 .footer-right {
   padding: 0;
+}
+
+.button-divider {
+  padding: 0 var(--space-lg) 0 0;
 }
 
 }

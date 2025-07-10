@@ -30,27 +30,33 @@
         <div 
           v-for="press in yearGroup" 
           :key="press.id" 
-          class="press-item"
-          @mouseenter="showImage(press.id)"
-          @mouseleave="hideImage"
-          @touchstart="handleTouchStart(press.id)"
-          @touchend="handleTouchEnd"
-          @touchcancel="hideImage"
-          @click="openPressUrl(press.content.URL.url)"
+          class="press-item-divider"
+          :ref="`pressDivider_${press.id}`"
+          v-bind="mobileScrollHandlers(press.id)"
         >
-          <BaseButton 
-            class="media-outlet"
-            variant="black"
+          <div 
+            class="press-item"
+            @mouseenter="showImage(press.id)"
+            @mouseleave="hideImage"
+            @touchstart="handleTouchStart(press.id)"
+            @touchend="handleTouchEnd"
+            @touchcancel="hideImage"
+            @click="openPressUrl(press.content.URL.url)"
           >
-            {{ press.content.media_outlet }}
-          </BaseButton>
-          
-          <BaseButton 
-            class="press-title" 
-            variant="grey"
-          >
-            {{ press.content.press_title }}
-          </BaseButton>
+            <BaseButton 
+              class="media-outlet"
+              variant="black"
+            >
+              {{ press.content.media_outlet }}
+            </BaseButton>
+            
+            <BaseButton 
+              class="press-title" 
+              variant="grey"
+            >
+              {{ press.content.press_title }}
+            </BaseButton>
+          </div>
         </div>
       </div>
     </div>
@@ -58,7 +64,7 @@
 </template>
 
 <script>
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref, computed, nextTick, onBeforeUnmount, getCurrentInstance } from 'vue'
 import { useStoryblokApi } from '@storyblok/vue'
 import BaseButton from '../components/BaseButton.vue'
 
@@ -71,6 +77,9 @@ export default {
     let storyblokApi = null;
     const pressItems = ref([])
     const activeImageId = ref(null)
+    const dividerScrollTimeouts = ref({})
+    const dividerSpringAnimationIds = ref({})
+    const { proxy } = getCurrentInstance();
 
     // Try to get Storyblok API only if it's available
     try {
@@ -125,20 +134,96 @@ export default {
       hideImage()
     }
 
+    // --- Scrollback methods for press-item-divider ---
+    function handleDividerScroll(pressId) {
+      if (!isMobile()) return;
+      clearTimeout(dividerScrollTimeouts.value[pressId]);
+      dividerScrollTimeouts.value[pressId] = setTimeout(() => {
+        animateDividerSpringReturn(pressId);
+      }, 1000); // 1 second timeout
+    }
+
+    function handleDividerTouchStart(pressId) {
+      if (!isMobile()) return;
+      clearTimeout(dividerScrollTimeouts.value[pressId]);
+    }
+
+    function handleDividerTouchEnd(pressId) {
+      if (!isMobile()) return;
+      clearTimeout(dividerScrollTimeouts.value[pressId]);
+      dividerScrollTimeouts.value[pressId] = setTimeout(() => {
+        animateDividerSpringReturn(pressId);
+      }, 1000); // 1 second timeout
+    }
+
+    function animateDividerSpringReturn(pressId) {
+      const dividerElement = getDividerElement(pressId);
+      if (!dividerElement) return;
+      const currentScrollLeft = dividerElement.scrollLeft;
+      if (currentScrollLeft === 0) return;
+      startDividerSpringAnimation(pressId, currentScrollLeft, 0);
+    }
+
+    function startDividerSpringAnimation(pressId, startPosition, targetPosition) {
+      if (dividerSpringAnimationIds.value[pressId]) {
+        cancelAnimationFrame(dividerSpringAnimationIds.value[pressId]);
+      }
+      const dividerElement = getDividerElement(pressId);
+      if (!dividerElement) return;
+      const startTime = performance.now();
+      const duration = 600;
+      const distance = targetPosition - startPosition;
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutCubic(progress);
+        const currentPosition = startPosition + (distance * easedProgress);
+        dividerElement.scrollLeft = currentPosition;
+        if (progress < 1) {
+          dividerSpringAnimationIds.value[pressId] = requestAnimationFrame(animate);
+        } else {
+          dividerSpringAnimationIds.value[pressId] = null;
+        }
+      };
+      dividerSpringAnimationIds.value[pressId] = requestAnimationFrame(animate);
+    }
+
+    function getDividerElement(pressId) {
+      // Use Vue refs only
+      const ref = proxy?.$refs?.[`pressDivider_${pressId}`];
+      if (Array.isArray(ref)) return ref[0];
+      return ref || null;
+    }
+
+    function isMobile() {
+      return typeof window !== 'undefined' && window.innerWidth <= 768;
+    }
+
+    // Utility to attach scroll handlers only on mobile
+    function mobileScrollHandlers(pressId) {
+      if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+        return {
+          onScroll: () => handleDividerScroll(pressId),
+          onTouchstart: () => handleDividerTouchStart(pressId),
+          onTouchend: () => handleDividerTouchEnd(pressId)
+        };
+      }
+      return {};
+    }
+
     onMounted(async () => {
       // Check if Storyblok is available
       if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN || !storyblokApi) {
         console.warn('Storyblok is not available. Press page will be empty.');
         return;
       }
-      
       try {
         const response = await storyblokApi.get('cdn/stories', {
           starts_with: 'press/',
           version: 'draft',
           resolve_links: 'url'
         })
-        
         if (response?.data?.stories) {
           pressItems.value = response.data.stories
         }
@@ -147,6 +232,12 @@ export default {
       }
     })
 
+    onBeforeUnmount(() => {
+      // Clean up all timeouts and animation frames
+      Object.values(dividerScrollTimeouts.value).forEach(timeout => timeout && clearTimeout(timeout));
+      Object.values(dividerSpringAnimationIds.value).forEach(id => id && cancelAnimationFrame(id));
+    });
+
     return {
       groupedPress,
       openPressUrl,
@@ -154,7 +245,8 @@ export default {
       showImage,
       hideImage,
       handleTouchStart,
-      handleTouchEnd
+      handleTouchEnd,
+      mobileScrollHandlers
     }
   }
 }
@@ -257,16 +349,46 @@ export default {
   /* margin-left: -81rem; */
 
   /* max-width: 98.5vw; */
-  max-width: 81.5vw;
+  /* max-width: 81.5vw; */
   /* transition: all 0.3s ease; */
+ 
+}
+
+.press-item-divider {
+  width: 100vw;
+  /* padding: 0 var(--space-lg) 0 0; */
+}
+@media screen and (max-width: 768px) {
+  .press-item-divider {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    padding: 0 var(--space-lg) 0 0;
+  }
+  .press-item-divider::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
+
+  .base-button {
+    margin: 0 var(--space-md);
+  }
+
+  .press-container {
+    padding:0;
+    margin: 0px;
+    /* padding-left: var(--space-md); */
+    /* overflow: visible; */
+    /* margin-right: var(--space-md); */
+  }
+
   .background-image {
     display: none;
-  }
-  .press-container {
-    /* padding: var(--space-sm); */
   }
 
   .year-group {
@@ -278,18 +400,21 @@ export default {
   .press-items {
     display: flex;
     flex-direction: column;
+    /* margin-left: var(--space-md); */
+    overflow: visible;
   }
 
   .press-item {
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
+    /* width: 100%; */
   }
 
   .media-outlet,
   .press-title {
+    margin-right: var(--space-sm);
     /* width: 100%; */
-    max-width: 100%;
+    /* max-width: 100%; */
   }
 }
 </style>
