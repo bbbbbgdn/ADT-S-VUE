@@ -41,7 +41,17 @@
       </div>
     </div>
 
-    <div v-if="shouldShowTags" class="gallery-tags" @click.stop>
+    <div 
+      v-if="shouldShowTags" 
+      class="gallery-tags" 
+      @click.stop
+      ref="galleryTags"
+      @scroll="handleTagsScroll"
+      @touchstart="handleTagsTouchStart"
+      @touchend="handleTagsTouchEnd"
+      @mouseenter="handleTagsMouseEnter"
+      @mouseleave="handleTagsMouseLeave"
+    >
       <ButtonBase 
         v-if="name && name.trim().length > 0" 
         :to="`/shows/${slug}`" 
@@ -115,6 +125,11 @@ export default {
       lastScrollLeft: 0,
       scrollCheckInterval: null,
       wheelTimeout: null,
+      // Tags scroll data
+      tagsScrollTimeout: null,
+      isTagsScrolling: false,
+      tagsOriginalPosition: 0,
+      tagsSpringAnimationId: null,
       lastScrollCheckTime: 0,
       scrollVelocity: 0,
     };
@@ -465,6 +480,122 @@ export default {
     
     isAutoScrollActive() {
       return this.isAutoScrolling && !this.isUserInteracting;
+    },
+    
+    // Tags scroll methods
+    handleTagsScroll() {
+      console.log('Tags scroll event fired');
+      const tagsElement = this.$refs.galleryTags;
+      if (!tagsElement) {
+        console.log('No tags element found');
+        return;
+      }
+      
+      console.log('Current scroll position:', tagsElement.scrollLeft);
+      console.log('Max scroll:', tagsElement.scrollWidth - tagsElement.clientWidth);
+      
+      this.isTagsScrolling = true;
+      
+      // Clear existing timeout
+      clearTimeout(this.tagsScrollTimeout);
+      
+      // Set timeout to detect when scrolling stops
+      this.tagsScrollTimeout = setTimeout(() => {
+        console.log('Scrolling stopped, triggering spring animation');
+        this.isTagsScrolling = false;
+        this.animateTagsSpringReturn();
+      }, 150); // Detect when scrolling stops
+    },
+    
+    handleTagsTouchStart() {
+      this.isTagsScrolling = true;
+    },
+    
+    handleTagsTouchEnd() {
+      // Small delay to allow for momentum scrolling
+      setTimeout(() => {
+        this.isTagsScrolling = false;
+        this.animateTagsSpringReturn();
+      }, 100);
+    },
+    
+    handleTagsMouseEnter() {
+      // Optional: pause spring animation on hover
+    },
+    
+    handleTagsMouseLeave() {
+      // Optional: resume spring animation when leaving
+    },
+    
+    animateTagsSpringReturn() {
+      console.log('animateTagsSpringReturn called');
+      const tagsElement = this.$refs.galleryTags;
+      if (!tagsElement) {
+        console.log('No tags element in animateTagsSpringReturn');
+        return;
+      }
+      
+      const currentScrollLeft = tagsElement.scrollLeft;
+      const maxScroll = tagsElement.scrollWidth - tagsElement.clientWidth;
+      
+      console.log('Current scroll left:', currentScrollLeft);
+      console.log('Max scroll:', maxScroll);
+      
+      // Always animate back to 0
+      const targetPosition = 0;
+      console.log('Target position:', targetPosition);
+      
+      // Start spring animation
+      this.startTagsSpringAnimation(currentScrollLeft, targetPosition);
+    },
+    
+    startTagsSpringAnimation(startPosition, targetPosition) {
+      if (this.tagsSpringAnimationId) {
+        cancelAnimationFrame(this.tagsSpringAnimationId);
+      }
+      
+      const tagsElement = this.$refs.galleryTags;
+      if (!tagsElement) return;
+      
+      const startTime = performance.now();
+      const duration = 600; // Animation duration in milliseconds
+      const distance = targetPosition - startPosition;
+      
+      // Cubic ease-out
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const easedProgress = easeOutCubic(progress);
+        const currentPosition = startPosition + (distance * easedProgress);
+        
+        tagsElement.scrollLeft = currentPosition;
+        
+        if (progress < 1) {
+          this.tagsSpringAnimationId = requestAnimationFrame(animate);
+        } else {
+          this.tagsSpringAnimationId = null;
+        }
+      };
+      
+      this.tagsSpringAnimationId = requestAnimationFrame(animate);
+    },
+    
+    debugTagsElement() {
+      const tagsElement = this.$refs.galleryTags;
+      if (!tagsElement) {
+        console.log('No gallery tags element found');
+        return;
+      }
+      
+      console.log('Gallery tags element found:', tagsElement);
+      console.log('Scroll width:', tagsElement.scrollWidth);
+      console.log('Client width:', tagsElement.clientWidth);
+      console.log('Is scrollable:', tagsElement.scrollWidth > tagsElement.clientWidth);
+      console.log('Current scroll left:', tagsElement.scrollLeft);
+      console.log('Max scroll:', tagsElement.scrollWidth - tagsElement.clientWidth);
     }
   },
   computed: {
@@ -549,6 +680,11 @@ export default {
       // Force a re-render after DOM is ready to ensure correct image dimensions
       this.$nextTick(() => {
         this.$forceUpdate();
+        
+        // Debug tags element
+        this.$nextTick(() => {
+          this.debugTagsElement();
+        });
       });
     });
     
@@ -580,6 +716,12 @@ export default {
     }
     if (this.wheelTimeout) {
       clearTimeout(this.wheelTimeout);
+    }
+    if (this.tagsScrollTimeout) {
+      clearTimeout(this.tagsScrollTimeout);
+    }
+    if (this.tagsSpringAnimationId) {
+      cancelAnimationFrame(this.tagsSpringAnimationId);
     }
   },
   watch: {
@@ -723,7 +865,17 @@ export default {
   display: flex;
   gap: var(--gallery-tags-gap);
   padding: var(--gallery-tags-padding);
-  
+  overflow-X: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbars for all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow: -moz-scrollbars-none; /* Firefox (older versions) */
+}
+
+.gallery-tags::-webkit-scrollbar {
+  display: none;
 }
 
 .gallery-container.clickable .gallery-tags {
