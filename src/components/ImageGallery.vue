@@ -115,6 +115,8 @@ export default {
       lastScrollLeft: 0,
       scrollCheckInterval: null,
       wheelTimeout: null,
+      lastScrollCheckTime: 0,
+      scrollVelocity: 0,
     };
   },
   setup() {
@@ -178,8 +180,15 @@ export default {
       }
       
       // Use native scroll instead of transform, but only if not being manually scrolled
-      if (Math.abs(gallery.scrollLeft - this.lastScrollLeft) < 1) {
+      // Add a small buffer to prevent conflicts with manual scrolling
+      const currentScrollLeft = gallery.scrollLeft;
+      const scrollDifference = Math.abs(currentScrollLeft - this.lastScrollLeft);
+      
+      if (scrollDifference < 0.5) { // Very small threshold to prevent conflicts
         gallery.scrollLeft = this.autoScrollPosition;
+      } else {
+        // Manual scrolling detected, update auto-scroll position to match
+        this.autoScrollPosition = currentScrollLeft;
       }
       
       this.lastScrollLeft = gallery.scrollLeft;
@@ -217,10 +226,8 @@ export default {
       // Clear existing timeout and set new one to detect when scrolling stops
       clearTimeout(this.scrollTimeout);
       this.scrollTimeout = setTimeout(() => {
-        // Scrolling has stopped, resume auto-scroll smoothly
-        if (this.isAutoScrolling) {
-          this.isUserInteracting = false;
-        }
+        // Check if scrolling has actually stopped (no inertia)
+        this.checkScrollInertia();
       }, 300); // Slightly longer delay for better detection
     },
     
@@ -236,12 +243,46 @@ export default {
       // Handle horizontal scrolling
       if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
         this.isUserInteracting = true;
+        this.autoScrollPosition = this.$refs.gallery?.scrollLeft || 0;
         // Resume auto-scroll after wheel interaction
         clearTimeout(this.wheelTimeout);
         this.wheelTimeout = setTimeout(() => {
-          this.isUserInteracting = false;
+          this.checkScrollInertia();
         }, 500);
       }
+    },
+    
+    checkScrollInertia() {
+      const gallery = this.$refs.gallery;
+      if (!gallery || !this.isAutoScrolling) return;
+      
+      const currentTime = Date.now();
+      const currentScrollLeft = gallery.scrollLeft;
+      
+      // Calculate scroll velocity
+      if (this.lastScrollCheckTime > 0) {
+        const timeDiff = currentTime - this.lastScrollCheckTime;
+        const scrollDiff = currentScrollLeft - this.lastScrollLeft;
+        this.scrollVelocity = scrollDiff / timeDiff; // pixels per millisecond
+      }
+      
+      // Check if scrolling has truly stopped (velocity is very low)
+      if (Math.abs(this.scrollVelocity) < 0.01) { // Very low velocity threshold
+        // Add a small delay to ensure inertia is completely finished
+        setTimeout(() => {
+          this.isUserInteracting = false;
+          this.autoScrollPosition = currentScrollLeft;
+          this.scrollVelocity = 0;
+        }, 100);
+      } else {
+        // Still scrolling, check again in a short time
+        setTimeout(() => {
+          this.checkScrollInertia();
+        }, 50);
+      }
+      
+      this.lastScrollCheckTime = currentTime;
+      this.lastScrollLeft = currentScrollLeft;
     },
     
     handleMouseEnter() {
