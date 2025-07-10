@@ -1,7 +1,7 @@
 <template>
   <div class="profile-page-wrapper">
     <div class="profile-container">
-      <div class="profile-image">
+      <div class="profile-image" ref="profileImageContainer">
         <img 
           :src="profileImage" 
           :class="{'image-visible': imageLoaded}"
@@ -12,7 +12,10 @@
         <div class="image-placeholder" v-if="!imageLoaded"></div>
       </div>
       
-      <div class="profile-content">
+      <!-- Placeholder to maintain layout when image is sticky -->
+      <div class="image-placeholder-spacer" ref="imagePlaceholder" :style="{ height: placeholderHeight + 'px' }"></div>
+      
+      <div class="profile-content" ref="profileContent">
         <div class="profile-header">
           <MainText>Where fashion grows with nature.</MainText>
         </div>
@@ -99,11 +102,21 @@ export default {
   data() {
     return {
       imageLoaded: false,
-      profileImage: '/main/assets/IMG_0943.JPG'
+      profileImage: '/main/assets/IMG_0943.JPG',
+      isSticky: false,
+      initialTop: 0,
+      placeholderHeight: 0
     }
   },
   mounted() {
     this.preloadImage();
+    this.setupStickyImage();
+    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
   },
   methods: {
     preloadImage() {
@@ -113,6 +126,77 @@ export default {
     },
     handleImageLoaded() {
       this.imageLoaded = true;
+    },
+    setupStickyImage() {
+      this.$nextTick(() => {
+        if (this.$refs.profileImageContainer) {
+          this.initialTop = this.$refs.profileImageContainer.offsetTop;
+          this.placeholderHeight = this.$refs.profileImageContainer.offsetHeight;
+        }
+      });
+    },
+    handleScroll() {
+      if (!this.$refs.profileImageContainer) return;
+      const isDesktop = window.innerWidth > 768;
+      const container = this.$refs.profileImageContainer;
+      const placeholder = this.$refs.imagePlaceholder;
+      if (!isDesktop) {
+        // Always reset on mobile
+        this.isSticky = false;
+        container.style.position = 'static';
+        container.style.top = 'auto';
+        container.style.left = 'auto';
+        container.style.width = 'auto';
+        container.style.zIndex = 'auto';
+        if (placeholder) placeholder.style.display = 'none';
+        return;
+      }
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > this.initialTop) {
+        if (!this.isSticky) {
+          this.isSticky = true;
+          container.style.position = 'fixed';
+          container.style.top = '0';
+          container.style.left = '0';
+          container.style.width = '50%';
+          container.style.zIndex = '10';
+          if (placeholder) {
+            placeholder.style.display = 'block';
+            placeholder.style.width = '50%';
+            placeholder.style.height = this.placeholderHeight + 'px';
+          }
+        }
+      } else {
+        if (this.isSticky) {
+          this.isSticky = false;
+          container.style.position = 'static';
+          container.style.top = 'auto';
+          container.style.left = 'auto';
+          container.style.width = 'auto';
+          container.style.zIndex = 'auto';
+          if (placeholder) {
+            placeholder.style.display = 'none';
+          }
+        }
+      }
+    },
+    handleResize() {
+      // Reset sticky state on resize to recalculate positions
+      this.isSticky = false;
+      const isDesktop = window.innerWidth > 768;
+      if (this.$refs.profileImageContainer) {
+        this.$refs.profileImageContainer.style.position = 'static';
+        this.$refs.profileImageContainer.style.top = 'auto';
+        this.$refs.profileImageContainer.style.left = 'auto';
+        this.$refs.profileImageContainer.style.width = 'auto';
+        this.$refs.profileImageContainer.style.zIndex = 'auto';
+      }
+      if (this.$refs.imagePlaceholder) {
+        this.$refs.imagePlaceholder.style.display = 'none';
+      }
+      if (isDesktop) {
+        this.setupStickyImage();
+      }
     },
     sendEmail() {
       window.location.href = 'mailto:tsapenkodash@gmail.com'
@@ -147,16 +231,14 @@ export default {
   flex: 0 0 50%;
   overflow: hidden;
   position: relative;
-  /* min-height: 100vh; */
   overflow: visible;
   z-index: -1;
-  /* height: 100%; */
 }
 
 .profile-image img {
   width: 100%;
   object-fit: contain;
-  padding: 0 var(--space-md) 0 var(--space-md);
+  padding: 0 0 0 var(--space-md);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   display: block;
@@ -169,6 +251,11 @@ export default {
   right: 0;
   bottom: 0;
   background-color: #f5f5f5;
+}
+
+.image-placeholder-spacer {
+  display: none;
+  flex: 0 0 50%;
 }
 
 .image-visible {
@@ -203,8 +290,6 @@ export default {
 }
 
 .section-title {
-  /* font-size: var(--text-lg); */
-  /* font-weight: bold; */
   margin-bottom: var(--space-sm);
 }
 
@@ -255,7 +340,6 @@ export default {
 .footer-right {
   padding: 0;
 }
-
 
 }
 
