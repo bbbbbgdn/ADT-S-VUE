@@ -100,12 +100,21 @@ export default {
 <style scoped>
 .menu {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: var(--space-md);
   z-index: 100;
   position: relative;
   padding: var(--space-md);
   padding-top: var(--space-md);
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.menu::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 .components-button {
