@@ -69,7 +69,7 @@
                  @scroll="handleDividerScroll('address')"
                  @touchstart="handleDividerTouchStart('address')"
                  @touchend="handleDividerTouchEnd('address')">
-              <BaseButton class="mailing-address" variant="grey">
+              <BaseButton class="mailing-address" @click="openLink('https://maps.app.goo.gl/oYmEjUc4ooSpXh6fA')">
                 De Constant Rebecqueplein 20-B, 2518RA Den Haag, Netherlands
               </BaseButton>
             </div>
@@ -402,6 +402,7 @@ export default {
 
 .mailing-address {
   overflow-x: scroll;
+  user-select: all;
 }
 
 .social-links {
