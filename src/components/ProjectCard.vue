@@ -195,6 +195,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.05);
   opacity: 0;
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  max-width: calc(100svw - var(--space-md)*2);
 }
 
 .project-card.card-loaded {
