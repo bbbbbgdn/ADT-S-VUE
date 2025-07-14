@@ -213,4 +213,23 @@ h1 {
   background-color: #f8f8f8;
   border-radius: 8px;
 }
+
+@media screen and (max-width: 768px) {
+  /* Override main gallery height on mobile */
+  .content-container .gallery-container {
+    min-height: 60svh !important;
+  }
+  
+  .content-container .gallery-container .gallery {
+    min-height: 60svh !important;
+  }
+  
+  .content-container .gallery-container .gallery-item {
+    min-height: 60svh !important;
+  }
+  
+  .content-container .gallery-container .gallery-image {
+    min-height: 60svh !important;
+  }
+}
 </style>

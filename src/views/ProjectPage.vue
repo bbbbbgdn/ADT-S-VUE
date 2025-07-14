@@ -255,5 +255,22 @@ export default {
   width: 100%;
   /* padding: var(--space-md); */
 }
+
+  /* Override main gallery height on mobile */
+  .content-container .gallery-container {
+    min-height: 60svh !important;
+  }
+  
+  .content-container .gallery-container .gallery {
+    min-height: 60svh !important;
+  }
+  
+  .content-container .gallery-container .gallery-item {
+    min-height: 60svh !important;
+  }
+  
+  .content-container .gallery-container .gallery-image {
+    min-height: 60svh !important;
+  }
 }
 </style>
