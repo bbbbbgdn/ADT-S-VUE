@@ -10,10 +10,6 @@
       :slug="story.slug"
       :preload="true"
       @click="navigateToProject(story.slug)"
-      :style="{ 
-        // transitionDelay: shouldAnimate ? `${index * 5}s` : '0s',
-        // opacity: isLoading ? '0' : '1'
-      }"
     />
   </div>
 </template>
@@ -36,7 +32,6 @@ export default {
     let storyblokApi = null;
     const stories = ref([]);
     const isLoading = ref(true);
-    const shouldAnimate = ref(!localStorage.getItem('hasSeenAnimation'));
 
     // Try to get Storyblok API only if it's available
     try {
@@ -77,8 +72,7 @@ export default {
       stories,
       formatImage,
       navigateToProject,
-      isLoading,
-      shouldAnimate
+      isLoading
     };
   }
 }
@@ -93,15 +87,10 @@ export default {
   padding: 0 var(--space-md) var(--space-md) var(--space-md);
 }
 
-.project-card {
-  /* transition: opacity 0.5s ease-out; */
-}
-
 /* Responsive layout for mobile devices */
 @media screen and (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
 }
-
 </style> 

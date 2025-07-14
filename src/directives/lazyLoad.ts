@@ -116,20 +116,24 @@ export default {
       let next = queue.revealedIndex + 1;
       let revealedCount = 0;
       
-      // Reveal all consecutive loaded images
-      while (queue.loadedImages.has(next)) {
-        const imgEl = document.querySelector(`[data-gallery-id='${galleryId}'][data-index='${next}'].gallery-image`);
-        if (imgEl) {
-          imgEl.classList.remove('image-loading');
-          imgEl.classList.add('image-loaded');
-          requestAnimationFrame(() => {
-            imgEl['style'].opacity = '1';
-          });
+              // Reveal all consecutive loaded images
+        while (queue.loadedImages.has(next)) {
+          const imgEl = document.querySelector(`[data-gallery-id='${galleryId}'][data-index='${next}'].gallery-image`) as HTMLElement;
+          if (imgEl) {
+            // Check if image is already visible to prevent Safari issues
+            const isAlreadyVisible = imgEl.classList.contains('image-loaded') && imgEl.style.opacity === '1';
+            if (!isAlreadyVisible) {
+              imgEl.classList.remove('image-loading');
+              imgEl.classList.add('image-loaded');
+              requestAnimationFrame(() => {
+                imgEl.style.opacity = '1';
+              });
+            }
+          }
+          queue.revealedIndex = next;
+          next++;
+          revealedCount++;
         }
-        queue.revealedIndex = next;
-        next++;
-        revealedCount++;
-      }
       
       // If we revealed any images, try to reveal more (in case there are gaps)
       if (revealedCount > 0) {
@@ -151,6 +155,12 @@ export default {
     
     // Function to load the image with retry mechanism
     function loadImage() {
+      // Prevent multiple loads of the same image
+      if (el.classList.contains('image-loaded') && !el.classList.contains('image-error')) {
+        console.debug(`[LazyLoad] Image already loaded, skipping: ${options.url}`);
+        return;
+      }
+      
       const galleryId = options.galleryId || 'default';
       console.debug(`[LazyLoad] Start loading: galleryId=${galleryId}, index=${options.index}, url=${options.url}, retry=${el._retryCount}, isProjectCard=${isProjectCard}`);
       
@@ -181,10 +191,14 @@ export default {
         // Handle gallery images with queue system
         if (typeof options.index === 'number') {
           const queue = getGalleryQueue(galleryId);
-          queue.loadedImages.add(options.index)
-          // Remove from failed images if it was there
-          queue.failedImages.delete(options.index)
-          revealImages();
+          
+          // Only add to queue if not already processed
+          if (!queue.loadedImages.has(options.index)) {
+            queue.loadedImages.add(options.index)
+            // Remove from failed images if it was there
+            queue.failedImages.delete(options.index)
+            revealImages();
+          }
           // Don't disconnect observer for gallery images - let it stay active
         }
       }
