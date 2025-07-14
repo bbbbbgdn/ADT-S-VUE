@@ -5,6 +5,7 @@ import ImageGallery from '../components/ImageGallery.vue';
 import ProjectCard from '../components/ProjectCard.vue';
 import MainText from '../components/MainText.vue';
 import InfoText from '../components/InfoText.vue';
+import { renderRichText } from "@storyblok/vue";
 import useStoryblok from '../utils/useStoryblok';
 import { createImageSettings } from '../utils/imageSettings';
 import { computed } from 'vue';
@@ -21,6 +22,11 @@ export default {
     ProjectCard,
     MainText,
     InfoText
+  },
+  data() {
+    return {
+      renderRichText
+    };
   },
   setup() {
     const route = useRoute();
@@ -112,7 +118,7 @@ export default {
             variant="grey">{{ story.content?.date_tag || story.content?.year_tag }}</BaseButton>
         </div>
 
-        <InfoText :text="story.content?.info_text || ''" />
+        <InfoText :html="renderRichText(story.content?.info_text || '')" />
 
 
         <ImageGallery 
