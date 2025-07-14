@@ -38,12 +38,18 @@
             @mouseenter="showImage(press.id)"
             @mouseleave="hideImage"
             @click="handlePressItemClick(press.id, press.content.URL.url)"
+            :class="{ 'media-outlet--active': activePressId === press.id }"
           >
             {{ press.content.media_outlet }}
           </BaseButton>
           <div 
             class="press-title-scroll"
             :ref="`pressDivider_${press.id}`"
+            @touchstart="handlePressTitleInteract(press.id)"
+            @touchend="handlePressTitleTouchEnd(press.id)"
+            @mouseenter="handlePressTitleInteract(press.id)"
+            @mouseleave="handlePressTitleEnd"
+            @scroll="handlePressTitleScroll(press.id)"
           >
             <BaseButton 
               class="press-title" 
@@ -164,6 +170,70 @@ export default {
       return {};
     }
 
+    const activePressId = ref(null)
+    let scrollTimeout = null
+    let springAnimationIds = {}
+
+    function handlePressTitleInteract(pressId) {
+      activePressId.value = pressId
+    }
+    function handlePressTitleEnd() {
+      activePressId.value = null
+    }
+    function handlePressTitleScroll(pressId) {
+      activePressId.value = pressId
+      if (scrollTimeout) clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => {
+        animatePressTitleSpringReturn(pressId)
+      }, 1000)
+    }
+    function handlePressTitleTouchEnd(pressId) {
+      if (scrollTimeout) clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => {
+        animatePressTitleSpringReturn(pressId)
+      }, 1000)
+    }
+    function animatePressTitleSpringReturn(pressId) {
+      const el = getPressTitleScrollElement(pressId)
+      if (!el) return
+      const currentScrollLeft = el.scrollLeft
+      if (currentScrollLeft === 0) return
+      startPressTitleSpringAnimation(pressId, currentScrollLeft, 0)
+    }
+    function startPressTitleSpringAnimation(pressId, startPosition, targetPosition) {
+      if (springAnimationIds[pressId]) {
+        cancelAnimationFrame(springAnimationIds[pressId])
+      }
+      const el = getPressTitleScrollElement(pressId)
+      if (!el) return
+      const startTime = performance.now()
+      const duration = 600
+      const distance = targetPosition - startPosition
+      const easeOutCubic = t => 1 - Math.pow(1 - t, 3)
+      const animate = currentTime => {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(elapsed / duration, 1)
+        const easedProgress = easeOutCubic(progress)
+        const currentPosition = startPosition + (distance * easedProgress)
+        el.scrollLeft = currentPosition
+        if (progress < 1) {
+          springAnimationIds[pressId] = requestAnimationFrame(animate)
+        } else {
+          springAnimationIds[pressId] = null
+        }
+      }
+      springAnimationIds[pressId] = requestAnimationFrame(animate)
+    }
+    function getPressTitleScrollElement(pressId) {
+      const ref = proxy?.$refs?.[`pressDivider_${pressId}`]
+      if (Array.isArray(ref)) return ref[0]
+      return ref || null
+    }
+    onBeforeUnmount(() => {
+      if (scrollTimeout) clearTimeout(scrollTimeout)
+      Object.values(springAnimationIds).forEach(id => id && cancelAnimationFrame(id))
+    })
+
     onMounted(async () => {
       // Check if Storyblok is available
       if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN || !storyblokApi) {
@@ -199,7 +269,12 @@ export default {
       handleTouchStart,
       handleTouchEnd,
       handlePressItemClick,
-      mobileScrollHandlers
+      mobileScrollHandlers,
+      activePressId,
+      handlePressTitleInteract,
+      handlePressTitleEnd,
+      handlePressTitleScroll,
+      handlePressTitleTouchEnd
     }
   }
 }
@@ -361,5 +436,11 @@ export default {
     /* width: 100%; */
     /* max-width: 100%; */
   }
+}
+
+.media-outlet--active {
+  outline-offset: 2px;
+  background: var(--color-pink-primary) !important;
+  color: black !important;
 }
 </style>
