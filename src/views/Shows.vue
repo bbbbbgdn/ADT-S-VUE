@@ -56,18 +56,22 @@ const setupGalleryObserver = () => {
         const storyId = entry.target.dataset.storyId;
         if (entry.isIntersecting) {
           // Gallery is visible, add to visible stories
+          console.debug(`[Shows] Story ${storyId} is now visible`);
           visibleStories.value.add(storyId);
+        } else {
+          console.debug(`[Shows] Story ${storyId} is no longer visible`);
         }
       });
     },
     {
-      rootMargin: '200px', // Start loading 200px before gallery comes into view
+      rootMargin: '300px', // Increased margin to start loading earlier
       threshold: 0.1
     }
   );
 
   // Observe all story placeholders
   const placeholders = document.querySelectorAll('.story-placeholder');
+  console.debug(`[Shows] Setting up observer for ${placeholders.length} story placeholders`);
   placeholders.forEach(placeholder => {
     observer.observe(placeholder);
   });

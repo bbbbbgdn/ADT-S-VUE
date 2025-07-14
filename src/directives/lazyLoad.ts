@@ -4,6 +4,8 @@ import type { DirectiveBinding } from 'vue'
 interface HTMLElementWithCleanup extends HTMLElement {
   _cleanup?: () => void;
   _observer?: IntersectionObserver;
+  _retryCount?: number;
+  _maxRetries?: number;
 }
 
 // Options for the lazy loading directive
@@ -18,11 +20,11 @@ interface LazyLoadOptions {
 }
 
 // Per-gallery loading queues (only for actual galleries, not ProjectCard)
-const galleryQueues: Record<string, { revealedIndex: number, loadedImages: Set<number> }> = {};
+const galleryQueues: Record<string, { revealedIndex: number, loadedImages: Set<number>, failedImages: Set<number> }> = {};
 
 function getGalleryQueue(galleryId: string) {
   if (!galleryQueues[galleryId]) {
-    galleryQueues[galleryId] = { revealedIndex: -1, loadedImages: new Set<number>() };
+    galleryQueues[galleryId] = { revealedIndex: -1, loadedImages: new Set<number>(), failedImages: new Set<number>() };
   }
   return galleryQueues[galleryId];
 }
@@ -40,8 +42,8 @@ export default {
         !el.classList.contains('project-card-image') &&
         !el.classList.contains('project-card-background')) {
       const galleryId = binding.value.galleryId || 'default';
-      // console.debug(`[LazyLoad] beforeMount: Reset queue for new gallery ${galleryId}`);
-      galleryQueues[galleryId] = { revealedIndex: -1, loadedImages: new Set<number>() };
+      console.debug(`[LazyLoad] beforeMount: Reset queue for new gallery ${galleryId}`);
+      galleryQueues[galleryId] = { revealedIndex: -1, loadedImages: new Set<number>(), failedImages: new Set<number>() };
     }
   },
   
@@ -68,6 +70,10 @@ export default {
     el.style.opacity = '0'
     el.style.transition = 'opacity 0.2s ease-out'
     
+    // Initialize retry mechanism
+    el._retryCount = 0;
+    el._maxRetries = 3;
+    
     // Function to reveal images from left to right (only for galleries)
     function revealImages() {
       const galleryId = options.galleryId || 'default';
@@ -87,7 +93,11 @@ export default {
         return;
       }
       
+      // Try to reveal the next image in sequence
       let next = queue.revealedIndex + 1;
+      let revealedCount = 0;
+      
+      // Reveal all consecutive loaded images
       while (queue.loadedImages.has(next)) {
         const imgEl = document.querySelector(`[data-gallery-id='${galleryId}'][data-index='${next}'].gallery-image`);
         if (imgEl) {
@@ -99,6 +109,15 @@ export default {
         }
         queue.revealedIndex = next;
         next++;
+        revealedCount++;
+      }
+      
+      // If we revealed any images, try to reveal more (in case there are gaps)
+      if (revealedCount > 0) {
+        // Check if there are any loaded images that should be revealed
+        setTimeout(() => {
+          revealImages();
+        }, 50);
       }
     }
     
@@ -111,16 +130,16 @@ export default {
       });
     }
     
-    // Function to load the image
+    // Function to load the image with retry mechanism
     function loadImage() {
       const galleryId = options.galleryId || 'default';
-      // console.debug(`[LazyLoad] Start loading: galleryId=${galleryId}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
+      console.debug(`[LazyLoad] Start loading: galleryId=${galleryId}, index=${options.index}, url=${options.url}, retry=${el._retryCount}, isProjectCard=${isProjectCard}`);
       
       const img = new Image()
       img.src = options.url
       
       img.onload = () => {
-        // console.debug(`[LazyLoad] Loaded: galleryId=${galleryId}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
+        console.debug(`[LazyLoad] Loaded: galleryId=${galleryId}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
         
         if (options.background || el.tagName !== 'IMG') {
           el.style.backgroundImage = `url(${options.url})`
@@ -132,6 +151,11 @@ export default {
         // Handle ProjectCard images immediately
         if (isProjectCard) {
           revealProjectCard();
+          // Disconnect observer after successful load
+          if (el._observer) {
+            el._observer.disconnect()
+            el._observer = undefined
+          }
           return;
         }
         
@@ -139,33 +163,67 @@ export default {
         if (typeof options.index === 'number') {
           const queue = getGalleryQueue(galleryId);
           queue.loadedImages.add(options.index)
+          // Remove from failed images if it was there
+          queue.failedImages.delete(options.index)
           revealImages();
+          // Don't disconnect observer for gallery images - let it stay active
         }
       }
       
       img.onerror = () => {
-        console.error(`[LazyLoad] Failed to load: galleryId=${galleryId}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`)
-        el.classList.remove('image-loading')
-        el.classList.add('image-loaded', 'image-error')
+        console.error(`[LazyLoad] Failed to load: galleryId=${galleryId}, index=${options.index}, url=${options.url}, retry=${el._retryCount}, isProjectCard=${isProjectCard}`)
         
-        // Handle ProjectCard images immediately even on error
+        // Increment retry count
+        el._retryCount = (el._retryCount || 0) + 1;
+        
+        // Handle ProjectCard images with retry
         if (isProjectCard) {
-          revealProjectCard();
-          return;
+          if (el._retryCount < el._maxRetries) {
+            console.debug(`[LazyLoad] Retrying ProjectCard: ${el._retryCount}/${el._maxRetries}`);
+            setTimeout(() => {
+              loadImage();
+            }, 1000 * el._retryCount); // Exponential backoff
+            return;
+          } else {
+            // Max retries reached, show error state
+            el.classList.remove('image-loading')
+            el.classList.add('image-loaded', 'image-error')
+            revealProjectCard();
+            // Disconnect observer after max retries
+            if (el._observer) {
+              el._observer.disconnect()
+              el._observer = undefined
+            }
+            return;
+          }
         }
         
-        // Handle gallery images with queue system
+        // Handle gallery images with retry
         if (typeof options.index === 'number') {
           const queue = getGalleryQueue(galleryId);
-          queue.loadedImages.add(options.index)
-          revealImages();
+          
+          if (el._retryCount < el._maxRetries) {
+            console.debug(`[LazyLoad] Retrying gallery image: ${el._retryCount}/${el._maxRetries}`);
+            setTimeout(() => {
+              loadImage();
+            }, 1000 * el._retryCount); // Exponential backoff
+            return;
+          } else {
+            // Max retries reached, mark as failed but still add to queue
+            el.classList.remove('image-loading')
+            el.classList.add('image-loaded', 'image-error')
+            queue.failedImages.add(options.index)
+            queue.loadedImages.add(options.index) // Still add to loaded to unblock queue
+            revealImages();
+            // Don't disconnect observer - let it stay active for potential retries
+          }
         }
       }
     }
     
     // If preload is true, load immediately without intersection observer
     if (options.preload) {
-      // console.debug(`[LazyLoad] Preload: galleryId=${options.galleryId || 'default'}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
+      console.debug(`[LazyLoad] Preload: galleryId=${options.galleryId || 'default'}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
       loadImage()
       return
     }
@@ -183,11 +241,7 @@ export default {
           if (entries[0].isIntersecting) {
             console.debug(`[LazyLoad] ProjectCard IO load: url=${options.url}`);
             loadImage()
-            // Disconnect observer after loading
-            if (el._observer) {
-              el._observer.disconnect()
-              el._observer = undefined
-            }
+            // Don't disconnect observer immediately - let retry mechanism handle it
           }
         }, observerOptions)
         el._observer.observe(el)
@@ -203,7 +257,7 @@ export default {
     // For gallery images (when index is provided), use queue system
     if (typeof options.index === 'number') {
       const galleryId = options.galleryId || 'default';
-      // console.debug(`[LazyLoad] Gallery queued: galleryId=${galleryId}, index=${options.index}, url=${options.url}`);
+      console.debug(`[LazyLoad] Gallery queued: galleryId=${galleryId}, index=${options.index}, url=${options.url}`);
       if (hasIntersectionObserver) {
         const observerOptions = {
           root: null,
@@ -212,20 +266,16 @@ export default {
         }
         el._observer = new IntersectionObserver((entries) => {
           if (entries[0].isIntersecting) {
-            // console.debug(`[LazyLoad] Gallery IO load: galleryId=${galleryId}, url=${options.url}`);
+            console.debug(`[LazyLoad] Gallery IO load: galleryId=${galleryId}, url=${options.url}`);
             loadImage()
-            // Disconnect observer after loading
-            if (el._observer) {
-              el._observer.disconnect()
-              el._observer = undefined
-            }
+            // Don't disconnect observer for gallery images - keep it active for retries
           }
         }, observerOptions)
         el._observer.observe(el)
         return
       } else {
         // Fallback: load immediately if Intersection Observer is not supported
-        // console.debug(`[LazyLoad] Gallery fallback load: galleryId=${galleryId}, url=${options.url}`);
+        console.debug(`[LazyLoad] Gallery fallback load: galleryId=${galleryId}, url=${options.url}`);
         loadImage()
         return
       }
@@ -242,11 +292,7 @@ export default {
         if (entries[0].isIntersecting) {
           console.debug(`[LazyLoad] Default IO load: url=${options.url}`);
           loadImage()
-          // Disconnect observer after loading
-          if (el._observer) {
-            el._observer.disconnect()
-            el._observer = undefined
-          }
+          // Don't disconnect observer immediately - let retry mechanism handle it
         }
       }, observerOptions)
       el._observer.observe(el)
