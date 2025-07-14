@@ -17,6 +17,8 @@ interface LazyLoadOptions {
   rootMargin?: string; // Margin around the root
   background?: boolean; // Whether to set as background image
   preload?: boolean; // Whether to preload the image immediately
+  preloadCount?: number; // Number of images to preload offscreen
+  isBigGallery?: boolean; // Whether this is a big gallery
 }
 
 // Per-gallery loading queues (only for actual galleries, not ProjectCard)
@@ -27,6 +29,17 @@ function getGalleryQueue(galleryId: string) {
     galleryQueues[galleryId] = { revealedIndex: -1, loadedImages: new Set<number>(), failedImages: new Set<number>() };
   }
   return galleryQueues[galleryId];
+}
+
+// Function to determine if an image should be preloaded based on its index and preload count
+function shouldPreloadImage(index: number, preloadCount: number, isBigGallery: boolean): boolean {
+  // For big galleries, only preload the next image
+  if (isBigGallery) {
+    return index <= preloadCount;
+  }
+  
+  // For small galleries, preload more images offscreen
+  return index <= preloadCount;
 }
 
 // Check if Intersection Observer is supported
@@ -59,6 +72,12 @@ export default {
       }
     } else {
       options = binding.value as LazyLoadOptions & { galleryId?: string };
+    }
+    
+    // Log preload strategy for gallery images
+    if (typeof options.index === 'number' && options.preloadCount !== undefined) {
+      const shouldPreload = shouldPreloadImage(options.index, options.preloadCount, options.isBigGallery || false);
+      console.debug(`[LazyLoad] Image ${options.index} preload strategy: ${shouldPreload ? 'PRELOAD' : 'LAZY'} (gallery: ${options.isBigGallery ? 'big' : 'small'}, preloadCount: ${options.preloadCount})`);
     }
     
     // Check if this is a ProjectCard image
@@ -228,6 +247,15 @@ export default {
       return
     }
     
+    // Check if this image should be preloaded based on gallery size and index
+    if (typeof options.index === 'number' && options.preloadCount && typeof options.isBigGallery === 'boolean') {
+      if (shouldPreloadImage(options.index, options.preloadCount, options.isBigGallery)) {
+        console.debug(`[LazyLoad] Offscreen preload: galleryId=${options.galleryId || 'default'}, index=${options.index}, url=${options.url}, isBigGallery=${options.isBigGallery}, preloadCount=${options.preloadCount}`);
+        loadImage()
+        return
+      }
+    }
+    
     // For ProjectCard images, use simpler intersection observer logic
     if (isProjectCard) {
       console.debug(`[LazyLoad] ProjectCard: galleryId=${options.galleryId || 'default'}, index=${options.index}, url=${options.url}`);
@@ -259,14 +287,24 @@ export default {
       const galleryId = options.galleryId || 'default';
       console.debug(`[LazyLoad] Gallery queued: galleryId=${galleryId}, index=${options.index}, url=${options.url}`);
       if (hasIntersectionObserver) {
+        // Use different rootMargin based on gallery size
+        let rootMargin = options.rootMargin || '700px';
+        if (options.isBigGallery) {
+          // For big galleries, use a smaller margin since we preload fewer images
+          rootMargin = '500px';
+        } else {
+          // For small galleries, use a larger margin to start loading earlier
+          rootMargin = '1000px';
+        }
+        
         const observerOptions = {
           root: null,
-          rootMargin: options.rootMargin || '700px',
+          rootMargin: rootMargin,
           threshold: options.threshold || 0.1
         }
         el._observer = new IntersectionObserver((entries) => {
           if (entries[0].isIntersecting) {
-            console.debug(`[LazyLoad] Gallery IO load: galleryId=${galleryId}, url=${options.url}`);
+            console.debug(`[LazyLoad] Gallery IO load: galleryId=${galleryId}, url=${options.url}, isBigGallery=${options.isBigGallery}`);
             loadImage()
             // Don't disconnect observer for gallery images - keep it active for retries
           }

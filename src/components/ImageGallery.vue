@@ -34,7 +34,9 @@
             resetQueue: index === 0,
             threshold: 0.1,
             rootMargin: '750px',
-            galleryId: internalGalleryId
+            galleryId: internalGalleryId,
+            preloadCount: preloadCount,
+            isBigGallery: isBigGallery
           }"
           :alt="image.alt || 'Image'"
           :style="imageStyle"
@@ -704,6 +706,43 @@ export default {
       console.error(`[ImageGallery] Image ${index} failed to load in gallery ${this.internalGalleryId}`);
     },
     
+    showPreloadInfo() {
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      console.debug(`[ImageGallery] Preload Strategy for gallery ${this.internalGalleryId}:`);
+      console.debug(`Gallery type: ${this.isBigGallery ? 'Big' : 'Small'}`);
+      console.debug(`Preload count: ${this.preloadCount} images`);
+      console.debug(`Browser: ${isSafari ? 'Safari' : 'Other'}`);
+      console.debug(`Image height: ${this.imageHeight}`);
+      console.debug(`Repeat to fill: ${this.repeatToFill}`);
+      console.debug(`Enable hover scroll: ${this.enableHoverScroll}`);
+      
+      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
+      if (images) {
+        console.debug(`Total images in gallery: ${images.length}`);
+        console.debug(`Images that should be preloaded: ${Math.min(this.preloadCount, images.length)}`);
+        if (isSafari) {
+          console.debug(`Safari mode: Increased preload count for better performance`);
+        }
+      }
+    },
+    
+    // Manually trigger preloading for testing
+    triggerPreload() {
+      console.debug(`[ImageGallery] Manually triggering preload for gallery ${this.internalGalleryId}`);
+      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
+      if (!images) return;
+      
+      // Force preload the first few images based on preload count
+      for (let i = 0; i < Math.min(this.preloadCount, images.length); i++) {
+        const img = images[i];
+        if (img && img.classList.contains('image-loading')) {
+          console.debug(`[ImageGallery] Triggering preload for image ${i}`);
+          // Force the lazy loading directive to load this image
+          img.dispatchEvent(new Event('load'));
+        }
+      }
+    },
+    
     // Tags scroll methods
     handleTagsScroll() {
       console.log('Tags scroll event fired');
@@ -828,28 +867,33 @@ export default {
       }
       
       console.debug(`[ImageGallery] Debugging lazy loading state for gallery ${this.internalGalleryId}:`);
+      console.debug(`Gallery type: ${this.isBigGallery ? 'Big' : 'Small'}`);
+      console.debug(`Preload count: ${this.preloadCount}`);
       console.debug(`Total images: ${images.length}`);
       
       let loadingCount = 0;
       let loadedCount = 0;
       let errorCount = 0;
+      let preloadedCount = 0;
       
       images.forEach((img, index) => {
+        const shouldPreload = index < this.preloadCount;
         if (img.classList.contains('image-loading')) {
           loadingCount++;
-          console.debug(`Image ${index}: Loading`);
+          console.debug(`Image ${index}: Loading${shouldPreload ? ' (preloaded)' : ''}`);
         } else if (img.classList.contains('image-loaded')) {
           loadedCount++;
-          console.debug(`Image ${index}: Loaded`);
+          if (shouldPreload) preloadedCount++;
+          console.debug(`Image ${index}: Loaded${shouldPreload ? ' (preloaded)' : ''}`);
         } else if (img.classList.contains('image-error')) {
           errorCount++;
-          console.debug(`Image ${index}: Error`);
+          console.debug(`Image ${index}: Error${shouldPreload ? ' (preloaded)' : ''}`);
         } else {
-          console.debug(`Image ${index}: Unknown state`);
+          console.debug(`Image ${index}: Unknown state${shouldPreload ? ' (preloaded)' : ''}`);
         }
       });
       
-      console.debug(`[ImageGallery] Summary - Loading: ${loadingCount}, Loaded: ${loadedCount}, Errors: ${errorCount}`);
+      console.debug(`[ImageGallery] Summary - Loading: ${loadingCount}, Loaded: ${loadedCount}, Errors: ${errorCount}, Preloaded: ${preloadedCount}`);
     }
   },
   computed: {
@@ -936,6 +980,34 @@ export default {
       
       // Small galleries (like in Shows.vue) should have auto-scroll
       return true;
+    },
+    
+    isBigGallery() {
+      // Determine if this is a big gallery based on the same logic as enableHoverScroll
+      if (this.imageHeight && this.imageHeight.includes('calc(100vh')) {
+        return true; // Big gallery
+      }
+      
+      if (this.repeatToFill === false) {
+        return true; // Big gallery
+      }
+      
+      return false; // Small gallery
+    },
+    
+    preloadCount() {
+      // Detect Safari for simple preload adjustment
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      
+      // Base preload count based on gallery size
+      let baseCount = this.isBigGallery ? 1 : 2;
+      
+      // For Safari, increase preload count by 1 to ensure better loading
+      if (isSafari) {
+        baseCount += 1;
+      }
+      
+      return baseCount;
     }
   },
     mounted() {
@@ -960,17 +1032,22 @@ export default {
           this.debugLazyLoadingState();
         }, 1000);
         
+        // Show preload strategy info
+        this.showPreloadInfo();
+        
         // Set up periodic check for stuck images
         this.setupStuckImageChecker();
         
-        // Expose debug methods to window for testing
-        if (typeof window !== 'undefined') {
-          window[`debugGallery_${this.internalGalleryId}`] = {
-            debugState: () => this.debugLazyLoadingState(),
-            forceReload: () => this.forceReloadImages(),
-            checkStuck: () => this.checkForStuckImages()
-          };
-        }
+            // Expose debug methods to window for testing
+    if (typeof window !== 'undefined') {
+      window[`debugGallery_${this.internalGalleryId}`] = {
+        debugState: () => this.debugLazyLoadingState(),
+        forceReload: () => this.forceReloadImages(),
+        checkStuck: () => this.checkForStuckImages(),
+        showPreloadInfo: () => this.showPreloadInfo(),
+        triggerPreload: () => this.triggerPreload()
+      };
+    }
       });
     });
     
