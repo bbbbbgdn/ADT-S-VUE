@@ -53,10 +53,22 @@ export default {
   margin: 0 auto;
   box-sizing: border-box;
   /* text-indent: var(--space-3xl); */
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.info-text * {
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .info-text p {
   margin-bottom: 1rem;
+}
+
+.info-text p:empty {
+  min-height: 1em; /* or use margin for more space */
+  display: block;
 }
 
 .info-text .empty-text {
@@ -69,9 +81,9 @@ export default {
   .info-text {
     column-count: 1;
     max-width: 100%;
-
+    
     margin: 0 auto;
-    text-indent: var(--space-3xl);
+    text-indent: 0;
 
     padding: var(--space-xl) var(--space-md);
   }
