@@ -40,7 +40,7 @@ export default {
         !el.classList.contains('project-card-image') &&
         !el.classList.contains('project-card-background')) {
       const galleryId = binding.value.galleryId || 'default';
-      console.debug(`[LazyLoad] beforeMount: Reset queue for new gallery ${galleryId}`);
+      // console.debug(`[LazyLoad] beforeMount: Reset queue for new gallery ${galleryId}`);
       galleryQueues[galleryId] = { revealedIndex: -1, loadedImages: new Set<number>() };
     }
   },
@@ -203,7 +203,7 @@ export default {
     // For gallery images (when index is provided), use queue system
     if (typeof options.index === 'number') {
       const galleryId = options.galleryId || 'default';
-      console.debug(`[LazyLoad] Gallery queued: galleryId=${galleryId}, index=${options.index}, url=${options.url}`);
+      // console.debug(`[LazyLoad] Gallery queued: galleryId=${galleryId}, index=${options.index}, url=${options.url}`);
       if (hasIntersectionObserver) {
         const observerOptions = {
           root: null,
@@ -212,7 +212,7 @@ export default {
         }
         el._observer = new IntersectionObserver((entries) => {
           if (entries[0].isIntersecting) {
-            console.debug(`[LazyLoad] Gallery IO load: galleryId=${galleryId}, url=${options.url}`);
+            // console.debug(`[LazyLoad] Gallery IO load: galleryId=${galleryId}, url=${options.url}`);
             loadImage()
             // Disconnect observer after loading
             if (el._observer) {
@@ -225,7 +225,7 @@ export default {
         return
       } else {
         // Fallback: load immediately if Intersection Observer is not supported
-        console.debug(`[LazyLoad] Gallery fallback load: galleryId=${galleryId}, url=${options.url}`);
+        // console.debug(`[LazyLoad] Gallery fallback load: galleryId=${galleryId}, url=${options.url}`);
         loadImage()
         return
       }

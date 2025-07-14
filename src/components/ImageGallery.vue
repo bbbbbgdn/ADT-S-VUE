@@ -10,8 +10,12 @@
       :style="[galleryContainerStyle, galleryStyle]" 
       @mouseenter="handleMouseEnter" 
       @mouseleave="handleMouseLeave"
-      :class="[{ 'manual-scroll': !enableHoverScroll }, { 'auto-scrolling': isHovering && enableHoverScroll }, { 'auto-scroll-active': isAutoScrolling }]"
+      :class="[{ 'manual-scroll': !enableHoverScroll }, { 'auto-scrolling': isHovering && enableHoverScroll }, { 'auto-scroll-active': isAutoScrolling }, { 'dragging': isDragging }]"
       @click="handleGalleryClick"
+      @mousedown="handleMouseDown"
+      @mousemove="handleMouseMove"
+      @mouseup="handleMouseUp"
+      @selectstart="handleSelectStart"
       @scroll="handleScroll"
       @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
@@ -97,7 +101,7 @@ export default {
     repeatToFill: { type: Boolean, default: true },
     galleryId: { type: String, default: null },
     enableAutoScroll: { type: Boolean, default: false },
-    autoScrollSpeed: { type: Number, default: 4 },
+    autoScrollSpeed: { type: Number, default: 8 },
     autoScrollPauseOnHover: { type: Boolean, default: true },
     autoScrollPauseOnTouch: { type: Boolean, default: true },
   },
@@ -133,6 +137,14 @@ export default {
       tagsSpringAnimationId: null,
       lastScrollCheckTime: 0,
       scrollVelocity: 0,
+      // Drag functionality data
+      isDragging: false,
+      dragStartX: 0,
+      dragStartScrollLeft: 0,
+      dragCurrentX: 0,
+      dragThreshold: 5, // Minimum pixels to move before considering it a drag
+      hasDragged: false, // Track if user has actually dragged
+      shouldPreventClick: false, // Flag to prevent click after drag
     };
   },
   setup() {
@@ -141,15 +153,30 @@ export default {
     return { router, route };
   },
   methods: {
-    handleGalleryClick() {
-      if (!this.isActive) {
-        this.router.push(`/shows/${this.slug}`);
+    handleGalleryClick(event) {
+      console.log('Gallery click - isActive:', this.isActive, 'shouldPreventClick:', this.shouldPreventClick, 'hasDragged:', this.hasDragged);
+      
+      // SWAPPED BEHAVIOR:
+      // For non-active galleries (like in Shows page), prevent navigation if dragged
+      // For active galleries (like in ShowPage/ProjectPage), always allow navigation
+      if (!this.isActive && (this.shouldPreventClick || this.hasDragged)) {
+        console.log('Preventing navigation due to drag on non-active gallery');
+        event.preventDefault();
+        event.stopPropagation();
+        return;
       }
+      
+      console.log('Navigating to:', this.slug);
+      // Navigate for active galleries or simple clicks on non-active galleries
+      this.router.push(`/shows/${this.slug}`);
     },
     
     // Auto-scroll methods
     startAutoScroll() {
       if (this.isAutoScrolling) return;
+      
+      // Don't start auto-scroll for manual-scroll galleries
+      if (!this.enableHoverScroll) return;
       
       const gallery = this.$refs.gallery;
       if (!gallery) return;
@@ -199,9 +226,12 @@ export default {
         this.autoScrollFractionalPixels -= wholePixels;
       }
       
-      // Reset position when reaching the end
+      // Don't reset position when reaching the end - let it stay at the end
       if (this.autoScrollPosition >= maxScroll) {
-        this.autoScrollPosition = 0;
+        this.autoScrollPosition = maxScroll;
+        // Stop auto-scroll when reaching the end
+        this.stopAutoScroll();
+        return;
       }
       
       // Use native scroll instead of transform, but only if not being manually scrolled
@@ -256,12 +286,24 @@ export default {
       }, 300); // Slightly longer delay for better detection
     },
     
-    handleTouchStart() {
+    handleTouchStart(event) {
       this.isUserInteracting = true;
+      
+      // For touch devices, we can also implement drag-like behavior
+      // but for now, just pause auto-scroll
+      if (this.isAutoScrolling) {
+        this.stopAutoScroll();
+      }
     },
     
-    handleTouchMove() {
+    handleTouchMove(event) {
       this.isUserInteracting = true;
+      
+      // Update auto-scroll position to match current scroll
+      const gallery = this.$refs.gallery;
+      if (gallery) {
+        this.autoScrollPosition = gallery.scrollLeft;
+      }
     },
     
     handleWheel(event) {
@@ -275,6 +317,88 @@ export default {
           this.checkScrollInertia();
         }, 500);
       }
+    },
+    
+    // Drag functionality methods
+    handleMouseDown(event) {
+      // Only start dragging on left mouse button
+      if (event.button !== 0) return;
+      
+      const gallery = this.$refs.gallery;
+      if (!gallery) return;
+      
+      console.log('Mouse down - starting drag');
+      this.isDragging = true;
+      this.isUserInteracting = true;
+      this.hasDragged = false; // Reset drag flag
+      this.shouldPreventClick = false; // Reset click prevention flag
+      this.dragStartX = event.clientX;
+      this.dragStartScrollLeft = gallery.scrollLeft;
+      this.dragCurrentX = event.clientX;
+      
+      // Pause auto-scroll during dragging
+      this.stopAutoScroll();
+      
+      // Prevent text selection during drag
+      event.preventDefault();
+    },
+    
+    handleMouseMove(event) {
+      if (!this.isDragging) return;
+      
+      const gallery = this.$refs.gallery;
+      if (!gallery) return;
+      
+      // Check if we've moved enough to consider it a drag
+      const dragDistance = Math.abs(event.clientX - this.dragStartX);
+      if (dragDistance > this.dragThreshold) {
+        if (!this.hasDragged) {
+          console.log('Drag threshold exceeded - setting flags');
+          this.hasDragged = true;
+          this.shouldPreventClick = true; // Set flag to prevent click
+        }
+      }
+      
+      // Move the gallery by the mouse movement
+      const scrollDelta = this.dragStartX - event.clientX;
+      gallery.scrollLeft = this.dragStartScrollLeft + scrollDelta;
+      
+      this.dragCurrentX = event.clientX;
+      
+      // Update auto-scroll position to match current scroll
+      this.autoScrollPosition = gallery.scrollLeft;
+    },
+    
+    handleMouseUp(event) {
+      if (!this.isDragging) return;
+      
+      console.log('Mouse up - hasDragged:', this.hasDragged, 'shouldPreventClick:', this.shouldPreventClick);
+      this.isDragging = false;
+      this.isUserInteracting = false;
+      
+      // Simply resume auto-scroll after drag ends
+      this.resumeAutoScrollAfterDrag();
+      
+      // Don't reset shouldPreventClick here - let it persist until next mouse down
+      // This ensures click events are prevented after drag
+    },
+    
+    handleSelectStart(event) {
+      // Prevent text selection during drag
+      if (this.isDragging) {
+        event.preventDefault();
+      }
+    },
+    
+
+    
+    resumeAutoScrollAfterDrag() {
+      // Resume auto-scroll after a short delay only if enabled
+      setTimeout(() => {
+        if (!this.isDragging && this.isHovering && this.enableAutoScroll && this.enableHoverScroll) {
+          this.startAutoScroll();
+        }
+      }, 200);
     },
     
     checkScrollInertia() {
@@ -312,12 +436,23 @@ export default {
     
     handleMouseEnter() {
       this.isHovering = true;
-      // Start auto-scroll on hover
-      this.startAutoScroll();
+      // Start auto-scroll on hover only if enabled
+      if (this.enableHoverScroll) {
+        this.startAutoScroll();
+      }
     },
     
     handleMouseLeave() {
       this.isHovering = false;
+      
+      // If dragging, stop the drag
+      if (this.isDragging) {
+        this.isDragging = false;
+        this.isUserInteracting = false;
+        this.hasDragged = false; // Reset drag flag
+        this.shouldPreventClick = false; // Reset click prevention flag
+      }
+      
       // Stop auto-scroll when not hovering
       this.stopAutoScroll();
     },
@@ -676,7 +811,22 @@ export default {
       return {};
     },
     enableHoverScroll() {
-      return false;
+      // Enable auto-scroll for small galleries (like in Shows.vue)
+      // Disable auto-scroll for big galleries (like main gallery in ShowPage.vue)
+      
+      // Check if this is a big gallery by looking at the image height
+      // Big galleries typically use calc(100vh - 97rem) or similar large values
+      if (this.imageHeight && this.imageHeight.includes('calc(100vh')) {
+        return false; // Big gallery - no auto-scroll
+      }
+      
+      // Check if repeatToFill is false (big galleries often have this set to false)
+      if (this.repeatToFill === false) {
+        return false; // Big gallery - no auto-scroll
+      }
+      
+      // Small galleries (like in Shows.vue) should have auto-scroll
+      return true;
     }
   },
   mounted() {
@@ -698,8 +848,8 @@ export default {
       });
     });
     
-    // Start auto-scroll if enabled
-    if (this.enableAutoScroll) {
+    // Start auto-scroll if enabled and hover scroll is enabled
+    if (this.enableAutoScroll && this.enableHoverScroll) {
       this.$nextTick(() => {
         this.startAutoScroll();
       });
@@ -752,7 +902,7 @@ export default {
       }
     },
     enableAutoScroll(newValue) {
-      if (newValue) {
+      if (newValue && this.enableHoverScroll) {
         this.$nextTick(() => {
           this.startAutoScroll();
         });
@@ -791,7 +941,6 @@ export default {
   animation: move-gradient 5s linear infinite;
 } */
 
-.gallery-container.clickable .gallery,
 .gallery-container.clickable .gallery-item {
   cursor: pointer;
 }
@@ -852,6 +1001,31 @@ export default {
   display: none;
 }
 
+/* Drag functionality styles - with high specificity */
+.gallery-container .gallery {
+  cursor: grab !important;
+}
+
+.gallery-container .gallery.dragging {
+  cursor: grabbing !important;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.gallery-container .gallery.dragging .gallery-image {
+  pointer-events: none;
+}
+
+/* Ensure clickable galleries also use grab cursor */
+.gallery-container.clickable .gallery {
+  cursor: grab !important;
+}
+
+.gallery-container.clickable .gallery.dragging {
+  cursor: grabbing !important;
+}
 
 
 /* @keyframes move-gradient {
@@ -927,6 +1101,12 @@ export default {
   transform: translateZ(0);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  /* Prevent image dragging */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 .gallery-image.image-loading {
