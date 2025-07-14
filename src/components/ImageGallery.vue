@@ -97,7 +97,7 @@ export default {
     repeatToFill: { type: Boolean, default: true },
     galleryId: { type: String, default: null },
     enableAutoScroll: { type: Boolean, default: false },
-    autoScrollSpeed: { type: Number, default: 1 },
+    autoScrollSpeed: { type: Number, default: 4 },
     autoScrollPauseOnHover: { type: Boolean, default: true },
     autoScrollPauseOnTouch: { type: Boolean, default: true },
   },
@@ -118,6 +118,7 @@ export default {
       // Auto-scroll data
       autoScrollAnimationId: null,
       autoScrollPosition: 0,
+      autoScrollFractionalPixels: 0, // Accumulate fractional pixels
       isAutoScrolling: false,
       isUserInteracting: false,
       lastUserInteractionTime: 0,
@@ -155,6 +156,7 @@ export default {
       
       this.isAutoScrolling = true;
       this.autoScrollPosition = gallery.scrollLeft;
+      this.autoScrollFractionalPixels = 0; // Reset fractional pixels
       this.animateAutoScroll();
     },
     
@@ -186,8 +188,16 @@ export default {
       // Calculate max scroll position
       const maxScroll = gallery.scrollWidth - gallery.clientWidth;
       
-      // Update position - 10px per second (divide by 60 for 60fps)
-      this.autoScrollPosition += 10 / 60;
+      // Update position using autoScrollSpeed (pixels per second)
+      // Accumulate fractional pixels for smooth movement
+      this.autoScrollFractionalPixels += this.autoScrollSpeed / 60;
+      
+      // Only move by whole pixels when we have accumulated enough
+      if (this.autoScrollFractionalPixels >= 1) {
+        const wholePixels = Math.floor(this.autoScrollFractionalPixels);
+        this.autoScrollPosition += wholePixels;
+        this.autoScrollFractionalPixels -= wholePixels;
+      }
       
       // Reset position when reaching the end
       if (this.autoScrollPosition >= maxScroll) {
@@ -799,6 +809,18 @@ export default {
   overflow: -moz-scrollbars-none; /* Firefox (older versions) */
 }
 
+/* Enhanced smooth scrolling for auto-scroll */
+.gallery.auto-scroll-active {
+  scroll-behavior: smooth;
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: scroll-left, transform;
+}
+
+/* Smooth transition for gallery items during auto-scroll */
+.gallery.auto-scroll-active .gallery-item {
+  transition: transform 0.1s ease-out;
+}
+
 .gallery::-webkit-scrollbar {
   display: none;
 }
@@ -808,12 +830,13 @@ export default {
 }
 
 .gallery.auto-scroll-active {
-  transition: transform 0.1s linear;
-  will-change: transform;
+  transition: scroll-left 0.1s ease-out;
+  will-change: scroll-left;
+  scroll-behavior: smooth;
 }
 
 .gallery.auto-scroll-active:hover {
-  transition: transform 0.2s ease-out;
+  transition: scroll-left 0.2s ease-out;
 }
 
 .gallery.manual-scroll {
