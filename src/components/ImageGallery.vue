@@ -644,22 +644,39 @@ export default {
       const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
       if (!images) return;
       
+      let reloadedCount = 0;
       images.forEach((img, index) => {
-        // Reset the image element
-        img.classList.remove('image-loaded', 'image-error');
-        img.classList.add('image-loading');
-        img.style.opacity = '0';
+        // Only reset images that are actually stuck or in error state
+        // Don't reset images that are already visible and working
+        const isStuck = img.classList.contains('image-loading') && img.src && img.src !== window.location.href;
+        const isError = img.classList.contains('image-error');
+        const isVisible = img.classList.contains('image-loaded') && img.style.opacity === '1';
         
+        if (isStuck || isError) {
+          // Reset the image element
+          img.classList.remove('image-loaded', 'image-error');
+          img.classList.add('image-loading');
+          img.style.opacity = '0';
+          reloadedCount++;
+          console.debug(`[ImageGallery] Reset image ${index} (stuck: ${isStuck}, error: ${isError})`);
+        } else if (isVisible) {
+          console.debug(`[ImageGallery] Skipping reset of visible image ${index}`);
+        }
+      });
+      
+      if (reloadedCount > 0) {
         // Force a re-render to trigger the lazy loading directive again
         this.$nextTick(() => {
           this.$forceUpdate();
         });
-      });
-      
-      // Debug the state after reload
-      setTimeout(() => {
-        this.debugLazyLoadingState();
-      }, 1000);
+        
+        // Debug the state after reload
+        setTimeout(() => {
+          this.debugLazyLoadingState();
+        }, 1000);
+      } else {
+        console.debug(`[ImageGallery] No images needed reloading`);
+      }
     },
     
     // Set up periodic check for stuck images
@@ -690,10 +707,18 @@ export default {
         }
       });
       
+      // Only force reload if there are actually stuck images AND no images are currently visible
+      // This prevents hiding already displayed images
       if (stuckCount > 0) {
-        console.debug(`[ImageGallery] Found ${stuckCount} stuck images in gallery ${this.internalGalleryId}`);
-        // Force reload stuck images
-        this.forceReloadImages();
+        const visibleImages = this.$refs.gallery?.querySelectorAll('img.gallery-image.image-loaded');
+        const hasVisibleImages = visibleImages && visibleImages.length > 0;
+        
+        if (!hasVisibleImages) {
+          console.debug(`[ImageGallery] Found ${stuckCount} stuck images in gallery ${this.internalGalleryId} and no visible images - forcing reload`);
+          this.forceReloadImages();
+        } else {
+          console.debug(`[ImageGallery] Found ${stuckCount} stuck images but ${visibleImages.length} images are visible - skipping reload to prevent hiding`);
+        }
       }
     },
     
@@ -741,6 +766,26 @@ export default {
           img.dispatchEvent(new Event('load'));
         }
       }
+    },
+    
+    // Restore hidden loaded images (useful for debugging)
+    restoreHiddenImages() {
+      console.debug(`[ImageGallery] Restoring hidden images for gallery ${this.internalGalleryId}`);
+      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
+      if (!images) return;
+      
+      let restoredCount = 0;
+      images.forEach((img, index) => {
+        // Check if image is loaded but hidden
+        if (img.classList.contains('image-loaded') && img.style.opacity !== '1') {
+          console.debug(`[ImageGallery] Restoring hidden image ${index} - current opacity: ${img.style.opacity}`);
+          img.style.opacity = '1';
+          restoredCount++;
+        }
+      });
+      
+      console.debug(`[ImageGallery] Restored ${restoredCount} hidden images`);
+      return restoredCount;
     },
     
     // Tags scroll methods
@@ -875,16 +920,26 @@ export default {
       let loadedCount = 0;
       let errorCount = 0;
       let preloadedCount = 0;
+      let visibleCount = 0;
+      let hiddenCount = 0;
       
       images.forEach((img, index) => {
         const shouldPreload = index < this.preloadCount;
+        const isVisible = img.classList.contains('image-loaded') && img.style.opacity === '1';
+        
         if (img.classList.contains('image-loading')) {
           loadingCount++;
           console.debug(`Image ${index}: Loading${shouldPreload ? ' (preloaded)' : ''}`);
         } else if (img.classList.contains('image-loaded')) {
           loadedCount++;
           if (shouldPreload) preloadedCount++;
-          console.debug(`Image ${index}: Loaded${shouldPreload ? ' (preloaded)' : ''}`);
+          if (isVisible) {
+            visibleCount++;
+            console.debug(`Image ${index}: Loaded & Visible${shouldPreload ? ' (preloaded)' : ''}`);
+          } else {
+            hiddenCount++;
+            console.debug(`Image ${index}: Loaded but Hidden${shouldPreload ? ' (preloaded)' : ''} - opacity: ${img.style.opacity}`);
+          }
         } else if (img.classList.contains('image-error')) {
           errorCount++;
           console.debug(`Image ${index}: Error${shouldPreload ? ' (preloaded)' : ''}`);
@@ -893,7 +948,12 @@ export default {
         }
       });
       
-      console.debug(`[ImageGallery] Summary - Loading: ${loadingCount}, Loaded: ${loadedCount}, Errors: ${errorCount}, Preloaded: ${preloadedCount}`);
+      console.debug(`[ImageGallery] Summary - Loading: ${loadingCount}, Loaded: ${loadedCount}, Visible: ${visibleCount}, Hidden: ${hiddenCount}, Errors: ${errorCount}, Preloaded: ${preloadedCount}`);
+      
+      // Alert if there are hidden loaded images (potential issue)
+      if (hiddenCount > 0) {
+        console.warn(`[ImageGallery] WARNING: ${hiddenCount} loaded images are hidden in gallery ${this.internalGalleryId} - this may indicate a bug`);
+      }
     }
   },
   computed: {
@@ -1045,7 +1105,8 @@ export default {
         forceReload: () => this.forceReloadImages(),
         checkStuck: () => this.checkForStuckImages(),
         showPreloadInfo: () => this.showPreloadInfo(),
-        triggerPreload: () => this.triggerPreload()
+        triggerPreload: () => this.triggerPreload(),
+        restoreHidden: () => this.restoreHiddenImages()
       };
     }
       });

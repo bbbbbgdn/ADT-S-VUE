@@ -83,6 +83,13 @@ export default {
     // Check if this is a ProjectCard image
     const isProjectCard = el.classList.contains('project-card-image') || el.classList.contains('project-card-background');
     
+    // Check if image is already loaded and visible - if so, don't reset it
+    const isAlreadyLoaded = el.classList.contains('image-loaded') && el.style.opacity === '1';
+    if (isAlreadyLoaded) {
+      console.debug(`[LazyLoad] Image already loaded and visible, skipping reset: ${options.url}`);
+      return;
+    }
+    
     // Add loading class and set initial state
     el.classList.add('image-loading')
     el.classList.remove('image-loaded', 'image-error')
@@ -102,11 +109,14 @@ export default {
       if (queue.loadedImages.has(0) && queue.revealedIndex < 0) {
         const imgEl = document.querySelector(`[data-gallery-id='${galleryId}'][data-index='0'].gallery-image`);
         if (imgEl) {
-          imgEl.classList.remove('image-loading');
-          imgEl.classList.add('image-loaded');
-          requestAnimationFrame(() => {
-            imgEl['style'].opacity = '1';
-          });
+          // Only reveal if not already visible to prevent hiding
+          if (!imgEl.classList.contains('image-loaded') || (imgEl as HTMLElement).style.opacity !== '1') {
+            imgEl.classList.remove('image-loading');
+            imgEl.classList.add('image-loaded');
+            requestAnimationFrame(() => {
+              (imgEl as HTMLElement).style.opacity = '1';
+            });
+          }
         }
         queue.revealedIndex = 0;
         return;
@@ -116,24 +126,30 @@ export default {
       let next = queue.revealedIndex + 1;
       let revealedCount = 0;
       
-              // Reveal all consecutive loaded images
-        while (queue.loadedImages.has(next)) {
-          const imgEl = document.querySelector(`[data-gallery-id='${galleryId}'][data-index='${next}'].gallery-image`) as HTMLElement;
-          if (imgEl) {
-            // Check if image is already visible to prevent Safari issues
-            const isAlreadyVisible = imgEl.classList.contains('image-loaded') && imgEl.style.opacity === '1';
-            if (!isAlreadyVisible) {
-              imgEl.classList.remove('image-loading');
-              imgEl.classList.add('image-loaded');
-              requestAnimationFrame(() => {
+      // Reveal all consecutive loaded images
+      while (queue.loadedImages.has(next)) {
+        const imgEl = document.querySelector(`[data-gallery-id='${galleryId}'][data-index='${next}'].gallery-image`) as HTMLElement;
+        if (imgEl) {
+          // Enhanced check to prevent hiding already visible images
+          const isAlreadyVisible = imgEl.classList.contains('image-loaded') && imgEl.style.opacity === '1';
+          const isCurrentlyLoading = imgEl.classList.contains('image-loading');
+          
+          // Only reveal if not already visible and currently loading
+          if (!isAlreadyVisible && isCurrentlyLoading) {
+            imgEl.classList.remove('image-loading');
+            imgEl.classList.add('image-loaded');
+            requestAnimationFrame(() => {
+              // Double-check that the image is still in the correct state before setting opacity
+              if (imgEl.classList.contains('image-loaded') && !imgEl.classList.contains('image-loading')) {
                 imgEl.style.opacity = '1';
-              });
-            }
+              }
+            });
           }
-          queue.revealedIndex = next;
-          next++;
-          revealedCount++;
         }
+        queue.revealedIndex = next;
+        next++;
+        revealedCount++;
+      }
       
       // If we revealed any images, try to reveal more (in case there are gaps)
       if (revealedCount > 0) {
