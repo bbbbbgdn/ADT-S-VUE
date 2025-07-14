@@ -1,8 +1,15 @@
 <template>
 <div 
   class="project-card" 
-  :class="{ 'use-img-tag': useImgTag }"
+  :class="{ 
+    'use-img-tag': useImgTag,
+    'card-loaded': isCardLoaded 
+  }"
 >
+  <!-- Loading indicator -->
+  <div v-if="!isCardLoaded" class="loading-indicator">
+    <div class="loading-spinner"></div>
+  </div>
   <!-- When using img tag approach -->
   <img 
     v-if="useImgTag"
@@ -10,8 +17,8 @@
       url: image, 
       index: 0, 
       resetQueue: true, 
-      preload: true,
-      rootMargin: '1000px 0px',
+      preload: preload,
+      rootMargin: '200px 0px',
       threshold: 0.1,
       galleryId: slug
     }"
@@ -22,6 +29,8 @@
     @click="navigateToProject"
     @mouseenter="isHovering = true"
     @mouseleave="isHovering = false"
+    @image-loaded="onImageLoad"
+    @image-error="onImageError"
   />
   
   <!-- When using background image approach -->
@@ -31,8 +40,8 @@
       url: image, 
       index: 0, 
       resetQueue: true, 
-      preload: true,
-      rootMargin: '1000px 0px',
+      preload: preload,
+      rootMargin: '200px 0px',
       threshold: 0.1,
       galleryId: slug
     }"
@@ -42,6 +51,8 @@
     @click="navigateToProject"
     @mouseenter="isHovering = true"
     @mouseleave="isHovering = false"
+    @image-loaded="onImageLoad"
+    @image-error="onImageError"
   ></div>
   
   <!-- Tags are always shown -->
@@ -105,6 +116,7 @@ export default {
   setup(props, { emit }) {
     const router = useRouter();
     const isHovering = ref(false);
+    const isCardLoaded = ref(false);
     
     // Method to navigate with proper transition
     const navigateToProject = (event) => {
@@ -116,10 +128,24 @@ export default {
         emit('click', props.slug);
       }
     };
+
+    // Handle image load success
+    const onImageLoad = () => {
+      isCardLoaded.value = true;
+    };
+
+    // Handle image load error
+    const onImageError = () => {
+      // Still show the card even if image fails to load
+      isCardLoaded.value = true;
+    };
     
     return {
       navigateToProject,
-      isHovering
+      isHovering,
+      isCardLoaded,
+      onImageLoad,
+      onImageError
     };
   },
   
@@ -166,7 +192,14 @@ export default {
   aspect-ratio: 16/10;
   height: 100%;
   overflow: hidden;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.project-card.card-loaded {
+  opacity: 1;
+
 }
 
 .project-card:hover .button-black {
@@ -228,6 +261,32 @@ export default {
   margin: var(--space-md);
   z-index: 1;
   gap: var(--space-md);
+}
+
+/* Loading indicator */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid var(--color-pink-primary, #ff6b6b);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Style for the button hover effect */

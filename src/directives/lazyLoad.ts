@@ -151,6 +151,11 @@ export default {
       requestAnimationFrame(() => {
         el.style.opacity = '1';
       });
+      
+      // Emit custom events for ProjectCard components
+      if (isProjectCard) {
+        el.dispatchEvent(new CustomEvent('image-loaded'));
+      }
     }
     
     // Function to load the image with retry mechanism
@@ -222,6 +227,10 @@ export default {
             el.classList.remove('image-loading')
             el.classList.add('image-loaded', 'image-error')
             revealProjectCard();
+            // Emit error event for ProjectCard components
+            if (isProjectCard) {
+              el.dispatchEvent(new CustomEvent('image-error'));
+            }
             // Disconnect observer after max retries
             if (el._observer) {
               el._observer.disconnect()
