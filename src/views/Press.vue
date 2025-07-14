@@ -30,29 +30,28 @@
         <div 
           v-for="press in yearGroup" 
           :key="press.id" 
-          class="press-item-divider"
-          :ref="`pressDivider_${press.id}`"
-          v-bind="mobileScrollHandlers(press.id)"
+          class="press-item"
         >
-          <div 
-            class="press-item"
+          <BaseButton 
+            class="media-outlet"
+            variant="black"
             @mouseenter="showImage(press.id)"
             @mouseleave="hideImage"
-            @touchstart="handleTouchStart(press.id)"
-            @touchend="handleTouchEnd"
-            @touchcancel="hideImage"
-            @click="openPressUrl(press.content.URL.url)"
+            @click="handlePressItemClick(press.id, press.content.URL.url)"
           >
-            <BaseButton 
-              class="media-outlet"
-              variant="black"
-            >
-              {{ press.content.media_outlet }}
-            </BaseButton>
-            
+            {{ press.content.media_outlet }}
+          </BaseButton>
+          <div 
+            class="press-title-scroll"
+            :ref="`pressDivider_${press.id}`"
+          >
             <BaseButton 
               class="press-title" 
               variant="grey"
+              @mouseenter="showImage(press.id)"
+              @mouseleave="hideImage"
+              @click="handlePressItemClick(press.id, press.content.URL.url)"
+              style="display: inline-block;"
             >
               {{ press.content.press_title }}
             </BaseButton>
@@ -109,6 +108,20 @@ export default {
       }
     }
 
+    const handlePressItemClick = (pressId, url) => {
+      // On mobile, show image briefly then open URL
+      if (isMobile()) {
+        showImage(pressId)
+        setTimeout(() => {
+          hideImage()
+          openPressUrl(url)
+        }, 300)
+      } else {
+        // On desktop, just open URL
+        openPressUrl(url)
+      }
+    }
+
     // Modified functions to manage image opacity instead of DOM manipulation
     const showImage = (pressId) => {
       activeImageId.value = pressId
@@ -135,60 +148,6 @@ export default {
     }
 
     // --- Scrollback methods for press-item-divider ---
-    function handleDividerScroll(pressId) {
-      if (!isMobile()) return;
-      clearTimeout(dividerScrollTimeouts.value[pressId]);
-      dividerScrollTimeouts.value[pressId] = setTimeout(() => {
-        animateDividerSpringReturn(pressId);
-      }, 1000); // 1 second timeout
-    }
-
-    function handleDividerTouchStart(pressId) {
-      if (!isMobile()) return;
-      clearTimeout(dividerScrollTimeouts.value[pressId]);
-    }
-
-    function handleDividerTouchEnd(pressId) {
-      if (!isMobile()) return;
-      clearTimeout(dividerScrollTimeouts.value[pressId]);
-      dividerScrollTimeouts.value[pressId] = setTimeout(() => {
-        animateDividerSpringReturn(pressId);
-      }, 1000); // 1 second timeout
-    }
-
-    function animateDividerSpringReturn(pressId) {
-      const dividerElement = getDividerElement(pressId);
-      if (!dividerElement) return;
-      const currentScrollLeft = dividerElement.scrollLeft;
-      if (currentScrollLeft === 0) return;
-      startDividerSpringAnimation(pressId, currentScrollLeft, 0);
-    }
-
-    function startDividerSpringAnimation(pressId, startPosition, targetPosition) {
-      if (dividerSpringAnimationIds.value[pressId]) {
-        cancelAnimationFrame(dividerSpringAnimationIds.value[pressId]);
-      }
-      const dividerElement = getDividerElement(pressId);
-      if (!dividerElement) return;
-      const startTime = performance.now();
-      const duration = 600;
-      const distance = targetPosition - startPosition;
-      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-      const animate = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easedProgress = easeOutCubic(progress);
-        const currentPosition = startPosition + (distance * easedProgress);
-        dividerElement.scrollLeft = currentPosition;
-        if (progress < 1) {
-          dividerSpringAnimationIds.value[pressId] = requestAnimationFrame(animate);
-        } else {
-          dividerSpringAnimationIds.value[pressId] = null;
-        }
-      };
-      dividerSpringAnimationIds.value[pressId] = requestAnimationFrame(animate);
-    }
-
     function getDividerElement(pressId) {
       // Use Vue refs only
       const ref = proxy?.$refs?.[`pressDivider_${pressId}`];
@@ -202,13 +161,6 @@ export default {
 
     // Utility to attach scroll handlers only on mobile
     function mobileScrollHandlers(pressId) {
-      if (typeof window !== 'undefined' && window.innerWidth <= 768) {
-        return {
-          onScroll: () => handleDividerScroll(pressId),
-          onTouchstart: () => handleDividerTouchStart(pressId),
-          onTouchend: () => handleDividerTouchEnd(pressId)
-        };
-      }
       return {};
     }
 
@@ -246,6 +198,7 @@ export default {
       hideImage,
       handleTouchStart,
       handleTouchEnd,
+      handlePressItemClick,
       mobileScrollHandlers
     }
   }
@@ -303,20 +256,8 @@ export default {
 
 .press-item {
   display: flex;
-  gap: var(--space-md);
-  width: fit-content;
   align-items: center;
-  cursor: pointer;
-  /* transition: all 0.3s ease; */
-  position: relative;
-  z-index: 1;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  touch-action: manipulation;
+  gap: var(--space-md);
 }
 
 .press-item:hover .press-title {
@@ -334,42 +275,45 @@ export default {
   min-width: fit-content !important;
 }
 
-.press-title {
-  flex: 1;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* Add CSS for .press-title-scroll to match .gallery-tags */
+.press-title-scroll {
+  overflow-x: auto;
   white-space: nowrap;
-  height: auto;
-  color: black !important;
-  border: none !important;
-  justify-content: flex-start !important;
-  cursor: pointer !important;
-
-  /* margin-left: -81rem; */
-
-  /* max-width: 98.5vw; */
-  /* max-width: 81.5vw; */
-  /* transition: all 0.3s ease; */
- 
+  max-width: 100vw;
+  flex: 1;
+}
+.press-title-scroll::-webkit-scrollbar {
+  display: none;
+}
+.press-title {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-family: inherit;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .press-item-divider {
-  width: 100vw;
-  /* padding: 0 var(--space-lg) 0 0; */
+  flex: 1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  touch-action: pan-x;
+}
+.press-item-divider::-webkit-scrollbar {
+  display: none;
 }
 @media screen and (max-width: 768px) {
-  .press-item-divider {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none;
-    padding: 0 var(--space-lg) 0 0;
+  .press-item {
+    flex-direction: row;
+    align-items: stretch;
   }
-  .press-item-divider::-webkit-scrollbar {
-    display: none;
+  .press-item-divider {
+    padding: 0 var(--space-lg) 0 0;
   }
 }
 
@@ -408,6 +352,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     /* width: 100%; */
+    touch-action: pan-x;
   }
 
   .media-outlet,
