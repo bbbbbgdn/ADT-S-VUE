@@ -49,6 +49,8 @@
             @mouseenter="handlePressTitleInteract(press.id)"
             @mouseleave="handlePressTitleEnd"
             @scroll="handlePressTitleScroll(press.id)"
+            @touchstart="handlePressTitleTouchStart(press.id)"
+            @touchend="handlePressTitleTouchEnd(press.id)"
           >
             <BaseButton 
               class="press-title" 
@@ -234,6 +236,35 @@ export default {
       }, 1000) // 1 second delay like in ImageGallery
     }
 
+    function handlePressTitleTouchStart(pressId) {
+      // Clear any existing timeout when touch starts
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout)
+        scrollTimeout = null
+      }
+      
+      // Set active press ID and show image
+      activePressId.value = pressId
+      if (isMobile()) {
+        showImage(pressId)
+      }
+      // Reset all other scrollable elements
+      resetAllOtherScrollElements(pressId)
+    }
+
+    function handlePressTitleTouchEnd(pressId) {
+      // Clear any existing timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout)
+        scrollTimeout = null
+      }
+      
+      // Start spring return immediately on touch end
+      if (activePressId.value === pressId) {
+        animatePressTitleSpringReturn(pressId)
+      }
+    }
+
     function getPressTitleScrollElement(pressId) {
       const ref = proxy?.$refs?.[`pressDivider_${pressId}`]
       if (Array.isArray(ref)) return ref[0]
@@ -346,7 +377,9 @@ export default {
       activePressId,
       handlePressTitleInteract,
       handlePressTitleEnd,
-      handlePressTitleScroll
+      handlePressTitleScroll,
+      handlePressTitleTouchStart,
+      handlePressTitleTouchEnd
     }
   }
 }
