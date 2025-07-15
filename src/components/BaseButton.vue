@@ -116,8 +116,9 @@ const handleClick = (event) => {
 
 /* Grey Button */
 .button-grey, .button-black:disabled {
-  background-color: rgba(195, 195, 195, 0.6);
-  backdrop-filter: blur(100px);
+  background-color: rgba(195, 195, 195, 0.6) !important;
+  backdrop-filter: blur(50px) !important;
+  -webkit-backdrop-filter: blur(50px) !important;
   color: rgb(0, 0, 0);
   /* pointer-events: none; */
 }

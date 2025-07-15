@@ -12,7 +12,7 @@
         class="background-image"
         :style="{ 
           backgroundImage: `url(${press.content.Media?.filename})`,
-          opacity: activeImageId === press.id ? 1 : 0
+          opacity: currentActiveImage === press.id ? 1 : 0
         }"
       ></div>
     </div>
@@ -45,18 +45,17 @@
           <div 
             class="press-title-scroll"
             :ref="`pressDivider_${press.id}`"
-            @touchstart="handlePressTitleInteract(press.id)"
-            @touchend="handlePressTitleTouchEnd(press.id)"
             @mouseenter="handlePressTitleInteract(press.id)"
             @mouseleave="handlePressTitleEnd"
             @scroll="handlePressTitleScroll(press.id)"
           >
             <BaseButton 
               class="press-title" 
+              :class="{ 'press-title--active': activePressId === press.id }"
               variant="grey"
               @mouseenter="showImage(press.id)"
               @mouseleave="hideImage"
-              @click="handlePressItemClick(press.id, press.content.URL.url)"
+              @click="handlePressTitleClick(press.id, press.content.URL.url)"
               style="display: inline-block;"
             >
               {{ press.content.press_title }}
@@ -128,17 +127,37 @@ export default {
       }
     }
 
+    const handlePressTitleClick = (pressId, url) => {
+      // On mobile, just show image without navigation
+      if (isMobile()) {
+        showImage(pressId)
+        setTimeout(() => {
+          hideImage()
+        }, 2000) // Show image for 2 seconds then hide
+      } else {
+        // On desktop, just open URL
+        openPressUrl(url)
+      }
+    }
+
     // Modified functions to manage image opacity instead of DOM manipulation
     const showImage = (pressId) => {
       activeImageId.value = pressId
-      // Freeze scroll
-      document.body.style.overflow = 'hidden'
-      document.body.style.position = 'fixed'
-      document.body.style.width = '100%'
+      activePressId.value = pressId
+      // Only freeze scroll on desktop, not on mobile
+      if (!isMobile()) {
+        document.body.style.overflow = 'hidden'
+        document.body.style.position = 'fixed'
+        document.body.style.width = '100%'
+      }
     }
 
     const hideImage = () => {
       activeImageId.value = null
+      // On mobile, also clear activePressId when hiding image
+      if (isMobile()) {
+        activePressId.value = null
+      }
       // Restore scroll
       document.body.style.overflow = ''
       document.body.style.position = ''
@@ -174,33 +193,69 @@ export default {
     let scrollTimeout = null
     let springAnimationIds = {}
 
+    // Computed property to determine which image should be shown
+    const currentActiveImage = computed(() => {
+      return activePressId.value || activeImageId.value
+    })
+
     function handlePressTitleInteract(pressId) {
+      // Always set active press ID, ensuring only one is active
       activePressId.value = pressId
     }
     function handlePressTitleEnd() {
-      activePressId.value = null
+      // Only clear if no image is being shown
+      if (!activeImageId.value) {
+        activePressId.value = null
+      }
     }
     function handlePressTitleScroll(pressId) {
+      // Clear any existing timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout)
+        scrollTimeout = null
+      }
+      
+      // Always set active press ID, ensuring only one is active
       activePressId.value = pressId
-      if (scrollTimeout) clearTimeout(scrollTimeout)
+      // Show image when scrolling (mobile behavior)
+      if (isMobile()) {
+        showImage(pressId)
+      }
+      // Reset all other scrollable elements
+      resetAllOtherScrollElements(pressId)
+      
+      // Set timeout for spring return (like in ImageGallery)
       scrollTimeout = setTimeout(() => {
-        animatePressTitleSpringReturn(pressId)
-      }, 1000)
+        // Only proceed if this is still the active press item
+        if (activePressId.value === pressId) {
+          animatePressTitleSpringReturn(pressId)
+        }
+      }, 1000) // 1 second delay like in ImageGallery
     }
-    function handlePressTitleTouchEnd(pressId) {
-      if (scrollTimeout) clearTimeout(scrollTimeout)
-      scrollTimeout = setTimeout(() => {
-        animatePressTitleSpringReturn(pressId)
-      }, 1000)
+
+    function getPressTitleScrollElement(pressId) {
+      const ref = proxy?.$refs?.[`pressDivider_${pressId}`]
+      if (Array.isArray(ref)) return ref[0]
+      return ref || null
     }
+
     function animatePressTitleSpringReturn(pressId) {
       const el = getPressTitleScrollElement(pressId)
       if (!el) return
       const currentScrollLeft = el.scrollLeft
-      if (currentScrollLeft === 0) return
-      startPressTitleSpringAnimation(pressId, currentScrollLeft, 0)
+      if (currentScrollLeft === 0) {
+        // If already at position 0, hide image immediately
+        if (isMobile()) {
+          hideImage()
+        }
+        return
+      }
+      // Pass completion callback to hide image when animation finishes
+      const onComplete = isMobile() ? () => hideImage() : null
+      startPressTitleSpringAnimation(pressId, currentScrollLeft, 0, onComplete)
     }
-    function startPressTitleSpringAnimation(pressId, startPosition, targetPosition) {
+
+    function startPressTitleSpringAnimation(pressId, startPosition, targetPosition, onComplete = null) {
       if (springAnimationIds[pressId]) {
         cancelAnimationFrame(springAnimationIds[pressId])
       }
@@ -220,19 +275,28 @@ export default {
           springAnimationIds[pressId] = requestAnimationFrame(animate)
         } else {
           springAnimationIds[pressId] = null
+          // Call completion callback if provided
+          if (onComplete) {
+            onComplete()
+          }
         }
       }
       springAnimationIds[pressId] = requestAnimationFrame(animate)
     }
-    function getPressTitleScrollElement(pressId) {
-      const ref = proxy?.$refs?.[`pressDivider_${pressId}`]
-      if (Array.isArray(ref)) return ref[0]
-      return ref || null
+
+    function resetAllOtherScrollElements(activePressId) {
+      // Get all press items and reset their scroll positions
+      pressItems.value.forEach(press => {
+        if (press.id !== activePressId) {
+          const element = getPressTitleScrollElement(press.id)
+          if (element && element.scrollLeft !== 0) {
+            // Use spring animation to reset to position 0
+            startPressTitleSpringAnimation(press.id, element.scrollLeft, 0)
+          }
+        }
+      })
     }
-    onBeforeUnmount(() => {
-      if (scrollTimeout) clearTimeout(scrollTimeout)
-      Object.values(springAnimationIds).forEach(id => id && cancelAnimationFrame(id))
-    })
+
 
     onMounted(async () => {
       // Check if Storyblok is available
@@ -258,23 +322,30 @@ export default {
       // Clean up all timeouts and animation frames
       Object.values(dividerScrollTimeouts.value).forEach(timeout => timeout && clearTimeout(timeout));
       Object.values(dividerSpringAnimationIds.value).forEach(id => id && cancelAnimationFrame(id));
+      
+      // Clean up press title scroll timeouts and animations
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout)
+      }
+      Object.values(springAnimationIds).forEach(id => id && cancelAnimationFrame(id))
     });
 
     return {
       groupedPress,
       openPressUrl,
       activeImageId,
+      currentActiveImage,
       showImage,
       hideImage,
       handleTouchStart,
       handleTouchEnd,
       handlePressItemClick,
+      handlePressTitleClick,
       mobileScrollHandlers,
       activePressId,
       handlePressTitleInteract,
       handlePressTitleEnd,
-      handlePressTitleScroll,
-      handlePressTitleTouchEnd
+      handlePressTitleScroll
     }
   }
 }
@@ -284,6 +355,7 @@ export default {
 .press-container {
   margin: 0rem var(--space-md);
   position: relative;
+  z-index: 0;
   /* mix-blend-mode: difference; */
 }
 
@@ -298,7 +370,7 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   transition: opacity .3s ease-out;
 }
 
@@ -406,8 +478,11 @@ export default {
     /* margin-right: var(--space-md); */
   }
 
+  /* Mobile-specific background image styles to prevent scroll interference */
   .background-image {
-    display: none;
+    /* z-index: 1; */
+    pointer-events: none;
+    touch-action: none;
   }
 
   .year-group {
@@ -427,7 +502,11 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     /* width: 100%; */
+  }
+
+  .press-title-scroll {
     touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
   }
 
   .media-outlet,
@@ -442,5 +521,22 @@ export default {
   outline-offset: 2px;
   background: var(--color-pink-primary) !important;
   color: black !important;
+}
+
+/* Active press title - remove backdrop filter to prevent flashing */
+.press-title--active {
+  /* background: var(--color-pink-primary); */
+  transition: all 0.3s ease-out;
+  opacity: 1;
+  background-color: rgb(0, 0, 0) !important;
+  color: #fff;
+}
+
+/* Ensure all grey buttons in press component have backdrop filter */
+.press-container .button-grey {
+
+  /* backdrop-filter: blur(100px) !important; */
+  /* -webkit-backdrop-filter: blur(100px) !important; */
+  /* background-color: rgba(195, 195, 195, 0.6) !important; */
 }
 </style>
