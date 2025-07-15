@@ -132,6 +132,7 @@ export default {
           :resolutionRatio="mainProjectImageSettings.resolutionRatio"
           :isActive="true"
           :repeatToFill="false"
+          :enableNavigation="false"
         />
 
         <div v-else class="no-images-message">

@@ -108,6 +108,7 @@ export default {
     autoScrollSpeed: { type: Number, default: 8 },
     autoScrollPauseOnHover: { type: Boolean, default: true },
     autoScrollPauseOnTouch: { type: Boolean, default: true },
+    enableNavigation: { type: Boolean, default: true },
   },
   data() {
     return {
@@ -160,7 +161,15 @@ export default {
   },
   methods: {
     handleGalleryClick(event) {
-      console.log('Gallery click - isActive:', this.isActive, 'shouldPreventClick:', this.shouldPreventClick, 'hasDragged:', this.hasDragged);
+      console.log('Gallery click - isActive:', this.isActive, 'shouldPreventClick:', this.shouldPreventClick, 'hasDragged:', this.hasDragged, 'enableNavigation:', this.enableNavigation);
+      
+      // If navigation is disabled, don't navigate
+      if (!this.enableNavigation) {
+        console.log('Navigation disabled for this gallery');
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
       
       // SWAPPED BEHAVIOR:
       // For non-active galleries (like in Shows page), prevent navigation if dragged
@@ -172,8 +181,8 @@ export default {
         return;
       }
       
+      // Only log and navigate if we're actually going to navigate
       console.log('Navigating to:', this.slug);
-      // Navigate for active galleries or simple clicks on non-active galleries
       this.router.push(`/shows/${this.slug}`);
     },
     

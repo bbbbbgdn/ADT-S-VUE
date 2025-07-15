@@ -27,7 +27,6 @@ const {
   type: 'show',
   preload: true,
   watchRoute: true
-
 });
 
 const randomOtherShows = computed(() => {
@@ -46,14 +45,44 @@ const formatMainShowImages = (visuals) => {
 const formatOtherShowsImages = (visuals) => {
   return formatImages(visuals, otherShowsImageSettings);
 };
+
+// Computed properties for cleaner gallery configuration
+const mainShowGalleryProps = computed(() => ({
+  name: story.value?.content?.title_tag || '',
+  location: story.value?.content?.location_tag || '',
+  date: story.value?.content?.date_tag || '',
+  slug: story.value?.slug,
+  images: story.value?.content?.visuals ? formatMainShowImages(story.value.content.visuals) : [],
+  repeatCount: 1,
+  imageHeight: 'calc(100vh - 97rem)',
+  imageQuality: mainShowImageSettings.quality,
+  imageFormat: mainShowImageSettings.format,
+  resolutionRatio: mainShowImageSettings.resolutionRatio,
+  isActive: true,
+  repeatToFill: false,
+  enableNavigation: false
+}));
+
+const getOtherShowGalleryProps = (show) => ({
+  name: show.content?.title_tag || 'Untitled Show',
+  location: show.content?.location_tag || '',
+  date: show.content?.date_tag || '',
+  slug: show.slug,
+  images: formatOtherShowsImages(show.content?.visuals),
+  repeatCount: 1,
+  imageHeight: otherShowsImageSettings.height + 'rem',
+  imageWidth: 'auto',
+  imageQuality: otherShowsImageSettings.quality,
+  imageFormat: otherShowsImageSettings.format,
+  resolutionRatio: otherShowsImageSettings.resolutionRatio,
+  enableNavigation: false
+});
 </script>
 
 <template>
   <div class="show-page">
     <!-- Content area with loading state -->
     <div class="content-area">
-      <!-- <LoadingIndicator :isLoading="isLoading" /> -->
-      
       <!-- Error message display for complete failure -->
       <div v-if="errorMessage && !story && !isLoading" class="error-message">
         <p>{{ errorMessage }}</p>
@@ -67,20 +96,10 @@ const formatOtherShowsImages = (visuals) => {
           <p>{{ errorMessage }}</p>
         </div>
         
+        <!-- Main Show Gallery -->
         <ImageGallery
           v-if="story.content?.visuals && story.content.visuals.length > 0"
-          :name="story.content?.title_tag || ''"
-          :location="story.content?.location_tag || ''"
-          :date="story.content?.date_tag || ''"
-          :slug="story.slug"
-          :images="formatMainShowImages(story.content.visuals)" 
-          :repeatCount="1"
-          :imageHeight="'calc(100vh - 97rem)'"
-          :imageQuality="mainShowImageSettings.quality"
-          :imageFormat="mainShowImageSettings.format"
-          :resolutionRatio="mainShowImageSettings.resolutionRatio"
-          :isActive="true"
-          :repeatToFill="false"
+          v-bind="mainShowGalleryProps"
         />
         
         <!-- Fallback message if no visuals -->
@@ -99,21 +118,10 @@ const formatOtherShowsImages = (visuals) => {
           <BaseButton to="/shows">Other Shows</BaseButton>
         </div>
         
+        <!-- Other Shows Galleries -->
         <div v-if="randomOtherShows.length > 0" class="other-shows-container">
           <div v-for="show in randomOtherShows" :key="show.id">
-            <ImageGallery
-              :name="show.content?.title_tag || 'Untitled Show'"
-              :location="show.content?.location_tag || ''"
-              :date="show.content?.date_tag || ''"
-              :slug="show.slug"
-              :images="formatOtherShowsImages(show.content?.visuals)"
-              :repeatCount="1"
-              :imageHeight="otherShowsImageSettings.height + 'rem'"
-              :imageWidth="'auto'"
-              :imageQuality="otherShowsImageSettings.quality"
-              :imageFormat="otherShowsImageSettings.format"
-              :resolutionRatio="otherShowsImageSettings.resolutionRatio"
-            />
+            <ImageGallery v-bind="getOtherShowGalleryProps(show)" />
           </div>
         </div>
         
