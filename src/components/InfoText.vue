@@ -57,9 +57,14 @@ export default {
   /* overflow-wrap: anywhere; */
 }
 
+.info-text p,
+.info-text div {
+  break-inside: avoid;
+}
+
 .info-text a {
-  word-break: break-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .info-text p {
