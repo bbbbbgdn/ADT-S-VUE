@@ -1420,6 +1420,23 @@ export default {
   .gallery-tags {
     /* padding: 0 var(--space-lg) 0 0; */
   }
+  
+  /* Override gallery height on mobile for all image galleries */
+  .gallery-container {
+    min-height: 60svh !important;
+  }
+  
+  .gallery-container .gallery {
+    min-height: 60svh !important;
+  }
+  
+  .gallery-container .gallery-item {
+    min-height: 60svh !important;
+  }
+  
+  .gallery-container .gallery-image {
+    min-height: 60svh !important;
+  }
 }
 
 /* Also hide scrollbars on the gallery container */
