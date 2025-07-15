@@ -1,13 +1,21 @@
 <template>
   <div class="main-text" :class="{ 'single-line': isSingleLine }">
-    <slot v-if="$slots.default"></slot>
-    <p v-else-if="text && text.length > 0">{{ text }}</p>
+    <template v-if="$slots.default">
+      <p v-for="(line, index) in slotTextLines" :key="index" :class="{ 'empty-line': line === '' }">
+        {{ line }}
+      </p>
+    </template>
+    <template v-else-if="text && text.length > 0">
+      <p v-for="(line, index) in textLines" :key="index" :class="{ 'empty-line': line === '' }">
+        {{ line }}
+      </p>
+    </template>
     <p v-else class="empty-text">No content available</p>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, useSlots } from 'vue'
 
 const props = defineProps({
   text: {
@@ -20,10 +28,34 @@ const props = defineProps({
   }
 })
 
+const slots = useSlots()
+
+const processText = (text) => {
+  if (!text) return []
+  return text.split('\n').map(line => line.trim())
+}
+
+const textLines = computed(() => {
+  return processText(props.text)
+})
+
+const slotTextLines = computed(() => {
+  if (!slots.default) return []
+  
+  // Get slot content as text
+  const slotContent = slots.default()
+  if (!slotContent || !slotContent[0]) return []
+  
+  // Extract text from slot
+  const slotText = slotContent[0].children || ''
+  return processText(slotText)
+})
+
 const isSingleLine = computed(() => {
-  if (props.text) {
+  const content = props.text || (slots.default ? slots.default()[0]?.children : '')
+  if (content) {
     // Check if text contains line breaks or is short enough to be single line
-    return !props.text.includes('\n') && props.text.length < 50
+    return !content.includes('\n') && content.length < 50
   }
   return false
 })
@@ -55,6 +87,10 @@ const isSingleLine = computed(() => {
   font-size: inherit;
   line-height: inherit;
   text-indent: inherit;
+}
+
+.main-text p.empty-line {
+  min-height: var(--text-4xl);
 }
 
 /* Example span styles that could be used within MainText */
