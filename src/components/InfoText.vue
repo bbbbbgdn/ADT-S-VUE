@@ -53,11 +53,11 @@ export default {
   margin: 0 auto;
   box-sizing: border-box;
   /* text-indent: var(--space-3xl); */
-  word-break: break-all;
-  overflow-wrap: anywhere;
+  /* word-break: break-all; */
+  /* overflow-wrap: anywhere; */
 }
 
-.info-text * {
+.info-text a {
   word-break: break-all;
   overflow-wrap: anywhere;
 }
