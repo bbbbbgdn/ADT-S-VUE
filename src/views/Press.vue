@@ -56,8 +56,8 @@
             class="press-title" 
             :class="{ 'press-title--active': activePressId === press.id }"
             variant="grey"
-            @mouseenter="showImage(press.id)"
-            @mouseleave="hideImage"
+            @mouseenter="handlePressTitleHover(press.id)"
+            @mouseleave="handlePressTitleHoverEnd"
             style="display: inline-block;"
           >
             {{ press.content.press_title }}
@@ -176,7 +176,6 @@ export default {
     }
 
     const activePressId = ref(null)
-    let scrollTimeout = null
     let springAnimationIds = {}
     let touchActive = ref(false)
 
@@ -185,6 +184,21 @@ export default {
       return activePressId.value || activeImageId.value
     })
 
+    function handlePressTitleHover(pressId) {
+      // Only handle hover on desktop
+      if (!isMobile()) {
+        showImage(pressId)
+        activePressId.value = pressId
+      }
+    }
+    
+    function handlePressTitleHoverEnd() {
+      // Only handle hover end on desktop
+      if (!isMobile()) {
+        hideImage()
+      }
+    }
+    
     function handlePressTitleInteract(pressId) {
       // Only set active press ID on desktop (mouse hover)
       if (!isMobile()) {
@@ -198,10 +212,10 @@ export default {
       }
     }
     function handlePressTitleScroll(pressId) {
-      // Clear any existing timeout
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout)
-        scrollTimeout = null
+      // Clear any existing timeout for this specific press item
+      if (dividerScrollTimeouts.value[pressId]) {
+        clearTimeout(dividerScrollTimeouts.value[pressId])
+        dividerScrollTimeouts.value[pressId] = null
       }
       
       // Only set active press ID on desktop, not on mobile
@@ -212,11 +226,13 @@ export default {
       resetAllOtherScrollElements(pressId)
       
       // Set timeout for spring return (like in ImageGallery)
-      scrollTimeout = setTimeout(() => {
+      dividerScrollTimeouts.value[pressId] = setTimeout(() => {
         // Only proceed if this is still the active press item
         if (activePressId.value === pressId) {
           animatePressTitleSpringReturn(pressId)
         }
+        // Clean up the timeout reference
+        dividerScrollTimeouts.value[pressId] = null
       }, 1000) // 1 second delay like in ImageGallery
     }
 
@@ -226,10 +242,10 @@ export default {
       activePressId.value = pressId
       showImage(pressId)
       
-      // Clear any existing timeout when touch starts
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout)
-        scrollTimeout = null
+      // Clear any existing timeout for this specific press item when touch starts
+      if (dividerScrollTimeouts.value[pressId]) {
+        clearTimeout(dividerScrollTimeouts.value[pressId])
+        dividerScrollTimeouts.value[pressId] = null
       }
       
       // Reset all other scrollable elements
@@ -241,10 +257,10 @@ export default {
       touchActive.value = false
       hideImage()
       
-      // Clear any existing timeout
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout)
-        scrollTimeout = null
+      // Clear any existing timeout for this specific press item
+      if (dividerScrollTimeouts.value[pressId]) {
+        clearTimeout(dividerScrollTimeouts.value[pressId])
+        dividerScrollTimeouts.value[pressId] = null
       }
       
       // Start spring return immediately on touch end
@@ -303,6 +319,11 @@ export default {
         if (press.id !== activePressId) {
           const element = getPressTitleScrollElement(press.id)
           if (element && element.scrollLeft !== 0) {
+            // Clear any existing timeout for this press item
+            if (dividerScrollTimeouts.value[press.id]) {
+              clearTimeout(dividerScrollTimeouts.value[press.id])
+              dividerScrollTimeouts.value[press.id] = null
+            }
             // Use spring animation to reset to position 0
             startPressTitleSpringAnimation(press.id, element.scrollLeft, 0)
           }
@@ -332,13 +353,37 @@ export default {
 
       // Add global touch end listener as a safety net with immediate response
       const handleGlobalTouchEnd = (event) => {
-        // Prevent default to avoid any delays
+        // Only handle touch events if they originated from press-title elements
+        const target = event.target
+        const isPressTitleElement = target.closest('.press-title-scroll') || 
+                                   target.closest('.press-title') ||
+                                   target.classList.contains('press-title') ||
+                                   target.classList.contains('press-title-scroll')
+        
+        // If not a press-title element, don't interfere
+        if (!isPressTitleElement) {
+          return
+        }
+        
+        // Don't interfere with button clicks (media-outlet buttons)
+        const isButton = target.closest('button') || 
+                        target.classList.contains('base-button') ||
+                        target.classList.contains('media-outlet')
+        
+        if (isButton) {
+          return
+        }
+        
+        // Additional check: only handle if we're actually in a touch state
+        if (!touchActive.value) {
+          return
+        }
+        
+        // Prevent default only for press-title elements to avoid any delays
         event.preventDefault()
         
-        if (touchActive.value) {
-          touchActive.value = false
-          hideImage()
-        }
+        touchActive.value = false
+        hideImage()
       }
 
       document.addEventListener('touchend', handleGlobalTouchEnd, { passive: false })
@@ -362,9 +407,6 @@ export default {
       Object.values(dividerSpringAnimationIds.value).forEach(id => id && cancelAnimationFrame(id));
       
       // Clean up press title scroll timeouts and animations
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout)
-      }
       Object.values(springAnimationIds).forEach(id => id && cancelAnimationFrame(id))
 
       // Ensure image is hidden when component unmounts
@@ -384,6 +426,8 @@ export default {
       mobileScrollHandlers,
       activePressId,
       touchActive,
+      handlePressTitleHover,
+      handlePressTitleHoverEnd,
       handlePressTitleInteract,
       handlePressTitleEnd,
       handlePressTitleScroll,
