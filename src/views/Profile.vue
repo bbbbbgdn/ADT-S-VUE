@@ -474,8 +474,18 @@ export default {
   padding: 0;
 }
 
+
+
 .button-divider {
   padding: 0 var(--space-lg) 0 0;
+}
+
+.contact-info .section-title, .contact-info .button-divider {
+  padding-left: var(--space-md);
+}
+
+.contact-info {
+  margin-left: calc(var(--space-md) * -1);
 }
 
 }
