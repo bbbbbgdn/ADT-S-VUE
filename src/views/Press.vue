@@ -52,17 +52,16 @@
             @touchstart="handlePressTitleTouchStart(press.id)"
             @touchend="handlePressTitleTouchEnd(press.id)"
           >
-            <BaseButton 
-              class="press-title" 
-              :class="{ 'press-title--active': activePressId === press.id }"
-              variant="grey"
-              @mouseenter="showImage(press.id)"
-              @mouseleave="hideImage"
-              @click="handlePressTitleClick(press.id, press.content.URL.url)"
-              style="display: inline-block;"
-            >
-              {{ press.content.press_title }}
-            </BaseButton>
+                      <BaseButton 
+            class="press-title" 
+            :class="{ 'press-title--active': activePressId === press.id }"
+            variant="grey"
+            @mouseenter="showImage(press.id)"
+            @mouseleave="hideImage"
+            style="display: inline-block;"
+          >
+            {{ press.content.press_title }}
+          </BaseButton>
           </div>
         </div>
       </div>
@@ -117,34 +116,20 @@ export default {
     }
 
     const handlePressItemClick = (pressId, url) => {
-      // On mobile, show image briefly then open URL
+      // On mobile, just open URL without showing image
       if (isMobile()) {
-        showImage(pressId)
-        setTimeout(() => {
-          hideImage()
-          openPressUrl(url)
-        }, 300)
+        openPressUrl(url)
       } else {
         // On desktop, just open URL
         openPressUrl(url)
       }
     }
 
-    const handlePressTitleClick = (pressId, url) => {
-      // On mobile, just show image without navigation
-      if (isMobile()) {
-        showImage(pressId)
-        setTimeout(() => {
-          hideImage()
-        }, 2000) // Show image for 2 seconds then hide
-      } else {
-        // On desktop, just open URL
-        openPressUrl(url)
-      }
-    }
+
 
     // Modified functions to manage image opacity instead of DOM manipulation
     const showImage = (pressId) => {
+      // Immediate state update without delays
       activeImageId.value = pressId
       activePressId.value = pressId
       // Only freeze scroll on desktop, not on mobile
@@ -156,11 +141,9 @@ export default {
     }
 
     const hideImage = () => {
+      // Immediate state update without delays
       activeImageId.value = null
-      // On mobile, also clear activePressId when hiding image
-      if (isMobile()) {
-        activePressId.value = null
-      }
+      activePressId.value = null
       // Restore scroll
       document.body.style.overflow = ''
       document.body.style.position = ''
@@ -195,6 +178,7 @@ export default {
     const activePressId = ref(null)
     let scrollTimeout = null
     let springAnimationIds = {}
+    let touchActive = ref(false)
 
     // Computed property to determine which image should be shown
     const currentActiveImage = computed(() => {
@@ -202,12 +186,14 @@ export default {
     })
 
     function handlePressTitleInteract(pressId) {
-      // Always set active press ID, ensuring only one is active
-      activePressId.value = pressId
+      // Only set active press ID on desktop (mouse hover)
+      if (!isMobile()) {
+        activePressId.value = pressId
+      }
     }
     function handlePressTitleEnd() {
-      // Only clear if no image is being shown
-      if (!activeImageId.value) {
+      // Only clear if no image is being shown and not on mobile
+      if (!activeImageId.value && !isMobile()) {
         activePressId.value = null
       }
     }
@@ -218,11 +204,9 @@ export default {
         scrollTimeout = null
       }
       
-      // Always set active press ID, ensuring only one is active
-      activePressId.value = pressId
-      // Show image when scrolling (mobile behavior)
-      if (isMobile()) {
-        showImage(pressId)
+      // Only set active press ID on desktop, not on mobile
+      if (!isMobile()) {
+        activePressId.value = pressId
       }
       // Reset all other scrollable elements
       resetAllOtherScrollElements(pressId)
@@ -237,22 +221,26 @@ export default {
     }
 
     function handlePressTitleTouchStart(pressId) {
+      // Immediately show image without delays
+      touchActive.value = true
+      activePressId.value = pressId
+      showImage(pressId)
+      
       // Clear any existing timeout when touch starts
       if (scrollTimeout) {
         clearTimeout(scrollTimeout)
         scrollTimeout = null
       }
       
-      // Set active press ID and show image
-      activePressId.value = pressId
-      if (isMobile()) {
-        showImage(pressId)
-      }
       // Reset all other scrollable elements
       resetAllOtherScrollElements(pressId)
     }
 
     function handlePressTitleTouchEnd(pressId) {
+      // Immediately hide image and mark touch as inactive
+      touchActive.value = false
+      hideImage()
+      
       // Clear any existing timeout
       if (scrollTimeout) {
         clearTimeout(scrollTimeout)
@@ -277,24 +265,21 @@ export default {
       const currentScrollLeft = el.scrollLeft
       if (currentScrollLeft === 0) {
         // If already at position 0, hide image immediately
-        if (isMobile()) {
-          hideImage()
-        }
+        hideImage()
         return
       }
-      // Pass completion callback to hide image when animation finishes
-      const onComplete = isMobile() ? () => hideImage() : null
-      startPressTitleSpringAnimation(pressId, currentScrollLeft, 0, onComplete)
+      // Use shorter animation duration for quicker response
+      startPressTitleSpringAnimation(pressId, currentScrollLeft, 0)
     }
 
-    function startPressTitleSpringAnimation(pressId, startPosition, targetPosition, onComplete = null) {
+    function startPressTitleSpringAnimation(pressId, startPosition, targetPosition) {
       if (springAnimationIds[pressId]) {
         cancelAnimationFrame(springAnimationIds[pressId])
       }
       const el = getPressTitleScrollElement(pressId)
       if (!el) return
       const startTime = performance.now()
-      const duration = 600
+      const duration = 300 // Reduced from 600ms for faster response
       const distance = targetPosition - startPosition
       const easeOutCubic = t => 1 - Math.pow(1 - t, 3)
       const animate = currentTime => {
@@ -307,10 +292,6 @@ export default {
           springAnimationIds[pressId] = requestAnimationFrame(animate)
         } else {
           springAnimationIds[pressId] = null
-          // Call completion callback if provided
-          if (onComplete) {
-            onComplete()
-          }
         }
       }
       springAnimationIds[pressId] = requestAnimationFrame(animate)
@@ -348,6 +329,31 @@ export default {
       } catch (error) {
         console.error('Error fetching press items:', error)
       }
+
+      // Add global touch end listener as a safety net with immediate response
+      const handleGlobalTouchEnd = (event) => {
+        // Prevent default to avoid any delays
+        event.preventDefault()
+        
+        if (touchActive.value) {
+          touchActive.value = false
+          hideImage()
+        }
+      }
+
+      document.addEventListener('touchend', handleGlobalTouchEnd, { passive: false })
+      document.addEventListener('touchcancel', handleGlobalTouchEnd, { passive: false })
+
+      // Store cleanup function
+      const cleanup = () => {
+        document.removeEventListener('touchend', handleGlobalTouchEnd)
+        document.removeEventListener('touchcancel', handleGlobalTouchEnd)
+      }
+
+      // Add cleanup to component unmount
+      onBeforeUnmount(() => {
+        cleanup()
+      })
     })
 
     onBeforeUnmount(() => {
@@ -360,6 +366,9 @@ export default {
         clearTimeout(scrollTimeout)
       }
       Object.values(springAnimationIds).forEach(id => id && cancelAnimationFrame(id))
+
+      // Ensure image is hidden when component unmounts
+      hideImage()
     });
 
     return {
@@ -372,9 +381,9 @@ export default {
       handleTouchStart,
       handleTouchEnd,
       handlePressItemClick,
-      handlePressTitleClick,
       mobileScrollHandlers,
       activePressId,
+      touchActive,
       handlePressTitleInteract,
       handlePressTitleEnd,
       handlePressTitleScroll,
@@ -391,6 +400,10 @@ export default {
   position: relative;
   z-index: 10;
   /* mix-blend-mode: difference; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Modified styles for background images */
