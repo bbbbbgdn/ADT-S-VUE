@@ -1,5 +1,5 @@
 <template>
-  <div class="press-container">
+  <div class="press-container" :class="{ 'has-active-item': activePressId }">
     <!-- Preload all images with opacity 0 -->
     <div 
       v-for="(yearGroup, year) in groupedPress" 
@@ -31,6 +31,7 @@
           v-for="press in yearGroup" 
           :key="press.id" 
           class="press-item"
+          :class="{ 'press-item--active': activePressId === press.id }"
         >
           <BaseButton 
             class="media-outlet"
@@ -355,7 +356,7 @@ export default {
 .press-container {
   margin: 0rem var(--space-md);
   position: relative;
-  z-index: 0;
+  z-index: 10;
   /* mix-blend-mode: difference; */
 }
 
@@ -370,7 +371,7 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   transition: opacity .3s ease-out;
 }
 
@@ -393,6 +394,8 @@ export default {
 
 .year-button {
   align-self: flex-start; 
+  /* z-index: 10; */
+  pointer-events: none;
 }
 
 .press-items {
@@ -462,9 +465,6 @@ export default {
   .press-item-divider {
     padding: 0 var(--space-lg) 0 0;
   }
-}
-
-@media screen and (max-width: 768px) {
 
   .base-button {
     margin: 0 var(--space-md);
@@ -483,12 +483,18 @@ export default {
     /* z-index: 1; */
     pointer-events: none;
     touch-action: none;
+    background-size: cover;
+    /* z-index: -1; */
   }
 
   .year-group {
     display: flex;
     flex-direction: column;
     grid-template-columns: none; /* Remove grid on mobile */
+  }
+
+  .year-button {
+    /* z-index: 10; */
   }
 
   .press-items {
@@ -521,6 +527,8 @@ export default {
   outline-offset: 2px;
   background: var(--color-pink-primary) !important;
   color: black !important;
+  position: relative;
+  z-index: 20;
 }
 
 /* Active press title - remove backdrop filter to prevent flashing */
@@ -530,13 +538,54 @@ export default {
   opacity: 1;
   background-color: rgb(0, 0, 0) !important;
   color: #fff;
+  position: relative;
+  z-index: 20;
+}
+
+/* Active press title scroll container - above image */
+.press-title-scroll {
+  position: relative;
+  z-index: 15;
+}
+
+/* Non-active press items fall to background */
+.press-item {
+  position: relative;
+  z-index: 5;
+}
+
+/* Active press item - above image */
+.press-item--active {
+  z-index: 15;
+}
+
+/* Mobile: Hide non-active press items when any item is active */
+@media screen and (max-width: 768px) {
+  .press-container.has-active-item .press-item:not(.press-item--active) {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+  }
+  
+  .press-container.has-active-item .year-button {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+  }
 }
 
 /* Ensure all grey buttons in press component have backdrop filter */
 .press-container .button-grey {
+  backdrop-filter: blur(50px) !important;
+  -webkit-backdrop-filter: blur(50px) !important;
+  background-color: rgba(195, 195, 195, 0.8) !important; /* Fallback for browsers without backdrop-filter */
+  color: rgb(0, 0, 0) !important;
+}
 
-  /* backdrop-filter: blur(100px) !important; */
-  /* -webkit-backdrop-filter: blur(100px) !important; */
-  /* background-color: rgba(195, 195, 195, 0.6) !important; */
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(50px)) {
+  .press-container .button-grey {
+    background-color: rgba(195, 195, 195, 0.9) !important;
+  }
 }
 </style>
