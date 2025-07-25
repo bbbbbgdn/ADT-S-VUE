@@ -448,6 +448,9 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md); /* Add gap between year groups */
 }
 
 /* Modified styles for background images */
@@ -463,6 +466,8 @@ export default {
   pointer-events: none;
   z-index: 1;
   transition: opacity .3s ease-out;
+  /* Add padding to avoid covering year buttons */
+  padding-left: calc(var(--space-md) + 120px); /* Adjust based on year button width */
 }
 
 
@@ -484,8 +489,9 @@ export default {
 
 .year-button {
   align-self: flex-start; 
-  /* z-index: 10; */
+  z-index: 20; /* Ensure year buttons stay above background images */
   pointer-events: none;
+  position: relative; /* Ensure z-index works properly */
 }
 
 .press-items {
@@ -575,6 +581,9 @@ export default {
     touch-action: none;
     background-size: cover;
     /* z-index: -1; */
+    /* On mobile, add top padding to avoid covering year buttons */
+    padding-left: 0;
+    padding-top: calc(var(--space-md) + 60px); /* Adjust based on year button height */
   }
 
   .year-group {
@@ -584,7 +593,8 @@ export default {
   }
 
   .year-button {
-    /* z-index: 10; */
+    z-index: 20; /* Ensure year buttons stay above background images on mobile */
+    position: relative;
   }
 
   .press-items {
