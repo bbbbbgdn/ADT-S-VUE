@@ -1,6 +1,6 @@
 <script setup>
 import { useStoryblokApi } from '@storyblok/vue';
-import { ref, onMounted, computed, nextTick, watch } from 'vue';
+import { ref, onMounted, computed, nextTick } from 'vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import { useRouter } from 'vue-router';
 import { formatImages as storyblokFormatImages } from '../utils/storyblok';
@@ -10,6 +10,7 @@ let storyblokApi = null;
 const stories = ref([]);
 const router = useRouter();
 const visibleStories = ref(new Set());
+const loadingStories = ref(new Set());
 
 // Try to get Storyblok API only if it's available
 try {
@@ -48,7 +49,7 @@ onMounted(async () => {
   }
 });
 
-// Set up intersection observer for lazy loading galleries
+// Simplified intersection observer setup
 const setupGalleryObserver = () => {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -58,13 +59,20 @@ const setupGalleryObserver = () => {
           // Gallery is visible, add to visible stories
           console.debug(`[Shows] Story ${storyId} is now visible`);
           visibleStories.value.add(storyId);
+          loadingStories.value.add(storyId);
+          
+          // Remove from loading after a timeout to prevent stuck states
+          setTimeout(() => {
+            loadingStories.value.delete(storyId);
+          }, 10000); // 10 second timeout
         } else {
           console.debug(`[Shows] Story ${storyId} is no longer visible`);
+          // Don't remove from visibleStories immediately to prevent flickering
         }
       });
     },
     {
-      rootMargin: '300px', // Increased margin to start loading earlier
+      rootMargin: '200px', // Reduced margin for better performance
       threshold: 0.1
     }
   );
@@ -88,11 +96,25 @@ const formatImages = (visuals, customOptions = {}) => {
   return storyblokFormatImages(visuals, options);
 };
 
-// Watch for changes in stories and update observer
-watch(stories, async () => {
-  await nextTick();
-  setupGalleryObserver();
-}, { deep: true });
+// Handle gallery loading errors
+const handleGalleryError = (storyId) => {
+  console.warn(`[Shows] Gallery ${storyId} encountered an error, will retry`);
+  // Remove from loading to allow retry
+  loadingStories.value.delete(storyId);
+  // Remove from visible to trigger re-render
+  visibleStories.value.delete(storyId);
+  
+  // Retry after a short delay
+  setTimeout(() => {
+    visibleStories.value.add(storyId);
+  }, 1000);
+};
+
+// Handle gallery loading success
+const handleGallerySuccess = (storyId) => {
+  console.debug(`[Shows] Gallery ${storyId} loaded successfully`);
+  loadingStories.value.delete(storyId);
+};
 
 </script>
 
@@ -104,9 +126,19 @@ watch(stories, async () => {
       class="story-placeholder"
       :data-story-id="story.uuid"
     >
+      <!-- Show loading indicator while gallery is loading -->
+      <div 
+        v-if="loadingStories.has(story.uuid) && !visibleStories.has(story.uuid)"
+        class="gallery-loading"
+        :style="{ height: containerHeight }"
+      >
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading gallery...</div>
+      </div>
+      
       <!-- Only render ImageGallery when story is visible -->
       <ImageGallery 
-        v-if="visibleStories.has(story.uuid)"
+        v-else-if="visibleStories.has(story.uuid)"
         :images="formatImages(story.content?.visuals)"
         :name="story.content?.title_tag"
         :location="story.content?.location_tag"
@@ -118,7 +150,10 @@ watch(stories, async () => {
         :imageQuality="imageSettings.quality"
         :imageFormat="imageSettings.format"
         :resolutionRatio="imageSettings.resolutionRatio"
+        @gallery-error="handleGalleryError(story.uuid)"
+        @gallery-success="handleGallerySuccess(story.uuid)"
       />
+      
       <!-- Placeholder while gallery is not visible -->
       <div 
         v-else 
@@ -137,7 +172,7 @@ watch(stories, async () => {
 }
 
 .story-placeholder {
-  width: 10
+  width: 100%;
 }
 
 .gallery-placeholder {
@@ -148,5 +183,36 @@ watch(stories, async () => {
   justify-content: center;
   color: #999;
   font-size: 0.9rem;
+}
+
+.gallery-loading {
+  width: 100%;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e0e0e0;
+  border-top: 2px solid #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 8px;
+}
+
+.loading-text {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>

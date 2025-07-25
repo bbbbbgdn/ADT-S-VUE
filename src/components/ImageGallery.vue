@@ -150,8 +150,7 @@ export default {
       dragThreshold: 5, // Minimum pixels to move before considering it a drag
       hasDragged: false, // Track if user has actually dragged
       shouldPreventClick: false, // Flag to prevent click after drag
-      // Stuck image checker
-      stuckImageCheckerInterval: null,
+
     };
   },
   setup() {
@@ -405,8 +404,6 @@ export default {
       }
     },
     
-
-    
     resumeAutoScrollAfterDrag() {
       // Resume auto-scroll after a short delay only if enabled
       setTimeout(() => {
@@ -532,6 +529,7 @@ export default {
         ...options
       };
     },
+    
     updateDimensions() {
       this.screenWidth = window.innerWidth;
       const gallery = this.$refs.gallery;
@@ -545,6 +543,7 @@ export default {
         this.$forceUpdate();
       });
     },
+    
     setupIntersectionObserver() {
       if (!this.$refs.galleryContainer) return;
       
@@ -556,7 +555,6 @@ export default {
               this.isGalleryVisible = true;
               console.debug(`[ImageGallery] Gallery ${this.internalGalleryId} is now visible`);
               this.startImageLoading();
-              this.showImagesInSequence();
               
               // Check if gallery is in center of viewport
               this.checkIfInCenter();
@@ -567,13 +565,14 @@ export default {
           });
         },
         {
-          rootMargin: '200px', // Increased margin to start loading earlier
+          rootMargin: '200px', // Reduced margin for better performance
           threshold: 0.1
         }
       );
       
       this.observer.observe(this.$refs.galleryContainer);
     },
+    
     checkIfInCenter() {
       if (!this.$refs.galleryContainer) return;
       
@@ -603,6 +602,7 @@ export default {
       
       return isInCenter;
     },
+    
     startImageLoading() {
       // Trigger the lazy loading directive to start loading images
       // by forcing a reactive update
@@ -611,19 +611,40 @@ export default {
         this.$forceUpdate();
       });
     },
-    showImagesInSequence() {
-      // This method ensures images are shown in order as they load
+    
+    // Simplified image loading check
+    checkImageLoadingStatus() {
       const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
-      if (!images) return;
+      if (!images || images.length === 0) {
+        console.debug(`[ImageGallery] No images found in gallery ${this.internalGalleryId}`);
+        return;
+      }
       
-      console.debug(`[ImageGallery] Found ${images.length} images in gallery ${this.internalGalleryId}`);
+      let loadedCount = 0;
+      let errorCount = 0;
+      let loadingCount = 0;
       
-      // The lazy loading directive will handle the sequential display
-      // We just need to ensure the queue is properly managed
-      this.$nextTick(() => {
-        // Force a re-render to trigger the lazy loading directive
-        this.$forceUpdate();
+      images.forEach((img, index) => {
+        if (img.classList.contains('image-loaded') && img.style.opacity === '1') {
+          loadedCount++;
+        } else if (img.classList.contains('image-error')) {
+          errorCount++;
+        } else if (img.classList.contains('image-loading')) {
+          loadingCount++;
+        }
       });
+      
+      console.debug(`[ImageGallery] Status - Loaded: ${loadedCount}, Errors: ${errorCount}, Loading: ${loadingCount}`);
+      
+      // Emit success if at least one image is loaded
+      if (loadedCount > 0) {
+        this.$emit('gallery-success');
+      }
+      
+      // Emit error if all images failed and none are loading
+      if (errorCount > 0 && loadingCount === 0 && loadedCount === 0) {
+        this.$emit('gallery-error');
+      }
     },
     
     // Public methods for external control
@@ -645,156 +666,6 @@ export default {
     
     isAutoScrollActive() {
       return this.isAutoScrolling && !this.isUserInteracting;
-    },
-    
-    // Force reload all images in the gallery (useful for debugging stuck images)
-    forceReloadImages() {
-      console.debug(`[ImageGallery] Force reloading images for gallery ${this.internalGalleryId}`);
-      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
-      if (!images) return;
-      
-      let reloadedCount = 0;
-      images.forEach((img, index) => {
-        // Only reset images that are actually stuck or in error state
-        // Don't reset images that are already visible and working
-        const isStuck = img.classList.contains('image-loading') && img.src && img.src !== window.location.href;
-        const isError = img.classList.contains('image-error');
-        const isVisible = img.classList.contains('image-loaded') && img.style.opacity === '1';
-        
-        if (isStuck || isError) {
-          // Reset the image element
-          img.classList.remove('image-loaded', 'image-error');
-          img.classList.add('image-loading');
-          img.style.opacity = '0';
-          reloadedCount++;
-          console.debug(`[ImageGallery] Reset image ${index} (stuck: ${isStuck}, error: ${isError})`);
-        } else if (isVisible) {
-          console.debug(`[ImageGallery] Skipping reset of visible image ${index}`);
-        }
-      });
-      
-      if (reloadedCount > 0) {
-        // Force a re-render to trigger the lazy loading directive again
-        this.$nextTick(() => {
-          this.$forceUpdate();
-        });
-        
-        // Debug the state after reload
-        setTimeout(() => {
-          this.debugLazyLoadingState();
-        }, 1000);
-      } else {
-        console.debug(`[ImageGallery] No images needed reloading`);
-      }
-    },
-    
-    // Set up periodic check for stuck images
-    setupStuckImageChecker() {
-      // Check for stuck images every 5 seconds
-      this.stuckImageCheckerInterval = setInterval(() => {
-        if (this.isGalleryVisible) {
-          this.checkForStuckImages();
-        }
-      }, 5000);
-    },
-    
-    // Check for stuck images and retry them
-    checkForStuckImages() {
-      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
-      if (!images) return;
-      
-      let stuckCount = 0;
-      images.forEach((img, index) => {
-        // Check if image has been loading for too long (more than 10 seconds)
-        if (img.classList.contains('image-loading')) {
-          // Check if the image has a src attribute (meaning it started loading)
-          if (img.src && img.src !== window.location.href) {
-            // Image has started loading but hasn't completed
-            stuckCount++;
-            console.debug(`[ImageGallery] Image ${index} appears to be stuck in loading state`);
-          }
-        }
-      });
-      
-      // Only force reload if there are actually stuck images AND no images are currently visible
-      // This prevents hiding already displayed images
-      if (stuckCount > 0) {
-        const visibleImages = this.$refs.gallery?.querySelectorAll('img.gallery-image.image-loaded');
-        const hasVisibleImages = visibleImages && visibleImages.length > 0;
-        
-        if (!hasVisibleImages) {
-          console.debug(`[ImageGallery] Found ${stuckCount} stuck images in gallery ${this.internalGalleryId} and no visible images - forcing reload`);
-          this.forceReloadImages();
-        } else {
-          console.debug(`[ImageGallery] Found ${stuckCount} stuck images but ${visibleImages.length} images are visible - skipping reload to prevent hiding`);
-        }
-      }
-    },
-    
-    // Image event handlers for debugging
-    onImageLoad(index) {
-      console.debug(`[ImageGallery] Image ${index} loaded successfully in gallery ${this.internalGalleryId}`);
-    },
-    
-    onImageError(index) {
-      console.error(`[ImageGallery] Image ${index} failed to load in gallery ${this.internalGalleryId}`);
-    },
-    
-    showPreloadInfo() {
-      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-      console.debug(`[ImageGallery] Preload Strategy for gallery ${this.internalGalleryId}:`);
-      console.debug(`Gallery type: ${this.isBigGallery ? 'Big' : 'Small'}`);
-      console.debug(`Preload count: ${this.preloadCount} images`);
-      console.debug(`Browser: ${isSafari ? 'Safari' : 'Other'}`);
-      console.debug(`Image height: ${this.imageHeight}`);
-      console.debug(`Repeat to fill: ${this.repeatToFill}`);
-      console.debug(`Enable hover scroll: ${this.enableHoverScroll}`);
-      
-      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
-      if (images) {
-        console.debug(`Total images in gallery: ${images.length}`);
-        console.debug(`Images that should be preloaded: ${Math.min(this.preloadCount, images.length)}`);
-        if (isSafari) {
-          console.debug(`Safari mode: Increased preload count for better performance`);
-        }
-      }
-    },
-    
-    // Manually trigger preloading for testing
-    triggerPreload() {
-      console.debug(`[ImageGallery] Manually triggering preload for gallery ${this.internalGalleryId}`);
-      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
-      if (!images) return;
-      
-      // Force preload the first few images based on preload count
-      for (let i = 0; i < Math.min(this.preloadCount, images.length); i++) {
-        const img = images[i];
-        if (img && img.classList.contains('image-loading')) {
-          console.debug(`[ImageGallery] Triggering preload for image ${i}`);
-          // Force the lazy loading directive to load this image
-          img.dispatchEvent(new Event('load'));
-        }
-      }
-    },
-    
-    // Restore hidden loaded images (useful for debugging)
-    restoreHiddenImages() {
-      console.debug(`[ImageGallery] Restoring hidden images for gallery ${this.internalGalleryId}`);
-      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
-      if (!images) return;
-      
-      let restoredCount = 0;
-      images.forEach((img, index) => {
-        // Check if image is loaded but hidden
-        if (img.classList.contains('image-loaded') && img.style.opacity !== '1') {
-          console.debug(`[ImageGallery] Restoring hidden image ${index} - current opacity: ${img.style.opacity}`);
-          img.style.opacity = '1';
-          restoredCount++;
-        }
-      });
-      
-      console.debug(`[ImageGallery] Restored ${restoredCount} hidden images`);
-      return restoredCount;
     },
     
     // Tags scroll methods
@@ -913,57 +784,142 @@ export default {
       console.log('Max scroll:', tagsElement.scrollWidth - tagsElement.clientWidth);
     },
     
-    debugLazyLoadingState() {
-      const images = this.$refs.gallery?.querySelectorAll('img.gallery-image');
-      if (!images) {
-        console.debug(`[ImageGallery] No images found in gallery ${this.internalGalleryId}`);
+    // Image event handlers for debugging
+    onImageLoad(index) {
+      console.debug(`[ImageGallery] Image ${index} loaded successfully in gallery ${this.internalGalleryId}`);
+      // Check overall loading status after each image loads
+      this.$nextTick(() => {
+        this.checkImageLoadingStatus();
+      });
+    },
+    
+    onImageError(index) {
+      console.error(`[ImageGallery] Image ${index} failed to load in gallery ${this.internalGalleryId}`);
+      // Check overall loading status after each image error
+      this.$nextTick(() => {
+        this.checkImageLoadingStatus();
+      });
+    },
+    
+
+    
+    // Tags scroll methods
+    handleTagsScroll() {
+      console.log('Tags scroll event fired');
+      const tagsElement = this.$refs.galleryTags;
+      if (!tagsElement) {
+        console.log('No tags element found');
         return;
       }
       
-      console.debug(`[ImageGallery] Debugging lazy loading state for gallery ${this.internalGalleryId}:`);
-      console.debug(`Gallery type: ${this.isBigGallery ? 'Big' : 'Small'}`);
-      console.debug(`Preload count: ${this.preloadCount}`);
-      console.debug(`Total images: ${images.length}`);
+      console.log('Current scroll position:', tagsElement.scrollLeft);
+      console.log('Max scroll:', tagsElement.scrollWidth - tagsElement.clientWidth);
       
-      let loadingCount = 0;
-      let loadedCount = 0;
-      let errorCount = 0;
-      let preloadedCount = 0;
-      let visibleCount = 0;
-      let hiddenCount = 0;
+      this.isTagsScrolling = true;
       
-      images.forEach((img, index) => {
-        const shouldPreload = index < this.preloadCount;
-        const isVisible = img.classList.contains('image-loaded') && img.style.opacity === '1';
-        
-        if (img.classList.contains('image-loading')) {
-          loadingCount++;
-          console.debug(`Image ${index}: Loading${shouldPreload ? ' (preloaded)' : ''}`);
-        } else if (img.classList.contains('image-loaded')) {
-          loadedCount++;
-          if (shouldPreload) preloadedCount++;
-          if (isVisible) {
-            visibleCount++;
-            console.debug(`Image ${index}: Loaded & Visible${shouldPreload ? ' (preloaded)' : ''}`);
-          } else {
-            hiddenCount++;
-            console.debug(`Image ${index}: Loaded but Hidden${shouldPreload ? ' (preloaded)' : ''} - opacity: ${img.style.opacity}`);
-          }
-        } else if (img.classList.contains('image-error')) {
-          errorCount++;
-          console.debug(`Image ${index}: Error${shouldPreload ? ' (preloaded)' : ''}`);
-        } else {
-          console.debug(`Image ${index}: Unknown state${shouldPreload ? ' (preloaded)' : ''}`);
-        }
-      });
+      // Clear existing timeout
+      clearTimeout(this.tagsScrollTimeout);
       
-      console.debug(`[ImageGallery] Summary - Loading: ${loadingCount}, Loaded: ${loadedCount}, Visible: ${visibleCount}, Hidden: ${hiddenCount}, Errors: ${errorCount}, Preloaded: ${preloadedCount}`);
-      
-      // Alert if there are hidden loaded images (potential issue)
-      if (hiddenCount > 0) {
-        console.warn(`[ImageGallery] WARNING: ${hiddenCount} loaded images are hidden in gallery ${this.internalGalleryId} - this may indicate a bug`);
+      // Set timeout to detect when scrolling stops - increased to 1 second
+      this.tagsScrollTimeout = setTimeout(() => {
+        console.log('Scrolling stopped, triggering spring animation');
+        this.isTagsScrolling = false;
+        this.animateTagsSpringReturn();
+      }, 1000); // Changed from 150ms to 1000ms (1 second)
+    },
+    
+    handleTagsTouchStart() {
+      this.isTagsScrolling = true;
+    },
+    
+    handleTagsTouchEnd() {
+      // Increased delay to allow for momentum scrolling and match the 1-second delay
+      setTimeout(() => {
+        this.isTagsScrolling = false;
+        this.animateTagsSpringReturn();
+      }, 1000); // Changed from 100ms to 1000ms (1 second)
+    },
+    
+    handleTagsMouseEnter() {
+      // Optional: pause spring animation on hover
+    },
+    
+    handleTagsMouseLeave() {
+      // Optional: resume spring animation when leaving
+    },
+    
+    animateTagsSpringReturn() {
+      console.log('animateTagsSpringReturn called');
+      const tagsElement = this.$refs.galleryTags;
+      if (!tagsElement) {
+        console.log('No tags element in animateTagsSpringReturn');
+        return;
       }
-    }
+      
+      const currentScrollLeft = tagsElement.scrollLeft;
+      const maxScroll = tagsElement.scrollWidth - tagsElement.clientWidth;
+      
+      console.log('Current scroll left:', currentScrollLeft);
+      console.log('Max scroll:', maxScroll);
+      
+      // Always animate back to 0
+      const targetPosition = 0;
+      console.log('Target position:', targetPosition);
+      
+      // Start spring animation
+      this.startTagsSpringAnimation(currentScrollLeft, targetPosition);
+    },
+    
+    startTagsSpringAnimation(startPosition, targetPosition) {
+      if (this.tagsSpringAnimationId) {
+        cancelAnimationFrame(this.tagsSpringAnimationId);
+      }
+      
+      const tagsElement = this.$refs.galleryTags;
+      if (!tagsElement) return;
+      
+      const startTime = performance.now();
+      const duration = 600; // Animation duration in milliseconds
+      const distance = targetPosition - startPosition;
+      
+      // Cubic ease-out
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const easedProgress = easeOutCubic(progress);
+        const currentPosition = startPosition + (distance * easedProgress);
+        
+        tagsElement.scrollLeft = currentPosition;
+        
+        if (progress < 1) {
+          this.tagsSpringAnimationId = requestAnimationFrame(animate);
+        } else {
+          this.tagsSpringAnimationId = null;
+        }
+      };
+      
+      this.tagsSpringAnimationId = requestAnimationFrame(animate);
+    },
+    
+    debugTagsElement() {
+      const tagsElement = this.$refs.galleryTags;
+      if (!tagsElement) {
+        console.log('No gallery tags element found');
+        return;
+      }
+      
+      console.log('Gallery tags element found:', tagsElement);
+      console.log('Scroll width:', tagsElement.scrollWidth);
+      console.log('Client width:', tagsElement.clientWidth);
+      console.log('Is scrollable:', tagsElement.scrollWidth > tagsElement.clientWidth);
+      console.log('Current scroll left:', tagsElement.scrollLeft);
+      console.log('Max scroll:', tagsElement.scrollWidth - tagsElement.clientWidth);
+    },
+    
+
   },
   computed: {
     processedImages() {
@@ -1090,34 +1046,6 @@ export default {
       // Force a re-render after DOM is ready to ensure correct image dimensions
       this.$nextTick(() => {
         this.$forceUpdate();
-        
-        // Debug tags element
-        this.$nextTick(() => {
-          this.debugTagsElement();
-        });
-        
-        // Debug lazy loading state after a delay
-        setTimeout(() => {
-          this.debugLazyLoadingState();
-        }, 1000);
-        
-        // Show preload strategy info
-        this.showPreloadInfo();
-        
-        // Set up periodic check for stuck images
-        this.setupStuckImageChecker();
-        
-            // Expose debug methods to window for testing
-    if (typeof window !== 'undefined') {
-      window[`debugGallery_${this.internalGalleryId}`] = {
-        debugState: () => this.debugLazyLoadingState(),
-        forceReload: () => this.forceReloadImages(),
-        checkStuck: () => this.checkForStuckImages(),
-        showPreloadInfo: () => this.showPreloadInfo(),
-        triggerPreload: () => this.triggerPreload(),
-        restoreHidden: () => this.restoreHiddenImages()
-      };
-    }
       });
     });
     
@@ -1144,9 +1072,6 @@ export default {
     if (this.scrollTimeout) {
       clearTimeout(this.scrollTimeout);
     }
-    if (this.scrollCheckInterval) {
-      clearInterval(this.scrollCheckInterval);
-    }
     if (this.wheelTimeout) {
       clearTimeout(this.wheelTimeout);
     }
@@ -1155,14 +1080,6 @@ export default {
     }
     if (this.tagsSpringAnimationId) {
       cancelAnimationFrame(this.tagsSpringAnimationId);
-    }
-    if (this.stuckImageCheckerInterval) {
-      clearInterval(this.stuckImageCheckerInterval);
-    }
-    
-    // Clean up debug methods from window
-    if (typeof window !== 'undefined' && window[`debugGallery_${this.internalGalleryId}`]) {
-      delete window[`debugGallery_${this.internalGalleryId}`];
     }
   },
   watch: {
@@ -1178,13 +1095,11 @@ export default {
     isGalleryVisible(newValue) {
       if (newValue) {
         this.$nextTick(() => {
-          this.showImagesInSequence();
+          // Check image loading status when gallery becomes visible
+          setTimeout(() => {
+            this.checkImageLoadingStatus();
+          }, 500);
         });
-        
-        // Debug lazy loading state when gallery becomes visible
-        setTimeout(() => {
-          this.debugLazyLoadingState();
-        }, 500);
       }
     },
     enableAutoScroll(newValue) {
