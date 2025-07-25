@@ -450,7 +450,7 @@ export default {
   user-select: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md); /* Add gap between year groups */
+
 }
 
 /* Modified styles for background images */
@@ -485,6 +485,7 @@ export default {
   display: grid;
   grid-template-columns: auto 1fr; 
   gap: var(--space-md);
+
 }
 
 .year-button {
@@ -498,6 +499,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
 .press-item {
