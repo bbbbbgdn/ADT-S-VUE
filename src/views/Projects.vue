@@ -24,6 +24,7 @@ import { useRouter } from 'vue-router';
 import ProjectCard from '../components/ProjectCard.vue';
 import { useStoryblokApi } from '@storyblok/vue';
 import { formatImage } from '../utils/storyblok';
+import { createImageSettings } from '../utils/imageSettings';
 import navigationManager from '../utils/navigationManager';
 
 export default {
@@ -37,6 +38,9 @@ export default {
     const stories = ref([]);
     const isLoading = ref(true);
     const shouldAnimate = ref(!localStorage.getItem('hasSeenAnimation'));
+
+    // Create image settings for ProjectCard with high quality
+    const projectCardImageSettings = createImageSettings('high');
 
     // Try to get Storyblok API only if it's available
     try {
@@ -73,9 +77,14 @@ export default {
       }
     });
 
+    // Custom formatImage function for ProjectCard with 2x resolution
+    const formatProjectImage = (story) => {
+      return formatImage(story, projectCardImageSettings);
+    };
+
     return {
       stories,
-      formatImage,
+      formatImage: formatProjectImage,
       navigateToProject,
       isLoading,
       shouldAnimate

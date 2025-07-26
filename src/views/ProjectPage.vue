@@ -10,9 +10,9 @@ import useStoryblok from '../utils/useStoryblok';
 import { createImageSettings } from '../utils/imageSettings';
 import { computed } from 'vue';
 
-// Create image settings using our utility - high quality for main project, thumbnail for others
+// Create image settings using our utility - high quality for main project and other projects
 const mainProjectImageSettings = createImageSettings('high');
-const otherProjectsImageSettings = createImageSettings('thumbnail');
+const otherProjectsImageSettings = createImageSettings('high');
 
 export default {
   name: 'ProjectPage',
@@ -126,7 +126,7 @@ export default {
           :slug="story.slug"
           :images="formatMainProjectImages(story.content.visuals)" 
           :repeatCount="1"
-          :imageHeight="'calc(100vh - 97rem)'"
+          :imageHeight="mainProjectImageSettings.height + 'px'"
           :imageQuality="mainProjectImageSettings.quality"
           :imageFormat="mainProjectImageSettings.format"
           :resolutionRatio="mainProjectImageSettings.resolutionRatio"

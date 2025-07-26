@@ -220,6 +220,10 @@ export default {
   opacity: 0;
   will-change: opacity;
   transition: opacity 0.2s ease-out;
+  /* Ensure crisp rendering for high-DPI displays */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
 }
 
 .project-card-background {
@@ -235,6 +239,10 @@ export default {
   opacity: 0;
   will-change: opacity;
   transition: opacity 0.2s ease-out;
+  /* Ensure crisp rendering for high-DPI displays */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Loading states */

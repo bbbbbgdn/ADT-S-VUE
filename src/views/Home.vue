@@ -3,7 +3,7 @@
     <div class="title-text" :class="{ 'title-fade-in': isLoaded }">Atelier Dasha Tsapenko</div>
     <iframe
       class="video-background"
-      src="/homepage_vid/index.html"
+      src="/home_video/index.html"
       frameborder="0"
       allowfullscreen
       @load="onIframeLoad"
