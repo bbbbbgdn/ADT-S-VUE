@@ -52,7 +52,7 @@
         <div class="contact-info">
 
           <div class="contact-section">
-            <div class="section-title">EMAIL:</div>
+            <!-- <div class="section-title">EMAIL:</div> -->
             <div class="button-divider" 
                  ref="emailDivider"
                  @scroll="handleDividerScroll('email')"
@@ -63,7 +63,7 @@
           </div>
           <br>
           <div class="contact-section">
-            <div class="section-title">ADDRESS:</div>
+            <!-- <div class="section-title">ADDRESS:</div> -->
             <div class="button-divider" 
                  ref="addressDivider"
                  @scroll="handleDividerScroll('address')"
@@ -76,7 +76,7 @@
           </div>
           <br>
           <div class="contact-section">
-            <div class="section-title">LINKS:</div>
+            <!-- <div class="section-title">LINKS:</div> -->
             <div class="button-divider" 
                  ref="linksDivider"
                  @scroll="handleDividerScroll('links')"
