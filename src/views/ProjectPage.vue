@@ -105,28 +105,16 @@ export default {
           <p>{{ errorMessage }}</p>
         </div>
 
-        <div class="project-tags">
-          <BaseButton 
-            v-if="story.content?.title_tag?.trim()" 
-            :to="`/projects/${story.slug.split('/').pop()}`" 
-            variant="active">{{ story.content?.title_tag }}</BaseButton>
-          <BaseButton 
-            v-if="story.content?.location_tag?.trim()" 
-            variant="grey">{{ story.content?.location_tag }}</BaseButton>
-          <BaseButton 
-            v-if="(story.content?.date_tag || story.content?.year_tag)?.trim()" 
-            variant="grey">{{ story.content?.date_tag || story.content?.year_tag }}</BaseButton>
-        </div>
-
-        <InfoText :html="renderRichText(story.content?.info_text || '')" />
-
-
-        <ImageGallery 
+        <!-- Main Project Gallery -->
+        <ImageGallery
           v-if="story.content?.visuals && story.content.visuals.length > 0"
           :slug="story.slug"
+          :name="story.content?.title_tag || ''"
+          :location="story.content?.location_tag || ''"
+          :date="story.content?.date_tag || story.content?.year_tag || ''"
           :images="formatMainProjectImages(story.content.visuals)" 
           :repeatCount="1"
-          :imageHeight="mainProjectImageSettings.height + 'px'"
+          :imageHeight="'calc(100vh - 96rem)'"
           :imageQuality="mainProjectImageSettings.quality"
           :imageFormat="mainProjectImageSettings.format"
           :resolutionRatio="mainProjectImageSettings.resolutionRatio"
@@ -134,14 +122,18 @@ export default {
           :repeatToFill="false"
           :enableNavigation="false"
         />
-
+        
+        <!-- Fallback message if no visuals -->
         <div v-else class="no-images-message">
           <p>No images available for this project</p>
         </div>
-
+        
+        <!-- Using MainText with paragraph (default) -->
         <MainText>
           {{ story.content?.main_text || 'No Description Available' }}
         </MainText>
+        
+        <InfoText :html="renderRichText(story.content?.info_text || '')" />
 
 
 

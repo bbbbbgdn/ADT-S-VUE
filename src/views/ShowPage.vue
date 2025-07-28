@@ -54,7 +54,7 @@ const mainShowGalleryProps = computed(() => ({
   slug: story.value?.slug,
   images: story.value?.content?.visuals ? formatMainShowImages(story.value.content.visuals) : [],
   repeatCount: 1,
-  imageHeight: mainShowImageSettings.height + 'px',
+  imageHeight: 'calc(100vh - 96rem)',
   imageQuality: mainShowImageSettings.quality,
   imageFormat: mainShowImageSettings.format,
   resolutionRatio: mainShowImageSettings.resolutionRatio,
@@ -75,7 +75,7 @@ const getOtherShowGalleryProps = (show) => ({
   imageQuality: otherShowsImageSettings.quality,
   imageFormat: otherShowsImageSettings.format,
   resolutionRatio: otherShowsImageSettings.resolutionRatio,
-  enableNavigation: false
+  enableNavigation: true
 });
 </script>
 
