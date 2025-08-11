@@ -80,7 +80,7 @@ export default {
       try {
         const response = await storyblokApi.get('cdn/stories', {
           starts_with: 'objects/',
-          version: 'published' // добавим это для получения опубликованного контента
+          version: 'published'
         });
         
         // Добавим проверку перед присвоением
@@ -90,7 +90,7 @@ export default {
       } catch (error) {
         console.error('Error fetching stories:', error);
       }
-    });
+    });  
 
     return {
       stories,

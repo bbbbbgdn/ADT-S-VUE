@@ -12,6 +12,30 @@ const defaultConfig = {
   cacheEnabled: true
 };
 
+// Detect whether we should load draft content
+export const isDraftMode = () => {
+  if (typeof window === 'undefined') return false;
+  try {
+    const search = window.location.search || '';
+    const params = new URLSearchParams(search);
+    if (params.has('_storyblok')) return true;
+    if (params.get('version') === 'draft') return true;
+    if (params.get('preview') === 'true') return true;
+    if (import.meta?.env?.VITE_STORYBLOK_PREVIEW === 'true') return true;
+  } catch (_) {}
+  return false;
+};
+
+// Build API params with correct version and cache busting (for draft)
+export const getApiParams = (params = {}) => {
+  const draft = isDraftMode();
+  const base = { version: draft ? 'draft' : 'published' };
+  if (draft) {
+    base.cv = Date.now();
+  }
+  return { ...base, ...params };
+};
+
 /**
  * Loads a story from Storyblok with retry logic and caching
  * @param {string} path - The path to the story (e.g., 'projects/my-project')
@@ -25,7 +49,7 @@ const defaultConfig = {
 export const loadStory = async (path, options = {}) => {
   const config = { ...defaultConfig, ...options };
   const { maxRetries, retryDelay, cacheEnabled } = config;
-  const params = options.params || { version: 'published' };
+  const params = getApiParams(options.params);
   
   const storyblokApi = useStoryblokApi();
   
@@ -86,10 +110,7 @@ export const loadStory = async (path, options = {}) => {
  */
 export const loadStories = async (options = {}) => {
   const storyblokApi = useStoryblokApi();
-  const params = {
-    version: 'published',
-    ...options.params
-  };
+  const params = getApiParams(options.params);
   
   if (options.startsWith) {
     params.starts_with = options.startsWith;

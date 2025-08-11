@@ -2,6 +2,8 @@ import { ref, onMounted, watch, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import * as storyblokUtils from './storyblok';
 import navigationManager from './navigationManager';
+import { useStoryblokBridge } from '@storyblok/vue';
+import { isDraftMode } from './storyblok';
 
 // Check if Storyblok is available
 const isStoryblokAvailable = () => {
@@ -156,6 +158,21 @@ export default function useStoryblok(options = {}) {
     
     if (route.params[routeParam]) {
       await loadStory(route.params[routeParam]);
+    }
+
+    // Enable live updates in the Visual Editor
+    if (isDraftMode()) {
+      watch(
+        () => story.value && story.value.id,
+        (id) => {
+          if (id) {
+            useStoryblokBridge(id, (newStory) => {
+              story.value = newStory;
+            });
+          }
+        },
+        { immediate: true }
+      );
     }
   });
   

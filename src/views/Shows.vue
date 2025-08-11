@@ -37,6 +37,7 @@ onMounted(async () => {
   try {
     const response = await storyblokApi.get('cdn/stories', {
       starts_with: 'shows/',
+      version: 'published'
     });
     if (response?.data?.stories) {
       stories.value = response.data.stories;

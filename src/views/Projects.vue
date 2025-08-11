@@ -22,10 +22,10 @@
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import ProjectCard from '../components/ProjectCard.vue';
-import { useStoryblokApi } from '@storyblok/vue';
 import { formatImage } from '../utils/storyblok';
 import { createImageSettings } from '../utils/imageSettings';
 import navigationManager from '../utils/navigationManager';
+import { useStoryblokService } from '../services/storyblok';
 
 export default {
   name: 'Projects',
@@ -34,7 +34,6 @@ export default {
   },
   setup() {
     const router = useRouter();
-    let storyblokApi = null;
     const stories = ref([]);
     const isLoading = ref(true);
     const shouldAnimate = ref(!localStorage.getItem('hasSeenAnimation'));
@@ -42,12 +41,8 @@ export default {
     // Create image settings for ProjectCard with high quality
     const projectCardImageSettings = createImageSettings('high');
 
-    // Try to get Storyblok API only if it's available
-    try {
-      storyblokApi = useStoryblokApi();
-    } catch (error) {
-      console.warn('Storyblok API is not available:', error);
-    }
+    // Use centralized Storyblok service
+    const { getStories } = useStoryblokService();
     
     const navigateToProject = (slug) => {
       // Use navigation manager for consistent transitions
@@ -55,26 +50,15 @@ export default {
     };
 
     onMounted(async () => {
-      // Check if Storyblok is available
-      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN || !storyblokApi) {
-        console.warn('Storyblok is not available. Projects page will be empty.');
-        isLoading.value = false;
-        return;
+      const result = await getStories('projects/');
+      
+      if (result.success) {
+        stories.value = result.data;
+      } else {
+        console.warn('Failed to load projects:', result.error);
       }
       
-      try {
-        const response = await storyblokApi.get('cdn/stories', {
-          starts_with: 'projects/',
-          version: 'published'
-        });
-        if (response?.data?.stories) {
-          stories.value = response.data.stories;
-        }
-        isLoading.value = false;
-      } catch (error) {
-        console.error('Error fetching stories:', error);
-        isLoading.value = false;
-      }
+      isLoading.value = false;
     });
 
     // Custom formatImage function for ProjectCard with 2x resolution
@@ -102,9 +86,7 @@ export default {
   padding: 0 var(--space-md) var(--space-md) var(--space-md);
 }
 
-.project-card {
-  /* transition: opacity 0.5s ease-out; */
-}
+/* Project card styles handled by component */
 
 /* Responsive layout for mobile devices */
 @media screen and (max-width: 768px) {

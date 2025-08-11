@@ -71,7 +71,7 @@
 
 <script>
 import { onMounted, ref, computed, nextTick, onBeforeUnmount, getCurrentInstance } from 'vue'
-import { useStoryblokApi } from '@storyblok/vue'
+import { useStoryblokService } from '../services/storyblok'
 import BaseButton from '../components/BaseButton.vue'
 
 export default {
@@ -80,19 +80,14 @@ export default {
     BaseButton
   },
   setup() {
-    let storyblokApi = null;
     const pressItems = ref([])
     const activeImageId = ref(null)
     const dividerScrollTimeouts = ref({})
     const dividerSpringAnimationIds = ref({})
     const { proxy } = getCurrentInstance();
 
-    // Try to get Storyblok API only if it's available
-    try {
-      storyblokApi = useStoryblokApi();
-    } catch (error) {
-      console.warn('Storyblok API is not available:', error);
-    }
+    // Use centralized Storyblok service
+    const { getStories } = useStoryblokService();
 
     const groupedPress = computed(() => {
       const groups = {}
@@ -333,22 +328,12 @@ export default {
 
 
     onMounted(async () => {
-      // Check if Storyblok is available
-      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN || !storyblokApi) {
-        console.warn('Storyblok is not available. Press page will be empty.');
-        return;
-      }
-      try {
-        const response = await storyblokApi.get('cdn/stories', {
-          starts_with: 'press/',
-          version: 'draft',
-          resolve_links: 'url'
-        })
-        if (response?.data?.stories) {
-          pressItems.value = response.data.stories
-        }
-      } catch (error) {
-        console.error('Error fetching press items:', error)
+      const result = await getStories('press/', { resolve_links: 'url' });
+      
+      if (result.success) {
+        pressItems.value = result.data;
+      } else {
+        console.warn('Failed to load press items:', result.error);
       }
 
       // Add global touch end listener as a safety net with immediate response
