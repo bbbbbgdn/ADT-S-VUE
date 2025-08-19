@@ -22,19 +22,23 @@
         
         <div class="profile-description">
             <p>
-              Atelier Dasha Tsapenko explores the future of (fashion) design through living systems, cultivating garments and materials in collaboration with fungi, plants, and time. Founded on a strong belief in a bio-based, post-industrial approach to design, the atelier develops sustainable concepts, techniques, and surfaces using self-grown flexible matter.
+              Atelier Dasha Tsapenko is a bio-design studio based in The Hague, The Netherlands.
             </p>
             
             <p>
-              Working between microbiology labs and open fields, the studio maintains close ties with scientists and farmers to grow its own textiles and coatings. After a period of cultivation, these living materials are hand-processed into garments, tapestries, and collectible design objects—offering a new language for design expression that is both ecological and deeply embodied.
+              We develop materials, innovative techniques and create conceptual grown textiles, garments and collectible pieces.
             </p>
             
             <p>
-              At the heart of the atelier's practice lies the intersection of (fashion) design and agriculture. The studio views these disciplines not only as parallel in their challenges, but also in their methods—embracing slowness, seasonality, and regeneration. Projects include dyeing with local crop waste, crafting fur-like fibers and developing fungal felts grown into form.
+              We collaborate with fungi and plants, learning from their properties. From living textiles and surfaces, natural dyes, coatings, and binders to whole grown fungal universes, our work tells stories of an interconnected world.
             </p>
             
             <p>
-              Beyond its own research and collections, Atelier Dasha Tsapenko is evolving into a fully-fledged bio-atelier—where garments are grown. Alongside bespoke, site-specific bio-material development for (fashion) brands, the atelier also works directly with fashion-conscious clients to cultivate one-of-a-kind, haute couture pieces. Each garment is a living collaboration with fungi, plants, and time—offering a radically new, deeply approach to wearable design.
+              We work closely together with scientists, farmers, visual artists, and local craftsmen and are deeply inspired by regenerative agriculture.
+            </p>
+            
+            <p>
+              Our founder Dasha Tsapenko also shares her vision through art direction, curation, lectures and hands-on workshops.
             </p>
 
             <div class="contact-section">
@@ -120,7 +124,7 @@ export default {
   data() {
     return {
       imageLoaded: false,
-      profileImage: '/main/assets/IMG_0943.JPG',
+      profileImage: '/main/assets/IMG_3967.JPEG',
       isSticky: false,
       initialTop: 0,
       placeholderHeight: 0,
