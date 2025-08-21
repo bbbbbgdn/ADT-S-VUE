@@ -8,7 +8,7 @@
     />
     <div class="object-tags">
       <BaseButton :to="`/objects/${slug}`">{{ objectName }}</BaseButton>
-      <BaseButton variant="grey">{{ price }}</BaseButton>
+      <BaseButton v-if="showPrice && price" variant="grey">{{ price }}</BaseButton>
     </div>
   </div>
 </template>
@@ -30,7 +30,11 @@ export default {
     price: {
       type: String,
       default: '',
-      required: true
+      required: false
+    },
+    showPrice: {
+      type: Boolean,
+      default: true
     },
     image: {
       type: String,

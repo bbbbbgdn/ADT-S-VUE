@@ -9,6 +9,7 @@
         :image="story.content?.visuals?.[0] ? formatImage(story.content.visuals[0]) : ''"
         :objectName="story.content?.title_tag || ''"
         :price="story.content?.price_tag || ''"
+        :showPrice="story.content?.display_price || false"
         :slug="story.slug"
       />
     </div>
