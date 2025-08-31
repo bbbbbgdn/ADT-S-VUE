@@ -8,17 +8,20 @@
     @keydown.enter="onCardClick"
     @keydown.space.prevent="onCardClick"
   >
-    <img
-      :src="image"
-      alt="object image"
-      class="object-bg"
-      @load="onLoad"
-    />
+
 
   <div class="object-tags">
       <BaseButton :to="`/objects/${slug}`">{{ objectName }}</BaseButton>
       <BaseButton v-if="showPrice && price" variant="grey">{{ price }}</BaseButton>
   </div>
+
+
+  <img
+      :src="image"
+      alt="object image"
+      class="object-bg"
+      @load="onLoad"
+    />
 
   </div>
 </template>
@@ -106,10 +109,10 @@ img {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: var(--space-sm);
+  padding: var(--space-md);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs);
+  gap: var(--space-md);
   z-index: 1;
   /* background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); */
 }
@@ -126,27 +129,28 @@ img {
 /* Ensure blur looks good even if underlying image has transparency.
    We render a blurred copy of the object image inside the grey button. */
 .object-tags :deep(.button-grey) {
-  position: relative;
-  overflow: hidden;
+  background-color: rgb(207 207 207) !important;
+  /* position: relative; */
+  /* overflow: hidden; */
 }
 
 .object-tags :deep(.button-grey)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background-image: var(--object-image-url);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  filter: blur(18px);
+  /* content: ""; */
+  /* position: absolute; */
+  /* inset: 0; */
+  /* border-radius: inherit; */
+  /* background-image: var(--object-image-url); */
+  /* background-repeat: no-repeat; */
+  /* background-position: center; */
+  /* background-size: contain; */
+  /* filter: blur(18px); */
   /* Place above the button background but below text */
-  z-index: 0;
+  /* z-index: 0; */
 }
 
 .object-tags :deep(.button-text) {
-  position: relative;
-  z-index: 1;
+  /* position: relative; */
+  /* z-index: 1; */
 }
 
 </style>

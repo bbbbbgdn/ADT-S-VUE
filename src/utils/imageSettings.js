@@ -8,7 +8,7 @@ export const defaultSettings = {
   // High quality settings for main content and featured images
   high: {
     width: 0, // Auto width
-    height: 800, // Fixed height for high quality images
+    height: 1024, // Fixed height for high quality images
     quality: 85,
     format: 'webp',
     resolutionRatio: 2
@@ -17,7 +17,7 @@ export const defaultSettings = {
   // Lower quality settings for thumbnails and gallery previews
   thumbnail: {
     width: 0,
-    height: 360,
+    height: 512,
     quality: 85, // Consistent quality for all images
     format: 'webp',
     resolutionRatio: 2

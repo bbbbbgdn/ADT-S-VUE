@@ -21,6 +21,8 @@ import { onMounted, ref, computed } from 'vue';
 import ObjectCard from '../components/ObjectCard.vue';
 import FilterComponent from '../components/FilterComponent.vue';
 import { useStoryblokApi } from '@storyblok/vue';
+import { createImageSettings } from '../utils/imageSettings';
+import { createImageUrl } from '../utils/storyblok';
 
 export default {
   name: 'Objects',
@@ -32,6 +34,9 @@ export default {
     let storyblokApi = null;
     const stories = ref([]);
     const currentFilter = ref('all');
+
+    // Use smaller, good-quality settings for object thumbnails
+    const objectCardImageSettings = createImageSettings('high');
 
     // Try to get Storyblok API only if it's available
     try {
@@ -65,8 +70,7 @@ export default {
       if (!visual || !visual.filename) {
         return '';
       }
-      const formattedUrl = `${visual.filename}`;
-      return formattedUrl;
+      return createImageUrl(visual.filename, objectCardImageSettings);
     };
   
 
