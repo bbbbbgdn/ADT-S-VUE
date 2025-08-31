@@ -1,6 +1,6 @@
 <template>
   <div class="filter-container">
-    <BaseButton 
+    <!-- <BaseButton 
       :class="{ 'active': activeFilter === 'all' }"
       @click="setFilter('all')"
     >
@@ -12,7 +12,7 @@
       @click="setFilter('inStock')"
     >
       Only in stock
-    </BaseButton>
+    </BaseButton> -->
     
     <BaseButton 
       :class="{ 'active': activeFilter === 'chronological' }"
@@ -59,8 +59,8 @@ export default {
 <style scoped>
 .filter-container {
   display: flex;
-  gap: var(--space-sm);
-  padding: var(--space-lg);
+  gap: var(--space-md);
+  padding: 0 0 0 var(--space-md);
   flex-wrap: wrap;
 }
 
@@ -76,8 +76,8 @@ export default {
 
 @media screen and (max-width: 768px) {
   .filter-container {
-    padding: var(--space-sm);
-    justify-content: center;
+    /* padding: var(--space-m); */
+    /* justify-content: center; */
   }
 }
 </style>
