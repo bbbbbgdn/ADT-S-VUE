@@ -1,20 +1,31 @@
 <template>
-  <div class="object-card">
+  <div
+    class="object-card"
+    :style="{ '--object-image-url': `url(${image})` }"
+    role="link"
+    tabindex="0"
+    @click="onCardClick"
+    @keydown.enter="onCardClick"
+    @keydown.space.prevent="onCardClick"
+  >
     <img
       :src="image"
       alt="object image"
       class="object-bg"
       @load="onLoad"
     />
-    <div class="object-tags">
+
+  <div class="object-tags">
       <BaseButton :to="`/objects/${slug}`">{{ objectName }}</BaseButton>
       <BaseButton v-if="showPrice && price" variant="grey">{{ price }}</BaseButton>
-    </div>
+  </div>
+
   </div>
 </template>
 
 <script>
 import BaseButton from './BaseButton.vue';
+import navigationManager from '../utils/navigationManager';
 
 export default {
   name: 'ObjectCard',
@@ -49,12 +60,25 @@ export default {
   methods: {
     onLoad() {
       // Ти можеш додати будь-яку логіку, якщо потрібно після завантаження
+    },
+    onCardClick() {
+      const targetPath = `/objects/${this.slug}`;
+      if (this.$router) {
+        navigationManager.navigateTo(this.$router, targetPath);
+      } else {
+        window.location.href = targetPath;
+      }
     }
   }
 };
 </script>
 
 <style scoped>
+
+img {
+    background-color: transparent !important;
+}
+
 .object-card {
   position: relative;
   width: 100%;
@@ -63,6 +87,7 @@ export default {
   overflow: hidden;
   /* border-radius: 12px; <-- видалено */
   /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); */
+  cursor: pointer;
 }
 
 .object-bg {
@@ -90,5 +115,38 @@ export default {
 }
 
 
+/* Mirror button hover state when card is hovered */
+.object-card:hover .button-black {
+  background-color: var(--color-pink-primary);
+  color: black;
+}
+
+
+
+/* Ensure blur looks good even if underlying image has transparency.
+   We render a blurred copy of the object image inside the grey button. */
+.object-tags :deep(.button-grey) {
+  position: relative;
+  overflow: hidden;
+}
+
+.object-tags :deep(.button-grey)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: var(--object-image-url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: blur(18px);
+  /* Place above the button background but below text */
+  z-index: 0;
+}
+
+.object-tags :deep(.button-text) {
+  position: relative;
+  z-index: 1;
+}
 
 </style>

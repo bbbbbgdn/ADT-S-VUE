@@ -104,6 +104,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 .objects-container {
   width: 100%;
 }
@@ -111,9 +114,9 @@ export default {
 .objects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+  /* gap: var(--space-lg); */
   width: 100%;
-  padding: var(--space-lg);
+  /* padding: var(--space-lg); */
 }
 
 .object-card {
@@ -131,7 +134,7 @@ export default {
 @media screen and (max-width: 768px) {
   .objects-grid {
     grid-template-columns: 1fr;
-    padding: var(--space-sm);
+    /* padding: var(--space-sm); */
   }
 }
 </style> 
