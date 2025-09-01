@@ -4,13 +4,18 @@
     <div class="objects-grid">
       <ObjectCard
         class="object-card"
-        v-for="story in filteredStories"
+        v-for="(story, index) in filteredStories"
         :key="story.id"
         :image="story.content?.visuals?.[0] ? formatImage(story.content.visuals[0]) : ''"
         :objectName="story.content?.title_tag || ''"
         :price="story.content?.price_tag || ''"
         :showPrice="story.content?.display_price || false"
         :slug="story.slug"
+        :gallery-index="index"
+        :gallery-id="'objects-gallery'"
+        :total-items="filteredStories.length"
+        :preload-count="filteredStories.length > 15 ? 2 : 4"
+        :is-big-gallery="filteredStories.length > 15"
       />
     </div>
   </div>
@@ -129,10 +134,7 @@ export default {
   overflow: hidden;
 }
 
-.object-card:hover {
-  /* filter:grayscale(0%); */
-  /* height: 50%; */
-}
+
 
 /* Responsive layout for mobile devices */
 @media screen and (max-width: 768px) {

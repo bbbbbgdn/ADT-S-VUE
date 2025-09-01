@@ -1,28 +1,33 @@
 <template>
   <div
     class="object-card"
-    :style="{ '--object-image-url': `url(${image})` }"
     role="link"
     tabindex="0"
     @click="onCardClick"
     @keydown.enter="onCardClick"
     @keydown.space.prevent="onCardClick"
   >
-
-
-  <div class="object-tags">
-      <BaseButton :to="`/objects/${slug}`">{{ objectName }}</BaseButton>
-      <BaseButton v-if="showPrice && price" variant="grey">{{ price }}</BaseButton>
-  </div>
-
-
-  <img
-      :src="image"
-      alt="object image"
+    <img
+      v-lazy-load="{
+        url: image,
+        index: galleryIndex,
+        galleryId: galleryId,
+        threshold: 0.05,
+        rootMargin: isBigGallery ? '200px' : '400px',
+        preloadCount: isBigGallery ? 2 : 4,
+        isBigGallery: isBigGallery,
+        resetQueue: galleryIndex === 0
+      }"
+      :alt="`${objectName} image`"
       class="object-bg"
-      @load="onLoad"
+      @load="onImageLoad"
+      @error="onImageError"
     />
 
+    <div class="object-tags">
+      <BaseButton :to="`/objects/${slug}`">{{ objectName }}</BaseButton>
+      <BaseButton v-if="showPrice && price" variant="grey">{{ price }}</BaseButton>
+    </div>
   </div>
 </template>
 
@@ -58,11 +63,43 @@ export default {
     slug: {
       type: String,
       required: true
+    },
+    galleryIndex: {
+      type: Number,
+      default: 0
+    },
+    galleryId: {
+      type: String,
+      default: 'objects-gallery'
+    },
+    totalItems: {
+      type: Number,
+      default: 0
+    },
+    preloadCount: {
+      type: Number,
+      default: 3
+    },
+    isBigGallery: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      imageLoaded: false,
+      imageError: false
     }
   },
   methods: {
-    onLoad() {
-      // Ти можеш додати будь-яку логіку, якщо потрібно після завантаження
+    onImageLoad() {
+      this.imageLoaded = true;
+      this.imageError = false;
+      // You can add any additional logic after image loads
+    },
+    onImageError() {
+      this.imageError = true;
+      this.imageLoaded = false;
     },
     onCardClick() {
       const targetPath = `/objects/${this.slug}`;
@@ -99,10 +136,26 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
   z-index: 0;
   transition: opacity 0.5s ease;
   border-radius: 0; /* чітко встановлено без округлення */
+  object-fit: contain;
+}
+
+/* Loading state styles */
+.object-bg.image-loading {
+  opacity: 0;
+  filter: blur(2px);
+}
+
+.object-bg.image-loaded {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.object-bg.image-error {
+  opacity: 0.5;
+  filter: grayscale(100%);
 }
 
 .object-tags {
@@ -146,23 +199,6 @@ img {
   /* overflow: hidden; */
 }
 
-.object-tags :deep(.button-grey)::before {
-  /* content: ""; */
-  /* position: absolute; */
-  /* inset: 0; */
-  /* border-radius: inherit; */
-  /* background-image: var(--object-image-url); */
-  /* background-repeat: no-repeat; */
-  /* background-position: center; */
-  /* background-size: contain; */
-  /* filter: blur(18px); */
-  /* Place above the button background but below text */
-  /* z-index: 0; */
-}
 
-.object-tags :deep(.button-text) {
-  /* position: relative; */
-  /* z-index: 1; */
-}
 
 </style>
