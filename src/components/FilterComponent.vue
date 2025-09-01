@@ -68,10 +68,10 @@ export default {
   background-color: var(--color-pink-primary) !important;
 }
 
-/* Черная кнопка */
-:deep(.base-button.active:nth-child(2)) {
-  background-color: #000 !important;
-  color: white;
+
+:deep(.base-button.active) {
+  color: #000 !important;
+  /* color: white; */
 }
 
 @media screen and (max-width: 768px) {

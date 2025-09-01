@@ -114,15 +114,27 @@ img {
   flex-wrap: wrap;
   gap: var(--space-md);
   z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
   /* background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); */
 }
 
-
-/* Mirror button hover state when card is hovered */
-.object-card:hover .button-black {
-  background-color: var(--color-pink-primary);
-  color: black;
+/* Show tags on hover for desktop */
+@media screen and (min-width: 769px) {
+  .object-card:hover .object-tags {
+    opacity: 1;
+  }
 }
+
+/* Always show tags on mobile */
+@media screen and (max-width: 768px) {
+  .object-tags {
+    opacity: 1;
+  }
+}
+
+
+/* Keep buttons black, no active state needed */
 
 
 

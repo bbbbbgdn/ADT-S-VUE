@@ -2,12 +2,12 @@
 import { useRoute, useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ObjectCard from '../components/ObjectCard.vue';
-import { computed } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import useStoryblok from '../utils/useStoryblok';
 import { createImageSettings } from '../utils/imageSettings';
 
-// Create image settings for object photos (high quality for main images, thumbnail for suggestions)
-const mainObjectImageSettings = createImageSettings('high');
+// Create image settings for object photos (window-based for main images, thumbnail for suggestions)
+const mainObjectImageSettings = createImageSettings('windowBased');
 const otherObjectsImageSettings = createImageSettings('thumbnail');
 
 // Use our Storyblok composable with 'object' type
@@ -57,6 +57,94 @@ const getAvailabilityText = (availability) => {
     default: return '';
   }
 };
+
+// Open mail client to contact Dasha with object title in subject
+const contactDasha = () => {
+  const title = story.value?.content?.title_tag || 'Inquiry';
+  const subject = encodeURIComponent(`Object inquiry for ${title}`);
+  window.location.href = `mailto:tsapenkodash@gmail.com?subject=${subject}`;
+};
+
+// Convert line breaks to HTML breaks
+const formatTextWithLineBreaks = (text) => {
+  if (!text) return '';
+  return text.replace(/\n/g, '<br>');
+};
+
+// Simple sticky order section functionality
+const orderSectionRef = ref(null);
+const OtherRef = ref(null);
+const isSticky = ref(false);
+const isTransitioning = ref(false);
+const translateY = ref(0);
+const originalOffsetTop = ref(0);
+
+const handleScroll = () => {
+  if (!orderSectionRef.value || !OtherRef.value) return;
+  
+  // Disable sticky behavior on mobile devices
+  if (window.innerWidth <= 768) {
+    isSticky.value = false;
+    isTransitioning.value = false;
+    translateY.value = 0;
+    return;
+  }
+  
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const windowHeight = window.innerHeight;
+  const windowBottom = scrollTop + windowHeight;
+  
+  // If we haven't stored the original position yet, store it
+  if (originalOffsetTop.value === 0 && orderSectionRef.value.offsetTop > 0) {
+    originalOffsetTop.value = orderSectionRef.value.offsetTop;
+  }
+  
+  // Get photos-stack bottom position
+  const photosStackRect = OtherRef.value.getBoundingClientRect();
+  const photosStackBottom = scrollTop + photosStackRect.bottom;
+  
+  // Start sticky when scroll passes the original position
+  const shouldStartSticky = scrollTop > originalOffsetTop.value;
+  
+  // Check if we've reached the transition point
+  const hasReachedTransitionPoint = windowBottom >= photosStackBottom;
+  
+  if (shouldStartSticky && !hasReachedTransitionPoint) {
+    // Normal sticky behavior
+    isSticky.value = true;
+    isTransitioning.value = false;
+    translateY.value = 0;
+  } else if (shouldStartSticky && hasReachedTransitionPoint) {
+    // Transition mode: calculate how much to move the element up
+    const overscroll = windowBottom - photosStackBottom;
+    const maxTranslate = orderSectionRef.value.offsetHeight + 20; // Element height + some padding
+    
+    isSticky.value = true;
+    isTransitioning.value = true;
+    translateY.value = -Math.min(overscroll, maxTranslate);
+  } else {
+    // Not sticky
+    isSticky.value = false;
+    isTransitioning.value = false;
+    translateY.value = 0;
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('resize', handleScroll);
+  // Get initial position after mount
+  setTimeout(() => {
+    if (orderSectionRef.value) {
+      originalOffsetTop.value = orderSectionRef.value.offsetTop;
+    }
+  }, 100);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener('resize', handleScroll);
+});
 </script>
 
 <template>
@@ -75,24 +163,39 @@ const getAvailabilityText = (availability) => {
           <p>{{ errorMessage }}</p>
         </div>
         
-        <!-- Main two-column layout -->
+
         <div class="object-content">
           <!-- Left column: Object info -->
           <div class="object-info">
             <!-- Object name (pink) button at top -->
-            <div class="object-tags">
+        <!-- Main two-column layout -->
+        <div class="object-tags">
               <BaseButton variant="active">{{ story.content?.title_tag || 'Untitled Object' }}</BaseButton>
             </div>
             
-            <!-- Object description -->
-            <div class="object-description">
-              <p v-if="story.content?.info_text">{{ story.content.info_text }}</p>
-              <p v-else-if="story.content?.main_text">{{ story.content.main_text }}</p>
-              <p v-else>No description available</p>
-            </div>
+
             
             <!-- Price and availability info -->
-            <div class="order-section">
+            <div 
+              class="order-section" 
+              ref="orderSectionRef" 
+              :class="{ 'sticky': isSticky, 'transitioning': isTransitioning }"
+              :style="{ transform: `translateY(${translateY}px)` }"
+            >
+                          <!-- Object description -->
+            <div class="object-description">
+              <p v-if="story.content?.info_text" v-html="formatTextWithLineBreaks(story.content.info_text)"></p>
+              <p v-else-if="story.content?.main_text" v-html="formatTextWithLineBreaks(story.content.main_text)"></p>
+              <p v-else class="no-description">Object description in progress,<br>meanwhile feel free to contact for details!</p>
+            </div>
+
+              <BaseButton
+                variant="black"
+                @click="contactDasha"
+              >
+                Contact Dasha
+              </BaseButton>
+              
               <BaseButton 
                 v-if="story.content?.display_price && story.content?.price_tag" 
                 variant="black"
@@ -105,12 +208,14 @@ const getAvailabilityText = (availability) => {
               >
                 {{ getAvailabilityText(story.content.availability) }}
               </BaseButton>
-            </div>
-            
+
+                          
             <!-- Purchase/shipping info -->
-            <div v-if="story.content?.purchase_text" class="purchase-info">
-              {{ story.content.purchase_text }}
+            <div v-if="story.content?.purchase_text" class="purchase-info" v-html="formatTextWithLineBreaks(story.content.purchase_text)">
             </div>
+
+            </div>
+
           </div>
           
           <!-- Right column: Object photos (vertical stack, skipping first image) -->
@@ -131,7 +236,7 @@ const getAvailabilityText = (availability) => {
         </div>
         
         <!-- Back to objects button -->
-        <div class="button-container">
+        <div class="button-container" ref="OtherRef">
           <BaseButton to="/objects">Other objects</BaseButton>
         </div>
         
@@ -161,6 +266,8 @@ const getAvailabilityText = (availability) => {
 <style scoped>
 .object-page {
   width: 100%;
+  position: relative;
+  min-height: 100vh;
 }
 
 .content-area {
@@ -181,17 +288,23 @@ const getAvailabilityText = (availability) => {
 .object-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4xl);
-  padding: var(--space-md);
+  /* gap: var(--space-4xl); */
+  padding: 0 var(--space-md);
   min-height: 80vh;
+ 
 }
 
 /* Left column: Object info */
 .object-info {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
-  padding-right: var(--space-xl);
+  /* gap: var(--space-xl); */
+  /* padding-right: var(--space-xl); */
+  
+}
+
+.object-info > *:not(:first-child) {
+  margin-left: var(--space-3xl);
 }
 
 .object-tags {
@@ -199,11 +312,15 @@ const getAvailabilityText = (availability) => {
   gap: var(--space-md);
   flex-wrap: wrap;
   align-items: center;
+
+  margin-bottom: var(--space-xl);
 }
 
 .object-description {
   font-size: var(--text-lg);
-  line-height: 1.6;
+  /* line-height: 1.6; */
+  margin-bottom: var(--space-4xl);
+  /* margin-bottom: 20svh; */
 }
 
 .material-section,
@@ -220,29 +337,53 @@ const getAvailabilityText = (availability) => {
 }
 
 .order-section {
-  display: flex;
-  gap: var(--space-md);
-  flex-wrap: wrap;
-  align-items: center;
-  margin: var(--space-xl) 0;
+  /* display: flex; */
+  /* gap: var(--space-md); */
+  /* flex-wrap: wrap; */
+  /* align-items: center; */
+  margin: var(--space-xl)  var(--space-3xl) 0 0;
+  /* transition: all 0.3s ease; */
+}
+
+.order-section>button{
+  margin-right: var(--space-md);
+}
+
+.order-section.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 49.5%;
+  background-color: white;
+  padding: var(--space-md);
+  margin: 0 var(--space-3xl) 0 var(--space-3xl);
+  z-index: 100;
+  /* transition: transform 0.1s ease-out; */
+}
+
+.order-section.transitioning {
+  /* Smooth transition during scroll off-screen */
+  /* transition: transform 0.05s ease-out; */
 }
 
 .purchase-info {
-  font-size: var(--text-sm);
-  color: #666;
-  line-height: 1.5;
+  /* font-size: var(--text-sm); */
+  /* color: #666; */
+  /* line-height: 1.5; */
+  margin-top: var(--space-xl);
 }
 
 /* Right column: Object photos */
 .object-photos {
   display: flex;
   flex-direction: column;
+  margin-top: -48.5rem;
 }
 
 .photos-stack {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  /* gap: var(--space-md); */
 }
 
 .object-photo {
@@ -263,19 +404,29 @@ const getAvailabilityText = (availability) => {
 
 /* Button container */
 .button-container {
-  margin: var(--space-4xl) var(--space-md) var(--space-xl) var(--space-md);
+  margin: 0 var(--space-md);
+  display: block;
+  background: white;
+  z-index: 2;
 }
 
 /* Other objects suggestions */
 .other-objects-container {
-  margin-top: var(--space-4xl);
+
+  /* margin-top: var(--space-4xl); */
+ 
 }
 
 .other-objects-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
-  padding: var(--space-md);
+  /* gap: var(--space-md); */
+  /* padding: var(--space-md); */
+} 
+
+.other-objects-grid > .object-card{
+  aspect-ratio: 3 / 4;
+  background: white;
 }
 
 /* Error and warning messages */
@@ -315,38 +466,64 @@ const getAvailabilityText = (availability) => {
 
 /* Mobile responsive */
 @media screen and (max-width: 768px) {
+
+  .object-info > *:not(:first-child) {
+    margin: 0 var(--space-xl) 0 0;
+  }
+
   .object-content {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
-    padding: var(--space-sm);
+    /* gap: var(--space-xl); */
+    /* padding: var(--space-sm); */
   }
   
   .object-info {
     padding-right: 0;
-    order: 2;
+    order: 1;
   }
   
   .object-photos {
     order: 1;
+    margin-top: 49rem;
+    padding-bottom: var(--space-4xl);
   }
   
   .other-objects-grid {
     grid-template-columns: repeat(2, 1fr);
-    padding: var(--space-sm);
+    /* padding: var(--space-sm); */
   }
   
   .object-tags {
-    justify-content: center;
+    /* justify-content: center; */
+  }
+
+  .order-section{
+    /* padding-bottom: var(--space-4xl); */
+  }
+  
+  /* Disable sticky behavior on mobile */
+  .order-section.sticky {
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+    margin: var(--space-xl) 0;
+    z-index: auto;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
 @media screen and (max-width: 480px) {
   .other-objects-grid {
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr; */
   }
   
-  .order-section {
+  /* .order-section {
     justify-content: center;
-  }
+  } */
 }
 </style>
