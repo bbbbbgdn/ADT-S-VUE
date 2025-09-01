@@ -18,14 +18,14 @@
         { 'smooth-transform': enableHoverScroll }
       ]"
       @click="handleGalleryClick"
-      @mousedown="enableHoverScroll ? null : handleMouseDown"
-      @mousemove="enableHoverScroll ? null : handleMouseMove"
-      @mouseup="enableHoverScroll ? null : handleMouseUp"
-      @selectstart="enableHoverScroll ? null : handleSelectStart"
-      @scroll="enableHoverScroll ? null : handleScroll"
-      @touchstart="enableHoverScroll ? null : handleTouchStart"
-      @touchmove="enableHoverScroll ? null : handleTouchMove"
-      @wheel="enableHoverScroll ? null : handleWheel"
+      @mousedown="handleMouseDown"
+      @mousemove="handleMouseMove"
+      @mouseup="handleMouseUp"
+      @selectstart="handleSelectStart"
+      @scroll="handleScroll"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @wheel="handleWheel"
     >
       <!-- For seamless infinite loop animation -->
       <div
@@ -134,6 +134,8 @@ export default {
     images: { type: Array, required: true },
     repeatCount: { type: Number, required: true },
     isActive: { type: Boolean, default: false },
+    // When true, disables hover-based seamless animation and enables manual click-and-drag scrolling
+    allowDrag: { type: Boolean, default: false },
     imageHeight: {
       type: String,
       default: '115rem' // 2x smaller than original 230rem for small galleries
@@ -394,20 +396,23 @@ export default {
     },
     
     handleScroll() {
+      // Only handle scroll events if manual scroll is enabled
+      if (this.enableHoverScroll && !this.allowDrag) return;
+
       const gallery = this.$refs.gallery;
       if (!gallery) return;
-      
+
       // Detect if this is manual scrolling
       const currentScrollLeft = gallery.scrollLeft;
       const scrollDifference = Math.abs(currentScrollLeft - this.lastScrollLeft);
-      
+
       if (scrollDifference > 5) { // Threshold to detect manual scrolling
         this.isUserInteracting = true;
         this.autoScrollPosition = currentScrollLeft;
       }
-      
+
       this.lastScrollLeft = currentScrollLeft;
-      
+
       // Clear existing timeout and set new one to detect when scrolling stops
       clearTimeout(this.scrollTimeout);
       this.scrollTimeout = setTimeout(() => {
@@ -417,8 +422,11 @@ export default {
     },
     
     handleTouchStart(event) {
+      // Only handle touch events if manual scroll is enabled
+      if (this.enableHoverScroll && !this.allowDrag) return;
+
       this.isUserInteracting = true;
-      
+
       // For touch devices, we can also implement drag-like behavior
       // but for now, just pause auto-scroll
       if (this.isAutoScrolling) {
@@ -427,8 +435,11 @@ export default {
     },
     
     handleTouchMove(event) {
+      // Only handle touch move events if manual scroll is enabled
+      if (this.enableHoverScroll && !this.allowDrag) return;
+
       this.isUserInteracting = true;
-      
+
       // Update auto-scroll position to match current scroll
       const gallery = this.$refs.gallery;
       if (gallery) {
@@ -437,6 +448,9 @@ export default {
     },
     
     handleWheel(event) {
+      // Only handle wheel events if manual scroll is enabled
+      if (this.enableHoverScroll && !this.allowDrag) return;
+
       // Handle horizontal scrolling
       if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
         this.isUserInteracting = true;
@@ -451,6 +465,9 @@ export default {
     
     // Drag functionality methods
     handleMouseDown(event) {
+      // Only allow dragging if manual scroll is enabled (when hover scroll is disabled or allowDrag is true)
+      if (this.enableHoverScroll && !this.allowDrag) return;
+
       // Only start dragging on left mouse button
       if (event.button !== 0) return;
 
@@ -478,8 +495,10 @@ export default {
     },
     
     handleMouseMove(event) {
+      // Only allow dragging if manual scroll is enabled
+      if (this.enableHoverScroll && !this.allowDrag) return;
       if (!this.isDragging) return;
-      
+
       const gallery = this.$refs.gallery;
       if (!gallery) return;
       
@@ -504,6 +523,8 @@ export default {
     },
     
     handleMouseUp(event) {
+      // Only allow dragging if manual scroll is enabled
+      if (this.enableHoverScroll && !this.allowDrag) return;
       if (!this.isDragging) return;
 
       console.log('Mouse up - hasDragged:', this.hasDragged, 'shouldPreventClick:', this.shouldPreventClick);
@@ -526,6 +547,9 @@ export default {
     },
     
     handleSelectStart(event) {
+      // Only allow drag-related functionality if manual scroll is enabled
+      if (this.enableHoverScroll && !this.allowDrag) return;
+
       // Prevent text selection during drag
       if (this.isDragging) {
         event.preventDefault();
@@ -1333,6 +1357,11 @@ export default {
       // Enable auto-scroll for small galleries (like in Shows.vue)
       // Disable auto-scroll for big galleries (like main gallery in ShowPage.vue)
       
+      // Explicit override to allow manual dragging even for small galleries
+      if (this.allowDrag) {
+        return false;
+      }
+
       // Check if this is a big gallery by looking at the image height
       // Big galleries typically use calc(100vh - 97rem) or similar large values
       if (this.imageHeight && this.imageHeight.includes('calc(100vh')) {

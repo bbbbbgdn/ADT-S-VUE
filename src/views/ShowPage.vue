@@ -60,7 +60,9 @@ const mainShowGalleryProps = computed(() => ({
   resolutionRatio: mainShowImageSettings.resolutionRatio,
   isActive: true,
   repeatToFill: false,
-  enableNavigation: false
+  enableNavigation: false,
+  // Enable manual click-and-drag for big galleries
+  allowDrag: true
 }));
 
 const getOtherShowGalleryProps = (show) => ({
