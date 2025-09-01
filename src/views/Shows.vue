@@ -140,7 +140,7 @@ const handleGallerySuccess = (storyId) => {
       </div>
       
       <!-- Only render ImageGallery when story is visible -->
-      <ImageGallery 
+      <ImageGallery
         v-else-if="visibleStories.has(story.uuid)"
         :images="formatImages(story.content?.visuals)"
         :name="story.content?.title_tag"
@@ -153,6 +153,8 @@ const handleGallerySuccess = (storyId) => {
         :imageQuality="imageSettings.quality"
         :imageFormat="imageSettings.format"
         :resolutionRatio="imageSettings.resolutionRatio"
+        :enableAutoScroll="true"
+        :speedRandomness="0.3"
         @gallery-error="handleGalleryError(story.uuid)"
         @gallery-success="handleGallerySuccess(story.uuid)"
       />

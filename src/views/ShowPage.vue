@@ -75,7 +75,9 @@ const getOtherShowGalleryProps = (show) => ({
   imageQuality: otherShowsImageSettings.quality,
   imageFormat: otherShowsImageSettings.format,
   resolutionRatio: otherShowsImageSettings.resolutionRatio,
-  enableNavigation: true
+  enableNavigation: true,
+  enableAutoScroll: true,
+  speedRandomness: 0.3
 });
 </script>
 

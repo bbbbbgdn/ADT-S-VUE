@@ -4,26 +4,69 @@
     :class="{ 'clickable': !isActive }"
     ref="galleryContainer"
   >
-    <div 
-      class="gallery" 
-      ref="gallery" 
-      :style="[galleryContainerStyle, galleryStyle]" 
-      @mouseenter="handleMouseEnter" 
+        <div
+      class="gallery"
+      ref="gallery"
+      :style="[galleryContainerStyle, galleryStyle]"
+      @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
-      :class="[{ 'manual-scroll': !enableHoverScroll }, { 'auto-scrolling': isHovering && enableHoverScroll }, { 'auto-scroll-active': isAutoScrolling }, { 'dragging': isDragging }]"
+      :class="[
+        { 'manual-scroll': !enableHoverScroll },
+        { 'auto-scrolling': isHovering && enableHoverScroll },
+        { 'auto-scroll-active': isAutoScrolling },
+        { 'dragging': isDragging },
+        { 'smooth-transform': enableHoverScroll }
+      ]"
       @click="handleGalleryClick"
-      @mousedown="handleMouseDown"
-      @mousemove="handleMouseMove"
-      @mouseup="handleMouseUp"
-      @selectstart="handleSelectStart"
-      @scroll="handleScroll"
-      @touchstart="handleTouchStart"
-      @touchmove="handleTouchMove"
-      @wheel="handleWheel"
+      @mousedown="enableHoverScroll ? null : handleMouseDown"
+      @mousemove="enableHoverScroll ? null : handleMouseMove"
+      @mouseup="enableHoverScroll ? null : handleMouseUp"
+      @selectstart="enableHoverScroll ? null : handleSelectStart"
+      @scroll="enableHoverScroll ? null : handleScroll"
+      @touchstart="enableHoverScroll ? null : handleTouchStart"
+      @touchmove="enableHoverScroll ? null : handleTouchMove"
+      @wheel="enableHoverScroll ? null : handleWheel"
     >
-      <div 
-        v-for="(image, index) in processedImages" 
-        :key="`${image.url}-${index}`" 
+      <!-- For seamless infinite loop animation -->
+      <div
+        v-if="enableHoverScroll"
+        class="gallery-content"
+        :style="seamlessContentStyle"
+      >
+        <div
+          v-for="(image, index) in seamlessImages"
+          :key="`${image.url}-${index}-${image.cycle}`"
+          class="gallery-item"
+          :style="galleryItemStyle"
+        >
+          <img
+            v-lazy-load="{
+              url: image.url,
+              index: index % processedImages.length,
+              resetQueue: index === 0,
+              threshold: 0.1,
+              rootMargin: '750px',
+              galleryId: internalGalleryId,
+              preloadCount: preloadCount,
+              isBigGallery: isBigGallery
+            }"
+            :alt="image.alt || 'Image'"
+            :style="imageStyle"
+            :data-index="index % processedImages.length"
+            :data-gallery-id="internalGalleryId"
+            class="gallery-image"
+            :class="{ 'batch-loading': isBatchLoading, 'image-revealed': loadedImages.has(index % processedImages.length) }"
+            @load="onImageLoad(index % processedImages.length)"
+            @error="onImageError(index % processedImages.length)"
+          />
+        </div>
+      </div>
+
+      <!-- Original layout for big galleries -->
+      <div
+        v-else
+        v-for="(image, index) in processedImages"
+        :key="`${image.url}-${index}`"
         class="gallery-item"
         :style="galleryItemStyle"
       >
@@ -110,6 +153,11 @@ export default {
     autoScrollPauseOnHover: { type: Boolean, default: true },
     autoScrollPauseOnTouch: { type: Boolean, default: true },
     enableNavigation: { type: Boolean, default: true },
+    speedRandomness: {
+      type: Number,
+      default: 0.3,
+      validator: value => value >= 0 && value <= 1
+    }, // 0.0 = no randomness, 1.0 = 100% randomness
   },
   data() {
     return {
@@ -136,6 +184,11 @@ export default {
       lastScrollLeft: 0,
       scrollCheckInterval: null,
       wheelTimeout: null,
+      // Transform-based smooth animation for small galleries
+      transformAnimationId: null,
+      transformOffset: 0,
+      transformSpeed: 0.05, // pixels per frame for smooth animation
+      speedMultiplier: null, // Random speed multiplier for this gallery
       // Tags scroll data
       tagsScrollTimeout: null,
       isTagsScrolling: false,
@@ -193,17 +246,72 @@ export default {
     // Auto-scroll methods
     startAutoScroll() {
       if (this.isAutoScrolling) return;
-      
+
       // Don't start auto-scroll for manual-scroll galleries
       if (!this.enableHoverScroll) return;
-      
+
       const gallery = this.$refs.gallery;
       if (!gallery) return;
-      
+
       this.isAutoScrolling = true;
       this.autoScrollPosition = gallery.scrollLeft;
       this.autoScrollFractionalPixels = 0; // Reset fractional pixels
       this.animateAutoScroll();
+    },
+
+    // Smooth transform-based animation for small galleries
+    startSmoothTransformAnimation() {
+      if (this.transformAnimationId || !this.enableHoverScroll) {
+        console.debug(`[ImageGallery] Not starting animation for ${this.internalGalleryId} - already running or disabled`);
+        return;
+      }
+
+      console.debug(`[ImageGallery] Starting smooth transform animation for ${this.internalGalleryId}`);
+      this.transformAnimationId = requestAnimationFrame(() => this.animateSmoothTransform());
+    },
+
+    stopSmoothTransformAnimation() {
+      if (this.transformAnimationId) {
+        cancelAnimationFrame(this.transformAnimationId);
+        this.transformAnimationId = null;
+      }
+    },
+
+    animateSmoothTransform() {
+      // Stop animation if hovering or if hover scroll is disabled
+      if (this.isHovering || !this.enableHoverScroll) {
+        this.stopSmoothTransformAnimation();
+        return;
+      }
+
+      // Update transform offset for smooth continuous movement with random speed
+      this.transformOffset -= this.transformSpeed * this.randomSpeedMultiplier;
+
+      // Reset position when we've moved by one full cycle of images
+      if (this.processedImages.length > 0) {
+        // Calculate the width of one full cycle of images (same logic as seamlessImages)
+        let estimatedImageWidth;
+        if (this.imageWidth === 'auto') {
+          if (this.imageHeight) {
+            const heightValue = parseFloat(this.imageHeight);
+            estimatedImageWidth = heightValue * 1.5; // Assume 3:2 aspect ratio
+          } else {
+            estimatedImageWidth = 200; // fallback
+          }
+        } else {
+          estimatedImageWidth = parseFloat(this.imageWidth) || 200;
+        }
+
+        const cycleWidth = this.processedImages.length * estimatedImageWidth;
+
+        // Reset when we've moved by one full cycle to maintain seamless loop
+        if (Math.abs(this.transformOffset) >= cycleWidth) {
+          this.transformOffset = 0;
+        }
+      }
+
+      // Continue animation
+      this.transformAnimationId = requestAnimationFrame(() => this.animateSmoothTransform());
     },
     
     stopAutoScroll() {
@@ -214,6 +322,9 @@ export default {
       }
       // Keep the current scroll position when stopping
       this.autoScrollPosition = this.$refs.gallery?.scrollLeft || 0;
+
+      // Also stop smooth transform animation
+      this.stopSmoothTransformAnimation();
     },
     
     animateAutoScroll() {
@@ -465,9 +576,9 @@ export default {
     
     handleMouseEnter() {
       this.isHovering = true;
-      // Start auto-scroll on hover only if enabled
+      // Stop smooth transform animation for small galleries on hover
       if (this.enableHoverScroll) {
-        this.startAutoScroll();
+        this.stopSmoothTransformAnimation();
       }
     },
     
@@ -489,8 +600,12 @@ export default {
         this.shouldPreventClick = false; // Reset click prevention flag
       }
 
-      // Stop auto-scroll when not hovering
-      this.stopAutoScroll();
+      // Start auto-scroll when not hovering
+      if (this.enableHoverScroll) {
+        this.startSmoothTransformAnimation();
+      } else {
+        this.startAutoScroll();
+      }
     },
     
     customizeImageParams(options = {}) {
@@ -579,12 +694,26 @@ export default {
               this.isGalleryVisible = true;
               console.debug(`[ImageGallery] Gallery ${this.internalGalleryId} is now visible`);
               this.startImageLoading();
-              
+
+              // Start animation for small galleries when they become visible
+              if (this.enableAutoScroll && this.enableHoverScroll && !this.isHovering) {
+                console.debug(`[ImageGallery] Starting animation for visible gallery ${this.internalGalleryId}`);
+                console.debug(`[ImageGallery] enableAutoScroll: ${this.enableAutoScroll}, enableHoverScroll: ${this.enableHoverScroll}, isHovering: ${this.isHovering}`);
+                this.startSmoothTransformAnimation();
+              } else {
+                console.debug(`[ImageGallery] Gallery ${this.internalGalleryId} visible but not starting animation - enableAutoScroll: ${this.enableAutoScroll}, enableHoverScroll: ${this.enableHoverScroll}, isHovering: ${this.isHovering}`);
+              }
+
               // Check if gallery is in center of viewport
               this.checkIfInCenter();
             } else {
               this.isGalleryVisible = false;
               console.debug(`[ImageGallery] Gallery ${this.internalGalleryId} is no longer visible`);
+
+              // Stop animation for small galleries when they go out of view
+              if (this.enableHoverScroll) {
+                this.stopSmoothTransformAnimation();
+              }
             }
           });
         },
@@ -862,7 +991,65 @@ export default {
 
       console.debug(`[ImageGallery] Revealing loaded images in strict left-to-right order in gallery ${this.internalGalleryId}`);
 
-      // Reveal images in strict left-to-right order to prevent content jumps
+      // Handle different layouts differently
+      if (this.enableHoverScroll) {
+        // Seamless layout - reveal images across all cycles
+        this.revealSeamlessImages();
+      } else {
+        // Original layout for big galleries
+        this.revealOriginalImages();
+      }
+    },
+
+    revealSeamlessImages() {
+      // For seamless layout, we need to reveal images across all cycles
+      const galleryImages = this.$refs.gallery?.querySelectorAll('img.gallery-image');
+      if (!galleryImages) return;
+
+      // Find the rightmost index where all images to the left are loaded
+      let rightmostRevealedIndex = -1;
+      const originalImageCount = this.processedImages.length;
+
+      for (let originalIndex = 0; originalIndex < originalImageCount; originalIndex++) {
+        if (this.loadedImages.has(originalIndex)) {
+          // Check if all images to the left are also loaded
+          let allLeftLoaded = true;
+          for (let leftIndex = 0; leftIndex < originalIndex; leftIndex++) {
+            if (!this.loadedImages.has(leftIndex)) {
+              allLeftLoaded = false;
+              break;
+            }
+          }
+
+          if (allLeftLoaded) {
+            // This image and all to its left are loaded, so reveal it in ALL cycles
+            for (let i = 0; i < galleryImages.length; i++) {
+              const img = galleryImages[i];
+              const imgOriginalIndex = parseInt(img.dataset.index);
+
+              if (imgOriginalIndex === originalIndex && !img.classList.contains('image-revealed')) {
+                img.classList.remove('image-loading');
+                img.classList.add('image-loaded', 'image-revealed');
+                rightmostRevealedIndex = Math.max(rightmostRevealedIndex, originalIndex);
+              }
+            }
+          }
+        }
+      }
+
+      console.debug(`[ImageGallery] Revealed seamless images up to original index ${rightmostRevealedIndex}`);
+
+      this.isBatchLoading = false;
+
+      // Check if all images are loaded
+      if (this.loadedImages.size >= originalImageCount) {
+        console.debug(`[ImageGallery] All images loaded in gallery ${this.internalGalleryId}`);
+        this.$emit('gallery-success');
+      }
+    },
+
+    revealOriginalImages() {
+      // Original logic for big galleries
       const galleryImages = this.$refs.gallery?.querySelectorAll('img.gallery-image');
       if (!galleryImages) return;
 
@@ -891,7 +1078,7 @@ export default {
         }
       }
 
-      console.debug(`[ImageGallery] Revealed images up to index ${rightmostRevealedIndex}`);
+      console.debug(`[ImageGallery] Revealed original images up to index ${rightmostRevealedIndex}`);
 
       this.isBatchLoading = false;
 
@@ -1087,6 +1274,61 @@ export default {
     galleryStyle() {
       return {};
     },
+
+    // Note: Transform is now applied to seamlessContentStyle instead
+
+    seamlessImages() {
+      if (!this.enableHoverScroll || !this.processedImages.length) {
+        return [];
+      }
+
+      // Calculate how many cycles we need to fill the viewport
+      // We need enough images to fill at least 3x the viewport width for seamless looping
+      const viewportWidth = window.innerWidth;
+
+      // Better image width estimation based on actual image dimensions
+      let estimatedImageWidth;
+      if (this.imageWidth === 'auto') {
+        // For auto width, estimate based on aspect ratio and height
+        if (this.imageHeight) {
+          const heightValue = parseFloat(this.imageHeight);
+          estimatedImageWidth = heightValue * 1.5; // Assume 3:2 aspect ratio
+        } else {
+          estimatedImageWidth = 200; // fallback
+        }
+      } else {
+        estimatedImageWidth = parseFloat(this.imageWidth) || 200;
+      }
+
+      const imagesPerViewport = Math.ceil(viewportWidth / estimatedImageWidth);
+      const totalCycles = Math.max(3, Math.ceil((imagesPerViewport * 3) / this.processedImages.length)); // At least 3 cycles
+
+      const seamlessImages = [];
+      for (let cycle = 0; cycle < totalCycles; cycle++) {
+        this.processedImages.forEach((image, index) => {
+          seamlessImages.push({
+            ...image,
+            cycle,
+            originalIndex: index
+          });
+        });
+      }
+
+      return seamlessImages;
+    },
+
+    seamlessContentStyle() {
+      if (!this.enableHoverScroll) {
+        return {};
+      }
+
+      return {
+        display: 'flex',
+        transform: `translateX(${this.transformOffset}px)`,
+        willChange: 'transform',
+        width: 'fit-content' // Allow content to be wider than container
+      };
+    },
     enableHoverScroll() {
       // Enable auto-scroll for small galleries (like in Shows.vue)
       // Disable auto-scroll for big galleries (like main gallery in ShowPage.vue)
@@ -1132,11 +1374,42 @@ export default {
       }
       
       return baseCount;
+    },
+
+    // Generate consistent random speed multiplier for each gallery
+    randomSpeedMultiplier() {
+      if (this.speedMultiplier !== null) {
+        return this.speedMultiplier;
+      }
+
+      // Create a simple hash from the gallery ID for consistent randomness
+      let hash = 0;
+      const str = this.internalGalleryId;
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32-bit integer
+      }
+
+      // Convert hash to a random number between 0 and 1
+      const randomValue = Math.abs(hash) / 2147483647;
+
+      // Map to speed range based on speedRandomness prop
+      // speedRandomness = 0.0: no variation (multiplier = 1.0)
+      // speedRandomness = 0.3: 30% variation (0.7 to 1.3)
+      // speedRandomness = 1.0: 100% variation (0.0 to 2.0)
+      this.speedMultiplier = (1 - this.speedRandomness) + (randomValue * this.speedRandomness * 2);
+
+      console.debug(`[ImageGallery] Gallery ${this.internalGalleryId} speed multiplier: ${this.speedMultiplier.toFixed(3)} (randomness: ${(this.speedRandomness * 100).toFixed(0)}%)`);
+      return this.speedMultiplier;
     }
   },
     mounted() {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
+
+    // Initialize random speed multiplier for this gallery
+    this.randomSpeedMultiplier; // Access computed property to initialize it
 
     // Start batch loading mode immediately
     this.isBatchLoading = true;
@@ -1151,8 +1424,9 @@ export default {
       });
     });
 
-    // Start auto-scroll if enabled and hover scroll is enabled
-    if (this.enableAutoScroll && this.enableHoverScroll) {
+    // Note: Animation for small galleries now starts when they become visible (via intersection observer)
+    // Start auto-scroll for big galleries (they use traditional scroll)
+    if (this.enableAutoScroll && !this.enableHoverScroll) {
       this.$nextTick(() => {
         this.startAutoScroll();
       });
@@ -1166,8 +1440,9 @@ export default {
       this.observer.disconnect();
     }
 
-    // Clean up auto-scroll
+    // Clean up auto-scroll and smooth transform animation
     this.stopAutoScroll();
+    this.stopSmoothTransformAnimation();
     if (this.userInteractionTimeout) {
       clearTimeout(this.userInteractionTimeout);
     }
@@ -1211,6 +1486,12 @@ export default {
     },
     enableAutoScroll(newValue) {
       if (newValue && this.enableHoverScroll) {
+        // Start smooth transform animation for small galleries
+        this.$nextTick(() => {
+          this.startSmoothTransformAnimation();
+        });
+      } else if (newValue && !this.enableHoverScroll) {
+        // Start traditional auto-scroll for big galleries
         this.$nextTick(() => {
           this.startAutoScroll();
         });
@@ -1271,6 +1552,21 @@ export default {
   scroll-behavior: smooth;
   transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: scroll-left, transform;
+}
+
+/* Smooth transform animation for small galleries */
+.gallery.smooth-transform {
+  overflow-x: hidden; /* Hide scrollbars for transform-based animation */
+  cursor: default; /* Remove grab cursor for smooth animation */
+  will-change: transform;
+  transition: none; /* Disable transitions for smooth animation */
+}
+
+/* Gallery content container for seamless animation */
+.gallery-content {
+  display: flex;
+  width: fit-content;
+  will-change: transform;
 }
 
 /* Smooth transition for gallery items during auto-scroll */
