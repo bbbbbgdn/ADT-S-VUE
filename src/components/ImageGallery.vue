@@ -37,7 +37,7 @@
           v-for="(image, index) in seamlessImagesWithPlaceholders"
           :key="`${image.url}-${index}-${image.cycle}`"
           class="gallery-item"
-          :style="galleryItemStyle"
+          :style="[galleryItemStyle, image.placeholderDimensions ? { width: image.placeholderDimensions.width + 'px' } : {}]"
         >
           <!-- Placeholder div to maintain aspect ratio and prevent layout jumps -->
           <div
@@ -63,7 +63,10 @@
               isBigGallery: isBigGallery
             }"
             :alt="image.alt || 'Image'"
-            :style="imageStyle"
+            :style="{
+              ...imageStyle,
+              'aspect-ratio': image.dimensions ? image.dimensions.aspectRatio : undefined
+            }"
             :data-index="index % processedImages.length"
             :data-gallery-id="internalGalleryId"
             class="gallery-image"
@@ -106,7 +109,10 @@
             isBigGallery: isBigGallery
           }"
           :alt="image.alt || 'Image'"
-          :style="imageStyle"
+          :style="{
+            ...imageStyle,
+            'aspect-ratio': image.dimensions ? image.dimensions.aspectRatio : undefined
+          }"
           :data-index="index"
           :data-gallery-id="internalGalleryId"
           class="gallery-image"
