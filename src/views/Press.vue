@@ -2,12 +2,12 @@
   <div class="press-container" :class="{ 'has-active-item': activePressId }">
     <!-- Preload all images with opacity 0 -->
     <div 
-      v-for="(yearGroup, year) in groupedPress" 
-      :key="year"
+      v-for="entry in groupedPress" 
+      :key="entry.year"
       class="year-group"
     >
       <div 
-        v-for="press in yearGroup" 
+        v-for="press in entry.items" 
         :key="press.id"
         class="background-image"
         :style="{ 
@@ -17,18 +17,18 @@
       ></div>
     </div>
 
-    <div v-for="(yearGroup, year) in groupedPress" :key="year" class="year-group">
+    <div v-for="entry in groupedPress" :key="entry.year" class="year-group">
       <BaseButton 
         class="year-button" 
         :disabled="true"
         variant="grey"
       >
-        {{ year === 'No Year' ? '' : year }}
+        {{ entry.year === 'No Year' ? '' : entry.year }}
       </BaseButton>
       
       <div class="press-items">
         <div 
-          v-for="press in yearGroup" 
+          v-for="press in entry.items" 
           :key="press.id" 
           class="press-item"
           :class="{ 'press-item--active': activePressId === press.id }"
@@ -90,18 +90,42 @@ export default {
     const { getStories } = useStoryblokService();
 
     const groupedPress = computed(() => {
-      const groups = {}
-      pressItems.value.forEach(item => {
+      // Force reactivity by accessing pressItems.value
+      const items = [...pressItems.value]
+      
+      const yearToItemsMap = {}
+      items.forEach(item => {
         const year = item.content.year || 'No Year'
-        if (!groups[year]) {
-          groups[year] = []
+        if (!yearToItemsMap[year]) {
+          yearToItemsMap[year] = []
         }
-        groups[year].push(item)
+        yearToItemsMap[year].push(item)
       })
-      // Сортируем года по убыванию
-      return Object.fromEntries(
-        Object.entries(groups).sort((a, b) => b[0] - a[0])
-      )
+      
+      // Build ordered array of { year, items }
+      const entries = Object.entries(yearToItemsMap).map(([year, groupItems]) => ({
+        year,
+        items: groupItems
+      }))
+      
+      // Sort years explicitly as numbers where possible, keeping 'No Year' first
+      entries.sort((a, b) => {
+        if (a.year === 'No Year') return -1
+        if (b.year === 'No Year') return 1
+        return parseInt(b.year) - parseInt(a.year) // descending: newest → oldest
+      })
+      
+      // Sort items within each year for stability (alphabetically by title)
+      entries.forEach(entry => {
+        entry.items.sort((x, y) => {
+          const ax = x.content.press_title || ''
+          const ay = y.content.press_title || ''
+          if (ax !== ay) return ax.localeCompare(ay)
+          return String(x.id).localeCompare(String(y.id))
+        })
+      })
+      
+      return entries
     })
 
     const openPressUrl = (url) => {
@@ -332,6 +356,12 @@ export default {
       
       if (result.success) {
         pressItems.value = result.data;
+        // Debug: log the loaded data
+        console.log('Loaded press items:', pressItems.value.map(item => ({
+          id: item.id,
+          year: item.content.year,
+          title: item.content.press_title
+        })))
       } else {
         console.warn('Failed to load press items:', result.error);
       }
