@@ -7450,6 +7450,11 @@ class CgCanvas
 {
     hasFocus = false;
 
+    forceAspect = 0;
+
+    /**
+     * @param {{ canvasEle: any; cg: any; }} options
+     */
     constructor(options)
     {
         this._log = new external_CABLES_SHARED_namespaceObject.Logger("CgCanvas");
@@ -7480,11 +7485,6 @@ class CgCanvas
 
     get canvasEle() { return this._canvasEle; }
 
-    setWhyCompile(why)
-    {
-        this._compileReason = why;
-    }
-
     /**
      * @param {Number} w
      * @param {Number} h
@@ -7493,6 +7493,14 @@ class CgCanvas
      */
     setSize(w, h, ignorestyle = false)
     {
+        let offY = 0;
+        if (this.forceAspect)
+        {
+            let nh = w / this.forceAspect;
+            if (nh < h)offY = (h - nh) / 2;
+            h = nh;
+        }
+
         if (this._oldWidthRp != w * this.pixelDensity || this._oldHeightRp != h * this.pixelDensity)
         {
             this._oldWidthRp = this.canvasEle.width = w * this.pixelDensity;
@@ -7502,6 +7510,7 @@ class CgCanvas
             {
                 this.canvasEle.style.width = w + "px";
                 this.canvasEle.style.height = h + "px";
+                this.canvasEle.style.marginTop = offY + "px";
             }
 
             this.updateSize();
@@ -7590,10 +7599,13 @@ class FpsCounter extends external_CABLES_SHARED_namespaceObject.Events
 class CgContext extends external_CABLES_SHARED_namespaceObject.Events
 {
 
-    static API_WEBGL = 0;
-    static API_WEBGPU = 1;
+    static API_UNKNOWN = 0;
+    static API_WEBGL = 1;
+    static API_WEBGPU = 2;
 
-    gApi = "unknown";
+    static EVENT_RESIZE = "resize";
+
+    gApi = 0;
 
     /**
      * Description
@@ -7698,7 +7710,7 @@ class CgContext extends external_CABLES_SHARED_namespaceObject.Events
 
     getGApiName()
     {
-        return ["WebGL", "WebGPU"][this.gApi];
+        return ["unknown", "WebGL", "WebGPU"][this.gApi];
     }
 
     get canvas()
@@ -7983,9 +7995,9 @@ class CgContext extends external_CABLES_SHARED_namespaceObject.Events
      * @param {function} [cb]
      * @param {number} [pw]
      * @param {number} [ph]
-     * @param {boolean} [noclearalpha]
+     * @param {boolean} [_noclearalpha]
      */
-    saveScreenshot(filename, cb, pw, ph, noclearalpha)
+    saveScreenshot(filename, cb, pw, ph, _noclearalpha)
     {
         this.patch.renderOneFrame();
 
@@ -8076,6 +8088,10 @@ const BLENDS = {
 // const Context(_patch)
 class CglContext extends CgContext
 {
+
+    /**
+     * @param {Patch} _patch
+     */
     constructor(_patch)
     {
         super(_patch);
@@ -8104,6 +8120,8 @@ class CglContext extends CgContext
         this._isSafariCrap = false;
 
         this.temporaryTexture = null;
+
+        /** @type {WebGL2RenderingContext} */
         this.gl = null;
 
         this._cursor = "auto";
@@ -8179,6 +8197,9 @@ class CglContext extends CgContext
         this.mMatrix = m;
     }
 
+    /**
+     * @param {HTMLCanvasElement} canv
+     */
     _setCanvas(canv)
     {
         if (!canv) this._log.stack("_setCanvas undef");
@@ -8362,6 +8383,12 @@ class CglContext extends CgContext
     }
 
     // old
+    /**
+     * @param {number} x
+     * @param {number} y
+     * @param {number} w
+     * @param {number} h
+     */
     setViewPort(x, y, w, h)
     {
         this._viewPort[0] = Math.round(x);
@@ -8424,7 +8451,7 @@ class CglContext extends CgContext
         {
             this._oldCanvasWidth = this.canvasWidth;
             this._oldCanvasHeight = this.canvasHeight;
-            this.emitEvent("resize");
+            this.emitEvent(CgContext.EVENT_RESIZE);
         }
 
         if (this._cursor != this._currentCursor)
@@ -8645,6 +8672,9 @@ class CglContext extends CgContext
         this.emitEvent("beginFrame");
     }
 
+    /**
+     * @param {CglContext} cgl
+     */
     renderEnd(cgl)
     {
         this._endMatrixStacks();
@@ -8662,6 +8692,9 @@ class CglContext extends CgContext
         this.emitEvent("endFrame");
     }
 
+    /**
+     * @param {number} slot
+     */
     getTexture(slot)
     {
         return this._textureslots[slot];
@@ -8676,7 +8709,7 @@ class CglContext extends CgContext
      * log warning to console if the rendering of one frame has not been started / handy to check for async problems
      * @function checkFrameStarted
      * @memberof Context
-     * @param string
+     * @param {string} string
      * @instance
      */
     checkFrameStarted(string)
@@ -8691,6 +8724,11 @@ class CglContext extends CgContext
         }
     }
 
+    /**
+     * @param {number} slot
+     * @param {WebGLTexture} t
+     * @param {undefined} [type]
+     */
     setTexture(slot, t, type)
     {
         this.checkFrameStarted("cgl setTexture");

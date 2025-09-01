@@ -2,7 +2,10 @@
 /******/ 	// runtime can't be in strict mode because a global variable is assign and maybe created.
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 823:
+/***/ "./node_modules/gl-matrix/esm/common.js":
+/*!**********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/common.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -68,7 +71,10 @@ if (!Math.hypot) Math.hypot = function () {
 
 /***/ }),
 
-/***/ 522:
+/***/ "./node_modules/gl-matrix/esm/mat2.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/mat2.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -101,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   subtract: () => (/* binding */ subtract),
 /* harmony export */   transpose: () => (/* binding */ transpose)
 /* harmony export */ });
-/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(823);
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 2x2 Matrix
@@ -537,7 +543,10 @@ var sub = subtract;
 
 /***/ }),
 
-/***/ 964:
+/***/ "./node_modules/gl-matrix/esm/mat2d.js":
+/*!*********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/mat2d.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -569,7 +578,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   subtract: () => (/* binding */ subtract),
 /* harmony export */   translate: () => (/* binding */ translate)
 /* harmony export */ });
-/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(823);
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 2x3 Matrix
@@ -1059,7 +1068,10 @@ var sub = subtract;
 
 /***/ }),
 
-/***/ 409:
+/***/ "./node_modules/gl-matrix/esm/mat3.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/mat3.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1098,7 +1110,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   translate: () => (/* binding */ translate),
 /* harmony export */   transpose: () => (/* binding */ transpose)
 /* harmony export */ });
-/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(823);
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 3x3 Matrix
@@ -1881,7 +1893,10 @@ var sub = subtract;
 
 /***/ }),
 
-/***/ 684:
+/***/ "./node_modules/gl-matrix/esm/mat4.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/mat4.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1935,7 +1950,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   translate: () => (/* binding */ translate),
 /* harmony export */   transpose: () => (/* binding */ transpose)
 /* harmony export */ });
-/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(823);
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 4x4 Matrix<br>Format: column-major, when typed out it looks like row-major<br>The matrices are being post multiplied.
@@ -3754,7 +3769,10 @@ var sub = subtract;
 
 /***/ }),
 
-/***/ 221:
+/***/ "./node_modules/gl-matrix/esm/quat.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/quat.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3800,10 +3818,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   squaredLength: () => (/* binding */ squaredLength),
 /* harmony export */   str: () => (/* binding */ str)
 /* harmony export */ });
-/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(823);
-/* harmony import */ var _mat3_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(409);
-/* harmony import */ var _vec3_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(329);
-/* harmony import */ var _vec4_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(796);
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
+/* harmony import */ var _mat3_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mat3.js */ "./node_modules/gl-matrix/esm/mat3.js");
+/* harmony import */ var _vec3_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vec3.js */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var _vec4_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vec4.js */ "./node_modules/gl-matrix/esm/vec4.js");
 
 
 
@@ -4517,7 +4535,10 @@ var setAxes = function () {
 
 /***/ }),
 
-/***/ 991:
+/***/ "./node_modules/gl-matrix/esm/quat2.js":
+/*!*********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/quat2.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4563,9 +4584,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   str: () => (/* binding */ str),
 /* harmony export */   translate: () => (/* binding */ translate)
 /* harmony export */ });
-/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(823);
-/* harmony import */ var _quat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(221);
-/* harmony import */ var _mat4_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(684);
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
+/* harmony import */ var _quat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./quat.js */ "./node_modules/gl-matrix/esm/quat.js");
+/* harmony import */ var _mat4_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mat4.js */ "./node_modules/gl-matrix/esm/mat4.js");
 
 
 
@@ -5404,7 +5425,10 @@ function equals(a, b) {
 
 /***/ }),
 
-/***/ 842:
+/***/ "./node_modules/gl-matrix/esm/vec2.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/vec2.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5456,7 +5480,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   transformMat4: () => (/* binding */ transformMat4),
 /* harmony export */   zero: () => (/* binding */ zero)
 /* harmony export */ });
-/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(823);
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 2 Dimensional Vector
@@ -6101,7 +6125,10 @@ var forEach = function () {
 
 /***/ }),
 
-/***/ 329:
+/***/ "./node_modules/gl-matrix/esm/vec3.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/vec3.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6156,7 +6183,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   transformQuat: () => (/* binding */ transformQuat),
 /* harmony export */   zero: () => (/* binding */ zero)
 /* harmony export */ });
-/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(823);
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 3 Dimensional Vector
@@ -6949,7 +6976,10 @@ var forEach = function () {
 
 /***/ }),
 
-/***/ 796:
+/***/ "./node_modules/gl-matrix/esm/vec4.js":
+/*!********************************************!*\
+  !*** ./node_modules/gl-matrix/esm/vec4.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6997,7 +7027,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   transformQuat: () => (/* binding */ transformQuat),
 /* harmony export */   zero: () => (/* binding */ zero)
 /* harmony export */ });
-/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(823);
+/* harmony import */ var _common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common.js */ "./node_modules/gl-matrix/esm/common.js");
 
 /**
  * 4 Dimensional Vector
@@ -7665,17 +7695,20 @@ var forEach = function () {
 
 /***/ }),
 
-/***/ 344:
+/***/ "./src/core/anim.js":
+/*!**************************!*\
+  !*** ./src/core/anim.js ***!
+  \**************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   k: () => (/* binding */ Anim)
+/* harmony export */   Anim: () => (/* binding */ Anim)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(125);
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(849);
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(562);
-/* harmony import */ var _anim_key_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(963);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ "./src/core/utils.js");
+/* harmony import */ var _anim_key_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./anim_key.js */ "./src/core/anim_key.js");
 
 
 
@@ -7694,7 +7727,7 @@ var forEach = function () {
  * anim.getValue(5);    // get value at 5 seconds - this returns 0.5
  */
 
-class Anim extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A
+class Anim extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
 {
     static EVENT_KEY_DELETE = "keyDelete";
     static EVENT_CHANGE = "onChange";
@@ -7761,7 +7794,7 @@ class Anim extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
         this.stayInTimeline = false;
 
         this.loop = 0;
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A("Anim");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_2__["default"]("Anim");
         this._cachedIndex = 0;
         this.name = cfg.name || null;
 
@@ -8003,7 +8036,7 @@ class Anim extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
 
         if (!found)
         {
-            found = new _anim_key_js__WEBPACK_IMPORTED_MODULE_3__/* .AnimKey */ .rA(
+            found = new _anim_key_js__WEBPACK_IMPORTED_MODULE_3__.AnimKey(
                 {
                     "time": time,
                     "value": value,
@@ -8045,7 +8078,7 @@ class Anim extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
         if (obj.tlActive) this.#tlActive = obj.tlActive;
         for (const ani in obj.keys)
         {
-            this.keys.push(new _anim_key_js__WEBPACK_IMPORTED_MODULE_3__/* .AnimKey */ .rA(obj.keys[ani], this));
+            this.keys.push(new _anim_key_js__WEBPACK_IMPORTED_MODULE_3__.AnimKey(obj.keys[ani], this));
         }
         this.sortKeys();
     }
@@ -8366,15 +8399,18 @@ class Anim extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
 
 /***/ }),
 
-/***/ 963:
+/***/ "./src/core/anim_key.js":
+/*!******************************!*\
+  !*** ./src/core/anim_key.js ***!
+  \******************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   rA: () => (/* binding */ AnimKey)
+/* harmony export */   AnimKey: () => (/* binding */ AnimKey)
 /* harmony export */ });
 /* unused harmony exports easeExpoIn, easeExpoOut, easeExpoInOut, easeCubicIn, easeCubicOut, easeCubicInOut */
-/* harmony import */ var _anim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(344);
+/* harmony import */ var _anim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./anim.js */ "./src/core/anim.js");
 
 
 class AnimKey
@@ -8404,7 +8440,7 @@ class AnimKey
     {
         this.anim = obj.anim || an || null;
 
-        this.setEasing(_anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_LINEAR);
+        this.setEasing(_anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_LINEAR);
         this.set(obj);
     }
 
@@ -8435,7 +8471,7 @@ class AnimKey
             this.uiAttribs[i] = o[i];
             if (o[i] === null) delete this.uiAttribs[i];
         }
-        if (this.anim) this.anim.emitEvent(_anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EVENT_CHANGE);
+        if (this.anim) this.anim.emitEvent(_anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EVENT_CHANGE);
     }
 
     /**
@@ -8447,34 +8483,34 @@ class AnimKey
         if (this._easing != e)changed = true;
         this._easing = e;
 
-        if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_LINEAR) this.ease = this.easeLinear;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_ABSOLUTE) this.ease = this.easeAbsolute;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_SMOOTHSTEP) this.ease = AnimKey.easeSmoothStep;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_SMOOTHERSTEP) this.ease = AnimKey.easeSmootherStep;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_CUBIC_IN) this.ease = AnimKey.easeCubicIn;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_CUBIC_OUT) this.ease = AnimKey.easeCubicOut;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_CUBIC_INOUT) this.ease = AnimKey.easeCubicInOut;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_EXPO_IN) this.ease = AnimKey.easeExpoIn;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_EXPO_OUT) this.ease = AnimKey.easeExpoOut;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_EXPO_INOUT) this.ease = AnimKey.easeExpoInOut;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_SIN_IN) this.ease = AnimKey.easeSinIn;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_SIN_OUT) this.ease = AnimKey.easeSinOut;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_SIN_INOUT) this.ease = AnimKey.easeSinInOut;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_BACK_OUT) this.ease = AnimKey.easeOutBack;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_BACK_IN) this.ease = AnimKey.easeInBack;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_BACK_INOUT) this.ease = AnimKey.easeInOutBack;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_ELASTIC_IN) this.ease = AnimKey.easeInElastic;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_ELASTIC_OUT) this.ease = AnimKey.easeOutElastic;
+        if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_LINEAR) this.ease = this.easeLinear;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_ABSOLUTE) this.ease = this.easeAbsolute;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SMOOTHSTEP) this.ease = AnimKey.easeSmoothStep;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SMOOTHERSTEP) this.ease = AnimKey.easeSmootherStep;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBIC_IN) this.ease = AnimKey.easeCubicIn;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBIC_OUT) this.ease = AnimKey.easeCubicOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBIC_INOUT) this.ease = AnimKey.easeCubicInOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_EXPO_IN) this.ease = AnimKey.easeExpoIn;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_EXPO_OUT) this.ease = AnimKey.easeExpoOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_EXPO_INOUT) this.ease = AnimKey.easeExpoInOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SIN_IN) this.ease = AnimKey.easeSinIn;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SIN_OUT) this.ease = AnimKey.easeSinOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_SIN_INOUT) this.ease = AnimKey.easeSinInOut;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BACK_OUT) this.ease = AnimKey.easeOutBack;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BACK_IN) this.ease = AnimKey.easeInBack;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BACK_INOUT) this.ease = AnimKey.easeInOutBack;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_ELASTIC_IN) this.ease = AnimKey.easeInElastic;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_ELASTIC_OUT) this.ease = AnimKey.easeOutElastic;
         // else if (this._easing == Anim.EASING_ELASTIC_INOUT) this.ease = AnimKey.easeElasticInOut;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_BOUNCE_IN) this.ease = AnimKey.easeInBounce;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_BOUNCE_OUT) this.ease = AnimKey.easeOutBounce;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_QUART_OUT) this.ease = AnimKey.easeOutQuart;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_QUART_IN) this.ease = AnimKey.easeInQuart;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_QUART_INOUT) this.ease = AnimKey.easeInOutQuart;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_QUINT_OUT) this.ease = AnimKey.easeOutQuint;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_QUINT_IN) this.ease = AnimKey.easeInQuint;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_QUINT_INOUT) this.ease = AnimKey.easeInOutQuint;
-        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_CUBICSPLINE)
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BOUNCE_IN) this.ease = AnimKey.easeInBounce;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_BOUNCE_OUT) this.ease = AnimKey.easeOutBounce;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUART_OUT) this.ease = AnimKey.easeOutQuart;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUART_IN) this.ease = AnimKey.easeInQuart;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUART_INOUT) this.ease = AnimKey.easeInOutQuart;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUINT_OUT) this.ease = AnimKey.easeOutQuint;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUINT_IN) this.ease = AnimKey.easeInQuint;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_QUINT_INOUT) this.ease = AnimKey.easeInOutQuint;
+        else if (this._easing == _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBICSPLINE)
         {
             if (this.ease != this.easeCubicSpline)
             {
@@ -8486,7 +8522,7 @@ class AnimKey
         }
         else
         {
-            this._easing = _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_LINEAR;
+            this._easing = _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_LINEAR;
             this.ease = this.easeLinear;
         }
         if (changed) this.emitChange();
@@ -8584,7 +8620,7 @@ class AnimKey
         obj.e = this._easing;
         obj.uiAttribs = this.uiAttribs;
 
-        if (this._easing === _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASING_CUBICSPLINE)
+        if (this._easing === _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASING_CUBICSPLINE)
         {
             obj.cp1 = this.bezCp1;
             obj.cp2 = this.bezCp2;
@@ -8609,7 +8645,7 @@ class AnimKey
             const samples = 30;
 
             // const prevKey = this.anim.getPrevKey(this.time);
-            this.bezAn = new _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k();
+            this.bezAn = new _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim();
             for (let i = 0; i <= samples + 1; i++)
             {
                 const c = AnimKey.cubicSpline(i / samples, this, key2);
@@ -8935,19 +8971,22 @@ AnimKey.easeSmootherStep = function (perc, key2)
 
 /***/ }),
 
-/***/ 440:
+/***/ "./src/core/constants.js":
+/*!*******************************!*\
+  !*** ./src/core/constants.js ***!
+  \*******************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   a: () => (/* binding */ CONSTANTS)
+/* harmony export */   CONSTANTS: () => (/* binding */ CONSTANTS)
 /* harmony export */ });
-/* harmony import */ var _anim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(344);
+/* harmony import */ var _anim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./anim.js */ "./src/core/anim.js");
 
 
 const CONSTANTS = {
     "ANIM": {
-        "EASINGS": _anim_js__WEBPACK_IMPORTED_MODULE_0__/* .Anim */ .k.EASINGNAMES,
+        "EASINGS": _anim_js__WEBPACK_IMPORTED_MODULE_0__.Anim.EASINGNAMES,
         "EASING_LINEAR": 0,
         "EASING_ABSOLUTE": 1,
         "EASING_SMOOTHSTEP": 2,
@@ -9028,18 +9067,21 @@ const CONSTANTS = {
 
 /***/ }),
 
-/***/ 50:
+/***/ "./src/core/core_port.js":
+/*!*******************************!*\
+  !*** ./src/core/core_port.js ***!
+  \*******************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   I: () => (/* binding */ Port)
+/* harmony export */   Port: () => (/* binding */ Port)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(125);
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(849);
-/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(440);
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(562);
-/* harmony import */ var _anim_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(344);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants.js */ "./src/core/constants.js");
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils.js */ "./src/core/utils.js");
+/* harmony import */ var _anim_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./anim.js */ "./src/core/anim.js");
 
 
 
@@ -9095,7 +9137,7 @@ const CONSTANTS = {
  * @example
  * const myPort=op.inString("String Port");
  */
-class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A
+class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
 {
     static DIR_IN = 0;
     static DIR_OUT = 1;
@@ -9135,7 +9177,7 @@ class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
     {
         super();
         this.data = {}; // UNUSED, DEPRECATED, only left in for backwards compatibility with userops
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A("core_port");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_1__["default"]("core_port");
 
         /**
          * @type {Number}
@@ -9434,7 +9476,7 @@ class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
         if (v === undefined) v = null;
 
         if (CABLES.UI && CABLES.UI.showDevInfos)
-            if (this.direction == _constants_js__WEBPACK_IMPORTED_MODULE_2__/* .CONSTANTS */ .a.PORT.PORT_DIR_OUT && this.type == Port.TYPE_OBJECT && v && !this.forceRefChange)
+            if (this.direction == _constants_js__WEBPACK_IMPORTED_MODULE_2__.CONSTANTS.PORT.PORT_DIR_OUT && this.type == Port.TYPE_OBJECT && v && !this.forceRefChange)
                 this._log.warn("object port [" + this.name + "] uses .set [" + this.op.objName + "]");
 
         if (this._op.enabled && !this.crashed)
@@ -9476,7 +9518,7 @@ class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
                     if (this._op && this._op.patch && this._op.patch.isEditorMode() && this.type == Port.TYPE_TEXTURE) gui.texturePreview().updateTexturePort(this);
                 }
 
-                if (this.direction == _constants_js__WEBPACK_IMPORTED_MODULE_2__/* .CONSTANTS */ .a.PORT.PORT_DIR_OUT) for (let i = 0; i < this.links.length; ++i) this.links[i].setValue();
+                if (this.direction == _constants_js__WEBPACK_IMPORTED_MODULE_2__.CONSTANTS.PORT.PORT_DIR_OUT) for (let i = 0; i < this.links.length; ++i) this.links[i].setValue();
             }
         }
     }
@@ -9547,9 +9589,9 @@ class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
 
         if (objPort.anim)
         {
-            if (!this.anim) this.anim = new _anim_js__WEBPACK_IMPORTED_MODULE_3__/* .Anim */ .k({ "name": "port " + this.name });
+            if (!this.anim) this.anim = new _anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim({ "name": "port " + this.name });
             this._op.hasAnimPort = true;
-            this.anim.on(_anim_js__WEBPACK_IMPORTED_MODULE_3__/* .Anim */ .k.EVENT_CHANGE, () =>
+            this.anim.on(_anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim.EVENT_CHANGE, () =>
             {
                 this._op.patch.emitEvent("portAnimUpdated", this._op, this, this.anim);
             });
@@ -9609,7 +9651,7 @@ class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
             if (this.uiAttribs.hasOwnProperty("order")) obj.order = this.uiAttribs.order;
         }
         if (this.uiAttribs.title) obj.title = this.uiAttribs.title;
-        if ((this.preserveLinks || this.direction == _constants_js__WEBPACK_IMPORTED_MODULE_2__/* .CONSTANTS */ .a.PORT.PORT_DIR_OUT) && this.links.length > 0)
+        if ((this.preserveLinks || this.direction == _constants_js__WEBPACK_IMPORTED_MODULE_2__.CONSTANTS.PORT.PORT_DIR_OUT) && this.links.length > 0)
         {
             obj.links = [];
             for (const i in this.links)
@@ -9976,8 +10018,8 @@ class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
 
             if (this.#animated && !this.anim)
             {
-                this.anim = new _anim_js__WEBPACK_IMPORTED_MODULE_3__/* .Anim */ .k({ "name": "port " + this.name });
-                this.anim.on(_anim_js__WEBPACK_IMPORTED_MODULE_3__/* .Anim */ .k.EVENT_CHANGE, () =>
+                this.anim = new _anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim({ "name": "port " + this.name });
+                this.anim.on(_anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim.EVENT_CHANGE, () =>
                 {
                     this._op.patch.emitEvent("portAnimUpdated", this._op, this, this.anim);
                 });
@@ -10002,8 +10044,8 @@ class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
         this.#animated = !this.#animated;
         if (this.#animated && !this.anim)
         {
-            this.anim = new _anim_js__WEBPACK_IMPORTED_MODULE_3__/* .Anim */ .k({ "name": "port " + this.name });
-            this.anim.on(_anim_js__WEBPACK_IMPORTED_MODULE_3__/* .Anim */ .k.EVENT_CHANGE, () =>
+            this.anim = new _anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim({ "name": "port " + this.name });
+            this.anim.on(_anim_js__WEBPACK_IMPORTED_MODULE_3__.Anim.EVENT_CHANGE, () =>
             {
                 this._op.patch.emitEvent("portAnimUpdated", this._op, this, this.anim);
             });
@@ -10144,7 +10186,10 @@ class Port extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default
 
 /***/ }),
 
-/***/ 606:
+/***/ "./src/core/index.js":
+/*!****************************************!*\
+  !*** ./src/core/index.js + 12 modules ***!
+  \****************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10153,20 +10198,20 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  Anim: () => (/* reexport */ anim/* Anim */.k),
-  AnimKey: () => (/* reexport */ anim_key/* AnimKey */.rA),
-  CONSTANTS: () => (/* reexport */ constants/* CONSTANTS */.a),
+  Anim: () => (/* reexport */ anim.Anim),
+  AnimKey: () => (/* reexport */ anim_key.AnimKey),
+  CONSTANTS: () => (/* reexport */ constants.CONSTANTS),
   EMBED: () => (/* reexport */ EMBED),
   Link: () => (/* reexport */ Link),
   LoadingStatus: () => (/* reexport */ LoadingStatus),
   Op: () => (/* reexport */ Op),
   Patch: () => (/* reexport */ Patch),
   PatchVariable: () => (/* reexport */ PatchVariable),
-  Port: () => (/* reexport */ core_port/* Port */.I),
+  Port: () => (/* reexport */ core_port.Port),
   Profiler: () => (/* reexport */ Profiler),
-  Timer: () => (/* reexport */ timer/* Timer */.M4),
+  Timer: () => (/* reexport */ timer.Timer),
   "default": () => (/* binding */ core),
-  now: () => (/* reexport */ timer/* now */.tB),
+  now: () => (/* reexport */ timer.now),
   utils: () => (/* reexport */ utils)
 });
 
@@ -10187,25 +10232,25 @@ __webpack_require__.d(esm_namespaceObject, {
 });
 
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/common.js
-var common = __webpack_require__(823);
+var common = __webpack_require__("./node_modules/gl-matrix/esm/common.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat2.js
-var mat2 = __webpack_require__(522);
+var mat2 = __webpack_require__("./node_modules/gl-matrix/esm/mat2.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat2d.js
-var mat2d = __webpack_require__(964);
+var mat2d = __webpack_require__("./node_modules/gl-matrix/esm/mat2d.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat3.js
-var mat3 = __webpack_require__(409);
+var mat3 = __webpack_require__("./node_modules/gl-matrix/esm/mat3.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat4.js
-var mat4 = __webpack_require__(684);
+var mat4 = __webpack_require__("./node_modules/gl-matrix/esm/mat4.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/quat.js
-var quat = __webpack_require__(221);
+var quat = __webpack_require__("./node_modules/gl-matrix/esm/quat.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/quat2.js
-var quat2 = __webpack_require__(991);
+var quat2 = __webpack_require__("./node_modules/gl-matrix/esm/quat2.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/vec2.js
-var vec2 = __webpack_require__(842);
+var vec2 = __webpack_require__("./node_modules/gl-matrix/esm/vec2.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/vec3.js
-var vec3 = __webpack_require__(329);
+var vec3 = __webpack_require__("./node_modules/gl-matrix/esm/vec3.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/vec4.js
-var vec4 = __webpack_require__(796);
+var vec4 = __webpack_require__("./node_modules/gl-matrix/esm/vec4.js");
 ;// CONCATENATED MODULE: ./node_modules/gl-matrix/esm/index.js
 
 
@@ -10219,15 +10264,15 @@ var vec4 = __webpack_require__(796);
 
 
 // EXTERNAL MODULE: ../shared/client/src/eventtarget.js + 2 modules
-var eventtarget = __webpack_require__(125);
+var eventtarget = __webpack_require__("../shared/client/src/eventtarget.js");
 // EXTERNAL MODULE: ../shared/client/src/logger.js
-var logger = __webpack_require__(849);
+var logger = __webpack_require__("../shared/client/src/logger.js");
 // EXTERNAL MODULE: ./src/core/utils.js + 1 modules
-var utils = __webpack_require__(562);
+var utils = __webpack_require__("./src/core/utils.js");
 // EXTERNAL MODULE: ./src/core/anim.js
-var anim = __webpack_require__(344);
+var anim = __webpack_require__("./src/core/anim.js");
 // EXTERNAL MODULE: ./src/core/core_port.js
-var core_port = __webpack_require__(50);
+var core_port = __webpack_require__("./src/core/core_port.js");
 ;// CONCATENATED MODULE: ./src/core/core_link.js
 
 
@@ -10239,7 +10284,7 @@ var core_port = __webpack_require__(50);
  * @hideconstructor
  * @class
  */
-class Link extends eventtarget/* default */.A
+class Link extends eventtarget["default"]
 {
 
     /**
@@ -10294,7 +10339,7 @@ class Link extends eventtarget/* default */.A
 
         if (v == v) // NaN is the only JavaScript value that is treated as unequal to itself
         {
-            if (this.portIn.type != core_port/* Port */.I.TYPE_FUNCTION) this.activity();
+            if (this.portIn.type != core_port.Port.TYPE_FUNCTION) this.activity();
 
             if (this.portIn.get() !== v)
             {
@@ -10336,7 +10381,7 @@ class Link extends eventtarget/* default */.A
             this._patch.emitEvent("onUnLink", this.portIn, this.portOut, this);
         }
 
-        if (this.portIn && (this.portIn.type == core_port/* Port */.I.TYPE_OBJECT || this.portIn.type == core_port/* Port */.I.TYPE_ARRAY))
+        if (this.portIn && (this.portIn.type == core_port.Port.TYPE_OBJECT || this.portIn.type == core_port.Port.TYPE_ARRAY))
         {
             this.portIn.set(null);
             if (this.portIn.links.length > 0) this.portIn.set(this.portIn.links[0].getOtherPort(this.portIn).get());
@@ -10366,7 +10411,7 @@ class Link extends eventtarget/* default */.A
             return false;
         }
 
-        if (p1.direction == core_port/* Port */.I.DIR_IN)
+        if (p1.direction == core_port.Port.DIR_IN)
         {
             this.portIn = p1;
             this.portOut = p2;
@@ -10409,16 +10454,16 @@ class Link extends eventtarget/* default */.A
         if (p1.direction == p2.direction)
         {
             let txt = "(out)";
-            if (p2.direction == core_port/* Port */.I.DIR_IN) txt = "(in)";
+            if (p2.direction == core_port.Port.DIR_IN) txt = "(in)";
             return "can not link: same direction " + txt;
         }
         if (p1.op == p2.op) return "can not link: same op";
-        if (p1.type != core_port/* Port */.I.TYPE_DYNAMIC && p2.type != core_port/* Port */.I.TYPE_DYNAMIC)
+        if (p1.type != core_port.Port.TYPE_DYNAMIC && p2.type != core_port.Port.TYPE_DYNAMIC)
         {
             if (p1.type != p2.type) return "can not link: different type";
         }
 
-        if (CABLES.UI && p1.type == core_port/* Port */.I.TYPE_OBJECT && p2.type == core_port/* Port */.I.TYPE_OBJECT)
+        if (CABLES.UI && p1.type == core_port.Port.TYPE_OBJECT && p2.type == core_port.Port.TYPE_OBJECT)
         {
             if (p1.uiAttribs.objType && p2.uiAttribs.objType)
                 if (p1.uiAttribs.objType != p2.uiAttribs.objType)
@@ -10428,8 +10473,8 @@ class Link extends eventtarget/* default */.A
         if (!p1) return "can not link: port 1 invalid";
         if (!p2) return "can not link: port 2 invalid";
 
-        if (p1.direction == core_port/* Port */.I.DIR_IN && p1.isAnimated()) return "can not link: is animated";
-        if (p2.direction == core_port/* Port */.I.DIR_IN && p2.isAnimated()) return "can not link: is animated";
+        if (p1.direction == core_port.Port.DIR_IN && p1.isAnimated()) return "can not link: is animated";
+        if (p2.direction == core_port.Port.DIR_IN && p2.isAnimated()) return "can not link: is animated";
 
         if (p1.isLinkedTo(p2)) return "ports already linked";
 
@@ -10449,8 +10494,8 @@ class Link extends eventtarget/* default */.A
     {
         if (!p1) return false;
         if (!p2) return false;
-        if (p1.direction == core_port/* Port */.I.DIR_IN && p1.isAnimated()) return false;
-        if (p2.direction == core_port/* Port */.I.DIR_IN && p2.isAnimated()) return false;
+        if (p1.direction == core_port.Port.DIR_IN && p1.isAnimated()) return false;
+        if (p2.direction == core_port.Port.DIR_IN && p2.isAnimated()) return false;
 
         if (p1.isHidden() || p2.isHidden()) return false;
 
@@ -10458,7 +10503,7 @@ class Link extends eventtarget/* default */.A
 
         if (p1.direction == p2.direction) return false;
 
-        if (CABLES.UI && p1.type == core_port/* Port */.I.TYPE_OBJECT && p2.type == core_port/* Port */.I.TYPE_OBJECT)
+        if (CABLES.UI && p1.type == core_port.Port.TYPE_OBJECT && p2.type == core_port.Port.TYPE_OBJECT)
         {
             if (p1.uiAttribs.objType && p2.uiAttribs.objType)
             {
@@ -10468,8 +10513,8 @@ class Link extends eventtarget/* default */.A
             }
         }
 
-        if (p1.type != p2.type && (p1.type != core_port/* Port */.I.TYPE_DYNAMIC && p2.type != core_port/* Port */.I.TYPE_DYNAMIC)) return false;
-        if (p1.type == core_port/* Port */.I.TYPE_DYNAMIC || p2.type == core_port/* Port */.I.TYPE_DYNAMIC) return true;
+        if (p1.type != p2.type && (p1.type != core_port.Port.TYPE_DYNAMIC && p2.type != core_port.Port.TYPE_DYNAMIC)) return false;
+        if (p1.type == core_port.Port.TYPE_DYNAMIC || p2.type == core_port.Port.TYPE_DYNAMIC) return true;
 
         if (p1.op == p2.op) return false;
 
@@ -10483,15 +10528,15 @@ class Link extends eventtarget/* default */.A
 // --------------------------------------------
 
 // EXTERNAL MODULE: ./src/corelibs/cgl/index.js + 4 modules
-var cgl = __webpack_require__(772);
+var cgl = __webpack_require__("./src/corelibs/cgl/index.js");
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_state.js
-var cgl_state = __webpack_require__(308);
+var cgl_state = __webpack_require__("./src/corelibs/cgl/cgl_state.js");
 // EXTERNAL MODULE: ./src/core/constants.js
-var constants = __webpack_require__(440);
+var constants = __webpack_require__("./src/core/constants.js");
 ;// CONCATENATED MODULE: ./src/core/core_port_switch.js
 
 
-class SwitchPort extends core_port/* Port */.I
+class SwitchPort extends core_port.Port
 {
     constructor(__parent, name, type, uiAttribs, indexPort)
     {
@@ -10584,11 +10629,11 @@ class ValueSelectPort extends SwitchPort
 
 const MIN_NUM_PORTS = 2;
 
-class MultiPort extends core_port/* Port */.I
+class MultiPort extends core_port.Port
 {
     constructor(__parent, name, type, dir, uiAttribs, uiAttribsPorts)
     {
-        super(__parent, name, core_port/* Port */.I.TYPE_ARRAY, uiAttribs);
+        super(__parent, name, core_port.Port.TYPE_ARRAY, uiAttribs);
 
         this.setUiAttribs({ "multiPort": true, "group": this.name, "order": -1 });
         this.ports = [];
@@ -10612,7 +10657,7 @@ class MultiPort extends core_port/* Port */.I
         {
             let grey = !this.uiAttribs.multiPortManual || false;
 
-            if (this.direction == constants/* CONSTANTS */.a.PORT.PORT_DIR_OUT)grey = false;
+            if (this.direction == constants.CONSTANTS.PORT.PORT_DIR_OUT)grey = false;
 
             for (let i = 0; i < this.ports.length; i++)
             {
@@ -10819,16 +10864,16 @@ class MultiPort extends core_port/* Port */.I
             const attrs = {};
             // if (type == CABLES.OP_PORT_TYPE_STRING) attrs.type = "string";
             attrs.type = type;
-            const po = new core_port/* Port */.I(this.op, name + "_" + this.ports.length, type, attrs);
+            const po = new core_port.Port(this.op, name + "_" + this.ports.length, type, attrs);
 
             po.direction = dir;
             this.ports.push(po);
             // console.log("CONSTANTS.PORT_DIR_OUT", CONSTANTS.PORT.PORT_DIR_OUT, this.direction);
-            if (this.direction == constants/* CONSTANTS */.a.PORT.PORT_DIR_OUT) this.op.addOutPort(po);
+            if (this.direction == constants.CONSTANTS.PORT.PORT_DIR_OUT) this.op.addOutPort(po);
             else this.op.addInPort(po);
 
-            if (type == core_port/* Port */.I.TYPE_NUMBER) po.setInitialValue(0);
-            else if (type == core_port/* Port */.I.TYPE_STRING) po.setInitialValue("");
+            if (type == core_port.Port.TYPE_NUMBER) po.setInitialValue(0);
+            else if (type == core_port.Port.TYPE_STRING) po.setInitialValue("");
 
             this.addListeners();
 
@@ -10947,14 +10992,14 @@ class MultiPort extends core_port/* Port */.I
 /**
  * @template {CorePatch} Patch
  */
-class Op extends eventtarget/* default */.A
+class Op extends eventtarget["default"]
 {
     static OP_VERSION_PREFIX = "_v";
     static EVENT_INIT = "init";
     static EVENT_UIATTR_CHANGE = "onUiAttribsChange";
 
     #objName = "";
-    _log = new logger/* default */.A("core_op");
+    _log = new logger["default"]("core_op");
     //    #name = "";
     #shortOpName = "";
 
@@ -11069,7 +11114,7 @@ class Op extends eventtarget/* default */.A
     set _objName(on)
     {
         this.#objName = on;
-        this._log = new logger/* default */.A("op " + on);
+        this._log = new logger["default"]("op " + on);
     }
 
     get objName()
@@ -11251,7 +11296,7 @@ class Op extends eventtarget/* default */.A
      */
     addOutPort(p)
     {
-        p.direction = constants/* CONSTANTS */.a.PORT.PORT_DIR_OUT;
+        p.direction = constants.CONSTANTS.PORT.PORT_DIR_OUT;
         p._op = this;
         this.portsOut.push(p);
         this.emitEvent("onPortAdd", p);
@@ -11263,12 +11308,12 @@ class Op extends eventtarget/* default */.A
         let i = 0;
         for (i = 0; i < this.portsIn.length; i++)
         {
-            if (this.portsIn[i].type == core_port/* Port */.I.TYPE_DYNAMIC) return true;
+            if (this.portsIn[i].type == core_port.Port.TYPE_DYNAMIC) return true;
             if (this.portsIn[i].getName() == "dyn") return true;
         }
         for (i = 0; i < this.portsOut.length; i++)
         {
-            if (this.portsOut[i].type == core_port/* Port */.I.TYPE_DYNAMIC) return true;
+            if (this.portsOut[i].type == core_port.Port.TYPE_DYNAMIC) return true;
             if (this.portsOut[i].getName() == "dyn") return true;
         }
 
@@ -11280,7 +11325,7 @@ class Op extends eventtarget/* default */.A
      */
     addInPort(p)
     {
-        p.direction = core_port/* Port */.I.DIR_IN;
+        p.direction = core_port.Port.DIR_IN;
         p._op = this;
 
         this.portsIn.push(p);
@@ -11308,7 +11353,7 @@ class Op extends eventtarget/* default */.A
      */
     inTrigger(name, v)
     {
-        const p = this.addInPort(new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_FUNCTION));
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_FUNCTION));
         if (v !== undefined) p.set(v);
         return p;
     }
@@ -11322,7 +11367,7 @@ class Op extends eventtarget/* default */.A
     inTriggerButton(name, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_FUNCTION, {
+            new core_port.Port(this, name, core_port.Port.TYPE_FUNCTION, {
                 "display": "button"
             })
         );
@@ -11337,7 +11382,7 @@ class Op extends eventtarget/* default */.A
     inUiTriggerButtons(name, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_FUNCTION, {
+            new core_port.Port(this, name, core_port.Port.TYPE_FUNCTION, {
                 "display": "buttons"
             })
         );
@@ -11369,7 +11414,7 @@ class Op extends eventtarget/* default */.A
      */
     inFloat(name, v)
     {
-        const p = this.addInPort(new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE));
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_VALUE));
 
         p.setInitialValue(v);
 
@@ -11393,7 +11438,7 @@ class Op extends eventtarget/* default */.A
     inBool(name, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_NUMBER, {
+            new core_port.Port(this, name, core_port.Port.TYPE_NUMBER, {
                 "display": "bool"
             })
         );
@@ -11415,7 +11460,7 @@ class Op extends eventtarget/* default */.A
             this,
             name,
             type,
-            core_port/* Port */.I.DIR_IN,
+            core_port.Port.DIR_IN,
             {
                 "addPort": true,
                 "hidePort": true
@@ -11439,7 +11484,7 @@ class Op extends eventtarget/* default */.A
             this,
             name,
             type,
-            constants/* CONSTANTS */.a.PORT.PORT_DIR_OUT,
+            constants.CONSTANTS.PORT.PORT_DIR_OUT,
             {
                 "display": "multiport",
                 "hidePort": true
@@ -11461,7 +11506,7 @@ class Op extends eventtarget/* default */.A
     inValueString(name, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE, {
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
                 "type": "string"
             })
         );
@@ -11480,7 +11525,7 @@ class Op extends eventtarget/* default */.A
     inString(name, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_STRING, {
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
                 "type": "string"
             })
         );
@@ -11526,7 +11571,7 @@ class Op extends eventtarget/* default */.A
     inTextarea(name, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_STRING, {
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
                 "type": "string",
                 "display": "text"
             })
@@ -11551,7 +11596,7 @@ class Op extends eventtarget/* default */.A
     inStringEditor(name, v, syntax, hideFormatButton = true)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_STRING, {
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
                 "type": "string",
                 "display": "editor",
                 "editShortcut": true,
@@ -11577,7 +11622,7 @@ class Op extends eventtarget/* default */.A
     inValueEditor(name, v, syntax, hideFormatButton = true)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_NUMBER, {
+            new core_port.Port(this, name, core_port.Port.TYPE_NUMBER, {
                 "type": "string",
                 "display": "editor",
                 "editorSyntax": syntax,
@@ -11618,7 +11663,7 @@ class Op extends eventtarget/* default */.A
         let p = null;
         if (!noindex)
         {
-            const indexPort = new core_port/* Port */.I(this, name + " index", core_port/* Port */.I.TYPE_NUMBER, {
+            const indexPort = new core_port.Port(this, name + " index", core_port.Port.TYPE_NUMBER, {
                 "increment": "integer",
                 "hideParam": true
             });
@@ -11629,7 +11674,7 @@ class Op extends eventtarget/* default */.A
             const valuePort = new ValueSelectPort(
                 this,
                 name,
-                core_port/* Port */.I.TYPE_NUMBER,
+                core_port.Port.TYPE_NUMBER,
                 {
                     "display": "dropdown",
                     "hidePort": true,
@@ -11668,7 +11713,7 @@ class Op extends eventtarget/* default */.A
         }
         else
         {
-            const valuePort = new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE, {
+            const valuePort = new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
                 "display": "dropdown",
                 "hidePort": true,
                 "type": "string",
@@ -11695,7 +11740,7 @@ class Op extends eventtarget/* default */.A
         if (!noindex)
         {
             if (!v)v = values[0];
-            const indexPort = new core_port/* Port */.I(this, name + " index", core_port/* Port */.I.TYPE_VALUE, {
+            const indexPort = new core_port.Port(this, name + " index", core_port.Port.TYPE_VALUE, {
                 "increment": "integer",
                 "values": values,
                 "hideParam": true
@@ -11707,7 +11752,7 @@ class Op extends eventtarget/* default */.A
             const switchPort = new SwitchPort(
                 this,
                 name,
-                core_port/* Port */.I.TYPE_STRING,
+                core_port.Port.TYPE_STRING,
                 {
                     "display": "switch",
                     "hidePort": true,
@@ -11745,7 +11790,7 @@ class Op extends eventtarget/* default */.A
         }
         else
         {
-            const switchPort = new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_STRING, {
+            const switchPort = new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
                 "display": "switch",
                 "hidePort": true,
                 "type": "string",
@@ -11775,7 +11820,7 @@ class Op extends eventtarget/* default */.A
     {
         // old
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE, { "increment": "integer" })
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, { "increment": "integer" })
         );
         if (v !== undefined)
         {
@@ -11795,7 +11840,7 @@ class Op extends eventtarget/* default */.A
     inFile(name, filter, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE, {
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
                 "display": "file",
                 "type": "string",
                 "filter": filter
@@ -11819,7 +11864,7 @@ class Op extends eventtarget/* default */.A
     inUrl(name, filter, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_STRING, {
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
                 "display": "file",
                 "type": "string",
                 "filter": filter
@@ -11841,7 +11886,7 @@ class Op extends eventtarget/* default */.A
     inTexture(name, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_OBJECT, {
+            new core_port.Port(this, name, core_port.Port.TYPE_OBJECT, {
                 "display": "texture",
                 "objType": "texture",
                 "preview": true
@@ -11861,7 +11906,7 @@ class Op extends eventtarget/* default */.A
      */
     inObject(name, v, objType)
     {
-        const p = this.addInPort(new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_OBJECT, { "objType": objType }));
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_OBJECT, { "objType": objType }));
         p.ignoreValueSerialize = true;
 
         if (v !== undefined) p.set(v);
@@ -11875,7 +11920,7 @@ class Op extends eventtarget/* default */.A
     inGradient(name, v)
     {
         const p = this.addInPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE, {
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
                 "display": "gradient"
                 // "hidePort": true
             })
@@ -11891,7 +11936,7 @@ class Op extends eventtarget/* default */.A
     getPortVisibleIndex(p)
     {
         let ports = this.portsIn;
-        if (p.direction == constants/* CONSTANTS */.a.PORT_DIR_OUT)ports = this.portsOut;
+        if (p.direction == constants.CONSTANTS.PORT_DIR_OUT)ports = this.portsOut;
 
         let index = 0;
         for (let i = 0; i < ports.length; i++)
@@ -11915,7 +11960,7 @@ class Op extends eventtarget/* default */.A
         // @ts-ignore
         if (!_stride && CABLES.isNumeric(v))stride = v;
 
-        const p = this.addInPort(new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_ARRAY, { "stride": stride }));
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_ARRAY, { "stride": stride }));
 
         if (v !== undefined && (Array.isArray(v) || v == null)) p.set(v);
 
@@ -11948,7 +11993,7 @@ class Op extends eventtarget/* default */.A
             uiattribs.max = max;
         }
 
-        const p = this.addInPort(new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE, uiattribs));
+        const p = this.addInPort(new core_port.Port(this, name, core_port.Port.TYPE_VALUE, uiattribs));
         if (v !== undefined)
         {
             p.set(v);
@@ -11974,7 +12019,7 @@ class Op extends eventtarget/* default */.A
     outTrigger(name, v)
     {
         // old
-        const p = this.addOutPort(new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_FUNCTION));
+        const p = this.addOutPort(new core_port.Port(this, name, core_port.Port.TYPE_FUNCTION));
         if (v !== undefined) p.set(v);
         return p;
     }
@@ -11995,7 +12040,7 @@ class Op extends eventtarget/* default */.A
      */
     outNumber(name, v)
     {
-        const p = this.addOutPort(new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE));
+        const p = this.addOutPort(new core_port.Port(this, name, core_port.Port.TYPE_VALUE));
         if (v !== undefined) p.set(v);
         return p;
     }
@@ -12019,7 +12064,7 @@ class Op extends eventtarget/* default */.A
     {
         // old: use outBoolNum
         const p = this.addOutPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE, {
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
                 "display": "bool"
             })
         );
@@ -12036,7 +12081,7 @@ class Op extends eventtarget/* default */.A
     outBoolNum(name, v)
     {
         const p = this.addOutPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE, {
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
                 "display": "boolnum"
             })
         );
@@ -12059,7 +12104,7 @@ class Op extends eventtarget/* default */.A
     outValueString(name, v)
     {
         const p = this.addOutPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_VALUE, {
+            new core_port.Port(this, name, core_port.Port.TYPE_VALUE, {
                 "type": "string"
             })
         );
@@ -12076,7 +12121,7 @@ class Op extends eventtarget/* default */.A
     outString(name, v)
     {
         const p = this.addOutPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_STRING, {
+            new core_port.Port(this, name, core_port.Port.TYPE_STRING, {
                 "type": "string"
             })
         );
@@ -12094,7 +12139,7 @@ class Op extends eventtarget/* default */.A
      */
     outObject(name, v, objType)
     {
-        const p = this.addOutPort(new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_OBJECT, { "objType": objType || null }));
+        const p = this.addOutPort(new core_port.Port(this, name, core_port.Port.TYPE_OBJECT, { "objType": objType || null }));
         p.set(v || null);
         p.ignoreValueSerialize = true;
         return p;
@@ -12110,7 +12155,7 @@ class Op extends eventtarget/* default */.A
     outArray(name, v, stride)
     {
         if (!stride && CABLES.isNumeric(v))stride = v;
-        const p = this.addOutPort(new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_ARRAY, { "stride": stride }));
+        const p = this.addOutPort(new core_port.Port(this, name, core_port.Port.TYPE_ARRAY, { "stride": stride }));
         if (v !== undefined && (Array.isArray(v) || v == null)) p.set(v);
 
         p.ignoreValueSerialize = true;
@@ -12126,13 +12171,13 @@ class Op extends eventtarget/* default */.A
     outTexture(name, v)
     {
         const p = this.addOutPort(
-            new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_OBJECT, {
+            new core_port.Port(this, name, core_port.Port.TYPE_OBJECT, {
                 "preview": true,
                 "objType": "texture",
                 "display": "texture"
             })
         );
-        if (v !== undefined) p.setRef(v || cgl/* CGL */.Rq.Texture.getEmptyTexture(this.patch.cgl));
+        if (v !== undefined) p.setRef(v || cgl.CGL.Texture.getEmptyTexture(this.patch.cgl));
 
         p.ignoreValueSerialize = true;
         return p;
@@ -12147,7 +12192,7 @@ class Op extends eventtarget/* default */.A
      */
     inDynamic(name, filter, options, v)
     {
-        const p = new core_port/* Port */.I(this, name, core_port/* Port */.I.TYPE_DYNAMIC, options);
+        const p = new core_port.Port(this, name, core_port.Port.TYPE_DYNAMIC, options);
 
         p.shouldLink = (p1, p2) =>
         {
@@ -12666,7 +12711,7 @@ class Op extends eventtarget/* default */.A
         if (this.patch.isEditorMode()) return gui.patchView.isCurrentOp(this);
     }
 
-    checkGraphicsApi(api = cgl_state/* CglContext */.G.API_WEBGL)
+    checkGraphicsApi(api = cgl_state.CglContext.API_WEBGL)
     {
         if (this.patch.isEditorMode())
             if (this.patch.cg && this.patch.cg.gApi != api)
@@ -12689,7 +12734,7 @@ class Op extends eventtarget/* default */.A
  * @param patch
  */
 
-class LoadingStatus extends eventtarget/* default */.A
+class LoadingStatus extends eventtarget["default"]
 {
 
     /**
@@ -12698,7 +12743,7 @@ class LoadingStatus extends eventtarget/* default */.A
     constructor(patch)
     {
         super();
-        this._log = new logger/* default */.A("LoadingStatus");
+        this._log = new logger["default"]("LoadingStatus");
         this._loadingAssets = {};
         this._cbFinished = [];
         this._assetTasks = [];
@@ -12903,7 +12948,7 @@ class LoadingStatus extends eventtarget/* default */.A
 }
 
 // EXTERNAL MODULE: ./src/core/timer.js
-var timer = __webpack_require__(920);
+var timer = __webpack_require__("./src/core/timer.js");
 ;// CONCATENATED MODULE: ./src/core/core_profiler.js
 
 
@@ -12956,10 +13001,10 @@ class Profiler
                 {
                     this.items[this.currentId].timeUsed += performance.now() - this.currentStart;
 
-                    if (!this.items[this.currentId].peakTime || (0,timer/* now */.tB)() - this.items[this.currentId].peakTime > 5000)
+                    if (!this.items[this.currentId].peakTime || (0,timer.now)() - this.items[this.currentId].peakTime > 5000)
                     {
                         this.items[this.currentId].peak = 0;
-                        this.items[this.currentId].peakTime = (0,timer/* now */.tB)();
+                        this.items[this.currentId].peakTime = (0,timer.now)();
                     }
                     this.items[this.currentId].peak = Math.max(this.items[this.currentId].peak, performance.now() - this.currentStart);
                 }
@@ -13006,7 +13051,7 @@ class Profiler
 ;// CONCATENATED MODULE: ./src/core/core_variable.js
 
 
-class PatchVariable extends eventtarget/* default */.A
+class PatchVariable extends eventtarget["default"]
 {
 
     /**
@@ -13141,7 +13186,7 @@ class PatchVariable extends eventtarget/* default */.A
  *     glslPrecision:'highp'
  * });
  */
-class Patch extends eventtarget/* default */.A
+class Patch extends eventtarget["default"]
 {
     static EVENT_OP_DELETED = "onOpDelete";
     static EVENT_OP_ADDED = "onOpAdd";
@@ -13162,7 +13207,7 @@ class Patch extends eventtarget/* default */.A
     {
         super();
 
-        this._log = new logger/* default */.A("core_patch", { "onError": cfg.onError });
+        this._log = new logger["default"]("core_patch", { "onError": cfg.onError });
 
         /** @type {Array<Op>} */
         this.ops = [];
@@ -13183,8 +13228,8 @@ class Patch extends eventtarget/* default */.A
 
         };
 
-        this.timer = new timer/* Timer */.M4();
-        this.freeTimer = new timer/* Timer */.M4();
+        this.timer = new timer.Timer();
+        this.freeTimer = new timer.Timer();
         this.animFrameOps = [];
         this.animFrameCallbacks = [];
         this.gui = false;
@@ -13231,7 +13276,7 @@ class Patch extends eventtarget/* default */.A
         this.vars = {};
         if (cfg && cfg.vars) this.vars = cfg.vars; // vars is old!
 
-        this.cgl = new cgl/* CGL */.Rq.Context(this);
+        this.cgl = new cgl.CGL.Context(this);
         this.cgp = null;
 
         this._subpatchOpCache = {};
@@ -13438,7 +13483,7 @@ class Patch extends eventtarget/* default */.A
         this.emitEvent("patchClearStart");
         this.cgl.TextureEffectMesh = null;
         this.animFrameOps.length = 0;
-        this.timer = new timer/* Timer */.M4();
+        this.timer = new timer.Timer();
         while (this.ops.length > 0) this.deleteOp(this.ops[0].id);
 
         this._opIdCache = {};
@@ -14024,7 +14069,7 @@ class Patch extends eventtarget/* default */.A
                             const port = op.getPort(objPort.name);
 
                             if (port && (port.uiAttribs.display == "bool" || port.uiAttribs.type == "bool") && !isNaN(objPort.value)) objPort.value = objPort.value == true ? 1 : 0;
-                            if (port && objPort.value !== undefined && port.type != core_port/* Port */.I.TYPE_TEXTURE) port.set(objPort.value);
+                            if (port && objPort.value !== undefined && port.type != core_port.Port.TYPE_TEXTURE) port.set(objPort.value);
 
                             if (port)
                             {
@@ -14065,7 +14110,7 @@ class Patch extends eventtarget/* default */.A
                                     op.preservedPortTitles[port2.name] = port2.uiAttribs.title;
                                 }
 
-                                if (port2.type != core_port/* Port */.I.TYPE_TEXTURE && objPort.hasOwnProperty("value"))
+                                if (port2.type != core_port.Port.TYPE_TEXTURE && objPort.hasOwnProperty("value"))
                                     port2.set(obj.ops[iop].portsOut[ipo].value);
 
                                 if (objPort.expose) port2.setUiAttribs({ "expose": true });
@@ -14382,11 +14427,11 @@ class Patch extends eventtarget/* default */.A
 
         const vars = [];
         let tStr = "";
-        if (t == core_port/* Port */.I.TYPE_STRING) tStr = "string";
-        else if (t == core_port/* Port */.I.TYPE_VALUE) tStr = "number";
-        else if (t == core_port/* Port */.I.TYPE_ARRAY) tStr = "array";
-        else if (t == core_port/* Port */.I.TYPE_OBJECT) tStr = "object";
-        else if (t == core_port/* Port */.I.TYPE_DYNAMIC) tStr = "dynamic";
+        if (t == core_port.Port.TYPE_STRING) tStr = "string";
+        else if (t == core_port.Port.TYPE_VALUE) tStr = "number";
+        else if (t == core_port.Port.TYPE_ARRAY) tStr = "array";
+        else if (t == core_port.Port.TYPE_OBJECT) tStr = "object";
+        else if (t == core_port.Port.TYPE_DYNAMIC) tStr = "dynamic";
         else
         {
             console.log("unknown port type", t);
@@ -14862,7 +14907,7 @@ const Variable = function ()
 
 
 // EXTERNAL MODULE: ./src/core/anim_key.js
-var anim_key = __webpack_require__(963);
+var anim_key = __webpack_require__("./src/core/anim_key.js");
 ;// CONCATENATED MODULE: ./src/core/index.js
 
 
@@ -14885,25 +14930,25 @@ var anim_key = __webpack_require__(963);
 CABLES = CABLES || {};
 CABLES = {
     ...CABLES,
-    ...constants/* CONSTANTS */.a.PORT,
-    ...constants/* CONSTANTS */.a.PACO,
-    ...constants/* CONSTANTS */.a.ANIM,
-    ...constants/* CONSTANTS */.a.OP
+    ...constants.CONSTANTS.PORT,
+    ...constants.CONSTANTS.PACO,
+    ...constants.CONSTANTS.ANIM,
+    ...constants.CONSTANTS.OP
 };
 
 CABLES.EMBED = EMBED;
 CABLES.Link = Link;
-CABLES.Port = core_port/* Port */.I;
+CABLES.Port = core_port.Port;
 CABLES.Op = Op;
 CABLES.Profiler = Profiler;
 CABLES.Patch = Patch;
-CABLES.Timer = timer/* Timer */.M4;
+CABLES.Timer = timer.Timer;
 CABLES.Variable = Variable;
 CABLES.LoadingStatus = LoadingStatus;
-CABLES.now = timer/* now */.tB;
-CABLES.internalNow = timer/* internalNow */.uw;
-CABLES.Anim = anim/* Anim */.k;
-CABLES.AnimKey = anim_key/* AnimKey */.rA;
+CABLES.now = timer.now;
+CABLES.internalNow = timer.internalNow;
+CABLES.Anim = anim.Anim;
+CABLES.AnimKey = anim_key.AnimKey;
 
 CABLES.shortId = utils.shortId;
 CABLES.uuid = utils.uuid;
@@ -14930,12 +14975,12 @@ CABLES.uniqueArray = utils.uniqueArray;
 /** @type {Array<Op>} */
 CABLES.OPS = [];
 CABLES.utils = utils;
-CABLES.CONSTANTS = constants/* CONSTANTS */.a;
+CABLES.CONSTANTS = constants.CONSTANTS;
 
 CABLES.GLMatrix = esm_namespaceObject;
 CABLES.SHARED = {};
-CABLES.SHARED.Events = eventtarget/* default */.A;
-CABLES.SHARED.Logger = logger/* default */.A;
+CABLES.SHARED.Events = eventtarget["default"];
+CABLES.SHARED.Logger = logger["default"];
 
 /* harmony default export */ const core = (CABLES);
 
@@ -14945,16 +14990,19 @@ if (!(function () { return !this; }())) console.warn("not in strict mode: index 
 
 /***/ }),
 
-/***/ 920:
+/***/ "./src/core/timer.js":
+/*!***************************!*\
+  !*** ./src/core/timer.js ***!
+  \***************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   M4: () => (/* binding */ Timer),
-/* harmony export */   tB: () => (/* binding */ now),
-/* harmony export */   uw: () => (/* binding */ internalNow)
+/* harmony export */   Timer: () => (/* binding */ Timer),
+/* harmony export */   internalNow: () => (/* binding */ internalNow),
+/* harmony export */   now: () => (/* binding */ now)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(125);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
 
 
 /**
@@ -14984,7 +15032,7 @@ const now = function ()
  * @hideconstructor
  * @class
  */
-class Timer extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A
+class Timer extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
 {
     static EVENT_PLAY_PAUSE = "playPause";
     static EVENT_TIME_CHANGED = "timeChanged";
@@ -15164,7 +15212,10 @@ class Timer extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["defaul
 
 /***/ }),
 
-/***/ 562:
+/***/ "./src/core/utils.js":
+/*!***************************************!*\
+  !*** ./src/core/utils.js + 1 modules ***!
+  \***************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -15200,7 +15251,7 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 // EXTERNAL MODULE: ./src/core/constants.js
-var constants = __webpack_require__(440);
+var constants = __webpack_require__("./src/core/constants.js");
 ;// CONCATENATED MODULE: ./src/core/extendjs.js
 /**
  * extend javascript functionality
@@ -15319,10 +15370,10 @@ const getShortOpName = function (fullname)
 {
     let name = fullname.split(".")[fullname.split(".").length - 1];
 
-    if (name.includes(constants/* CONSTANTS */.a.OP.OP_VERSION_PREFIX))
+    if (name.includes(constants.CONSTANTS.OP.OP_VERSION_PREFIX))
     {
-        const n = name.split(constants/* CONSTANTS */.a.OP.OP_VERSION_PREFIX)[1];
-        name = name.substring(0, name.length - (constants/* CONSTANTS */.a.OP.OP_VERSION_PREFIX + n).length);
+        const n = name.split(constants.CONSTANTS.OP.OP_VERSION_PREFIX)[1];
+        name = name.substring(0, name.length - (constants.CONSTANTS.OP.OP_VERSION_PREFIX + n).length);
     }
     return name;
 };
@@ -15819,16 +15870,19 @@ const escapeHTML = function(string)
 
 /***/ }),
 
-/***/ 982:
+/***/ "./src/corelibs/cg/cg_boundingbox.js":
+/*!*******************************************!*\
+  !*** ./src/corelibs/cg/cg_boundingbox.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   I: () => (/* binding */ BoundingBox)
+/* harmony export */   BoundingBox: () => (/* binding */ BoundingBox)
 /* harmony export */ });
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(329);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(684);
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(562);
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat4.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
 
 
 
@@ -16080,14 +16134,17 @@ class BoundingBox
 
 /***/ }),
 
-/***/ 223:
+/***/ "./src/corelibs/cg/cg_canvas.js":
+/*!**************************************!*\
+  !*** ./src/corelibs/cg/cg_canvas.js ***!
+  \**************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   f: () => (/* binding */ CgCanvas)
+/* harmony export */   CgCanvas: () => (/* binding */ CgCanvas)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(849);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
 
 
 class CgCanvas
@@ -16101,7 +16158,7 @@ class CgCanvas
      */
     constructor(options)
     {
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A("CgCanvas");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]("CgCanvas");
         if (!options)
         {
             this._log.error("CgCanvas no options");
@@ -16179,21 +16236,24 @@ class CgCanvas
 
 /***/ }),
 
-/***/ 628:
+/***/ "./src/corelibs/cg/cg_context.js":
+/*!***************************************!*\
+  !*** ./src/corelibs/cg/cg_context.js ***!
+  \***************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (/* binding */ CgContext)
+/* harmony export */   CgContext: () => (/* binding */ CgContext)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(125);
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(849);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(329);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(684);
-/* harmony import */ var _cg_canvas_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(223);
-/* harmony import */ var _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(868);
-/* harmony import */ var _cgl_cgl_profiledata_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(460);
-/* harmony import */ var _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(294);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat4.js");
+/* harmony import */ var _cg_canvas_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./cg_canvas.js */ "./src/corelibs/cg/cg_canvas.js");
+/* harmony import */ var _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./cg_matrixstack.js */ "./src/corelibs/cg/cg_matrixstack.js");
+/* harmony import */ var _cgl_cgl_profiledata_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../cgl/cgl_profiledata.js */ "./src/corelibs/cgl/cgl_profiledata.js");
+/* harmony import */ var _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cg_fpscounter.js */ "./src/corelibs/cg/cg_fpscounter.js");
 
 
 
@@ -16202,7 +16262,7 @@ class CgCanvas
 
 
 
-class CgContext extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A
+class CgContext extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
 {
 
     static API_UNKNOWN = 0;
@@ -16221,11 +16281,11 @@ class CgContext extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["de
     {
         super();
 
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A("cg_context", { "onError": _patch.config.onError });
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_1__["default"]("cg_context", { "onError": _patch.config.onError });
 
         /** @type {object} */
         this.tempData = this.frameStore = this.frameStore || {};
-        this.fpsCounter = new _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__/* .FpsCounter */ .K();
+        this.fpsCounter = new _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__.FpsCounter();
         this._identView = gl_matrix__WEBPACK_IMPORTED_MODULE_3__.create();
         this._ident = gl_matrix__WEBPACK_IMPORTED_MODULE_3__.create();
         gl_matrix__WEBPACK_IMPORTED_MODULE_3__.set(this._identView, 0, 0, -2);
@@ -16246,7 +16306,7 @@ class CgContext extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["de
         this.DEPTH_COMPARE_FUNC_GREATEREQUAL = 6;
         this.DEPTH_COMPARE_FUNC_ALWAYS = 7;
 
-        this.profileData = new _cgl_cgl_profiledata_js__WEBPACK_IMPORTED_MODULE_4__/* .ProfileData */ .E(this);
+        this.profileData = new _cgl_cgl_profiledata_js__WEBPACK_IMPORTED_MODULE_4__.ProfileData(this);
 
         /**
          * Current projection matrix
@@ -16273,9 +16333,9 @@ class CgContext extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["de
         this.vMatrix = gl_matrix__WEBPACK_IMPORTED_MODULE_5__.create();
         this._textureslots = [];
 
-        this._pMatrixStack = new _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__/* .MatrixStack */ .u();
-        this._mMatrixStack = new _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__/* .MatrixStack */ .u();
-        this._vMatrixStack = new _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__/* .MatrixStack */ .u();
+        this._pMatrixStack = new _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__.MatrixStack();
+        this._mMatrixStack = new _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__.MatrixStack();
+        this._vMatrixStack = new _cg_matrixstack_js__WEBPACK_IMPORTED_MODULE_6__.MatrixStack();
 
         this.canvasScale = 1;
 
@@ -16338,7 +16398,7 @@ class CgContext extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["de
         if (this.cgCanvas && canvEle == this.cgCanvas.canvasEle) return;
         if (typeof canvEle === "string") canvEle = document.getElementById(canvEle);
 
-        this.cgCanvas = new _cg_canvas_js__WEBPACK_IMPORTED_MODULE_7__/* .CgCanvas */ .f({ "canvasEle": canvEle, "cg": this });
+        this.cgCanvas = new _cg_canvas_js__WEBPACK_IMPORTED_MODULE_7__.CgCanvas({ "canvasEle": canvEle, "cg": this });
 
         canvEle.parentElement.classList.add("cablesContainer");
         if (this._setCanvas) this._setCanvas(canvEle);
@@ -16669,19 +16729,22 @@ class CgContext extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["de
 
 /***/ }),
 
-/***/ 294:
+/***/ "./src/corelibs/cg/cg_fpscounter.js":
+/*!******************************************!*\
+  !*** ./src/corelibs/cg/cg_fpscounter.js ***!
+  \******************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   K: () => (/* binding */ FpsCounter)
+/* harmony export */   FpsCounter: () => (/* binding */ FpsCounter)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(125);
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(920);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables */ "./src/core/timer.js");
 
 
 
-class FpsCounter extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A
+class FpsCounter extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
 {
     constructor()
     {
@@ -16703,7 +16766,7 @@ class FpsCounter extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["d
 
     startFrame()
     {
-        this._timeStartFrame = (0,cables__WEBPACK_IMPORTED_MODULE_1__/* .now */ .tB)();
+        this._timeStartFrame = (0,cables__WEBPACK_IMPORTED_MODULE_1__.now)();
     }
 
     endFrame()
@@ -16711,10 +16774,10 @@ class FpsCounter extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["d
         this._frameCount++;
         this._fpsCounter++;
 
-        const timeFrame = (0,cables__WEBPACK_IMPORTED_MODULE_1__/* .now */ .tB)() - this._timeStartFrame;
+        const timeFrame = (0,cables__WEBPACK_IMPORTED_MODULE_1__.now)() - this._timeStartFrame;
         this._msCounter += timeFrame;
 
-        if ((0,cables__WEBPACK_IMPORTED_MODULE_1__/* .now */ .tB)() - this._timeStartSecond > 1000) this.endSecond();
+        if ((0,cables__WEBPACK_IMPORTED_MODULE_1__.now)() - this._timeStartSecond > 1000) this.endSecond();
     }
 
     endSecond()
@@ -16728,25 +16791,28 @@ class FpsCounter extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["d
         // reset
         this._fpsCounter = 0;
         this._msCounter = 0;
-        this._timeStartSecond = (0,cables__WEBPACK_IMPORTED_MODULE_1__/* .now */ .tB)();
+        this._timeStartSecond = (0,cables__WEBPACK_IMPORTED_MODULE_1__.now)();
     }
 }
 
 
 /***/ }),
 
-/***/ 331:
+/***/ "./src/corelibs/cg/cg_geom.js":
+/*!************************************!*\
+  !*** ./src/corelibs/cg/cg_geom.js ***!
+  \************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   V: () => (/* binding */ Geometry)
+/* harmony export */   Geometry: () => (/* binding */ Geometry)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(849);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(329);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(842);
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(562);
-/* harmony import */ var _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(982);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec2.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
+/* harmony import */ var _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cg_boundingbox.js */ "./src/corelibs/cg/cg_boundingbox.js");
 
 
 
@@ -16799,7 +16865,7 @@ class Geometry
     constructor(name)
     {
         this.name = name || "unknown";
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A("cgl_geometry");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]("cgl_geometry");
 
         this.faceVertCount = 3;
         this.glPrimitive = null;
@@ -17492,7 +17558,7 @@ class Geometry
 
     getBounds()
     {
-        return new _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_4__/* .BoundingBox */ .I(this);
+        return new _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_4__.BoundingBox(this);
     }
 
     /**
@@ -17659,14 +17725,17 @@ Geometry.buildFromFaces = function (arr, name, optimize)
 
 /***/ }),
 
-/***/ 868:
+/***/ "./src/corelibs/cg/cg_matrixstack.js":
+/*!*******************************************!*\
+  !*** ./src/corelibs/cg/cg_matrixstack.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   u: () => (/* binding */ MatrixStack)
+/* harmony export */   MatrixStack: () => (/* binding */ MatrixStack)
 /* harmony export */ });
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(684);
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat4.js");
 
 
 class MatrixStack
@@ -17716,12 +17785,15 @@ class MatrixStack
 
 /***/ }),
 
-/***/ 434:
+/***/ "./src/corelibs/cg/cg_mesh.js":
+/*!************************************!*\
+  !*** ./src/corelibs/cg/cg_mesh.js ***!
+  \************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   w: () => (/* binding */ CgMesh)
+/* harmony export */   CgMesh: () => (/* binding */ CgMesh)
 /* harmony export */ });
 class CgMesh
 {
@@ -17736,15 +17808,18 @@ class CgMesh
 
 /***/ }),
 
-/***/ 694:
+/***/ "./src/corelibs/cg/cg_shader.js":
+/*!**************************************!*\
+  !*** ./src/corelibs/cg/cg_shader.js ***!
+  \**************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   U: () => (/* binding */ CgShader)
+/* harmony export */   CgShader: () => (/* binding */ CgShader)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(125);
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(562);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/eventtarget.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
 
 
 
@@ -17765,7 +17840,7 @@ class CgMesh
  * @property {String} srcHeadVert
   */
 
-class CgShader extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A
+class CgShader extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]
 {
     id = cables__WEBPACK_IMPORTED_MODULE_1__.simpleId();
     _isValid = true;
@@ -18059,14 +18134,17 @@ class CgShader extends cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["def
 
 /***/ }),
 
-/***/ 356:
+/***/ "./src/corelibs/cg/cg_texture.js":
+/*!***************************************!*\
+  !*** ./src/corelibs/cg/cg_texture.js ***!
+  \***************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   U: () => (/* binding */ CgTexture)
+/* harmony export */   CgTexture: () => (/* binding */ CgTexture)
 /* harmony export */ });
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(562);
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
 
 
 const DEFAULT_TEXTURE_SIZE = 8;
@@ -18252,15 +18330,18 @@ CgTexture.PIXELFORMATS = [
 
 /***/ }),
 
-/***/ 475:
+/***/ "./src/corelibs/cg/cg_uniform.js":
+/*!***************************************!*\
+  !*** ./src/corelibs/cg/cg_uniform.js ***!
+  \***************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   v: () => (/* binding */ CgUniform)
+/* harmony export */   CgUniform: () => (/* binding */ CgUniform)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(849);
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(50);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables */ "./src/core/core_port.js");
 
 
 
@@ -18280,7 +18361,7 @@ class CgUniform
      */
     constructor(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName)
     {
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A("cg_uniform");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]("cg_uniform");
         this._type = __type;
         this._name = __name;
 
@@ -18398,14 +18479,14 @@ class CgUniform
             this._log.error("Unknown uniform type " + __type, __name, typeof this._shader);
         }
 
-        if (typeof _value == "object" && _value instanceof cables__WEBPACK_IMPORTED_MODULE_1__/* .Port */ .I)
+        if (typeof _value == "object" && _value instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port)
         {
             this._port = _value;
             this._value = this._port.get();
 
             if (_port2 && _port3 && _port4)
             {
-                if (!(_port2 instanceof cables__WEBPACK_IMPORTED_MODULE_1__/* .Port */ .I) || !(_port3 instanceof cables__WEBPACK_IMPORTED_MODULE_1__/* .Port */ .I) || !(_port4 instanceof cables__WEBPACK_IMPORTED_MODULE_1__/* .Port */ .I))
+                if (!(_port2 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port) || !(_port3 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port) || !(_port4 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port))
                 {
                     this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ", this._name);
                 }
@@ -18425,7 +18506,7 @@ class CgUniform
             }
             else if (_port2 && _port3)
             {
-                if (!(_port2 instanceof cables__WEBPACK_IMPORTED_MODULE_1__/* .Port */ .I) || !(_port3 instanceof cables__WEBPACK_IMPORTED_MODULE_1__/* .Port */ .I))
+                if (!(_port2 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port) || !(_port3 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port))
                 {
                     this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ", this._name);
                 }
@@ -18442,7 +18523,7 @@ class CgUniform
             }
             else if (_port2)
             {
-                if (!(_port2 instanceof cables__WEBPACK_IMPORTED_MODULE_1__/* .Port */ .I))
+                if (!(_port2 instanceof cables__WEBPACK_IMPORTED_MODULE_1__.Port))
                 {
                     this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ", this._name);
                 }
@@ -18546,25 +18627,28 @@ class CgUniform
 
 /***/ }),
 
-/***/ 748:
+/***/ "./src/corelibs/cg/index.js":
+/*!**********************************!*\
+  !*** ./src/corelibs/cg/index.js ***!
+  \**********************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* unused harmony export CG */
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(823);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(522);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(964);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(409);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(684);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(221);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(991);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(842);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(329);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(796);
-/* harmony import */ var _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(982);
-/* harmony import */ var _cg_canvas_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(223);
-/* harmony import */ var _cg_geom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(331);
-/* harmony import */ var _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(294);
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/common.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat2.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat2d.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat4.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/quat.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/quat2.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec2.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec3.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/vec4.js");
+/* harmony import */ var _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cg_boundingbox.js */ "./src/corelibs/cg/cg_boundingbox.js");
+/* harmony import */ var _cg_canvas_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cg_canvas.js */ "./src/corelibs/cg/cg_canvas.js");
+/* harmony import */ var _cg_geom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cg_geom.js */ "./src/corelibs/cg/cg_geom.js");
+/* harmony import */ var _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cg_fpscounter.js */ "./src/corelibs/cg/cg_fpscounter.js");
 
 
 
@@ -18593,11 +18677,11 @@ const CG = {
     "CULL_FRONT": 2,
     "CULL_BOTH": 3,
 
-    "Geometry": _cg_geom_js__WEBPACK_IMPORTED_MODULE_0__/* .Geometry */ .V,
-    "BoundingBox": _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_1__/* .BoundingBox */ .I,
-    "FpsCounter": _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__/* .FpsCounter */ .K,
+    "Geometry": _cg_geom_js__WEBPACK_IMPORTED_MODULE_0__.Geometry,
+    "BoundingBox": _cg_boundingbox_js__WEBPACK_IMPORTED_MODULE_1__.BoundingBox,
+    "FpsCounter": _cg_fpscounter_js__WEBPACK_IMPORTED_MODULE_2__.FpsCounter,
 
-    "CgCanvas": _cg_canvas_js__WEBPACK_IMPORTED_MODULE_3__/* .CgCanvas */ .f
+    "CgCanvas": _cg_canvas_js__WEBPACK_IMPORTED_MODULE_3__.CgCanvas
 };
 
 window.CABLES = window.CABLES || {};
@@ -18621,19 +18705,22 @@ window.vec4 = gl_matrix__WEBPACK_IMPORTED_MODULE_13__;
 
 /***/ }),
 
-/***/ 264:
+/***/ "./src/corelibs/cgl/cgl_mesh.js":
+/*!**************************************!*\
+  !*** ./src/corelibs/cgl/cgl_mesh.js ***!
+  \**************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   C: () => (/* binding */ MESH),
-/* harmony export */   e: () => (/* binding */ Mesh)
+/* harmony export */   MESH: () => (/* binding */ MESH),
+/* harmony export */   Mesh: () => (/* binding */ Mesh)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(849);
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(562);
-/* harmony import */ var _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(923);
-/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(997);
-/* harmony import */ var _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(434);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
+/* harmony import */ var _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cgl_shader_uniform.js */ "./src/corelibs/cgl/cgl_shader_uniform.js");
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants.js */ "./src/corelibs/cgl/constants.js");
+/* harmony import */ var _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cg/cg_mesh.js */ "./src/corelibs/cg/cg_mesh.js");
 
 
 
@@ -18676,7 +18763,7 @@ MESH.lastMesh = null;
  * }
  *
  */
-class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
+class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__.CgMesh
 {
 
     /** @type {CglContext} */
@@ -18700,7 +18787,7 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
 
         let options = _options || {};
         if (cables__WEBPACK_IMPORTED_MODULE_1__.isNumeric(options))options = { "glPrimitive": _options }; // old constructor fallback...
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A("cgl_mesh");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_2__["default"]("cgl_mesh");
         this._bufVertexAttrib = null;
         this.#bufVerticesIndizes = this.#cgl.gl.createBuffer();
         this._indexType = this.#cgl.gl.UNSIGNED_SHORT;
@@ -18762,7 +18849,7 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
      */
     updateVertices(geom)
     {
-        this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_POSITION, geom.vertices, 3);
+        this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_POSITION, geom.vertices, 3);
         this._numVerts = geom.vertices.length / 3;
     }
 
@@ -18786,7 +18873,7 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
                         "name": name,
                         "stride": stride,
                         "offset": offset,
-                        "instanced": attrName == _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_INSTANCE_MMATRIX,
+                        "instanced": attrName == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_INSTANCE_MMATRIX,
                     }
                 );
             }
@@ -18934,7 +19021,7 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
             if (options.instanced) instanced = options.instanced;
         }
 
-        if (name == _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_INSTANCE_MMATRIX) instanced = true;
+        if (name == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_INSTANCE_MMATRIX) instanced = true;
 
         for (i = 0; i < this._attributes.length; i++)
         {
@@ -18978,7 +19065,7 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
 
         this._bufferArray(array, attr);
 
-        if (name == _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_POSITION) this._bufVertexAttrib = attr;
+        if (name == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_POSITION) this._bufVertexAttrib = attr;
         this._attributes.push(attr);
         this._attribLocs = {};
 
@@ -19001,12 +19088,12 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
     {
         if (geom.texCoords && geom.texCoords.length > 0)
         {
-            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_TEXCOORD, geom.texCoords, 2);
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_TEXCOORD, geom.texCoords, 2);
         }
         else
         {
             const tcBuff = new Float32Array(Math.round((geom.vertices.length / 3) * 2));
-            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_TEXCOORD, tcBuff, 2);
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_TEXCOORD, tcBuff, 2);
         }
     }
 
@@ -19021,12 +19108,12 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
     {
         if (geom.vertexNormals && geom.vertexNormals.length > 0)
         {
-            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_NORMAL, geom.vertexNormals, 3);
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_NORMAL, geom.vertexNormals, 3);
         }
         else
         {
             const tcBuff = new Float32Array(Math.round((geom.vertices.length)));
-            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_NORMAL, tcBuff, 3);
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_NORMAL, tcBuff, 3);
         }
     }
 
@@ -19044,9 +19131,9 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
                 for (let i = 0; i < this._numVerts; i++) this._verticesNumbers[i] = i;
             }
 
-            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_NUMBER, this._verticesNumbers, 1, (_attr, _geom, shader) =>
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_NUMBER, this._verticesNumbers, 1, (_attr, _geom, shader) =>
             {
-                if (!shader.uniformNumVertices) shader.uniformNumVertices = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_4__/* .Uniform */ .n(shader, "f", "numVertices", this._numVerts);
+                if (!shader.uniformNumVertices) shader.uniformNumVertices = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_4__.Uniform(shader, "f", "numVertices", this._numVerts);
                 shader.uniformNumVertices.setValue(this._numVerts);
             });
         }
@@ -19139,9 +19226,9 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
         const geomAttribs = this.#geom.getAttributes();
 
         const attribAssoc = {
-            "texCoords": _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_TEXCOORD,
-            "vertexNormals": _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_NORMAL,
-            "vertexColors": _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_COLOR,
+            "texCoords": _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_TEXCOORD,
+            "vertexNormals": _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_NORMAL,
+            "vertexColors": _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_VERTEX_COLOR,
             "tangents": "attrTangent",
             "biTangents": "attrBiTangent",
         };
@@ -19568,7 +19655,7 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
             this._numInstances = n;
             const indexArr = new Float32Array(n);
             for (let i = 0; i < n; i++) indexArr[i] = i;
-            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.SHADER.SHADERVAR_INSTANCE_INDEX, indexArr, 1, { "instanced": true });
+            this.setAttribute(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.SHADER.SHADERVAR_INSTANCE_INDEX, indexArr, 1, { "instanced": true });
         }
     }
 
@@ -19603,12 +19690,15 @@ class Mesh extends _cg_cg_mesh_js__WEBPACK_IMPORTED_MODULE_0__/* .CgMesh */ .w
 
 /***/ }),
 
-/***/ 460:
+/***/ "./src/corelibs/cgl/cgl_profiledata.js":
+/*!*********************************************!*\
+  !*** ./src/corelibs/cgl/cgl_profiledata.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   E: () => (/* binding */ ProfileData)
+/* harmony export */   ProfileData: () => (/* binding */ ProfileData)
 /* harmony export */ });
 class ProfileData
 {
@@ -19717,22 +19807,25 @@ class ProfileData
 
 /***/ }),
 
-/***/ 24:
+/***/ "./src/corelibs/cgl/cgl_shader.js":
+/*!****************************************!*\
+  !*** ./src/corelibs/cgl/cgl_shader.js ***!
+  \****************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   M: () => (/* binding */ CglShader)
+/* harmony export */   Shader: () => (/* binding */ CglShader)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(849);
-/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(684);
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(920);
-/* harmony import */ var _cgl_shader_lib_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(960);
-/* harmony import */ var _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(264);
-/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var _cg_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(694);
-/* harmony import */ var _cgl_texture_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(70);
-/* harmony import */ var _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(923);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var gl_matrix__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gl-matrix */ "./node_modules/gl-matrix/esm/mat4.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! cables */ "./src/core/timer.js");
+/* harmony import */ var _cgl_shader_lib_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cgl_shader_lib.js */ "./src/corelibs/cgl/cgl_shader_lib.js");
+/* harmony import */ var _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cgl_mesh.js */ "./src/corelibs/cgl/cgl_mesh.js");
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants.js */ "./src/corelibs/cgl/constants.js");
+/* harmony import */ var _cg_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../cg/index.js */ "./src/corelibs/cg/cg_shader.js");
+/* harmony import */ var _cgl_texture_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./cgl_texture.js */ "./src/corelibs/cgl/cgl_texture.js");
+/* harmony import */ var _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./cgl_shader_uniform.js */ "./src/corelibs/cgl/cgl_shader_uniform.js");
 
 
 
@@ -19844,7 +19937,7 @@ function getDefaultFragmentShader(r, g, b)
  * var shader=new CGL.Shader(cgl,'MinimalMaterial');
  * shader.setSource(attachments.shader_vert,attachments.shader_frag);
  */
-class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */ .U
+class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__.CgShader
 {
 
     /** @type {Uniform[]} */
@@ -19860,7 +19953,7 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
         super();
         if (!_cgl) throw new Error("shader constructed without cgl " + _name);
 
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .A("cgl_shader");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_2__["default"]("cgl_shader");
         this._cgl = _cgl;
 
         if (!_name) this._log.stack("no shader name given");
@@ -20032,11 +20125,11 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
 
     _addLibs(src)
     {
-        for (const id in _cgl_shader_lib_js__WEBPACK_IMPORTED_MODULE_4__/* .ShaderLibMods */ .y)
+        for (const id in _cgl_shader_lib_js__WEBPACK_IMPORTED_MODULE_4__.ShaderLibMods)
         {
             if (src.includes(id))
             {
-                const lib = new _cgl_shader_lib_js__WEBPACK_IMPORTED_MODULE_4__/* .ShaderLibMods */ .y[id]();
+                const lib = new _cgl_shader_lib_js__WEBPACK_IMPORTED_MODULE_4__.ShaderLibMods[id]();
                 src = src.replace("{{" + id + "}}", lib.srcHeadFrag);
                 this._libs.push(lib);
                 if (lib.initUniforms)lib.initUniforms(this);
@@ -20523,12 +20616,12 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
         this.finalShaderFrag = fs;
         this.finalShaderVert = vs;
 
-        _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_5__/* .MESH */ .C.lastMesh = null;
-        _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_5__/* .MESH */ .C.lastShader = null;
+        _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_5__.MESH.lastMesh = null;
+        _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_5__.MESH.lastShader = null;
 
         this._countMissingUniforms = 0;
         this._needsRecompile = false;
-        this.lastCompile = (0,cables__WEBPACK_IMPORTED_MODULE_6__/* .now */ .tB)();
+        this.lastCompile = (0,cables__WEBPACK_IMPORTED_MODULE_6__.now)();
 
         this._cgl.profileData.shaderCompileTime += performance.now() - startTime;
     }
@@ -20537,7 +20630,7 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
     {
         if (!this._isValid || this._cgl.aborted) return;
 
-        _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_5__/* .MESH */ .C.lastShader = this;
+        _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_5__.MESH.lastShader = this;
 
         if (!this._program || this.needsRecompile()) this.compile();
         if (!this._isValid) return;
@@ -20548,17 +20641,17 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
             // if (this._countMissingUniforms == 10)this._log.log("stopping getlocation of missing uniforms...", this._name);
             if (this._countMissingUniforms < 10)
             {
-                this._projMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_UNI_PROJMAT);
-                this._attrVertexPos = this._cgl.glGetAttribLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_VERTEX_POSITION);
+                this._projMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_UNI_PROJMAT);
+                this._attrVertexPos = this._cgl.glGetAttribLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_VERTEX_POSITION);
                 this._mvMatrixUniform = this._cgl.gl.getUniformLocation(this._program, "mvMatrix");
-                this._vMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_UNI_VIEWMAT);
-                this._mMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_UNI_MODELMAT);
-                this._camPosUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_UNI_VIEWPOS);
-                this._normalMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_UNI_NORMALMAT);
-                this._inverseViewMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_UNI_INVVIEWMAT);
-                this._inverseProjMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_UNI_INVPROJMAT);
-                this._materialIdUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_UNI_MATERIALID);
-                this._objectIdUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.SHADER.SHADERVAR_UNI_OBJECTID);
+                this._vMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_UNI_VIEWMAT);
+                this._mMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_UNI_MODELMAT);
+                this._camPosUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_UNI_VIEWPOS);
+                this._normalMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_UNI_NORMALMAT);
+                this._inverseViewMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_UNI_INVVIEWMAT);
+                this._inverseProjMatrixUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_UNI_INVPROJMAT);
+                this._materialIdUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_UNI_MATERIALID);
+                this._objectIdUniform = this._cgl.gl.getUniformLocation(this._program, _constants_js__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.SHADER.SHADERVAR_UNI_OBJECTID);
 
                 for (let i = 0; i < this._uniforms.length; i++) this._uniforms[i].needsUpdate = true;
             }
@@ -20702,7 +20795,7 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
      */
     addUniformFrag(type, name, valueOrPort, p2, p3, p4)
     {
-        const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__/* .Uniform */ .n(this, type, name, valueOrPort, p2, p3, p4);
+        const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__.Uniform(this, type, name, valueOrPort, p2, p3, p4);
         uni.shaderType = "frag";
         return uni;
     }
@@ -20719,7 +20812,7 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
      */
     addUniformVert(type, name, valueOrPort, p2, p3, p4)
     {
-        const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__/* .Uniform */ .n(this, type, name, valueOrPort, p2, p3, p4);
+        const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__.Uniform(this, type, name, valueOrPort, p2, p3, p4);
         uni.shaderType = "vert";
         return uni;
     }
@@ -20736,7 +20829,7 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
      */
     addUniformBoth(type, name, valueOrPort, p2, p3, p4)
     {
-        const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__/* .Uniform */ .n(this, type, name, valueOrPort, p2, p3, p4);
+        const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__.Uniform(this, type, name, valueOrPort, p2, p3, p4);
         uni.shaderType = "both";
         return uni;
     }
@@ -20767,7 +20860,7 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
             const member = members[i];
             if (!this.hasUniform(uniformName + "." + member.name))
             {
-                const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__/* .Uniform */ .n(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
+                const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__.Uniform(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
                 uni.shaderType = "frag";
                 uniforms[uniformName + "." + member.name] = uni;
             }
@@ -20801,7 +20894,7 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
             const member = members[i];
             if (!this.hasUniform(uniformName + "." + member.name))
             {
-                const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__/* .Uniform */ .n(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
+                const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__.Uniform(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
                 uni.shaderType = "vert";
                 uniforms[uniformName + "." + member.name] = uni;
             }
@@ -20838,7 +20931,7 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
                 this._log.error("Adding an integer struct member to both shaders can potentially error. Please use different structs for each shader. Error occured in struct:", structName, " with member:", member.name, " of type:", member.type, ".");
             if (!this.hasUniform(uniformName + "." + member.name))
             {
-                const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__/* .Uniform */ .n(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
+                const uni = new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_7__.Uniform(this, member.type, uniformName + "." + member.name, member.v1, member.v2, member.v3, member.v4, uniformName, structName, member.name);
                 uni.shaderType = "both";
                 uniforms[uniformName + "." + member.name] = uni;
             }
@@ -21027,7 +21120,7 @@ class CglShader extends _cg_index_js__WEBPACK_IMPORTED_MODULE_1__/* .CgShader */
      */
     setUniformTexture(uni, tex)
     {
-        tex = tex || _cgl_texture_js__WEBPACK_IMPORTED_MODULE_8__/* .Texture */ .g.getTempTexture(this._cgl);
+        tex = tex || _cgl_texture_js__WEBPACK_IMPORTED_MODULE_8__.Texture.getTempTexture(this._cgl);
         for (let i = 0; i < this._textureStackUni.length; i++)
             if (this._textureStackUni[i] == uni)
             {
@@ -21194,16 +21287,19 @@ CglShader.createShader = function (cgl, str, type, cglShader)
 
 /***/ }),
 
-/***/ 960:
+/***/ "./src/corelibs/cgl/cgl_shader_lib.js":
+/*!********************************************!*\
+  !*** ./src/corelibs/cgl/cgl_shader_lib.js ***!
+  \********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   y: () => (/* binding */ ShaderLibMods)
+/* harmony export */   ShaderLibMods: () => (/* binding */ ShaderLibMods)
 /* harmony export */ });
-/* harmony import */ var _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(923);
-/* harmony import */ var _cgl_textureeffect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(771);
-/* harmony import */ var _cgl_texture_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(70);
+/* harmony import */ var _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cgl_shader_uniform.js */ "./src/corelibs/cgl/cgl_shader_uniform.js");
+/* harmony import */ var _cgl_textureeffect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cgl_textureeffect.js */ "./src/corelibs/cgl/cgl_textureeffect.js");
+/* harmony import */ var _cgl_texture_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cgl_texture.js */ "./src/corelibs/cgl/cgl_texture.js");
 
 
 
@@ -21213,13 +21309,13 @@ const ShaderLibMods = {
     "CGL.BLENDMODES": function ()
     {
         this.name = "blendmodes";
-        this.srcHeadFrag = _cgl_textureeffect_js__WEBPACK_IMPORTED_MODULE_0__/* .TextureEffect */ .p.getBlendCode();
+        this.srcHeadFrag = _cgl_textureeffect_js__WEBPACK_IMPORTED_MODULE_0__.TextureEffect.getBlendCode();
     },
 
     "CGL.BLENDMODES3": function ()
     {
         this.name = "blendmodes3";
-        this.srcHeadFrag = _cgl_textureeffect_js__WEBPACK_IMPORTED_MODULE_0__/* .TextureEffect */ .p.getBlendCode(3);
+        this.srcHeadFrag = _cgl_textureeffect_js__WEBPACK_IMPORTED_MODULE_0__.TextureEffect.getBlendCode(3);
     },
 
     "CGL.LUMINANCE": function ()
@@ -21279,13 +21375,13 @@ const ShaderLibMods = {
 
         this.initUniforms = function (shader)
         {
-            return [new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_1__/* .Uniform */ .n(shader, "t", "CGLRNDTEX", 7)];
+            return [new _cgl_shader_uniform_js__WEBPACK_IMPORTED_MODULE_1__.Uniform(shader, "t", "CGLRNDTEX", 7)];
         };
 
         this.onBind = function (cgl, shader)
         {
-            _cgl_texture_js__WEBPACK_IMPORTED_MODULE_2__/* .Texture */ .g.getRandomTexture(cgl);
-            cgl.setTexture(7, _cgl_texture_js__WEBPACK_IMPORTED_MODULE_2__/* .Texture */ .g.getRandomTexture(cgl).tex);
+            _cgl_texture_js__WEBPACK_IMPORTED_MODULE_2__.Texture.getRandomTexture(cgl);
+            cgl.setTexture(7, _cgl_texture_js__WEBPACK_IMPORTED_MODULE_2__.Texture.getRandomTexture(cgl).tex);
         };
     }
 
@@ -21294,14 +21390,17 @@ const ShaderLibMods = {
 
 /***/ }),
 
-/***/ 923:
+/***/ "./src/corelibs/cgl/cgl_shader_uniform.js":
+/*!************************************************!*\
+  !*** ./src/corelibs/cgl/cgl_shader_uniform.js ***!
+  \************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   n: () => (/* binding */ Uniform)
+/* harmony export */   Uniform: () => (/* binding */ Uniform)
 /* harmony export */ });
-/* harmony import */ var _cg_cg_uniform_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(475);
+/* harmony import */ var _cg_cg_uniform_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cg/cg_uniform.js */ "./src/corelibs/cg/cg_uniform.js");
 
 
 
@@ -21343,7 +21442,7 @@ const ShaderLibMods = {
 
 // export const Uniform(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName)
 
-class Uniform extends _cg_cg_uniform_js__WEBPACK_IMPORTED_MODULE_0__/* .CgUniform */ .v
+class Uniform extends _cg_cg_uniform_js__WEBPACK_IMPORTED_MODULE_0__.CgUniform
 {
     constructor(__shader, __type, __name, _value, _port2, _port3, _port4, _structUniformName, _structName, _propertyName)
     {
@@ -21824,15 +21923,18 @@ Uniform.glslTypeString = (t) =>
 
 /***/ }),
 
-/***/ 273:
+/***/ "./src/corelibs/cgl/cgl_simplerect.js":
+/*!********************************************!*\
+  !*** ./src/corelibs/cgl/cgl_simplerect.js ***!
+  \********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   S: () => (/* binding */ MESHES)
+/* harmony export */   MESHES: () => (/* binding */ MESHES)
 /* harmony export */ });
-/* harmony import */ var _cg_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(331);
-/* harmony import */ var _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(264);
+/* harmony import */ var _cg_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cg/index.js */ "./src/corelibs/cg/cg_geom.js");
+/* harmony import */ var _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cgl_mesh.js */ "./src/corelibs/cgl/cgl_mesh.js");
 
 
 
@@ -21840,7 +21942,7 @@ const MESHES = {};
 
 MESHES.getSimpleRect = function (cgl, name, size = 1.0)
 {
-    const geom = new _cg_index_js__WEBPACK_IMPORTED_MODULE_0__/* .Geometry */ .V(name);
+    const geom = new _cg_index_js__WEBPACK_IMPORTED_MODULE_0__.Geometry(name);
 
     geom.vertices = [1.0 * size, 1.0 * size, 0.0, -1.0 * size, 1.0 * size, 0.0, 1.0 * size, -1.0 * size, 0.0, -1.0 * size, -1.0 * size, 0.0];
     geom.texCoords = [1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0];
@@ -21852,7 +21954,7 @@ MESHES.getSimpleRect = function (cgl, name, size = 1.0)
 
 MESHES.getSimpleCube = function (cgl, name)
 {
-    const geom = new _cg_index_js__WEBPACK_IMPORTED_MODULE_0__/* .Geometry */ .V(name);
+    const geom = new _cg_index_js__WEBPACK_IMPORTED_MODULE_0__.Geometry(name);
     geom.vertices = [-1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, 1, -1];
     geom.setTexCoords([0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0,]);
     geom.verticesIndices = [0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23];
@@ -21860,7 +21962,7 @@ MESHES.getSimpleCube = function (cgl, name)
     geom.tangents = new Float32Array([0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1]);
     geom.biTangents = new Float32Array([-1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1]);
 
-    return new _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_1__/* .Mesh */ .e(cgl, geom);
+    return new _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_1__.Mesh(cgl, geom);
 };
 
 
@@ -21868,21 +21970,24 @@ MESHES.getSimpleCube = function (cgl, name)
 
 /***/ }),
 
-/***/ 308:
+/***/ "./src/corelibs/cgl/cgl_state.js":
+/*!***************************************!*\
+  !*** ./src/corelibs/cgl/cgl_state.js ***!
+  \***************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   G: () => (/* binding */ CglContext)
+/* harmony export */   CglContext: () => (/* binding */ CglContext)
 /* harmony export */ });
 /* unused harmony export BLENDS */
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(849);
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(562);
-/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(997);
-/* harmony import */ var _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(24);
-/* harmony import */ var _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(628);
-/* harmony import */ var _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(264);
-/* harmony import */ var _cgl_texture_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(70);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants.js */ "./src/corelibs/cgl/constants.js");
+/* harmony import */ var _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cgl_shader.js */ "./src/corelibs/cgl/cgl_shader.js");
+/* harmony import */ var _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cg/cg_context.js */ "./src/corelibs/cg/cg_context.js");
+/* harmony import */ var _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./cgl_mesh.js */ "./src/corelibs/cgl/cgl_mesh.js");
+/* harmony import */ var _cgl_texture_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cgl_texture.js */ "./src/corelibs/cgl/cgl_texture.js");
 
 
 
@@ -21908,7 +22013,7 @@ const BLENDS = {
  * @hideconstructor
  */
 // const Context(_patch)
-class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgContext */ .A
+class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__.CgContext
 {
 
     /**
@@ -21918,7 +22023,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
     {
         super(_patch);
 
-        this.gApi = _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgContext */ .A.API_WEBGL;
+        this.gApi = _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__.CgContext.API_WEBGL;
         this.aborted = false;
 
         /** @deprecated */
@@ -21926,7 +22031,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
         /** @deprecated */
         this.popMvMatrix = this.popmMatrix = this.popModelMatrix;// deprecated and wrong... still used??
 
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .A("cgl_context", { "onError": _patch.config.onError });
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_1__["default"]("cgl_context", { "onError": _patch.config.onError });
 
         this.glVersion = 0;
         this.glUseHalfFloatTex = false;
@@ -21965,9 +22070,9 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
         this._stackDepthTest = [];
         this._stackStencil = [];
 
-        this._simpleShader = new _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__/* .Shader */ .M(this, "simpleshader");
+        this._simpleShader = new _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__.Shader(this, "simpleshader");
         this._simpleShader.setModules(["MODULE_VERTEX_POSITION", "MODULE_COLOR", "MODULE_BEGIN_FRAG", "MODULE_VERTEX_MODELVIEW"]);
-        this._simpleShader.setSource(_cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__/* .Shader */ .M.getDefaultVertexShader(), _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__/* .Shader */ .M.getDefaultFragmentShader());
+        this._simpleShader.setSource(_cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__.Shader.getDefaultVertexShader(), _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__.Shader.getDefaultFragmentShader());
 
         this._currentShader = this._simpleShader;
 
@@ -22273,7 +22378,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
         {
             this._oldCanvasWidth = this.canvasWidth;
             this._oldCanvasHeight = this.canvasHeight;
-            this.emitEvent(_cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgContext */ .A.EVENT_RESIZE);
+            this.emitEvent(_cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__.CgContext.EVENT_RESIZE);
         }
 
         if (this._cursor != this._currentCursor)
@@ -22474,7 +22579,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
 
         this._startMatrixStacks(identTranslate, identTranslateView);
 
-        cgl.pushBlendMode(_constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.BLEND_MODES.BLEND_NORMAL, false);
+        cgl.pushBlendMode(_constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.BLEND_MODES.BLEND_NORMAL, false);
 
         for (let i = 0; i < this._textureslots.length; i++) this._textureslots[i] = null;
 
@@ -22555,7 +22660,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
     {
         this.checkFrameStarted("cgl setTexture");
 
-        if (t === null) t = _cgl_texture_js__WEBPACK_IMPORTED_MODULE_5__/* .Texture */ .g.getEmptyTexture(this).tex;
+        if (t === null) t = _cgl_texture_js__WEBPACK_IMPORTED_MODULE_5__.Texture.getEmptyTexture(this).tex;
 
         if (this._textureslots[slot] != t)
         {
@@ -22892,7 +22997,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
 
         const n = this._stackBlendMode.length - 1;
 
-        this.pushBlend(this._stackBlendMode[n] !== _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.BLEND_MODES.BLEND_NONE);
+        this.pushBlend(this._stackBlendMode[n] !== _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.BLEND_MODES.BLEND_NONE);
         this._setBlendMode(this._stackBlendMode[n], this._stackBlendModePremul[n]);
     }
 
@@ -22973,11 +23078,11 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
     {
         const gl = this.gl;
 
-        if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.BLEND_MODES.BLEND_NONE)
+        if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.BLEND_MODES.BLEND_NONE)
         {
             // this.gl.disable(this.gl.BLEND);
         }
-        else if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.BLEND_MODES.BLEND_ADD)
+        else if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.BLEND_MODES.BLEND_ADD)
         {
             if (premul)
             {
@@ -22990,7 +23095,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
                 gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
             }
         }
-        else if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.BLEND_MODES.BLEND_SUB)
+        else if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.BLEND_MODES.BLEND_SUB)
         {
             if (premul)
             {
@@ -23003,7 +23108,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
                 gl.blendFunc(gl.ZERO, gl.ONE_MINUS_SRC_COLOR);
             }
         }
-        else if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.BLEND_MODES.BLEND_MUL)
+        else if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.BLEND_MODES.BLEND_MUL)
         {
             if (premul)
             {
@@ -23016,7 +23121,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
                 gl.blendFunc(gl.ZERO, gl.SRC_COLOR);
             }
         }
-        else if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__/* .CONSTANTS */ .a.BLEND_MODES.BLEND_NORMAL)
+        else if (blendMode == _constants_js__WEBPACK_IMPORTED_MODULE_3__.CONSTANTS.BLEND_MODES.BLEND_NORMAL)
         {
             if (premul)
             {
@@ -23042,7 +23147,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
     createMesh(geom, options)
     {
         if (cables__WEBPACK_IMPORTED_MODULE_4__.isNumeric(options))options = { "glPrimitive": options }; // old constructor fallback...
-        return new _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_6__/* .Mesh */ .e(this, geom, options);
+        return new _cgl_mesh_js__WEBPACK_IMPORTED_MODULE_6__.Mesh(this, geom, options);
     }
 
     /**
@@ -23084,8 +23189,8 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
     {
         if (this.errorShader) return this.errorShader;
 
-        this.errorShader = new _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__/* .Shader */ .M(this, "errormaterial");
-        this.errorShader.setSource(_cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__/* .Shader */ .M.getDefaultVertexShader(), _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__/* .Shader */ .M.getErrorFragmentShader());
+        this.errorShader = new _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__.Shader(this, "errormaterial");
+        this.errorShader.setSource(_cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__.Shader.getDefaultVertexShader(), _cgl_shader_js__WEBPACK_IMPORTED_MODULE_2__.Shader.getErrorFragmentShader());
         return this.errorShader;
     }
 
@@ -23094,16 +23199,19 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
 
 /***/ }),
 
-/***/ 70:
+/***/ "./src/corelibs/cgl/cgl_texture.js":
+/*!*****************************************!*\
+  !*** ./src/corelibs/cgl/cgl_texture.js ***!
+  \*****************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   g: () => (/* binding */ Texture)
+/* harmony export */   Texture: () => (/* binding */ Texture)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(849);
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(562);
-/* harmony import */ var _cg_cg_texture_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(356);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! cables */ "./src/core/utils.js");
+/* harmony import */ var _cg_cg_texture_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../cg/cg_texture.js */ "./src/corelibs/cg/cg_texture.js");
 
 
 
@@ -23111,7 +23219,7 @@ class CglContext extends _cg_cg_context_js__WEBPACK_IMPORTED_MODULE_0__/* .CgCon
 
 const DEFAULT_TEXTURE_SIZE = 8;
 
-const log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A("cgl_texture");
+const log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]("cgl_texture");
 
 /**
  * A Texture
@@ -23130,7 +23238,7 @@ const log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] 
  * const tex=new CGL.Texture(cgl);
  * tex.initFromData(data,size,size,CGL.Texture.FILTER_NEAREST,CGL.Texture.WRAP_REPEAT);
  */
-class Texture extends _cg_cg_texture_js__WEBPACK_IMPORTED_MODULE_1__/* .CgTexture */ .U
+class Texture extends _cg_cg_texture_js__WEBPACK_IMPORTED_MODULE_1__.CgTexture
 {
 
     /**
@@ -23142,7 +23250,7 @@ class Texture extends _cg_cg_texture_js__WEBPACK_IMPORTED_MODULE_1__/* .CgTextur
         if (!__cgl) throw new Error("no cgl");
 
         this._cgl = __cgl;
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A("tex");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]("tex");
         this.tex = this._cgl.gl.createTexture();
         this.loading = false;
         this.flip = true;
@@ -24171,16 +24279,19 @@ Texture.isPixelFormatHalfFloat =
 
 /***/ }),
 
-/***/ 771:
+/***/ "./src/corelibs/cgl/cgl_textureeffect.js":
+/*!***********************************************!*\
+  !*** ./src/corelibs/cgl/cgl_textureeffect.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   p: () => (/* binding */ TextureEffect)
+/* harmony export */   TextureEffect: () => (/* binding */ TextureEffect)
 /* harmony export */ });
-/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(849);
-/* harmony import */ var _cgl_texture_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(70);
-/* harmony import */ var _cgl_simplerect_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(273);
+/* harmony import */ var cables_shared_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables-shared-client */ "../shared/client/src/logger.js");
+/* harmony import */ var _cgl_texture_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cgl_texture.js */ "./src/corelibs/cgl/cgl_texture.js");
+/* harmony import */ var _cgl_simplerect_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cgl_simplerect.js */ "./src/corelibs/cgl/cgl_simplerect.js");
 
 
 
@@ -24190,7 +24301,7 @@ class TextureEffect
     constructor(cgl, options)
     {
         this._cgl = cgl;
-        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A("cgl_TextureEffect");
+        this._log = new cables_shared_client__WEBPACK_IMPORTED_MODULE_0__["default"]("cgl_TextureEffect");
 
         if (!cgl.TextureEffectMesh) this.createMesh();
 
@@ -24231,7 +24342,7 @@ class TextureEffect
     {
         if (tex === null)
         {
-            this._textureSource = new _cgl_texture_js__WEBPACK_IMPORTED_MODULE_1__/* .Texture */ .g(this._cgl);
+            this._textureSource = new _cgl_texture_js__WEBPACK_IMPORTED_MODULE_1__.Texture(this._cgl);
             this._textureSource.setSize(16, 16);
         }
         else
@@ -24373,7 +24484,7 @@ class TextureEffect
 
         this._cgl.profileData.profileTextureEffect++;
 
-        if (this._textureTarget.filter == _cgl_texture_js__WEBPACK_IMPORTED_MODULE_1__/* .Texture */ .g.FILTER_MIPMAP)
+        if (this._textureTarget.filter == _cgl_texture_js__WEBPACK_IMPORTED_MODULE_1__.Texture.FILTER_MIPMAP)
         {
             if (!this.switched)
             {
@@ -24417,7 +24528,7 @@ class TextureEffect
 
     createMesh()
     {
-        this._cgl.TextureEffectMesh = _cgl_simplerect_js__WEBPACK_IMPORTED_MODULE_2__/* .MESHES */ .S.getSimpleRect(this._cgl, "texEffectRect");
+        this._cgl.TextureEffectMesh = _cgl_simplerect_js__WEBPACK_IMPORTED_MODULE_2__.MESHES.getSimpleRect(this._cgl, "texEffectRect");
     }
 
     // ---------------------------------------------------------------------------------
@@ -24705,12 +24816,15 @@ TextureEffect.setupBlending = function (op, shader, blendPort, amountPort, alpha
 
 /***/ }),
 
-/***/ 997:
+/***/ "./src/corelibs/cgl/constants.js":
+/*!***************************************!*\
+  !*** ./src/corelibs/cgl/constants.js ***!
+  \***************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   a: () => (/* binding */ CONSTANTS),
+/* harmony export */   CONSTANTS: () => (/* binding */ CONSTANTS),
 /* harmony export */   nl: () => (/* binding */ nl)
 /* harmony export */ });
 const SHADER = {
@@ -24762,24 +24876,27 @@ const nl = "\n";// newline
 
 /***/ }),
 
-/***/ 772:
+/***/ "./src/corelibs/cgl/index.js":
+/*!***********************************************!*\
+  !*** ./src/corelibs/cgl/index.js + 4 modules ***!
+  \***********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  Rq: () => (/* binding */ cgl_CGL)
+  CGL: () => (/* binding */ cgl_CGL)
 });
 
 // UNUSED EXPORTS: Framebuffer2, Geometry, Mesh, Shader, Texture, Uniform
 
 // EXTERNAL MODULE: ./src/core/anim.js
-var anim = __webpack_require__(344);
+var anim = __webpack_require__("./src/core/anim.js");
 // EXTERNAL MODULE: ../shared/client/src/logger.js
-var logger = __webpack_require__(849);
+var logger = __webpack_require__("../shared/client/src/logger.js");
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_texture.js
-var cgl_texture = __webpack_require__(70);
+var cgl_texture = __webpack_require__("./src/corelibs/cgl/cgl_texture.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_framebuffer2.js
 
 
@@ -24796,7 +24913,7 @@ class Framebuffer2
      */
     constructor(cgl, w, h, options)
     {
-        this._log = new logger/* default */.A("cgl_framebuffer2");
+        this._log = new logger["default"]("cgl_framebuffer2");
         if (cgl.glVersion == 1) this._log.error("framebuffer2 used on webgl1");
         this.Framebuffer2DrawTargetsDefault = null;
         this.Framebuffer2BlittingFramebuffer = null;
@@ -24845,8 +24962,8 @@ class Framebuffer2
             else this._options.multisamplingSamples = Math.min(this._cgl.maxSamples, this._options.multisamplingSamples);
         }
 
-        if (!this._options.hasOwnProperty("filter")) this._options.filter = cgl_texture/* Texture */.g.FILTER_LINEAR;
-        if (!this._options.hasOwnProperty("wrap")) this._options.wrap = cgl_texture/* Texture */.g.WRAP_REPEAT;
+        if (!this._options.hasOwnProperty("filter")) this._options.filter = cgl_texture.Texture.FILTER_LINEAR;
+        if (!this._options.hasOwnProperty("wrap")) this._options.wrap = cgl_texture.Texture.WRAP_REPEAT;
 
         this._numRenderBuffers = this._options.numRenderBuffers;
         this._colorTextures = [];
@@ -24856,13 +24973,13 @@ class Framebuffer2
 
         if (!options.pixelFormat)
         {
-            if (options.isFloatingPointTexture) this._options.pixelFormat = cgl_texture/* Texture */.g.PFORMATSTR_RGBA32F;
-            else this._options.pixelFormat = cgl_texture/* Texture */.g.PFORMATSTR_RGBA8UB;
+            if (options.isFloatingPointTexture) this._options.pixelFormat = cgl_texture.Texture.PFORMATSTR_RGBA32F;
+            else this._options.pixelFormat = cgl_texture.Texture.PFORMATSTR_RGBA8UB;
         }
 
         for (let i = 0; i < this._numRenderBuffers; i++)
         {
-            this._colorTextures[i] = new cgl_texture/* Texture */.g(cgl, {
+            this._colorTextures[i] = new cgl_texture.Texture(cgl, {
                 "name": "fb2 " + this.name + " " + i,
                 "isFloatingPointTexture": this._options.isFloatingPointTexture,
                 "anisotropic": this._options.anisotropic || 0,
@@ -24872,14 +24989,14 @@ class Framebuffer2
             });
         }
 
-        let fil = cgl_texture/* Texture */.g.FILTER_NEAREST;
-        if (this._options.shadowMap) fil = cgl_texture/* Texture */.g.FILTER_LINEAR;
+        let fil = cgl_texture.Texture.FILTER_NEAREST;
+        if (this._options.shadowMap) fil = cgl_texture.Texture.FILTER_LINEAR;
 
         const defaultTexSize = 512;
 
         if (this._options.depth)
         {
-            this._textureDepth = new cgl_texture/* Texture */.g(cgl,
+            this._textureDepth = new cgl_texture.Texture(cgl,
                 {
                     "name": "fb2 depth " + this.name,
                     "isDepthTexture": true,
@@ -25003,7 +25120,7 @@ class Framebuffer2
             this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER, this._frameBuffer);
             this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER, renderBuffer);
 
-            const info = cgl_texture/* Texture */.g.setUpGlPixelFormat(this._cgl, this._options.pixelFormat);
+            const info = cgl_texture.Texture.setUpGlPixelFormat(this._cgl, this._options.pixelFormat);
             let internFormat = info.glInternalFormat;
 
             // if (this._options.isFloatingPointTexture)
@@ -25012,7 +25129,7 @@ class Framebuffer2
             {
                 if (!this._cgl.enableExtension("OES_texture_float_linear"))
                 {
-                    this._options.filter = cgl_texture/* Texture */.g.FILTER_NEAREST;
+                    this._options.filter = cgl_texture.Texture.FILTER_NEAREST;
                     this.setFilter(this._options.filter);
                 }
             }
@@ -25021,7 +25138,7 @@ class Framebuffer2
                 if (!this._cgl.enableExtension("OES_texture_float_linear"))
                 {
                     this._log.warn("no linear pixelformat,using nearest");
-                    this._options.filter = cgl_texture/* Texture */.g.FILTER_NEAREST;
+                    this._options.filter = cgl_texture.Texture.FILTER_NEAREST;
                     this.setFilter(this._options.filter);
                 }
             }
@@ -25239,7 +25356,7 @@ class Framebuffer2
         this._cgl.popModelMatrix();
         this._cgl.popViewPort();
 
-        if (this._colorTextures[0].filter == cgl_texture/* Texture */.g.FILTER_MIPMAP)
+        if (this._colorTextures[0].filter == cgl_texture.Texture.FILTER_MIPMAP)
         {
             for (let i = 0; i < this._numRenderBuffers; i++)
             {
@@ -25277,11 +25394,11 @@ const WireCube = function (cgl) // deprecated...
 };
 
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_mesh.js
-var cgl_mesh = __webpack_require__(264);
+var cgl_mesh = __webpack_require__("./src/corelibs/cgl/cgl_mesh.js");
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_shader_uniform.js
-var cgl_shader_uniform = __webpack_require__(923);
+var cgl_shader_uniform = __webpack_require__("./src/corelibs/cgl/cgl_shader_uniform.js");
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_shader_lib.js
-var cgl_shader_lib = __webpack_require__(960);
+var cgl_shader_lib = __webpack_require__("./src/corelibs/cgl/cgl_shader_lib.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_unicolorshader.js
 
 
@@ -25318,9 +25435,9 @@ class UniColorShader
 }
 
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_shader.js
-var cgl_shader = __webpack_require__(24);
+var cgl_shader = __webpack_require__("./src/corelibs/cgl/cgl_shader.js");
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_simplerect.js
-var cgl_simplerect = __webpack_require__(273);
+var cgl_simplerect = __webpack_require__("./src/corelibs/cgl/cgl_simplerect.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgl/cgl_utils.js
 /**
  * @namespace CGL
@@ -25382,19 +25499,19 @@ const getWheelSpeed = getWheelDelta_;
 const getWheelDelta = getWheelDelta_;
 
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_textureeffect.js
-var cgl_textureeffect = __webpack_require__(771);
+var cgl_textureeffect = __webpack_require__("./src/corelibs/cgl/cgl_textureeffect.js");
 // EXTERNAL MODULE: ./src/corelibs/cgl/constants.js
-var constants = __webpack_require__(997);
+var constants = __webpack_require__("./src/corelibs/cgl/constants.js");
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_profiledata.js
-var cgl_profiledata = __webpack_require__(460);
+var cgl_profiledata = __webpack_require__("./src/corelibs/cgl/cgl_profiledata.js");
 // EXTERNAL MODULE: ./src/corelibs/cg/cg_geom.js
-var cg_geom = __webpack_require__(331);
+var cg_geom = __webpack_require__("./src/corelibs/cg/cg_geom.js");
 // EXTERNAL MODULE: ./src/corelibs/cg/cg_boundingbox.js
-var cg_boundingbox = __webpack_require__(982);
+var cg_boundingbox = __webpack_require__("./src/corelibs/cg/cg_boundingbox.js");
 // EXTERNAL MODULE: ./src/corelibs/cg/cg_matrixstack.js
-var cg_matrixstack = __webpack_require__(868);
+var cg_matrixstack = __webpack_require__("./src/corelibs/cg/cg_matrixstack.js");
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_state.js
-var cgl_state = __webpack_require__(308);
+var cgl_state = __webpack_require__("./src/corelibs/cgl/cgl_state.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgl/index.js
 
 
@@ -25415,30 +25532,30 @@ var cgl_state = __webpack_require__(308);
 
 const cgl_CGL = {
     "Framebuffer2": Framebuffer2,
-    "Geometry": cg_geom/* Geometry */.V,
-    "BoundingBox": cg_boundingbox/* BoundingBox */.I,
+    "Geometry": cg_geom.Geometry,
+    "BoundingBox": cg_boundingbox.BoundingBox,
     "Marker": Marker,
     "WirePoint": WirePoint,
     "WireCube": WireCube,
-    "MatrixStack": cg_matrixstack/* MatrixStack */.u,
-    "Mesh": cgl_mesh/* Mesh */.e,
-    "MESH": cgl_mesh/* MESH */.C,
-    "ShaderLibMods": cgl_shader_lib/* ShaderLibMods */.y,
-    "Shader": cgl_shader/* Shader */.M,
-    "Uniform": cgl_shader_uniform/* Uniform */.n,
-    "MESHES": cgl_simplerect/* MESHES */.S,
+    "MatrixStack": cg_matrixstack.MatrixStack,
+    "Mesh": cgl_mesh.Mesh,
+    "MESH": cgl_mesh.MESH,
+    "ShaderLibMods": cgl_shader_lib.ShaderLibMods,
+    "Shader": cgl_shader.Shader,
+    "Uniform": cgl_shader_uniform.Uniform,
+    "MESHES": cgl_simplerect.MESHES,
     "getWheelSpeed": getWheelSpeed,
     "getWheelDelta": getWheelDelta,
-    "Context": cgl_state/* CglContext */.G,
-    "Texture": cgl_texture/* Texture */.g,
-    "TextureEffect": cgl_textureeffect/* TextureEffect */.p,
+    "Context": cgl_state.CglContext,
+    "Texture": cgl_texture.Texture,
+    "TextureEffect": cgl_textureeffect.TextureEffect,
     "onLoadingAssetsFinished": onLoadingAssetsFinished,
-    "ProfileData": cgl_profiledata/* ProfileData */.E,
+    "ProfileData": cgl_profiledata.ProfileData,
     "UniColorShader": UniColorShader,
-    ...constants/* CONSTANTS */.a.BLEND_MODES,
-    ...constants/* CONSTANTS */.a.SHADER,
-    ...constants/* CONSTANTS */.a.MATH,
-    ...constants/* CONSTANTS */.a.BLEND_MODES,
+    ...constants.CONSTANTS.BLEND_MODES,
+    ...constants.CONSTANTS.SHADER,
+    ...constants.CONSTANTS.MATH,
+    ...constants.CONSTANTS.BLEND_MODES,
 };
 
 window.CABLES = window.CABLES || {};
@@ -25453,12 +25570,12 @@ window.CGL = window.CGL || cgl_CGL;
  * @param {Anim} animz
  * @param {Anim} animw
  */
-anim/* Anim */.k.slerpQuaternion = function (time, q, animx, animy, animz, animw)
+anim.Anim.slerpQuaternion = function (time, q, animx, animy, animz, animw)
 {
-    if (!anim/* Anim */.k.slerpQuaternion.q1)
+    if (!anim.Anim.slerpQuaternion.q1)
     {
-        anim/* Anim */.k.slerpQuaternion.q1 = quat.create();
-        anim/* Anim */.k.slerpQuaternion.q2 = quat.create();
+        anim.Anim.slerpQuaternion.q1 = quat.create();
+        anim.Anim.slerpQuaternion.q2 = quat.create();
     }
 
     const i1 = animx.getKeyIndex(time);
@@ -25475,11 +25592,11 @@ anim/* Anim */.k.slerpQuaternion = function (time, q, animx, animy, animz, animw
         const key2Time = animx.keys[i2].time;
         const perc = (time - key1Time) / (key2Time - key1Time);
 
-        quat.set(anim/* Anim */.k.slerpQuaternion.q1, animx.keys[i1].value, animy.keys[i1].value, animz.keys[i1].value, animw.keys[i1].value);
+        quat.set(anim.Anim.slerpQuaternion.q1, animx.keys[i1].value, animy.keys[i1].value, animz.keys[i1].value, animw.keys[i1].value);
 
-        quat.set(anim/* Anim */.k.slerpQuaternion.q2, animx.keys[i2].value, animy.keys[i2].value, animz.keys[i2].value, animw.keys[i2].value);
+        quat.set(anim.Anim.slerpQuaternion.q2, animx.keys[i2].value, animy.keys[i2].value, animz.keys[i2].value, animw.keys[i2].value);
 
-        quat.slerp(q, anim/* Anim */.k.slerpQuaternion.q1, anim/* Anim */.k.slerpQuaternion.q2, perc);
+        quat.slerp(q, anim.Anim.slerpQuaternion.q1, anim.Anim.slerpQuaternion.q2, perc);
     }
     return q;
 };
@@ -25489,7 +25606,10 @@ anim/* Anim */.k.slerpQuaternion = function (time, q, animx, animy, animz, animw
 
 /***/ }),
 
-/***/ 626:
+/***/ "./src/corelibs/cgp/index.js":
+/*!************************************************!*\
+  !*** ./src/corelibs/cgp/index.js + 18 modules ***!
+  \************************************************/
 /***/ ((__unused_webpack___webpack_module__, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -25497,23 +25617,23 @@ anim/* Anim */.k.slerpQuaternion = function (time, q, animx, animy, animz, animw
 // UNUSED EXPORTS: CGP
 
 // EXTERNAL MODULE: ../shared/client/src/logger.js
-var logger = __webpack_require__(849);
+var logger = __webpack_require__("../shared/client/src/logger.js");
 // EXTERNAL MODULE: ./src/corelibs/cg/cg_context.js
-var cg_context = __webpack_require__(628);
+var cg_context = __webpack_require__("./src/corelibs/cg/cg_context.js");
 // EXTERNAL MODULE: ./src/corelibs/cg/cg_texture.js
-var cg_texture = __webpack_require__(356);
+var cg_texture = __webpack_require__("./src/corelibs/cg/cg_texture.js");
 // EXTERNAL MODULE: ./node_modules/gl-matrix/esm/mat4.js
-var mat4 = __webpack_require__(684);
+var mat4 = __webpack_require__("./node_modules/gl-matrix/esm/mat4.js");
 // EXTERNAL MODULE: ./src/core/timer.js
-var timer = __webpack_require__(920);
+var timer = __webpack_require__("./src/core/timer.js");
 // EXTERNAL MODULE: ./src/corelibs/cg/cg_uniform.js
-var cg_uniform = __webpack_require__(475);
+var cg_uniform = __webpack_require__("./src/corelibs/cg/cg_uniform.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_uniform.js
 
 
 
 
-class CgpUniform extends cg_uniform/* CgUniform */.v
+class CgpUniform extends cg_uniform.CgUniform
 {
 
     /** @type {CgpContext} */
@@ -25787,7 +25907,7 @@ function preproc(str, vars)
 }
 
 // EXTERNAL MODULE: ./src/corelibs/cg/cg_shader.js
-var cg_shader = __webpack_require__(694);
+var cg_shader = __webpack_require__("./src/corelibs/cg/cg_shader.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgp/binding/bindgroup.js
 
 
@@ -26067,9 +26187,9 @@ class BindGroup
 }
 
 // EXTERNAL MODULE: ./src/core/utils.js + 1 modules
-var utils = __webpack_require__(562);
+var utils = __webpack_require__("./src/core/utils.js");
 // EXTERNAL MODULE: ./src/corelibs/cgl/constants.js
-var constants = __webpack_require__(997);
+var constants = __webpack_require__("./src/corelibs/cgl/constants.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgp/binding/binding.js
 
 
@@ -26084,7 +26204,7 @@ class Binding
     bindNum = 0;
     stage = GPUShaderStage.VERTEX | GPUShaderStage.FRAGMENT;
     define = "";
-    log = new logger/* default */.A("binding");
+    log = new logger["default"]("binding");
     needsRebuildBindgroup = false;
 
     /** @type {CgpContext} */
@@ -26190,7 +26310,7 @@ class Binding
 }
 
 // EXTERNAL MODULE: ../shared/client/src/eventtarget.js + 2 modules
-var eventtarget = __webpack_require__(125);
+var eventtarget = __webpack_require__("../shared/client/src/eventtarget.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_gpubuffer.js
 
 
@@ -26201,7 +26321,7 @@ var eventtarget = __webpack_require__(125);
  * @property {GPUBufferDescriptor} [buffCfg]
 */
 
-class CgpGguBuffer extends eventtarget/* default */.A
+class CgpGguBuffer extends eventtarget["default"]
 {
     #name = "unknown";
 
@@ -26234,7 +26354,7 @@ class CgpGguBuffer extends eventtarget/* default */.A
     constructor(cgp, name, data = null, options = {})
     {
         super();
-        this.#log = new logger/* default */.A("cgpGpubuffer");
+        this.#log = new logger["default"]("cgpGpubuffer");
         if (!cgp.supported) return;
 
         this.#name = name;
@@ -26777,7 +26897,7 @@ class BindingTexture extends Binding
  * @property {String} [entryPoint]
  */
 
-class CgpShader extends cg_shader/* CgShader */.U
+class CgpShader extends cg_shader.CgShader
 {
 
     #lastCompileReason = "first";
@@ -26805,7 +26925,7 @@ class CgpShader extends cg_shader/* CgShader */.U
     {
         super();
         if (!_cgp) throw new Error("shader constructed without cgp " + _name);
-        this._log = new logger/* default */.A("cgp_shader");
+        this._log = new logger["default"]("cgp_shader");
         this._cgp = _cgp;
         this._name = _name;
         this.options = options;
@@ -27118,7 +27238,7 @@ class CgpShader extends cg_shader/* CgShader */.U
 
         this.#lastCompileReason = this._compileReason;
 
-        this.lastCompile = (0,timer/* now */.tB)();
+        this.lastCompile = (0,timer.now)();
         // console.log("#lastCompileReason", this.#lastCompileReason);
 
         this.emitEvent("compiled", this._compileReason);
@@ -27351,9 +27471,9 @@ class CgpShader extends cg_shader/* CgShader */.U
 
 
 
-class Texture extends cg_texture/* CgTexture */.U
+class Texture extends cg_texture.CgTexture
 {
-    #log = new logger/* default */.A("cgp_texture");
+    #log = new logger["default"]("cgp_texture");
 
     /** @type {CgpContext} */
     #cgp = null;
@@ -27565,7 +27685,7 @@ class Pipeline
     static TYPE_RENDER = 0;
     static TYPE_COMPUTE = 1;
 
-    #log = new logger/* default */.A("pipeline");
+    #log = new logger["default"]("pipeline");
     name = "";
 
     /** @type {CgpContext} */
@@ -27981,16 +28101,16 @@ class RenderPipeline extends Pipeline
 }
 
 // EXTERNAL MODULE: ./src/corelibs/cg/cg_mesh.js
-var cg_mesh = __webpack_require__(434);
+var cg_mesh = __webpack_require__("./src/corelibs/cg/cg_mesh.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_mesh.js
 
 
 
 
 
-class CgpMesh extends cg_mesh/* CgMesh */.w
+class CgpMesh extends cg_mesh.CgMesh
 {
-    #log = new logger/* default */.A("cgl_mesh");
+    #log = new logger["default"]("cgl_mesh");
     needsPipelineUpdate = false;
 
     /**
@@ -28221,7 +28341,7 @@ fn myFSMain(v: MyVSOutput) -> @location(0) vec4<f32>
  * @namespace external:CGP
  * @hideconstructor
  */
-class CgpContext extends cg_context/* CgContext */.A
+class CgpContext extends cg_context.CgContext
 {
 
     branchProfiler = null;
@@ -28236,8 +28356,8 @@ class CgpContext extends cg_context/* CgContext */.A
 
         this.lastErrorMsg = "";
 
-        this._log = new logger/* default */.A("WebGpuContext");
-        this.gApi = cg_context/* CgContext */.A.API_WEBGPU;
+        this._log = new logger["default"]("WebGpuContext");
+        this.gApi = cg_context.CgContext.API_WEBGPU;
         this._viewport = [0, 0, 256, 256];
         this._shaderStack = [];
         this._simpleShader = null;
@@ -28736,7 +28856,7 @@ class CgpContext extends cg_context/* CgContext */.A
         if (this._emptyTexture) return this._emptyTexture;
         const size = 8;
         this._emptyTexture = new Texture(this, {});
-        this._emptyTexture.initFromData(cg_texture/* CgTexture */.U.getDefaultTextureData("empty", size), size, size);
+        this._emptyTexture.initFromData(cg_texture.CgTexture.getDefaultTextureData("empty", size), size, size);
         return this._emptyTexture;
     }
 
@@ -28745,7 +28865,7 @@ class CgpContext extends cg_context/* CgContext */.A
         // if (this._errorTexture) return this._errorTexture;
         const size = 256;
         this._errorTexture = new Texture(this, {});
-        this._errorTexture.initFromData(cg_texture/* CgTexture */.U.getDefaultTextureData("stripes", size, { "r": 1, "g": 0, "b": 0 }), size, size);
+        this._errorTexture.initFromData(cg_texture.CgTexture.getDefaultTextureData("stripes", size, { "r": 1, "g": 0, "b": 0 }), size, size);
         return this._errorTexture;
     }
 
@@ -28754,7 +28874,7 @@ class CgpContext extends cg_context/* CgContext */.A
         if (this._defaultTexture) return this._defaultTexture;
         const size = 256;
         this._defaultTexture = new Texture(this, {});
-        this._defaultTexture.initFromData(cg_texture/* CgTexture */.U.getDefaultTextureData("stripes", size), size, size);
+        this._defaultTexture.initFromData(cg_texture.CgTexture.getDefaultTextureData("stripes", size), size, size);
         return this._defaultTexture;
     }
 
@@ -28780,7 +28900,7 @@ class CgpContext extends cg_context/* CgContext */.A
 }
 
 // EXTERNAL MODULE: ./src/corelibs/cgl/cgl_simplerect.js
-var cgl_simplerect = __webpack_require__(273);
+var cgl_simplerect = __webpack_require__("./src/corelibs/cgl/cgl_simplerect.js");
 ;// CONCATENATED MODULE: ./src/corelibs/cgp/cgp_canvasattachment.js
 
 
@@ -29728,7 +29848,7 @@ const CGP = {
     "Mesh": CgpMesh,
     "Texture": Texture,
     "Uniform": CgpUniform,
-    "MESHES": cgl_simplerect/* MESHES */.S,
+    "MESHES": cgl_simplerect.MESHES,
     "GPUBuffer": CgpGguBuffer
 };
 
@@ -29751,12 +29871,15 @@ window.CGP.BindingSampler = BindingSampler;
 
 /***/ }),
 
-/***/ 564:
+/***/ "./src/corelibs/webaudio/webaudio.js":
+/*!*******************************************!*\
+  !*** ./src/corelibs/webaudio/webaudio.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* unused harmony exports WebAudio, WEBAUDIO */
-/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(440);
+/* harmony import */ var cables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cables */ "./src/core/constants.js");
 /** @namespace WEBAUDIO */
 
 
@@ -29970,7 +30093,7 @@ class WebAudio
         // var port = op.inObject(portName);
         const port = op.inDynamic(
             portName,
-            [cables__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.OP.OP_PORT_TYPE_VALUE, cables__WEBPACK_IMPORTED_MODULE_0__/* .CONSTANTS */ .a.OP.OP_PORT_TYPE_OBJECT],
+            [cables__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.OP.OP_PORT_TYPE_VALUE, cables__WEBPACK_IMPORTED_MODULE_0__.CONSTANTS.OP.OP_PORT_TYPE_OBJECT],
             options,
             defaultValue,
         );
@@ -30211,14 +30334,17 @@ window.CABLES.WEBAUDIO = WEBAUDIO;
 
 /***/ }),
 
-/***/ 125:
+/***/ "../shared/client/src/eventtarget.js":
+/*!*******************************************************!*\
+  !*** ../shared/client/src/eventtarget.js + 2 modules ***!
+  \*******************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  A: () => (/* binding */ Events)
+  "default": () => (/* binding */ Events)
 });
 
 ;// CONCATENATED MODULE: ../shared/client/src/eventlistener.js
@@ -30310,7 +30436,7 @@ class Helper
 /* harmony default export */ const helper = (new Helper());
 
 // EXTERNAL MODULE: ../shared/client/src/logger.js
-var logger = __webpack_require__(849);
+var logger = __webpack_require__("../shared/client/src/logger.js");
 ;// CONCATENATED MODULE: ../shared/client/src/eventtarget.js
 
 
@@ -30321,7 +30447,7 @@ var logger = __webpack_require__(849);
  */
 class Events
 {
-    #eventLog = new logger/* default */.A("eventtarget");
+    #eventLog = new logger["default"]("eventtarget");
 
     /** @type {Object<string,EventListener>} */
     #listeners = {};
@@ -30533,12 +30659,15 @@ class Events
 
 /***/ }),
 
-/***/ 849:
+/***/ "../shared/client/src/logger.js":
+/*!**************************************!*\
+  !*** ../shared/client/src/logger.js ***!
+  \**************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (/* binding */ Logger)
+/* harmony export */   "default": () => (/* binding */ Logger)
 /* harmony export */ });
 /* eslint-disable no-console */
 class Logger
@@ -30704,12 +30833,12 @@ class Logger
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	__webpack_require__(748);
+/******/ 	__webpack_require__("./src/corelibs/cg/index.js");
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	__webpack_require__(772);
-/******/ 	__webpack_require__(626);
-/******/ 	__webpack_require__(564);
-/******/ 	var __webpack_exports__ = __webpack_require__(606);
+/******/ 	__webpack_require__("./src/corelibs/cgl/index.js");
+/******/ 	__webpack_require__("./src/corelibs/cgp/index.js");
+/******/ 	__webpack_require__("./src/corelibs/webaudio/webaudio.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/core/index.js");
 /******/ 	var __webpack_export_target__ = (CABLES = typeof CABLES === "undefined" ? {} : CABLES);
 /******/ 	for(var i in __webpack_exports__) __webpack_export_target__[i] = __webpack_exports__[i];
 /******/ 	if(__webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target__, "__esModule", { value: true });
@@ -30718,38 +30847,4 @@ class Logger
 ;
 
 
-var CABLES = CABLES || {}; CABLES.build = {"timestamp":1751991309701,"created":"2025-07-08T16:15:09.701Z","git":{"branch":"master","commit":"5ac55484344fd962b81b053230809aa18281d23f","date":"1751875203","message":"sidebar colorpicker opacity cables-gl/cables/issues/7458"}};
-//# sourceMappingURL=cables.js.map
-if(!CABLES.exportedPatches)CABLES.exportedPatches={};CABLES.exportedPatches["ZD5N0S"]={_id:"68842214d64334d2094ccd03",ops:[{id:"3phev729b",uiAttribs:{},portsIn:[{name:"file",display:"file"},{name:"loop",value:1},{name:"Volume",value:0},{name:"mute",value:1},{name:"Update FPS",value:30},{name:"Filter index",value:1},{name:"Filter",value:"linear"},{name:"Wrap index",value:2},{name:"Wrap",value:"clamp to edge"},{name:"flip",value:1},{name:"speed",value:1},{name:"set time",value:0},{name:"Preload",value:1},{name:"Show Interaction needed Button",value:0}],portsOut:[{name:"Next",links:[{portIn:"exec",portOut:"Next",objIn:"v6ijdaraf",objOut:"3phev729b"}]},{name:"texture",links:[{portIn:"texture1",portOut:"texture",objIn:"v6ijdaraf",objOut:"3phev729b"}]},{name:"duration",value:53.04},{name:"progress",value:.015629392911010558},{name:"Interaction Needed",value:0},{name:"CurrentTime",value:.828983},{name:"Loading",value:0},{name:"Playing",links:[{portIn:"num",portOut:"Playing",objIn:"v6ijdaraf",objOut:"3phev729b"},{portIn:"Use Value 1",portOut:"Playing",objIn:"gbs5sn1a3",objOut:"3phev729b"}]},{name:"Can Play Through",value:1},{name:"Width",value:3840},{name:"Height",value:2160},{name:"Aspect Ratio",links:[{portIn:"Value 1",portOut:"Aspect Ratio",objIn:"gbs5sn1a3",objOut:"3phev729b"}]},{name:"Has Error",value:0},{name:"Auto FPS",value:1},{name:"Error Message",value:""}],objName:"Ops.Gl.Textures.VideoTexture_v3"},{id:"7fwwsgg4s",uiAttribs:{},portsIn:[{name:"Scale index",value:1},{name:"Scale",value:"Fit"},{name:"Flip Y",value:0},{name:"Flip X",value:0}],objName:"Ops.Gl.Meshes.FullscreenRectangle_v2"},{id:"9e546rhtx",uiAttribs:{},portsOut:[{name:"Output",multiPortNum:3},{name:"Output_0",links:[{portIn:"exe",portOut:"Output_0",objIn:"z0zhido5j",objOut:"9e546rhtx"}]},{name:"Output_1",title:"add port",links:[{portIn:"Update",portOut:"Output_1",objIn:"3phev729b",objOut:"9e546rhtx"}]},{name:"Output_2",title:"add port",links:[{portIn:"render",portOut:"Output_2",objIn:"9h0e9cnn2",objOut:"9e546rhtx"}]}],objName:"Ops.Trigger.SequenceMultiPort"},{id:"9h0e9cnn2",uiAttribs:{},portsIn:[{name:"r",value:.21548747951112146},{name:"g",value:.9168744996492896},{name:"b",value:.6969055912656583},{name:"a",value:1},{name:"colorizeTexture",value:0},{name:"Vertex Colors",value:0},{name:"Alpha Mask Source index",value:1},{name:"Alpha Mask Source",value:"R"},{name:"Opacity TexCoords Transform",value:0},{name:"Discard Transparent Pixels",value:1},{name:"diffuseRepeatX",value:1},{name:"diffuseRepeatY",value:1},{name:"Tex Offset X",value:0},{name:"Tex Offset Y",value:0},{name:"Crop TexCoords",value:0},{name:"billboard",value:0}],portsOut:[{name:"trigger",links:[{portIn:"render",portOut:"trigger",objIn:"7fwwsgg4s",objOut:"9h0e9cnn2"}]}],objName:"Ops.Gl.Shader.BasicMaterial_v3"},{id:"jreklxw89",uiAttribs:{},portsIn:[{name:"Size index",value:2},{name:"Size",value:"Manual"},{name:"Filter index",value:1},{name:"Filter",value:"linear"},{name:"Wrap index",value:0},{name:"Wrap",value:"clamp to edge"},{name:"Anisotropic index",value:4},{name:"Anisotropic",value:"8"},{name:"Pixel Format index",value:7},{name:"Pixel Format",value:"R 16bit float"},{name:"Clear",value:1},{name:"R",value:0},{name:"G",value:0},{name:"B",value:0},{name:"A",value:0}],portsOut:[{name:"Next",links:[{portIn:"render",portOut:"Next",objIn:"l86hel01u",objOut:"jreklxw89"}]},{name:"texture_out",links:[{portIn:"textureOpacity",portOut:"texture_out",objIn:"9h0e9cnn2",objOut:"jreklxw89"}]},{name:"Aspect Ratio",value:1.4862745098039216},{name:"Texture Width",value:758},{name:"Texture Height",value:510}],objName:"Ops.Gl.ImageCompose.ImageCompose_v4"},{id:"lgzbdnbyx",uiAttribs:{},portsIn:[{name:"blendMode index",value:0},{name:"blendMode",value:"normal"},{name:"amount",value:1},{name:"Premultiplied",value:0},{name:"Alpha Mask",value:0},{name:"removeAlphaSrc",value:0},{name:"Mask Src index",value:1},{name:"Mask Src",value:"luminance"},{name:"Invert alpha channel",value:0},{name:"Aspect Ratio",value:1},{name:"Stretch Axis",value:"Y"},{name:"Position",value:.5},{name:"Crop",value:1},{name:"flip x",value:0},{name:"flip y",value:0},{name:"Transform",value:0},{name:"Scale X",value:1},{name:"Scale Y",value:1},{name:"Position X",value:0},{name:"Position Y",value:0},{name:"Rotation",value:0},{name:"Clip Repeat",value:0}],portsOut:[{name:"trigger",links:[{portIn:"Update",portOut:"trigger",objIn:"pnqvpke93",objOut:"lgzbdnbyx"}]}],objName:"Ops.Gl.ImageCompose.DrawImage_v3"},{id:"9jg9dah7w",uiAttribs:{},portsIn:[{name:"Midpoint",value:.5},{name:"Out Min",value:0},{name:"Out Max",value:1}],objName:"Ops.Gl.ImageCompose.Levels_v2"},{id:"ssmtnzfgm",uiAttribs:{},portsIn:[{name:"number2",value:.002}],portsOut:[{name:"result",links:[{portIn:"In Max",portOut:"result",objIn:"9jg9dah7w",objOut:"ssmtnzfgm"}]}],objName:"Ops.Math.Sum"},{id:"fim1ghqcf",uiAttribs:{},portsIn:[{name:"Passes",value:2},{name:"Clamp",value:0},{name:"direction index",value:0},{name:"direction",value:"both"},{name:"Mask Invert",value:0}],portsOut:[{name:"trigger",links:[{portIn:"Render",portOut:"trigger",objIn:"9jg9dah7w",objOut:"fim1ghqcf"}]}],objName:"Ops.Gl.ImageCompose.FastBlur_v2"},{id:"xvljooj5f",uiAttribs:{},portsIn:[{name:"Set current time",value:0}],portsOut:[{name:"is Playing",links:[{portIn:"Pass Through",portOut:"is Playing",objIn:"po7risdiw",objOut:"xvljooj5f"},{portIn:"play",portOut:"is Playing",objIn:"3phev729b",objOut:"xvljooj5f"}]},{name:"set time (seconds)",value:0},{name:"current time",value:53.500300000000045},{name:"current frame",value:1605}],objName:"Ops.TimeLine.TimeLinePlayer"},{id:"38d7t4m60",uiAttribs:{},portsIn:[{name:"String 3",value:""},{name:"String 4",value:""},{name:"String 5",value:""},{name:"String 6",value:""},{name:"String 7",value:""},{name:"String 8",value:""}],portsOut:[{name:"Result",links:[{portIn:"file",portOut:"Result",objIn:"3phev729b",objOut:"38d7t4m60"}]}],objName:"Ops.String.OrString"},{id:"6hicgrjeq",uiAttribs:{},portsIn:[{name:"Value",value:"https://atelierdt.b-cdn.net/ADT_mainpage_hq.mp4"},{name:"Variable",value:"mainVideo"}],objName:"Ops.Vars.VarSetString_v2"},{id:"u9gxm1uzp",uiAttribs:{},portsIn:[{name:"Variable",value:"mainVideo"}],portsOut:[{name:"Value",links:[{portIn:"String 1",portOut:"Value",objIn:"38d7t4m60",objOut:"u9gxm1uzp"}]}],objName:"Ops.Vars.VarGetString"},{id:"29d2vntfj",uiAttribs:{},portsIn:[{name:"value",value:"https://atelierdt.b-cdn.net/ADT_mainpage_hq.mp4"}],portsOut:[{name:"String",links:[{portIn:"String 2",portOut:"String",objIn:"38d7t4m60",objOut:"29d2vntfj"}]}],objName:"Ops.String.String_v2"},{id:"zj13yr39a",uiAttribs:{},portsIn:[{name:"Play Timeline",value:1}],portsOut:[{name:"Next",links:[{portIn:"Input_0",portOut:"Next",objIn:"9e546rhtx",objOut:"zj13yr39a"}]},{name:"Finished Initial Loading",value:1},{name:"Loading",value:0},{name:"Progress",value:1},{name:"Trigger Loading Finished ",links:[{portIn:"reset",portOut:"Trigger Loading Finished ",objIn:"741yxuubt",objOut:"zj13yr39a"},{portIn:"Play",portOut:"Trigger Loading Finished ",objIn:"xvljooj5f",objOut:"zj13yr39a"}]}],objName:"Ops.Cables.LoadingStatus_v2"},{id:"807bvbb80",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"In Min",portOut:"result",objIn:"9jg9dah7w",objOut:"807bvbb80"},{portIn:"number1",portOut:"result",objIn:"ssmtnzfgm",objOut:"807bvbb80"}]}],objName:"Ops.Ui.Routing.RouteNumber"},{id:"v6inju206",uiAttribs:{},portsOut:[{name:"CSS Width",value:758},{name:"CSS Height",value:510},{name:"Pixel Ratio",value:2},{name:"Pixel Width",links:[{portIn:"number1",portOut:"Pixel Width",objIn:"ynk5vwlry",objOut:"v6inju206"}]},{name:"Pixel Height",links:[{portIn:"number1",portOut:"Pixel Height",objIn:"mxmmt4bhm",objOut:"v6inju206"}]},{name:"Aspect Ratio",links:[{portIn:"number2",portOut:"Aspect Ratio",objIn:"evduj6eyg",objOut:"v6inju206"}]},{name:"Landscape",value:1}],objName:"Ops.Gl.CanvasInfo_v3"},{id:"evduj6eyg",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"Stretch Axis index",portOut:"result",objIn:"lgzbdnbyx",objOut:"evduj6eyg"},{portIn:"Stretch Axis index",portOut:"result",objIn:"xmchvimfn",objOut:"evduj6eyg"}]}],objName:"Ops.Math.Compare.GreaterThan"},{id:"henwqfvtq",uiAttribs:{},portsIn:[{name:"Coordinates index",value:0},{name:"Coordinates",value:"-1 to 1"},{name:"Area index",value:0},{name:"Area",value:"Canvas Area"},{name:"flip y",value:1},{name:"right click prevent default",value:1},{name:"Events index",value:0},{name:"Events",value:"Pointer"},{name:"Passive Events",value:0},{name:"Active",value:1}],portsOut:[{name:"x",links:[{portIn:"Value",portOut:"x",objIn:"ldko5ga0o",objOut:"henwqfvtq"},{portIn:"Value",portOut:"x",objIn:"c77jal5il",objOut:"henwqfvtq"}]},{name:"y",links:[{portIn:"Value",portOut:"y",objIn:"ldko5ga0o",objOut:"henwqfvtq"},{portIn:"Value",portOut:"y",objIn:"edus8p798",objOut:"henwqfvtq"}]},{name:"click",links:[{portIn:"reset",portOut:"click",objIn:"z0zhido5j",objOut:"henwqfvtq"}]},{name:"Button is down",value:0},{name:"Mouse is hovering",links:[{portIn:"Value",portOut:"Mouse is hovering",objIn:"acco20rg0",objOut:"henwqfvtq"}]},{name:"Movement X",value:-29.5},{name:"Movement Y",value:10}],objName:"Ops.Devices.Mouse.Mouse_v4"},{id:"741yxuubt",uiAttribs:{},portsIn:[{name:"start",value:1},{name:"end",value:0},{name:"duration",value:4},{name:"loop",value:0},{name:"Wait for Reset",value:0},{name:"easing index",value:5},{name:"easing",value:"Cubic Out"}],portsOut:[{name:"Next",links:[{portIn:"Update",portOut:"Next",objIn:"j4lemqjc9",objOut:"741yxuubt"}]},{name:"result",links:[{portIn:"value",portOut:"result",objIn:"nv4an2zpi",objOut:"741yxuubt"}]},{name:"finished",value:true}],objName:"Ops.Anim.SimpleAnim"},{id:"j4lemqjc9",uiAttribs:{},portsIn:[{name:"Separate inc/dec",value:1},{name:"Inc factor",value:80,title:"Inc factor"},{name:"Dec factor",value:8}],portsOut:[{name:"Next",links:[{portIn:"Input_0",portOut:"Next",objIn:"jsx9bhnzy",objOut:"j4lemqjc9"}]},{name:"Result",links:[{portIn:"number1",portOut:"Result",objIn:"m05c50ymn",objOut:"j4lemqjc9"},{portIn:"Current",portOut:"Result",objIn:"o29wn5poo",objOut:"j4lemqjc9"},{portIn:"number2",portOut:"Result",objIn:"v0jojtsgv",objOut:"j4lemqjc9"},{portIn:"Number",portOut:"Result",objIn:"qld6p0naf",objOut:"j4lemqjc9"},{portIn:"number1",portOut:"Result",objIn:"gpqxqq0cm",objOut:"j4lemqjc9"}]}],objName:"Ops.Anim.Smooth"},{id:"jsx9bhnzy",uiAttribs:{},portsOut:[{name:"Output",multiPortNum:6},{name:"Output_0",links:[{portIn:"Update",portOut:"Output_0",objIn:"rni34w6dg",objOut:"jsx9bhnzy"}]},{name:"Output_1",links:[{portIn:"Render",portOut:"Output_1",objIn:"fmj46338g",objOut:"jsx9bhnzy"}]},{name:"Output_2",title:"add port",links:[{portIn:"render",portOut:"Output_2",objIn:"67ooha3ou",objOut:"jsx9bhnzy"}]},{name:"Output_3",links:[{portIn:"Render",portOut:"Output_3",objIn:"sfeed244o",objOut:"jsx9bhnzy"}]},{name:"Output_4",title:"add port",links:[{portIn:"Update",portOut:"Output_4",objIn:"bc002120c",objOut:"jsx9bhnzy"}]},{name:"Output_5",title:"add port",links:[{portIn:"Render",portOut:"Output_5",objIn:"jreklxw89",objOut:"jsx9bhnzy"}]}],objName:"Ops.Trigger.SequenceMultiPort"},{id:"fmj46338g",uiAttribs:{},portsIn:[{name:"Size index",value:1},{name:"Size",value:"Canvas"},{name:"Width",value:1024},{name:"Height",value:1024},{name:"Filter index",value:1},{name:"Filter",value:"linear"},{name:"Wrap index",value:0},{name:"Wrap",value:"clamp to edge"},{name:"Anisotropic index",value:0},{name:"Anisotropic",value:"0"},{name:"Pixel Format index",value:3},{name:"Pixel Format",value:"RGB 8bit ubyte"},{name:"Clear",value:1},{name:"R",value:0},{name:"G",value:0},{name:"B",value:0},{name:"A",value:0}],portsOut:[{name:"Next",links:[{portIn:"render",portOut:"Next",objIn:"lgzbdnbyx",objOut:"fmj46338g"}]},{name:"texture_out",links:[{portIn:"Image",portOut:"texture_out",objIn:"l86hel01u",objOut:"fmj46338g"}]},{name:"Aspect Ratio",value:1.4862745098039216},{name:"Texture Width",value:1516},{name:"Texture Height",value:1020}],objName:"Ops.Gl.ImageCompose.ImageCompose_v4"},{id:"po7risdiw",uiAttribs:{},portsOut:[{name:"Trigger out",links:[{portIn:"exe",portOut:"Trigger out",objIn:"741yxuubt",objOut:"po7risdiw"}]}],objName:"Ops.Trigger.GateTrigger"},{id:"0i3fmoe0q",uiAttribs:{},portsIn:[{name:"r",value:1},{name:"g",value:1},{name:"b",value:1},{name:"a",value:1}],portsOut:[{name:"trigger",links:[{portIn:"Render",portOut:"trigger",objIn:"grygdgr25",objOut:"0i3fmoe0q"}]}],objName:"Ops.Gl.ClearColor"},{id:"28slk7s48",uiAttribs:{},portsOut:[{name:"Switched Value",value:1},{name:"Trigger 0",links:[{portIn:"exe",portOut:"Trigger 0",objIn:"zj13yr39a",objOut:"28slk7s48"}]},{name:"Trigger 1",links:[{portIn:"render",portOut:"Trigger 1",objIn:"0i3fmoe0q",objOut:"28slk7s48"}]},{name:"Highest Index",value:1}],objName:"Ops.Trigger.RouteTrigger"},{id:"kqop2erv3",uiAttribs:{},portsOut:[{name:"UI",links:[{portIn:"Switch Value",portOut:"UI",objIn:"28slk7s48",objOut:"kqop2erv3"},{portIn:"Active",portOut:"UI",objIn:"tkp01bn1d",objOut:"kqop2erv3"}]},{name:"Overlay Mode",value:0},{name:"Remote Viewer",value:0},{name:"Is Standalone",value:1},{name:"Canvas Mode",value:0},{name:"Patch Field Visible",value:0}],objName:"Ops.Cables.UIMode"},{id:"fsp8tp8za",uiAttribs:{},portsIn:[{name:"value",value:2}],portsOut:[{name:"result",value:2}],objName:"Ops.Number.Number"},{id:"m05c50ymn",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"value",portOut:"result",objIn:"807bvbb80",objOut:"m05c50ymn"}]}],objName:"Ops.Math.Sum"},{id:"03edch956",uiAttribs:{},portsIn:[{name:"Frequency",value:1},{name:"Type index",value:0},{name:"Type",value:"sine"},{name:"Phase",value:0},{name:"Range Min",value:-1},{name:"Range Max",value:1}],portsOut:[{name:"Result",links:[{portIn:"number1",portOut:"Result",objIn:"ig4h6ugsd",objOut:"03edch956"}]}],objName:"Ops.Anim.LFO_v3"},{id:"d3c6mq0x4",uiAttribs:{},portsIn:[{name:"Speed",value:.1},{name:"Play",value:0},{name:"Sync to timeline",value:0}],portsOut:[{name:"Time",links:[{portIn:"Time",portOut:"Time",objIn:"03edch956",objOut:"d3c6mq0x4"}]}],objName:"Ops.Anim.Timer_v2"},{id:"ig4h6ugsd",uiAttribs:{},portsIn:[{name:"number2",value:10}],portsOut:[{name:"result",links:[{portIn:"number2",portOut:"result",objIn:"m05c50ymn",objOut:"ig4h6ugsd"}]}],objName:"Ops.Math.Divide"},{id:"tkp01bn1d",uiAttribs:{},portsIn:[{name:"Visible",value:1},{name:"Measure GPU",value:1},{name:"Position index",value:1},{name:"Position",value:"bottom"},{name:"Open",value:0},{name:"Smooth Graph",value:1},{name:"Scale",value:3},{name:"Size",value:128}],portsOut:[{name:"childs",links:[{portIn:"Execute",portOut:"childs",objIn:"28slk7s48",objOut:"tkp01bn1d"}]},{name:"FPS",value:31}],objName:"Ops.Gl.Performance"},{id:"696z1hnjh",uiAttribs:{},portsIn:[{name:"Max Pixel Density (DPR)",value:2},{name:"FPS Limit",value:30},{name:"Reduce FPS unfocussed",value:0},{name:"Transparent",value:1},{name:"Active",value:1},{name:"Focus canvas",value:1}],portsOut:[{name:"trigger",links:[{portIn:"exe",portOut:"trigger",objIn:"tkp01bn1d",objOut:"696z1hnjh"}]},{name:"width",value:1516},{name:"height",value:1020},{name:"Pixel Density",value:2}],objName:"Ops.Gl.MainLoop_v2"},{id:"l86hel01u",uiAttribs:{},portsIn:[{name:"blendMode index",value:0},{name:"blendMode",value:"normal"},{name:"amount",value:1},{name:"Premultiplied",value:1},{name:"Alpha Mask",value:0},{name:"removeAlphaSrc",value:0},{name:"Mask Src index",value:1},{name:"Mask Src",value:"luminance"},{name:"Invert alpha channel",value:0},{name:"Aspect Ratio",value:0},{name:"Stretch Axis index",value:0},{name:"Stretch Axis",value:"X"},{name:"Position",value:0},{name:"Crop",value:0},{name:"flip x",value:0},{name:"flip y",value:0},{name:"Transform",value:0},{name:"Scale X",value:1},{name:"Scale Y",value:1},{name:"Position X",value:0},{name:"Position Y",value:0},{name:"Rotation",value:0},{name:"Clip Repeat",value:0}],portsOut:[{name:"trigger",links:[{portIn:"render",portOut:"trigger",objIn:"xmchvimfn",objOut:"l86hel01u"}]}],objName:"Ops.Gl.ImageCompose.DrawImage_v3"},{id:"pnqvpke93",uiAttribs:{},portsOut:[{name:"trigger",links:[{portIn:"render",portOut:"trigger",objIn:"3v0ih7ab4",objOut:"pnqvpke93"}]},{name:"Texture",links:[{portIn:"texture",portOut:"Texture",objIn:"9h0e9cnn2",objOut:"pnqvpke93"}]}],objName:"Ops.Gl.ImageCompose.ImageComposeSnapshot"},{id:"3v0ih7ab4",uiAttribs:{},portsIn:[{name:"Output RGB index",value:2},{name:"Output RGB",value:"Sat"}],objName:"Ops.Gl.ImageCompose.RgbToHsvTexture"},{id:"o29wn5poo",uiAttribs:{},portsIn:[{name:"Length",value:1},{name:"Clamp",value:0},{name:"Is Playing",value:0},{name:"Show Time",value:0},{name:"Show Skip Buttons",value:0}],portsOut:[{name:"Current Value",value:.00962984254815836},{name:"Dragging",value:0}],objName:"Ops.Html.Utils.PlayerControlPanel_v2"},{id:"3zcgb7m9s",uiAttribs:{},portsOut:[{name:"UI",links:[{portIn:"Visible",portOut:"UI",objIn:"o29wn5poo",objOut:"3zcgb7m9s"}]},{name:"Overlay Mode",value:0},{name:"Remote Viewer",value:0},{name:"Is Standalone",value:1},{name:"Canvas Mode",value:0},{name:"Patch Field Visible",value:0}],objName:"Ops.Cables.UIMode"},{id:"nv4an2zpi",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"value",portOut:"result",objIn:"27uh8q4uj",objOut:"nv4an2zpi"}]}],objName:"Ops.Math.Max"},{id:"tqo5g7cv7",uiAttribs:{},portsIn:[{name:"Change Always",value:0}],portsOut:[{name:"Delta",links:[{portIn:"number",portOut:"Delta",objIn:"mjfoj96pn",objOut:"tqo5g7cv7"}]}],objName:"Ops.Math.Delta"},{id:"g411k55nc",uiAttribs:{},portsIn:[{name:"Change Always",value:0}],portsOut:[{name:"Delta",links:[{portIn:"number",portOut:"Delta",objIn:"mq3o8reqz",objOut:"g411k55nc"}]}],objName:"Ops.Math.Delta"},{id:"kqecnc233",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"Maximum",portOut:"result",objIn:"nv4an2zpi",objOut:"kqecnc233"}]}],objName:"Ops.Math.Multiply"},{id:"ad5aefgpm",uiAttribs:{},portsIn:[{name:"value",value:.5}],portsOut:[{name:"result",links:[{portIn:"number2",portOut:"result",objIn:"kqecnc233",objOut:"ad5aefgpm"}]}],objName:"Ops.Number.Number"},{id:"ezwjquxk5",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"number1",portOut:"result",objIn:"kqecnc233",objOut:"ezwjquxk5"}]}],objName:"Ops.Math.Sum"},{id:"oxyl0vh96",uiAttribs:{},portsIn:[{name:"Default Value",value:0},{name:"Limit",value:0},{name:"Min",value:0},{name:"Max",value:100},{name:"Rubberband",value:0}],portsOut:[{name:"Absolute Value",links:[{portIn:"number1",portOut:"Absolute Value",objIn:"ezwjquxk5",objOut:"oxyl0vh96"}]}],objName:"Ops.Math.DeltaSum"},{id:"5myvrp0qe",uiAttribs:{},portsIn:[{name:"Default Value",value:0},{name:"Limit",value:0},{name:"Min",value:0},{name:"Max",value:100},{name:"Rubberband",value:0}],portsOut:[{name:"Absolute Value",links:[{portIn:"number2",portOut:"Absolute Value",objIn:"ezwjquxk5",objOut:"5myvrp0qe"}]}],objName:"Ops.Math.DeltaSum"},{id:"mjfoj96pn",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"Delta Value",portOut:"result",objIn:"oxyl0vh96",objOut:"mjfoj96pn"}]}],objName:"Ops.Math.Abs"},{id:"mq3o8reqz",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"Delta Value",portOut:"result",objIn:"5myvrp0qe",objOut:"mq3o8reqz"}]}],objName:"Ops.Math.Abs"},{id:"ldko5ga0o",uiAttribs:{},portsOut:[{name:"Next",links:[{portIn:"exe",portOut:"Next",objIn:"z3tbbj614",objOut:"ldko5ga0o"}]},{name:"Number",value:.2603247549019607}],objName:"Ops.Number.TriggerOnChangeNumber_v2"},{id:"z3tbbj614",uiAttribs:{},portsIn:[{name:"delay",value:.4}],portsOut:[{name:"next",links:[{portIn:"Reset",portOut:"next",objIn:"oxyl0vh96",objOut:"z3tbbj614"},{portIn:"Reset",portOut:"next",objIn:"5myvrp0qe",objOut:"z3tbbj614"}]},{name:"Delaying",value:false}],objName:"Ops.Trigger.DelayedTrigger"},{id:"thmjldu1o",uiAttribs:{},portsIn:[{name:"Disable Scaling",value:1},{name:"Disable Scroll",value:1},{name:"HDPI Coordinates",value:0},{name:"Active",value:1},{name:"Area index",value:0},{name:"Area",value:"Canvas"},{name:"Normalize Coordinates",value:1},{name:"Flip Y",value:1}],portsOut:[{name:"Touched",links:[{portIn:"Value",portOut:"Touched",objIn:"acco20rg0",objOut:"thmjldu1o"}]},{name:"Fingers",value:0},{name:"Finger 1 X",links:[{portIn:"Value",portOut:"Finger 1 X",objIn:"ldko5ga0o",objOut:"thmjldu1o"},{portIn:"Value",portOut:"Finger 1 X",objIn:"c77jal5il",objOut:"thmjldu1o"}]},{name:"Finger 1 Y",links:[{portIn:"Value",portOut:"Finger 1 Y",objIn:"ldko5ga0o",objOut:"thmjldu1o"},{portIn:"Value",portOut:"Finger 1 Y",objIn:"edus8p798",objOut:"thmjldu1o"}]},{name:"Finger 1 Force",value:0},{name:"Finger 2 X",value:0},{name:"Finger 2 Y",value:0},{name:"Finger 2 Force",value:0},{name:"Touch End",links:[{portIn:"reset",portOut:"Touch End",objIn:"z0zhido5j",objOut:"thmjldu1o"}]}],objName:"Ops.Devices.TouchScreen"},{id:"z0zhido5j",uiAttribs:{},portsIn:[{name:"start",value:1},{name:"end",value:0},{name:"duration",value:8},{name:"loop",value:0},{name:"Wait for Reset",value:0},{name:"easing index",value:5},{name:"easing",value:"Cubic Out"}],portsOut:[{name:"result",links:[{portIn:"value",portOut:"result",objIn:"27uh8q4uj",objOut:"z0zhido5j"}]},{name:"finished",value:true}],objName:"Ops.Anim.SimpleAnim"},{id:"27uh8q4uj",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"Value",portOut:"result",objIn:"j4lemqjc9",objOut:"27uh8q4uj"}]}],objName:"Ops.Number.Number"},{id:"sfeed244o",uiAttribs:{},portsIn:[{name:"Size index",value:2},{name:"Size",value:"Manual"},{name:"Filter index",value:2},{name:"Filter",value:"mipmap"},{name:"Wrap index",value:0},{name:"Wrap",value:"clamp to edge"},{name:"Anisotropic index",value:0},{name:"Anisotropic",value:"0"},{name:"Pixel Format index",value:1},{name:"Pixel Format",value:"R 8bit ubyte"},{name:"Clear",value:1},{name:"R",value:1},{name:"G",value:0},{name:"B",value:0},{name:"A",value:0}],portsOut:[{name:"Next",links:[{portIn:"Render",portOut:"Next",objIn:"cnsdh353v",objOut:"sfeed244o"}]},{name:"texture_out",links:[{portIn:"Image",portOut:"texture_out",objIn:"xmchvimfn",objOut:"sfeed244o"},{portIn:"Texture",portOut:"texture_out",objIn:"67ooha3ou",objOut:"sfeed244o"},{portIn:"Texture In",portOut:"texture_out",objIn:"vssc7l9wu",objOut:"sfeed244o"}]},{name:"Aspect Ratio",value:1.5},{name:"Texture Width",value:96},{name:"Texture Height",value:64}],objName:"Ops.Gl.ImageCompose.ImageCompose_v4"},{id:"cnsdh353v",uiAttribs:{},portsIn:[{name:"Amount",value:.1},{name:"Blend Mode index",value:0},{name:"Blend Mode",value:"normal"},{name:"Alpha Mask index",value:0},{name:"Alpha Mask",value:"Off"},{name:"Inner",value:0},{name:"Stretch X",value:0},{name:"Stretch Y",value:0},{name:"fallOff index",value:1},{name:"fallOff",value:"SmoothStep"},{name:"fade Out",value:.497},{name:"warn overflow",value:0},{name:"r",value:0},{name:"g",value:0},{name:"b",value:0}],portsOut:[{name:"Next",links:[{portIn:"render",portOut:"Next",objIn:"t3kv126lb",objOut:"cnsdh353v"}]}],objName:"Ops.Gl.ImageCompose.CircleTexture_v4"},{id:"edus8p798",uiAttribs:{},portsIn:[{name:"Variable",value:"pointerY"}],objName:"Ops.Vars.VarSetNumber_v2"},{id:"9edbcufal",uiAttribs:{},portsIn:[{name:"Variable",value:"pointerY"}],portsOut:[{name:"Value",links:[{portIn:"Value",portOut:"Value",objIn:"g411k55nc",objOut:"9edbcufal"}]}],objName:"Ops.Vars.VarGetNumber_v2"},{id:"c77jal5il",uiAttribs:{},portsIn:[{name:"Variable",value:"poinerX"}],objName:"Ops.Vars.VarSetNumber_v2"},{id:"f9fr80spw",uiAttribs:{},portsIn:[{name:"Variable",value:"poinerX"}],portsOut:[{name:"Value",links:[{portIn:"Value",portOut:"Value",objIn:"tqo5g7cv7",objOut:"f9fr80spw"}]}],objName:"Ops.Vars.VarGetNumber_v2"},{id:"grygdgr25",uiAttribs:{},portsIn:[{name:"text",value:"Atelier Dasha Tsapenko"},{name:"Draw Mesh",value:1},{name:"Scale Mesh",value:.05},{name:"Size index",value:0},{name:"Size",value:"Auto"},{name:"Width",value:512},{name:"Height",value:512},{name:"Auto Height",value:1},{name:"Auto Line Breaks",value:1},{name:"font",value:"Arial"},{name:"weight",value:"bold"},{name:"fontSize",value:300},{name:"align index",value:1},{name:"align",value:"center"},{name:"Vertical align index",value:0},{name:"Vertical align",value:"Top"},{name:"Letter Spacing",value:0},{name:"Line Height Add",value:0},{name:"Padding Y Top",value:3},{name:"Padding Y Bottom",value:3},{name:"Padding X",value:0},{name:"filter index",value:2},{name:"filter",value:"mipmap"},{name:"Wrap index",value:2},{name:"Wrap",value:"clamp to edge"},{name:"Anisotropic index",value:0},{name:"Anisotropic",value:0},{name:"Reuse Texture",value:1},{name:"Show Debug",value:0},{name:"Redraw On Font Load",value:1},{name:"r",value:0},{name:"g",value:0},{name:"b",value:0},{name:"Opacity",value:1},{name:"background R",value:0},{name:"background G",value:0},{name:"background B",value:0},{name:"background A",value:0}],portsOut:[{name:"Next",links:[{portIn:"exe",portOut:"Next",objIn:"zj13yr39a",objOut:"grygdgr25"}]},{name:"Ratio",value:.10150932228469961},{name:"Aspect",value:9.85131195335277},{name:"Num Lines",value:1}],objName:"Ops.Gl.Textures.TextTexture_v6"},{id:"xmchvimfn",uiAttribs:{},portsIn:[{name:"blendMode index",value:3},{name:"blendMode",value:"multiply"},{name:"Premultiplied",value:0},{name:"Alpha Mask",value:0},{name:"removeAlphaSrc",value:0},{name:"Mask Src index",value:1},{name:"Mask Src",value:"luminance"},{name:"Invert alpha channel",value:0},{name:"Aspect Ratio",value:1},{name:"Stretch Axis",value:"Y"},{name:"Position",value:.5},{name:"Crop",value:1},{name:"flip x",value:0},{name:"flip y",value:0},{name:"Transform",value:0},{name:"Scale X",value:1},{name:"Scale Y",value:1},{name:"Position X",value:0},{name:"Position Y",value:0},{name:"Rotation",value:0},{name:"Clip Repeat",value:0}],portsOut:[{name:"trigger",links:[{portIn:"render",portOut:"trigger",objIn:"fim1ghqcf",objOut:"xmchvimfn"}]}],objName:"Ops.Gl.ImageCompose.DrawImage_v3"},{id:"67ooha3ou",uiAttribs:{},portsIn:[{name:"use original size",value:1},{name:"width",value:96},{name:"height",value:64},{name:"filter index",value:1},{name:"filter",value:"linear"},{name:"Pixel Format index",value:1},{name:"Pixel Format",value:"R 8bit ubyte"},{name:"Anisotropic index",value:0},{name:"Anisotropic",value:"0"},{name:"wrap index",value:0},{name:"wrap",value:"clamp to edge"},{name:"Alpha Mask Source index",value:0},{name:"Alpha Mask Source",value:"A"},{name:"Convert Greyscale index",value:0},{name:"Convert Greyscale",value:"Off"},{name:"Invert R",value:0},{name:"Invert G",value:0},{name:"Invert B",value:0},{name:"Invert A",value:0},{name:"Flip X",value:0},{name:"Flip Y",value:0}],portsOut:[{name:"texture_out",links:[{portIn:"Image",portOut:"texture_out",objIn:"t3kv126lb",objOut:"67ooha3ou"}]},{name:"Aspect Ratio",value:1.5}],objName:"Ops.Gl.Textures.CopyTexture_v3"},{id:"t3kv126lb",uiAttribs:{},portsIn:[{name:"blendMode index",value:3},{name:"blendMode",value:"multiply"},{name:"amount",value:.995},{name:"Premultiplied",value:1},{name:"Alpha Mask",value:1},{name:"removeAlphaSrc",value:1},{name:"Mask Src index",value:1},{name:"Mask Src",value:"luminance"},{name:"Invert alpha channel",value:0},{name:"Aspect Ratio",value:0},{name:"Stretch Axis index",value:0},{name:"Stretch Axis",value:"X"},{name:"Position",value:0},{name:"Crop",value:0},{name:"flip x",value:0},{name:"flip y",value:0},{name:"Transform",value:0},{name:"Scale X",value:1},{name:"Scale Y",value:1},{name:"Position X",value:0},{name:"Position Y",value:0},{name:"Rotation",value:0},{name:"Clip Repeat",value:0}],objName:"Ops.Gl.ImageCompose.DrawImage_v3"},{id:"vssc7l9wu",uiAttribs:{},portsIn:[{name:"Show Info",value:0},{name:"Visualize outside 0-1 index",value:1},{name:"Visualize outside 0-1",value:"Anim"},{name:"Alpha index",value:0},{name:"Alpha",value:"A"},{name:"Show Color",value:0},{name:"X",value:.5},{name:"Y",value:.5}],portsOut:[{name:"Info",value:""}],objName:"Ops.Ui.VizTexture"},{id:"mea1t8g4h",uiAttribs:{},portsIn:[{name:"Variable",value:"pointerY"}],portsOut:[{name:"Value",links:[{portIn:"Value",portOut:"Value",objIn:"4pl800wsr",objOut:"mea1t8g4h"}]}],objName:"Ops.Vars.VarGetNumber_v2"},{id:"nd198efci",uiAttribs:{},portsIn:[{name:"Variable",value:"poinerX"}],portsOut:[{name:"Value",links:[{portIn:"Value",portOut:"Value",objIn:"rni34w6dg",objOut:"nd198efci"}]}],objName:"Ops.Vars.VarGetNumber_v2"},{id:"awdmpalxd",uiAttribs:{},portsIn:[{name:"Blend Mode index",value:0},{name:"Blend Mode",value:"normal"},{name:"Amount",value:1},{name:"Alpha Mask index",value:1},{name:"Alpha Mask",value:"On"},{name:"Mask Invert",value:0},{name:"r",value:1},{name:"g",value:0},{name:"b",value:0},{name:"A",value:1}],objName:"Ops.Gl.ImageCompose.Color_v2"},{id:"yt8ddedc1",uiAttribs:{},portsOut:[{name:"CSS Width",value:758},{name:"CSS Height",value:510},{name:"Pixel Ratio",value:2},{name:"Pixel Width",value:1516},{name:"Pixel Height",value:1020},{name:"Aspect Ratio",links:[{portIn:"number2",portOut:"Aspect Ratio",objIn:"9ij3fbp12",objOut:"yt8ddedc1"}]},{name:"Landscape",value:1}],objName:"Ops.Gl.CanvasInfo_v3"},{id:"v0jojtsgv",uiAttribs:{},portsIn:[{name:"number1",value:.1}],portsOut:[{name:"result",links:[{portIn:"a",portOut:"result",objIn:"cnsdh353v",objOut:"v0jojtsgv"}]}],objName:"Ops.Math.Sum"},{id:"1gpal5bk0",uiAttribs:{},portsIn:[{name:"value",value:.1}],portsOut:[{name:"result",links:[{portIn:"Multiply",portOut:"result",objIn:"oxyl0vh96",objOut:"1gpal5bk0"},{portIn:"Multiply",portOut:"result",objIn:"5myvrp0qe",objOut:"1gpal5bk0"}]}],objName:"Ops.Number.Number"},{id:"acco20rg0",uiAttribs:{},portsIn:[{name:"Variable",value:"TouchedHover"}],objName:"Ops.Vars.VarSetNumber_v2"},{id:"xxvtfn534",uiAttribs:{},portsIn:[{name:"Variable",value:"TouchedHover"}],portsOut:[{name:"Value",links:[{portIn:"Value",portOut:"Value",objIn:"bc002120c",objOut:"xxvtfn534"}]}],objName:"Ops.Vars.VarGetNumber_v2"},{id:"bc002120c",uiAttribs:{},portsIn:[{name:"Separate inc/dec",value:1},{name:"Inc factor",value:6,title:"Inc factor"},{name:"Dec factor",value:20}],portsOut:[{name:"Result",links:[{portIn:"amount",portOut:"Result",objIn:"xmchvimfn",objOut:"bc002120c"}]}],objName:"Ops.Anim.Smooth"},{id:"v6ijdaraf",uiAttribs:{},portsIn:[{name:"Default Texture Transparent",value:1}],portsOut:[{name:"Next",links:[{portIn:"Execute",portOut:"Next",objIn:"po7risdiw",objOut:"v6ijdaraf"}]},{name:"texture",links:[{portIn:"Image",portOut:"texture",objIn:"lgzbdnbyx",objOut:"v6ijdaraf"}]}],objName:"Ops.Gl.Textures.SwitchTextures_v2"},{id:"bnedu8424",uiAttribs:{},portsIn:[{name:"File",value:"assets/hompage_fallback.jpg",display:"file"},{name:"Filter index",value:2},{name:"Filter",value:"mipmap"},{name:"Wrap index",value:0},{name:"Wrap",value:"repeat"},{name:"Anisotropic index",value:0},{name:"Anisotropic",value:"0"},{name:"Data Format index",value:3},{name:"Data Format",value:"RGBA"},{name:"Flip",value:0},{name:"Pre Multiplied Alpha",value:0},{name:"Active",value:1},{name:"Save Memory",value:1},{name:"Add Cachebuster",value:0}],portsOut:[{name:"Texture",links:[{portIn:"texture0",portOut:"Texture",objIn:"v6ijdaraf",objOut:"bnedu8424"}]},{name:"Width",value:3840},{name:"Height",value:2160},{name:"Aspect Ratio",links:[{portIn:"Value 0",portOut:"Aspect Ratio",objIn:"gbs5sn1a3",objOut:"bnedu8424"}]},{name:"Loaded",value:1},{name:"Loading",value:0}],objName:"Ops.Gl.Texture_v2"},{id:"ynk5vwlry",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"Width",portOut:"result",objIn:"jreklxw89",objOut:"ynk5vwlry"}]}],objName:"Ops.Math.Divide"},{id:"mxmmt4bhm",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"Height",portOut:"result",objIn:"jreklxw89",objOut:"mxmmt4bhm"}]}],objName:"Ops.Math.Divide"},{id:"i19192u30",uiAttribs:{},portsIn:[{name:"value",value:64}],portsOut:[{name:"result",links:[{portIn:"number1",portOut:"result",objIn:"9ij3fbp12",objOut:"i19192u30"},{portIn:"Height",portOut:"result",objIn:"sfeed244o",objOut:"i19192u30"}]}],objName:"Ops.Number.Number"},{id:"9ij3fbp12",uiAttribs:{},portsOut:[{name:"result",links:[{portIn:"Width",portOut:"result",objIn:"sfeed244o",objOut:"9ij3fbp12"}]}],objName:"Ops.Math.Multiply"},{id:"bez0j0kmv",uiAttribs:{},portsIn:[{name:"Blend Mode index",value:0},{name:"Blend Mode",value:"normal"},{name:"Amount",value:1},{name:"levels",value:2}],objName:"Ops.Gl.ImageCompose.Posterize_v2"},{id:"zmcm2hiu5",uiAttribs:{},portsIn:[{name:"number2",value:.01}],portsOut:[{name:"result",links:[{portIn:"Size",portOut:"result",objIn:"cnsdh353v",objOut:"zmcm2hiu5"}]}],objName:"Ops.Math.Sum"},{id:"rni34w6dg",uiAttribs:{},portsIn:[{name:"Separate inc/dec",value:0},{name:"Inc factor",value:4,title:"Inc/Dec factor"},{name:"Dec factor",value:4}],portsOut:[{name:"Next",links:[{portIn:"Update",portOut:"Next",objIn:"4pl800wsr",objOut:"rni34w6dg"}]},{name:"Result",links:[{portIn:"Pos X",portOut:"Result",objIn:"cnsdh353v",objOut:"rni34w6dg"}]}],objName:"Ops.Anim.Smooth"},{id:"4pl800wsr",uiAttribs:{},portsIn:[{name:"Separate inc/dec",value:0},{name:"Inc factor",value:4,title:"Inc/Dec factor"},{name:"Dec factor",value:4}],portsOut:[{name:"Result",links:[{portIn:"Pos Y",portOut:"Result",objIn:"cnsdh353v",objOut:"4pl800wsr"}]}],objName:"Ops.Anim.Smooth"},{id:"qld6p0naf",uiAttribs:{},portsOut:[{name:"Passthrough",value:.00962984254815836}],objName:"Ops.Ui.VizNumberBar"},{id:"fjiosvxf7",uiAttribs:{},portsIn:[{name:"value",value:2}],portsOut:[{name:"result",links:[{portIn:"number2",portOut:"result",objIn:"ynk5vwlry",objOut:"fjiosvxf7"},{portIn:"number2",portOut:"result",objIn:"mxmmt4bhm",objOut:"fjiosvxf7"}]}],objName:"Ops.Number.Number"},{id:"gpqxqq0cm",uiAttribs:{},portsIn:[{name:"number2",value:2}],portsOut:[{name:"result",links:[{portIn:"number1",portOut:"result",objIn:"zmcm2hiu5",objOut:"gpqxqq0cm"}]}],objName:"Ops.Math.Multiply"},{id:"gbs5sn1a3",uiAttribs:{},portsOut:[{name:"Out Value",links:[{portIn:"number1",portOut:"Out Value",objIn:"evduj6eyg",objOut:"gbs5sn1a3"}]}],objName:"Ops.Boolean.BoolToNumber_v2"}],export:{time:"2025-07-26 04:36",service:"html",exportNumber:4}};if(!CABLES.exportedPatch){CABLES.exportedPatch=CABLES.exportedPatches["ZD5N0S"]}"use strict";var CABLES=CABLES||{};CABLES.OPS=CABLES.OPS||{};var Ops=Ops||{};Ops.Gl=Ops.Gl||{};Ops.Ui=Ops.Ui||{};Ops.Anim=Ops.Anim||{};Ops.Html=Ops.Html||{};Ops.Math=Ops.Math||{};Ops.Vars=Ops.Vars||{};Ops.Cables=Ops.Cables||{};Ops.Number=Ops.Number||{};Ops.String=Ops.String||{};Ops.Boolean=Ops.Boolean||{};Ops.Devices=Ops.Devices||{};Ops.Trigger=Ops.Trigger||{};Ops.TimeLine=Ops.TimeLine||{};Ops.Gl.Meshes=Ops.Gl.Meshes||{};Ops.Gl.Shader=Ops.Gl.Shader||{};Ops.Html.Utils=Ops.Html.Utils||{};Ops.Ui.Routing=Ops.Ui.Routing||{};Ops.Gl.Textures=Ops.Gl.Textures||{};Ops.Math.Compare=Ops.Math.Compare||{};Ops.Devices.Mouse=Ops.Devices.Mouse||{};Ops.Gl.ImageCompose=Ops.Gl.ImageCompose||{};Ops.Gl.Textures.VideoTexture_v3=class extends CABLES.Op{constructor(){super(...arguments);const i=this;const w=i.attachments={};const e=i.inTrigger("Update"),r=i.inUrl("file","video"),t=i.inValueBool("play"),s=i.inValueBool("loop",true),n=i.inValueSlider("Volume",1),a=i.inValueBool("mute",true),o=i.inValueFloat("Update FPS",30),l=i.inSwitch("Filter",["nearest","linear"],"linear"),h=i.inValueSelect("Wrap",["repeat","mirrored repeat","clamp to edge"],"clamp to edge"),u=i.inValueBool("flip",true),c=i.inValueFloat("speed",1),g=i.inValueFloat("set time"),f=i.inTriggerButton("Rewind"),U=i.inValueBool("Preload",true),B=i.inBool("Show Interaction needed Button",true),D=i.outTrigger("Next"),d=i.outTexture("texture",null,"texture"),V=i.outNumber("duration"),k=i.outNumber("progress"),G=i.outBoolNum("Interaction Needed"),j=i.outNumber("CurrentTime"),m=i.outBoolNum("Loading"),H=i.outBoolNum("Playing"),p=i.outBoolNum("Can Play Through",false),z=i.outNumber("Width"),X=i.outNumber("Height"),W=i.outNumber("Aspect Ratio"),_=i.outBoolNum("Has Error"),Y=i.outBoolNum("Auto FPS",false),x=i.outString("Error Message");i.setPortGroup("Texture",[l,h,u,o]);i.setPortGroup("Audio",[a,n]);i.setPortGroup("Timing",[g,f,c]);let b=false;let v=false;let T=false;let E=false;let A=0;let S=0;let C=null;let q=null;let R=true;let O=true;let M=0;const I=i.patch.cgl;const F=document.createElement("video");F.setAttribute("playsinline","");F.setAttribute("webkit-playsinline","");F.setAttribute("autoplay","autoplay");Y.set(!!F.requestVideoFrameCallback);const L=CGL.Texture.getEmptyTexture(I);i.toWorkPortsNeedToBeLinked(d);d.setRef(CGL.Texture.getEmptyTexture(I));t.onChange=N;r.onChange=te;n.onChange=i.onMasterVolumeChanged=J;l.onChange=h.onChange=()=>{if(C)C.delete();C=null};i.onDelete=()=>{if(C)C.delete();F.remove()};e.onTriggered=()=>{if(performance.now()-M>1e3/o.get())O=true;if(O){Q()}H.set(!F.paused);if(T&&!F.paused&&t.get()){T=false;CABLES.interActionNeededButton.remove("videoplayer")}G.set(T);D.trigger()};function K(){if(C)C.delete();A=CGL.Texture.FILTER_NEAREST;if(l.get()=="linear")A=CGL.Texture.FILTER_LINEAR;if(h.get()=="repeat")S=CGL.Texture.WRAP_REPEAT;if(h.get()=="mirrored repeat")S=CGL.Texture.WRAP_MIRRORED_REPEAT;if(h.get()=="clamp to edge")S=CGL.Texture.WRAP_CLAMP_TO_EDGE;C=new CGL.Texture(I,{wrap:S,filter:A})}f.onTriggered=function(){F.currentTime=0;d.setRef(L);O=true};g.onChange=function(){F.currentTime=g.get()||0;O=true};o.onChange=function(){O=true};function P(){F.playbackRate=c.get()}function N(){i.setUiError("playvideo",null);y(true);if(t.get()){F.currentTime=g.get()||0;const e=F.play();if(e)e.then(function(){P()}).catch(function(e){i.setUiError("playvideo",e.message);i.logWarn("exc",e);i.log(e);i.log(F);if(F.paused&&B.get()){i.setUiError("playvideo",null);T=true;CABLES.interActionNeededButton.add(i.patch,"videoplayer",()=>{T=false;F.play().then(()=>{P();CABLES.interActionNeededButton.remove("videoplayer")}).catch(e=>{i.setUiError("playvideo",e.message);i.logWarn("playvideo",e)})})}})}else F.pause()}c.onChange=function(){try{i.setUiError("playbackRate",null);F.playbackRate=c.get()}catch(e){i.setUiError("playbackRate","value for 'speed' not supported by browser",1)}};s.onChange=function(){F.loop=s.get()};a.onChange=function(){F.muted=a.get()};function Q(){const e=O;M=performance.now();if(!r.get()){C=null;d.set(L);return}if(!b)return;if(!C)K();if(C.width!=F.videoWidth||C.height!=F.videoHeight){C.setSize(F.videoWidth,F.videoHeight)}z.set(C.width);X.set(C.height);W.set(C.width/C.height);if(!p.get())return;if(!b)return;if(!F)return;if(F.videoHeight<=0){i.setUiError("videosize","video width is 0!");return}if(F.videoWidth<=0){i.setUiError("videosize","video height is 0!");return}const t=F.currentTime/F.duration;if(!isNaN(t))k.set(t);j.set(F.currentTime);I.gl.bindTexture(I.gl.TEXTURE_2D,C.tex);I.gl.pixelStorei(I.gl.UNPACK_FLIP_Y_WEBGL,u.get());I.gl.texImage2D(I.gl.TEXTURE_2D,0,I.gl.RGBA,I.gl.RGBA,I.gl.UNSIGNED_BYTE,F);C._setFilter();if(u.get())I.gl.pixelStorei(I.gl.UNPACK_FLIP_Y_WEBGL,false);R=false;d.setRef(C);O=false;i.patch.cgl.profileData.profileVideosPlaying++;if(F.readyState==4)m.set(false);else m.set(false);if(F.requestVideoFrameCallback)F.requestVideoFrameCallback(()=>{O=true})}function Z(){F.controls=false;F.muted=a.get();F.loop=s.get();O=true;p.set(true)}function J(){F.volume=Math.min(1,Math.max(0,(n.get()||0)*i.patch.config.masterVolume))}function $(){V.set(F.duration);N()}function y(e){if(v)return;_.set(false);x.set("");p.set(false);if(r.get()&&String(r.get()).length>1)R=true;if(!r.get()){x.set(true)}if(U.get()||e){clearTimeout(q);m.set(true);F.preload="true";let e=i.patch.getFilePath(r.get());if(String(r.get()).indexOf("data:")==0)e=r.get();if(!e)return;i.setUiError("onerror",null);F.style.display="none";F.setAttribute("src",e);F.setAttribute("crossOrigin","anonymous");try{i.setUiError("playbackRate",null);F.playbackRate=c.get()}catch(e){i.setUiError("playbackRate","value for 'speed' not supported by browser",1)}if(!E){E=true;F.addEventListener("canplaythrough",Z,true);F.addEventListener("loadedmetadata",$);F.addEventListener("playing",function(){b=true},true);F.onerror=function(){_.set(true);if(F){x.set("Error "+F.error.code+"/"+F.error.message);i.setUiError("onerror","Could not load video / "+F.error.message,2)}}}v=true}}function ee(){setTimeout(y,100)}function te(){if(!r.get())return;v=false;ee()}}};CABLES.OPS["9d66516f-d234-4114-b1d3-67b8e60f5dc6"]={f:Ops.Gl.Textures.VideoTexture_v3,objName:"Ops.Gl.Textures.VideoTexture_v3"};Ops.Gl.Meshes.FullscreenRectangle_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={shader_frag:"UNI sampler2D tex;\nIN vec2 texCoord;\n\nvoid main()\n{\n    outColor= texture(tex,texCoord);\n}\n\n",shader_vert:"{{MODULES_HEAD}}\n\nIN vec3 vPosition;\nUNI mat4 projMatrix;\nUNI mat4 mvMatrix;\n\nOUT vec2 texCoord;\nIN vec2 attrTexCoord;\n\nvoid main()\n{\n   vec4 pos=vec4(vPosition,  1.0);\n\n   texCoord=vec2(attrTexCoord.x,(1.0-attrTexCoord.y));\n\n   gl_Position = projMatrix * mvMatrix * pos;\n}\n"};const i=e.inTrigger("render"),r=e.inSwitch("Scale",["Stretch","Fit"],"Fit"),s=e.inValueBool("Flip Y"),n=e.inValueBool("Flip X"),a=e.inTexture("Texture"),o=e.outTrigger("trigger");const l=e.patch.cgl;let h=null;let u=new CGL.Geometry("fullscreen rectangle");let c=0,g=0,f=0,d=0;e.toWorkShouldNotBeChild("Ops.Gl.TextureEffects.ImageCompose",CABLES.OP_PORT_TYPE_FUNCTION);e.toWorkPortsNeedToBeLinked(i);n.onChange=A;s.onChange=A;i.onTriggered=E;a.onLinkChanged=b;r.onChange=T;const m=new CGL.Shader(l,"fullscreenrectangle",this);m.setModules(["MODULE_VERTEX_POSITION","MODULE_COLOR","MODULE_BEGIN_FRAG"]);m.setSource(t.shader_vert,t.shader_frag);m.fullscreenRectUniform=new CGL.Uniform(m,"t","tex",0);m.aspectUni=new CGL.Uniform(m,"f","aspectTex",0);let p=false;let _=true;let x=false;b();T();a.onChange=function(){_=true};function b(){if(!CABLES.UI)return;s.setUiAttribs({greyout:!a.isLinked()});n.setUiAttribs({greyout:!a.isLinked()});r.setUiAttribs({greyout:!a.isLinked()})}function v(){let e=a.get();if(e)p=true;else p=false}e.preRender=function(){v();m.bind();if(h)h.render(m);E()};function T(){x=r.get()=="Fit"}function E(){if(l.viewPort[2]!=f||l.viewPort[3]!=d||!h)S();if(_)v();l.pushPMatrix();mat4.identity(l.pMatrix);mat4.ortho(l.pMatrix,0,f,d,0,-10,1e3);l.pushModelMatrix();mat4.identity(l.mMatrix);l.pushViewMatrix();mat4.identity(l.vMatrix);if(x&&a.get()){const i=a.get().width/a.get().height;let e=d;let t=d*i;if(t>f){e=f*1/i;t=f}l.pushViewPort((f-t)/2,(d-e)/2,t,e)}if(p){if(a.get())l.setTexture(0,a.get().tex);h.render(m)}else{h.render(l.getShader())}l.gl.clear(l.gl.DEPTH_BUFFER_BIT);l.popPMatrix();l.popModelMatrix();l.popViewMatrix();if(x&&a.get())l.popViewPort();o.trigger()}function A(){h=null}function S(){if(l.viewPort[2]==f&&l.viewPort[3]==d&&h)return;let e=0,t=0;f=l.viewPort[2];d=l.viewPort[3];u.vertices=new Float32Array([e+f,t+d,0,e,t+d,0,e+f,t,0,e,t,0]);let i=null;if(s.get())i=new Float32Array([1,0,0,0,1,1,0,1]);else i=new Float32Array([1,1,0,1,1,0,0,0]);if(n.get()){i[0]=0;i[2]=1;i[4]=0;i[6]=1}u.setTexCoords(i);u.verticesIndices=new Uint16Array([2,1,0,3,1,2]);u.vertexNormals=new Float32Array([0,0,1,0,0,1,0,0,1,0,0,1]);u.tangents=new Float32Array([-1,0,0,-1,0,0,-1,0,0,-1,0,0]);u.biTangents==new Float32Array([0,-1,0,0,-1,0,0,-1,0,0,-1,0]);if(!h)h=new CGL.Mesh(l,u);else h.setGeom(u)}}};CABLES.OPS["fb70721a-eac2-4ff5-a5a2-5c59e2393972"]={f:Ops.Gl.Meshes.FullscreenRectangle_v2,objName:"Ops.Gl.Meshes.FullscreenRectangle_v2"};Ops.Trigger.SequenceMultiPort=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inMultiPort("Input",CABLES.OP_PORT_TYPE_FUNCTION),r=e.outMultiPort("Output",CABLES.OP_PORT_TYPE_FUNCTION);i.onTriggered=e=>{const t=r.get();for(let e=0;e<t.length;e++){t[e].trigger()}}}};CABLES.OPS["be066ff6-85e2-408a-9570-59fb7abff7b2"]={f:Ops.Trigger.SequenceMultiPort,objName:"Ops.Trigger.SequenceMultiPort"};Ops.Gl.Shader.BasicMaterial_v3=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={basicmaterial_frag:"{{MODULES_HEAD}}\n\nIN vec2 texCoord;\n\n#ifdef VERTEX_COLORS\nIN vec4 vertCol;\n#endif\n\n#ifdef HAS_TEXTURES\n    IN vec2 texCoordOrig;\n    #ifdef HAS_TEXTURE_DIFFUSE\n        UNI sampler2D tex;\n    #endif\n    #ifdef HAS_TEXTURE_OPACITY\n        UNI sampler2D texOpacity;\n   #endif\n#endif\n\n\n\nvoid main()\n{\n    {{MODULE_BEGIN_FRAG}}\n    vec4 col=color;\n\n\n    #ifdef HAS_TEXTURES\n        vec2 uv=texCoord;\n\n        #ifdef CROP_TEXCOORDS\n            if(uv.x<0.0 || uv.x>1.0 || uv.y<0.0 || uv.y>1.0) discard;\n        #endif\n\n        #ifdef HAS_TEXTURE_DIFFUSE\n            col=texture(tex,uv);\n\n            #ifdef COLORIZE_TEXTURE\n                col.r*=color.r;\n                col.g*=color.g;\n                col.b*=color.b;\n            #endif\n        #endif\n        col.a*=color.a;\n        #ifdef HAS_TEXTURE_OPACITY\n            #ifdef TRANSFORMALPHATEXCOORDS\n                uv=texCoordOrig;\n            #endif\n            #ifdef ALPHA_MASK_IR\n                col.a*=1.0-texture(texOpacity,uv).r;\n            #endif\n            #ifdef ALPHA_MASK_IALPHA\n                col.a*=1.0-texture(texOpacity,uv).a;\n            #endif\n            #ifdef ALPHA_MASK_ALPHA\n                col.a*=texture(texOpacity,uv).a;\n            #endif\n            #ifdef ALPHA_MASK_LUMI\n                col.a*=dot(vec3(0.2126,0.7152,0.0722), texture(texOpacity,uv).rgb);\n            #endif\n            #ifdef ALPHA_MASK_R\n                col.a*=texture(texOpacity,uv).r;\n            #endif\n            #ifdef ALPHA_MASK_G\n                col.a*=texture(texOpacity,uv).g;\n            #endif\n            #ifdef ALPHA_MASK_B\n                col.a*=texture(texOpacity,uv).b;\n            #endif\n            // #endif\n        #endif\n    #endif\n\n    {{MODULE_COLOR}}\n\n    #ifdef DISCARDTRANS\n        if(col.a<0.2) discard;\n    #endif\n\n    #ifdef VERTEX_COLORS\n        col*=vertCol;\n    #endif\n\n    outColor = col;\n}\n",basicmaterial_vert:"\n{{MODULES_HEAD}}\n\nOUT vec2 texCoord;\nOUT vec2 texCoordOrig;\n\nUNI mat4 projMatrix;\nUNI mat4 modelMatrix;\nUNI mat4 viewMatrix;\n\n#ifdef HAS_TEXTURES\n    UNI float diffuseRepeatX;\n    UNI float diffuseRepeatY;\n    UNI float texOffsetX;\n    UNI float texOffsetY;\n#endif\n\n#ifdef VERTEX_COLORS\n    in vec4 attrVertColor;\n    out vec4 vertCol;\n\n#endif\n\n\nvoid main()\n{\n    mat4 mMatrix=modelMatrix;\n    mat4 modelViewMatrix;\n\n    norm=attrVertNormal;\n    texCoordOrig=attrTexCoord;\n    texCoord=attrTexCoord;\n    #ifdef HAS_TEXTURES\n        texCoord.x=texCoord.x*diffuseRepeatX+texOffsetX;\n        texCoord.y=(1.0-texCoord.y)*diffuseRepeatY+texOffsetY;\n    #endif\n\n    #ifdef VERTEX_COLORS\n        vertCol=attrVertColor;\n    #endif\n\n    vec4 pos = vec4(vPosition, 1.0);\n\n    #ifdef BILLBOARD\n       vec3 position=vPosition;\n       modelViewMatrix=viewMatrix*modelMatrix;\n\n       gl_Position = projMatrix * modelViewMatrix * vec4((\n           position.x * vec3(\n               modelViewMatrix[0][0],\n               modelViewMatrix[1][0],\n               modelViewMatrix[2][0] ) +\n           position.y * vec3(\n               modelViewMatrix[0][1],\n               modelViewMatrix[1][1],\n               modelViewMatrix[2][1]) ), 1.0);\n    #endif\n\n    {{MODULE_VERTEX_POSITION}}\n\n    #ifndef BILLBOARD\n        modelViewMatrix=viewMatrix * mMatrix;\n\n        {{MODULE_VERTEX_MODELVIEW}}\n\n    #endif\n\n    // mat4 modelViewMatrix=viewMatrix*mMatrix;\n\n    #ifndef BILLBOARD\n        // gl_Position = projMatrix * viewMatrix * modelMatrix * pos;\n        gl_Position = projMatrix * modelViewMatrix * pos;\n    #endif\n}\n"};const i=e.inTrigger("render");const r=e.outTrigger("trigger");const s=e.outObject("shader",null,"shader");s.ignoreValueSerialize=true;e.toWorkPortsNeedToBeLinked(i);e.toWorkShouldNotBeChild("Ops.Gl.TextureEffects.ImageCompose",CABLES.OP_PORT_TYPE_FUNCTION);const n=e.patch.cgl;const a=new CGL.Shader(n,"basicmaterial",this);a.addAttribute({type:"vec3",name:"vPosition"});a.addAttribute({type:"vec2",name:"attrTexCoord"});a.addAttribute({type:"vec3",name:"attrVertNormal",nameFrag:"norm"});a.addAttribute({type:"float",name:"attrVertIndex"});a.setModules(["MODULE_VERTEX_POSITION","MODULE_COLOR","MODULE_BEGIN_FRAG","MODULE_VERTEX_MODELVIEW"]);a.setSource(t.basicmaterial_vert,t.basicmaterial_frag);s.setRef(a);i.onTriggered=O;const o=e.inValueSlider("r",Math.random());const l=e.inValueSlider("g",Math.random());const h=e.inValueSlider("b",Math.random());const u=e.inValueSlider("a",1);o.setUiAttribs({colorPick:true});const c=a.addUniformFrag("4f","color",o,l,h,u);a.uniformColorDiffuse=c;const g=e.inTexture("texture");let f=null;g.onChange=I;const d=e.inValueBool("colorizeTexture",false);const m=e.inValueBool("Vertex Colors",false);const p=e.inTexture("textureOpacity");let _=null;const x=e.inSwitch("Alpha Mask Source",["Luminance","R","G","B","A","1-A","1-R"],"Luminance");x.setUiAttribs({greyout:true});p.onChange=M;const b=e.inValueBool("Opacity TexCoords Transform",false);const v=e.inValueBool("Discard Transparent Pixels");const T=e.inValue("diffuseRepeatX",1),E=e.inValue("diffuseRepeatY",1),A=e.inValue("Tex Offset X",0),S=e.inValue("Tex Offset Y",0),C=e.inBool("Crop TexCoords",false);a.addUniformFrag("f","diffuseRepeatX",T);a.addUniformFrag("f","diffuseRepeatY",E);a.addUniformFrag("f","texOffsetX",A);a.addUniformFrag("f","texOffsetY",S);const R=e.inValueBool("billboard",false);x.onChange=R.onChange=v.onChange=b.onChange=C.onChange=m.onChange=d.onChange=L;e.setPortGroup("Color",[o,l,h,u]);e.setPortGroup("Color Texture",[g,m,d]);e.setPortGroup("Opacity",[p,x,v,b]);e.setPortGroup("Texture Transform",[T,E,A,S,C]);M();I();e.preRender=function(){a.bind();O();if(!a)return};function O(){e.checkGraphicsApi();n.pushShader(a);a.popTextures();if(f&&g.get())a.pushTexture(f,g.get());if(_&&p.get())a.pushTexture(_,p.get());r.trigger();n.popShader()}function M(){if(p.get()){if(_!==null)return;a.removeUniform("texOpacity");a.define("HAS_TEXTURE_OPACITY");if(!_)_=new CGL.Uniform(a,"t","texOpacity")}else{a.removeUniform("texOpacity");a.removeDefine("HAS_TEXTURE_OPACITY");_=null}L()}function I(){if(g.get()){if(!a.hasDefine("HAS_TEXTURE_DIFFUSE"))a.define("HAS_TEXTURE_DIFFUSE");if(!f)f=new CGL.Uniform(a,"t","texDiffuse")}else{a.removeUniform("texDiffuse");a.removeDefine("HAS_TEXTURE_DIFFUSE");f=null}F()}function F(){const e=g.isLinked()||p.isLinked();T.setUiAttribs({greyout:!e});E.setUiAttribs({greyout:!e});A.setUiAttribs({greyout:!e});S.setUiAttribs({greyout:!e});d.setUiAttribs({greyout:!e});x.setUiAttribs({greyout:!p.get()});b.setUiAttribs({greyout:!p.get()});let t=true;t=g.get()&&!d.get();o.setUiAttribs({greyout:t});l.setUiAttribs({greyout:t});h.setUiAttribs({greyout:t})}function L(){a.toggleDefine("VERTEX_COLORS",m.get());a.toggleDefine("CROP_TEXCOORDS",C.get());a.toggleDefine("COLORIZE_TEXTURE",d.get());a.toggleDefine("TRANSFORMALPHATEXCOORDS",b.get());a.toggleDefine("DISCARDTRANS",v.get());a.toggleDefine("BILLBOARD",R.get());a.toggleDefine("ALPHA_MASK_ALPHA",x.get()=="A");a.toggleDefine("ALPHA_MASK_IALPHA",x.get()=="1-A");a.toggleDefine("ALPHA_MASK_IR",x.get()=="1-R");a.toggleDefine("ALPHA_MASK_LUMI",x.get()=="Luminance");a.toggleDefine("ALPHA_MASK_R",x.get()=="R");a.toggleDefine("ALPHA_MASK_G",x.get()=="G");a.toggleDefine("ALPHA_MASK_B",x.get()=="B");F()}}};CABLES.OPS["ec55d252-3843-41b1-b731-0482dbd9e72b"]={f:Ops.Gl.Shader.BasicMaterial_v3,objName:"Ops.Gl.Shader.BasicMaterial_v3"};Ops.Gl.ImageCompose.ImageCompose_v4=class extends CABLES.Op{constructor(){super(...arguments);const i=this;const e=i.attachments={imgcomp_frag:"IN vec2 texCoord;\nUNI vec4 bgColor;\nUNI sampler2D tex;\n#ifdef USE_UVTEX\nUNI sampler2D UVTex;\n#endif\n\nvoid main()\n{\n\n    #ifndef USE_TEX\n        outColor=bgColor;\n    #endif\n    #ifdef USE_TEX\n        #ifndef USE_UVTEX\n        outColor=texture(tex,texCoord);\n        #else\n        outColor=texture(tex,texture(UVTex,texCoord).xy);\n        #endif\n    #endif\n\n\n\n}\n"};const t=i.patch.cgl,r=i.inTrigger("Render"),s=i.inTexture("Base Texture"),n=i.inTexture("UV Texture"),a=i.inSwitch("Size",["Auto","Canvas","Manual"],"Auto"),o=i.inValueInt("Width",640),l=i.inValueInt("Height",480),h=i.inSwitch("Filter",["nearest","linear","mipmap"],"linear"),u=i.inValueSelect("Wrap",["clamp to edge","repeat","mirrored repeat"],"repeat"),c=i.inSwitch("Anisotropic",["0","1","2","4","8","16"],"0"),g=i.inDropDown("Pixel Format",CGL.Texture.PIXELFORMATS,CGL.Texture.PFORMATSTR_RGBA8UB),f=i.inBool("Clear",true),d=i.inValueSlider("R",0),m=i.inValueSlider("G",0),p=i.inValueSlider("B",0),_=i.inValueSlider("A",0),x=i.outTrigger("Next"),b=i.outTexture("texture_out",CGL.Texture.getEmptyTexture(t)),v=i.outNumber("Aspect Ratio"),w=i.outNumber("Texture Width"),U=i.outNumber("Texture Height");i.setPortGroup("Texture Size",[a,o,l]);i.setPortGroup("Texture Parameters",[u,c,h,g]);d.setUiAttribs({colorPick:true});i.setPortGroup("Color",[d,m,p,_,f]);i.toWorkPortsNeedToBeLinked(r);const B=[0,0,0,0];let T=null;let E=null;let A=true;let D=false;let S=null;let V=null;let k=null;let G=null;u.onChange=h.onChange=c.onChange=g.onChange=j;s.onLinkChanged=f.onChange=a.onChange=n.onChange=P;r.onTriggered=i.preRender=y;P();function C(){if(T)T.delete();if(E)E.delete();E=null;T=new CGL.TextureEffect(t,{isFloatingPointTexture:CGL.Texture.isPixelFormatFloat(g.get()),name:i.name});const e=Math.min(t.maxAnisotropic,parseFloat(c.get()));E=new CGL.Texture(t,{anisotropic:e,name:"image_compose_v2_"+i.id,pixelFormat:g.get(),filter:R(),wrap:O(),width:M(),height:I()});T.setSourceTexture(E);w.set(M());U.set(I());v.set(M()/I());b.setRef(CGL.Texture.getEmptyTexture(t));A=false;P()}function R(){if(h.get()=="nearest")return CGL.Texture.FILTER_NEAREST;else if(h.get()=="linear")return CGL.Texture.FILTER_LINEAR;else if(h.get()=="mipmap")return CGL.Texture.FILTER_MIPMAP}function O(){if(u.get()=="repeat")return CGL.Texture.WRAP_REPEAT;else if(u.get()=="mirrored repeat")return CGL.Texture.WRAP_MIRRORED_REPEAT;else if(u.get()=="clamp to edge")return CGL.Texture.WRAP_CLAMP_TO_EDGE}function M(){let e=0;if(s.get()&&a.get()=="Auto")e=s.get().width;else if(a.get()=="Auto"||a.get()=="Canvas")e=t.canvasWidth;else if(a.get()=="ViewPort")e=t.getViewPort()[2];else e=Math.ceil(o.get());return i.patch.cgl.checkTextureSize(e)}function I(){let e=0;if(s.get()&&a.get()=="Auto")e=s.get().height;else if(a.get()=="Auto"||a.get()=="Canvas")e=t.canvasHeight;else if(a.get()=="ViewPort")e=t.getViewPort()[3];else e=Math.ceil(l.get());return i.patch.cgl.checkTextureSize(e)}function j(){A=true}function H(){if((M()!=E.width||I()!=E.height||E.pixelFormat!=g.get()||E.filter!=R()||E.wrap!=O())&&(M()!==0&&I()!==0)){C();T.setSourceTexture(E);b.setRef(E);F();N()}}function F(){let e=null;if(a.get()=="Manual"){e=null}else if(a.get()=="Auto"){if(s.get())e="Input Texture";else e="Canvas Size";e+=": "+M()+" x "+I()}let t=false;t=a.uiAttribs.info!=e;a.setUiAttribs({info:e});if(t)i.refreshParams()}function L(){if(S)S.toggleDefine("USE_TEX",s.isLinked()||!f.get());if(S)S.toggleDefine("USE_UVTEX",n.isLinked())}function P(){c.setUiAttribs({greyout:R()!=CGL.Texture.FILTER_MIPMAP});d.setUiAttribs({greyout:s.isLinked()});p.setUiAttribs({greyout:s.isLinked()});m.setUiAttribs({greyout:s.isLinked()});_.setUiAttribs({greyout:s.isLinked()});f.setUiAttribs({greyout:s.isLinked()});o.setUiAttribs({greyout:a.get()!="Manual"});l.setUiAttribs({greyout:a.get()!="Manual"});if(E)if(CGL.Texture.isPixelFormatFloat(g.get())&&R()==CGL.Texture.FILTER_MIPMAP)i.setUiError("fpmipmap","Don't use mipmap and 32bit at the same time, many systems do not support this.");else i.setUiError("fpmipmap",null);F();L();N()}function N(){if(E)if(s.isLinked()&&s.get()&&E.isFloatingPoint()<s.get().isFloatingPoint())i.setUiError("textypediff","Warning: Mixing floating point and non floating point texture can result in data/precision loss",1);else i.setUiError("textypediff",null)}i.preRender=()=>{y()};function z(){if(!S){S=new CGL.Shader(t,"copytextureshader");S.setSource(S.getDefaultVertexShader(),e.imgcomp_frag);V=new CGL.Uniform(S,"t","tex",0);k=new CGL.Uniform(S,"t","UVTex",1);G=new CGL.Uniform(S,"4f","bgColor",d,m,p,_);L()}t.pushShader(S);t.currentTextureEffect.bind();if(s.get())t.setTexture(0,s.get().tex);else if(!f.get()&&b.get())t.setTexture(0,b.get().tex);if(n.get())t.setTexture(1,n.get().tex);t.currentTextureEffect.finish();t.popShader()}function y(){if(!T||A)C();t.pushBlend(false);H();const e=t.currentTextureEffect;t.currentTextureEffect=T;t.currentTextureEffect.imgCompVer=3;t.currentTextureEffect.width=o.get();t.currentTextureEffect.height=l.get();T.setSourceTexture(E);T.startEffect(s.get()||CGL.Texture.getEmptyTexture(t,D),true);z();x.trigger();t.pushViewPort(0,0,o.get(),l.get());T.endEffect();b.setRef(T.getCurrentSourceTexture());t.popViewPort();t.popBlend();t.currentTextureEffect=e}}};CABLES.OPS["17212e2b-d692-464c-8f8d-2d511dd3410a"]={f:Ops.Gl.ImageCompose.ImageCompose_v4,objName:"Ops.Gl.ImageCompose.ImageCompose_v4"};Ops.Gl.ImageCompose.DrawImage_v3=class extends CABLES.Op{constructor(){super(...arguments);const r=this;const e=r.attachments={drawimage_frag:"#ifdef HAS_TEXTURES\n    IN vec2 texCoord;\n    UNI sampler2D tex;\n    UNI sampler2D image;\n#endif\n\n#ifdef TEX_TRANSFORM\n    IN mat3 transform;\n#endif\n// UNI float rotate;\n\n{{CGL.BLENDMODES}}\n\n#ifdef HAS_TEXTUREALPHA\n   UNI sampler2D imageAlpha;\n#endif\n\nUNI float amount;\n\n#ifdef ASPECT_RATIO\n    UNI float aspectTex;\n    UNI float aspectPos;\n#endif\n\nvoid main()\n{\n    vec4 blendRGBA=vec4(0.0,0.0,0.0,1.0);\n\n    #ifdef HAS_TEXTURES\n        vec2 tc=texCoord;\n\n        #ifdef TEX_FLIP_X\n            tc.x=1.0-tc.x;\n        #endif\n        #ifdef TEX_FLIP_Y\n            tc.y=1.0-tc.y;\n        #endif\n\n        #ifdef ASPECT_RATIO\n            #ifdef ASPECT_AXIS_X\n                tc.y=(1.0-aspectPos)-(((1.0-aspectPos)-tc.y)*aspectTex);\n            #endif\n            #ifdef ASPECT_AXIS_Y\n                tc.x=(1.0-aspectPos)-(((1.0-aspectPos)-tc.x)/aspectTex);\n            #endif\n        #endif\n\n        #ifdef TEX_TRANSFORM\n            vec3 coordinates=vec3(tc.x, tc.y,1.0);\n            tc=(transform * coordinates ).xy;\n        #endif\n\n        blendRGBA=texture(image,tc);\n\n        vec3 blend=blendRGBA.rgb;\n        vec4 baseRGBA=texture(tex,texCoord);\n        vec3 base=baseRGBA.rgb;\n\n\n        #ifdef PREMUL\n            blend.rgb = (blend.rgb) + (base.rgb * (1.0 - blendRGBA.a));\n        #endif\n\n        vec3 colNew=_blend(base,blend);\n\n\n\n\n        #ifdef REMOVE_ALPHA_SRC\n            blendRGBA.a=1.0;\n        #endif\n\n        #ifdef HAS_TEXTUREALPHA\n            vec4 colImgAlpha=texture(imageAlpha,tc);\n            float colImgAlphaAlpha=colImgAlpha.a;\n\n            #ifdef ALPHA_FROM_LUMINANCE\n                vec3 gray = vec3(dot(vec3(0.2126,0.7152,0.0722), colImgAlpha.rgb ));\n                colImgAlphaAlpha=(gray.r+gray.g+gray.b)/3.0;\n            #endif\n\n            #ifdef ALPHA_FROM_INV_UMINANCE\n                vec3 gray = vec3(dot(vec3(0.2126,0.7152,0.0722), colImgAlpha.rgb ));\n                colImgAlphaAlpha=1.0-(gray.r+gray.g+gray.b)/3.0;\n            #endif\n\n            #ifdef INVERT_ALPHA\n                colImgAlphaAlpha=clamp(colImgAlphaAlpha,0.0,1.0);\n                colImgAlphaAlpha=1.0-colImgAlphaAlpha;\n            #endif\n\n            blendRGBA.a=colImgAlphaAlpha*blendRGBA.a;\n        #endif\n    #endif\n\n    float am=amount;\n\n    #ifdef CLIP_REPEAT\n        if(tc.y>1.0 || tc.y<0.0 || tc.x>1.0 || tc.x<0.0)\n        {\n            // colNew.rgb=vec3(0.0);\n            am=0.0;\n        }\n    #endif\n\n    #ifdef ASPECT_RATIO\n        #ifdef ASPECT_CROP\n            if(tc.y>1.0 || tc.y<0.0 || tc.x>1.0 || tc.x<0.0)\n            {\n                colNew.rgb=base.rgb;\n                am=0.0;\n            }\n\n        #endif\n    #endif\n\n\n\n    #ifndef PREMUL\n        blendRGBA.rgb=mix(colNew,base,1.0-(am*blendRGBA.a));\n        blendRGBA.a=clamp(baseRGBA.a+(blendRGBA.a*am),0.,1.);\n    #endif\n\n    #ifdef PREMUL\n        // premultiply\n        // blendRGBA.rgb = (blendRGBA.rgb) + (baseRGBA.rgb * (1.0 - blendRGBA.a));\n        blendRGBA=vec4(\n            mix(colNew.rgb,base,1.0-(am*blendRGBA.a)),\n            blendRGBA.a*am+baseRGBA.a\n            );\n    #endif\n\n    #ifdef ALPHA_MASK\n    blendRGBA.a=baseRGBA.a;\n    #endif\n\n    outColor=blendRGBA;\n}\n\n\n\n\n\n\n\n",drawimage_vert:"IN vec3 vPosition;\nIN vec2 attrTexCoord;\nIN vec3 attrVertNormal;\n\nUNI mat4 projMatrix;\nUNI mat4 mvMatrix;\n\nOUT vec2 texCoord;\n// OUT vec3 norm;\n\n#ifdef TEX_TRANSFORM\n    UNI float posX;\n    UNI float posY;\n    UNI float scaleX;\n    UNI float scaleY;\n    UNI float rotate;\n    OUT mat3 transform;\n#endif\n\nvoid main()\n{\n   texCoord=attrTexCoord;\n//   norm=attrVertNormal;\n\n   #ifdef TEX_TRANSFORM\n        vec3 coordinates=vec3(attrTexCoord.x, attrTexCoord.y,1.0);\n        float angle = radians( rotate );\n        vec2 scale= vec2(scaleX,scaleY);\n        vec2 translate= vec2(posX,posY);\n\n        transform = mat3(   scale.x * cos( angle ), scale.x * sin( angle ), 0.0,\n            - scale.y * sin( angle ), scale.y * cos( angle ), 0.0,\n            - 0.5 * scale.x * cos( angle ) + 0.5 * scale.y * sin( angle ) - 0.5 * translate.x*2.0 + 0.5,  - 0.5 * scale.x * sin( angle ) - 0.5 * scale.y * cos( angle ) - 0.5 * translate.y*2.0 + 0.5, 1.0);\n   #endif\n\n   gl_Position = projMatrix * mvMatrix * vec4(vPosition,  1.0);\n}\n"};const t=r.inTrigger("render"),i=CGL.TextureEffect.AddBlendSelect(r,"blendMode"),s=r.inValueSlider("amount",1),n=r.inTexture("Image"),a=r.inValueBool("Premultiplied",false),o=r.inValueBool("Alpha Mask",false),l=r.inValueBool("removeAlphaSrc",false),h=r.inTexture("Mask"),u=r.inValueSelect("Mask Src",["alpha channel","luminance","luminance inv"],"luminance"),c=r.inBool("Invert alpha channel"),g=r.inValueBool("Aspect Ratio",false),f=r.inValueSelect("Stretch Axis",["X","Y"],"X"),d=r.inValueSlider("Position",0),m=r.inValueBool("Crop",false),p=r.outTrigger("trigger");i.set("normal");const _=r.patch.cgl;const x=new CGL.Shader(_,"drawimage");h.onLinkChanged=b;r.setPortGroup("Aspect Ratio",[g,d,m,f]);r.setPortGroup("Mask",[h,u,c]);function b(){if(h.isLinked()){l.setUiAttribs({greyout:true});u.setUiAttribs({greyout:false});c.setUiAttribs({greyout:false})}else{l.setUiAttribs({greyout:false});u.setUiAttribs({greyout:true});c.setUiAttribs({greyout:true})}}r.toWorkPortsNeedToBeLinked(n);x.setSource(e.drawimage_vert,e.drawimage_frag);const v=new CGL.Uniform(x,"t","tex",0),w=new CGL.Uniform(x,"t","image",1),U=new CGL.Uniform(x,"t","imageAlpha",2),T=new CGL.Uniform(x,"f","aspectTex",1),B=new CGL.Uniform(x,"f","aspectPos",d);g.onChange=m.onChange=f.onChange=E;function E(){x.removeDefine("ASPECT_AXIS_X");x.removeDefine("ASPECT_AXIS_Y");x.removeDefine("ASPECT_CROP");d.setUiAttribs({greyout:!g.get()});m.setUiAttribs({greyout:!g.get()});f.setUiAttribs({greyout:!g.get()});if(g.get()){x.define("ASPECT_RATIO");if(m.get())x.define("ASPECT_CROP");if(f.get()=="X")x.define("ASPECT_AXIS_X");if(f.get()=="Y")x.define("ASPECT_AXIS_Y")}else{x.removeDefine("ASPECT_RATIO");if(m.get())x.define("ASPECT_CROP");if(f.get()=="X")x.define("ASPECT_AXIS_X");if(f.get()=="Y")x.define("ASPECT_AXIS_Y")}}const A=r.inValueBool("flip x");const S=r.inValueBool("flip y");let C=r.inValueBool("Transform");let R=r.inValueSlider("Scale X",1);let O=r.inValueSlider("Scale Y",1);let M=r.inValue("Position X",0);let I=r.inValue("Position Y",0);let F=r.inValue("Rotation",0);const L=r.inValueBool("Clip Repeat",false);const D=new CGL.Uniform(x,"f","scaleX",R);const V=new CGL.Uniform(x,"f","scaleY",O);const k=new CGL.Uniform(x,"f","posX",M);const G=new CGL.Uniform(x,"f","posY",I);const j=new CGL.Uniform(x,"f","rotate",F);C.onChange=P;function P(){x.toggleDefine("TEX_TRANSFORM",C.get());R.setUiAttribs({greyout:!C.get()});O.setUiAttribs({greyout:!C.get()});M.setUiAttribs({greyout:!C.get()});I.setUiAttribs({greyout:!C.get()});F.setUiAttribs({greyout:!C.get()})}CGL.TextureEffect.setupBlending(r,x,i,s);const H=new CGL.Uniform(x,"f","amount",s);t.onTriggered=y;L.onChange=h.onChange=a.onChange=o.onChange=c.onChange=S.onChange=A.onChange=l.onChange=u.onChange=N;P();b();E();N();function N(){x.toggleDefine("REMOVE_ALPHA_SRC",l.get());x.toggleDefine("ALPHA_MASK",o.get());x.toggleDefine("CLIP_REPEAT",L.get());x.toggleDefine("HAS_TEXTUREALPHA",h.get()&&h.get().tex);x.toggleDefine("TEX_FLIP_X",A.get());x.toggleDefine("TEX_FLIP_Y",S.get());x.toggleDefine("INVERT_ALPHA",c.get());x.toggleDefine("ALPHA_FROM_LUMINANCE",u.get()=="luminance");x.toggleDefine("ALPHA_FROM_INV_UMINANCE",u.get()=="luminance_inv");x.toggleDefine("PREMUL",a.get())}function y(){if(!CGL.TextureEffect.checkOpInEffect(r))return;const e=n.get();if(e&&e.tex&&s.get()>0){_.pushShader(x);_.currentTextureEffect.bind();const t=_.currentTextureEffect.getCurrentSourceTexture();_.setTexture(0,t.tex);const i=1/(_.currentTextureEffect.getWidth()/_.currentTextureEffect.getHeight())*(e.width/e.height);T.setValue(i);_.setTexture(1,e.tex);if(h.get()&&h.get().tex){_.setTexture(2,h.get().tex)}_.pushBlendMode(CGL.BLEND_NONE,true);_.currentTextureEffect.finish();_.popBlendMode();_.popShader()}p.trigger()}}};CABLES.OPS["8f6b2f15-fcb0-4597-90c0-e5173f2969fe"]={f:Ops.Gl.ImageCompose.DrawImage_v3,objName:"Ops.Gl.ImageCompose.DrawImage_v3"};Ops.Gl.ImageCompose.Levels_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={levels_frag:"IN vec2 texCoord;\nUNI sampler2D tex;\nUNI float inMin;\nUNI float inMax;\nUNI float midPoint;\nUNI float outMax;\nUNI float outMin;\n\nvoid main()\n{\n    vec4 baseRGBA=texture(tex,texCoord);\n    vec3 base=baseRGBA.rgb;\n    vec3 inputRange = min(max(base - vec3(inMin), vec3(0.0)) / (vec3(inMax) - vec3(inMin)), vec3(outMax));\n\n    inputRange = pow(inputRange, vec3(1.0 / (1.5 - midPoint)));\n\n    outColor= vec4(mix(vec3(outMin), vec3(1.0), inputRange) ,baseRGBA.a);\n}"};const i=e.inTrigger("Render"),r=e.inValueSlider("In Min",0),s=e.inValueSlider("Midpoint",.5),n=e.inValueSlider("In Max",1),a=e.inValueSlider("Out Min",0),o=e.inValueSlider("Out Max",1),l=e.outTrigger("Next");const h=e.patch.cgl;const u=new CGL.Shader(h,e.name,e);const c=new CGL.Uniform(u,"f","inMin",r),g=new CGL.Uniform(u,"f","midPoint",s),f=new CGL.Uniform(u,"f","inMax",n),d=new CGL.Uniform(u,"f","outMin",a),m=new CGL.Uniform(u,"f","outMax",o),p=new CGL.Uniform(u,"t","tex",0);u.setSource(u.getDefaultVertexShader(),t.levels_frag);i.onTriggered=function(){if(!CGL.TextureEffect.checkOpInEffect(e,3))return;h.pushShader(u);h.currentTextureEffect.bind();h.setTexture(0,h.currentTextureEffect.getCurrentSourceTexture().tex);h.currentTextureEffect.finish();h.popShader();l.trigger()}}};CABLES.OPS["cf49063c-a010-4e2b-add6-f8dea50392b5"]={f:Ops.Gl.ImageCompose.Levels_v2,objName:"Ops.Gl.ImageCompose.Levels_v2"};Ops.Math.Sum=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValueFloat("number1",0),r=e.inValueFloat("number2",0),s=e.outNumber("result");e.setUiAttribs({mathTitle:true});i.onChange=r.onChange=n;n();function n(){const e=i.get()+r.get();if(!isNaN(e))s.set(e)}}};CABLES.OPS["c8fb181e-0b03-4b41-9e55-06b6267bc634"]={f:Ops.Math.Sum,objName:"Ops.Math.Sum"};Ops.Gl.ImageCompose.FastBlur_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={blur_frag:"\nUNI sampler2D tex;\n#ifdef USE_MASK\n    UNI sampler2D texMask;\n#endif\nUNI float amount;\nUNI float pass;\n\nIN vec2 texCoord;\n\nUNI float dirX;\nUNI float dirY;\nUNI float width;\nUNI float height;\n\nIN vec2 coord0;\nIN vec2 coord1;\nIN vec2 coord2;\nIN vec2 coord3;\nIN vec2 coord4;\nIN vec2 coord5;\nIN vec2 coord6;\n\n#ifdef HAS_MASK\n    UNI sampler2D imageMask;\n#endif\n\nvoid main()\n{\n    vec4 color = vec4(0.0);\n\n    #ifdef USE_MASK\n        #ifdef MASK_INVERT\n            if(texture(texMask,texCoord).r<0.5)\n            {\n                outColor= texture(tex, texCoord);\n                return;\n            }\n        #endif\n\n        #ifndef MASK_INVERT\n            if(texture(texMask,texCoord).r>0.5)\n            {\n                outColor= texture(tex, texCoord);\n                return;\n            }\n        #endif\n    #endif\n\n    color += texture(tex, coord0) * 0.06927096443792478;\n    color += texture(tex, coord1) * 0.1383328848652136;\n    color += texture(tex, coord2) * 0.21920904690397863;\n    color += texture(tex, coord3) * 0.14637421;\n    color += texture(tex, coord4) * 0.21920904690397863;\n    color += texture(tex, coord5) * 0.1383328848652136;\n    color += texture(tex, coord6) * 0.06927096443795711;\n\n    outColor= color;\n}",blur_vert:"\nIN vec3 vPosition;\nIN vec2 attrTexCoord;\nIN vec3 attrVertNormal;\nOUT vec2 texCoord;\nOUT vec3 norm;\nUNI mat4 projMatrix;\nUNI mat4 mvMatrix;\nUNI mat4 modelMatrix;\n\nUNI float pass;\nUNI float dirX;\nUNI float dirY;\nUNI float width;\nUNI float height;\n\nOUT vec2 coord0;\nOUT vec2 coord1;\nOUT vec2 coord2;\nOUT vec2 coord3;\nOUT vec2 coord4;\nOUT vec2 coord5;\nOUT vec2 coord6;\n\nvoid main()\n{\n    texCoord=attrTexCoord;\n    norm=attrVertNormal;\n    vec4 pos=vec4(vPosition,  1.0);\n    {{MODULE_VERTEX_POSITION}}\n\n    vec2 dir=vec2(dirX,dirY);\n    vec2 res=vec2( (1.) / width , (1.) / height )*dir;\n\n    coord3= attrTexCoord;\n\n    coord0= attrTexCoord + (-3.0368997744118595 * res);\n    coord1= attrTexCoord + (-2.089778445362373 * res);\n    coord2= attrTexCoord + (-1.2004366090034069 * res);\n    coord4= attrTexCoord + (1.2004366090034069 * res);\n    coord5= attrTexCoord + (2.089778445362373* res);\n    coord6= attrTexCoord + (3.0368997744118595 * res);\n\n    #ifdef CLAMP\n        coord0=clamp(coord0,0.0,1.0);\n        coord1=clamp(coord1,0.0,1.0);\n        coord2=clamp(coord2,0.0,1.0);\n        coord3=clamp(coord3,0.0,1.0);\n        coord4=clamp(coord4,0.0,1.0);\n        coord5=clamp(coord5,0.0,1.0);\n        coord6=clamp(coord6,0.0,1.0);\n    #endif\n\n    gl_Position = projMatrix * mvMatrix * pos;\n}\n"};const i=e.inTrigger("render"),r=e.outTrigger("trigger"),s=e.inInt("Passes",3),n=e.inBool("Clamp",false),a=e.inDropDown("direction",["both","vertical","horizontal"],"both"),o=e.inTexture("Mask"),l=e.inBool("Mask Invert",false);const h=e.patch.cgl;const u=new CGL.Shader(h,"fastblur");e.setPortGroup("Mask",[o,l]);u.setSource(t.blur_vert,t.blur_frag);const c=new CGL.Uniform(u,"t","tex",0),g=new CGL.Uniform(u,"f","dirX",0),f=new CGL.Uniform(u,"f","dirY",0),d=new CGL.Uniform(u,"f","width",0),m=new CGL.Uniform(u,"f","height",0),p=new CGL.Uniform(u,"f","pass",0),_=new CGL.Uniform(u,"f","amount",s.get()),x=new CGL.Uniform(u,"t","texMask",1);s.onChange=()=>{_.setValue(s.get())};let b=0;a.onChange=()=>{if(a.get()=="both")b=0;if(a.get()=="horizontal")b=1;if(a.get()=="vertical")b=2};n.onChange=()=>{u.toggleDefine("CLAMP",n.get())};l.onChange=o.onChange=v;v();function v(){u.toggleDefine("USE_MASK",o.isLinked());u.toggleDefine("MASK_INVERT",l.get());l.setUiAttribs({greyout:!o.isLinked()})}i.onTriggered=function(){if(!CGL.TextureEffect.checkOpInEffect(e,3))return;d.setValue(h.currentTextureEffect.getCurrentSourceTexture().width);m.setValue(h.currentTextureEffect.getCurrentSourceTexture().height);const t=s.get();if(o.get())h.setTexture(1,o.get().tex);for(let e=0;e<t;e++){h.pushShader(u);p.setValue(e/t);if(b===0||b==2){h.currentTextureEffect.bind();h.setTexture(0,h.currentTextureEffect.getCurrentSourceTexture().tex);g.setValue(0);f.setValue(1+e*e);h.currentTextureEffect.finish()}if(b===0||b==1){h.currentTextureEffect.bind();h.setTexture(0,h.currentTextureEffect.getCurrentSourceTexture().tex);g.setValue(1+e*e);f.setValue(0);h.currentTextureEffect.finish()}h.popShader()}r.trigger()}}};CABLES.OPS["61ed277f-d096-43b2-9de8-dc87fb3a9169"]={f:Ops.Gl.ImageCompose.FastBlur_v2,objName:"Ops.Gl.ImageCompose.FastBlur_v2"};Ops.TimeLine.TimeLinePlayer=class extends CABLES.Op{constructor(){super(...arguments);const t=this;const e=t.attachments={};const i=t.inTriggerButton("Play"),r=t.inTriggerButton("Pause"),s=t.inTriggerButton("rewind"),n=t.inFloat("Set current time",0),a=t.outTrigger("play trigger"),o=t.outTrigger("pause trigger"),l=t.outTrigger("rewind trigger"),h=t.outBool("is Playing"),u=t.outNumber("set time (seconds)"),c=t.outNumber("current time"),g=t.outNumber("current frame");i.onTriggered=function(){t.patch.timer.play();t.patch.timer.setTime(n.get());u.set(n.get());a.trigger()};r.onTriggered=function(){t.patch.timer.pause();o.trigger()};t.onAnimFrame=function(e){g.set(Math.round(e*30));c.set(e);h.set(t.patch.timer.isPlaying())};s.onTriggered=function(){t.patch.timer.setTime(0);l.trigger()}}};CABLES.OPS["97e57613-6a51-41cf-9de5-fe3dbc2c69b2"]={f:Ops.TimeLine.TimeLinePlayer,objName:"Ops.TimeLine.TimeLinePlayer"};Ops.String.OrString=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inString("String 1"),r=e.inString("String 2"),s=e.inString("String 3"),n=e.inString("String 4"),a=e.inString("String 5"),o=e.inString("String 6"),l=e.inString("String 7"),h=e.inString("String 8"),u=e.outString("Result");i.onChange=r.onChange=s.onChange=n.onChange=a.onChange=o.onChange=l.onChange=h.onChange=c;function c(){u.set(i.get()||r.get()||s.get()||n.get()||a.get()||o.get()||l.get()||h.get())}}};CABLES.OPS["6b7f9561-6faf-4df7-ac3b-64235dded700"]={f:Ops.String.OrString,objName:"Ops.String.OrString"};Ops.Vars.VarSetString_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inString("Value","New String");e.varName=e.inDropDown("Variable",[],"",true);new CABLES.VarSetOpWrapper(e,"string",i,e.varName)}};CABLES.OPS["0b4d9229-8024-4a30-9cc0-f6653942c2e4"]={f:Ops.Vars.VarSetString_v2,objName:"Ops.Vars.VarSetString_v2"};Ops.Vars.VarGetString=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};var i=e.outString("Value");e.varName=e.inValueSelect("Variable",[],"",true);new CABLES.VarGetOpWrapper(e,"string",e.varName,i)}};CABLES.OPS["3ad08cfc-bce6-4175-9746-fef2817a3b12"]={f:Ops.Vars.VarGetString,objName:"Ops.Vars.VarGetString"};Ops.String.String_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inString("value",""),r=e.outString("String");i.onChange=function(){if(!i.isLinked())e.setUiAttrib({extendTitle:i.get()});r.set(i.get())}}};CABLES.OPS["d697ff82-74fd-4f31-8f54-295bc64e713d"]={f:Ops.String.String_v2,objName:"Ops.String.String_v2"};Ops.Cables.LoadingStatus_v2=class extends CABLES.Op{constructor(){super(...arguments);const r=this;const e=r.attachments={};const t=r.inTrigger("exe"),s=r.inBool("Play Timeline",true),i=r.outTrigger("Next"),n=r.outBoolNum("Finished Initial Loading",false),a=r.outBoolNum("Loading"),o=r.outNumber("Progress"),l=r.outArray("Jobs"),h=r.outTrigger("Trigger Loading Finished ");const u=r.patch.cgl;const c=r.patch;let g=false;const f=[];let d=true;let m=0;document.body.classList.add("cables-loading");let p=u.patch.loading.start("loadingStatusInit","loadingStatusInit",r);r.patch.loading.on("finishedTask",_.bind(this));r.patch.loading.on("startTask",_.bind(this));function _(){const e=r.patch.loading.getListJobs();o.set(c.loading.getProgress());let t=e.length===0;const i=!t;if(i){l.set(r.patch.loading.getListJobs())}if(i){if(d){r.patch.timer.setTime(0);if(s.get()){r.patch.timer.play()}else{r.patch.timer.pause()}}d=false;document.body.classList.remove("cables-loading");document.body.classList.add("cables-loaded")}else{g=true;l.set(r.patch.loading.getListJobs());if(c.loading.getProgress()<1){r.patch.timer.setTime(0);r.patch.timer.pause()}}n.set(g);if(a.get()&&t)h.trigger();a.set(i);r.setUiAttribs({loading:i})}t.onTriggered=()=>{_();i.trigger();if(p){u.patch.loading.finished(p);p=null}}}};CABLES.OPS["e62f7f4c-7436-437e-8451-6bc3c28545f7"]={f:Ops.Cables.LoadingStatus_v2,objName:"Ops.Cables.LoadingStatus_v2"};Ops.Ui.Routing.RouteNumber=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValueFloat("value"),r=e.outNumber("result");i.onChange=n;let s=false;e.setUiAttribs({display:"reroute"});function n(){r.set(i.get())}}};CABLES.OPS["afff634a-b581-4449-b6f7-9ec7863c5d4d"]={f:Ops.Ui.Routing.RouteNumber,objName:"Ops.Ui.Routing.RouteNumber"};Ops.Gl.CanvasInfo_v3=class extends CABLES.Op{constructor(){super(...arguments);const t=this;const e=t.attachments={};const i=t.outNumber("CSS Width"),r=t.outNumber("CSS Height"),s=t.outNumber("Pixel Ratio"),n=t.outNumber("Pixel Width"),a=t.outNumber("Pixel Height"),o=t.outNumber("Aspect Ratio"),l=t.outBool("Landscape"),h=t.outObject("Canvas","element"),u=t.outObject("Canvas Parent","element"),c=t.outTrigger("Resized");let g=t.patch.cgl;h.set(t.patch.cgl.canvas);u.set(t.patch.cgl.canvas.parentElement);g.on("resize",()=>{c.trigger();f()});f();function f(){let e=1;if(g.canvasHeight==0)setTimeout(f,100);r.set(g.canvasHeight/t.patch.cgl.pixelDensity);i.set(g.canvasWidth/t.patch.cgl.pixelDensity);n.set(g.canvasWidth);a.set(g.canvasHeight);s.set(t.patch.cgl.pixelDensity);o.set(g.canvasWidth/g.canvasHeight);l.set(g.canvasWidth>g.canvasHeight?1:0)}}};CABLES.OPS["be186ff9-427e-409f-b6a4-f8d957bf7bc7"]={f:Ops.Gl.CanvasInfo_v3,objName:"Ops.Gl.CanvasInfo_v3"};Ops.Math.Compare.GreaterThan=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValueFloat("number1"),r=e.inValueFloat("number2"),s=e.outBoolNum("result");e.setUiAttribs({mathTitle:true});i.onChange=r.onChange=n;function n(){s.set(i.get()>r.get())}}};CABLES.OPS["b250d606-f7f8-44d3-b099-c29efff2608a"]={f:Ops.Math.Compare.GreaterThan,objName:"Ops.Math.Compare.GreaterThan"};Ops.Devices.Mouse.Mouse_v4=class extends CABLES.Op{constructor(){super(...arguments);const t=this;const U=t.attachments={};const i=t.inSwitch("Coordinates",["-1 to 1","Pixel Display","Pixel","0 to 1"],"-1 to 1"),s=t.inValueSelect("Area",["Canvas Area","Canvas","Document","Parent Element"],"Canvas Area"),n=t.inValueBool("flip y",true),r=t.inBool("right click prevent default",true),a=t.inSwitch("Events",["Pointer","Touch","Mouse"]),o=t.inValueBool("Passive Events",false),l=t.inObject("Element","element"),h=t.inValueBool("Active",true),u=t.outNumber("x",0),c=t.outNumber("y",0),g=t.outTrigger("click"),f=t.outTrigger("click right"),d=t.outBoolNum("Button is down"),m=t.outBoolNum("Mouse is hovering"),B=t.outNumber("Movement X",0),D=t.outNumber("Movement Y",0),p=t.outObject("Event");const _=t.patch.cgl;let x=1;let b=null;let v=null;o.onChange=s.onChange=w;i.onChange=k;t.onDelete=y;w();t.on("loadedValueSet",T);function T(){if(x==0){if(v.clientWidth===0)setTimeout(T,50);u.set(v.clientWidth/2);c.set(v.clientHeight/2)}else if(x==1){u.set(0);c.set(0)}else if(x==2){u.set(.5);c.set(.5)}else if(x==3){if(v.clientWidth===0){setTimeout(T,50)}u.set(v.clientWidth/2/_.pixelDensity);c.set(v.clientHeight/2/_.pixelDensity)}else console.error("unknown normalize mouse",x)}function V(s,n){s=s||0;n=n||0;if(x==0){u.set(s);c.set(n)}else if(x==3){u.set(s*_.pixelDensity);c.set(n*_.pixelDensity)}else{let i=v.clientWidth/_.pixelDensity;let r=v.clientHeight/_.pixelDensity;i=i||1;r=r||1;if(x==1){let e=s/i*2-1;let t=n/r*2-1;e=CABLES.clamp(e,-1,1);t=CABLES.clamp(t,-1,1);u.set(e);c.set(t)}else if(x==2){let e=s/i;let t=n/r;e=CABLES.clamp(e,0,1);t=CABLES.clamp(t,0,1);u.set(e);c.set(t)}}}function E(e){if(!v)return;const t=v.getBoundingClientRect();return e.clientX>t.left&&e.clientX<t.left+t.width&&e.clientY>t.top&&e.clientY<t.top+t.height}l.onChange=a.onChange=function(){s.setUiAttribs({greyout:l.isLinked()});y();w()};h.onChange=function(){if(b)y();if(h.get())w()};function k(){if(i.get()=="Pixel")x=0;else if(i.get()=="-1 to 1")x=1;else if(i.get()=="0 to 1")x=2;else if(i.get()=="Pixel Display")x=3}function A(e){p.setRef(e);d.set(false);m.set(E(e))}function S(e){if(!E(e))return;p.setRef(e);d.set(true)}function C(e){p.setRef(e);d.set(false)}function R(e){if(!E(e))return;p.setRef(e);f.trigger();if(r.get())e.preventDefault()}function O(e){if(!E(e))return;p.setRef(e);g.trigger()}function M(e){p.setRef(e);d.set(false);m.set(E(e))}function I(e){m.set(E(e));if(s.get()==="Canvas Area"){const t=v.getBoundingClientRect();const i=e.clientX-t.left;const r=e.clientY-t.top;if(i<0||i>t.width||r>t.height||r<0)return}p.setRef(e);N(e);B.set(e.movementX/_.pixelDensity);D.set(e.movementY/_.pixelDensity)}function F(e){if(event.touches&&event.touches.length>0)N(e.touches[0]);p.setRef(e)}function L(t){d.set(true);if(t.touches&&t.touches.length>0)S(t.touches[0]);p.setRef(e)}function P(t){d.set(false);C();p.setRef(e)}function N(e){let t=e.clientX;let i=e.clientY;if(l.isLinked()){t=e.offsetX;i=e.offsetY}else{if(s.get()!="Document"){t=e.offsetX;i=e.offsetY}if(s.get()==="Canvas Area"){const r=v.getBoundingClientRect();t=e.clientX-r.left;i=e.clientY-r.top;if(t<0||t>r.width||i>r.height||i<0)return;t=CABLES.clamp(t,0,r.width);i=CABLES.clamp(i,0,r.height)}}if(n.get())i=v.clientHeight-i;V(t/_.pixelDensity,i/_.pixelDensity)}function y(){if(!b)return;b.removeEventListener("touchend",P);b.removeEventListener("touchstart",L);b.removeEventListener("touchmove",F);b.removeEventListener("mousemove",I);b.removeEventListener("mouseleave",M);b.removeEventListener("mousedown",S);b.removeEventListener("mouseup",C);b.removeEventListener("mouseenter",A);b.removeEventListener("pointermove",I);b.removeEventListener("pointerleave",M);b.removeEventListener("pointerdown",S);b.removeEventListener("pointerup",C);b.removeEventListener("pointerenter",A);b.removeEventListener("click",O);b.removeEventListener("contextmenu",R);b=null}function w(){if(b||!h.get())y();if(!h.get())return;b=v=_.canvas;if(l.isLinked()){b=v=l.get()}else{if(s.get()=="Canvas Area"){v=_.canvas.parentElement;b=document.body}if(s.get()=="Document")v=b=document.body;if(s.get()=="Parent Element")b=v=_.canvas.parentElement}if(!v){t.setUiError("noarea","could not find area element for mouse",2);return}t.setUiError("noarea",null);let e=false;if(o.get())e={passive:true};if(a.get()=="touch"){b.addEventListener("touchend",P,e);b.addEventListener("touchstart",L,e);b.addEventListener("touchmove",F,e)}if(a.get()=="Mouse"){b.addEventListener("mousemove",I,e);b.addEventListener("mouseleave",M,e);b.addEventListener("mousedown",S,e);b.addEventListener("mouseup",C,e);b.addEventListener("mouseenter",A,e)}if(a.get()=="Pointer"){b.addEventListener("pointermove",I,e);b.addEventListener("pointerleave",M,e);b.addEventListener("pointerdown",S,e);b.addEventListener("pointerup",C,e);b.addEventListener("pointerenter",A,e)}b.addEventListener("contextmenu",R,e);b.addEventListener("click",O,e)}}};CABLES.OPS["c86eb411-a996-47cd-a149-264903dc408c"]={f:Ops.Devices.Mouse.Mouse_v4,objName:"Ops.Devices.Mouse.Mouse_v4"};Ops.Anim.SimpleAnim=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inTrigger("exe"),r=e.inTriggerButton("reset"),s=e.inTriggerButton("rewind"),n=e.inValueFloat("start",0),a=e.inValueFloat("end",1),o=e.inValueFloat("duration",.5),l=e.inValueBool("loop"),h=e.inValueBool("Wait for Reset",true),u=e.outTrigger("Next"),c=e.outNumber("result"),g=e.outNumber("finished"),f=e.outTrigger("Finished Trigger");const d=new CABLES.Anim;let m=false;let p=-1;d.createPort(e,"easing",_);l.onChange=_;_();o.onChange=_;function _(){if(d.keys.length!=3){d.setValue(0,0);d.setValue(1,0);d.setValue(2,0)}d.keys[0].time=CABLES.now()/1e3;d.keys[0].value=n.get();if(d.defaultEasing!=p)d.keys[0].setEasing(d.defaultEasing);d.keys[1].time=o.get()+CABLES.now()/1e3;d.keys[1].value=a.get();if(d.defaultEasing!=p)d.keys[1].setEasing(d.defaultEasing);d.loop=l.get();if(d.loop){}else{d.keys[2].time=d.keys[1].time;d.keys[2].value=d.keys[1].value;if(d.defaultEasing!=p)d.keys[2].setEasing(d.defaultEasing)}g.set(false);p=d.defaultEasing}r.onTriggered=function(){m=true;_()};s.onTriggered=function(){d.keys[0].time=CABLES.now()/1e3;d.keys[0].value=n.get();d.keys[1].time=CABLES.now()/1e3;d.keys[1].value=n.get();d.keys[2].time=CABLES.now()/1e3;d.keys[2].value=n.get();c.set(n.get())};i.onTriggered=function(){if(h.get()&&!m){c.set(n.get());u.trigger();return}let e=CABLES.now()/1e3;let t=d.getValue(e);c.set(t);if(d.hasEnded(e)){if(!g.get())f.trigger();g.set(true)}u.trigger()}}};CABLES.OPS["5b244b6e-c505-4743-b2cc-8119ef720028"]={f:Ops.Anim.SimpleAnim,objName:"Ops.Anim.SimpleAnim"};Ops.Anim.Smooth=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inTrigger("Update"),r=e.inBool("Separate inc/dec",false),s=e.inValue("Value"),n=e.outTrigger("Next"),a=e.inValue("Inc factor",4),o=e.inValue("Dec factor",4),l=e.outNumber("Result",0);let h=0;let u=0;let c=0;let g=0;e.toWorkPortsNeedToBeLinked(i);let f;let d;let m=4;let p=true;let _=0;const x=0;const b=1;v();T();r.setUiAttribs({hidePort:true});a.onChange=o.onChange=T;r.onChange=v;E();function v(){const e=r.get();if(!e)_=x;else _=b;if(_==x){o.setUiAttribs({greyout:true});a.setUiAttribs({title:"Inc/Dec factor"})}else if(_==b){o.setUiAttribs({greyout:false});a.setUiAttribs({title:"Inc factor"})}T();E()}function T(){if(_==x){f=a.get();d=a.get()}else if(_==b){f=a.get();d=o.get()}if(f<=.2||f!=f)f=.2;if(d<=.2||d!=d)d=.2}s.onChange=function(){p=false;let e=u;u=s.get()};a.onChange=function(){T()};function E(){let e=1;if(performance.now()-g>500||g===0)h=s.get()||0;else e=(performance.now()-g)/(performance.now()-g);g=performance.now();if(h!=h)h=0;if(m<=0)m=1e-4;const t=u-h;if(t>=0)h+=t/(d*e);else h+=t/(f*e);if(Math.abs(t)<1e-5)h=u;if(m!=m)h=0;if(h!=h||h==-Infinity||h==Infinity)h=s.get();if(c!=h){l.set(h);c=h}if(h==u&&!p){p=true;l.set(h)}}i.onTriggered=function(){E();n.trigger()}}};CABLES.OPS["5677b5b5-753a-4fbf-9e91-64c81ec68a2f"]={f:Ops.Anim.Smooth,objName:"Ops.Anim.Smooth"};Ops.Trigger.GateTrigger=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inTrigger("Execute"),r=e.inValueBool("Pass Through",true),s=e.outTrigger("Trigger out");i.onTriggered=function(){if(r.get())s.trigger()}}};CABLES.OPS["65e8b8a2-ba13-485f-883a-2bcf377989da"]={f:Ops.Trigger.GateTrigger,objName:"Ops.Trigger.GateTrigger"};Ops.Gl.ClearColor=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inTrigger("render"),r=e.outTrigger("trigger"),s=e.inFloatSlider("r",.1),n=e.inFloatSlider("g",.1),a=e.inFloatSlider("b",.1),o=e.inFloatSlider("a",1);s.setUiAttribs({colorPick:true});const l=e.patch.cgl;i.onTriggered=function(){l.gl.clearColor(s.get(),n.get(),a.get(),o.get());l.gl.clear(l.gl.COLOR_BUFFER_BIT|l.gl.DEPTH_BUFFER_BIT);r.trigger()}}};CABLES.OPS["19b441eb-9f63-4f35-ba08-b87841517c4d"]={f:Ops.Gl.ClearColor,objName:"Ops.Gl.ClearColor"};Ops.Trigger.RouteTrigger=class extends CABLES.Op{constructor(){super(...arguments);const t=this;const e=t.attachments={};const i=24;const r=t.inTriggerButton("Execute"),s=t.inValueInt("Switch Value"),n=t.outTrigger("Next Trigger"),a=t.outNumber("Switched Value");const o=[];r.onTriggered=u;for(let e=0;e<i;e++){o[e]=t.outTrigger("Trigger "+e);o[e].onLinkChanged=c}const l=t.outTrigger("Default Trigger"),h=t.outNumber("Highest Index");function u(){const e=Math.round(s.get());if(e>=0&&e<i){a.set(e);o[e].trigger()}else{a.set(-1);l.trigger()}n.trigger()}function c(){let t=0;for(let e=0;e<o.length;e++)if(o[e]&&o[e].isLinked())t=e;h.set(t)}}};CABLES.OPS["44ceb5d8-b040-4722-b189-a6fb8172517d"]={f:Ops.Trigger.RouteTrigger,objName:"Ops.Trigger.RouteTrigger"};Ops.Cables.UIMode=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.outBoolNum("UI",e.patch.isEditorMode()),r=e.outBoolNum("Overlay Mode",false),s=e.outBoolNum("Remote Viewer",window.gui?window.gui.isRemoteClient:false),n=e.outBoolNum("Is Standalone",CABLES.platform&&CABLES.platform.frontendOptions.isElectron),a=e.outNumber("Canvas Mode"),o=e.outBoolNum("Patch Field Visible");if(CABLES.UI){r.set(gui.shouldDrawOverlay);gui.on("overlaysChanged",e=>{r.set(e)});gui.on("canvasModeChange",()=>{a.set(gui.canvasManager.mode);o.set(gui.patchView.element.classList.contains("hidden"))})}}};CABLES.OPS["7c110d60-829f-4b06-b3e4-0af911550570"]={f:Ops.Cables.UIMode,objName:"Ops.Cables.UIMode"};Ops.Number.Number=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValueFloat("value"),r=e.outNumber("result");i.onChange=n;let s=false;i.onLinkChanged=()=>{if(!s&&i.isLinked())e.setUiAttribs({extendTitle:null});s=i.isLinked()};function n(){if(CABLES.UI&&!s)e.setUiAttribs({extendTitle:i.get()});r.set(Number(i.get()))}}};CABLES.OPS["8fb2bb5d-665a-4d0a-8079-12710ae453be"]={f:Ops.Number.Number,objName:"Ops.Number.Number"};Ops.Anim.LFO_v3=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValue("Time"),r=e.inFloat("Frequency",1),s=e.inValueSelect("Type",["sine","triangle","ramp up","ramp down","square"],"sine"),n=e.inValue("Phase",0),a=e.inValue("Range Min",-1),o=e.inValue("Range Max",1),l=e.outNumber("Result");let h=0;s.onChange=c;c();const u=Math.PI/2;function c(){if(s.get()=="sine")i.onChange=_;if(s.get()=="ramp up")i.onChange=d;if(s.get()=="ramp down")i.onChange=m;if(s.get()=="square")i.onChange=f;if(s.get()=="triangle")i.onChange=p}function g(){return i.get()*r.get()+n.get()}function f(){let e=g()+.5;h=e%2;if(h<=1)h=-1;else h=1;h=CABLES.map(h,-1,1,a.get(),o.get());l.set(h)}function d(){let e=g()+1;h=e%1;h-=.5;h*=2;h=CABLES.map(h,-1,1,a.get(),o.get());l.set(h)}function m(){let e=g();h=e%1;h-=.5;h*=-2;h=CABLES.map(h,-1,1,a.get(),o.get());l.set(h)}function p(){let e=g();h=e%2;if(h>1)h=2-h;h-=.5;h*=2;h=CABLES.map(h,-1,1,a.get(),o.get());l.set(h)}function _(){let e=g()*Math.PI-u;h=Math.sin(e);h=CABLES.map(h,-1,1,a.get(),o.get());l.set(h)}}};CABLES.OPS["5bdbe26b-dea3-4266-850c-1b66ed29936e"]={f:Ops.Anim.LFO_v3,objName:"Ops.Anim.LFO_v3"};Ops.Anim.Timer_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const n=e.inValue("Speed",1),i=e.inValueBool("Play",true),r=e.inTriggerButton("Reset"),s=e.inValueBool("Sync to timeline",false),a=e.outNumber("Time");e.setPortGroup("Controls",[i,r,n]);const o=new CABLES.Timer;let l=null;let h=0;let u=false;i.onChange=c;c();function c(){if(i.get()){o.play();e.patch.addOnAnimFrame(e)}else{o.pause();e.patch.removeOnAnimFrame(e)}}r.onTriggered=g;function g(){h=0;l=null;o.setTime(0);a.set(0)}s.onChange=function(){u=s.get();i.setUiAttribs({greyout:u});r.setUiAttribs({greyout:u})};e.onAnimFrame=function(e,t,i){if(o.isPlaying()){if(CABLES.overwriteTime!==undefined){a.set(CABLES.overwriteTime*n.get())}else if(u){a.set(e*n.get())}else{o.update();const r=o.get();if(l===null){l=r;return}const s=Math.abs(r-l);l=r;h+=s*n.get();if(h!=h)h=0;a.set(h)}}}}};CABLES.OPS["aac7f721-208f-411a-adb3-79adae2e471a"]={f:Ops.Anim.Timer_v2,objName:"Ops.Anim.Timer_v2"};Ops.Math.Divide=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValueFloat("number1",1),r=e.inValueFloat("number2",2),s=e.outNumber("result");e.setUiAttribs({mathTitle:true});i.onChange=r.onChange=n;n();function n(){s.set(i.get()/r.get())}}};CABLES.OPS["86fcfd8c-038d-4b91-9820-a08114f6b7eb"]={f:Ops.Math.Divide,objName:"Ops.Math.Divide"};Ops.Gl.Performance=class extends CABLES.Op{constructor(){super(...arguments);const a=this;const U=a.attachments={};const e=a.inTrigger("exe"),o=a.inValueBool("Active",true),l=a.inValueBool("Visible",true),B=a.inValueBool("Measure GPU",true),h=a.outTrigger("childs"),t=a.inSwitch("Position",["top","bottom"],"top"),i=a.inBool("Open",false),D=a.inBool("Smooth Graph",true),V=a.inFloat("Scale",3),u=a.inFloat("Size",128),k=a.outObject("Canvas"),G=a.outNumber("FPS");const r=a.patch.cgl;const s=document.createElement("div");let n=null;let c=null;let g=false;let f=0;let d=0;let m=0;let p=0;let _=0;const x=[];const b=[];const v=[];const T=[];let E=0;let A=0;let S=null;let j=0;let H=0;const C=["|","/","-","\\"];let R=true;const z="#007f9c";const X="#aaaaaa";const W="#222222";const O="#003f5c";const M="#7a5195";const I="#ef5675";const Y="#ffa600";let q=false;let F=0;let L=0;let P=0;a.toWorkPortsNeedToBeLinked(e,h);const K=a.patch.cgl.gl;const Q=K.getExtension("EXT_disjoint_timer_query_webgl2");o.onChange=e.onLinkChanged=l.onChange=()=>{w();J()};t.onChange=Z;u.onChange=y;s.id="performance";s.style.position="absolute";s.style.left="0px";s.style.opacity="0.8";s.style.padding="10px";s.style.cursor="pointer";s.style.background="#222";s.style.color="white";s.style["font-family"]="monospace";s.style["font-size"]="12px";s.style["z-index"]="99999";s.innerHTML="&nbsp;";s.addEventListener("click",$);const N=a.patch.cgl.canvas.parentElement;N.appendChild(s);y();w();Z();J();a.onDelete=function(){if(S)S.remove();if(s)s.remove()};function Z(){S.style["pointer-events"]="none";if(t.get()=="top"){S.style.top=s.style.top="0px";S.style.bottom=s.style.bottom="initial"}else{S.style.bottom=s.style.bottom="0px";S.style.top=s.style.top="initial"}}function J(){if(!l.get()||!e.isLinked()||!o.get()){s.style.display="none";s.style.opacity=0;S.style.display="none"}else{s.style.display="block";s.style.opacity=1;S.style.display="block"}}function y(){if(!S)return;const t=Math.max(0,parseInt(u.get()));S.width=t;S.height=t;s.style.left=t+"px";x.length=0;b.length=0;v.length=0;T.length=0;for(let e=0;e<t;e++){x[e]=-1;b[e]=-1;v[e]=-1;T[e]=-1}}i.onChange=function(){g=i.get();w()};function $(){if(!l.get())return;s.style.opacity=1;g=!g;w()}function w(){ie();if(!S)te();if(g){S.style.display="block";s.style.left=u.get()+"px";s.style["min-height"]="56px"}else{S.style.display="none";s.style.left="0px";s.style["min-height"]="auto"}}function ee(){const t=S.height;const i=V.get();c.fillStyle=W;c.fillRect(0,0,S.width,t);c.fillStyle=O;let r=0;const s=Math.max(0,parseInt(u.get()));for(r=s;r>=0;r--){if(x[r]>30)c.fillStyle=z;if(x[r]>60)c.fillStyle=X;c.fillRect(s-r,t-x[r]*i,1,x[r]*i);if(x[r]>30)c.fillStyle=O}for(r=s;r>=0;r--){let e=0;c.fillStyle=M;e=b[r];c.fillRect(s-r,t-e*i,1,b[r]*i);c.fillStyle=I;e+=v[r];c.fillRect(s-r,t-e*i,1,v[r]*i);c.fillStyle=Y;e+=T[r];c.fillRect(s-r,t-e*i,1,T[r]*i)}for(let e=10;e<t;e+=10){c.fillStyle="#888";const n=t-e*i;c.fillRect(S.width-5,n,5,1);c.font="8px arial";c.fillText(e+"ms",S.width-27,n+3)}c.fillStyle="#fff";c.fillRect(S.width-5,t-1e3/d*i,5,1);c.fillText(Math.round(1e3/d)+"ms",S.width-27,t-1e3/d*i)}function te(){S=document.createElement("canvas");S.id="performance_"+a.patch.config.glCanvasId;S.width=u.get();S.height=u.get();S.style.display="block";S.style.opacity=.9;S.style.position="absolute";S.style.left="0px";S.style.cursor="pointer";S.style.top="-64px";S.style["z-index"]="99998";N.appendChild(S);c=S.getContext("2d");S.addEventListener("click",$);y()}function ie(){if(!l.get())return;let e="";if(a.patch.cgl.profileData.profileShaderCompiles>0)e+="Shader compile ("+a.patch.cgl.profileData.profileShaderCompileName+") ";if(a.patch.cgl.profileData.profileShaderGetUniform>0)e+="Shader get uni loc! ("+a.patch.cgl.profileData.profileShaderGetUniformName+")";if(a.patch.cgl.profileData.profileTextureResize>0)e+="Texture resize! ";if(a.patch.cgl.profileData.profileFrameBuffercreate>0)e+="Framebuffer create! ";if(a.patch.cgl.profileData.profileEffectBuffercreate>0)e+="Effectbuffer create! ";if(a.patch.cgl.profileData.profileTextureDelete>0)e+="Texture delete! ";if(a.patch.cgl.profileData.profileNonTypedAttrib>0)e+="Not-Typed Buffer Attrib! "+a.patch.cgl.profileData.profileNonTypedAttribNames;if(a.patch.cgl.profileData.profileTextureNew>0)e+="new texture created! ";if(a.patch.cgl.profileData.profileGenMipMap>0)e+="generating mip maps!";if(e.length>0){e='| <span style="color:#f80;">WARNING: '+e+"<span>"}let t="";if(g){t+='<span style="color:'+O+'">■</span> '+d+" fps ";t+='<span style="color:'+M+'">■</span> '+Math.round(L*100)/100+"ms mainloop ";t+='<span style="color:'+I+'">■</span> '+Math.round(P*100)/100+"ms onframe ";if(F)t+='<span style="color:'+Y+'">■</span> '+Math.round(F*100)/100+"ms GPU";t+=e;s.innerHTML=t}else{t+=d+" fps / ";t+="CPU: "+Math.round(a.patch.cgl.profileData.profileOnAnimFrameOps*100)/100+"ms / ";if(F)t+="GPU: "+Math.round(F*100)/100+"ms  ";s.innerHTML=t}if(a.patch.loading.getProgress()!=1){s.innerHTML+="<br/>loading "+Math.round(a.patch.loading.getProgress()*100)+"% "+C[++H%C.length]}if(g){let t=0;E=0;_=0;for(let e=x.length;e>x.length-x.length/3;e--){if(x[e]>-1){E+=x[e];t++}if(b[e]>-1)_+=b[e]}E/=t;_/=t;s.innerHTML+="<br/> "+r.canvasWidth+" x "+r.canvasHeight+" (x"+r.pixelDensity+") ";s.innerHTML+="<br/>frame avg: "+Math.round(_*100)/100+" ms ("+Math.round(_/E*100)+"%) / "+Math.round(E*100)/100+" ms";s.innerHTML+=" (self: "+Math.round(A*100)/100+" ms) ";s.innerHTML+="<br/>shader binds: "+Math.ceil(a.patch.cgl.profileData.profileShaderBinds/d)+" uniforms: "+Math.ceil(a.patch.cgl.profileData.profileUniformCount/d)+" mvp_uni_mat4: "+Math.ceil(a.patch.cgl.profileData.profileMVPMatrixCount/d)+" num glPrimitives: "+Math.ceil(a.patch.cgl.profileData.profileMeshNumElements/d)+" fenced pixelread: "+Math.ceil(a.patch.cgl.profileData.profileFencedPixelRead)+" mesh.setGeom: "+a.patch.cgl.profileData.profileMeshSetGeom+" videos: "+a.patch.cgl.profileData.profileVideosPlaying+" tex preview: "+a.patch.cgl.profileData.profileTexPreviews;s.innerHTML+=" draw meshes: "+Math.ceil(a.patch.cgl.profileData.profileMeshDraw/d)+" framebuffer blit: "+Math.ceil(a.patch.cgl.profileData.profileFramebuffer/d)+" texeffect blit: "+Math.ceil(a.patch.cgl.profileData.profileTextureEffect/d);s.innerHTML+=" all shader compiletime: "+Math.round(a.patch.cgl.profileData.shaderCompileTime*100)/100}a.patch.cgl.profileData.clear()}function re(e){e.style.padding="0px";e.style.margin="0px"}function se(t,e,i,r){const s=20;t.usedAvg=t.usedAvg||t.used;if(!t.ele||R){const a=document.createElement("div");t.ele=a;if(t.childs&&t.childs.length>0)a.style.height="500px";else a.style.height=s+"px";a.style.overflow="hidden";a.style.display="inline-block";if(!t.isRoot){a.innerHTML='<div style="min-height:'+s+'px;width:100%;overflow:hidden;color:black;position:relative">&nbsp;'+t.name+"</div>";a.style["background-color"]="rgb("+t.colR+","+t.colG+","+t.colB+")";a.style["border-left"]="1px solid black"}e.appendChild(a)}if(!t.isRoot){if(performance.now()-t.lastTime>200){t.ele.style.display="none";t.hidden=true}else{if(t.hidden){t.ele.style.display="inline-block";t.hidden=false}}t.ele.style.float="left";t.ele.style.width=Math.floor(t.usedAvg/i*98)+"%"}else{t.ele.style.width="100%";t.ele.style.clear="both";t.ele.style.float="none"}if(t&&t.childs&&t.childs.length>0){let e=0;for(var n=0;n<t.childs.length;n++){t.childs[n].usedAvg=(t.childs[n].usedAvg||t.childs[n].used)*.95+t.childs[n].used*.05;e+=t.childs[n].usedAvg}for(var n=0;n<t.childs.length;n++){se(t.childs[n],t.ele,e,r+1)}}}function ne(t){for(let e=0;e<t.childs.length;e++)ne(t.childs[e]);t.childs.length=0}function ae(){if(!CGL.performanceMeasures)return;if(!n){a.log("create measure ele");n=document.createElement("div");n.style.width="100%";n.style["background-color"]="#444";n.style.bottom="10px";n.style.height="100px";n.style.opacity="1";n.style.position="absolute";n.style["z-index"]="99999";n.innerHTML="";N.appendChild(n)}let t=0;const i=CGL.performanceMeasures[0];for(let e=0;e<i.childs.length;e++)t+=i.childs[e].used;se(CGL.performanceMeasures[0],n,t,0);i.childs.length=0;ne(CGL.performanceMeasures[0]);CGL.performanceMeasures.length=0;R=false}e.onTriggered=oe;function oe(){const e=performance.now();if(o.get()){f++;if(Q&&B.get()&&l.get())a.patch.cgl.profileData.doProfileGlQuery=true;else a.patch.cgl.profileData.doProfileGlQuery=false;if(m===0)m=Date.now();if(Date.now()-m>=1e3){d=f;f=0;G.set(d);if(l.get())ie();m=Date.now()}const i=a.patch.cgl.profileData.glQueryData;F=0;if(i){let t=0;for(let e in i){t++;if(i[e].time)F+=i[e].time}}if(l.get()){ae();if(g&&!a.patch.cgl.profileData.pause){x.push(a.patch.cgl.profileData.profileFrameDelta);x.shift();b.push(p);b.shift();v.push(a.patch.cgl.profileData.profileOnAnimFrameOps-a.patch.cgl.profileData.profileMainloopMs);v.shift();T.push(F);T.shift();ee()}}j=performance.now();A=performance.now()-e;k.setRef(S)}const t=performance.now();h.trigger();if(o.get()){const r=performance.now()-t;const s=a.patch.cgl.profileData.profileMainloopMs;const n=a.patch.cgl.profileData.profileOnAnimFrameOps-a.patch.cgl.profileData.profileMainloopMs;if(D.get()){p=p*.9+r*.1;L=L*.5+s*.5;P=P*.5+n*.5}else{p=r;L=s;P=n}a.patch.cgl.profileData.clearGlQuery()}}}};CABLES.OPS["9cd2d9de-000f-4a14-bd13-e7d5f057583c"]={f:Ops.Gl.Performance,objName:"Ops.Gl.Performance"};Ops.Gl.MainLoop_v2=class extends CABLES.Op{constructor(){super(...arguments);const i=this;const e=i.attachments={};const t=i.inFloat("Max Pixel Density (DPR)",2),r=i.inValue("FPS Limit",0),s=i.inValueBool("Reduce FPS unfocussed",false),n=i.inValueBool("Transparent",false),a=i.inValueBool("Active",1),o=i.inValueBool("Focus canvas",1),l=i.outTrigger("trigger"),h=i.outNumber("width"),u=i.outNumber("height"),c=i.outNumber("Pixel Density");i.onAnimFrame=R;t.onChange=A;const g=i.patch.cg=i.patch.cgl;let f=0;let d=0;let m=null;let p=false;if(!i.patch.cgl)i.uiAttr({error:"No webgl cgl context"});const _=vec3.create();vec3.set(_,0,0,0);const x=vec3.create();vec3.set(x,0,0,-2);let b=true;let v=null;let T=true;let E=true;window.addEventListener("blur",()=>{T=false});window.addEventListener("focus",()=>{T=true});document.addEventListener("visibilitychange",()=>{E=!document.hidden});O();i.patch.tempData.mainloopOp=this;function A(){C();if(CABLES.UI){if(t.get()<1)i.patch.cgl.canvas.style.imageRendering="pixelated"}i.patch.cgl.updateSize();if(CABLES.UI)gui.setLayout()}a.onChange=function(){i.patch.removeOnAnimFrame(i);if(a.get()){i.setUiAttrib({extendTitle:""});i.onAnimFrame=R;i.patch.addOnAnimFrame(i);i.log("adding again!")}else{i.setUiAttrib({extendTitle:"Inactive"})}};function S(){if(s.get()){if(!E)return 10;if(!T)return 30}return r.get()}i.onDelete=function(){g.gl.clearColor(0,0,0,0);g.gl.clear(g.gl.COLOR_BUFFER_BIT|g.gl.DEPTH_BUFFER_BIT)};function C(){if(t.get()!=0)i.patch.cgl.pixelDensity=Math.min(t.get(),window.devicePixelRatio);else i.patch.cgl.pixelDensity=window.devicePixelRatio}function R(e){if(!a.get())return;if(g.aborted||g.canvas.clientWidth===0||g.canvas.clientHeight===0)return;i.patch.cg=g;C();const t=performance.now();i.patch.config.fpsLimit=S();if(g.canvasWidth==-1){g.setCanvas(i.patch.config.glCanvasId);return}if(g.canvasWidth!=h.get()||g.canvasHeight!=u.get()){h.set(g.canvasWidth/1);u.set(g.canvasHeight/1)}if(CABLES.now()-d>1e3){CGL.fpsReport=CGL.fpsReport||[];if(i.patch.loading.getProgress()>=1&&d!==0)CGL.fpsReport.push(f);f=0;d=CABLES.now()}CGL.MESH.lastShader=null;CGL.MESH.lastMesh=null;g.renderStart(g,_,x);if(!n.get())g.gl.clearColor(0,0,0,1);else g.gl.clearColor(0,0,0,0);g.gl.clear(g.gl.COLOR_BUFFER_BIT|g.gl.DEPTH_BUFFER_BIT);l.trigger();if(CGL.MESH.lastMesh)CGL.MESH.lastMesh.unBind();if(CGL.Texture.previewTexture){if(!CGL.Texture.texturePreviewer)CGL.Texture.texturePreviewer=new CGL.Texture.texturePreview(g);CGL.Texture.texturePreviewer.render(CGL.Texture.previewTexture)}g.renderEnd(g);i.patch.cg=null;if(!n.get()){g.gl.clearColor(1,1,1,1);g.gl.colorMask(false,false,false,true);g.gl.clear(g.gl.COLOR_BUFFER_BIT);g.gl.colorMask(true,true,true,true)}if(!g.tempData.phong)g.tempData.phong={};f++;if(b){if(o.get())g.canvas.focus();b=false}c.set(i.patch.cgl.pixelDensity);i.patch.cgl.profileData.profileMainloopMs=performance.now()-t}function O(){clearTimeout(m);m=setTimeout(()=>{if(i.patch.getOpsByObjName(i.name).length>1){i.setUiError("multimainloop","there should only be one mainloop op!");if(!p)p=i.patch.addEventListener("onOpDelete",O)}else i.setUiError("multimainloop",null,1)},500)}}};CABLES.OPS["f1029550-d877-42da-9b1e-63a5163a0350"]={f:Ops.Gl.MainLoop_v2,objName:"Ops.Gl.MainLoop_v2"};Ops.Gl.ImageCompose.ImageComposeSnapshot=class extends CABLES.Op{constructor(){super(...arguments);const a=this;const e=a.attachments={};const t=a.inTrigger("Update"),o=a.outTrigger("trigger"),l=a.outTexture("Texture");const h=a.patch.cgl;let u=new CGL.CopyTexture(h,"textureThief",{});let c=false;let g=-1;let f=-1;t.onTriggered=()=>{if(!CGL.TextureEffect.checkOpInEffect(a))return;const e=h.currentTextureEffect;e.endEffect();const t=h.currentTextureEffect.getCurrentSourceTexture().pixelFormat;const i=h.currentTextureEffect.getCurrentSourceTexture().wrap;const r=h.currentTextureEffect.getCurrentSourceTexture().filter;if(c!=t||g!=i||f!=r){u=new CGL.CopyTexture(h,"textureThief",{pixelFormat:h.currentTextureEffect.getCurrentSourceTexture().pixelFormat,wrap:i,filter:r});c=t;g=i;f=r}const s=h.getViewPort();l.set(CGL.Texture.getEmptyTexture(h));const n=h.currentTextureEffect.getCurrentSourceTexture();l.set(u.copy(n));e.continueEffect();o.trigger()}}};CABLES.OPS["e15c0803-02bb-4783-9d75-e75abd70d910"]={f:Ops.Gl.ImageCompose.ImageComposeSnapshot,objName:"Ops.Gl.ImageCompose.ImageComposeSnapshot"};Ops.Gl.ImageCompose.RgbToHsvTexture=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={tonormal_frag:"#ifdef HAS_TEXTURES\n  IN vec2 texCoord;\n  UNI sampler2D tex;\n#endif\n\nUNI float strength;\n\n\nvec3 rgb2hsv(vec3 c)\n{\n    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);\n    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));\n    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));\n\n    float d = q.x - min(q.w, q.y);\n    float e = 1.0e-10;\n    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);\n}\n\nvec3 hsv2rgb(vec3 c)\n{\n    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);\n    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);\n    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);\n}\n\nvoid main()\n{\n    vec4 col=texture(tex, texCoord);\n\n\n\n    #ifdef OUT_HSB\n        col.rgb=rgb2hsv(col.rgb).rgb;\n    #endif\n    #ifdef OUT_H\n        col.rgb=rgb2hsv(col.rgb).rrr;\n    #endif\n    #ifdef OUT_S\n        col.rgb=rgb2hsv(col.rgb).ggg;\n    #endif\n    #ifdef OUT_B\n        col.rgb=rgb2hsv(col.rgb).bbb;\n    #endif\n    #ifdef OUT_SB\n        col.rgb=rgb2hsv(col.rgb).ggg*rgb2hsv(col.rgb).bbb;\n    #endif\n\n\n    outColor=col;\n}"};const i=e.inTrigger("render"),r=e.inSwitch("Output RGB",["HSB","Hue","Sat","Bright","Sat*Bright"],"HSB"),s=e.outTrigger("trigger"),n=e.patch.cgl,a=new CGL.Shader(n,e.name,e);a.setSource(a.getDefaultVertexShader(),t.tonormal_frag);let o=new CGL.Uniform(a,"t","tex",0);r.onChange=l;l();function l(){a.toggleDefine("OUT_HSB",r.get()=="HSB");a.toggleDefine("OUT_H",r.get()=="Hue");a.toggleDefine("OUT_S",r.get()=="Sat");a.toggleDefine("OUT_B",r.get()=="Bright");a.toggleDefine("OUT_SB",r.get()=="Sat*Bright")}i.onTriggered=function(){if(!CGL.TextureEffect.checkOpInEffect(e))return;n.pushShader(a);n.currentTextureEffect.bind();n.setTexture(0,n.currentTextureEffect.getCurrentSourceTexture().tex);n.currentTextureEffect.finish();n.popShader();s.trigger()}}};CABLES.OPS["147ed29e-f04e-4f7c-b9d7-133d7c6cbef9"]={f:Ops.Gl.ImageCompose.RgbToHsvTexture,objName:"Ops.Gl.ImageCompose.RgbToHsvTexture"};Ops.Html.Utils.PlayerControlPanel_v2=class extends CABLES.Op{constructor(){super(...arguments);const s=this;const e=s.attachments={css_progressui_css:".progressUI\n{\n    padding: 10px;\n    position: absolute;\n    border-radius: 10px;\n    background-color: rgba(0,0,0,0.45);\n    margin: 20px;\n    bottom: 10px;\n    height:30px;\n    margin-left:50%;\n    transform: translate(-50%);\n    display: flex;\n    align-items: center;\n}\n\n.progressUI .buttonContainer {\n    display: flex;\n    align-content: center;\n    height: 100%;\n}\n\n.progressUI .progress\n{\n    font-family: Monospace;\n    float:left;\n    color:white;\n    width: auto;\n    margin-left:15px;\n    margin-right: 10px;\n}\n\n.progressUI .progressContainer\n{\n    width:200px;\n    overflow: hidden;\n    background: rgba(0,0,0,0.4);\n    border-radius: 4px;\n    float:left;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    height: 100%;\n}\n\n.progressUI .button\n{\n    cursor: pointer;\n    box-sizing: border-box;\n    background: rgba(0,0,0,0.4);\n    display: flex;\n    align-content: center;\n    padding: 5px;\n    padding-left: 10px;\n    padding-right: 10px;\n    margin-right: 5px;\n    border-radius: 5px;\n    float:left;\n    display: flex;\n    align-items: center;\n}\n\n.progressUIIcon\n{\n    display: inline-block;\n    vertical-align: middle;\n    width: 15px;\n    height: 15px;\n    background-color: white;\n    -webkit-mask-repeat: no-repeat !important;\n    -webkit-mask-size: 100% !important;\n}\n\n.progressUI .progressContainer .progressbar {\n    height: 100%;\n    width: 97%;\n}\n\n.progressUI_icon-play {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-play'%3E%3Cpath d='M5 3l14 9-14 9V3z'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-play'%3E%3Cpath d='M5 3l14 9-14 9V3z'/%3E%3C/svg%3E\");\n}\n\n.progressUI_icon-pause {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-pause'%3E%3Cpath d='M6 4h4v16H6zM14 4h4v16h-4z'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-pause'%3E%3Cpath d='M6 4h4v16H6zM14 4h4v16h-4z'/%3E%3C/svg%3E\");\n}\n\n.progressUI_icon-rewind {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-rewind'%3E%3Cpath d='M11 19l-9-7 9-7v14zM22 19l-9-7 9-7v14z'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-rewind'%3E%3Cpath d='M11 19l-9-7 9-7v14zM22 19l-9-7 9-7v14z'/%3E%3C/svg%3E\");\n}\n\n.progressUI_icon-fast-forward {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-fast-forward'%3E%3Cpath d='M13 19l9-7-9-7v14zM2 19l9-7-9-7v14z'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-fast-forward'%3E%3Cpath d='M13 19l9-7-9-7v14zM2 19l9-7-9-7v14z'/%3E%3C/svg%3E\");\n}\n\n.progressUI_icon-skip-back {\n    -webkit-mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-skip-back'%3E%3Cpath d='M19 20L9 12l10-8v16zM5 19V5'/%3E%3C/svg%3E\");\n    mask: url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-skip-back'%3E%3Cpath d='M19 20L9 12l10-8v16zM5 19V5'/%3E%3C/svg%3E\");\n}\n"};const t=s.inFloat("Length",30),r=s.inFloat("Current",0),i=s.inBool("Clamp",false),n=s.inBool("Is Playing",false),a=s.inBool("Visible",true),o=s.inBool("Show Time"),l=s.inBool("Show Skip Buttons"),h=s.outTrigger("Play clicked"),u=s.outTrigger("Pause clicked"),c=s.outTrigger("Rewind clicked"),g=s.outTrigger("Skip Back clicked"),f=s.outTrigger("Skip Forward clicked"),d=s.outTrigger("Dragged"),m=s.outNumber("Current Value"),p=s.outBoolNum("Dragging",false),_=s.outObject("DOM Element",null,"element");let x=s.patch.getDocument().createElement("div");x.id="progressUI_"+s.id;x.classList.add("progressUI");_.set(x);const w=s.patch.cgl;let U=s.patch.cgl.canvas.parentElement;U.appendChild(x);let b=s.patch.getDocument().createElement("div");if(!a.get()){x.style.display="none"}let v=s.patch.getDocument().createElement("input");let T=s.patch.getDocument().createElement("div");const E=s.patch.getDocument().createElement("div");b.classList.add("progressContainer");b.appendChild(v);v.setAttribute("type","range");v.setAttribute("step",.01);v.setAttribute("min",0);v.setAttribute("max",t.get());v.setAttribute("value",r.get());v.classList.add("progressbar");v.addEventListener("input",k);let A=false;let S=false;x.appendChild(E);x.appendChild(b);x.appendChild(T);let B="css_progressui_"+CABLES.uuid();const C=s.patch.getDocument().createElement("style");C.type="text/css";C.id=B;C.classList.add("cablesEle");let D=s.patch.getDocument().getElementsByTagName("body")[0];D.appendChild(C);E.classList.add("buttonContainer");let R=F("","progressUI_icon-skip-back");E.appendChild(R);let O=F("","progressUI_icon-rewind","skip");if(!l.get()){O.style.display="none"}E.appendChild(O);O.addEventListener("pointerdown",()=>{g.trigger()});let M=F("","progressUI_icon-play");E.appendChild(M);let I=F("","progressUI_icon-fast-forward","skip");if(!l.get()){I.style.display="none"}E.appendChild(I);I.addEventListener("pointerdown",()=>{f.trigger()});T.classList.add("progress");T.innerHTML="00:00:000";function F(e,t,i){let r=s.patch.getDocument().createElement("div");r.classList.add("button");r.classList.add(i);r.innerHTML=e;if(t){let e=s.patch.getDocument().createElement("div");e.classList.add("progressUIIcon");e.classList.add(t);r.appendChild(e)}return r}t.onChange=()=>{v.setAttribute("max",t.get())};a.onChange=()=>{if(a.get()){x.style.removeProperty("display")}else{x.style.display="none"}};o.onChange=()=>{if(o.get()){x.classList.add("showValue");T.style.display="block"}else{x.classList.remove("showValue");T.style.display="none"}};l.onChange=()=>{if(l.get()){x.querySelectorAll(".button.skip").forEach(e=>{e.style.display="block"})}else{x.querySelectorAll(".button.skip").forEach(e=>{e.style.display="none"})}};if(!o.get()){T.style.display="none"}v.addEventListener("pointerdown",()=>{S=true;if(n.get()){A=true;u.trigger();L()}});v.addEventListener("pointermove",()=>{const e=v.value;if(S){p.set(S);y(e);m.set(e);d.trigger()}});v.addEventListener("pointerup",()=>{const e=v.value;y(e);m.set(e);if(S){d.trigger()}S=false;p.set(S);if(A){A=false;h.trigger();L()}});function V(){C.textContent=e.css_progressui_css}function L(){M.querySelector(".progressUIIcon").classList.remove("progressUI_icon-play");M.querySelector(".progressUIIcon").classList.remove("progressUI_icon-pause");if(n.get()){M.querySelector(".progressUIIcon").classList.add("progressUI_icon-pause")}else{M.querySelector(".progressUIIcon").classList.add("progressUI_icon-play")}}M.addEventListener("pointerdown",function(){if(n.get()){u.trigger()}else{h.trigger()}L()});R.addEventListener("pointerdown",()=>{m.set(0);c.trigger()});s.onDelete=function(){if(x)x.remove();if(C)C.remove()};function k(e){r.onChange=null;const t=e.target.value;m.set(t);r.onChange=P}function P(){let e=r.get();if(i.get()&&e>t.get()){e=t.get()}v.value=e;m.set(e);y()}let N=0;function y(e=null){let t=e||r.get();let i=t;if(i!=N){T.innerHTML=G(i);N=i}}function G(e){const t=String(new Date(e*1e3).getUTCMinutes()).padStart(2,"0");const i=String(new Date(e*1e3).getUTCSeconds()).padStart(2,"0");const r=String(new Date(e*1e3).getUTCMilliseconds()).padStart(2,"0").padEnd(3,"0");const s=t+":"+i+":"+r;return s}V();L();r.onChange=P;n.onChange=L}};CABLES.OPS["12ac1d94-f043-454d-92a8-60733d2908b2"]={f:Ops.Html.Utils.PlayerControlPanel_v2,objName:"Ops.Html.Utils.PlayerControlPanel_v2"};Ops.Math.Max=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValueFloat("value",1),r=e.inValueFloat("Maximum",1),s=e.outNumber("result");r.onChange=i.onChange=n;n();function n(){let e=Math.max(i.get(),r.get());if(e==e)s.set(e)}}};CABLES.OPS["07f0be49-c226-4029-8039-3b620145dc2a"]={f:Ops.Math.Max,objName:"Ops.Math.Max"};Ops.Math.Delta=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValue("Value"),r=e.inValueBool("Change Always",false),s=e.inTrigger("Reset"),n=e.outNumber("Delta");i.changeAlways=false;let a=0;let o=true;r.onChange=function(){i.changeAlways=r.get()};s.onTriggered=function(){o=true};i.onChange=function(){let e=a-i.get();a=i.get();if(o){o=false;return}n.set(e)}}};CABLES.OPS["0f203337-e13c-47ec-a09f-b309212540b0"]={f:Ops.Math.Delta,objName:"Ops.Math.Delta"};Ops.Math.Multiply=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValueFloat("number1",1),r=e.inValueFloat("number2",1),s=e.outNumber("result");e.setUiAttribs({mathTitle:true});i.onChange=r.onChange=n;n();function n(){const e=i.get();const t=r.get();s.set(e*t)}}};CABLES.OPS["1bbdae06-fbb2-489b-9bcc-36c9d65bd441"]={f:Ops.Math.Multiply,objName:"Ops.Math.Multiply"};Ops.Math.DeltaSum=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const o=e.inValue("Delta Value"),i=e.inValue("Default Value",0),l=e.inValue("Multiply",1),r=e.inTriggerButton("Reset"),n=e.inValueBool("Limit",false),h=e.inValue("Min",0),u=e.inValue("Max",100),c=e.inValue("Rubberband",0),a=e.outNumber("Absolute Value");o.changeAlways=true;e.setPortGroup("Limit",[n,h,u,c]);let g=0;let f=CABLES.now();let d=null;n.onChange=m;i.onChange=r.onTriggered=s;u.onChange=h.onChange=_;m();function s(){let e=i.get();if(n.get()){e=Math.max(h.get(),e);e=Math.min(u.get(),e)}g=e;a.set(g)}function m(){h.setUiAttribs({greyout:!n.get()});u.setUiAttribs({greyout:!n.get()});c.setUiAttribs({greyout:!n.get()});_()}function p(){const e=h.get();const t=u.get();if(g<e)g=e;if(g>t)g=t;a.set(g)}function _(){if(n.get()){const e=h.get();const t=u.get();const i=c.get();const r=h.get()-i;const s=u.get()+i;if(g<r)g=r;if(g>s)g=s;if(i!==0){clearTimeout(d);d=setTimeout(p.bind(this),300)}}a.set(g)}o.onChange=function(){let e=o.get();const t=c.get();if(t!==0){const i=h.get();const r=u.get();const s=h.get()-t;const n=u.get()+t;if(g<i){const a=Math.abs(g-s)/t;e*=a*a}if(g>r){const a=Math.abs(n-g)/t;e*=a*a}}f=CABLES.now();g+=e*l.get();_()}}};CABLES.OPS["d9d4b3db-c24b-48da-b798-9e6230d861f7"]={f:Ops.Math.DeltaSum,objName:"Ops.Math.DeltaSum"};Ops.Math.Abs=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValue("number"),r=e.outNumber("result");i.onChange=function(){r.set(Math.abs(i.get()))}}};CABLES.OPS["6b5af21d-065f-44d2-9442-8b7a254753f6"]={f:Ops.Math.Abs,objName:"Ops.Math.Abs"};Ops.Number.TriggerOnChangeNumber_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inFloat("Value"),r=e.outTrigger("Next"),s=e.outNumber("Number");i.onChange=function(){s.set(i.get());r.trigger()};e.init=()=>{if(i.isLinked())r.trigger()}}};CABLES.OPS["63ec7ad7-a436-4f72-8b5e-257cc20049d4"]={f:Ops.Number.TriggerOnChangeNumber_v2,objName:"Ops.Number.TriggerOnChangeNumber_v2"};Ops.Trigger.DelayedTrigger=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inTriggerButton("exe"),r=e.inValueFloat("delay",1),s=e.inTriggerButton("Cancel"),n=e.outTrigger("next"),a=e.outBool("Delaying");let o=null;s.onTriggered=function(){if(o)clearTimeout(o);o=null};i.onTriggered=function(){a.set(true);if(o)clearTimeout(o);o=setTimeout(function(){a.set(false);o=null;n.trigger()},r.get()*1e3)}}};CABLES.OPS["f4ff66b0-8500-46f7-9117-832aea0c2750"]={f:Ops.Trigger.DelayedTrigger,objName:"Ops.Trigger.DelayedTrigger"};Ops.Devices.TouchScreen=class extends CABLES.Op{constructor(){super(...arguments);const s=this;const e=s.attachments={};const t=s.inValueBool("Disable Scaling",true),i=s.inValueBool("Disable Scroll",true),n=s.inValueBool("HDPI Coordinates",false),r=s.inValueBool("Active",true),a=s.outNumber("Touched",false),o=s.outNumber("Fingers",0),l=s.outNumber("Finger 1 X",0),h=s.outNumber("Finger 1 Y",0),u=s.outNumber("Finger 1 Force",0),c=s.outNumber("Finger 2 X",0),g=s.outNumber("Finger 2 Y",0),f=s.outNumber("Finger 2 Force",0),d=s.inSwitch("Area",["Canvas","Document"],"Canvas"),m=s.outArray("Events"),p=s.inValueBool("Normalize Coordinates"),_=s.inValueBool("Flip Y"),x=s.outTrigger("Touch Start"),b=s.outTrigger("Touch End");d.onChange=O;function v(e){if(e.touches&&e.touches.length>0){var t=e.target.getBoundingClientRect();var i=e.touches[0].clientX-e.touches[0].target.offsetLeft;var r=e.touches[0].clientY-e.touches[0].target.offsetTop;if(_.get())r=t.height-r;if(n.get()){i*=s.patch.cgl.pixelDensity||1;r*=s.patch.cgl.pixelDensity||1}if(p.get()){i=i/t.width*2-1;r=r/t.height*2-1}l.set(i);h.set(r);if(e.touches[0].force)u.set(e.touches[0].force)}if(e.touches&&e.touches.length>1){var t=e.target.getBoundingClientRect();var i=e.touches[1].clientX-e.touches[1].target.offsetLeft;var r=e.touches[1].clientY-e.touches[1].target.offsetTop;if(n.get()){i*=s.patch.cgl.pixelDensity||1;r*=s.patch.cgl.pixelDensity||1}if(p.get()){i=i/t.width*2-1;r=r/t.height*2-1}c.set(i);g.set(r);if(e.touches[1].force)f.set(e.touches[1].force)}m.set(e.touches)}const T=function(e){a.set(true);v(e);o.set(e.touches.length);x.trigger()};const E=function(e){a.set(false);u.set(0);f.set(0);v(e);o.set(e.touches.length);b.trigger()};const A=function(e){v(e);o.set(e.touches.length);if(i.get()||t.get()&&e.scale!==1){e.preventDefault();document.body.style["touch-action"]="none"}else{document.body.style["touch-action"]="initial"}};const S=s.patch.cgl;let C=null;function R(){C.addEventListener("touchmove",A,{passive:false});C.addEventListener("touchstart",T,{passive:false});C.addEventListener("touchend",E,{passive:false})}function O(){M();if(d.get()=="Document")C=document;else C=S.canvas;if(r.get())R()}function M(){if(C){C.removeEventListener("touchmove",A);C.removeEventListener("touchstart",T);C.removeEventListener("touchend",E)}C=null}r.onChange=function(){O()};O()}};CABLES.OPS["cedffacf-0f09-4342-bd21-540bd9c8037d"]={f:Ops.Devices.TouchScreen,objName:"Ops.Devices.TouchScreen"};Ops.Gl.ImageCompose.CircleTexture_v4=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={circle_frag:"IN vec2 texCoord;\nUNI sampler2D tex;\n\nUNI float amount;\nUNI float size;\nUNI float inner;\nUNI float fadeOut;\n\nUNI float r;\nUNI float g;\nUNI float b;\nUNI float a;\nUNI float aspect;\nUNI vec2 stretch;\n\n\nUNI float x;\nUNI float y;\n\n{{CGL.BLENDMODES3}}\n\nfloat dist(float x,float y,float x2,float y2)\n{\n\tfloat xd = x2-x;\n\tfloat yd = y2-y;\n\treturn abs(sqrt(xd*xd*(1.0-stretch.x) + yd*yd*(1.0-stretch.y)));\n}\n\nvoid main()\n{\n    vec4 base=texture(tex,texCoord);\n\n    vec4 col=vec4(r,g,b,1.0);\n    float dist = dist(x,y/aspect,(texCoord.x-0.5)*2.0,(texCoord.y-0.5)*2.0/aspect);\n\n    float sz=size*0.5/aspect;\n    float v=0.0;\n    float fade=fadeOut;\n\n    if(fade==0.0)\n    {\n        if(dist<sz && dist>inner*sz) v=(smoothstep(0.0,1.0,(dist-(inner*sz))/(fade)));\n    }\n\n    if(fade>=0.0)\n    {\n\n        #ifdef FALLOFF_SMOOTHSTEP\n            if(dist>inner*sz && dist<sz+fade)v=1.0-(smoothstep(0.0,1.0,(dist-sz)/(fade)));\n        #endif\n        #ifndef FALLOFF_SMOOTHSTEP\n            fade+=0.0001;\n            if(dist>inner*sz && dist<sz+fade)v=1.0-((dist-sz)/(fade));\n            v=pow(v,5.0);\n        #endif\n    }\n\n    v=clamp(v,0.0,1.0);\n\n    outColor=cgl_blendPixel(base,col,amount*v);\n\n    outColor.a-=(1.0-a)*v;\n\n    #ifdef WARN_OVERFLOW\n        float width=0.01;\n        if( texCoord.x>(1.0-width) || texCoord.y>(1.0-width) || texCoord.y<width || texCoord.x<width )\n            if(v>0.001*amount)outColor= vec4(1.0,0.0,0.0, 1.0);\n    #endif\n}\n"};const i=e.inTrigger("Render"),r=e.inValueSlider("Amount",1),s=CGL.TextureEffect.AddBlendSelect(e),n=CGL.TextureEffect.AddBlendAlphaMask(e),a=e.inValueSlider("Size",.25),o=e.inValueSlider("Inner"),l=e.inFloat("Stretch X"),h=e.inFloat("Stretch Y"),u=e.inValue("Pos X",0),c=e.inValue("Pos Y",0),g=e.inValueSelect("fallOff",["Linear","SmoothStep"],"Linear"),f=e.inValueSlider("fade Out"),d=e.inValueBool("warn overflow",false),m=e.inValueSlider("r",1),p=e.inValueSlider("g",1),_=e.inValueSlider("b",1),x=e.inValueSlider("a",1),b=e.outTrigger("Next");m.setUiAttribs({colorPick:true});e.setPortGroup("Size",[a,o,l,h]);e.setPortGroup("Position",[u,c]);e.setPortGroup("Style",[d,g,f]);let v=e.patch.cgl;let T=new CGL.Shader(v,"textureeffect stripes");T.setSource(T.getDefaultVertexShader(),t.circle_frag);y();let E=new CGL.Uniform(T,"t","tex",0),A=new CGL.Uniform(T,"f","amount",r),S=new CGL.Uniform(T,"2f","stretch",l,h),C=new CGL.Uniform(T,"f","size",a),R=new CGL.Uniform(T,"f","fadeOut",f),O=new CGL.Uniform(T,"f","inner",o),M=new CGL.Uniform(T,"f","aspect",1),I=new CGL.Uniform(T,"f","r",m),F=new CGL.Uniform(T,"f","g",p),L=new CGL.Uniform(T,"f","b",_),P=new CGL.Uniform(T,"f","a",x),N=new CGL.Uniform(T,"f","x",u),w=new CGL.Uniform(T,"f","y",c);g.onChange=d.onChange=y;CGL.TextureEffect.setupBlending(e,T,s,r,n);function y(){T.toggleDefine("FALLOFF_LINEAR",g.get()=="Linear");T.toggleDefine("FALLOFF_SMOOTHSTEP",g.get()=="SmoothStep");T.toggleDefine("WARN_OVERFLOW",d.get())}i.onTriggered=function(){if(!CGL.TextureEffect.checkOpInEffect(e,3))return;M.set(v.currentTextureEffect.aspectRatio);v.pushShader(T);v.currentTextureEffect.bind();v.setTexture(0,v.currentTextureEffect.getCurrentSourceTexture().tex);v.currentTextureEffect.finish();v.popShader();b.trigger()}}};CABLES.OPS["9738c421-1ee0-42bf-be0b-f4a481385fbf"]={f:Ops.Gl.ImageCompose.CircleTexture_v4,objName:"Ops.Gl.ImageCompose.CircleTexture_v4"};Ops.Vars.VarSetNumber_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inValueFloat("Value",0);e.varName=e.inDropDown("Variable",[],"",true);new CABLES.VarSetOpWrapper(e,"number",i,e.varName)}};CABLES.OPS["b5249226-6095-4828-8a1c-080654e192fa"]={f:Ops.Vars.VarSetNumber_v2,objName:"Ops.Vars.VarSetNumber_v2"};Ops.Vars.VarGetNumber_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.outNumber("Value");e.varName=e.inValueSelect("Variable",[],"",true);new CABLES.VarGetOpWrapper(e,"number",e.varName,i)}};CABLES.OPS["421f5b52-c0fa-47c4-8b7a-012b9e1c864a"]={f:Ops.Vars.VarGetNumber_v2,objName:"Ops.Vars.VarGetNumber_v2"};Ops.Gl.Textures.TextTexture_v6=class extends CABLES.Op{constructor(){super(...arguments);const p=this;const n=p.attachments={text_frag:"{{MODULES_HEAD}}\n\nUNI sampler2D tex;\nUNI float a;\nUNI vec4 color;\nIN vec2 texCoord;\n\nvoid main()\n{\n\n    vec4 col=texture(tex,vec2(texCoord.x,(1.0-texCoord.y)));\n\n    {{MODULE_COLOR}}\n\n    outColor=col;\n}\n",text_vert:"{{MODULES_HEAD}}\n\nIN vec3 vPosition;\nUNI mat4 projMatrix;\nUNI mat4 modelMatrix;\nUNI mat4 viewMatrix;\nUNI float aspect;\nOUT vec2 texCoord;\nIN vec2 attrTexCoord;\n\nvoid main()\n{\n    vec4 pos=vec4(vPosition,  1.0);\n\n    pos.x*=aspect;\n\n    texCoord=vec2(attrTexCoord.x,1.0-attrTexCoord.y);;\n\n    mat4 mMatrix=modelMatrix;\n\n    {{MODULE_VERTEX_POSITION}}\n    mat4 modelViewMatrix=viewMatrix*mMatrix;\n\n    gl_Position = projMatrix * modelViewMatrix * pos;\n}\n"};const e=p.inTriggerButton("Render"),Y=p.inString("text","cables"),t=p.inValueBool("Draw Mesh",true),i=p.inValueFloat("Scale Mesh",.5),_=p.inSwitch("Size",["Auto","Manual"],"Auto"),x=p.inInt("Width",512),b=p.inInt("Height",512),v=p.inBool("Auto Height",true),T=p.inBool("Auto Line Breaks",true),E=p.inString("font","Arial"),A=p.inString("weight","normal"),S=p.inValueFloat("fontSize",300),C=p.inSwitch("align",["left","center","right"],"center"),R=p.inSwitch("Vertical align",["Top","Middle","Bottom"],"Top"),O=p.inFloat("Letter Spacing",0),M=p.inFloat("Line Height Add",0),q=p.inInt("Padding Y Top",3),K=p.inInt("Padding Y Bottom",3),Q=p.inInt("Padding X",0),I=p.inSwitch("filter",["nearest","linear","mipmap"],"linear"),F=p.inValueSelect("Wrap",["repeat","mirrored repeat","clamp to edge"],"clamp to edge"),L=p.inSwitch("Anisotropic",[0,1,2,4,8,16],0),P=p.inValueBool("Reuse Texture",true),Z=p.inBool("Show Debug",false),a=p.inBool("Redraw On Font Load",true),N=p.inValueSlider("r",1),y=p.inValueSlider("g",1),w=p.inValueSlider("b",1),U=p.inFloatSlider("Opacity",1),B=p.inValueSlider("background R",0),J=p.inValueSlider("background G",0),$=p.inValueSlider("background B",0),ee=p.inValueSlider("background A",1),o=p.inTriggerButton("Force Redraw"),l=p.outTrigger("Next"),te=p.outNumber("Ratio"),D=p.outTexture("texture"),h=p.outObject("Canvas",null,"element"),u=p.outNumber("Aspect",1),ie=p.outNumber("Num Lines");const V=" ";N.setUiAttribs({colorPick:true});B.setUiAttribs({colorPick:true});p.toWorkPortsNeedToBeLinked(e);p.setPortGroup("Text Color",[N,y,w,U]);p.setPortGroup("Background",[B,J,$,ee]);p.setPortGroup("Font",[E,A,S,C,R,O,M]);p.setPortGroup("Texture",[F,I,L,P,Z]);p.setPortGroup("Rendering",[t,i]);e.onLinkChanged=()=>{if(!e.isLinked())D.setRef(CGL.Texture.getEmptyTexture(k));else D.setRef(G)};o.onTriggered=N.onChange=y.onChange=w.onChange=U.onChange=R.onChange=T.onChange=v.onChange=M.onChange=_.onChange=x.onChange=b.onChange=C.onChange=O.onChange=q.onChange=K.onChange=Q.onChange=Y.onChange=S.onChange=A.onChange=L.onChange=E.onChange=Z.onChange=P.onChange=function(){W=true;he()};D.ignoreValueSerialize=true;const k=p.patch.cgl;let G=new CGL.Texture(k);let j=2;let H=2;const z=document.createElement("canvas");z.id="texturetext_"+CABLES.generateUUID();z.style.display="none";document.body.appendChild(z);z.style.letterSpacing="0px";h.setRef(z);let X=z.getContext("2d");let W=true;const c=CGL.MESHES.getSimpleRect(k,"texttexture rect");const r=vec3.create();const s=new CGL.Shader(k,"texttexture");s.setModules(["MODULE_VERTEX_POSITION","MODULE_COLOR","MODULE_BEGIN_FRAG"]);s.setSource(n.text_vert,n.text_frag);const g=new CGL.Uniform(s,"t","tex");const f=new CGL.Uniform(s,"f","aspect",0);const d=new CGL.Uniform(s,"f","a",U);const m=new CGL.Uniform(s,"4f","color",N,y,w,U);if(p.patch.isEditorMode())CABLES.UI.SIMPLEWIREFRAMERECT=CABLES.UI.SIMPLEWIREFRAMERECT||new CGL.WireframeRect(k);e.onTriggered=ne;t.onChange=he;he();p.on("delete",()=>{X=null;z.remove()});L.onChange=I.onChange=F.onChange=()=>{if(G)G.delete();G=null;W=true};B.onChange=J.onChange=$.onChange=ee.onChange=N.onChange=y.onChange=w.onChange=U.onChange=()=>{if(!t.get()||D.isLinked())W=true};D.onLinkChanged=()=>{if(D.isLinked())W=true};p.patch.on("fontLoaded",e=>{if(e==E.get())W=true});document.fonts.ready.then(()=>{if(a.get())W=true});document.fonts.onloadingdone=function(e){if(a.get())W=true};function re(){return H}function se(){return j}function ne(){let e=0;while(W&&e<10){ae();le();e++}if(t.get()){r[0]=r[1]=r[2]=i.get();k.pushBlendMode(CGL.BLEND_NORMAL,false);k.pushModelMatrix();mat4.scale(k.mMatrix,k.mMatrix,r);s.popTextures();s.pushTexture(g,G.tex);f.set(u.get());if(k.shouldDrawHelpers(p))CABLES.UI.SIMPLEWIREFRAMERECT.render(u.get(),1,1);k.pushShader(s);c.render(p.patch.cg.getShader());k.popShader();k.popBlendMode();k.popModelMatrix()}l.trigger()}function ae(){if(G)G.setSize(re(),se());X.canvas.width=z.width=re();X.canvas.height=z.height=se();u.set(z.width/z.height);W=true}function oe(i){let r="";for(let e=0;e<i.length;e++){if(!i[e]){r+="\n";continue}let t=0;const s=i[e].split(V);for(let e=0;e<s.length;e++){if(!s[e])continue;t+=X.measureText(s[e]+V).width;if(t>x.get()){r+="\n"+s[e]+V;t=X.measureText(s[e]+V).width}else{r+=s[e]+V}}r+="\n"}let e=r;i=e.split("\n");if(i[i.length-1]=="")i.pop();return i}function le(){k.checkFrameStarted("texttrexture refresh");const e="rgba("+Math.floor(B.get()*255)+","+Math.floor(J.get()*255)+","+Math.floor($.get()*255)+","+ee.get()+")";X.fillStyle=e;X.fillRect(0,0,X.canvas.width,X.canvas.height);const t="rgba("+Math.floor(N.get()*255)+","+Math.floor(y.get()*255)+","+Math.floor(w.get()*255)+","+U.get()+")";X.fillStyle=t;let i=parseFloat(S.get());let r=E.get();if(r.indexOf(V)>-1)r='"'+r+'"';X.font=A.get()+V+i+"px "+r+"";X.textBaseline="top";X.textAlign=C.get();X.letterSpacing=O.get()+"px";let s=(Y.get()+"").replace(/<br\/>/g,"\n");s=s.trim();let n=s.split("\n");W=false;let a=Math.max(0,q.get());let o=Math.max(0,K.get());let l=Math.max(0,Q.get());H=0;j=0;if(T.get()&&_.get()=="Manual"){if(x.get()>128){n=oe(n)}}const h=[];for(let e=0;e<n.length;e++){const m=X.measureText(n[e]);h[e]=Math.ceil(m.fontBoundingBoxAscent)+Math.ceil(m.fontBoundingBoxDescent)+M.get()}for(let e=0;e<n.length;e++){const m=X.measureText(n[e]);H=Math.max(H,Math.ceil(m.width));j+=h[e]}H+=l*2;if(M.get()<0)j+=M.get()/2*-1;let u=j;if(_.get()=="Manual"){H=x.get()+l*2;if(!v.get()){j=b.get()}}j=Math.ceil(j);H=Math.ceil(H);if(H>k.maxTexSize||j>k.maxTexSize)p.setUiError("textoobig","Texture too big!");else p.setUiError("textoobig",null);j=Math.min(k.maxTexSize,j);H=Math.min(k.maxTexSize,H);let c=0;if(R.get()=="Middle")c=(j-u)/2;else if(R.get()=="Bottom")c=j-u;c+=a;j+=a+o;if(X.canvas.width!=H||X.canvas.height!=j)ae();const g=Z.get();for(let t=0;t<n.length;t++){let e=0+l;if(C.get()=="center")e=X.canvas.width/2;if(C.get()=="right")e=X.canvas.width-l;if(_.get()=="Manual")e+=O.get();X.fillText(n[t],e,c);if(g){X.lineWidth=3;X.strokeStyle="#FF0000";X.beginPath();X.moveTo(0,c);X.lineTo(X.canvas.width,c);X.stroke()}c+=h[t]}let f=CGL.Texture.WRAP_REPEAT;if(F.get()=="mirrored repeat")f=CGL.Texture.WRAP_MIRRORED_REPEAT;else if(F.get()=="clamp to edge")f=CGL.Texture.WRAP_CLAMP_TO_EDGE;let d=CGL.Texture.FILTER_LINEAR;if(I.get()=="nearest")d=CGL.Texture.FILTER_NEAREST;else if(I.get()=="mipmap")d=CGL.Texture.FILTER_MIPMAP;if(!P.get()||!G||!D.get()||G.width!=z.width||G.height!=z.height||G.anisotropic!=parseFloat(L.get())){if(G)G.delete();G=new CGL.Texture.createFromImage(k,z,{filter:d,anisotropic:parseFloat(L.get()),wrap:f})}G.unpackAlpha=false;G.flip=false;G.initTexture(z,d);te.set(X.canvas.height/X.canvas.width);ie.set(n.length);D.setRef(G)}function he(){x.setUiAttribs({greyout:_.get()!="Manual"});b.setUiAttribs({greyout:_.get()!="Manual"||v.get()});T.setUiAttribs({greyout:_.get()!="Manual"});R.setUiAttribs({greyout:_.get()!="Manual"});v.setUiAttribs({greyout:_.get()!="Manual"});i.setUiAttribs({greyout:!t.get()})}}};CABLES.OPS["2c042efa-3604-4717-b8f4-5ad08d6740e5"]={f:Ops.Gl.Textures.TextTexture_v6,objName:"Ops.Gl.Textures.TextTexture_v6"};Ops.Gl.Textures.CopyTexture_v3=class extends CABLES.Op{constructor(){super(...arguments);const t=this;const U=t.attachments={copytexture_frag:"UNI float a;\nUNI sampler2D tex;\n\n#ifdef TEX_MASK\nUNI sampler2D texMask;\n#endif\n\nIN vec2 texCoord;\n\nvoid main()\n{\n    vec2 tc=texCoord;\n\n    #ifdef FLIPX\n        tc.x=1.0-tc.x;\n    #endif\n    #ifdef FLIPY\n        tc.y=1.0-tc.y;\n    #endif\n\n    vec4 col=texture(tex,tc);\n\n    #ifdef TEX_MASK\n        col.a=texture(texMask,tc).r;\n    #endif\n\n    #ifdef GREY_R\n        col.rgb=vec3(col.r);\n    #endif\n\n    #ifdef GREY_G\n        col.rgb=vec3(col.g);\n    #endif\n\n    #ifdef GREY_B\n        col.rgb=vec3(col.b);\n    #endif\n\n    #ifdef GREY_A\n        col.rgb=vec3(col.a);\n    #endif\n\n    #ifdef GREY_LUMI\n        col.rgb=vec3( dot(vec3(0.2126,0.7152,0.0722), col.rgb) );\n    #endif\n\n\n    #ifdef INVERT_A\n        col.a=1.0-col.a;\n    #endif\n\n    #ifdef INVERT_R\n        col.r=1.0-col.r;\n    #endif\n\n    #ifdef INVERT_G\n        col.g=1.0-col.g;\n    #endif\n\n    #ifdef INVERT_B\n        col.b=1.0-col.b;\n    #endif\n\n    #ifdef ALPHA_1\n        col.a=1.0;\n    #endif\n\n\n\n\n    outColor= col;\n}"};const e=t.inTriggerButton("render"),i=t.inTexture("Texture"),r=t.inTexture("Alpha Mask"),s=t.inValueBool("use original size",true),n=t.inValueInt("width",640),a=t.inValueInt("height",360),o=t.inSwitch("filter",["nearest","linear","mipmap"],"linear"),l=t.inDropDown("Pixel Format",CGL.Texture.PIXELFORMATS,CGL.Texture.PFORMATSTR_RGBA8UB),h=t.inSwitch("Anisotropic",["0","1","2","4","8","16"],"0"),u=t.inValueSelect("wrap",["clamp to edge","repeat","mirrored repeat"],"clamp to edge"),c=t.inSwitch("Alpha Mask Source",["A","1"],"A"),g=t.inSwitch("Convert Greyscale",["Off","R","G","B","A","Luminance"],"Off"),f=t.inBool("Invert R",false),d=t.inBool("Invert G",false),m=t.inBool("Invert B",false),B=t.inBool("Invert A",false),p=t.inBool("Flip X",false),_=t.inBool("Flip Y",false),x=t.outTrigger("trigger"),b=t.outTexture("texture_out",null),D=t.outNumber("Aspect Ratio");c.setUiAttribs({hidePort:true});g.setUiAttribs({hidePort:true});f.setUiAttribs({hidePort:true});d.setUiAttribs({hidePort:true});m.setUiAttribs({hidePort:true});let V=null;const v=t.patch.cgl;let T=null;let E=null;let A=null;let S=true;let C=null;let R=2,O=2;const M=[0,0,0,0];let I=true;t.toWorkPortsNeedToBeLinked(e,i);t.setPortGroup("Size",[s,n,a]);const F=new CGL.Shader(v,"copytexture");F.setSource(F.getDefaultVertexShader(),U.copytexture_frag);const k=new CGL.Uniform(F,"t","tex",0);let G=new CGL.Uniform(F,"t","texMask",1);let L=CGL.Texture.FILTER_LINEAR;let P=CGL.Texture.WRAP_CLAMP_TO_EDGE;p.onChange=_.onChange=c.onChange=h.onChange=g.onChange=f.onChange=d.onChange=m.onChange=u.onChange=o.onChange=l.onChange=e.onLinkChanged=r.onChange=i.onLinkChanged=()=>{y()};i.onChange=()=>{if(C!=i.get()){y()}C=i.get()};e.onTriggered=z;w();function N(){if(E)E.delete();if(A){A.delete();A=null}E=new CGL.TextureEffect(v,{pixelFormat:l.get(),clear:false});if(!A||A.width!=Math.floor(n.get())||A.height!=Math.floor(a.get())||A.wrap!=P||A.pixelFormat!=l.get()){const e=Math.min(v.maxAnisotropic,parseFloat(h.get()));if(A)A.delete();A=new CGL.Texture(v,{name:"copytexture_"+t.id,pixelFormat:l.get(),anisotropic:e,filter:L,wrap:P,width:Math.floor(n.get()),height:Math.floor(a.get())})}E.setSourceTexture(A);w();I=false}function y(){X();I=true;if(!e.isLinked()||!i.isLinked())b.setRef(CGL.Texture.getEmptyTexture(v))}function j(){if(!i.get()||i.get()==CGL.Texture.getEmptyTexture(v))return;if(!E)N();if(s.get()){R=i.get().width;O=i.get().height}else{R=Math.floor(n.get());O=Math.floor(a.get())}if((R!=A.width||O!=A.height)&&(R!==0&&O!==0)){a.set(O);n.set(R);A.filter=L;A.setSize(R,O);D.set(R/O);E.setSourceTexture(A)}S=false}function w(){if(!CABLES.UI)return;h.setUiAttribs({greyout:o.get()!="mipmap"});n.setUiAttribs({greyout:s.get()});a.setUiAttribs({greyout:s.get()})}function H(){S=true;y()}s.onChange=function(){w();if(s.get()){n.onChange=null;a.onChange=null}else{n.onChange=H;a.onChange=H}j()};function z(){if(!i.get()||i.get()==CGL.Texture.getEmptyTexture(v))b.setRef(CGL.Texture.getEmptyTexture(v));if(!i.get()||i.get()==CGL.Texture.getEmptyTexture(v)){T=null;x.trigger();return}else if(!E||I||T!=i.get()){N()}const e=v.getViewPort();M[0]=e[0];M[1]=e[1];M[2]=e[2];M[3]=e[3];j();T=i.get();const t=v.currentTextureEffect;v.currentTextureEffect=E;E.setSourceTexture(A);E.startEffect();v.pushShader(F);v.currentTextureEffect.bind();v.setTexture(0,i.get().tex);if(r.get())v.setTexture(1,r.get().tex);v.pushBlend(false);v.currentTextureEffect.finish();v.popShader();v.popBlend();b.setRef(E.getCurrentSourceTexture());E.endEffect();v.setViewPort(M[0],M[1],M[2],M[3]);v.currentTextureEffect=t;v.setTexture(0,CGL.Texture.getEmptyTexture(v).tex);x.trigger()}function X(){F.toggleDefine("FLIPX",p.get());F.toggleDefine("FLIPY",_.get());F.toggleDefine("TEX_MASK",r.get());F.toggleDefine("GREY_R",g.get()==="R");F.toggleDefine("GREY_G",g.get()==="G");F.toggleDefine("GREY_B",g.get()==="B");F.toggleDefine("GREY_A",g.get()==="A");F.toggleDefine("GREY_LUMI",g.get()==="Luminance");F.toggleDefine("ALPHA_1",c.get()==="1");F.toggleDefine("ALPHA_A",c.get()==="A");F.toggleDefine("INVERT_R",f.get());F.toggleDefine("INVERT_G",d.get());F.toggleDefine("INVERT_B",m.get());F.toggleDefine("INVERT_A",B.get());if(u.get()=="repeat")P=CGL.Texture.WRAP_REPEAT;else if(u.get()=="mirrored repeat")P=CGL.Texture.WRAP_MIRRORED_REPEAT;else if(u.get()=="clamp to edge")P=CGL.Texture.WRAP_CLAMP_TO_EDGE;if(o.get()=="nearest")L=CGL.Texture.FILTER_NEAREST;else if(o.get()=="linear")L=CGL.Texture.FILTER_LINEAR;else if(o.get()=="mipmap")L=CGL.Texture.FILTER_MIPMAP;if(F.needsRecompile()){I=true}if(A&&(A.width!=Math.floor(n.get())||A.height!=Math.floor(a.get())||A.wrap!=P||A.pixelFormat!=l.get())){I=true}}}};CABLES.OPS["25d77a01-ccfe-4b2e-b3c3-a09a8a018d0c"]={f:Ops.Gl.Textures.CopyTexture_v3,objName:"Ops.Gl.Textures.CopyTexture_v3"};Ops.Ui.VizTexture=class extends CABLES.Op{constructor(){super(...arguments);const U=this;const i=U.attachments={viztex_frag:"IN vec2 texCoord;\nUNI sampler2D tex;\nUNI samplerCube cubeMap;\nUNI float width;\nUNI float height;\nUNI float type;\nUNI float time;\n\nfloat LinearizeDepth(float d,float zNear,float zFar)\n{\n    float z_n = 2.0 * d - 1.0;\n    return 2.0 * zNear / (zFar + zNear - z_n * (zFar - zNear));\n}\n\nvoid main()\n{\n    vec4 col=vec4(vec3(0.),0.0);\n\n    vec4 colTex=texture(tex,texCoord);\n\n\n\n    if(type==1.0)\n    {\n        vec4 depth=vec4(0.);\n        vec2 localST=texCoord;\n        localST.y = 1. - localST.y;\n\n        localST.t = mod(localST.t*3.,1.);\n        localST.s = mod(localST.s*4.,1.);\n\n        #ifdef WEBGL2\n            #define texCube texture\n        #endif\n        #ifdef WEBGL1\n            #define texCube textureCube\n        #endif\n\n//         //Due to the way my depth-cubeMap is rendered, objects to the -x,y,z side is projected to the positive x,y,z side\n//         //Inside where top/bottom is to be drawn?\n        if (texCoord.s*4.> 1. && texCoord.s*4.<2.)\n        {\n            //Bottom (-y) quad\n            if (texCoord.t*3. < 1.)\n            {\n                vec3 dir=vec3(localST.s*2.-1.,-1.,-localST.t*2.+1.);//Due to the (arbitrary) way I choose as up in my depth-viewmatrix, i her emultiply the latter coordinate with -1\n                depth = texCube(cubeMap, dir);\n            }\n            //top (+y) quad\n            else if (texCoord.t*3. > 2.)\n            {\n                vec3 dir=vec3(localST.s*2.-1.,1.,localST.t*2.-1.);//Get lower y texture, which is projected to the +y part of my cubeMap\n                depth = texCube(cubeMap, dir);\n            }\n            else//Front (-z) quad\n            {\n                vec3 dir=vec3(localST.s*2.-1.,-localST.t*2.+1.,1.);\n                depth = texCube(cubeMap, dir);\n            }\n        }\n//         //If not, only these ranges should be drawn\n        else if (texCoord.t*3. > 1. && texCoord.t*3. < 2.)\n        {\n            if (texCoord.x*4. < 1.)//left (-x) quad\n            {\n                vec3 dir=vec3(-1.,-localST.t*2.+1.,localST.s*2.-1.);\n                depth = texCube(cubeMap, dir);\n            }\n            else if (texCoord.x*4. < 3.)//right (+x) quad (front was done above)\n            {\n                vec3 dir=vec3(1,-localST.t*2.+1.,-localST.s*2.+1.);\n                depth = texCube(cubeMap, dir);\n            }\n            else //back (+z) quad\n            {\n                vec3 dir=vec3(-localST.s*2.+1.,-localST.t*2.+1.,-1.);\n                depth = texCube(cubeMap, dir);\n            }\n        }\n        // colTex = vec4(vec3(depth),1.);\n        colTex = vec4(depth);\n    }\n\n    if(type==2.0)\n    {\n       float near = 0.1;\n       float far = 50.;\n       float depth = LinearizeDepth(colTex.r, near, far);\n       colTex.rgb = vec3(depth);\n    }\n\n\n\n\n    #ifdef ANIM_RANGE\n\n        if(colTex.r>1.0 || colTex.r<0.0)\n            colTex.r=mod(colTex.r,1.0)*0.5+(sin(colTex.r+mod(colTex.r*3.0,1.0)+time*5.0)*0.5+0.5)*0.5;\n        if(colTex.g>1.0 || colTex.g<0.0)\n            colTex.g=mod(colTex.g,1.0)*0.5+(sin(colTex.g+mod(colTex.g*3.0,1.0)+time*5.0)*0.5+0.5)*0.5;\n        if(colTex.b>1.0 || colTex.b<0.0)\n            colTex.b=mod(colTex.b,1.0)*0.5+(sin(colTex.b+mod(colTex.b*3.0,1.0)+time*5.0)*0.5+0.5)*0.5;\n\n    #endif\n\n\n    // #ifdef ANIM_RANGE\n    //     if(colTex.r>1.0 || colTex.r<0.0)\n    //     {\n    //         float r=mod( time+colTex.r,1.0)*0.5+0.5;\n    //         colTex.r=r;\n    //     }\n    //     if(colTex.g>1.0 || colTex.g<0.0)\n    //     {\n    //         float r=mod( time+colTex.g,1.0)*0.5+0.5;\n    //         colTex.g=r;\n    //     }\n    //     if(colTex.b>1.0 || colTex.b<0.0)\n    //     {\n    //         float r=mod( time+colTex.b,1.0)*0.5+0.5;\n    //         colTex.b=r;\n    //     }\n    // #endif\n\n    #ifdef MOD_RANGE\n        colTex.r=mod(colTex.r,1.0001);\n        colTex.g=mod(colTex.g,1.0001);\n        colTex.b=mod(colTex.b,1.0001);\n\n    #endif\n\n    #ifdef ALPHA_ONE\n        colTex.a=1.0;\n    #endif\n    #ifdef ALPHA_INV\n        colTex.a=1.0-colTex.a;\n    #endif\n\n    outColor = mix(col,colTex,colTex.a);\n}\n\n",viztex_vert:"IN vec3 vPosition;\nIN vec2 attrTexCoord;\nOUT vec2 texCoord;\nUNI mat4 projMatrix;\nUNI mat4 modelMatrix;\nUNI mat4 viewMatrix;\n\nvoid main()\n{\n    texCoord=vec2(attrTexCoord.x,1.0-attrTexCoord.y);\n    vec4 pos = vec4( vPosition, 1. );\n    mat4 mvMatrix=viewMatrix * modelMatrix;\n    gl_Position = projMatrix * mvMatrix * pos;\n}"};const B=U.inTexture("Texture In"),D=U.inBool("Show Info",false),e=U.inSwitch("Visualize outside 0-1",["Off","Anim","Modulo"],"Anim"),t=U.inSwitch("Alpha",["A","1","1-A"],"A"),V=U.inBool("Show Color",false),k=U.inFloatSlider("X",.5),G=U.inFloatSlider("Y",.5),r=U.outTexture("Texture Out"),j=U.outString("Info");U.setUiAttrib({height:150,resizable:true});const H=new CABLES.Timer;let s=null;let z=null;let X=null;let W="";let n=true;t.onChange=e.onChange=o;V.onChange=a;a();if(CABLES.UI){H.play()}function a(){k.setUiAttribs({greyout:!V.get()});G.setUiAttribs({greyout:!V.get()})}B.onChange=()=>{const e=B.get();r.setRef(e);let t="";if(B.get()&&B.isLinked())t=B.links[0].getOtherPort(B).name;U.setUiAttrib({extendTitle:t})};function o(){if(!s)return;s.toggleDefine("MOD_RANGE",e.get()=="Modulo");s.toggleDefine("ANIM_RANGE",e.get()=="Anim");s.toggleDefine("ALPHA_INV",t.get()=="1-A");s.toggleDefine("ALPHA_ONE",t.get()=="1")}U.renderVizLayerGl=(u,c)=>{if(!B.isLinked())return;if(!c.useGl)return;const g=B;const f=5;const d=f+1;const e=gui.uiProfiler.start("previewlayer texture");const m=g.op.patch.cgl;if(!this._emptyCubemap)this._emptyCubemap=CGL.Texture.getEmptyCubemapTexture(m);g.op.patch.cgl.profileData.profileTexPreviews++;const p=g.get()||CGL.Texture.getEmptyTexture(m);if(!this._mesh){const t=new CGL.Geometry("vizTexture rect");t.vertices=[1,1,0,-1,1,0,1,-1,0,-1,-1,0];t.texCoords=[1,1,0,1,1,0,0,0];t.verticesIndices=[0,1,2,3,1,2];this._mesh=new CGL.Mesh(m,t)}if(!this._shader){this._shader=new CGL.Shader(m,"glpreviewtex");this._shader.setModules(["MODULE_VERTEX_POSITION","MODULE_COLOR","MODULE_BEGIN_FRAG"]);this._shader.setSource(i.viztex_vert,i.viztex_frag);this._shaderTexUniform=new CGL.Uniform(this._shader,"t","tex",f);this._shaderTexCubemapUniform=new CGL.Uniform(this._shader,"tc","cubeMap",d);s=this._shader;o();this._shaderTexUniformW=new CGL.Uniform(this._shader,"f","width",p.width);this._shaderTexUniformH=new CGL.Uniform(this._shader,"f","height",p.height);this._shaderTypeUniform=new CGL.Uniform(this._shader,"f","type",0);this._shaderTimeUniform=new CGL.Uniform(this._shader,"f","time",0)}m.pushPMatrix();const _=[p.width,p.height];const x=g.op.patch.cgl.canvasWidth>_[0]&&g.op.patch.cgl.canvasHeight>_[1];if(x){mat4.ortho(m.pMatrix,0,g.op.patch.cgl.canvasWidth,g.op.patch.cgl.canvasHeight,0,.001,11)}else mat4.ortho(m.pMatrix,-1,1,1,-1,.001,11);const b=m.getTexture(f);const v=m.getTexture(d);let T=0;if(p){if(p.cubemap)T=1;if(p.textureType==CGL.Texture.TYPE_DEPTH)T=2;if(T==0||T==2){m.setTexture(f,p.tex);m.setTexture(d,this._emptyCubemap.cubemap,m.gl.TEXTURE_CUBE_MAP)}else if(T==1){m.setTexture(d,p.cubemap,m.gl.TEXTURE_CUBE_MAP)}H.update();this._shaderTimeUniform.setValue(H.get());this._shaderTypeUniform.setValue(T);let t=[g.op.patch.cgl.canvasWidth,g.op.patch.cgl.canvasHeight];m.gl.clearColor(0,0,0,0);m.gl.clear(m.gl.COLOR_BUFFER_BIT|m.gl.DEPTH_BUFFER_BIT);m.pushModelMatrix();if(x){t=_;mat4.translate(m.mMatrix,m.mMatrix,[_[0]/2,_[1]/2,0]);mat4.scale(m.mMatrix,m.mMatrix,[_[0]/2,_[1]/2,0])}this._mesh.render(this._shader);m.popModelMatrix();if(T==0)m.setTexture(f,b);if(T==1)m.setTexture(d,v);m.popPMatrix();m.resetViewPort();const E=[c.width,c.height];const A=false;if(p.width>p.height)E[1]=c.width*_[1]/_[0];else{E[1]=c.width*(_[1]/_[0]);if(E[1]>c.height){const O=c.height/E[1];E[0]*=O;E[1]*=O}}const S=E[0]>_[0]&&E[1]>_[1];u.imageSmoothingEnabled=true;u.fillStyle="#ffffff";u.fillRect(c.x,c.y-10,10,10);u.fillStyle="#000000";u.fillRect(c.x,c.y-10,5,5);u.fillRect(c.x+5,c.y-10+5,5,5);let e=c.height;let i=10*c.width/e;let r=e/10;let s=c.width/i;for(let t=0;t<i;t++)for(let e=0;e<10;e++){if((t+e)%2==0)u.fillStyle="#333333";else u.fillStyle="#393939";u.fillRect(c.x+s*t,c.y+r*e,s,r)}u.fillStyle="#222";const C=(c.width-E[0])/2;const R=(e-E[1])/2;let n=c.x+(c.width-E[0])/2;let a=c.y+(e-E[1])/2;let o=E[0];let l=E[1];if(e-E[1]<0){n=c.x+(c.width-E[0]*e/E[1])/2;a=c.y;o=E[0]*e/E[1];l=e}u.fillRect(c.x,c.y,n-c.x,e);u.fillRect(c.x+o+n-c.x,c.y,o,e);u.fillRect(c.x,c.y,c.width,R);u.fillRect(c.x,c.y+E[1]+R,c.width,R);if(m.canvas&&m.canvasWidth>0&&m.canvasHeight>0&&m.canvas.width>0&&m.canvas.height>0){try{const M=o/t[0]>3||l/t[1]>3;const I=o/t[0]>10||l/t[1]>10;if(_[1]==1){u.imageSmoothingEnabled=false;u.drawImage(m.canvas,0,0,t[0],t[1],c.x,c.y,c.width,e);u.imageSmoothingEnabled=true}else if(_[0]==1){u.imageSmoothingEnabled=false;u.drawImage(m.canvas,0,0,t[0],t[1],c.x,c.y,c.width,e);u.imageSmoothingEnabled=true}else if(E[0]!=0&&E[1]!=0&&c.width!=0&&e!=0&&o!=0&&l!=0){u.imageSmoothingEnabled=!M;u.drawImage(m.canvas,0,0,t[0],t[1],n,a,o,l)}if(I){const F=o/t[0];const L=l/t[1];u.imageSmoothingEnabled=true;u.lineWidth=1;u.globalAlpha=.5;u.beginPath();for(let e=0;e<=t[0];e++){u.moveTo(n+e*F,a);u.lineTo(n+e*F,a+l)}for(let e=0;e<=t[1];e++){u.moveTo(n,a+e*L);u.lineTo(n+o,a+e*L)}u.strokeStyle="#555";u.stroke();u.globalAlpha=1}}catch(e){console.error("canvas drawimage exception...",e)}}let h="";if(D.get()&&g.get()&&g.get().getInfoOneLine)h+=g.get().getInfoOneLine()+"\n";j.set(h);if(V.get()){h+=W+"\n";const P=n+o*k.get();const N=a+l*G.get();for(let e=0;e<2;e++){if(e==0)u.fillStyle="#000";else u.fillStyle="#fff";u.fillRect(P-1+e,N-10+e,1,20);u.fillRect(P-10+e,N-1+e,20,1)}}if(D.get()||V.get()){U.setUiAttrib({comment:h})}if(V.get()){const y=m.gl;const w=B.get();if(!w){W="";return}if(!z)z=y.createFramebuffer();if(!X)X=new CGL.PixelReader;y.bindFramebuffer(y.FRAMEBUFFER,z);y.framebufferTexture2D(y.FRAMEBUFFER,y.COLOR_ATTACHMENT0,y.TEXTURE_2D,w.tex,0);y.bindFramebuffer(y.FRAMEBUFFER,null);X.read(m,z,w.pixelFormat,k.get()*w.width,w.height-G.get()*w.height,1,1,e=>{if(!CGL.Texture.isPixelFormatFloat(w.pixelFormat)){W="Pixel Float: "+Math.floor(e[0]/255*100)/100;if(!isNaN(e[1]))W+=", "+Math.floor(e[1]/255*100)/100;if(!isNaN(e[2]))W+=", "+Math.floor(e[2]/255*100)/100;if(!isNaN(e[3]))W+=", "+Math.floor(e[3]/255*100)/100;W+="\n";if(w.pixelFormat.indexOf("ubyte")>0){W+="Pixel UByte: ";W+=Math.round(e[0]);if(!isNaN(e[1]))W+=", "+Math.round(e[1]);if(!isNaN(e[2]))W+=", "+Math.round(e[2]);if(!isNaN(e[3]))W+=", "+Math.round(e[3]);W+="\n"}}else{W="Pixel Float: "+Math.round(e[0]*100)/100+", "+Math.round(e[1]*100)/100+", "+Math.round(e[2]*100)/100+", "+Math.round(e[3]*100)/100;W+="\n"}})}}m.gl.clearColor(0,0,0,0);m.gl.clear(m.gl.COLOR_BUFFER_BIT|m.gl.DEPTH_BUFFER_BIT);e.finish()}}};CABLES.OPS["4ea2d7b0-ca74-45db-962b-4d1965ac20c0"]={f:Ops.Ui.VizTexture,objName:"Ops.Ui.VizTexture"};Ops.Gl.ImageCompose.Color_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={color_frag:"IN vec2 texCoord;\nUNI sampler2D tex;\nUNI float r;\nUNI float g;\nUNI float b;\nUNI float a;\nUNI float amount;\n\n#ifdef MASK\n    UNI sampler2D mask;\n#endif\n\n{{CGL.BLENDMODES3}}\n\nvoid main()\n{\n    vec4 col=vec4(r,g,b,a);\n    vec4 base=texture(tex,texCoord);\n\n    float am=amount;\n    #ifdef MASK\n        float msk=texture(mask,texCoord).r;\n        #ifdef INVERTMASK\n            msk=1.0-msk;\n        #endif\n        am*=1.0-msk;\n    #endif\n\n    outColor=cgl_blendPixel(base,col,am);\n}\n"};const i=e.inTrigger("render"),r=CGL.TextureEffect.AddBlendSelect(e),s=e.inValueSlider("Amount",1),n=CGL.TextureEffect.AddBlendAlphaMask(e),a=e.inTexture("Mask"),o=e.inValueBool("Mask Invert"),l=e.inValueSlider("r",Math.random()),h=e.inValueSlider("g",Math.random()),u=e.inValueSlider("b",Math.random()),c=e.inValueSlider("A",1),g=e.outTrigger("trigger");l.setUiAttribs({colorPick:true});e.setPortGroup("Color",[l,h,u]);const f=0;const d=e.patch.cgl;const m=new CGL.Shader(d,"textureeffect color");const p=t.color_frag||"";m.setSource(m.getDefaultVertexShader(),p);CGL.TextureEffect.setupBlending(e,m,r,s,n);const _=new CGL.Uniform(m,"t","tex",f),x=new CGL.Uniform(m,"t","mask",1),b=new CGL.Uniform(m,"f","r",l),v=new CGL.Uniform(m,"f","g",h),T=new CGL.Uniform(m,"f","b",u),E=new CGL.Uniform(m,"f","a",c),A=new CGL.Uniform(m,"f","amount",s);a.onChange=function(){if(a.isLinked())m.define("MASK");else m.removeDefine("MASK")};o.onChange=function(){if(o.get())m.define("INVERTMASK");else m.removeDefine("INVERTMASK")};i.onTriggered=function(){if(!CGL.TextureEffect.checkOpInEffect(e,3))return;d.pushShader(m);d.currentTextureEffect.bind();d.setTexture(f,d.currentTextureEffect.getCurrentSourceTexture().tex);if(a.get())d.setTexture(1,a.get().tex);d.currentTextureEffect.finish();d.popShader();g.trigger()}}};CABLES.OPS["6dada2b7-da7c-47ee-87a9-a12e87055208"]={f:Ops.Gl.ImageCompose.Color_v2,objName:"Ops.Gl.ImageCompose.Color_v2"};Ops.Gl.Textures.SwitchTextures_v2=class extends CABLES.Op{constructor(){super(...arguments);const t=this;const e=t.attachments={};const i=t.inTrigger("exec"),r=this.inValueInt("num"),s=t.inValueBool("Default Texture Transparent",true),n=t.outTrigger("Next"),a=this.outTexture("texture");const o=t.patch.cgl;const l=[];let h=0;let u=-1;let c=CGL.Texture.getEmptyTexture(o);t.toWorkPortsNeedToBeLinked(i);i.onTriggered=function(){f();n.trigger()};s.onChange=function(){if(s.get())c=CGL.Texture.getEmptyTexture(o);else c=CGL.Texture.getTempTexture(o);f(true)};for(let e=0;e<16;e++){const d=t.inTexture("texture"+e);l.push(d);d.onChange=g}function g(){f(true)}function f(e){h=parseInt(r.get(),10);if(!e){if(h==u)return;if(h!=h)return}if(isNaN(h)||h<0||h>l.length-1)h=0;if(l[h].get())a.setRef(l[h].get());else a.setRef(c);u=h}}};CABLES.OPS["a82ae429-ac07-4760-882b-595a857c7ae0"]={f:Ops.Gl.Textures.SwitchTextures_v2,objName:"Ops.Gl.Textures.SwitchTextures_v2"};Ops.Gl.Texture_v2=class extends CABLES.Op{constructor(){super(...arguments);const s=this;const e=s.attachments={};const n=s.inUrl("File",[".jpg",".png",".webp",".jpeg",".avif"]),t=s.inSwitch("Filter",["nearest","linear","mipmap"]),i=s.inValueSelect("Wrap",["repeat","mirrored repeat","clamp to edge"],"clamp to edge"),r=s.inSwitch("Anisotropic",["0","1","2","4","8","16"],"0"),a=s.inSwitch("Data Format",["R","RG","RGB","RGBA","SRGBA"],"RGBA"),o=s.inValueBool("Flip",false),l=s.inValueBool("Pre Multiplied Alpha",false),h=s.inValueBool("Active",true),u=s.inBool("Save Memory",true),c=s.outTexture("Texture"),g=s.inBool("Add Cachebuster",false),f=s.inTriggerButton("Reload"),d=s.outNumber("Width"),m=s.outNumber("Height"),p=s.outNumber("Aspect Ratio"),_=s.outBoolNum("Loaded",0),x=s.outBoolNum("Loading",0);const b=s.patch.cgl;s.toWorkPortsNeedToBeLinked(c);s.setPortGroup("Size",[d,m]);let v=null;let T=null;let E=null;let A=CGL.Texture.FILTER_MIPMAP;let S=CGL.Texture.WRAP_REPEAT;let C=0;let R=0;l.setUiAttribs({hidePort:true});l.onChange=n.onChange=a.onChange=g.onChange=o.onChange=M;r.onChange=t.onChange=L;i.onChange=P;t.set("mipmap");i.set("repeat");c.setRef(CGL.Texture.getEmptyTexture(b));f.onTriggered=M;h.onChange=function(){if(h.get()){if(v!=n.get()||!E)M();else c.setRef(E)}else{c.setRef(CGL.Texture.getEmptyTexture(b));d.set(CGL.Texture.getEmptyTexture(b).width);m.set(CGL.Texture.getEmptyTexture(b).height);if(E)E.delete();s.setUiAttrib({extendTitle:""});E=null}};const O=function(){const e=CGL.Texture.getTempTexture(b);c.setRef(e)};function M(e){clearTimeout(R);R=setTimeout(function(){F(e)},1)}function I(){if(a.get()=="R")return CGL.Texture.PFORMATSTR_R8UB;if(a.get()=="RG")return CGL.Texture.PFORMATSTR_RG8UB;if(a.get()=="RGB")return CGL.Texture.PFORMATSTR_RGB8UB;if(a.get()=="SRGBA")return CGL.Texture.PFORMATSTR_SRGBA8;return CGL.Texture.PFORMATSTR_RGBA8UB}function F(e){s.checkMainloopExists();if(!h.get())return;if(T)T=b.patch.loading.finished(T);T=b.patch.loading.start(s.objName,n.get(),s);let t=s.patch.getFilePath(String(n.get()));if(g.get()||e===true)t=CABLES.cacheBust(t);if(String(n.get()).indexOf("data:")==0)t=n.get();let i=false;v=n.get();if(n.get()&&n.get().length>1){_.set(false);x.set(true);const r=n.get();s.setUiAttrib({extendTitle:CABLES.basename(t)});if(i)s.refreshParams();b.patch.loading.addAssetLoadingTask(()=>{s.setUiError("urlerror",null);CGL.Texture.load(b,t,function(e,t){if(n.get()!=r){T=b.patch.loading.finished(T);return}if(E)E.delete();if(e){const i=CGL.Texture.getErrorTexture(b);c.setRef(i);s.setUiError("urlerror",'could not load texture: "'+n.get()+'"',2);T=b.patch.loading.finished(T);return}d.set(t.width);m.set(t.height);p.set(t.width/t.height);E=t;c.setRef(E);x.set(false);_.set(true);if(u.get())E.image=null;if(T){T=b.patch.loading.finished(T)}s.checkMainloopExists()},{anisotropic:C,wrap:S,flip:o.get(),unpackAlpha:l.get(),pixelFormat:I(),filter:A});s.checkMainloopExists()})}else{O();T=b.patch.loading.finished(T)}}function L(){if(t.get()=="nearest")A=CGL.Texture.FILTER_NEAREST;else if(t.get()=="linear")A=CGL.Texture.FILTER_LINEAR;else if(t.get()=="mipmap")A=CGL.Texture.FILTER_MIPMAP;else if(t.get()=="Anisotropic")A=CGL.Texture.FILTER_ANISOTROPIC;r.setUiAttribs({greyout:A!=CGL.Texture.FILTER_MIPMAP});C=parseFloat(r.get());M()}function P(){if(i.get()=="repeat")S=CGL.Texture.WRAP_REPEAT;if(i.get()=="mirrored repeat")S=CGL.Texture.WRAP_MIRRORED_REPEAT;if(i.get()=="clamp to edge")S=CGL.Texture.WRAP_CLAMP_TO_EDGE;M()}s.onFileChanged=function(e){if(n.get()&&n.get().indexOf(e)>-1){c.setRef(CGL.Texture.getEmptyTexture(s.patch.cgl));c.setRef(CGL.Texture.getTempTexture(b));F(true)}}}};CABLES.OPS["790f3702-9833-464e-8e37-6f0f813f7e16"]={f:Ops.Gl.Texture_v2,objName:"Ops.Gl.Texture_v2"};Ops.Gl.ImageCompose.Posterize_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={posterize_frag:"UNI sampler2D tex;\nIN vec2 texCoord;\nUNI float levels;\nUNI float amount;\n\n{{CGL.BLENDMODES3}}\n\nvoid main(void)\n{\n    vec3 srcPixel = texture(tex, texCoord  ).rgb;\n    vec3 amountPerLevel = vec3(1.0/levels);\n    vec3 numOfLevels = floor(srcPixel/amountPerLevel);\n    vec3 col = numOfLevels * (vec3(1.0) / (vec3(levels) - vec3(1.0)));\n\n    vec4 base=texture(tex,texCoord);\n    outColor= cgl_blendPixel(base,vec4(col,base.a),amount);\n}\n\n"};const i=e.inTrigger("Render"),r=CGL.TextureEffect.AddBlendSelect(e,"Blend Mode","normal"),s=e.inValueSlider("Amount",1),n=e.inValue("levels",2),a=e.outTrigger("Trigger");const o=e.patch.cgl,l=new CGL.Shader(o,e.name,e);l.setSource(l.getDefaultVertexShader(),t.posterize_frag);const h=new CGL.Uniform(l,"t","tex",0),u=new CGL.Uniform(l,"f","levels",n),c=new CGL.Uniform(l,"f","texWidth",128),g=new CGL.Uniform(l,"f","texHeight",128),f=new CGL.Uniform(l,"f","amount",s);CGL.TextureEffect.setupBlending(e,l,r,s);i.onTriggered=function(){if(!CGL.TextureEffect.checkOpInEffect(e,3))return;o.pushShader(l);o.currentTextureEffect.bind();c.setValue(o.currentTextureEffect.getCurrentSourceTexture().width);g.setValue(o.currentTextureEffect.getCurrentSourceTexture().height);o.setTexture(0,o.currentTextureEffect.getCurrentSourceTexture().tex);o.currentTextureEffect.finish();o.popShader();a.trigger()}}};CABLES.OPS["19703953-7984-4334-af72-0991425b4850"]={f:Ops.Gl.ImageCompose.Posterize_v2,objName:"Ops.Gl.ImageCompose.Posterize_v2"};Ops.Ui.VizNumberBar=class extends CABLES.Op{constructor(){super(...arguments);const a=this;const e=a.attachments={};const o=a.inFloat("Number",0),t=a.outNumber("Passthrough");a.setUiAttrib({height:100,width:200,resizable:true});let l=-Number.MAX_VALUE;let h=Number.MAX_VALUE;o.onChange=()=>{t.set(o.get())};o.onLinkChanged=()=>{l=-Number.MAX_VALUE;h=Number.MAX_VALUE};a.renderVizLayer=(s,n)=>{s.fillStyle="#222";s.fillRect(n.x,n.y,n.width,n.height);{l=Math.max(l,o.get());h=Math.min(h,o.get());if(a.uiAttribs.color)s.fillStyle=a.uiAttribs.color;else s.fillStyle="#555";let e=CABLES.map(0,h,l,0,n.width);let t=CABLES.map(o.get(),h,l,0,n.width);let i=Math.min(e,t);let r=Math.max(e,t);s.fillRect(i+n.x,n.y,r-i,n.height)}{const e=10;if(a.uiAttribs.color)s.fillStyle="#fff";else s.fillStyle="#ccc";const t=n.height*.7;s.font="normal "+t+"px sourceCodePro";s.fillText(Math.round(o.get()*1e4)/1e4,n.x+e,n.y+t)}}}};CABLES.OPS["37575d2e-4ba6-4d2b-b00c-c503666867c5"]={f:Ops.Ui.VizNumberBar,objName:"Ops.Ui.VizNumberBar"};Ops.Boolean.BoolToNumber_v2=class extends CABLES.Op{constructor(){super(...arguments);const e=this;const t=e.attachments={};const i=e.inBool("Use Value 1",false),r=e.inFloat("Value 0",0),s=e.inFloat("Value 1",1),n=e.outNumber("Out Value",0);r.onChange=s.onChange=i.onChange=a;function a(){const e=i.get();if(e){n.set(s.get())}else{n.set(r.get())}}}};CABLES.OPS["400eea7d-5a68-4dda-a94d-2bb2ee7c2331"]={f:Ops.Boolean.BoolToNumber_v2,objName:"Ops.Boolean.BoolToNumber_v2"};window.addEventListener("load",function(e){CABLES.jsLoaded=new Event("CABLES.jsLoaded");document.dispatchEvent(CABLES.jsLoaded)});(()=>{var r={};(()=>{r.d=(e,t)=>{for(var i in t){if(r.o(t,i)&&!r.o(e,i)){Object.defineProperty(e,i,{enumerable:true,get:t[i]})}}}})();(()=>{r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t)})();(()=>{r.r=e=>{if(typeof Symbol!=="undefined"&&Symbol.toStringTag){Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}Object.defineProperty(e,"__esModule",{value:true})}})();var t={};(()=>{"use strict";r.r(t);r.d(t,{InterActionNeededButton:()=>e});class e{constructor(){this.patch=null;this.fsElement=null;this.callbacks={}}add(e,t,i){this.patch=e;this.callbacks[t]=i;this.show()}remove(e){delete this.callbacks[e];if(Object.keys(this.callbacks).length==0){if(this.fsElement)this.fsElement.remove();this.fsElement=null}}show(){if(!this.fsElement){this.fsElement=document.createElement("div");const e=this.patch.cgl.canvas.parentElement;if(e)e.appendChild(this.fsElement);this.fsElement.addEventListener("pointerdown",e=>{for(const e in this.callbacks)this.callbacks[e]()})}this.fsElement.style.padding="10px";this.fsElement.style.position="absolute";this.fsElement.style.right="20px";this.fsElement.style.bottom="20px";this.fsElement.style.width="24px";this.fsElement.style.height="24px";this.fsElement.style.cursor="pointer";this.fsElement.style["border-radius"]="40px";this.fsElement.style.background="#444";this.fsElement.style["z-index"]="9999";this.fsElement.style.display="block";this.fsElement.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-volume-2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>'}}CABLES.interActionNeededButton=CABLES.interActionNeededButton||new e})();var e=CABLES=typeof CABLES==="undefined"?{}:CABLES;for(var i in t)e[i]=t[i];if(t.__esModule)Object.defineProperty(e,"__esModule",{value:true})})();(()=>{var Z={};(()=>{Z.d=(e,t)=>{for(var i in t){if(Z.o(t,i)&&!Z.o(e,i)){Object.defineProperty(e,i,{enumerable:true,get:t[i]})}}}})();(()=>{Z.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t)})();(()=>{Z.r=e=>{if(typeof Symbol!=="undefined"&&Symbol.toStringTag){Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}Object.defineProperty(e,"__esModule",{value:true})}})();var J={};(()=>{"use strict";Z.r(J);Z.d(J,{CopyTexture:()=>Q});const E=CABLES;const u=CABLES.SHARED;const t=8;class i{constructor(e={}){this.id=E.utils.uuid();this.width=0;this.height=0;this.name="unknown";e=e||{};this.pixelFormat=e.pixelFormat||i.PFORMATSTR_RGBA8UB;this.name=e.name||"unknown";if(!e.width)e.width=t;if(!e.height)e.height=t}}i.getDefaultTextureData=(e,n,a={})=>{if(e=="empty"){return new Uint8Array(n*n*4).fill(0)}else if(e=="color"){const s=new Uint8Array(n*n*4);let t=a.r||1;let i=a.g||1;let r=a.b||1;for(let e=0;e<n*n;e++){s[e*4+0]=t;s[e*4+1]=i;s[e*4+2]=r;s[e*4+3]=255}return s}else if(e=="randomUInt"){const s=new Uint8Array(n*n*4);for(let e=0;e<n*n;e++){s[e*4+0]=Math.random()*255;s[e*4+1]=Math.random()*255;s[e*4+2]=Math.random()*255;s[e*4+3]=255}return s}else if(e=="random"||e=="randomFloat"){const s=new Float32Array(n*n*4);for(let e=0;e<n*n;e++){s[e*4+0]=(Math.random()-.5)*2;s[e*4+1]=(Math.random()-.5)*2;s[e*4+2]=(Math.random()-.5)*2;s[e*4+3]=1}return s}else if(e=="stripes"){const o=[];let i=a.r;let r=a.g;let s=a.b;if(i===undefined)i=1;if(r===undefined)r=1;if(s===undefined)s=1;for(let t=0;t<n;t++){for(let e=0;e<n;e++){if((e+t)%64<32){o.push((200+t/n*25+e/n*25)*i);o.push((200+t/n*25+e/n*25)*r);o.push((200+t/n*25+e/n*25)*s)}else{o.push((40+t/n*25+e/n*25)*i);o.push((40+t/n*25+e/n*25)*r);o.push((40+t/n*25+e/n*25)*s)}o.push(255)}}return new Uint8Array(o)}else{console.warn("unknown default texture",e);return i.getDefaultTextureData("stripes",n,{r:1,g:0,b:0})}};i.FILTER_NEAREST=0;i.FILTER_LINEAR=1;i.FILTER_MIPMAP=2;i.WRAP_REPEAT=0;i.WRAP_MIRRORED_REPEAT=1;i.WRAP_CLAMP_TO_EDGE=2;i.TYPE_DEFAULT=0;i.TYPE_DEPTH=1;i.TYPE_FLOAT=2;i.PFORMATSTR_RGB565="RGB 5/6/5bit ubyte";i.PFORMATSTR_R8UB="R 8bit ubyte";i.PFORMATSTR_RG8UB="RG 8bit ubyte";i.PFORMATSTR_RGB8UB="RGB 8bit ubyte";i.PFORMATSTR_RGBA8UB="RGBA 8bit ubyte";i.PFORMATSTR_SRGBA8="SRGBA 8bit ubyte";i.PFORMATSTR_R11FG11FB10F="RGB 11/11/10bit float";i.PFORMATSTR_R16F="R 16bit float";i.PFORMATSTR_RG16F="RG 16bit float";i.PFORMATSTR_RGB16F="RGB 16bit float";i.PFORMATSTR_RGBA16F="RGBA 16bit float";i.PFORMATSTR_R32F="R 32bit float";i.PFORMATSTR_RG32F="RG 32bit float";i.PFORMATSTR_RGB32F="RGB 32bit float";i.PFORMATSTR_RGBA32F="RGBA 32bit float";i.PFORMATSTR_DEPTH="DEPTH";i.PIXELFORMATS=[i.PFORMATSTR_RGB565,i.PFORMATSTR_R8UB,i.PFORMATSTR_RG8UB,i.PFORMATSTR_RGB8UB,i.PFORMATSTR_RGBA8UB,i.PFORMATSTR_SRGBA8,i.PFORMATSTR_R11FG11FB10F,i.PFORMATSTR_R16F,i.PFORMATSTR_RG16F,i.PFORMATSTR_RGBA16F,i.PFORMATSTR_R32F,i.PFORMATSTR_RGBA32F];const r=8;const a=new u.Logger("cgl_texture");class h extends i{constructor(e,t={}){super(t);if(!e)throw new Error("no cgl");this._cgl=e;this._log=new u.Logger("tex");this.tex=this._cgl.gl.createTexture();this.loading=false;this.flip=true;this.flipped=false;this.shadowMap=false;this.deleted=false;this.image=null;this.anisotropic=0;this.filter=h.FILTER_NEAREST;this.wrap=h.WRAP_CLAMP_TO_EDGE;this.texTarget=this._cgl.gl.TEXTURE_2D;if(t&&t.type)this.texTarget=t.type;this.textureType=h.TYPE_DEFAULT;this.unpackAlpha=true;this._fromData=true;this._glDataType=-1;this._glInternalFormat=-1;this._glDataFormat=-1;if(t){if(t.isDepthTexture)this.textureType=h.TYPE_DEPTH;if(t.isFloatingPointTexture===true)this.textureType=h.TYPE_FLOAT;if("textureType"in t)this.textureType=t.textureType;if("filter"in t)this.filter=t.filter;if("wrap"in t)this.wrap=t.wrap;if("unpackAlpha"in t)this.unpackAlpha=t.unpackAlpha;if("flip"in t)this.flip=t.flip;if("shadowMap"in t)this.shadowMap=t.shadowMap;if("anisotropic"in t)this.anisotropic=t.anisotropic}else{t={}}if(!t.pixelFormat&&t.isFloatingPointTexture)this.pixelFormat=h.PFORMATSTR_RGBA32F;if(this.textureType==h.TYPE_DEPTH)this.pixelFormat=h.PFORMATSTR_DEPTH;this._cgl.profileData.profileTextureNew++;this.setFormat(h.setUpGlPixelFormat(this._cgl,this.pixelFormat));this._cgl.profileData.addHeavyEvent("texture created",this.name,t.width+"x"+t.height);this.setSize(t.width,t.height);this.getInfoOneLine()}isFloatingPoint(){return h.isPixelFormatFloat(this.pixelFormat)}compareSettings(e){if(!e)return false;return e.width==this.width&&e.height==this.height&&e.filter==this.filter&&e.wrap==this.wrap&&e.textureType==this.textureType&&e.unpackAlpha==this.unpackAlpha&&e.anisotropic==this.anisotropic&&e.shadowMap==this.shadowMap&&e.texTarget==this.texTarget&&e.flip==this.flip}clone(){const e=new h(this._cgl,{name:this.name,filter:this.filter,anisotropic:this.anisotropic,wrap:this.wrap,textureType:this.textureType,pixelFormat:this.pixelFormat,unpackAlpha:this.unpackAlpha,flip:this.flip,width:this.width,height:this.height});this._cgl.profileData.addHeavyEvent("texture created",this.name,this.width+"x"+this.height);if(!this.compareSettings(e)){this._log.error("Cloned texture settings do not compare!");this._log.error(this);this._log.error(e)}return e}setFormat(e){this.pixelFormat=e.pixelFormat;this._glDataFormat=e.glDataFormat;this._glInternalFormat=e.glInternalFormat;this._glDataType=e.glDataType}setSize(e,t){if(this._cgl.aborted)return;if(e!=e||e<=0||!e)e=r;if(t!=t||t<=0||!t)t=r;if(e>this._cgl.maxTexSize||t>this._cgl.maxTexSize)this._log.error("texture size too big! "+e+"x"+t+" / max: "+this._cgl.maxTexSize);e=Math.min(e,this._cgl.maxTexSize);t=Math.min(t,this._cgl.maxTexSize);e=Math.floor(e);t=Math.floor(t);if(this.width==e&&this.height==t)return;e=this._cgl.checkTextureSize(e);t=this._cgl.checkTextureSize(t);this.width=e;this.height=t;this.deleted=false;this.setFormat(h.setUpGlPixelFormat(this._cgl,this.pixelFormat));this.shortInfoString=this.getInfoOneLine();this._cgl.gl.bindTexture(this.texTarget,this.tex);this._cgl.profileData.profileTextureResize++;const i=null;this._cgl.gl.texImage2D(this.texTarget,0,this._glInternalFormat,e,t,0,this._glDataFormat,this._glDataType,i);this._setFilter();this.updateMipMap();this._cgl.gl.bindTexture(this.texTarget,null)}initFromData(e,t,i,r,s){this.filter=r;this.wrap=s;if(r==undefined)this.filter=h.FILTER_LINEAR;if(s==undefined)this.wrap=h.WRAP_CLAMP_TO_EDGE;this.width=t;this.height=i;this._fromData=true;this.deleted=false;if(this.height>this._cgl.maxTexSize||this.width>this._cgl.maxTexSize){const n=CGL.Texture.getTempTexture(this._cgl);this.width=n.width;this.height=n.height;this.tex=n.tex;this._log.warn("[cgl_texture] texture size too big!",this.width,this.height,this._cgl.maxTexSize);return}if(this.flip)this._cgl.gl.pixelStorei(this._cgl.gl.UNPACK_FLIP_Y_WEBGL,this.flip);this._cgl.gl.bindTexture(this.texTarget,this.tex);this.setFormat(h.setUpGlPixelFormat(this._cgl,this.pixelFormat));this._cgl.gl.texImage2D(this.texTarget,0,this._glInternalFormat,t,i,0,this._glDataFormat,this._glDataType,e);this._setFilter();this.updateMipMap();if(this.flip)this._cgl.gl.pixelStorei(this._cgl.gl.UNPACK_FLIP_Y_WEBGL,false);this._cgl.gl.bindTexture(this.texTarget,null)}updateMipMap(){if((this._cgl.glVersion==2||this.isPowerOfTwo())&&this.filter==h.FILTER_MIPMAP){this._cgl.gl.generateMipmap(this.texTarget);this._cgl.profileData.profileGenMipMap++}}initTexture(e,t=null){this._cgl.printError("before initTexture");this._cgl.checkFrameStarted("texture inittexture");this._fromData=false;this._cgl.gl.pixelStorei(this._cgl.gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,this.unpackAlpha);if(e.width||e.videoWidth)this.width=e.videoWidth||e.width;if(e.height||e.videoHeight)this.height=e.videoHeight||e.height;if(t!==null)this.filter=t;if(e.height>this._cgl.maxTexSize||e.width>this._cgl.maxTexSize){const i=CGL.Texture.getTempTexture(this._cgl);this.width=i.width;this.height=i.height;this.tex=i.tex;this._log.warn("[cgl_texture] texture size too big!",e.width,e.height,this._cgl.maxTexSize);return}this._cgl.gl.bindTexture(this.texTarget,this.tex);this.deleted=false;this.flipped=!this.flip;if(this.flipped)this._cgl.gl.pixelStorei(this._cgl.gl.UNPACK_FLIP_Y_WEBGL,this.flipped);this.setFormat(h.setUpGlPixelFormat(this._cgl,this.pixelFormat));this._cgl.gl.texImage2D(this.texTarget,0,this._glInternalFormat,this._glDataFormat,this._glDataType,e);this._setFilter();this.updateMipMap();this._cgl.gl.bindTexture(this.texTarget,null);this._cgl.gl.pixelStorei(this._cgl.gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,false);if(this.flipped)this._cgl.gl.pixelStorei(this._cgl.gl.UNPACK_FLIP_Y_WEBGL,false);this.getInfoOneLine();this._cgl.printError("initTexture")}dispose(){this.delete()}delete(){if(this.loading){return}this.deleted=true;this.width=0;this.height=0;this._cgl.profileData.profileTextureDelete++;this._cgl.gl.deleteTexture(this.tex);this.image=null;this.tex=null}isPowerOfTwo(){return h.isPowerOfTwo(this.width)&&h.isPowerOfTwo(this.height)}printInfo(){a.log(this.getInfo())}getInfoReadable(){const t=this.getInfo();let i="";t.name=t.name.substr(0,t.name.indexOf("?rnd="));for(const e in t){i+="* "+e+":  **"+t[e]+"**\n"}return i}getInfoOneLine(){let e=""+this.width+"x"+this.height;e+=" ";e+=this.pixelFormat;if(this.filter===h.FILTER_NEAREST)e+=" nearest";if(this.filter===h.FILTER_LINEAR)e+=" linear";if(this.filter===h.FILTER_MIPMAP)e+=" mipmap";if(this.wrap===h.WRAP_CLAMP_TO_EDGE)e+=" clamp";if(this.wrap===h.WRAP_REPEAT)e+=" repeat";if(this.wrap===h.WRAP_MIRRORED_REPEAT)e+=" repeatmir";this.shortInfoString=e;return e}getInfoOneLineShort(){let e=""+this.width+"x"+this.height;e+=" ";e+=this.pixelFormat;this.shortInfoString=e;return e}getInfo(){return h.getTexInfo(this)}_setFilter(){this._cgl.printError("before _setFilter");if(!this._fromData){this._cgl.gl.pixelStorei(this._cgl.gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,this.unpackAlpha)}if(this.shadowMap){this._cgl.gl.texParameteri(this._cgl.gl.TEXTURE_2D,this._cgl.gl.TEXTURE_COMPARE_MODE,this._cgl.gl.COMPARE_REF_TO_TEXTURE);this._cgl.gl.texParameteri(this._cgl.gl.TEXTURE_2D,this._cgl.gl.TEXTURE_COMPARE_FUNC,this._cgl.gl.LEQUAL)}if(this.textureType==h.TYPE_FLOAT&&this.filter==h.FILTER_MIPMAP){this.filter=h.FILTER_LINEAR;this._log.stack("texture: HDR and mipmap filtering at the same time is not possible")}if(this._cgl.glVersion==1&&!this.isPowerOfTwo()){this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_MAG_FILTER,this._cgl.gl.NEAREST);this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_MIN_FILTER,this._cgl.gl.NEAREST);this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_WRAP_S,this._cgl.gl.CLAMP_TO_EDGE);this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_WRAP_T,this._cgl.gl.CLAMP_TO_EDGE);this.filter=h.FILTER_NEAREST;this.wrap=h.WRAP_CLAMP_TO_EDGE}else{if(this.wrap==h.WRAP_CLAMP_TO_EDGE){this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_WRAP_S,this._cgl.gl.CLAMP_TO_EDGE);this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_WRAP_T,this._cgl.gl.CLAMP_TO_EDGE)}else if(this.wrap==h.WRAP_REPEAT){this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_WRAP_S,this._cgl.gl.REPEAT);this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_WRAP_T,this._cgl.gl.REPEAT)}else if(this.wrap==h.WRAP_MIRRORED_REPEAT){this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_WRAP_S,this._cgl.gl.MIRRORED_REPEAT);this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_WRAP_T,this._cgl.gl.MIRRORED_REPEAT)}if(this.filter==h.FILTER_NEAREST){this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_MAG_FILTER,this._cgl.gl.NEAREST);this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_MIN_FILTER,this._cgl.gl.NEAREST)}else if(this.filter==h.FILTER_LINEAR){this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_MIN_FILTER,this._cgl.gl.LINEAR);this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_MAG_FILTER,this._cgl.gl.LINEAR)}else if(this.filter==h.FILTER_MIPMAP){this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_MAG_FILTER,this._cgl.gl.LINEAR);this._cgl.gl.texParameteri(this.texTarget,this._cgl.gl.TEXTURE_MIN_FILTER,this._cgl.gl.LINEAR_MIPMAP_LINEAR)}else{this._log.log("unknown texture filter!",this.filter);throw new Error("unknown texture filter!"+this.filter)}if(this.anisotropic){const e=this._cgl.enableExtension("EXT_texture_filter_anisotropic");if(this._cgl.maxAnisotropic){const t=Math.min(this._cgl.maxAnisotropic,this.anisotropic);this._cgl.gl.texParameterf(this._cgl.gl.TEXTURE_2D,e.TEXTURE_MAX_ANISOTROPY_EXT,t)}}}this.getInfoOneLine();this._cgl.printError("_setFilter")}}h.load=function(i,r,s,e){if(!r)return s({error:true});let n=null;if(!i.patch.loading.existByName(r))n=i.patch.loading.start("cgl.texture",r);const a=new h(i);a.name=r;a.image=new Image;a.image.crossOrigin="anonymous";a.loading=true;if(e&&e.hasOwnProperty("filter"))a.filter=e.filter;if(e&&e.hasOwnProperty("flip"))a.flip=e.flip;if(e&&e.hasOwnProperty("wrap"))a.wrap=e.wrap;if(e&&e.hasOwnProperty("anisotropic"))a.anisotropic=e.anisotropic;if(e&&e.hasOwnProperty("unpackAlpha"))a.unpackAlpha=e.unpackAlpha;if(e&&e.hasOwnProperty("pixelFormat"))a.pixelFormat=e.pixelFormat;a.image.onabort=a.image.onerror=e=>{console.warn("[cgl.texture.load] error loading texture",r,e);a.loading=false;if(n)i.patch.loading.finished(n);const t={error:true};if(s)s(t,a)};a.image.onload=function(e){i.addNextFrameOnceCallback(()=>{a.initTexture(a.image);if(n)i.patch.loading.finished(n);a.loading=false;if(s)s(null,a)})};a.image.src=r;return a};h.getTempTexture=function(e){if(!e)console.error("[getTempTexture] no cgl!");if(!e.tempTexture)e.tempTexture=h.getTemporaryTexture(e,256,h.FILTER_LINEAR,h.REPEAT);return e.tempTexture};h.getErrorTexture=function(e){if(!e)console.error("[getTempTexture] no cgl!");if(!e.errorTexture)e.errorTexture=h.getTemporaryTexture(e,256,h.FILTER_LINEAR,h.REPEAT,1,.2,.2);return e.errorTexture};h.getEmptyTexture=function(e,t){if(t)return h.getEmptyTextureFloat(e);if(!e)console.error("[getEmptyTexture] no cgl!");if(e.tempTextureEmpty)return e.tempTextureEmpty;let i=8;e.tempTextureEmpty=new h(e,{name:"emptyTexture"});const r=h.getDefaultTextureData("empty",i);e.tempTextureEmpty.initFromData(r,i,i,h.FILTER_NEAREST,h.WRAP_REPEAT);return e.tempTextureEmpty};h.getEmptyTextureFloat=function(e){if(!e)console.error("[getEmptyTextureFloat] no cgl!");if(e.tempTextureEmptyFloat)return e.tempTextureEmptyFloat;e.tempTextureEmptyFloat=new h(e,{name:"emptyTexture",isFloatingPointTexture:true});const t=new Float32Array(8*8*4).fill(1);for(let e=0;e<8*8*4;e+=4)t[e+3]=0;e.tempTextureEmptyFloat.initFromData(t,8,8,h.FILTER_NEAREST,h.WRAP_REPEAT);return e.tempTextureEmptyFloat};h.getRandomTexture=function(e){if(!e)console.error("[getRandomTexture] no cgl!");if(e.randomTexture)return e.randomTexture;const t=256;const i=h.getDefaultTextureData("randomUInt",t);e.randomTexture=new h(e);e.randomTexture.initFromData(i,t,t,h.FILTER_NEAREST,h.WRAP_REPEAT);return e.randomTexture};h.getRandomFloatTexture=function(e){if(!e)console.error("[getRandomTexture] no cgl!");if(e.getRandomFloatTexture)return e.getRandomFloatTexture;const t=256;const i=h.getDefaultTextureData("randomFloat",t);e.getRandomFloatTexture=new h(e,{isFloatingPointTexture:true});e.getRandomFloatTexture.initFromData(i,t,t,h.FILTER_NEAREST,h.WRAP_REPEAT);return e.getRandomFloatTexture};h.getBlackTexture=function(e){if(e.blackTexture)return e.blackTexture;const t=8;const i=h.getDefaultTextureData("color",t,{r:0,g:0,b:0});e.blackTexture=new h(e);e.blackTexture.initFromData(i,t,t,h.FILTER_NEAREST,h.WRAP_REPEAT);return e.blackTexture};h.getEmptyCubemapTexture=function(t){const i=[t.gl.TEXTURE_CUBE_MAP_POSITIVE_X,t.gl.TEXTURE_CUBE_MAP_NEGATIVE_X,t.gl.TEXTURE_CUBE_MAP_POSITIVE_Y,t.gl.TEXTURE_CUBE_MAP_NEGATIVE_Y,t.gl.TEXTURE_CUBE_MAP_POSITIVE_Z,t.gl.TEXTURE_CUBE_MAP_NEGATIVE_Z];const e=t.gl.createTexture();const r=t.gl.TEXTURE_CUBE_MAP;const s=h.FILTER_NEAREST;const n=h.WRAP_CLAMP_TO_EDGE;const a=8;const o=8;t.profileData.profileTextureNew++;t.gl.bindTexture(r,e);t.profileData.profileTextureResize++;for(let e=0;e<6;e+=1){const l=new Uint8Array(8*8*4);t.gl.texImage2D(i[e],0,t.gl.RGBA,8,8,0,t.gl.RGBA,t.gl.UNSIGNED_BYTE,l);t.gl.texParameteri(r,t.gl.TEXTURE_MAG_FILTER,t.gl.NEAREST);t.gl.texParameteri(r,t.gl.TEXTURE_MIN_FILTER,t.gl.NEAREST);t.gl.texParameteri(r,t.gl.TEXTURE_WRAP_S,t.gl.CLAMP_TO_EDGE);t.gl.texParameteri(r,t.gl.TEXTURE_WRAP_T,t.gl.CLAMP_TO_EDGE)}t.gl.bindTexture(r,null);return{id:E.utils.uuid(),tex:e,cubemap:e,width:a,height:o,filter:s,wrap:n,unpackAlpha:true,flip:true,_fromData:true,name:"emptyCubemapTexture",anisotropic:0}};h.getTempGradientTexture=function(e){if(!e)console.error("[getTempGradientTexture] no cgl!");return h.getTempTexture(e)};h.getTemporaryTexture=function(e,t,i,r,s,n,a){const o=h.getDefaultTextureData("stripes",256,{r:s,g:n,b:a});const l=new h(e);l.initFromData(o,t,t,i,r);return l};h.createFromImage=function(e,t,i){i=i||{};const r=new h(e,i);r.flip=false;r.image=t;r.width=t.videoWidth||t.width||8;r.height=t.videoHeight||t.height||8;if(i.hasOwnProperty("wrap"))r.wrap=i.wrap;r.initTexture(t,i.filter);return r};h.fromImage=function(e,t,i,r){console.error("deprecated texture from image...");const s=new h(e);s.flip=false;if(i)s.filter=i;if(r)s.wrap=r;s.image=t;s.initTexture(t);return s};h.isPowerOfTwo=function(e){return e==1||e==2||e==4||e==8||e==16||e==32||e==64||e==128||e==256||e==512||e==1024||e==2048||e==4096||e==8192||e==16384};h.getTexInfo=function(e){const t={};t.name=e.name;t["power of two"]=e.isPowerOfTwo();t.size=e.width+" x "+e.height;let i=e.texTarget;if(e.texTarget==e._cgl.gl.TEXTURE_2D)i="TEXTURE_2D";t.target=i;t.unpackAlpha=e.unpackAlpha;if(e.cubemap)t.cubemap=true;if(e.textureType==h.TYPE_FLOAT)t.textureType="TYPE_FLOAT";if(e.textureType==h.TYPE_HALF_FLOAT)t.textureType="TYPE_HALF_FLOAT";else if(e.textureType==h.TYPE_DEPTH)t.textureType="TYPE_DEPTH";else if(e.textureType==h.TYPE_DEFAULT)t.textureType="TYPE_DEFAULT";else t.textureType="UNKNOWN "+this.textureType;if(e.wrap==h.WRAP_CLAMP_TO_EDGE)t.wrap="CLAMP_TO_EDGE";else if(e.wrap==h.WRAP_REPEAT)t.wrap="WRAP_REPEAT";else if(e.wrap==h.WRAP_MIRRORED_REPEAT)t.wrap="WRAP_MIRRORED_REPEAT";else t.wrap="UNKNOWN";if(e.filter==h.FILTER_NEAREST)t.filter="FILTER_NEAREST";else if(e.filter==h.FILTER_LINEAR)t.filter="FILTER_LINEAR";else if(e.filter==h.FILTER_MIPMAP)t.filter="FILTER_MIPMAP";else t.filter="UNKNOWN";t.pixelFormat=e.pixelFormat||"unknown";return t};h.setUpGlPixelFormat=function(e,t){const i={};if(!t){e._log.error("no pixelformatstr!");e._log.log(new Error);t=h.PFORMATSTR_RGBA8UB}i.pixelFormatBase=t;i.pixelFormat=t;i.glDataType=e.gl.UNSIGNED_BYTE;i.glInternalFormat=e.gl.RGBA8;i.glDataFormat=e.gl.RGBA;let r=e.gl.FLOAT;if(e.glUseHalfFloatTex){if(t==h.PFORMATSTR_RGBA32F)t=h.PFORMATSTR_RGBA16F;if(t==h.PFORMATSTR_RG32F)t=h.PFORMATSTR_RG16F;if(t==h.PFORMATSTR_R32F)t=h.PFORMATSTR_R16F}if(t.includes("16bit")){if(e.glVersion==2){const s=e.enableExtension("EXT_color_buffer_half_float");if(!s){console.warn("no 16bit extension, fallback to 32bit",t);if(t==h.PFORMATSTR_RGBA16F)t=h.PFORMATSTR_RGBA32F;if(t==h.PFORMATSTR_RGB16F)t=h.PFORMATSTR_RGB32F;if(t==h.PFORMATSTR_RG16F)t=h.PFORMATSTR_RG32F;if(t==h.PFORMATSTR_R16F)t=h.PFORMATSTR_R32F}else{r=e.gl.HALF_FLOAT}}}if(e.glVersion==1){i.glInternalFormat=e.gl.RGBA;if(t==h.PFORMATSTR_RGBA16F||t==h.PFORMATSTR_RG16F||t==h.PFORMATSTR_R16F){const n=e.enableExtension("OES_texture_half_float");if(!n)throw new Error("no half float texture extension");r=n.HALF_FLOAT_OES}}if(t==h.PFORMATSTR_RGBA8UB){}else if(t==h.PFORMATSTR_RGB565){i.glInternalFormat=e.gl.RGB565;i.glDataFormat=e.gl.RGB}else if(t==h.PFORMATSTR_R8UB){i.glInternalFormat=e.gl.R8;i.glDataFormat=e.gl.RED}else if(t==h.PFORMATSTR_RG8UB){i.glInternalFormat=e.gl.RG8;i.glDataFormat=e.gl.RG}else if(t==h.PFORMATSTR_RGB8UB){i.glInternalFormat=e.gl.RGB8;i.glDataFormat=e.gl.RGB}else if(t==h.PFORMATSTR_SRGBA8){i.glInternalFormat=e.gl.SRGB8_ALPHA8}else if(t==h.PFORMATSTR_R32F){i.glInternalFormat=e.gl.R32F;i.glDataFormat=e.gl.RED;i.glDataType=r}else if(t==h.PFORMATSTR_R16F){i.glInternalFormat=e.gl.R16F;i.glDataType=r;i.glDataFormat=e.gl.RED}else if(t==h.PFORMATSTR_RG16F){i.glInternalFormat=e.gl.RG16F;i.glDataType=r;i.glDataFormat=e.gl.RG}else if(t==h.PFORMATSTR_RGBA16F){if(e.glVersion==1)i.glInternalFormat=e.gl.RGBA;else i.glInternalFormat=e.gl.RGBA16F;i.glDataType=r}else if(t==h.PFORMATSTR_R11FG11FB10F){i.glInternalFormat=e.gl.R11F_G11F_B10F;i.glDataType=r;i.glDataFormat=e.gl.RGB}else if(t==h.PFORMATSTR_RGBA32F){if(e.glVersion==1)i.glInternalFormat=e.gl.RGBA;else i.glInternalFormat=e.gl.RGBA32F;i.glDataType=r}else if(t==h.PFORMATSTR_DEPTH){if(e.glVersion==1){i.glInternalFormat=e.gl.DEPTH_COMPONENT;i.glDataType=e.gl.UNSIGNED_SHORT;i.glDataFormat=e.gl.DEPTH_COMPONENT}else{i.glInternalFormat=e.gl.DEPTH_COMPONENT32F;i.glDataType=e.gl.FLOAT;i.glDataFormat=e.gl.DEPTH_COMPONENT}}else{a.log("unknown pixelformat ",t)}if(t.includes("32bit")||t==h.PFORMATSTR_R11FG11FB10F){if(e.glVersion==2)e.enableExtension("EXT_color_buffer_float");if(e.glVersion==2)e.enableExtension("EXT_float_blend");e.enableExtension("OES_texture_float_linear")}i.numColorChannels=h.getPixelFormatNumChannels(t);if(!i.glDataType||!i.glInternalFormat||!i.glDataFormat)a.log("pixelformat wrong ?!",t,i.glDataType,i.glInternalFormat,i.glDataFormat,this);return i};h.getPixelFormatNumChannels=e=>{if(e.startsWith("RGBA"))return 4;if(e.startsWith("RGB"))return 3;if(e.startsWith("RG"))return 2;return 1};h.isPixelFormatFloat=e=>{return(e||"").includes("float")};h.isPixelFormatHalfFloat=e=>{return(e||"").includes("float")&&(e||"").includes("16bit")};class e{constructor(t,e,i,r){this._log=new u.Logger("cgl_framebuffer2");if(t.glVersion==1)this._log.error("framebuffer2 used on webgl1");this.Framebuffer2DrawTargetsDefault=null;this.Framebuffer2BlittingFramebuffer=null;this.Framebuffer2FinalFramebuffer=null;this._cgl=t;this._cgl.printError("before framebuffer2 constructor");this._width=0;this._height=0;this.valid=true;this._depthRenderbuffer=null;this._frameBuffer=null;this._textureFrameBuffer=null;this._colorRenderbuffers=[];this._drawTargetArray=[];this._disposed=false;if(!this.Framebuffer2BlittingFramebuffer)this.Framebuffer2BlittingFramebuffer=t.gl.createFramebuffer();if(!this.Framebuffer2FinalFramebuffer)this.Framebuffer2FinalFramebuffer=t.gl.createFramebuffer();if(!this.Framebuffer2DrawTargetsDefault)this.Framebuffer2DrawTargetsDefault=[t.gl.COLOR_ATTACHMENT0];this._options=r||{isFloatingPointTexture:false};this.name=this._options.name||"unknown";this._cgl.profileData.addHeavyEvent("framebuffer create",this.name);if(!this._options.hasOwnProperty("numRenderBuffers"))this._options.numRenderBuffers=1;if(!this._options.hasOwnProperty("depth"))this._options.depth=true;if(!this._options.hasOwnProperty("clear"))this._options.clear=true;if(!this._options.hasOwnProperty("multisampling")){this._options.multisampling=false;this._options.multisamplingSamples=0}if(this._options.multisamplingSamples){if(this._cgl.glSlowRenderer)this._options.multisamplingSamples=0;if(!this._cgl.gl.MAX_SAMPLES)this._options.multisamplingSamples=0;else this._options.multisamplingSamples=Math.min(this._cgl.maxSamples,this._options.multisamplingSamples)}if(!this._options.hasOwnProperty("filter"))this._options.filter=h.FILTER_LINEAR;if(!this._options.hasOwnProperty("wrap"))this._options.wrap=h.WRAP_REPEAT;this._numRenderBuffers=this._options.numRenderBuffers;this._colorTextures=[];this.clearColors=[];for(let e=0;e<this._numRenderBuffers;e++)this.clearColors.push([0,0,0,1]);if(!r.pixelFormat){if(r.isFloatingPointTexture)this._options.pixelFormat=h.PFORMATSTR_RGBA32F;else this._options.pixelFormat=h.PFORMATSTR_RGBA8UB}for(let e=0;e<this._numRenderBuffers;e++){this._colorTextures[e]=new h(t,{name:"fb2 "+this.name+" "+e,isFloatingPointTexture:this._options.isFloatingPointTexture,anisotropic:this._options.anisotropic||0,pixelFormat:this._options.pixelFormat,filter:this._options.filter,wrap:this._options.wrap})}let s=h.FILTER_NEAREST;if(this._options.shadowMap)s=h.FILTER_LINEAR;const n=512;if(this._options.depth){this._textureDepth=new h(t,{name:"fb2 depth "+this.name,isDepthTexture:true,filter:s,shadowMap:this._options.shadowMap||false,width:e||n,height:i||n})}if(t.aborted)return;this.setSize(e||n,i||n);this._cgl.printError("framebuffer2 constructor")}getWidth(){return this._width}getHeight(){return this._height}getGlFrameBuffer(){return this._frameBuffer}getDepthRenderBuffer(){return this._depthRenderbuffer}getTextureColor(){return this._colorTextures[0]}getTextureColorNum(e){return this._colorTextures[e]}getTextureDepth(){return this._textureDepth}setFilter(t){for(let e=0;e<this._numRenderBuffers;e++){this._colorTextures[e].filter=t;this._colorTextures[e].setSize(this._width,this._height)}}delete(){this.dispose()}dispose(){this._disposed=true;let e=0;for(e=0;e<this._numRenderBuffers;e++)this._colorTextures[e].delete();if(this._textureDepth)this._textureDepth.delete();for(e=0;e<this._numRenderBuffers;e++)this._cgl.gl.deleteRenderbuffer(this._colorRenderbuffers[e]);this._cgl.gl.deleteRenderbuffer(this._depthRenderbuffer);this._cgl.gl.deleteFramebuffer(this._frameBuffer);this._cgl.gl.deleteFramebuffer(this._textureFrameBuffer)}setSize(e,t){if(this._disposed)return this._log.warn("disposed framebuffer setsize...");this._cgl.profileData.addHeavyEvent("framebuffer resize",this.name);let i=0;this._width=this._cgl.checkTextureSize(e);this._height=this._cgl.checkTextureSize(t);this._cgl.profileData.profileFrameBuffercreate++;if(this._frameBuffer){for(i=0;i<this._numRenderBuffers;i++)this._cgl.gl.deleteRenderbuffer(this._colorRenderbuffers[i]);this._cgl.gl.deleteRenderbuffer(this._depthRenderbuffer);this._cgl.gl.deleteFramebuffer(this._frameBuffer);this._cgl.gl.deleteFramebuffer(this._textureFrameBuffer)}this._frameBuffer=this._cgl.gl.createFramebuffer();this._textureFrameBuffer=this._cgl.gl.createFramebuffer();const r=this._options.depth;for(i=0;i<this._numRenderBuffers;i++){this._colorTextures[i].setSize(this._width,this._height)}for(i=0;i<this._numRenderBuffers;i++){const a=this._cgl.gl.createRenderbuffer();this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._frameBuffer);this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER,a);const o=h.setUpGlPixelFormat(this._cgl,this._options.pixelFormat);let e=o.glInternalFormat;if(CGL.Texture.isPixelFormatHalfFloat(o.pixelFormat)){if(!this._cgl.enableExtension("OES_texture_float_linear")){this._options.filter=h.FILTER_NEAREST;this.setFilter(this._options.filter)}}else if(CGL.Texture.isPixelFormatFloat(o.pixelFormat)){if(!this._cgl.enableExtension("OES_texture_float_linear")){this._log.warn("no linear pixelformat,using nearest");this._options.filter=h.FILTER_NEAREST;this.setFilter(this._options.filter)}}if(this._options.multisampling&&this._options.multisamplingSamples){this._cgl.gl.renderbufferStorageMultisample(this._cgl.gl.RENDERBUFFER,this._options.multisamplingSamples,e,this._width,this._height)}else{this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER,e,this._width,this._height)}this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.COLOR_ATTACHMENT0+i,this._cgl.gl.RENDERBUFFER,a);this._colorRenderbuffers[i]=a}this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._textureFrameBuffer);for(i=0;i<this._numRenderBuffers;i++){this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.COLOR_ATTACHMENT0+i,this._cgl.gl.TEXTURE_2D,this._colorTextures[i].tex,0)}if(this._options.depth){this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.DEPTH_ATTACHMENT,this._cgl.gl.TEXTURE_2D,this._textureDepth.tex,0)}this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._frameBuffer);let s=this._cgl.gl.DEPTH_COMPONENT32F;if(this._cgl.glSlowRenderer)s=this._cgl.gl.DEPTH_COMPONENT16;if(r){this._textureDepth.setSize(this._width,this._height);this._depthRenderbuffer=this._cgl.gl.createRenderbuffer();this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER,this._depthRenderbuffer);if(this._options.isFloatingPointTexture){if(this._options.multisampling)this._cgl.gl.renderbufferStorageMultisample(this._cgl.gl.RENDERBUFFER,this._options.multisamplingSamples,s,this._width,this._height);else this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER,s,this._width,this._height)}else if(this._options.multisampling){this._cgl.gl.renderbufferStorageMultisample(this._cgl.gl.RENDERBUFFER,this._options.multisamplingSamples,s,this._width,this._height)}else{this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER,s,this._width,this._height)}this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.DEPTH_ATTACHMENT,this._cgl.gl.RENDERBUFFER,this._depthRenderbuffer)}this._drawTargetArray.length=0;for(i=0;i<this._numRenderBuffers;i++)this._drawTargetArray.push(this._cgl.gl.COLOR_ATTACHMENT0+i);if(!this._cgl.gl.isFramebuffer(this._textureFrameBuffer))this._log.warn("invalid framebuffer");const n=this._cgl.gl.checkFramebufferStatus(this._cgl.gl.FRAMEBUFFER);if(n!=this._cgl.gl.FRAMEBUFFER_COMPLETE){this._log.error("framebuffer incomplete: "+this.name,this);this._log.log("options",this._options);this._log.log("options pixelformat",this._options.pixelFormat);switch(n){case this._cgl.gl.FRAMEBUFFER_INCOMPLETE_ATTACHMENT:this._log.warn("FRAMEBUFFER_INCOMPLETE_ATTACHMENT...",this);throw new Error("Incomplete framebuffer: FRAMEBUFFER_INCOMPLETE_ATTACHMENT");case this._cgl.gl.FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:this._log.warn("FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");throw new Error("Incomplete framebuffer: FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");case this._cgl.gl.FRAMEBUFFER_INCOMPLETE_DIMENSIONS:this._log.warn("FRAMEBUFFER_INCOMPLETE_DIMENSIONS");throw new Error("Incomplete framebuffer: FRAMEBUFFER_INCOMPLETE_DIMENSIONS");case this._cgl.gl.FRAMEBUFFER_UNSUPPORTED:this._log.warn("FRAMEBUFFER_UNSUPPORTED");throw new Error("Incomplete framebuffer: FRAMEBUFFER_UNSUPPORTED");default:this.valid=false;this._log.error("incomplete framebuffer",n,this._frameBuffer);this._cgl.printError();this._frameBuffer=null;throw new Error("Incomplete framebuffer: "+n)}}this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,null);this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER,null)}renderStart(){if(this._disposed)return this._log.warn("disposed framebuffer renderStart...");this._cgl.checkFrameStarted("fb2 renderstart");this._cgl.pushModelMatrix();this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._frameBuffer);this._cgl.pushGlFrameBuffer(this._frameBuffer);this._cgl.pushFrameBuffer(this);this._cgl.pushPMatrix();this._cgl.pushViewPort(0,0,this._width,this._height);this._cgl.gl.drawBuffers(this._drawTargetArray);if(this._options.clear){this._cgl.gl.clearColor(0,0,0,0);this._cgl.gl.clear(this._cgl.gl.COLOR_BUFFER_BIT|this._cgl.gl.DEPTH_BUFFER_BIT)}}clear(){if(this._numRenderBuffers<=1){this._cgl.gl.bindFramebuffer(this._cgl.gl.READ_FRAMEBUFFER,this._frameBuffer);this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER,this._textureFrameBuffer)}else this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._frameBuffer);this._cgl.gl.drawBuffers(this._drawTargetArray);for(let e=0;e<this._numRenderBuffers;e++){this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.COLOR_ATTACHMENT0+e,this._cgl.gl.TEXTURE_2D,this._colorTextures[e].tex,0);this._cgl.gl.clearBufferfv(this._cgl.gl.COLOR,e,this.clearColors[e])}this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,null)}renderEnd(){if(this._disposed)return this._log.warn("disposed framebuffer renderEnd...");this._cgl.popPMatrix();this._cgl.profileData.profileFramebuffer++;if(this._numRenderBuffers<=1){this._cgl.gl.bindFramebuffer(this._cgl.gl.READ_FRAMEBUFFER,this._frameBuffer);this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER,this._textureFrameBuffer);this._cgl.gl.clearBufferfv(this._cgl.gl.COLOR,0,[0,0,0,1]);this._cgl.gl.blitFramebuffer(0,0,this._width,this._height,0,0,this._width,this._height,this._cgl.gl.COLOR_BUFFER_BIT|this._cgl.gl.DEPTH_BUFFER_BIT,this._cgl.gl.NEAREST)}else{this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this.Framebuffer2BlittingFramebuffer);this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.DEPTH_ATTACHMENT,this._cgl.gl.RENDERBUFFER,this._depthRenderbuffer);this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this.Framebuffer2FinalFramebuffer);this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.DEPTH_ATTACHMENT,this._cgl.gl.TEXTURE_2D,this._textureDepth.tex,0);for(let t=0;t<this._numRenderBuffers;t++){this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this.Framebuffer2BlittingFramebuffer);this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.COLOR_ATTACHMENT0,this._cgl.gl.RENDERBUFFER,this._colorRenderbuffers[t]);this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this.Framebuffer2FinalFramebuffer);this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.COLOR_ATTACHMENT0,this._cgl.gl.TEXTURE_2D,this._colorTextures[t].tex,0);this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,null);this._cgl.gl.bindFramebuffer(this._cgl.gl.READ_FRAMEBUFFER,this.Framebuffer2BlittingFramebuffer);this._cgl.gl.bindFramebuffer(this._cgl.gl.DRAW_FRAMEBUFFER,this.Framebuffer2FinalFramebuffer);let e=this._cgl.gl.COLOR_BUFFER_BIT;if(t==0)e|=this._cgl.gl.DEPTH_BUFFER_BIT;this._cgl.gl.blitFramebuffer(0,0,this._width,this._height,0,0,this._width,this._height,e,this._cgl.gl.NEAREST)}}this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._cgl.popGlFrameBuffer());this._cgl.popFrameBuffer();this._cgl.popModelMatrix();this._cgl.popViewPort();if(this._colorTextures[0].filter==h.FILTER_MIPMAP){for(let e=0;e<this._numRenderBuffers;e++){this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D,this._colorTextures[e].tex);this._colorTextures[e].updateMipMap();this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D,null)}}}}const s=function(e){this.draw=function(e,t,i){}};const n=function(e){this.render=function(e,t){}};const o=function(e){this.render=function(e,t,i,r){}};class l{constructor(e,t,i,r,s,n,a,o,l,h){this._log=new u.Logger("cg_uniform");this._type=t;this._name=i;this._shader=e;this._value=1e-5;this._oldValue=null;this._port=null;this._structName=l;this._structUniformName=o;this._propertyName=h;if(this._shader._addUniform)this._shader._addUniform(this);this.needsUpdate=true;this.shaderType=null;this.comment=null;if(t=="f"){this.set=this.setValue=this.setValueF.bind(this);this.updateValue=this.updateValueF.bind(this)}else if(t=="f[]"){this.set=this.setValue=this.setValueArrayF.bind(this);this.updateValue=this.updateValueArrayF.bind(this)}else if(t=="2f[]"){this.set=this.setValue=this.setValueArray2F.bind(this);this.updateValue=this.updateValueArray2F.bind(this)}else if(t=="3f[]"){this.set=this.setValue=this.setValueArray3F.bind(this);this.updateValue=this.updateValueArray3F.bind(this)}else if(t=="4f[]"){this.set=this.setValue=this.setValueArray4F.bind(this);this.updateValue=this.updateValueArray4F.bind(this)}else if(t=="i"){this.set=this.setValue=this.setValueI.bind(this);this.updateValue=this.updateValueI.bind(this)}else if(t=="2i"){this.set=this.setValue=this.setValue2I.bind(this);this.updateValue=this.updateValue2I.bind(this)}else if(t=="3i"){this.set=this.setValue=this.setValue3I.bind(this);this.updateValue=this.updateValue3I.bind(this)}else if(t=="4i"){this.set=this.setValue=this.setValue4I.bind(this);this.updateValue=this.updateValue4I.bind(this)}else if(t=="b"){this.set=this.setValue=this.setValueBool.bind(this);this.updateValue=this.updateValueBool.bind(this)}else if(t=="4f"){this.set=this.setValue=this.setValue4F.bind(this);this.updateValue=this.updateValue4F.bind(this)}else if(t=="3f"){this.set=this.setValue=this.setValue3F.bind(this);this.updateValue=this.updateValue3F.bind(this)}else if(t=="2f"){this.set=this.setValue=this.setValue2F.bind(this);this.updateValue=this.updateValue2F.bind(this)}else if(t=="t"){this.set=this.setValue=this.setValueT.bind(this);this.updateValue=this.updateValueT.bind(this)}else if(t=="sampler"){if(this.setValueAny){this.set=this.setValue=this.setValueAny.bind(this);this.updateValue=this.updateValueAny.bind(this)}}else if(t=="tc"){this.set=this.setValue=this.setValueT.bind(this);this.updateValue=this.updateValueT.bind(this)}else if(t=="t[]"){this.set=this.setValue=this.setValueArrayT.bind(this);this.updateValue=this.updateValueArrayT.bind(this)}else if(t=="m4"||t=="m4[]"){this.set=this.setValue=this.setValueM4.bind(this);this.updateValue=this.updateValueM4.bind(this)}else{this._log.error("Unknown uniform type "+t,i,typeof this._shader)}if(typeof r=="object"&&r instanceof E.Port){this._port=r;this._value=this._port.get();if(s&&n&&a){if(!(s instanceof E.Port)||!(n instanceof E.Port)||!(a instanceof E.Port)){this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ",this._name)}this._value=[0,0,0,0];this._port2=s;this._port3=n;this._port4=a;this._port.on("change",this.updateFromPort4f.bind(this));this._port2.on("change",this.updateFromPort4f.bind(this));this._port3.on("change",this.updateFromPort4f.bind(this));this._port4.on("change",this.updateFromPort4f.bind(this));this.updateFromPort4f()}else if(s&&n){if(!(s instanceof E.Port)||!(n instanceof E.Port)){this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ",this._name)}this._value=[0,0,0];this._port2=s;this._port3=n;this._port.on("change",this.updateFromPort3f.bind(this));this._port2.on("change",this.updateFromPort3f.bind(this));this._port3.on("change",this.updateFromPort3f.bind(this));this.updateFromPort3f()}else if(s){if(!(s instanceof E.Port)){this._log.error("[cgl_uniform] mixed port/value parameter for vec4 ",this._name)}this._value=[0,0];this._port2=s;this._port.on("change",this.updateFromPort2f.bind(this));this._port2.on("change",this.updateFromPort2f.bind(this));this.updateFromPort2f()}else{this._port.on("change",this.updateFromPort.bind(this))}}else this._value=r;if(this._value==undefined){this._value=0}this.setValue(this._value);this.needsUpdate=true}getType(){return this._type}get type(){return this._type}get name(){return this._name}getName(){return this._name}getValue(){return this._value}getShaderType(){return this.shaderType}isStructMember(){return!!this._structName}updateFromPort4f(){this._value[0]=this._port.get();this._value[1]=this._port2.get();this._value[2]=this._port3.get();this._value[3]=this._port4.get();this.setValue(this._value)}updateFromPort3f(){this._value[0]=this._port.get();this._value[1]=this._port2.get();this._value[2]=this._port3.get();this.setValue(this._value)}updateFromPort2f(){this._value[0]=this._port.get();this._value[1]=this._port2.get();this.setValue(this._value)}updateFromPort(){this.setValue(this._port.get())}get port(){return this._port}}class c extends l{constructor(e,t,i,r,s,n,a,o,l,h){super(e,t,i,r,s,n,a,o,l,h);this._loc=-1;this._cgl=e._cgl}get name(){return this._name}copy(e){const t=new c(e,this._type,this._name,this._value,this._port2,this._port3,this._port4,this._structUniformName,this._structName,this._propertyName);t.shaderType=this.shaderType;return t}getGlslTypeString(){return c.glslTypeString(this._type)}_isValidLoc(){return this._loc!=-1}resetLoc(){this._loc=-1;this.needsUpdate=true}bindTextures(){}getLoc(){return this._loc}updateFromPort4f(){this._value[0]=this._port.get();this._value[1]=this._port2.get();this._value[2]=this._port3.get();this._value[3]=this._port4.get();this.setValue(this._value)}updateFromPort3f(){this._value[0]=this._port.get();this._value[1]=this._port2.get();this._value[2]=this._port3.get();this.setValue(this._value)}updateFromPort2f(){this._value[0]=this._port.get();this._value[1]=this._port2.get();this.setValue(this._value)}updateFromPort(){this.setValue(this._port.get())}updateValueF(){if(!this._isValidLoc())this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);else this.needsUpdate=false;this._shader.getCgl().gl.uniform1f(this._loc,this._value);this._cgl.profileData.profileUniformCount++}setValueF(e){if(e!=this._value){this.needsUpdate=true;this._value=e}}updateValueI(){if(!this._isValidLoc())this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);else this.needsUpdate=false;this._shader.getCgl().gl.uniform1i(this._loc,this._value);this._cgl.profileData.profileUniformCount++}updateValue2I(){if(!this._value)return;if(!this._isValidLoc()){this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);this._cgl.profileData.profileShaderGetUniform++;this._cgl.profileData.profileShaderGetUniformName=this._name}this._shader.getCgl().gl.uniform2i(this._loc,this._value[0],this._value[1]);this.needsUpdate=false;this._cgl.profileData.profileUniformCount++}updateValue3I(){if(!this._value)return;if(!this._isValidLoc()){this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);this._cgl.profileData.profileShaderGetUniform++;this._cgl.profileData.profileShaderGetUniformName=this._name}this._shader.getCgl().gl.uniform3i(this._loc,this._value[0],this._value[1],this._value[2]);this.needsUpdate=false;this._cgl.profileData.profileUniformCount++}updateValue4I(){if(!this._isValidLoc()){this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);this._cgl.profileData.profileShaderGetUniform++;this._cgl.profileData.profileShaderGetUniformName=this._name}this._shader.getCgl().gl.uniform4i(this._loc,this._value[0],this._value[1],this._value[2],this._value[3]);this._cgl.profileData.profileUniformCount++}setValueI(e){if(e!=this._value){this.needsUpdate=true;this._value=e}}setValue2I(e){if(!e)return;if(!this._oldValue){this._oldValue=[e[0]-1,1];this.needsUpdate=true}else if(e[0]!=this._oldValue[0]||e[1]!=this._oldValue[1]){this._oldValue[0]=e[0];this._oldValue[1]=e[1];this.needsUpdate=true}this._value=e}setValue3I(e){if(!e)return;if(!this._oldValue){this._oldValue=[e[0]-1,1,2];this.needsUpdate=true}else if(e[0]!=this._oldValue[0]||e[1]!=this._oldValue[1]||e[2]!=this._oldValue[2]){this._oldValue[0]=e[0];this._oldValue[1]=e[1];this._oldValue[2]=e[2];this.needsUpdate=true}this._value=e}setValue4I(e){this.needsUpdate=true;this._value=e||vec4.create()}updateValueBool(){if(!this._isValidLoc())this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);else this.needsUpdate=false;this._shader.getCgl().gl.uniform1i(this._loc,this._value?1:0);this._cgl.profileData.profileUniformCount++}setValueBool(e){if(e!=this._value){this.needsUpdate=true;this._value=e}}setValueArray4F(e){this.needsUpdate=true;this._value=e}updateValueArray4F(){if(!this._isValidLoc())this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);else this.needsUpdate=false;if(!this._value)return;this._shader.getCgl().gl.uniform4fv(this._loc,this._value);this._cgl.profileData.profileUniformCount++}setValueArray3F(e){this.needsUpdate=true;this._value=e}updateValueArray3F(){if(!this._isValidLoc())this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);else this.needsUpdate=false;if(!this._value)return;this._shader.getCgl().gl.uniform3fv(this._loc,this._value);this._cgl.profileData.profileUniformCount++}setValueArray2F(e){this.needsUpdate=true;this._value=e}updateValueArray2F(){if(!this._isValidLoc())this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);else this.needsUpdate=false;if(!this._value)return;this._shader.getCgl().gl.uniform2fv(this._loc,this._value);this._cgl.profileData.profileUniformCount++}setValueArrayF(e){this.needsUpdate=true;this._value=e}updateValueArrayF(){if(!this._isValidLoc())this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);else this.needsUpdate=false;if(!this._value)return;this._shader.getCgl().gl.uniform1fv(this._loc,this._value);this._cgl.profileData.profileUniformCount++}setValueArrayT(e){this.needsUpdate=true;this._value=e}updateValue3F(){if(!this._value)return;if(!this._isValidLoc()){this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);this._cgl.profileData.profileShaderGetUniform++;this._cgl.profileData.profileShaderGetUniformName=this._name}this._shader.getCgl().gl.uniform3f(this._loc,this._value[0],this._value[1],this._value[2]);this.needsUpdate=false;this._cgl.profileData.profileUniformCount++}setValue3F(e){if(!e)return;if(!this._oldValue){this._oldValue=[e[0]-1,1,2];this.needsUpdate=true}else if(e[0]!=this._oldValue[0]||e[1]!=this._oldValue[1]||e[2]!=this._oldValue[2]){this._oldValue[0]=e[0];this._oldValue[1]=e[1];this._oldValue[2]=e[2];this.needsUpdate=true}this._value=e}updateValue2F(){if(!this._value)return;if(!this._isValidLoc()){this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);this._cgl.profileData.profileShaderGetUniform++;this._cgl.profileData.profileShaderGetUniformName=this._name}this._shader.getCgl().gl.uniform2f(this._loc,this._value[0],this._value[1]);this.needsUpdate=false;this._cgl.profileData.profileUniformCount++}setValue2F(e){if(!e)return;if(!this._oldValue){this._oldValue=[e[0]-1,1];this.needsUpdate=true}else if(e[0]!=this._oldValue[0]||e[1]!=this._oldValue[1]){this._oldValue[0]=e[0];this._oldValue[1]=e[1];this.needsUpdate=true}this._value=e}updateValue4F(){if(!this._isValidLoc()){this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);this._cgl.profileData.profileShaderGetUniform++;this._cgl.profileData.profileShaderGetUniformName=this._name}if(!this._value){this._log.warn("no value for uniform",this._name,this);this._value=[0,0,0,0]}this.needsUpdate=false;this._shader.getCgl().gl.uniform4f(this._loc,this._value[0],this._value[1],this._value[2],this._value[3]);this._cgl.profileData.profileUniformCount++}setValue4F(e){if(typeof this.value=="number")this.value=vec4.create();if(!e)return;if(!this._oldValue){this._oldValue=[e[0]-1,1,2,3];this.needsUpdate=true}else if(e[0]!=this._oldValue[0]||e[1]!=this._oldValue[1]||e[2]!=this._oldValue[2]||e[3]!=this._oldValue[3]){this._oldValue[0]=e[0];this._oldValue[1]=e[1];this._oldValue[2]=e[2];this.needsUpdate=true}this._value=e}updateValueM4(){if(!this._isValidLoc()){this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);this._cgl.profileData.profileShaderGetUniform++;this._cgl.profileData.profileShaderGetUniformName=this._name}if(!this._value||this._value.length%16!=0)return console.log("this.name",this._name,this._value);this._shader.getCgl().gl.uniformMatrix4fv(this._loc,false,this._value);this._cgl.profileData.profileUniformCount++}setValueM4(e){this.needsUpdate=true;this._value=e||mat4.create()}updateValueArrayT(){if(!this._isValidLoc())this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);else this.needsUpdate=false;if(!this._value)return;this._shader.getCgl().gl.uniform1iv(this._loc,this._value);this._cgl.profileData.profileUniformCount++}updateValueT(){if(!this._isValidLoc()){this._loc=this._shader.getCgl().gl.getUniformLocation(this._shader.getProgram(),this._name);this._cgl.profileData.profileShaderGetUniform++;this._cgl.profileData.profileShaderGetUniformName=this._name}this._cgl.profileData.profileUniformCount++;this._shader.getCgl().gl.uniform1i(this._loc,this._value);this.needsUpdate=false}setValueT(e){this.needsUpdate=true;this._value=e}}c.glslTypeString=e=>{if(e=="f")return"float";if(e=="b")return"bool";if(e=="i")return"int";if(e=="2i")return"ivec2";if(e=="2f")return"vec2";if(e=="3f")return"vec3";if(e=="4f")return"vec4";if(e=="m4")return"mat4";if(e=="t")return"sampler2D";if(e=="tc")return"samplerCube";if(e=="3f[]")return null;if(e=="m4[]")return null;if(e=="f[]")return null;console.warn("[CGL UNIFORM] unknown glsl type string ",e)};const g={SHADERVAR_VERTEX_POSITION:"vPosition",SHADERVAR_VERTEX_NUMBER:"attrVertIndex",SHADERVAR_VERTEX_NORMAL:"attrVertNormal",SHADERVAR_VERTEX_TEXCOORD:"attrTexCoord",SHADERVAR_INSTANCE_MMATRIX:"instMat",SHADERVAR_VERTEX_COLOR:"attrVertColor",SHADERVAR_INSTANCE_INDEX:"instanceIndex",SHADERVAR_UNI_PROJMAT:"projMatrix",SHADERVAR_UNI_VIEWMAT:"viewMatrix",SHADERVAR_UNI_MODELMAT:"modelMatrix",SHADERVAR_UNI_NORMALMAT:"normalMatrix",SHADERVAR_UNI_INVVIEWMAT:"inverseViewMatrix",SHADERVAR_UNI_INVPROJMAT:"invProjMatrix",SHADERVAR_UNI_MATERIALID:"materialId",SHADERVAR_UNI_OBJECTID:"objectId",SHADERVAR_UNI_VIEWPOS:"camPos"};const f={BLEND_NONE:0,BLEND_NORMAL:1,BLEND_ADD:2,BLEND_SUB:3,BLEND_MUL:4};const d=180/Math.PI;const m=Math.PI/180;const p={MATH:{DEG2RAD:m,RAD2DEG:d},SHADER:g,BLEND_MODES:f};const A="\n";class _{_name="unknown";constructor(){}}const S={};S.lastMesh=null;class x extends _{#cgl=null;#geom=null;#bufVerticesIndizes=null;constructor(e,t,i={}){super();this.#cgl=e;let r=i||{};if(E.utils.isNumeric(r))r={glPrimitive:i};this._log=new u.Logger("cgl_mesh");this._bufVertexAttrib=null;this.#bufVerticesIndizes=this.#cgl.gl.createBuffer();this._indexType=this.#cgl.gl.UNSIGNED_SHORT;this._attributes=[];this._attribLocs={};this._lastShader=null;this._numInstances=0;this._glPrimitive=r.glPrimitive;this.opId=r.opId||"";this._preWireframeGeom=null;this.addVertexNumbers=false;this.feedBackAttributes=[];this.setGeom(t);this._feedBacks=[];this._feedBacksChanged=false;this._transformFeedBackLoc=-1;this._lastAttrUpdate=0;this.memFreed=false;this.#cgl.profileData.addHeavyEvent("mesh constructed",this._name);this._queryExt=null}get geom(){return this.#geom}get numInstances(){return this._numInstances}set numInstances(e){this.setNumInstances(e)}freeMem(){this.memFreed=true;for(let e=0;e<this._attributes.length;e++)this._attributes[e].floatArray=null}updateVertices(e){this.setAttribute(p.SHADER.SHADERVAR_VERTEX_POSITION,e.vertices,3);this._numVerts=e.vertices.length/3}setAttributePointer(t,i,r,s){for(let e=0;e<this._attributes.length;e++){if(this._attributes[e].name==t){if(!this._attributes[e].pointer)this._attributes[e].pointer=[];this._attributes[e].pointer.push({loc:-1,name:i,stride:r,offset:s,instanced:t==p.SHADER.SHADERVAR_INSTANCE_MMATRIX})}}}getAttribute(t){for(let e=0;e<this._attributes.length;e++)if(this._attributes[e].name==t)return this._attributes[e]}setAttributeRange(e,t,i,r){if(!e)return;if(!i&&!r)return;if(!e.name)this._log.stack("no attrname?!");const s=this.#cgl.gl;s.bindBuffer(s.ARRAY_BUFFER,e.buffer);this.#cgl.profileData.profileMeshAttributes+=r-i||0;this.#cgl.profileData.profileSingleMeshAttribute[this._name]=this.#cgl.profileData.profileSingleMeshAttribute[this._name]||0;this.#cgl.profileData.profileSingleMeshAttribute[this._name]+=r-i||0;if(e.numItems<t.length/e.itemSize){this._resizeAttr(t,e)}if(r>t.length&&!this.warned){this.warned=true;this._log.warn(this.#cgl.canvas.id+" "+e.name+" buffersubdata out of bounds ?",t.length,r,i,e);return}s.bufferSubData(s.ARRAY_BUFFER,i*4,t,i,r-i)}_resizeAttr(e,t){const i=this.#cgl.gl;if(t.buffer)i.deleteBuffer(t.buffer);t.buffer=i.createBuffer();i.bindBuffer(i.ARRAY_BUFFER,t.buffer);this._bufferArray(e,t);t.numItems=e.length/t.itemSize}_bufferArray(e,t){let i=t.floatArray||null;if(!e)return;if(this.#cgl.debugOneFrame){console.log("_bufferArray",e.length,t.name)}if(!(e instanceof Float32Array)){if(t&&i&&i.length==e.length){i.set(e)}else{i=new Float32Array(e);if(this.#cgl.debugOneFrame){console.log("_bufferArray create new float32array",e.length,t.name)}if(e.length>1e4){this.#cgl.profileData.profileNonTypedAttrib++;this.#cgl.profileData.profileNonTypedAttribNames="("+this._name+":"+t.name+")"}}}else i=e;t.arrayLength=i.length;t.floatArray=null;this.#cgl.gl.bufferData(this.#cgl.gl.ARRAY_BUFFER,i,this.#cgl.gl.DYNAMIC_DRAW)}addAttribute(e,t,i,r){this.setAttribute(e,t,i,r)}setAttribute(e,t,i,r={}){if(!t){this._log.error("mesh addAttribute - no array given! "+e);throw new Error}let s=null;let n=false;let a=0;const o=t.length/i;this.#cgl.profileData.profileMeshAttributes+=o||0;if(typeof r=="function"){s=r}if(typeof r=="object"){if(r.cb)s=r.cb;if(r.instanced)n=r.instanced}if(e==p.SHADER.SHADERVAR_INSTANCE_MMATRIX)n=true;for(a=0;a<this._attributes.length;a++){const u=this._attributes[a];if(u.name==e){if(u.numItems===o){}else{this._resizeAttr(t,u)}this.#cgl.gl.bindBuffer(this.#cgl.gl.ARRAY_BUFFER,u.buffer);this._bufferArray(t,u);return u}}const l=this.#cgl.gl.createBuffer();this.#cgl.gl.bindBuffer(this.#cgl.gl.ARRAY_BUFFER,l);let h=this.#cgl.gl.FLOAT;if(r&&r.type)h=r.type;const u={buffer:l,name:e,cb:s,itemSize:i,numItems:o,startItem:0,instanced:n,type:h};this._bufferArray(t,u);if(e==p.SHADER.SHADERVAR_VERTEX_POSITION)this._bufVertexAttrib=u;this._attributes.push(u);this._attribLocs={};return u}getAttributes(){return this._attributes}updateTexCoords(e){if(e.texCoords&&e.texCoords.length>0){this.setAttribute(p.SHADER.SHADERVAR_VERTEX_TEXCOORD,e.texCoords,2)}else{const t=new Float32Array(Math.round(e.vertices.length/3*2));this.setAttribute(p.SHADER.SHADERVAR_VERTEX_TEXCOORD,t,2)}}updateNormals(e){if(e.vertexNormals&&e.vertexNormals.length>0){this.setAttribute(p.SHADER.SHADERVAR_VERTEX_NORMAL,e.vertexNormals,3)}else{const t=new Float32Array(Math.round(e.vertices.length));this.setAttribute(p.SHADER.SHADERVAR_VERTEX_NORMAL,t,3)}}_setVertexNumbers(e=null){if(!this._verticesNumbers||this._verticesNumbers.length!=this._numVerts||e){if(e)this._verticesNumbers=e;else{this._verticesNumbers=new Float32Array(this._numVerts);for(let e=0;e<this._numVerts;e++)this._verticesNumbers[e]=e}this.setAttribute(p.SHADER.SHADERVAR_VERTEX_NUMBER,this._verticesNumbers,1,(e,t,i)=>{if(!i.uniformNumVertices)i.uniformNumVertices=new c(i,"f","numVertices",this._numVerts);i.uniformNumVertices.setValue(this._numVerts)})}}setVertexIndices(t){if(!this.#bufVerticesIndizes){this._log.warn("no bufVerticesIndizes: "+this._name);return}if(t.length>0){if(t instanceof Float32Array)this._log.warn("vertIndices float32Array: "+this._name);for(let e=0;e<t.length;e++){if(t[e]>=this._numVerts){this._log.warn("invalid index in "+this._name,e,t[e]);return}}this.#cgl.gl.bindBuffer(this.#cgl.gl.ELEMENT_ARRAY_BUFFER,this.#bufVerticesIndizes);if(t.length>65535){this.vertIndicesTyped=new Uint32Array(t);this._indexType=this.#cgl.gl.UNSIGNED_INT}else if(t instanceof Uint32Array){this.vertIndicesTyped=t;this._indexType=this.#cgl.gl.UNSIGNED_INT}else if(!(t instanceof Uint16Array)){this.vertIndicesTyped=new Uint16Array(t);this._indexType=this.#cgl.gl.UNSIGNED_SHORT}else this.vertIndicesTyped=t;this.#cgl.gl.bufferData(this.#cgl.gl.ELEMENT_ARRAY_BUFFER,this.vertIndicesTyped,this.#cgl.gl.DYNAMIC_DRAW);this.#bufVerticesIndizes.itemSize=1;this.#bufVerticesIndizes.numItems=t.length}else this.#bufVerticesIndizes.numItems=0}setGeom(e,t=false){this.#geom=e;if(e.glPrimitive!=null)this._glPrimitive=e.glPrimitive;if(this.#geom&&this.#geom.name)this._name="mesh "+this.#geom.name;S.lastMesh=null;this.#cgl.profileData.profileMeshSetGeom++;this._disposeAttributes();this.updateVertices(this.#geom);this.setVertexIndices(this.#geom.verticesIndices);if(this.addVertexNumbers)this._setVertexNumbers();const i=this.#geom.getAttributes();const r={texCoords:p.SHADER.SHADERVAR_VERTEX_TEXCOORD,vertexNormals:p.SHADER.SHADERVAR_VERTEX_NORMAL,vertexColors:p.SHADER.SHADERVAR_VERTEX_COLOR,tangents:"attrTangent",biTangents:"attrBiTangent"};for(const s in i)if(i[s].data&&i[s].data.length)this.setAttribute(r[s]||s,i[s].data,i[s].itemSize);if(t){this.#geom=null}}_preBind(t){for(let e=0;e<this._attributes.length;e++)if(this._attributes[e].cb)this._attributes[e].cb(this._attributes[e],this.#geom,t)}_checkAttrLengths(){if(this.memFreed)return;for(let e=0;e<this._attributes.length;e++){if(this._attributes[e].arrayLength/this._attributes[e].itemSize<this._attributes[0].arrayLength/this._attributes[0].itemSize){let e="unknown";if(this.#geom)e=this.#geom.name}}}_bind(t){if(!t)return;if(!t.isValid())return;let i=[];if(this._attribLocs[t.id])i=this._attribLocs[t.id];else this._attribLocs[t.id]=i;this._lastShader=t;if(t.lastCompile>this._lastAttrUpdate||i.length!=this._attributes.length){this._lastAttrUpdate=t.lastCompile;for(let e=0;e<this._attributes.length;e++)i[e]=-1}for(let e=0;e<this._attributes.length;e++){const r=this._attributes[e];if(i[e]==-1){if(r._attrLocationLastShaderTime!=t.lastCompile){r._attrLocationLastShaderTime=t.lastCompile;i[e]=this.#cgl.glGetAttribLocation(t.getProgram(),r.name);this.#cgl.profileData.profileAttrLoc++}}if(i[e]!=-1){this.#cgl.gl.enableVertexAttribArray(i[e]);this.#cgl.gl.bindBuffer(this.#cgl.gl.ARRAY_BUFFER,r.buffer);if(r.instanced){if(r.itemSize<=4){if(!r.itemSize||r.itemSize==0)this._log.warn("instanced attrib itemsize error",this.#geom.name,r);this.#cgl.gl.vertexAttribPointer(i[e],r.itemSize,r.type,false,r.itemSize*4,0);this.#cgl.gl.vertexAttribDivisor(i[e],1)}else if(r.itemSize==16){const s=16*4;this.#cgl.gl.vertexAttribPointer(i[e],4,r.type,false,s,0);this.#cgl.gl.enableVertexAttribArray(i[e]+1);this.#cgl.gl.vertexAttribPointer(i[e]+1,4,r.type,false,s,4*4*1);this.#cgl.gl.enableVertexAttribArray(i[e]+2);this.#cgl.gl.vertexAttribPointer(i[e]+2,4,r.type,false,s,4*4*2);this.#cgl.gl.enableVertexAttribArray(i[e]+3);this.#cgl.gl.vertexAttribPointer(i[e]+3,4,r.type,false,s,4*4*3);this.#cgl.gl.vertexAttribDivisor(i[e],1);this.#cgl.gl.vertexAttribDivisor(i[e]+1,1);this.#cgl.gl.vertexAttribDivisor(i[e]+2,1);this.#cgl.gl.vertexAttribDivisor(i[e]+3,1)}else{this._log.warn("unknown instance attrib size",r.name)}}else{if(!r.itemSize||r.itemSize==0)this._log.warn("attrib itemsize error",this._name,r);this.#cgl.gl.vertexAttribPointer(i[e],r.itemSize,r.type,false,r.itemSize*4,0);if(r.pointer){for(let e=0;e<r.pointer.length;e++){const n=r.pointer[e];if(n.loc==-1)n.loc=this.#cgl.glGetAttribLocation(t.getProgram(),n.name);this.#cgl.profileData.profileAttrLoc++;this.#cgl.gl.enableVertexAttribArray(n.loc);this.#cgl.gl.vertexAttribPointer(n.loc,r.itemSize,r.type,false,n.stride,n.offset)}}if(this.bindFeedback)this.bindFeedback(r)}}}if(this.#bufVerticesIndizes&&this.#bufVerticesIndizes.numItems!==0)this.#cgl.gl.bindBuffer(this.#cgl.gl.ELEMENT_ARRAY_BUFFER,this.#bufVerticesIndizes)}unBind(){const e=this._lastShader;this._lastShader=null;if(!e)return;let t=[];if(this._attribLocs[e.id])t=this._attribLocs[e.id];else this._attribLocs[e.id]=t;S.lastMesh=null;for(let e=0;e<this._attributes.length;e++){if(this._attributes[e].instanced){if(this._attributes[e].itemSize<=4){if(t[e]!=-1)this.#cgl.gl.vertexAttribDivisor(t[e],0);if(t[e]>=0)this.#cgl.gl.disableVertexAttribArray(t[e])}else{this.#cgl.gl.vertexAttribDivisor(t[e],0);this.#cgl.gl.vertexAttribDivisor(t[e]+1,0);this.#cgl.gl.vertexAttribDivisor(t[e]+2,0);this.#cgl.gl.vertexAttribDivisor(t[e]+3,0);this.#cgl.gl.disableVertexAttribArray(t[e]+1);this.#cgl.gl.disableVertexAttribArray(t[e]+2);this.#cgl.gl.disableVertexAttribArray(t[e]+3)}}if(t[e]!=-1)this.#cgl.gl.disableVertexAttribArray(t[e])}}meshChanged(){return this.#cgl.lastMesh&&this.#cgl.lastMesh!=this}printDebug(){console.log("--attributes");for(let e=0;e<this._attributes.length;e++){console.log("attribute "+e+" "+this._attributes[e].name)}}setNumVertices(e){this._bufVertexAttrib.numItems=e}getNumVertices(){return this._bufVertexAttrib.numItems}setNumIndices(e){this.#bufVerticesIndizes.numItems=e}getNumIndices(){return this.#bufVerticesIndizes.numItems}render(i){if(this.#cgl.aborted)return;i=i||this.#cgl.getShader();if(!i){return console.log("shadern not valid")}if(!i.isValid()){i=this.#cgl.getErrorShader()}this._checkAttrLengths();if(this.#geom){if(this._preWireframeGeom&&!i.wireframe&&!this.#geom.isIndexed()){this.setGeom(this._preWireframeGeom);this._preWireframeGeom=null}if(i.wireframe){let e=false;if(this.#geom.isIndexed()){if(!this._preWireframeGeom){this._preWireframeGeom=this.#geom;this.#geom=this.#geom.copy()}this.#geom.unIndex();e=true}if(!this.#geom.getAttribute("attrBarycentric")){if(!this._preWireframeGeom){this._preWireframeGeom=this.#geom;this.#geom=this.#geom.copy()}e=true;this.#geom.calcBarycentric()}if(e)this.setGeom(this.#geom)}}let e=false;if(S.lastMesh!=this){if(S.lastMesh)S.lastMesh.unBind();e=true}if(e)this._preBind(i);if(!i.bind())return;this._bind(i);if(this.addVertexNumbers)this._setVertexNumbers();S.lastMesh=this;let t=this.#cgl.gl.TRIANGLES;if(this._glPrimitive!==undefined)t=this._glPrimitive;if(i.glPrimitive!==null)t=i.glPrimitive;let r=1;let s=this.#cgl.profileData.doProfileGlQuery;let n=false;if(s){let e=this._name+" - "+i.getName()+" #"+i.id;if(this._numInstances)e+=" instanced "+this._numInstances+"x";let t=this.#cgl.profileData.glQueryData[e];if(!t)t={id:e,num:0};if(i.opId)t.shaderOp=i.opId;if(this.opId)t.meshOp=this.opId;this.#cgl.profileData.glQueryData[e]=t;if(!this._queryExt&&this._queryExt!==false)this._queryExt=this.#cgl.enableExtension("EXT_disjoint_timer_query_webgl2")||false;if(this._queryExt){if(t._drawQuery){const a=this.#cgl.gl.getQueryParameter(t._drawQuery,this.#cgl.gl.QUERY_RESULT_AVAILABLE);if(a){const o=this.#cgl.gl.getQueryParameter(t._drawQuery,this.#cgl.gl.QUERY_RESULT);const l=o/1e6;t._times=t._times||0;t._times+=l;t._numcount++;t.when=performance.now();t._drawQuery=null;t.queryStarted=false}}if(!t.queryStarted){t._drawQuery=this.#cgl.gl.createQuery();this.#cgl.gl.beginQuery(this._queryExt.TIME_ELAPSED_EXT,t._drawQuery);n=t.queryStarted=true}}}if(this.hasFeedbacks&&this.hasFeedbacks())this.drawFeedbacks(i,t);else if(!this.#bufVerticesIndizes||this.#bufVerticesIndizes.numItems===0){if(t==this.#cgl.gl.TRIANGLES)r=3;if(this._numInstances===0)this.#cgl.gl.drawArrays(t,this._bufVertexAttrib.startItem,this._bufVertexAttrib.numItems-this._bufVertexAttrib.startItem);else this.#cgl.gl.drawArraysInstanced(t,this._bufVertexAttrib.startItem,this._bufVertexAttrib.numItems,this._numInstances)}else{if(t==this.#cgl.gl.TRIANGLES)r=3;if(this._numInstances===0){this.#cgl.gl.drawElements(t,this.#bufVerticesIndizes.numItems,this._indexType,0)}else{this.#cgl.gl.drawElementsInstanced(t,this.#bufVerticesIndizes.numItems,this._indexType,0,this._numInstances)}}if(this.#cgl.debugOneFrame&&this.#cgl.gl.getError()!=this.#cgl.gl.NO_ERROR){this._log.error("mesh draw gl error");this._log.error("mesh",this);this._log.error("shader",i);const h=[];for(let e=0;e<this.#cgl.gl.getProgramParameter(i.getProgram(),this.#cgl.gl.ACTIVE_ATTRIBUTES);e++){const u=this.#cgl.gl.getActiveAttrib(i.getProgram(),e).name;this._log.error("attrib ",u)}}this.#cgl.profileData.profileMeshNumElements+=this._bufVertexAttrib.numItems/r*(this._numInstances||1);this.#cgl.profileData.profileMeshDraw++;if(s&&n){this.#cgl.gl.endQuery(this._queryExt.TIME_ELAPSED_EXT)}this.#cgl.printError("mesh render "+this._name);this.unBind()}setNumInstances(t){t=Math.max(0,t);if(this._numInstances!=t){this._numInstances=t;const i=new Float32Array(t);for(let e=0;e<t;e++)i[e]=e;this.setAttribute(p.SHADER.SHADERVAR_INSTANCE_INDEX,i,1,{instanced:true})}}_disposeAttributes(){if(!this._attributes)return;for(let e=0;e<this._attributes.length;e++){if(this._attributes[e].buffer){this.#cgl.gl.deleteBuffer(this._attributes[e].buffer);this._attributes[e].buffer=null}}this._attributes.length=0}dispose(){if(this.#cgl.aborted)return;if(this._bufVertexAttrib&&this._bufVertexAttrib.buffer)this.#cgl.gl.deleteBuffer(this._bufVertexAttrib.buffer);if(this.#bufVerticesIndizes)this.#cgl.gl.deleteBuffer(this.#bufVerticesIndizes);this.#bufVerticesIndizes=null;this._disposeAttributes()}}const B=CABLES.GLMatrix;class b{constructor(e){this._init();this._first=true;this._wireMesh=null;if(e)this.applyGeom(e)}_init(){this._max=[-0,-0,-0];this._min=[0,0,0];this._center=[0,0,0];this._size=[0,0,0];this._maxAxis=0;this._first=true}get maxAxis(){return this._maxAxis||1}get size(){return this._size}get center(){return this._center}get x(){return this._center[0]}get y(){return this._center[1]}get z(){return this._center[2]}get minX(){return this._min[0]}get minY(){return this._min[1]}get minZ(){return this._min[2]}get maxX(){return this._max[0]}get maxY(){return this._max[1]}get maxZ(){return this._max[2]}apply(e){return this.applyGeom(e)}applyGeom(t){if(!t)return;if(t instanceof b){const e=t;this.applyPos(e.maxX,e.maxY,e.maxZ);this.applyPos(e.minX,e.minY,e.minZ)}else{if(t.isGeometry)for(let e=0;e<t.vertices.length;e+=3)this.applyPos(t.vertices[e],t.vertices[e+1],t.vertices[e+2])}this.calcCenterSize()}copy(){return new b(this)}get changed(){return!(this._max[0]==-Number.MAX_VALUE&&this._max[1]==-Number.MAX_VALUE&&this._max[2]==-Number.MAX_VALUE)}applyPos(e,t,i){if(e==Number.MAX_VALUE||e==-Number.MAX_VALUE||t==Number.MAX_VALUE||t==-Number.MAX_VALUE||i==Number.MAX_VALUE||i==-Number.MAX_VALUE)return;if(!E.utils.isNumeric(e)||!E.utils.isNumeric(t)||!E.utils.isNumeric(i))return;if(this._first){this._max[0]=e;this._max[1]=t;this._max[2]=i;this._min[0]=e;this._min[1]=t;this._min[2]=i;this._first=false;return}this._max[0]=Math.max(this._max[0],e);this._max[1]=Math.max(this._max[1],t);this._max[2]=Math.max(this._max[2],i);this._min[0]=Math.min(this._min[0],e);this._min[1]=Math.min(this._min[1],t);this._min[2]=Math.min(this._min[2],i)}calcCenterSize(){if(this._first)return;this._size[0]=this._max[0]-this._min[0];this._size[1]=this._max[1]-this._min[1];this._size[2]=this._max[2]-this._min[2];this._center[0]=(this._min[0]+this._max[0])/2;this._center[1]=(this._min[1]+this._max[1])/2;this._center[2]=(this._min[2]+this._max[2])/2;this._maxAxis=Math.max(this._size[2],Math.max(this._size[0],this._size[1]))}mulMat4(e){if(this._first){this._max[0]=0;this._max[1]=0;this._max[2]=0;this._min[0]=0;this._min[1]=0;this._min[2]=0;this._first=false}B.vec3.transformMat4(this._max,this._max,e);B.vec3.transformMat4(this._min,this._min,e);this.calcCenterSize()}render(e,t,i){if(!this._wireMesh)this._wireMesh=new CGL.WireCube(e);e.pushModelMatrix();B.mat4.translate(e.mMatrix,e.mMatrix,this._center);if(CABLES.UI&&i){CABLES.UI.OverlayMeshes.drawCube(i,this._size[0]/2,this._size[1]/2,this._size[2]/2)}e.popModelMatrix()}}class v{isGeometry=true;constructor(e){this.name=e||"unknown";this._log=new u.Logger("cgl_geometry");this.faceVertCount=3;this.glPrimitive=null;this._attributes={};this._vertices=[];this.verticesIndices=[];this.morphTargets=[]}get vertices(){return this._vertices}set vertices(e){this.setVertices(e)}get texCoords(){const e=this.getAttribute("texCoords");if(!e)return[];return e.data}set texCoords(e){this.setAttribute("texCoords",e,2)}get vertexNormals(){const e=this.getAttribute("vertexNormals");if(!e)return[];return e.data}set vertexNormals(e){this.setAttribute("vertexNormals",e,3)}get tangents(){const e=this.getAttribute("tangents");if(!e)return[];return e.data}set tangents(e){this.setAttribute("tangents",e,3)}get biTangents(){const e=this.getAttribute("biTangents");if(!e)return[];return e.data}set biTangents(e){this.setAttribute("biTangents",e,3)}get vertexColors(){const e=this.getAttribute("vertexColors");if(!e)return[];return e.data}set vertexColors(e){this.setAttribute("vertexColors",e,4)}clear(){this._vertices=new Float32Array([]);this.verticesIndices=[];this.texCoords=new Float32Array([]);this.vertexNormals=new Float32Array([]);this.tangents=[];this.biTangents=[];this._attributes={}}getAttributes(){return this._attributes}getAttribute(t){for(const e in this._attributes){if(this._attributes[e].name==t)return this._attributes[e]}return null}setAttribute(e,t,i){let r="";if(!i||i>4){this._log.warn("itemsize wrong?",i,e);this._log.stack("itemsize");i=3}if(i==1)r="float";else if(i==2)r="vec2";else if(i==3)r="vec3";else if(i==4)r="vec4";const s={name:e,data:t,itemSize:i,type:r};this._attributes[e]=s}copyAttribute(e,t){const i=this.getAttribute(e);t.setAttribute(e,new Float32Array(i.data),i.itemSize)}setVertices(e){if(e instanceof Float32Array)this._vertices=e;else this._vertices=new Float32Array(e)}setTexCoords(e){if(e instanceof Float32Array)this.texCoords=e;else this.texCoords=new Float32Array(e)}calcNormals(e){const t={smooth:e};this.calculateNormals(t)}flipNormals(t,i,r){let s=B.vec3.create();if(t==undefined)t=1;if(i==undefined)i=1;if(r==undefined)r=1;for(let e=0;e<this.vertexNormals.length;e+=3){B.vec3.set(s,this.vertexNormals[e+0],this.vertexNormals[e+1],this.vertexNormals[e+2]);s[0]*=-t;s[1]*=-i;s[2]*=-r;B.vec3.normalize(s,s);this.vertexNormals[e+0]=s[0];this.vertexNormals[e+1]=s[1];this.vertexNormals[e+2]=s[2]}}getNumTriangles(){if(this.verticesIndices&&this.verticesIndices.length)return this.verticesIndices.length/3;return this.vertices.length/3}flipVertDir(){const t=[];t.length=this.verticesIndices.length;for(let e=0;e<this.verticesIndices.length;e+=3){t[e]=this.verticesIndices[e+2];t[e+1]=this.verticesIndices[e+1];t[e+2]=this.verticesIndices[e]}this.verticesIndices=t}setPointVertices(t){if(t.length%3!==0){this._log.error("SetPointVertices: Array must be multiple of three.");return}if(!(t instanceof Float32Array))this.vertices=new Float32Array(t);else this.vertices=t;if(!(this.texCoords instanceof Float32Array))this.texCoords=new Float32Array(t.length/3*2);this.verticesIndices.length=t.length/3;for(let e=0;e<t.length/3;e++){this.verticesIndices[e]=e;this.texCoords[e*2]=0;this.texCoords[e*2+1]=0}}merge(t){if(!t)return;if(this.isIndexed()!=t.isIndexed()){if(this.isIndexed()){this.unIndex(false,true)}if(t.isIndexed()){const e=t.copy();e.unIndex(false,true);t=e}}const i=this.verticesIndices.length;const r=this._vertices.length/3;this.verticesIndices.length+=t.verticesIndices.length;for(let e=0;e<t.verticesIndices.length;e++)this.verticesIndices[i+e]=t.verticesIndices[e]+r;this.vertices=E.utils.float32Concat(this._vertices,t.vertices);this.texCoords=E.utils.float32Concat(this.texCoords,t.texCoords);this.vertexNormals=E.utils.float32Concat(this.vertexNormals,t.vertexNormals);this.tangents=E.utils.float32Concat(this.tangents,t.tangents);this.biTangents=E.utils.float32Concat(this.biTangents,t.biTangents)}copy(){const t=new v(this.name+" copy");t.faceVertCount=this.faceVertCount;t.glPrimitive=this.glPrimitive;t.setVertices(this._vertices.slice(0));if(this.verticesIndices){t.verticesIndices.length=this.verticesIndices.length;for(let e=0;e<this.verticesIndices.length;e++)t.verticesIndices[e]=this.verticesIndices[e]}for(let e in this._attributes)this.copyAttribute(e,t);t.morphTargets.length=this.morphTargets.length;for(let e=0;e<this.morphTargets.length;e++)t.morphTargets[e]=this.morphTargets[e];return t}calculateNormals(t=null){t=t||{};if(t.smooth===false)this.unIndex();const i=B.vec3.create();const r=B.vec3.create();const s=B.vec3.create();function n(e){B.vec3.subtract(i,e[0],e[1]);B.vec3.subtract(r,e[0],e[2]);B.vec3.cross(s,i,r);B.vec3.normalize(s,s);if(t&&t.forceZUp){if(s[2]<0){s[0]*=-1;s[1]*=-1;s[2]*=-1}}return s}this.getVertexVec=function(e){const t=[0,0,0];t[0]=this.vertices[e*3+0];t[1]=this.vertices[e*3+1];t[2]=this.vertices[e*3+2];return t};if(!(this.vertexNormals instanceof Float32Array)||this.vertexNormals.length!=this.vertices.length)this.vertexNormals=new Float32Array(this.vertices.length);for(let e=0;e<this.vertices.length;e++){this.vertexNormals[e]=0}if(!this.isIndexed()){const a=[];for(let e=0;e<this.vertices.length;e+=9){const o=[[this.vertices[e+0],this.vertices[e+1],this.vertices[e+2]],[this.vertices[e+3],this.vertices[e+4],this.vertices[e+5]],[this.vertices[e+6],this.vertices[e+7],this.vertices[e+8]]];const l=n(o);a.push(l[0],l[1],l[2],l[0],l[1],l[2],l[0],l[1],l[2])}this.vertexNormals=a}else{const h=[];h.length=Math.floor(this.verticesIndices.length/3);for(let e=0;e<this.verticesIndices.length;e+=3){const o=[this.getVertexVec(this.verticesIndices[e+0]),this.getVertexVec(this.verticesIndices[e+1]),this.getVertexVec(this.verticesIndices[e+2])];h[e/3]=n(o);this.vertexNormals[this.verticesIndices[e+0]*3+0]+=h[e/3][0];this.vertexNormals[this.verticesIndices[e+0]*3+1]+=h[e/3][1];this.vertexNormals[this.verticesIndices[e+0]*3+2]+=h[e/3][2];this.vertexNormals[this.verticesIndices[e+1]*3+0]+=h[e/3][0];this.vertexNormals[this.verticesIndices[e+1]*3+1]+=h[e/3][1];this.vertexNormals[this.verticesIndices[e+1]*3+2]+=h[e/3][2];this.vertexNormals[this.verticesIndices[e+2]*3+0]+=h[e/3][0];this.vertexNormals[this.verticesIndices[e+2]*3+1]+=h[e/3][1];this.vertexNormals[this.verticesIndices[e+2]*3+2]+=h[e/3][2]}for(let t=0;t<this.verticesIndices.length;t+=3){for(let e=0;e<3;e++){const u=[this.vertexNormals[this.verticesIndices[t+e]*3+0],this.vertexNormals[this.verticesIndices[t+e]*3+1],this.vertexNormals[this.verticesIndices[t+e]*3+2]];B.vec3.normalize(u,u);this.vertexNormals[this.verticesIndices[t+e]*3+0]=u[0];this.vertexNormals[this.verticesIndices[t+e]*3+1]=u[1];this.vertexNormals[this.verticesIndices[t+e]*3+2]=u[2]}}}}calcTangentsBitangents(){if(!this.vertices.length){return}if(!this.vertexNormals.length){return}if(!this.texCoords.length){const v=this.vertices.length/3*2;this.texCoords=new Float32Array(v);for(let e=0;e<v;e+=1)this.texCoords[e]=0}if(!this.verticesIndices||!this.verticesIndices.length){return}if(this.verticesIndices.length%3!==0){this._log.error("Vertex indices mismatch!");return}const t=this.verticesIndices.length/3;const i=this.vertices.length/3;this.tangents=new Float32Array(this.vertexNormals.length);this.biTangents=new Float32Array(this.vertexNormals.length);const r=[];r.length=i*2;const s=B.vec3.create();const n=B.vec3.create();const a=B.vec3.create();const o=B.vec2.create();const l=B.vec2.create();const h=B.vec2.create();const u=B.vec3.create();const c=B.vec3.create();for(let e=0;e<t;e+=1){const T=this.verticesIndices[e*3];const E=this.verticesIndices[e*3+1];const A=this.verticesIndices[e*3+2];B.vec3.set(s,this.vertices[T*3],this.vertices[T*3+1],this.vertices[T*3+2]);B.vec3.set(n,this.vertices[E*3],this.vertices[E*3+1],this.vertices[E*3+2]);B.vec3.set(a,this.vertices[A*3],this.vertices[A*3+1],this.vertices[A*3+2]);B.vec2.set(o,this.texCoords[T*2],this.texCoords[T*2+1]);B.vec2.set(l,this.texCoords[E*2],this.texCoords[E*2+1]);B.vec2.set(h,this.texCoords[A*2],this.texCoords[A*2+1]);const S=n[0]-s[0];const C=a[0]-s[0];const R=n[1]-s[1];const O=a[1]-s[1];const M=n[2]-s[2];const I=a[2]-s[2];const F=l[0]-o[0];const L=h[0]-o[0];const P=l[1]-o[1];const N=h[1]-o[1];const y=1/(F*N-L*P);B.vec3.set(u,(N*S-P*C)*y,(N*R-P*O)*y,(N*M-P*I)*y);B.vec3.set(c,(F*C-L*S)*y,(F*O-L*R)*y,(F*I-L*M)*y);r[T]=u;r[E]=u;r[A]=u;r[T+i]=c;r[E+i]=c;r[A+i]=c}const g=B.vec3.create();const f=B.vec3.create();const d=B.vec3.create();const m=B.vec3.create();const p=B.vec3.create();const _=B.vec3.create();const x=B.vec3.create();const b=B.vec3.create();for(let e=0;e<i;e+=1){if(!r[e])continue;B.vec3.set(g,this.vertexNormals[e*3],this.vertexNormals[e*3+1],this.vertexNormals[e*3+2]);B.vec3.set(f,r[e][0],r[e][1],r[e][2]);const w=B.vec3.dot(g,f);B.vec3.scale(p,g,w);B.vec3.subtract(_,f,p);B.vec3.normalize(b,_);B.vec3.cross(x,g,f);const U=1;B.vec3.scale(d,b,1/U);B.vec3.cross(m,g,d);this.tangents[e*3+0]=d[0];this.tangents[e*3+1]=d[1];this.tangents[e*3+2]=d[2];this.biTangents[e*3+0]=m[0];this.biTangents[e*3+1]=m[1];this.biTangents[e*3+2]=m[2]}}isIndexed(){if(this._vertices.length==0)return true;return this.verticesIndices.length!=0}unIndex(e=false,t=false){const i=[];const r=[];let s=0;for(let e in this._attributes){const n=this._attributes[e];let i=[];for(let t=0;t<this.verticesIndices.length;t+=3){for(let e=0;e<3;e++){if(n.itemSize==3)i.push(n.data[this.verticesIndices[t+e]*3+0],n.data[this.verticesIndices[t+e]*3+1],n.data[this.verticesIndices[t+e]*3+2]);else if(n.itemSize==4)i.push(n.data[this.verticesIndices[t+e]*4+0],n.data[this.verticesIndices[t+e]*4+1],n.data[this.verticesIndices[t+e]*4+2],n.data[this.verticesIndices[t+e]*4+3]);else if(n.itemSize==2)i.push(n.data[this.verticesIndices[t+e]*2+0],n.data[this.verticesIndices[t+e]*2+1]);else if(n.itemSize==1)i.push(n.data[this.verticesIndices[t+e]]);else this._log.warn("unknown attr",n)}}this.setAttribute(n.name,i,n.itemSize)}for(let e=0;e<this.verticesIndices.length;e+=3){i.push(this.vertices[this.verticesIndices[e+0]*3+0],this.vertices[this.verticesIndices[e+0]*3+1],this.vertices[this.verticesIndices[e+0]*3+2]);r.push(s);s++;i.push(this.vertices[this.verticesIndices[e+1]*3+0],this.vertices[this.verticesIndices[e+1]*3+1],this.vertices[this.verticesIndices[e+1]*3+2]);r.push(s);s++;i.push(this.vertices[this.verticesIndices[e+2]*3+0],this.vertices[this.verticesIndices[e+2]*3+1],this.vertices[this.verticesIndices[e+2]*3+2]);r.push(s);s++}this.vertices=i;this.verticesIndices=[];if(e)this.verticesIndices=r;if(!t)this.calculateNormals()}calcBarycentric(){let t=[];t.length=this.vertices.length;for(let e=0;e<this.vertices.length;e++)t[e]=0;let i=0;for(let e=0;e<this.vertices.length;e+=3){t[e+i]=1;i++;if(i==3)i=0}this.setAttribute("attrBarycentric",t,3)}getBounds(){return new b(this)}center(e,t,i){if(e===undefined){e=true;t=true;i=true}let r=0;const s=this.getBounds();const n=[s.minX+(s.maxX-s.minX)/2,s.minY+(s.maxY-s.minY)/2,s.minZ+(s.maxZ-s.minZ)/2];for(r=0;r<this.vertices.length;r+=3){if(this.vertices[r+0]==this.vertices[r+0]){if(e)this.vertices[r+0]-=n[0];if(t)this.vertices[r+1]-=n[1];if(i)this.vertices[r+2]-=n[2]}}return n}mapTexCoords2d(){const t=this.getBounds();const i=this.vertices.length/3;this.texCoords=new Float32Array(i*2);for(let e=0;e<i;e++){const r=this.vertices[e*3+0];const s=this.vertices[e*3+1];this.texCoords[e*2+0]=r/(t.maxX-t.minX)+.5;this.texCoords[e*2+1]=1-s/(t.maxY-t.minY)+.5}}getInfoOneLine(){let e="";if(this.faceVertCount==3&&this.verticesIndices)e+=this.verticesIndices.length/3;else e+=0;e+=" tris ";if(this.vertices)e+=this.vertices.length/3;else e+=0;e+=" verts";return e}getInfo(){const e={};e.name=this.name;e.class=this.constructor.name;if(this.faceVertCount==3&&this.verticesIndices)e.numFaces=this.verticesIndices.length/3;else e.numFaces=0;if(this.verticesIndices&&this.verticesIndices.length)e.indices=this.verticesIndices.length;if(this.vertices)e.numVerts=this.vertices.length/3;else e.numVerts=0;if(this.vertexNormals)e.numNormals=this.vertexNormals.length/3;else e.numNormals=0;if(this.texCoords)e.numTexCoords=this.texCoords.length/2;else e.numTexCoords=0;if(this.tangents)e.numTangents=this.tangents.length/3;else e.numTangents=0;if(this.biTangents)e.numBiTangents=this.biTangents.length/3;else e.numBiTangents=0;if(this.biTangents)e.numBiTangents=this.biTangents.length/3;else e.numBiTangents=0;if(this.vertexColors)e.numVertexColors=this.vertexColors.length/4;else e.numVertexColors=0;if(this.getAttributes())e.numAttribs=Object.keys(this.getAttributes()).length;else e.numAttribs=0;e.isIndexed=this.isIndexed();return e}}v.buildFromFaces=function(t,e,i){const r=[];const s=[];for(let e=0;e<t.length;e+=3){const a=t[e+0];const o=t[e+1];const l=t[e+2];const h=[-1,-1,-1];if(i)for(let e=0;e<r.length;e+=3){if(r[e+0]==a[0]&&r[e+1]==a[1]&&r[e+2]==a[2])h[0]=e/3;if(r[e+0]==o[0]&&r[e+1]==o[1]&&r[e+2]==o[2])h[1]=e/3;if(r[e+0]==l[0]&&r[e+1]==l[1]&&r[e+2]==l[2])h[2]=e/3}if(h[0]==-1){r.push(a[0],a[1],a[2]);h[0]=(r.length-1)/3}if(h[1]==-1){r.push(o[0],o[1],o[2]);h[1]=(r.length-1)/3}if(h[2]==-1){r.push(l[0],l[1],l[2]);h[2]=(r.length-1)/3}s.push(h[0]);s.push(h[1]);s.push(h[2])}const n=new v(e);n.name=e;n.vertices=r;n.verticesIndices=s;return n};const T={};T.getSimpleRect=function(e,t,i=1){const r=new v(t);r.vertices=[1*i,1*i,0,-1*i,1*i,0,1*i,-1*i,0,-1*i,-1*i,0];r.texCoords=[1,1,0,1,1,0,0,0];r.verticesIndices=[0,1,2,2,1,3];r.vertexNormals=[0,0,0,0,0,0,0,0,0,0,0,0];return e.createMesh(r)};T.getSimpleCube=function(e,t){const i=new v(t);i.vertices=[-1,-1,1,1,-1,1,1,1,1,-1,1,1,-1,-1,-1,1,-1,-1,1,1,-1,-1,1,-1,-1,1,-1,1,1,-1,1,1,1,-1,1,1,-1,-1,-1,1,-1,-1,1,-1,1,-1,-1,1,1,-1,-1,1,-1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,1,-1,1,1,-1,1,-1];i.setTexCoords([0,1,1,1,1,0,0,0,1,1,1,0,0,0,0,1,0,0,0,1,1,1,1,0,1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,0,1,1,1,1,0,0,0]);i.verticesIndices=[0,1,2,0,2,3,4,5,6,4,6,7,8,9,10,8,10,11,12,13,14,12,14,15,16,17,18,16,18,19,20,21,22,20,22,23];i.vertexNormals=new Float32Array([0,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0]);i.tangents=new Float32Array([0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,1,0,0,1,0,0,1,0,0,1]);i.biTangents=new Float32Array([-1,0,0,-1,0,0,-1,0,0,-1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1]);return new x(e,i)};class C{constructor(e,t){this._cgl=e;this._log=new u.Logger("cgl_TextureEffect");if(!e.TextureEffectMesh)this.createMesh();this._textureSource=null;this._options=t;this.name=t.name||"unknown";this.imgCompVer=0;this.aspectRatio=1;this._textureTarget=null;this._frameBuf=this._cgl.gl.createFramebuffer();this._frameBuf2=this._cgl.gl.createFramebuffer();this._renderbuffer=this._cgl.gl.createRenderbuffer();this._renderbuffer2=this._cgl.gl.createRenderbuffer();this.switched=false;this.depth=false}dispose(){if(this._renderbuffer)this._cgl.gl.deleteRenderbuffer(this._renderbuffer);if(this._frameBuf)this._cgl.gl.deleteFramebuffer(this._frameBuf);if(this._renderbuffer2)this._cgl.gl.deleteRenderbuffer(this._renderbuffer2);if(this._frameBuf2)this._cgl.gl.deleteFramebuffer(this._frameBuf2)}getWidth(){return this._textureSource.width}getHeight(){return this._textureSource.height}setSourceTexture(e){if(e===null){this._textureSource=new h(this._cgl);this._textureSource.setSize(16,16)}else{this._textureSource=e}if(!this._textureSource.compareSettings(this._textureTarget)){if(this._textureTarget)this._textureTarget.delete();this._textureTarget=this._textureSource.clone();this._cgl.profileData.profileEffectBuffercreate++;this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._frameBuf);this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER,this._renderbuffer);if(this.depth)this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER,this._cgl.gl.DEPTH_COMPONENT16,this._textureSource.width,this._textureSource.height);this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.COLOR_ATTACHMENT0,this._cgl.gl.TEXTURE_2D,this._textureTarget.tex,0);if(this.depth)this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.DEPTH_ATTACHMENT,this._cgl.gl.RENDERBUFFER,this._renderbuffer);this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D,null);this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER,null);this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,null);this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._frameBuf2);this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER,this._renderbuffer2);if(this.depth)this._cgl.gl.renderbufferStorage(this._cgl.gl.RENDERBUFFER,this._cgl.gl.DEPTH_COMPONENT16,this._textureSource.width,this._textureSource.height);this._cgl.gl.framebufferTexture2D(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.COLOR_ATTACHMENT0,this._cgl.gl.TEXTURE_2D,this._textureSource.tex,0);if(this.depth)this._cgl.gl.framebufferRenderbuffer(this._cgl.gl.FRAMEBUFFER,this._cgl.gl.DEPTH_ATTACHMENT,this._cgl.gl.RENDERBUFFER,this._renderbuffer2);this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D,null);this._cgl.gl.bindRenderbuffer(this._cgl.gl.RENDERBUFFER,null);this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,null)}this.aspectRatio=this._textureSource.width/this._textureSource.height}continueEffect(){this._cgl.pushDepthTest(false);this._cgl.pushModelMatrix();this._cgl.pushPMatrix();this._cgl.pushViewPort(0,0,this.getCurrentTargetTexture().width,this.getCurrentTargetTexture().height);mat4.perspective(this._cgl.pMatrix,45,this.getCurrentTargetTexture().width/this.getCurrentTargetTexture().height,.1,1100);this._cgl.pushPMatrix();mat4.identity(this._cgl.pMatrix);this._cgl.pushViewMatrix();mat4.identity(this._cgl.vMatrix);this._cgl.pushModelMatrix();mat4.identity(this._cgl.mMatrix)}startEffect(e){if(!this._textureTarget){this._log.warn("effect has no target");return}this.switched=false;this.continueEffect();if(e){this._bgTex=e}this._countEffects=0}endEffect(){this._cgl.popDepthTest();this._cgl.popModelMatrix();this._cgl.popPMatrix();this._cgl.popModelMatrix();this._cgl.popViewMatrix();this._cgl.popPMatrix();this._cgl.popViewPort()}bind(){if(this._textureSource===null){this._log.warn("no base texture set!");return}if(!this.switched){this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._frameBuf);this._cgl.pushGlFrameBuffer(this._frameBuf)}else{this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._frameBuf2);this._cgl.pushGlFrameBuffer(this._frameBuf2)}}finish(){if(this._textureSource===null){this._log.warn("no base texture set!");return}this._cgl.TextureEffectMesh.render(this._cgl.getShader());this._cgl.gl.bindFramebuffer(this._cgl.gl.FRAMEBUFFER,this._cgl.popGlFrameBuffer());this._cgl.profileData.profileTextureEffect++;if(this._textureTarget.filter==h.FILTER_MIPMAP){if(!this.switched){this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D,this._textureTarget.tex);this._textureTarget.updateMipMap()}else{this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D,this._textureSource.tex);this._textureSource.updateMipMap()}this._cgl.gl.bindTexture(this._cgl.gl.TEXTURE_2D,null)}this.switched=!this.switched;this._countEffects++}getCurrentTargetTexture(){if(this.switched)return this._textureSource;return this._textureTarget}getCurrentSourceTexture(){if(this._countEffects==0&&this._bgTex)return this._bgTex;if(this.switched)return this._textureTarget;return this._textureSource}delete(){if(this._textureTarget)this._textureTarget.delete();if(this._textureSource)this._textureSource.delete();this._cgl.gl.deleteRenderbuffer(this._renderbuffer);this._cgl.gl.deleteFramebuffer(this._frameBuf)}createMesh(){this._cgl.TextureEffectMesh=T.getSimpleRect(this._cgl,"texEffectRect")}}C.checkOpNotInTextureEffect=function(e){if(!e.patch.cgl)return true;if(e.uiAttribs.error&&!e.patch.cgl.currentTextureEffect){e.setUiError("textureeffect",null);return true}if(!e.patch.cgl.currentTextureEffect)return true;if(e.patch.cgl.currentTextureEffect&&!e.uiAttribs.error){e.setUiError("textureeffect","This op can not be a child of a ImageCompose/texture effect! imagecompose should only have textureeffect childs.",0);return false}if(e.patch.cgl.currentTextureEffect)return false;return true};C.checkOpInEffect=function(e,t){t=t||0;if(e.patch.cgl.currentTextureEffect){if(e.uiAttribs.uierrors&&e.patch.cgl.currentTextureEffect.imgCompVer>=t){e.setUiError("texeffect",null);return true}if(t&&e.patch.cgl.currentTextureEffect.imgCompVer<t){e.setUiError("texeffect","This op must be a child of an ImageCompose op with version >="+t+' <span class="button-small" onclick="gui.patchView.downGradeOp(\''+e.id+"','"+e.name+"')\">Downgrade</span> to previous version",1)}}if(e.patch.cgl.currentTextureEffect)return true;if(!e.patch.cgl.currentTextureEffect&&(!e.uiAttribs.uierrors||e.uiAttribs.uierrors.length==0)){e.setUiError("texeffect",'This op must be a child of an ImageCompose op! More infos <a href="https://cables.gl/docs/image_composition/image_composition.html" target="_blank">here</a>. ',1);return false}if(!e.patch.cgl.currentTextureEffect)return false;return true};C.getBlendCode=function(e){let t="".endl()+"vec3 _blend(vec3 base,vec3 blend)".endl()+"{".endl()+"   vec3 colNew=blend;".endl()+"   #ifdef BM_MULTIPLY".endl()+"       colNew=base*blend;".endl()+"   #endif".endl()+"   #ifdef BM_MULTIPLY_INV".endl()+"       colNew=base* vec3(1.0)-blend;".endl()+"   #endif".endl()+"   #ifdef BM_AVERAGE".endl()+"       colNew=((base + blend) / 2.0);".endl()+"   #endif".endl()+"   #ifdef BM_ADD".endl()+"       colNew=min(base + blend, vec3(1.0));".endl()+"   #endif".endl()+"   #ifdef BM_SUBTRACT_ONE".endl()+"       colNew=max(base + blend - vec3(1.0), vec3(0.0));".endl()+"   #endif".endl()+"   #ifdef BM_SUBTRACT".endl()+"       colNew=base - blend;".endl()+"   #endif".endl()+"   #ifdef BM_DIFFERENCE".endl()+"       colNew=abs(base - blend);".endl()+"   #endif".endl()+"   #ifdef BM_NEGATION".endl()+"       colNew=(vec3(1.0) - abs(vec3(1.0) - base - blend));".endl()+"   #endif".endl()+"   #ifdef BM_EXCLUSION".endl()+"       colNew=(base + blend - 2.0 * base * blend);".endl()+"   #endif".endl()+"   #ifdef BM_LIGHTEN".endl()+"       colNew=max(blend, base);".endl()+"   #endif".endl()+"   #ifdef BM_DARKEN".endl()+"       colNew=min(blend, base);".endl()+"   #endif".endl()+"   #ifdef BM_OVERLAY".endl()+"      #define BlendOverlayf(base, blend)  (base < 0.5 ? (2.0 * base * blend) : (1.0 - 2.0 * (1.0 - base) * (1.0 - blend)))".endl()+"      colNew=vec3(BlendOverlayf(base.r, blend.r),BlendOverlayf(base.g, blend.g),BlendOverlayf(base.b, blend.b));".endl()+"   #endif".endl()+"   #ifdef BM_SCREEN".endl()+"      #define BlendScreenf(base, blend)       (1.0 - ((1.0 - base) * (1.0 - blend)))".endl()+"      colNew=vec3(BlendScreenf(base.r, blend.r),BlendScreenf(base.g, blend.g),BlendScreenf(base.b, blend.b));".endl()+"   #endif".endl()+"   #ifdef BM_SOFTLIGHT".endl()+"      #define BlendSoftLightf(base, blend)    ((blend < 0.5) ? (2.0 * base * blend + base * base * (1.0 - 2.0 * blend)) : (sqrt(base) * (2.0 * blend - 1.0) + 2.0 * base * (1.0 - blend)))".endl()+"      colNew=vec3(BlendSoftLightf(base.r, blend.r),BlendSoftLightf(base.g, blend.g),BlendSoftLightf(base.b, blend.b));".endl()+"   #endif".endl()+"   #ifdef BM_HARDLIGHT".endl()+"      #define BlendOverlayf(base, blend)  (base < 0.5 ? (2.0 * base * blend) : (1.0 - 2.0 * (1.0 - base) * (1.0 - blend)))".endl()+"      colNew=vec3(BlendOverlayf(base.r, blend.r),BlendOverlayf(base.g, blend.g),BlendOverlayf(base.b, blend.b));".endl()+"   #endif".endl()+"   #ifdef BM_COLORDODGE".endl()+"      #define BlendColorDodgef(base, blend)   ((blend == 1.0) ? blend : min(base / (1.0 - blend), 1.0))".endl()+"      colNew=vec3(BlendColorDodgef(base.r, blend.r),BlendColorDodgef(base.g, blend.g),BlendColorDodgef(base.b, blend.b));".endl()+"   #endif".endl()+"   #ifdef BM_COLORBURN".endl()+"      #define BlendColorBurnf(base, blend)    ((blend == 0.0) ? blend : max((1.0 - ((1.0 - base) / blend)), 0.0))".endl()+"      colNew=vec3(BlendColorBurnf(base.r, blend.r),BlendColorBurnf(base.g, blend.g),BlendColorBurnf(base.b, blend.b));".endl()+"   #endif".endl()+"   return colNew;".endl()+"}".endl();if(!e)t+="vec4 cgl_blend(vec4 oldColor,vec4 newColor,float amount)".endl()+"{".endl()+"vec4 col=vec4( _blend(oldColor.rgb,newColor.rgb) ,1.0);".endl()+"col=vec4( mix( col.rgb, oldColor.rgb ,1.0-oldColor.a*amount),1.0);".endl()+"return col;".endl()+"}".endl();if(e>=3)t+="vec4 cgl_blendPixel(vec4 base,vec4 col,float amount)".endl()+"{".endl()+"#ifdef BM_MATH_ADD".endl()+"   return vec4(base.rgb+col.rgb*amount,1.0);".endl()+"#endif".endl()+"#ifdef BM_MATH_SUB".endl()+"   return vec4(base.rgb-col.rgb*amount,1.0);".endl()+"#endif".endl()+"#ifdef BM_MATH_MUL".endl()+"   return vec4(base.rgb*col.rgb*amount,1.0);".endl()+"#endif".endl()+"#ifdef BM_MATH_DIV".endl()+"   return vec4(base.rgb/col.rgb*amount,1.0);".endl()+"#endif".endl()+"#ifndef BM_MATH".endl()+"vec3 colNew=_blend(base.rgb,col.rgb);".endl()+"float newA=clamp(base.a+(col.a*amount),0.,1.);".endl()+"#ifdef BM_ALPHAMASKED".endl()+"newA=base.a;".endl()+"#endif".endl()+"return vec4(".endl()+"mix(colNew,base.rgb,1.0-(amount*col.a)),".endl()+"newA);".endl()+"#endif".endl()+"}".endl();return t};C.onChangeBlendSelect=function(e,t,i=false){t=String(t);e.toggleDefine("BM_NORMAL",t=="normal");e.toggleDefine("BM_MULTIPLY",t=="multiply");e.toggleDefine("BM_MULTIPLY_INV",t=="multiply invert");e.toggleDefine("BM_AVERAGE",t=="average");e.toggleDefine("BM_ADD",t=="add");e.toggleDefine("BM_SUBTRACT_ONE",t=="subtract one");e.toggleDefine("BM_SUBTRACT",t=="subtract");e.toggleDefine("BM_DIFFERENCE",t=="difference");e.toggleDefine("BM_NEGATION",t=="negation");e.toggleDefine("BM_EXCLUSION",t=="exclusion");e.toggleDefine("BM_LIGHTEN",t=="lighten");e.toggleDefine("BM_DARKEN",t=="darken");e.toggleDefine("BM_OVERLAY",t=="overlay");e.toggleDefine("BM_SCREEN",t=="screen");e.toggleDefine("BM_SOFTLIGHT",t=="softlight");e.toggleDefine("BM_HARDLIGHT",t=="hardlight");e.toggleDefine("BM_COLORDODGE",t=="color dodge");e.toggleDefine("BM_COLORBURN",t=="color burn");e.toggleDefine("BM_MATH_ADD",t=="Math Add");e.toggleDefine("BM_MATH_SUB",t=="Math Subtract");e.toggleDefine("BM_MATH_MUL",t=="Math Multiply");e.toggleDefine("BM_MATH_DIV",t=="Math Divide");e.toggleDefine("BM_MATH",t.indexOf("Math ")==0);e.toggleDefine("BM_ALPHAMASKED",i)};C.AddBlendSelect=function(e,t,i){const r=e.inValueSelect(t||"Blend Mode",["normal","lighten","darken","multiply","multiply invert","average","add","subtract","difference","negation","exclusion","overlay","screen","color dodge","color burn","softlight","hardlight","subtract one","Math Add","Math Subtract","Math Multiply","Math Divide"],i||"normal");return r};C.AddBlendAlphaMask=function(e,t,i){const r=e.inSwitch(t||"Alpha Mask",["Off","On"],i||"Off");return r};C.setupBlending=function(i,r,s,e,n){const t=()=>{let e=false;if(n)e=n.get()=="On";C.onChangeBlendSelect(r,s.get(),e);let t=s.get();if(t=="normal")t=null;else if(t=="multiply")t="mul";else if(t=="multiply invert")t="mulinv";else if(t=="lighten")t="light";else if(t=="darken")t="darken";else if(t=="average")t="avg";else if(t=="subtract one")t="sub one";else if(t=="subtract")t="sub";else if(t=="difference")t="diff";else if(t=="negation")t="neg";else if(t=="exclusion")t="exc";else if(t=="overlay")t="ovl";else if(t=="color dodge")t="dodge";else if(t=="color burn")t="burn";else if(t=="softlight")t="soft";else if(t=="hardlight")t="hard";else if(t=="Math Add")t="+";else if(t=="Math Subtract")t="-";else if(t=="Math Multiply")t="*";else if(t=="Math Divide")t="/";i.setUiAttrib({extendTitle:t})};i.setPortGroup("Blending",[s,e,n]);let a=false;s.onChange=t;if(n){n.onChange=t;a=n.get()=="On"}C.onChangeBlendSelect(r,s.get(),a)};const R={"CGL.BLENDMODES":function(){this.name="blendmodes";this.srcHeadFrag=C.getBlendCode()},"CGL.BLENDMODES3":function(){this.name="blendmodes3";this.srcHeadFrag=C.getBlendCode(3)},"CGL.LUMINANCE":function(){this.name="luminance";this.srcHeadFrag="".endl()+"float cgl_luminance(vec3 c)".endl()+"{".endl()+"    return dot(vec3(0.2126,0.7152,0.0722),c);".endl()+"}".endl()},"CGL.RANDOM_OLD":function(){this.name="randomNumber";this.srcHeadFrag="".endl()+"float cgl_random(vec2 co)".endl()+"{".endl()+"    return fract(sin(dot(co.xy ,vec2(12.9898,4.1414))) * 432758.5453);".endl()+"}".endl()+"vec3 cgl_random3(vec2 co)".endl()+"{".endl()+"    return vec3( cgl_random(co),cgl_random(co+0.5711),cgl_random(co+1.5711));".endl()+"}"},"CGL.RANDOM_LOW":function(){this.name="randomNumber";this.srcHeadFrag="".endl()+"float cgl_random(vec2 co)".endl()+"{".endl()+"    return fract(sin(dot(co.xy ,vec2(12.9898,4.1414))) * 358.5453);".endl()+"}".endl()+"vec3 cgl_random3(vec2 co)".endl()+"{".endl()+"    return vec3( cgl_random(co),cgl_random(co+0.5711),cgl_random(co+1.5711));".endl()+"}"},"CGL.RANDOM_TEX":function(){this.name="randomNumbertex";this.srcHeadFrag="".endl()+"UNI sampler2D CGLRNDTEX;".endl()+"float cgl_random(vec2 co)".endl()+"{".endl()+"    return texture(CGLRNDTEX,co*5711.0).r;".endl()+"}".endl()+"vec3 cgl_random3(vec2 co)".endl()+"{".endl()+"    return texture(CGLRNDTEX,co*5711.0).rgb;".endl()+"}";this.initUniforms=function(e){return[new c(e,"t","CGLRNDTEX",7)]};this.onBind=function(e,t){h.getRandomTexture(e);e.setTexture(7,h.getRandomTexture(e).tex)}}};class w{constructor(e){this.shader=new CGL.Shader(e,"markermaterial");const t="".endl()+"void main()".endl()+"{".endl()+"    outColor = vec4(color.rgb,1.0);".endl()+"}";const i="".endl()+"IN vec3 vPosition;".endl()+"UNI mat4 projMatrix;".endl()+"UNI mat4 mvMatrix;".endl()+"void main()".endl()+"{".endl()+"   gl_Position = projMatrix * mvMatrix * vec4(vPosition,1.0);".endl()+"}";this.shader.setSource(i,t);this.coloruni=this.shader.addUniformFrag("4f","color",[1,.777,1,1])}setColor(e,t,i,r){this.coloruni.set(e,t,i,r)}}class U extends u.Events{id=E.utils.simpleId();_isValid=true;_defines=[];_moduleNames=[];_moduleNumId=0;_needsRecompile=true;_compileReason="initial";_modules=[];_compileCount=0;logError=true;num=-1;lastCompile=0;constructor(){super()}setWhyCompile(e){this._compileReason=e;this._needsRecompile=true}getWhyCompile(){return this._compileReason}needsRecompile(){return this._needsRecompile}removeUniform(t){for(let e=0;e<this._uniforms.length;e++){if(this._uniforms[e].getName()==t){this._uniforms.splice(e,1)}}this.setWhyCompile("remove uniform "+t)}hasUniformInStage(t,e){let i=this.defaultUniBindingFrag;if(e==GPUShaderStage.VERTEX)i=this.defaultUniBindingVert;if(e==GPUShaderStage.COMPUTE)i=this.defaultUniBindingCompute;for(let e=0;e<this._uniforms.length;e++){console.log("hasuniiiiiiiiiiiiiii",this._uniforms[e].getName(),t);if(this._uniforms[e].getName()==t)return true}return false}hasUniform(e){}toggleDefine(t,e){if(e&&typeof e=="object"&&e.addEventListener){if(e.changeListener)e.off(e.changeListener);e.onToggleDefine=e=>{this.toggleDefine(t,e)};e.changeListener=e.on("change",e.onToggleDefine);e=e.get()}if(e)this.define(t);else this.removeDefine(t)}define(t,i=""){if(i===null||i===undefined)i="";if(typeof i=="object"){i.removeEventListener("change",i.onDefineChange);i.onDefineChange=e=>{this.define(t,e)};i.on("change",i.onDefineChange);i=i.get()}for(let e=0;e<this._defines.length;e++){if(this._defines[e][0]==t&&this._defines[e][1]==i)return;if(this._defines[e][0]==t){this._defines[e][1]=i;this.setWhyCompile("define "+t+" "+i);return}}this.setWhyCompile("define "+t+" "+i);this._defines.push([t,i])}getDefines(){return this._defines}getDefine(t){for(let e=0;e<this._defines.length;e++)if(this._defines[e][0]==t)return this._defines[e][1];return null}hasDefine(t){for(let e=0;e<this._defines.length;e++)if(this._defines[e][0]==t)return true}removeDefine(t){for(let e=0;e<this._defines.length;e++){if(this._defines[e][0]==t){this._defines.splice(e,1);this.setWhyCompile("define removed:"+t);return}}}hasModule(t){for(let e=0;e<this._modules.length;e++)if(this._modules[e].id==t)return true;return false}setModules(e){this._moduleNames=e}removeModule(i){for(let e=0;e<this._modules.length;e++){if(i&&i.id){if(this._modules[e].id==i.id||!this._modules[e]){let t=true;while(t){t=false;for(let e=0;e<this._uniforms.length;e++){if(this._uniforms[e].getName().startsWith(i.prefix)){this._uniforms.splice(e,1);t=true;continue}}}this.setWhyCompile("remove module "+i.title);this._modules.splice(e,1);break}}}}getNumModules(){return this._modules.length}getCurrentModules(){return this._modules}addModule(e,t){if(this.hasModule(e.id))return;if(!e.id)e.id=E.utils.simpleId();if(!e.numId)e.numId=this._moduleNumId;if(!e.num)e.num=this._modules.length;if(t&&!t.group)t.group=E.utils.simpleId();if(!e.group)if(t)e.group=t.group;else e.group=E.utils.simpleId();e.prefix="mod"+e.group+"_";this._modules.push(e);this.setWhyCompile("add module "+e.title);this._moduleNumId++;return e}isValid(){return this._isValid}}const D=`
-{{MODULES_HEAD}}
-IN vec3 vPosition; //!@
-IN vec2 attrTexCoord;
-IN vec3 attrVertNormal;
-IN vec3 attrTangent,attrBiTangent;
-
-IN float attrVertIndex;
-
-OUT vec2 texCoord;
-OUT vec3 norm;
-UNI mat4 projMatrix;
-UNI mat4 viewMatrix;
-UNI mat4 modelMatrix;
-
-void main()
-{
-    texCoord=attrTexCoord;
-    norm=attrVertNormal;
-    vec4 pos=vec4(vPosition,  1.0);
-    vec3 tangent=attrTangent;
-    vec3 bitangent=attrBiTangent;
-    mat4 mMatrix=modelMatrix;
-    gl_PointSize=10.0;
-
-    {{MODULE_VERTEX_POSITION}}
-
-    mat4 modelViewMatrix=viewMatrix*mMatrix;
-    {{MODULE_VERTEX_MODELVIEW}}
-
-    gl_Position = projMatrix * modelViewMatrix * pos;
-}
-`;let V=0;function O(){return D}function M(e,t,i){if(e==undefined){e=.5;t=.5;i=.5}return""+A+"IN vec2 texCoord;"+A+"{{MODULES_HEAD}}"+A+"void main()"+A+"{"+A+"    vec4 col=vec4("+e+","+t+","+i+",1.0);"+A+"    {{MODULE_COLOR}}"+A+"    outColor = col;"+A+"}"}class I extends U{_uniforms=[];constructor(e,t,i){super();if(!e)throw new Error("shader constructed without cgl "+t);this._log=new u.Logger("cgl_shader");this._cgl=e;if(!t)this._log.stack("no shader name given");this._name=t||"unknown";if(i)this.opId=i.id;this.glslVersion=0;if(e.glVersion>1)this.glslVersion=300;this._materialId=++V;this._program=null;this._drawBuffers=[true];this.error=null;this.ignoreMissingUniforms=false;this._projMatrixUniform=null;this._mvMatrixUniform=null;this._mMatrixUniform=null;this._vMatrixUniform=null;this._camPosUniform=null;this._normalMatrixUniform=null;this._inverseViewMatrixUniform=null;this._fromUserInteraction=false;this._attrVertexPos=-1;this.precision=e.patch.config.glslPrecision||"highp";this._pMatrixState=-1;this._vMatrixState=-1;this._countMissingUniforms=0;this._modGroupCount=0;this._feedBackNames=[];this._attributes=[];this.glPrimitive=null;this.offScreenPass=false;this._extensions=[];this.srcVert=O();this.srcFrag=M();this.lastCompile=0;this._libs=[];this._structNames=[];this._structUniformNames=[];this._textureStackUni=[];this._textureStackTex=[];this._textureStackType=[];this._textureStackTexCgl=[];this._tempNormalMatrix=B.mat4.create();this._tempCamPosMatrix=B.mat4.create();this._tempInverseViewMatrix=B.mat4.create();this._tempInverseProjMatrix=B.mat4.create();this.setModules(["MODULE_VERTEX_POSITION","MODULE_COLOR","MODULE_NORMAL","MODULE_BEGIN_FRAG","MODULE_VERTEX_MODELVIEW"])}isValid(){return this._isValid}getCgl(){return this._cgl}getName(){return this._name}enableExtension(e){this.setWhyCompile("enable extension "+e);this._extensions.push(e)}getAttrVertexPos(){return this._attrVertexPos}hasTextureUniforms(){for(let e=0;e<this._uniforms.length;e++)if(this._uniforms[e].getType()=="t")return true;return false}copyUniformValues(t){for(let e=0;e<t._uniforms.length;e++){if(!this._uniforms[e]){this._log.log("unknown uniform?!");continue}this.getUniform(t._uniforms[e].getName()).set(t._uniforms[e].getValue())}this.popTextures();for(let e=0;e<t._textureStackUni.length;e++){this._textureStackUni[e]=t._textureStackUni[e];this._textureStackTex[e]=t._textureStackTex[e];this._textureStackType[e]=t._textureStackType[e];this._textureStackTexCgl[e]=t._textureStackTexCgl[e]}}copy(){const t=new I(this._cgl,this._name+" copy");t.setSource(this.srcVert,this.srcFrag);t._modules=JSON.parse(JSON.stringify(this._modules));t._defines=JSON.parse(JSON.stringify(this._defines));t._modGroupCount=this._modGroupCount;t._moduleNames=this._moduleNames;t.glPrimitive=this.glPrimitive;t.offScreenPass=this.offScreenPass;t._extensions=this._extensions;t.wireframe=this.wireframe;t._attributes=this._attributes;for(let e=0;e<this._uniforms.length;e++){const i=this._uniforms[e].copy(t);i.resetLoc()}t.setWhyCompile("copy");return t}setSource(e,t,i=false){this._fromUserInteraction=i;this.srcVert=e;this.srcFrag=t;this.setWhyCompile("Source changed");this._isValid=true}_addLibs(e){for(const t in R){if(e.includes(t)){const i=new R[t];e=e.replace("{{"+t+"}}",i.srcHeadFrag);this._libs.push(i);if(i.initUniforms)i.initUniforms(this)}}return e}createStructUniforms(){let r="";let s="";this._structNames=[];this._injectedStringsFrag={};this._injectedStringsVert={};this._structUniformNamesIndicesFrag=[];this._structUniformNamesIndicesVert=[];for(let i=0;i<this._uniforms.length;i++){if(this._uniforms[i].isStructMember()){const n="{{INJECTION_POINT_STRUCT_"+this._uniforms[i]._structName+"}}";if(!this._structNames.includes(this._uniforms[i]._structName)){const a="struct "+this._uniforms[i]._structName+" {"+A+n+"};"+A+A;if(this._uniforms[i].getShaderType()==="both"||this._uniforms[i].getShaderType()==="frag")r=r.concat(a);if(this._uniforms[i].getShaderType()==="both"||this._uniforms[i].getShaderType()==="vert")s=s.concat(a);this._structNames.push(this._uniforms[i]._structName);this._injectedStringsFrag[this._uniforms[i]._structName]=[];this._injectedStringsVert[this._uniforms[i]._structName]=[]}let e="";if(this._uniforms[i].comment)e=" // "+this._uniforms[i].comment;let t="";if(this._uniforms[i].getGlslTypeString()==undefined)t+="//";t+="  "+this._uniforms[i].getGlslTypeString()+" "+this._uniforms[i]._propertyName+";"+e;if(this._uniforms[i].getShaderType()==="both"){if(!this._injectedStringsFrag[this._uniforms[i]._structName].includes(t)&&!this._injectedStringsVert[this._uniforms[i]._structName].includes(t)){const o=r.lastIndexOf(n);const l=s.lastIndexOf(n);r=r.slice(0,o)+t+r.slice(o-1);s=s.slice(0,l)+t+s.slice(l-1);this._injectedStringsFrag[this._uniforms[i]._structName].push(t);this._injectedStringsVert[this._uniforms[i]._structName].push(t)}if(!this._structUniformNamesIndicesFrag.includes(i))this._structUniformNamesIndicesFrag.push(i);if(!this._structUniformNamesIndicesVert.includes(i))this._structUniformNamesIndicesVert.push(i)}else if(this._uniforms[i].getShaderType()==="frag"){if(!this._injectedStringsFrag[this._uniforms[i]._structName].includes(t)){const o=r.lastIndexOf(n);r=r.slice(0,o)+t+r.slice(o-1);this._injectedStringsFrag[this._uniforms[i]._structName].push(t)}if(!this._structUniformNamesIndicesFrag.includes(i))this._structUniformNamesIndicesFrag.push(i)}else if(this._uniforms[i].getShaderType()==="vert"){if(!this._injectedStringsVert[this._uniforms[i]._structName].includes(t)){const l=s.lastIndexOf(n);s=s.slice(0,l)+t+s.slice(l-1);this._injectedStringsVert[this._uniforms[i]._structName].push(t)}if(!this._structUniformNamesIndicesVert.includes(i))this._structUniformNamesIndicesVert.push(i)}}}this._uniDeclarationsFrag=[];this._uniDeclarationsVert=[];for(let e=0;e<this._structUniformNamesIndicesFrag.length;e+=1){const t=this._structUniformNamesIndicesFrag[e];const i="UNI "+this._uniforms[t]._structName+" "+this._uniforms[t]._structUniformName+";"+A;if(!this._uniDeclarationsFrag.includes(i)){const n="{{INJECTION_POINT_STRUCT_"+this._uniforms[t]._structName+"}}";r=r.replace(n,"");r+=i;this._uniDeclarationsFrag.push(i)}}for(let e=0;e<this._structUniformNamesIndicesVert.length;e+=1){const t=this._structUniformNamesIndicesVert[e];const i="UNI "+this._uniforms[t]._structName+" "+this._uniforms[t]._structUniformName+";"+A;if(!this._uniDeclarationsVert.includes(i)){const n="{{INJECTION_POINT_STRUCT_"+this._uniforms[t]._structName+"}}";s=s.replace(n,"");s+=i;this._uniDeclarationsVert.push(i)}}return[s,r]}_getAttrSrc(e,t){const i={};if(e.name&&e.type){i.srcHeadVert="";if(!t)i.srcHeadVert+="#ifndef ATTRIB_"+e.name+A;i.srcHeadVert+="#define ATTRIB_"+e.name+A;i.srcHeadVert+="IN "+e.type+" "+e.name+";"+A;if(!t)i.srcHeadVert+="#endif"+A;if(e.nameFrag){i.srcHeadVert+="";if(!t)i.srcHeadVert+="#ifndef ATTRIB_"+e.nameFrag+A;i.srcHeadVert+="#define ATTRIB_"+e.nameFrag+A;i.srcHeadVert+="OUT "+e.type+" "+e.nameFrag+";"+A;if(!t)i.srcHeadVert+="#endif"+A;i.srcVert=""+A+e.nameFrag+"="+e.name+";";i.srcHeadFrag="";if(!t)i.srcHeadFrag+="#ifndef ATTRIB_"+e.nameFrag+A;i.srcHeadFrag+="#define ATTRIB_"+e.nameFrag+A;i.srcHeadFrag+="IN "+e.type+" "+e.nameFrag+";"+A;if(!t)i.srcHeadFrag+="#endif"+A}}return i}compile(){if(this._cgl.aborted)return;const e=performance.now();this._cgl.profileData.profileShaderCompiles++;this._cgl.profileData.profileShaderCompileName=this._name+" ["+this._compileReason+"]";let t="";if(this._extensions)for(let e=0;e<this._extensions.length;e++)t+="#extension "+this._extensions[e]+" : enable"+A;let i="";if(this._defines.length)i="\n// cgl generated"+A;for(let e=0;e<this._defines.length;e++)i+="#define "+this._defines[e][0]+" "+this._defines[e][1]+""+A;const r=this.createStructUniforms();this._cgl.profileData.addHeavyEvent("shader compile",this._name+" ["+this._compileReason+"]");this._compileReason="";if(this._uniforms){const p=this._uniforms.map(e=>{return e._name});const _=[];for(let e=0;e<this._uniforms.length;e++){const x=this._uniforms[e];const b=p.indexOf(x._name,e+1);if(b>-1)_.push(e)}for(let e=this._uniforms.length-1;e>=0;e-=1){if(_.includes(e))this._uniforms.splice(e,1);else this._uniforms[e].resetLoc()}}this._cgl.printError("uniform resets");this._compileCount++;if(this.hasTextureUniforms())i+="#define HAS_TEXTURES"+A;let s="";let n="";if(!this.srcFrag){this._log.warn("[cgl shader] has no fragment source!",this._name,this);this.srcVert=O();this.srcFrag=M()}s="#version 300 es"+A+"// "+A+"// vertex shader "+this._name+A+"// "+A+"precision "+this.precision+" float;"+A+"precision "+this.precision+" sampler2D;"+A+""+A+"#define WEBGL2"+A+"#define texture2D texture"+A+"#define UNI uniform"+A+"#define IN in"+A+"#define OUT out"+A;n="#version 300 es"+A+"// "+A+"// fragment shader "+this._name+A+"// "+A+"precision "+this.precision+" float;"+A+"precision "+this.precision+" sampler2D;"+A+""+A+"#define WEBGL2"+A+"#define texture2D texture"+A+"#define IN in"+A+"#define OUT out"+A+"#define UNI uniform"+A+"{{DRAWBUFFER}}"+A;let a="\n// cgl generated"+A;let o="\n// cgl generated"+A;n+="\n// active mods: --------------- ";s+="\n// active mods: --------------- ";let l=false;let h=false;for(let t=0;t<this._moduleNames.length;t++){for(let e=0;e<this._modules.length;e++){if(this._modules[e].name==this._moduleNames[t]){if(this._modules[e].srcBodyFrag||this._modules[e].srcHeadFrag){l=true;n+="\n// "+t+"."+e+". "+this._modules[e].title+" ("+this._modules[e].name+")"}if(this._modules[e].srcBodyVert||this._modules[e].srcHeadVert){s+="\n// "+t+"."+e+". "+this._modules[e].title+" ("+this._modules[e].name+")";h=true}}}}if(!h)n+="\n// no mods used...";if(!l)n+="\n// no mods used...";n+="\n";s+="\n";for(let i=0;i<this._uniforms.length;i++){if(this._uniforms[i].shaderType&&!this._uniforms[i].isStructMember()){let e="";if(!this._uniforms[i].getGlslTypeString())e+="// ";e+="UNI "+this._uniforms[i].getGlslTypeString()+" "+this._uniforms[i].getName();let t="";if(this._uniforms[i].comment)t=" // "+this._uniforms[i].comment;if(this._uniforms[i].shaderType=="vert"||this._uniforms[i].shaderType=="both")if(!this.srcVert.includes(e)&&!this.srcVert.includes("uniform "+this._uniforms[i].getGlslTypeString()+" "+this._uniforms[i].getName()))a+=e+";"+t+A;if(this._uniforms[i].shaderType=="frag"||this._uniforms[i].shaderType=="both")if(!this.srcFrag.includes(e)&&!this.srcFrag.includes("uniform "+this._uniforms[i].getGlslTypeString()+" "+this._uniforms[i].getName()))o+=e+";"+t+A}}let u=0;let c=0;for(let e=0;e<this._uniforms.length;e++){if(this._uniforms[e].shaderType&&!this._uniforms[e].isStructMember()){if(this._uniforms[e].shaderType=="vert"||this._uniforms[e].shaderType=="both")c++;if(this._uniforms[e].shaderType=="frag"||this._uniforms[e].shaderType=="both")u++}}if(u>=this._cgl.maxUniformsFrag)this._log.warn("[cgl_shader] num uniforms frag: "+u+" / "+this._cgl.maxUniformsFrag);if(c>=this._cgl.maxUniformsVert)this._log.warn("[cgl_shader] num uniforms vert: "+c+" / "+this._cgl.maxUniformsVert);if(!n.includes("precision"))n="precision "+this.precision+" float;"+A+n;if(!s.includes("precision"))s="precision "+this.precision+" float;"+A+s;if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){n+="#define MOBILE"+A;s+="#define MOBILE"+A}s=t+s+i+r[0]+a+"\n// -- \n"+this.srcVert;n=t+n+i+r[1]+o+"\n// -- \n"+this.srcFrag;let g="";let f="";this._modules.sort(function(e,t){return e.priority||0-t.priority||0});let d=false;for(let r=0;r<this._moduleNames.length;r++){let t="";let i="";if(!d){d=true;for(let e=0;e<this._attributes.length;e++){const v=this._getAttrSrc(this._attributes[e],true);if(v.srcHeadVert)g+=v.srcHeadVert;if(v.srcVert)t+=v.srcVert;if(v.srcHeadFrag)f+=v.srcHeadFrag}}for(let e=0;e<this._modules.length;e++){const T=this._modules[e];if(T.name==this._moduleNames[r]){g+="\n//---- MOD: group:"+T.group+": idx:"+e+" - prfx:"+T.prefix+" - "+T.title+" ------\n";f+="\n//---- MOD: group:"+T.group+": idx:"+e+" - prfx:"+T.prefix+" - "+T.title+" ------\n";t+="\n\n//---- MOD: "+T.title+" / "+T.priority+" ------\n";i+="\n\n//---- MOD: "+T.title+" / "+T.priority+" ------\n";if(T.attributes)for(let e=0;e<T.attributes.length;e++){const v=this._getAttrSrc(T.attributes[e],false);if(v.srcHeadVert)g+=v.srcHeadVert;if(v.srcVert)t+=v.srcVert;if(v.srcHeadFrag)f+=v.srcHeadFrag}g+=T.srcHeadVert||"";f+=T.srcHeadFrag||"";t+=T.srcBodyVert||"";i+=T.srcBodyFrag||"";g+="\n//---- end mod ------\n";f+="\n//---- end mod ------\n";t+="\n//---- end mod ------\n";i+="\n//---- end mod ------\n";t=t.replace(/{{mod}}/g,T.prefix);i=i.replace(/{{mod}}/g,T.prefix);g=g.replace(/{{mod}}/g,T.prefix);f=f.replace(/{{mod}}/g,T.prefix);t=t.replace(/MOD_/g,T.prefix);i=i.replace(/MOD_/g,T.prefix);g=g.replace(/MOD_/g,T.prefix);f=f.replace(/MOD_/g,T.prefix)}}s=s.replace("{{"+this._moduleNames[r]+"}}",t);n=n.replace("{{"+this._moduleNames[r]+"}}",i)}s=s.replace("{{MODULES_HEAD}}",g);n=n.replace("{{MODULES_HEAD}}",f);s=this._addLibs(s);n=this._addLibs(n);let m="";for(let e=0;e<16;e++)if(n.includes("outColor"+e))this._drawBuffers[e]=true;if(this._drawBuffers.length==1){m="out vec4 outColor;"+A;m+="#define gl_FragColor outColor"+A}else{m+="#define MULTI_COLORTARGETS"+A;m+="vec4 outColor;"+A;let t=0;for(let e=0;e<this._drawBuffers.length;e++){if(t==0)m+="#define gl_FragColor outColor"+e+""+A;m+="layout(location = "+e+") out vec4 outColor"+e+";"+A;t++}}n=n.replace("{{DRAWBUFFER}}",m);if(!this._program){this._program=this._createProgram(s,n)}else{this._program=this._createProgram(s,n);this._projMatrixUniform=null;for(let e=0;e<this._uniforms.length;e++)this._uniforms[e].resetLoc()}this.finalShaderFrag=n;this.finalShaderVert=s;S.lastMesh=null;S.lastShader=null;this._countMissingUniforms=0;this._needsRecompile=false;this.lastCompile=(0,E.now)();this._cgl.profileData.shaderCompileTime+=performance.now()-e}bind(){if(!this._isValid||this._cgl.aborted)return;S.lastShader=this;if(!this._program||this.needsRecompile())this.compile();if(!this._isValid)return;if(!this._projMatrixUniform&&!this.ignoreMissingUniforms){this._countMissingUniforms++;if(this._countMissingUniforms<10){this._projMatrixUniform=this._cgl.gl.getUniformLocation(this._program,p.SHADER.SHADERVAR_UNI_PROJMAT);this._attrVertexPos=this._cgl.glGetAttribLocation(this._program,p.SHADER.SHADERVAR_VERTEX_POSITION);this._mvMatrixUniform=this._cgl.gl.getUniformLocation(this._program,"mvMatrix");this._vMatrixUniform=this._cgl.gl.getUniformLocation(this._program,p.SHADER.SHADERVAR_UNI_VIEWMAT);this._mMatrixUniform=this._cgl.gl.getUniformLocation(this._program,p.SHADER.SHADERVAR_UNI_MODELMAT);this._camPosUniform=this._cgl.gl.getUniformLocation(this._program,p.SHADER.SHADERVAR_UNI_VIEWPOS);this._normalMatrixUniform=this._cgl.gl.getUniformLocation(this._program,p.SHADER.SHADERVAR_UNI_NORMALMAT);this._inverseViewMatrixUniform=this._cgl.gl.getUniformLocation(this._program,p.SHADER.SHADERVAR_UNI_INVVIEWMAT);this._inverseProjMatrixUniform=this._cgl.gl.getUniformLocation(this._program,p.SHADER.SHADERVAR_UNI_INVPROJMAT);this._materialIdUniform=this._cgl.gl.getUniformLocation(this._program,p.SHADER.SHADERVAR_UNI_MATERIALID);this._objectIdUniform=this._cgl.gl.getUniformLocation(this._program,p.SHADER.SHADERVAR_UNI_OBJECTID);for(let e=0;e<this._uniforms.length;e++)this._uniforms[e].needsUpdate=true}}if(this._cgl.currentProgram!=this._program){this._cgl.profileData.profileShaderBinds++;this._cgl.gl.useProgram(this._program);this._cgl.currentProgram=this._program}for(let e=0;e<this._uniforms.length;e++)if(this._uniforms[e].needsUpdate)this._uniforms[e].updateValue();if(this._pMatrixState!=this._cgl.getProjectionMatrixStateCount()){this._pMatrixState=this._cgl.getProjectionMatrixStateCount();this._cgl.gl.uniformMatrix4fv(this._projMatrixUniform,false,this._cgl.pMatrix);this._cgl.profileData.profileMVPMatrixCount++}if(this._objectIdUniform)this._cgl.gl.uniform1f(this._objectIdUniform,++this._cgl.tempData.objectIdCounter);if(this._materialIdUniform)this._cgl.gl.uniform1f(this._materialIdUniform,this._materialId);if(this._vMatrixUniform){if(this._vMatrixState!=this._cgl.getViewMatrixStateCount()){this._cgl.gl.uniformMatrix4fv(this._vMatrixUniform,false,this._cgl.vMatrix);this._cgl.profileData.profileMVPMatrixCount++;this._vMatrixState=this._cgl.getViewMatrixStateCount();if(this._inverseViewMatrixUniform){B.mat4.invert(this._tempInverseViewMatrix,this._cgl.vMatrix);this._cgl.gl.uniformMatrix4fv(this._inverseViewMatrixUniform,false,this._tempInverseViewMatrix);this._cgl.profileData.profileMVPMatrixCount++}if(this._inverseProjMatrixUniform){B.mat4.invert(this._tempInverseProjMatrix,this._cgl.pMatrix);this._cgl.gl.uniformMatrix4fv(this._inverseProjMatrixUniform,false,this._tempInverseProjMatrix);this._cgl.profileData.profileMVPMatrixCount++}}this._cgl.gl.uniformMatrix4fv(this._mMatrixUniform,false,this._cgl.mMatrix);this._cgl.profileData.profileMVPMatrixCount++;if(this._camPosUniform){B.mat4.invert(this._tempCamPosMatrix,this._cgl.vMatrix);this._cgl.gl.uniform3f(this._camPosUniform,this._tempCamPosMatrix[12],this._tempCamPosMatrix[13],this._tempCamPosMatrix[14]);this._cgl.profileData.profileMVPMatrixCount++}}else{const e=B.mat4.create();B.mat4.mul(e,this._cgl.vMatrix,this._cgl.mMatrix);this._cgl.gl.uniformMatrix4fv(this._mvMatrixUniform,false,e);this._cgl.profileData.profileMVPMatrixCount++}if(this._normalMatrixUniform){B.mat4.invert(this._tempNormalMatrix,this._cgl.mMatrix);B.mat4.transpose(this._tempNormalMatrix,this._tempNormalMatrix);this._cgl.gl.uniformMatrix4fv(this._normalMatrixUniform,false,this._tempNormalMatrix);this._cgl.profileData.profileMVPMatrixCount++}for(let e=0;e<this._libs.length;e++){if(this._libs[e].onBind)this._libs[e].onBind.bind(this._libs[e])(this._cgl,this)}this._bindTextures();return this._isValid}unBind(){}dispose(){if(this._program&&this._cgl&&this._cgl.gl)this._cgl.gl.deleteProgram(this._program);this._program=null}setDrawBuffers(e){this._log.warn("useless drawbuffers...?!")}getUniforms(){return this._uniforms}getUniform(t){for(let e=0;e<this._uniforms.length;e++)if(this._uniforms[e].getName()==t)return this._uniforms[e];return null}removeAllUniforms(){this._uniforms=[]}_addUniform(e){this._uniforms.push(e);this.setWhyCompile("add uniform "+name)}addUniformFrag(e,t,i,r,s,n){const a=new c(this,e,t,i,r,s,n);a.shaderType="frag";return a}addUniformVert(e,t,i,r,s,n){const a=new c(this,e,t,i,r,s,n);a.shaderType="vert";return a}addUniformBoth(e,t,i,r,s,n){const a=new c(this,e,t,i,r,s,n);a.shaderType="both";return a}addUniformStructFrag(t,i,r){const s={};if(!r)return s;for(let e=0;e<r.length;e+=1){const n=r[e];if(!this.hasUniform(i+"."+n.name)){const a=new c(this,n.type,i+"."+n.name,n.v1,n.v2,n.v3,n.v4,i,t,n.name);a.shaderType="frag";s[i+"."+n.name]=a}}return s}addUniformStructVert(t,i,r){const s={};if(!r)return s;for(let e=0;e<r.length;e+=1){const n=r[e];if(!this.hasUniform(i+"."+n.name)){const a=new c(this,n.type,i+"."+n.name,n.v1,n.v2,n.v3,n.v4,i,t,n.name);a.shaderType="vert";s[i+"."+n.name]=a}}return s}addUniformStructBoth(t,i,r){const s={};if(!r)return s;for(let e=0;e<r.length;e+=1){const n=r[e];if(n.type==="2i"||n.type==="i"||n.type==="3i")this._log.error("Adding an integer struct member to both shaders can potentially error. Please use different structs for each shader. Error occured in struct:",t," with member:",n.name," of type:",n.type,".");if(!this.hasUniform(i+"."+n.name)){const a=new c(this,n.type,i+"."+n.name,n.v1,n.v2,n.v3,n.v4,i,t,n.name);a.shaderType="both";s[i+"."+n.name]=a}}return s}_createProgram(e,t){this._cgl.printError("before _createprogram");const i=this._cgl.gl.createProgram();this.vshader=I.createShader(this._cgl,e,this._cgl.gl.VERTEX_SHADER,this);this.fshader=I.createShader(this._cgl,t,this._cgl.gl.FRAGMENT_SHADER,this);if(this.vshader&&this.fshader){this._cgl.gl.attachShader(i,this.vshader);this._cgl.gl.attachShader(i,this.fshader);this._linkProgram(i,e,t)}else{this._isValid=false;this._cgl.printError("shader _createProgram");this._log.error("could not link shaderprogram");return null}this._cgl.printError("shader _createProgram");return i}hasErrors(){return this._hasErrors}_linkProgram(e,t,i){this._cgl.printError("before _linkprogram");if(this._feedBackNames.length>0){this._cgl.gl.transformFeedbackVaryings(e,this._feedBackNames,this._cgl.gl.SEPARATE_ATTRIBS)}this._cgl.gl.linkProgram(e);this._cgl.printError("gl.linkprogram");this._isValid=true;this._hasErrors=false;if(this._cgl.patch.config.glValidateShader!==false){this._cgl.gl.validateProgram(e);if(!this._cgl.gl.getProgramParameter(e,this._cgl.gl.VALIDATE_STATUS)){this._log.log("shaderprogram validation failed...");this._cgl.gl.getProgramInfoLog(e)}if(!this._cgl.gl.getProgramParameter(e,this._cgl.gl.LINK_STATUS)){this._hasErrors=true;const r=this._cgl.gl.getShaderInfoLog(this.fshader);const s=this._cgl.gl.getShaderInfoLog(this.vshader);if(this.logError)this._log.error(this._name+" shader linking fail...");else this._log.warn(this._name+" shader linking fail...");if(r)this._log.warn(this._cgl.gl.getShaderInfoLog(this.fshader));if(s)this._log.warn(this._cgl.gl.getShaderInfoLog(this.vshader));this._cgl.gl.getProgramInfoLog(e);if(!CABLES.UI)this._log.log(this);this._isValid=false;this._cgl.printError("shader link err")}}}getProgram(){return this._program}setFeedbackNames(e){this.setWhyCompile("setFeedbackNames");this._feedBackNames=e}addAttribute(t){for(let e=0;e<this._attributes.length;e++){if(this._attributes[e].name==t.name&&this._attributes[e].nameFrag==t.nameFrag)return}this._attributes.push(t);this.setWhyCompile("addAttribute")}bindTextures(){this._bindTextures()}_bindTextures(){if(this._textureStackTex.length>this._cgl.maxTextureUnits){this._log.warn("[shader._bindTextures] too many textures bound",this._textureStackTex.length+"/"+this._cgl.maxTextureUnits)}for(let i=0;i<this._textureStackTex.length;i++){if(!this._textureStackTex[i]&&!this._textureStackTexCgl[i]){this._log.warn("no texture for pushtexture",this._name)}else{let e=this._textureStackTex[i];if(this._textureStackTexCgl[i]){e=this._textureStackTexCgl[i].tex||CGL.Texture.getEmptyTexture(this._cgl).tex}let t=true;if(!this._textureStackUni[i]){this._log.warn("no uniform for pushtexture",this._name);t=this._cgl.setTexture(i,e,this._textureStackType[i])}else{this._textureStackUni[i].setValue(i);t=this._cgl.setTexture(i,e,this._textureStackType[i])}if(!t)this._log.warn("tex bind failed",this.getName(),this._textureStackUni[i])}}}setUniformTexture(t,i){i=i||h.getTempTexture(this._cgl);for(let e=0;e<this._textureStackUni.length;e++)if(this._textureStackUni[e]==t){const r=this._textureStackTex[e]||this._textureStackTexCgl[e];if(i.hasOwnProperty("tex")){this._textureStackTexCgl[e]=i;this._textureStackTex[e]=null}else{this._textureStackTexCgl[e]=null;this._textureStackTex[e]=i}return r}return null}pushTexture(e,t,i){if(!e){return}if(!t){return}if(!t.hasOwnProperty("tex")&&!(t instanceof WebGLTexture)){this._log.warn(new Error("invalid texture").stack);this._log.warn("[cgl_shader] invalid texture...",t);return}this._textureStackUni.push(e);if(t.hasOwnProperty("tex")){this._textureStackTexCgl.push(t);this._textureStackTex.push(null)}else{this._textureStackTexCgl.push(null);this._textureStackTex.push(t)}this._textureStackType.push(i)}popTexture(){this._textureStackUni.pop();this._textureStackTex.pop();this._textureStackTexCgl.pop();this._textureStackType.pop()}popTextures(){this._textureStackTex.length=this._textureStackTexCgl.length=this._textureStackType.length=this._textureStackUni.length=0}getMaterialId(){return this._materialId}getInfo(){const e={};e.name=this._name;e.defines=this.getDefines();e.hasErrors=this.hasErrors();return e}getDefaultFragmentShader(e,t,i,r){return M(e,t,i,r)}getDefaultVertexShader(){return O()}}I.getDefaultVertexShader=O;I.getDefaultFragmentShader=M;I.getErrorFragmentShader=function(){return""+A+"void main()"+A+"{"+A+"   float g=mod((gl_FragCoord.y+gl_FragCoord.x),50.0)/50.0;"+A+"   g= step(0.1,g);"+A+"   outColor = vec4( g+0.5, 0.0, 0.0, 1.0);"+A+"}"};I.createShader=function(e,t,i,r){if(e.aborted)return;const s=e.gl.createShader(i);e.gl.shaderSource(s,t);e.gl.compileShader(s);if(!e.gl.getShaderParameter(s,e.gl.COMPILE_STATUS)){r.error={str:t,infoLog:e.gl.getShaderInfoLog(s)};if(CABLES.UI)gui.emitEvent("ShaderError",r);if(!r.error.infoLog){r._log.warn("empty shader info log",this._name);return}r.setSource(I.getDefaultVertexShader(),I.getErrorFragmentShader())}return s};const k=Math.PI/180;const G=180/Math.PI;const j=null;const H=window.navigator.userAgent.includes("Windows");const F=function(t){let i;if(t.wheelDelta){i=t.wheelDelta%120-0==-0?t.wheelDelta/120:t.wheelDelta/30;i*=-1.5;if(H)i*=2}else{let e=t.deltaY;if(t.shiftKey)e=t.deltaX;const r=e||t.detail;i=-(r%3?r*10:r/3);i*=-3}if(i>20)i=20;if(i<-20)i=-20;return i};const z=F;const X=F;class L{constructor(e){this._cgl=e;this._lastTime=0;this.pause=false;this.profileUniformCount=0;this.profileShaderBinds=0;this.profileUniformCount=0;this.profileShaderCompiles=0;this.profileVideosPlaying=0;this.profileMVPMatrixCount=0;this.profileEffectBuffercreate=0;this.profileShaderGetUniform=0;this.profileFrameBuffercreate=0;this.profileMeshSetGeom=0;this.profileTextureNew=0;this.profileGenMipMap=0;this.profileOnAnimFrameOps=0;this.profileFencedPixelRead=0;this.profileMainloopMs=0;this.profileMeshDraw=0;this.profileTextureEffect=0;this.profileTexPreviews=0;this.shaderCompileTime=0;this.profileMeshNumElements=0;this.profileMeshAttributes=0;this.profileSingleMeshAttribute=[];this.heavyEvents=[];this.doProfileGlQuery=false;this.glQueryData={};this.counts={}}clear(){this.counts={};this.profileSingleMeshAttribute={};this.profileMeshAttributes=0;this.profileUniformCount=0;this.profileShaderGetUniform=0;this.profileShaderCompiles=0;this.profileShaderBinds=0;this.profileTextureResize=0;this.profileFrameBuffercreate=0;this.profileEffectBuffercreate=0;this.profileTextureDelete=0;this.profileMeshSetGeom=0;this.profileVideosPlaying=0;this.profileMVPMatrixCount=0;this.profileNonTypedAttrib=0;this.profileNonTypedAttribNames="";this.profileTextureNew=0;this.profileGenMipMap=0;this.profileFramebuffer=0;this.profileMeshDraw=0;this.profileTextureEffect=0;this.profileTexPreviews=0;this.profileMeshNumElements=0;this.profileFencedPixelRead=0}clearGlQuery(){for(let e in this.glQueryData){if(!this.glQueryData[e].lastClear||performance.now()-this.glQueryData[e].lastClear>1e3){this.glQueryData[e].time=this.glQueryData[e]._times/this.glQueryData[e]._numcount;this.glQueryData[e].num=this.glQueryData[e]._numcount;this.glQueryData[e]._times=0;this.glQueryData[e]._numcount=0;this.glQueryData[e].lastClear=performance.now()}}}count(e,t){this.counts[e]=this.counts[e]||[];this.counts[e].push(t)}addHeavyEvent(e,t,i){const r={event:e,name:t,info:i,date:performance.now()};this.heavyEvents.push(r);this._cgl.emitEvent("heavyEvent",r)}}class P{constructor(){this._arr=[B.mat4.create()];this._index=0;this.stateCounter=0}push(e){this._index++;this.stateCounter++;if(this._index==this._arr.length){const t=B.mat4.create();this._arr.push(t)}B.mat4.copy(this._arr[this._index],e||this._arr[this._index-1]);return this._arr[this._index]}pop(){this.stateCounter++;this._index--;if(this._index<0)this._index=0;return this._arr[this._index]}length(){return this._index}}class W{hasFocus=false;forceAspect=0;constructor(e){this._log=new u.Logger("CgCanvas");if(!e){this._log.error("CgCanvas no options")}else{this._canvasEle=e.canvasEle}if(!e.cg)this._log.error("CgCanvas options has no cg");if(!e.canvasEle)this._log.error("CgCanvas options has no canvasEle");this._cg=e.cg;this.pixelDensity=1;this.canvasWidth=this.canvasEle.clientWidth;this.canvasHeight=this.canvasEle.clientHeight;this._oldWidthRp=-1;this._oldHeightRp=-1;this.setSize(this.canvasWidth,this.canvasHeight);this.canvasEle.addEventListener("focus",()=>{this.hasFocus=true});this.canvasEle.addEventListener("blur",()=>{this.hasFocus=false})}get canvasEle(){return this._canvasEle}setSize(t,i,e=false){let r=0;if(this.forceAspect){let e=t/this.forceAspect;if(e<i)r=(i-e)/2;i=e}if(this._oldWidthRp!=t*this.pixelDensity||this._oldHeightRp!=i*this.pixelDensity){this._oldWidthRp=this.canvasEle.width=t*this.pixelDensity;this._oldHeightRp=this.canvasEle.height=i*this.pixelDensity;if(!e){this.canvasEle.style.width=t+"px";this.canvasEle.style.height=i+"px";this.canvasEle.style.marginTop=r+"px"}this.updateSize();this._cg.emitEvent("resize")}}updateSize(){this.canvasEle.width=this.canvasWidth=this.canvasEle.clientWidth*this.pixelDensity;this.canvasEle.height=this.canvasHeight=this.canvasEle.clientHeight*this.pixelDensity}dispose(){if(this._canvasEle)this._canvasEle.remove();this._canvasEle=null}}class Y extends u.Events{constructor(){super();this._timeStartFrame=0;this._timeStartSecond=0;this._fpsCounter=0;this._msCounter=0;this._frameCount=0;this.logFps=false;this.stats={ms:0,fps:0}}get frameCount(){return this._frameCount}startFrame(){this._timeStartFrame=(0,E.now)()}endFrame(){this._frameCount++;this._fpsCounter++;const e=(0,E.now)()-this._timeStartFrame;this._msCounter+=e;if((0,E.now)()-this._timeStartSecond>1e3)this.endSecond()}endSecond(){this.stats.fps=this._fpsCounter;this.stats.ms=Math.round(this._msCounter/this._fpsCounter*100)/100;this.emitEvent("performance",this.stats);if(this.logFps)console.log(this.stats);this._fpsCounter=0;this._msCounter=0;this._timeStartSecond=(0,E.now)()}}class N extends u.Events{static API_UNKNOWN=0;static API_WEBGL=1;static API_WEBGPU=2;static EVENT_RESIZE="resize";gApi=0;constructor(e){super();this._log=new u.Logger("cg_context",{onError:e.config.onError});this.tempData=this.frameStore=this.frameStore||{};this.fpsCounter=new Y;this._identView=B.vec3.create();this._ident=B.vec3.create();B.vec3.set(this._identView,0,0,-2);B.vec3.set(this._ident,0,0,0);this._onetimeCallbacks=[];this.maxTexSize=2048;this._viewPort=[0,0,1,1];this._viewPortStack=[];this.patch=e;this.autoReSize=true;this.DEPTH_COMPARE_FUNC_NEVER=0;this.DEPTH_COMPARE_FUNC_LESS=1;this.DEPTH_COMPARE_FUNC_EQUAL=2;this.DEPTH_COMPARE_FUNC_LESSEQUAL=3;this.DEPTH_COMPARE_FUNC_GREATER=4;this.DEPTH_COMPARE_FUNC_NOTEQUAL=5;this.DEPTH_COMPARE_FUNC_GREATEREQUAL=6;this.DEPTH_COMPARE_FUNC_ALWAYS=7;this.profileData=new L(this);this.pMatrix=B.mat4.create();this.mMatrix=B.mat4.create();this.vMatrix=B.mat4.create();this._textureslots=[];this._pMatrixStack=new P;this._mMatrixStack=new P;this._vMatrixStack=new P;this.canvasScale=1;B.mat4.identity(this.mMatrix);B.mat4.identity(this.vMatrix);window.matchMedia("screen and (min-resolution: 2dppx)").addEventListener("change",()=>{this.emitEvent("resize")})}get canvasWidth(){return this.cgCanvas.canvasWidth}get canvasHeight(){return this.cgCanvas.canvasHeight}set pixelDensity(e){if(this.cgCanvas.pixelDensity!=e){this.cgCanvas.pixelDensity=e;this.cgCanvas.updateSize();this.emitEvent("resize")}}get pixelDensity(){return this.cgCanvas.pixelDensity}getGApiName(){return["unknown","WebGL","WebGPU"][this.gApi]}get canvas(){return this.cgCanvas.canvasEle}get viewPort(){return[0,0,this.canvasWidth,this.canvasHeight]}setCanvas(e){if(this.cgCanvas&&e==this.cgCanvas.canvasEle)return;if(typeof e==="string")e=document.getElementById(e);this.cgCanvas=new W({canvasEle:e,cg:this});e.parentElement.classList.add("cablesContainer");if(this._setCanvas)this._setCanvas(e);this.updateSize()}_setCanvas(e){}updateSize(){this.cgCanvas.updateSize()}setSize(e,t,i=false){this.cgCanvas.setSize(e,t,i)}_resizeToWindowSize(){if(this.autoReSize){this.setSize(window.innerWidth,window.innerHeight);this.updateSize()}}_resizeToParentSize(){if(this.autoReSize){const e=this.canvas.parentElement;if(!e){this._log.error("cables: can not resize to container element");return}this.setSize(e.clientWidth,e.clientHeight);this.updateSize()}}setAutoResize(e){window.removeEventListener("resize",this._resizeToWindowSize.bind(this));window.removeEventListener("resize",this._resizeToParentSize.bind(this));if(e=="window"){window.addEventListener("resize",this._resizeToWindowSize.bind(this));window.addEventListener("orientationchange",this._resizeToWindowSize.bind(this));this._resizeToWindowSize()}if(e=="parent"){window.addEventListener("resize",this._resizeToParentSize.bind(this));this._resizeToParentSize()}}pushPMatrix(){this.pMatrix=this._pMatrixStack.push(this.pMatrix)}popPMatrix(){this.pMatrix=this._pMatrixStack.pop();return this.pMatrix}getProjectionMatrixStateCount(){return this._pMatrixStack.stateCounter}pushModelMatrix(){this.mMatrix=this._mMatrixStack.push(this.mMatrix)}popModelMatrix(){this.mMatrix=this._mMatrixStack.pop();return this.mMatrix}modelMatrix(){return this.mMatrix}pushViewMatrix(){this.vMatrix=this._vMatrixStack.push(this.vMatrix)}popViewMatrix(){this.vMatrix=this._vMatrixStack.pop()}getViewMatrixStateCount(){return this._vMatrixStack.stateCounter}_startMatrixStacks(e,t){e=e||this._ident;t=t||this._identView;B.mat4.perspective(this.pMatrix,45,this.canvasWidth/this.canvasHeight,.1,1e3);B.mat4.identity(this.mMatrix);B.mat4.identity(this.vMatrix);B.mat4.translate(this.mMatrix,this.mMatrix,e);B.mat4.translate(this.vMatrix,this.vMatrix,t);this.pushPMatrix();this.pushModelMatrix();this.pushViewMatrix()}_endMatrixStacks(){this.popViewMatrix();this.popModelMatrix();this.popPMatrix()}dispose(){this.aborted=true;if(this.cgCanvas)this.cgCanvas.dispose();if(this._dispose)this._dispose()}_dispose(){}shouldDrawHelpers(e){return false}addNextFrameOnceCallback(e){if(e&&this._onetimeCallbacks.indexOf(e)==-1)this._onetimeCallbacks.push(e)}_execOneTimeCallbacks(){if(this._onetimeCallbacks.length>0){for(let e=0;e<this._onetimeCallbacks.length;e++)this._onetimeCallbacks[e]();this._onetimeCallbacks.length=0}}checkTextureSize(e){e=e||1;e=Math.floor(e);e=Math.min(e,this.maxTexSize);e=Math.max(e,1);return e}screenShot(e,t,i,r){console.log("no screenshot function implemented")}saveScreenshot(i,r,e,t,s){this.patch.renderOneFrame();let n=this.canvas.clientWidth*this.pixelDensity;let a=this.canvas.clientHeight*this.pixelDensity;if(e){this.canvas.width=e;n=e}if(t){this.canvas.height=t;a=t}function o(e,t,i){return Array(t-String(e).length+1).join(i||"0")+e}const l=new Date;const h="".concat(String(l.getFullYear())+String(l.getMonth()+1)+String(l.getDate()),"_").concat(o(l.getHours(),2)).concat(o(l.getMinutes(),2)).concat(o(l.getSeconds(),2));if(!i)i="cables_"+h+".png";else i+=".png";this.screenShot(e=>{this.canvas.width=n;this.canvas.height=a;if(e){const t=document.createElement("a");t.download=i;t.href=URL.createObjectURL(e);console.log("scrrenshot");setTimeout(function(){t.click();if(r)r(e)},100)}else{this._log.log("screenshot: no blob")}})}hasFocus(){return this.cgCanvas.hasFocus}}const q={BLEND_NONE:0,BLEND_NORMAL:1,BLEND_ADD:2,BLEND_SUB:3,BLEND_MUL:4};class K extends N{constructor(e){super(e);this.gApi=N.API_WEBGL;this.aborted=false;this.pushMvMatrix=this.pushModelMatrix;this.popMvMatrix=this.popmMatrix=this.popModelMatrix;this._log=new u.Logger("cgl_context",{onError:e.config.onError});this.glVersion=0;this.glUseHalfFloatTex=false;this.clearCanvasTransparent=true;this.clearCanvasDepth=true;this.debugOneFrame=false;this.checkGlErrors=false;this.maxTextureUnits=0;this.maxVaryingVectors=0;this.currentProgram=null;this._hadStackError=false;this.glSlowRenderer=false;this._isSafariCrap=false;this.temporaryTexture=null;this.gl=null;this._cursor="auto";this._currentCursor="";this._viewPortStack=[];this._glFrameBufferStack=[];this._frameBufferStack=[];this._shaderStack=[];this._stackDepthTest=[];this.mainloopOp=null;this._stackBlendMode=[];this._stackBlendModePremul=[];this._stackBlend=[];this._stackDepthFunc=[];this._stackCullFaceFacing=[];this._stackCullFace=[];this._stackDepthWrite=[];this._stackDepthTest=[];this._stackStencil=[];this._simpleShader=new I(this,"simpleshader");this._simpleShader.setModules(["MODULE_VERTEX_POSITION","MODULE_COLOR","MODULE_BEGIN_FRAG","MODULE_VERTEX_MODELVIEW"]);this._simpleShader.setSource(I.getDefaultVertexShader(),I.getDefaultFragmentShader());this._currentShader=this._simpleShader;this._oldCanvasWidth=-1;this._oldCanvasHeight=-1;this._enabledExtensions={};this.errorShader=null}get viewPort(){if(this._viewPortStack.length>3){const e=this._viewPortStack.length;return[this._viewPortStack[e-4],this._viewPortStack[e-3],this._viewPortStack[e-2],this._viewPortStack[e-1]]}else{return this._viewPort}}get mvMatrix(){return this.mMatrix}set mvMatrix(e){this.mMatrix=e}_setCanvas(e){if(!e)this._log.stack("_setCanvas undef");if(!this.patch.config.canvas)this.patch.config.canvas={};if(!this.patch.config.canvas.hasOwnProperty("preserveDrawingBuffer"))this.patch.config.canvas.preserveDrawingBuffer=true;if(!this.patch.config.canvas.hasOwnProperty("premultipliedAlpha"))this.patch.config.canvas.premultipliedAlpha=false;if(!this.patch.config.canvas.hasOwnProperty("alpha"))this.patch.config.canvas.alpha=false;this.patch.config.canvas.stencil=true;if(this.patch.config.hasOwnProperty("clearCanvasColor"))this.clearCanvasTransparent=this.patch.config.clearCanvasColor;if(this.patch.config.hasOwnProperty("clearCanvasDepth"))this.clearCanvasDepth=this.patch.config.clearCanvasDepth;if(/^((?!chrome|android).)*safari/i.test(navigator.userAgent)&&navigator.userAgent.match(/iPhone/i)){this._isSafariCrap=true;this.glUseHalfFloatTex=true}if(!this.patch.config.canvas.forceWebGl1)this.gl=e.getContext("webgl2",this.patch.config.canvas);if(!this.gl||this.gl.isContextLost()){this.aborted=true;this._log.error("NO_WEBGL","sorry, could not initialize WebGL. Please check if your Browser supports WebGL or try to restart your browser.");return}if(this.gl.getParameter(this.gl.VERSION)!="WebGL 1.0"){this.glVersion=2}else{this.gl=e.getContext("webgl",this.patch.config.canvas)||e.getContext("experimental-webgl",this.patch.config.canvas);this.glVersion=1;if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){if(!this.patch.config.canvas.hasOwnProperty("powerPreference"))this.patch.config.canvas.powerPreference="high-performance"}this.enableExtension("OES_standard_derivatives");const i=this.enableExtension("ANGLE_instanced_arrays")||this.gl;if(i.vertexAttribDivisorANGLE){this.gl.vertexAttribDivisor=i.vertexAttribDivisorANGLE.bind(i);this.gl.drawElementsInstanced=i.drawElementsInstancedANGLE.bind(i)}}const t=this.enableExtension("WEBGL_debug_renderer_info");if(t){this.glRenderer=this.gl.getParameter(t.UNMASKED_RENDERER_WEBGL);if(this.glRenderer==="Google SwiftShader")this.glSlowRenderer=true}this.canvas.addEventListener("webglcontextlost",e=>{if(this.aborted)return this._log.warn("[cgl_state] aborted context lost... can be ignored...");this._log.error("canvas lost...",e);this.emitEvent("webglcontextlost");this.aborted=true});this.maxAnisotropic=0;if(this.enableExtension("EXT_texture_filter_anisotropic"))this.maxAnisotropic=this.gl.getParameter(this.enableExtension("EXT_texture_filter_anisotropic").MAX_TEXTURE_MAX_ANISOTROPY_EXT);this.maxVaryingVectors=this.gl.getParameter(this.gl.MAX_VARYING_VECTORS);this.maxTextureUnits=this.gl.getParameter(this.gl.MAX_TEXTURE_IMAGE_UNITS);this.maxTexSize=this.gl.getParameter(this.gl.MAX_TEXTURE_SIZE);this.maxUniformsFrag=this.gl.getParameter(this.gl.MAX_FRAGMENT_UNIFORM_VECTORS);this.maxUniformsVert=this.gl.getParameter(this.gl.MAX_VERTEX_UNIFORM_VECTORS);this.maxSamples=0;if(this.gl.MAX_SAMPLES)this.maxSamples=this.gl.getParameter(this.gl.MAX_SAMPLES);if(this.glVersion==1){this.enableExtension("OES_standard_derivatives");const i=this.enableExtension("ANGLE_instanced_arrays")||this.gl;if(i.vertexAttribDivisorANGLE){this.gl.vertexAttribDivisor=i.vertexAttribDivisorANGLE.bind(i);this.gl.drawElementsInstanced=i.drawElementsInstancedANGLE.bind(i)}}this.DEPTH_FUNCS=[this.gl.NEVER,this.gl.ALWAYS,this.gl.LESS,this.gl.LEQUAL,this.gl.GREATER,this.gl.GEQUAL,this.gl.EQUAL,this.gl.NOTEQUAL];this.CULL_MODES=[null,this.gl.BACK,this.gl.FRONT,this.gl.FRONT_AND_BACK]}getInfo(){return{glVersion:this.glVersion,glRenderer:this.glRenderer,glUseHalfFloatTex:this.glUseHalfFloatTex,maxVaryingVectors:this.maxVaryingVectors,maxTextureUnits:this.maxTextureUnits,maxTexSize:this.maxTexSize,maxUniformsFrag:this.maxUniformsFrag,maxUniformsVert:this.maxUniformsVert,maxSamples:this.maxSamples}}popViewPort(){this._viewPortStack.pop();this._viewPortStack.pop();this._viewPortStack.pop();this._viewPortStack.pop();if(this._viewPortStack.length==0)this.setViewPort(0,0,this.canvasWidth,this.canvasHeight);else this.setViewPort(this._viewPortStack[this._viewPort.length-4],this._viewPortStack[this._viewPort.length-3],this._viewPortStack[this._viewPort.length-2],this._viewPortStack[this._viewPort.length-1])}pushViewPort(e,t,i,r){this._viewPortStack.push(e,t,i,r);this.setViewPort(e,t,i,r)}getViewPort(){return this._viewPort}resetViewPort(){this.gl.viewport(this._viewPort[0],this._viewPort[1],this._viewPort[2],this._viewPort[3])}setViewPort(e,t,i,r){this._viewPort[0]=Math.round(e);this._viewPort[1]=Math.round(t);this._viewPort[2]=Math.round(i);this._viewPort[3]=Math.round(r);this.gl.viewport(this._viewPort[0],this._viewPort[1],this._viewPort[2],this._viewPort[3])}screenShot(t,e,i,r){if(e){this.gl.clearColor(1,1,1,1);this.gl.colorMask(false,false,false,true);this.gl.clear(this.gl.COLOR_BUFFER_BIT);this.gl.colorMask(true,true,true,true)}if(this.canvas&&this.canvas.toBlob){this.canvas.toBlob(e=>{if(t)t(e);else this._log.log("no screenshot callback...")},i,r)}}endFrame(){if(this.patch.isEditorMode())CABLES.GL_MARKER.drawMarkerLayer(this);this.setPreviousShader();if(this._vMatrixStack.length()>0)this.logStackError("view matrix stack length !=0 at end of rendering...");if(this._mMatrixStack.length()>0)this.logStackError("mvmatrix stack length !=0 at end of rendering...");if(this._pMatrixStack.length()>0)this.logStackError("pmatrix stack length !=0 at end of rendering...");if(this._glFrameBufferStack.length>0)this.logStackError("glFrameBuffer stack length !=0 at end of rendering...");if(this._stackDepthTest.length>0)this.logStackError("depthtest stack length !=0 at end of rendering...");if(this._stackDepthWrite.length>0)this.logStackError("depthwrite stack length !=0 at end of rendering...");if(this._stackDepthFunc.length>0)this.logStackError("depthfunc stack length !=0 at end of rendering...");if(this._stackBlend.length>0)this.logStackError("blend stack length !=0 at end of rendering...");if(this._stackBlendMode.length>0)this.logStackError("blendMode stack length !=0 at end of rendering...");if(this._shaderStack.length>0)this.logStackError("this._shaderStack length !=0 at end of rendering...");if(this._stackCullFace.length>0)this.logStackError("this._stackCullFace length !=0 at end of rendering...");if(this._stackCullFaceFacing.length>0)this.logStackError("this._stackCullFaceFacing length !=0 at end of rendering...");if(this._viewPortStack.length>0)this.logStackError("viewport stack length !=0 at end of rendering...");this._frameStarted=false;if(this._oldCanvasWidth!=this.canvasWidth||this._oldCanvasHeight!=this.canvasHeight){this._oldCanvasWidth=this.canvasWidth;this._oldCanvasHeight=this.canvasHeight;this.emitEvent(N.EVENT_RESIZE)}if(this._cursor!=this._currentCursor){this._currentCursor=this.canvas.style.cursor=this._cursor}this.emitEvent("endframe");this.fpsCounter.endFrame()}logStackError(e){if(!this._hadStackError){this._hadStackError=true;this._log.warn("["+this.canvas.id+"]: ",e)}}getShader(){if(this._currentShader)if(!this.tempData||this.tempData.renderOffscreen===true==this._currentShader.offScreenPass===true)return this._currentShader;for(let e=this._shaderStack.length-1;e>=0;e--)if(this._shaderStack[e])if(this.tempData.renderOffscreen==this._shaderStack[e].offScreenPass)return this._shaderStack[e]}getDefaultShader(){return this._simpleShader}setShader(e){this.pushShader(e)}pushShader(t){if(this.tempData.forceShaderMods){for(let e=0;e<this.tempData.forceShaderMods.length;e++){t=this.tempData.forceShaderMods[e].bind(t,false)}}this._shaderStack.push(t);this._currentShader=t}popShader(){this.setPreviousShader()}setPreviousShader(){if(this.tempData.forceShaderMods){for(let e=0;e<this.tempData.forceShaderMods.length;e++){this.tempData.forceShaderMods[e].unbind(false)}}if(this._shaderStack.length===0)throw new Error("Invalid shader stack pop!");this._shaderStack.pop();this._currentShader=this._shaderStack[this._shaderStack.length-1]}pushGlFrameBuffer(e){this._glFrameBufferStack.push(e)}popGlFrameBuffer(){if(this._glFrameBufferStack.length==0)return null;this._glFrameBufferStack.pop();return this._glFrameBufferStack[this._glFrameBufferStack.length-1]}getCurrentGlFrameBuffer(){if(this._glFrameBufferStack.length===0)return null;return this._glFrameBufferStack[this._glFrameBufferStack.length-1]}pushFrameBuffer(e){this._frameBufferStack.push(e)}popFrameBuffer(){if(this._frameBufferStack.length==0)return null;this._frameBufferStack.pop();return this._frameBufferStack[this._frameBufferStack.length-1]}getCurrentFrameBuffer(){if(this._frameBufferStack.length===0)return null;return this._frameBufferStack[this._frameBufferStack.length-1]}renderStart(e,t,i){this.fpsCounter.startFrame();this.pushDepthTest(true);this.pushDepthWrite(true);this.pushDepthFunc(e.gl.LEQUAL);this.pushCullFaceFacing(e.gl.BACK);this.pushCullFace(false);e.setViewPort(0,0,e.canvasWidth,e.canvasHeight);this._startMatrixStacks(t,i);e.pushBlendMode(p.BLEND_MODES.BLEND_NORMAL,false);for(let e=0;e<this._textureslots.length;e++)this._textureslots[e]=null;this.pushShader(this._simpleShader);this._frameStarted=true;this._execOneTimeCallbacks();for(let e=0;e<this._textureslots.length;e++){this.gl.activeTexture(this.gl.TEXTURE0+e);this.gl.bindTexture(this.gl.TEXTURE_2D,null);this._textureslots[e]=null}this.emitEvent("beginFrame")}renderEnd(e){this._endMatrixStacks();this.popDepthTest();this.popDepthWrite();this.popDepthFunc();this.popCullFaceFacing();this.popCullFace();this.popBlend();this.popBlendMode();e.endFrame();this.emitEvent("endFrame")}getTexture(e){return this._textureslots[e]}hasFrameStarted(){return this._frameStarted}checkFrameStarted(e){if(!this._frameStarted){this._log.warn("frame not started "+e);Error.stackTraceLimit=25;E.utils.logStack();this.patch.printTriggerStack()}}setTexture(e,t,i){this.checkFrameStarted("cgl setTexture");if(t===null)t=h.getEmptyTexture(this).tex;if(this._textureslots[e]!=t){this.gl.activeTexture(this.gl.TEXTURE0+e);this.gl.bindTexture(i||this.gl.TEXTURE_2D,t);this._textureslots[e]=t}return true}fullScreen(){if(this.canvas.requestFullscreen)this.canvas.requestFullscreen();else if(this.canvas.mozRequestFullScreen)this.canvas.mozRequestFullScreen();else if(this.canvas.webkitRequestFullscreen)this.canvas.webkitRequestFullscreen();else if(this.canvas.msRequestFullscreen)this.canvas.msRequestFullscreen()}printError(t){if(!this.checkGlErrors)return;let i=false;let r=this.gl.getError();if(r!=this.gl.NO_ERROR){let e="";if(r==this.gl.OUT_OF_MEMORY)e="OUT_OF_MEMORY";if(r==this.gl.INVALID_ENUM)e="INVALID_ENUM";if(r==this.gl.INVALID_OPERATION)e="INVALID_OPERATION";if(r==this.gl.INVALID_FRAMEBUFFER_OPERATION)e="INVALID_FRAMEBUFFER_OPERATION";if(r==this.gl.INVALID_VALUE)e="INVALID_VALUE";if(r==this.gl.CONTEXT_LOST_WEBGL){this.aborted=true;e="CONTEXT_LOST_WEBGL"}if(r==this.gl.NO_ERROR)e="NO_ERROR";i=true;this._log.warn("gl error ["+this.canvas.id+"]: ",t,r,e);if(this.canvas.id.includes("glGuiCanvas"))if(!this._loggedGlError){this.patch.printTriggerStack();this._log.stack("glerror");this._loggedGlError=true}}r=this.gl.getError();return i}_dispose(){this._simpleShader.dispose();this.gl=null}pushDepthTest(e){this._stackDepthTest.push(e);if(!e)this.gl.disable(this.gl.DEPTH_TEST);else this.gl.enable(this.gl.DEPTH_TEST)}stateDepthTest(){return this._stackDepthTest[this._stackDepthTest.length-1]}popDepthTest(){this._stackDepthTest.pop();if(!this._stackDepthTest[this._stackDepthTest.length-1])this.gl.disable(this.gl.DEPTH_TEST);else this.gl.enable(this.gl.DEPTH_TEST)}pushDepthWrite(e){e=e||false;this._stackDepthWrite.push(e);this.gl.depthMask(e)}stateDepthWrite(){return this._stackDepthWrite[this._stackDepthWrite.length-1]}popDepthWrite(){this._stackDepthWrite.pop();this.gl.depthMask(this._stackDepthWrite[this._stackDepthWrite.length-1]||false)}pushCullFace(e){this._stackCullFace.push(e);if(e)this.gl.enable(this.gl.CULL_FACE);else this.gl.disable(this.gl.CULL_FACE)}stateCullFace(){return this._stackCullFace[this._stackCullFace.length-1]}popCullFace(){this._stackCullFace.pop();if(this._stackCullFace[this._stackCullFace.length-1])this.gl.enable(this.gl.CULL_FACE);else this.gl.disable(this.gl.CULL_FACE)}pushCullFaceFacing(e){this._stackCullFaceFacing.push(e);this.gl.cullFace(this._stackCullFaceFacing[this._stackCullFaceFacing.length-1])}stateCullFaceFacing(){return this._stackCullFaceFacing[this._stackCullFaceFacing.length-1]}popCullFaceFacing(){this._stackCullFaceFacing.pop();if(this._stackCullFaceFacing.length>0)this.gl.cullFace(this._stackCullFaceFacing[this._stackCullFaceFacing.length-1])}pushDepthFunc(e){this._stackDepthFunc.push(e);this.gl.depthFunc(e)}stateDepthFunc(){if(this._stackDepthFunc.length>0)return this._stackDepthFunc[this._stackDepthFunc.length-1];return false}popDepthFunc(){this._stackDepthFunc.pop();if(this._stackDepthFunc.length>0)this.gl.depthFunc(this._stackDepthFunc[this._stackDepthFunc.length-1])}pushBlend(e){this._stackBlend.push(e);if(!e)this.gl.disable(this.gl.BLEND);else this.gl.enable(this.gl.BLEND)}popBlend(){this._stackBlend.pop();if(!this._stackBlend[this._stackBlend.length-1])this.gl.disable(this.gl.BLEND);else this.gl.enable(this.gl.BLEND)}stateBlend(){return this._stackBlend[this._stackBlend.length-1]}pushBlendMode(e,t){this._stackBlendMode.push(e);this._stackBlendModePremul.push(t);const i=this._stackBlendMode.length-1;this.pushBlend(this._stackBlendMode[i]!==p.BLEND_MODES.BLEND_NONE);this._setBlendMode(this._stackBlendMode[i],this._stackBlendModePremul[i])}popBlendMode(){this._stackBlendMode.pop();this._stackBlendModePremul.pop();const e=this._stackBlendMode.length-1;this.popBlend();if(e>=0)this._setBlendMode(this._stackBlendMode[e],this._stackBlendModePremul[e])}pushStencil(e){this._stackStencil.push(e);if(!e)this.gl.disable(this.gl.STENCIL_TEST);else this.gl.enable(this.gl.STENCIL_TEST)}popStencil(){this._stackStencil.pop();if(!this._stackStencil[this._stackStencil.length-1])this.gl.disable(this.gl.STENCIL_TEST);else this.gl.enable(this.gl.STENCIL_TEST)}glGetAttribLocation(e,t){const i=this.gl.getAttribLocation(e,t);return i}shouldDrawHelpers(e){if(this.tempData.shadowPass)return false;if(!e.patch.isEditorMode())return false;return gui.shouldDrawOverlay}_setBlendMode(e,t){const i=this.gl;if(e==p.BLEND_MODES.BLEND_NONE){}else if(e==p.BLEND_MODES.BLEND_ADD){if(t){i.blendEquationSeparate(i.FUNC_ADD,i.FUNC_ADD);i.blendFuncSeparate(i.ONE,i.ONE,i.ONE,i.ONE)}else{i.blendEquation(i.FUNC_ADD);i.blendFunc(i.SRC_ALPHA,i.ONE)}}else if(e==p.BLEND_MODES.BLEND_SUB){if(t){i.blendEquationSeparate(i.FUNC_ADD,i.FUNC_ADD);i.blendFuncSeparate(i.ZERO,i.ZERO,i.ONE_MINUS_SRC_COLOR,i.ONE_MINUS_SRC_ALPHA)}else{i.blendEquation(i.FUNC_ADD);i.blendFunc(i.ZERO,i.ONE_MINUS_SRC_COLOR)}}else if(e==p.BLEND_MODES.BLEND_MUL){if(t){i.blendEquationSeparate(i.FUNC_ADD,i.FUNC_ADD);i.blendFuncSeparate(i.ZERO,i.SRC_COLOR,i.ZERO,i.SRC_ALPHA)}else{i.blendEquation(i.FUNC_ADD);i.blendFunc(i.ZERO,i.SRC_COLOR)}}else if(e==p.BLEND_MODES.BLEND_NORMAL){if(t){i.blendEquationSeparate(i.FUNC_ADD,i.FUNC_ADD);i.blendFuncSeparate(i.ONE,i.ONE_MINUS_SRC_ALPHA,i.ONE,i.ONE_MINUS_SRC_ALPHA)}else{i.blendEquationSeparate(i.FUNC_ADD,i.FUNC_ADD);i.blendFuncSeparate(i.SRC_ALPHA,i.ONE_MINUS_SRC_ALPHA,i.ONE,i.ONE_MINUS_SRC_ALPHA)}}else{this._log.log("setblendmode: unknown blendmode")}}createMesh(e,t){if(E.utils.isNumeric(t))t={glPrimitive:t};return new x(this,e,t)}setCursor(e){this._cursor=e}enableExtension(e){if(!this.gl)return null;if(this._enabledExtensions.hasOwnProperty(e))return this._enabledExtensions[e];const t=this.gl.getExtension(e);this._enabledExtensions[e]=t;if(!t)this._log.warn("[cgl_state] extension not available "+e);return t}getErrorShader(){if(this.errorShader)return this.errorShader;this.errorShader=new I(this,"errormaterial");this.errorShader.setSource(I.getDefaultVertexShader(),I.getErrorFragmentShader());return this.errorShader}}const y={Framebuffer2:e,Geometry:v,BoundingBox:b,Marker:s,WirePoint:n,WireCube:o,MatrixStack:P,Mesh:x,MESH:S,ShaderLibMods:R,Shader:I,Uniform:c,MESHES:T,getWheelSpeed:z,getWheelDelta:X,Context:K,Texture:h,TextureEffect:C,onLoadingAssetsFinished:j,ProfileData:L,UniColorShader:w,...p.BLEND_MODES,...p.SHADER,...p.MATH,...p.BLEND_MODES};window.CABLES=window.CABLES||{};window.CABLES.CGL=window.CABLES.CGL||y;window.CGL=window.CGL||y;E.Anim.slerpQuaternion=function(e,t,i,r,s,n){if(!E.Anim.slerpQuaternion.q1){E.Anim.slerpQuaternion.q1=quat.create();E.Anim.slerpQuaternion.q2=quat.create()}const a=i.getKeyIndex(e);let o=a+1;if(o>=i.keys.length)o=i.keys.length-1;if(a==o){quat.set(t,i.keys[a].value,r.keys[a].value,s.keys[a].value,n.keys[a].value)}else{const l=i.keys[a].time;const h=i.keys[o].time;const u=(e-l)/(h-l);quat.set(E.Anim.slerpQuaternion.q1,i.keys[a].value,r.keys[a].value,s.keys[a].value,n.keys[a].value);quat.set(E.Anim.slerpQuaternion.q2,i.keys[o].value,r.keys[o].value,s.keys[o].value,n.keys[o].value);quat.slerp(t,E.Anim.slerpQuaternion.q1,E.Anim.slerpQuaternion.q2,u)}return t};class Q{constructor(e,t,i){this.cgl=e;this._options=i;this.fb=null;let r=i.shader;this._useDefaultShader=true;if(i.shader)this._useDefaultShader=false;i.numRenderBuffers=i.numRenderBuffers||1;if(!r){r="".endl()+"IN vec2 texCoord;";for(let e=0;e<i.numRenderBuffers;e++){r=r.endl()+"UNI sampler2D tex"+e+";".endl()}r=r.endl()+"void main()".endl()+"{";if(i.numRenderBuffers==1){r=r.endl()+"    outColor= texture(tex0,texCoord);".endl()}else for(let e=0;e<i.numRenderBuffers;e++){r=r.endl()+"outColor"+e+" = texture(tex"+e+",texCoord);".endl()}r=r.endl()+"}"}const s=i.vertexShader||"".endl()+"IN vec3 vPosition;".endl()+"IN vec2 attrTexCoord;".endl()+"OUT vec2 texCoord;".endl()+"void main()".endl()+"{".endl()+"   texCoord=attrTexCoord;".endl()+"   gl_Position = vec4(vPosition,  1.0);".endl()+"}";this.bgShader=new y.Shader(e,"corelib copytexture "+t);this.bgShader.setSource(s,r);if(!i.vertexShader)this.bgShader.ignoreMissingUniforms=true;new y.Uniform(this.bgShader,"t","tex",0);new y.Uniform(this.bgShader,"t","tex1",1);new y.Uniform(this.bgShader,"t","tex2",2);new y.Uniform(this.bgShader,"t","tex3",3);this.mesh=y.MESHES.getSimpleRect(this.cgl,"texEffectRect")}setSize(e,t){this._options.width=e;this._options.height=t}copy(e,t,i,r,s){const n=this.cgl;if(!e)e=y.Texture.getEmptyTexture(this.cgl);let a=this._options.width||e.width,o=this._options.height||e.height;if(this.fb){if(a<=0)a=8;if(o<=0)o=8;if(this.fb.getWidth()!=a||this.fb.getHeight()!=o)this.fb.setSize(a,o)}else{let e=y.Texture.FILTER_LINEAR;let t=y.Texture.WRAP_CLAMP_TO_EDGE;if(this._options.isFloatingPointTexture)e=y.Texture.FILTER_NEAREST;if(this._options.hasOwnProperty("filter"))e=this._options.filter;if(this._options.hasOwnProperty("wrap"))t=this._options.wrap;const l={isFloatingPointTexture:this._options.isFloatingPointTexture,pixelFormat:this._options.pixelFormat,numRenderBuffers:this._options.numRenderBuffers||1,filter:e,wrap:t};if(n.glVersion==1)this.fb=new y.Framebuffer(n,a,o,l);else this.fb=new y.Framebuffer2(n,a,o,l)}n.tempData.renderOffscreen=true;this.fb.renderStart(n);n.setTexture(0,e.tex);if(t)n.setTexture(1,t.tex);if(i)n.setTexture(2,i.tex);if(r)n.setTexture(3,r.tex);if(s)n.setTexture(4,s.tex);n.pushShader(this.bgShader);this.mesh.render(this.bgShader);n.popShader();this.fb.renderEnd();n.tempData.renderOffscreen=false;return this.fb.getTextureColor()}dispose(){if(this.fb)this.fb.dispose();if(this.bgShader)this.bgShader.dispose();if(this.mesh)this.mesh.dispose()}}})();var e=CGL=typeof CGL==="undefined"?{}:CGL;for(var t in J)e[t]=J[t];if(J.__esModule)Object.defineProperty(e,"__esModule",{value:true})})();(()=>{var r={};(()=>{r.d=(e,t)=>{for(var i in t){if(r.o(t,i)&&!r.o(e,i)){Object.defineProperty(e,i,{enumerable:true,get:t[i]})}}}})();(()=>{r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t)})();(()=>{r.r=e=>{if(typeof Symbol!=="undefined"&&Symbol.toStringTag){Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}Object.defineProperty(e,"__esModule",{value:true})}})();var i={};(()=>{"use strict";r.r(i);r.d(i,{VarGetOpWrapper:()=>t,VarSetOpWrapper:()=>e});const a=CABLES;class e{constructor(t,e,i,r,s,n){this._valuePort=i;this._varNamePort=r;this._op=t;this._type=e;this._typeId=-1;this._triggerPort=s;this._nextPort=n;this._var=null;this._btnCreate=t.inTriggerButton("Create new variable");this._btnCreate.setUiAttribs({hidePort:true});this._btnCreate.onTriggered=this._createVar.bind(this);this._helper=t.inUiTriggerButtons("",["Rename"]);this._helper.setUiAttribs({hidePort:true});this._helper.onTriggered=e=>{if(e=="Rename")CABLES.CMD.PATCH.renameVariable(t.varName.get())};this._op.setPortGroup("Variable",[this._helper,this._varNamePort,this._btnCreate]);r.setUiAttribs({_variableSelect:true});this._op.on("uiParamPanel",this._updateVarNamesDropdown.bind(this));this._op.patch.addEventListener("variablesChanged",this._updateName.bind(this));this._op.patch.addEventListener("variableRename",this._renameVar.bind(this));this._varNamePort.onChange=this._updateName.bind(this);this._isTexture=this._valuePort.uiAttribs.objType==="texture";this._valuePort.changeAlways=true;if(this._triggerPort){this._triggerPort.onTriggered=()=>{this._setVarValue(true)}}else{this._valuePort.onChange=this._setVarValue.bind(this)}this._op.init=()=>{this._updateName();if(!this._triggerPort)this._setVarValue();this._updateErrorUi()};if(e=="array")this._typeId=a.Port.TYPE_ARRAY;else if(e=="object")this._typeId=a.Port.TYPE_OBJECT;else if(e=="string")this._typeId=a.Port.TYPE_STRING;else if(e=="texture")this._typeId=a.Port.TYPE_TEXTURE;else this._typeId=a.Port.TYPE_VALUE}_updateErrorUi(){if(CABLES.UI){if(!this._varNamePort.get())this._op.setUiError("novarname","no variable selected");else{if(this._op.hasUiErrors)this._op.setUiError("novarname",null)}}}_updateName(){this._var=null;const e=this._varNamePort.get();this._op.setTitle("var set");this._op.setUiAttrib({extendTitle:"#"+e});this._updateErrorUi();const t=this._op.patch.getVar(e);if(t&&!t.type)t.type=this._type;if(!this._op.patch.hasVar(e)&&e!=0&&!this._triggerPort){this._setVarValue()}if(!this._op.patch.hasVar(e)&&e!=0&&this._triggerPort){if(this._type=="string")this._op.patch.setVarValue(e,"");else if(this._type=="number")this._op.patch.setVarValue(e,"");else this._op.patch.setVarValue(e,null)}if(this._op.isCurrentUiOp()){this._updateVarNamesDropdown();this._op.refreshParams()}this._updateDisplay();this._op.patch.emitEvent("opVariableNameChanged",this._op,this._varNamePort.get())}_createVar(){CABLES.CMD.PATCH.createVariable(this._op,this._type,()=>{this._updateName()})}_updateDisplay(){this._valuePort.setUiAttribs({greyout:!this._varNamePort.get()})}_updateVarNamesDropdown(){if(CABLES.UI&&CABLES.UI.loaded&&CABLES.UI.loaded){const e=gui.uiProfiler.start("[vars] _updateVarNamesDropdown");const t=[];const i=this._op.patch.getVars();for(const e in i)if(i[e].type==this._type&&e!="0")t.push(e);this._varNamePort.uiAttribs.values=t;e.finish()}}_renameVar(e,t){if(e!=this._varNamePort.get())return;this._varNamePort.set(t);this._updateName()}_setVarValue(e){const t=this._valuePort.get();if(!this._var){const i=this._varNamePort.get();if(!i)return;this._op.patch.setVarValue(i,t);this._var=this._op.patch.getVar(i)}if(this._typeId==a.Port.TYPE_VALUE||this._typeId==a.Port.TYPE_STRING){this._var.setValue(t)}else if(this._typeId==a.Port.TYPE_ARRAY){this._arr=[];a.utils.copyArray(t,this._arr);this._var.setValue(this._arr)}else{if(this._typeId==a.Port.TYPE_OBJECT){if(this._isTexture)this._var.setValue(CGL.Texture.getEmptyTexture(this._op.patch.cgl));else this._var.setValue(null);if(t&&t.tex&&t._cgl&&!this._isTexture)this._op.setUiError("texobj","Dont use object variables for textures, use varSetTexture");else this._op.setUiError("texobj",null)}this._var.setValue(t)}if(e&&this._nextPort)this._nextPort.trigger()}}class t{constructor(e,t,i,r){this._op=e;this._type=t;this._varnamePort=i;this._variable=null;this._valueOutPort=r;this._listenerId=null;this._typeId=0;if(t=="array")this._typeId=a.Port.TYPE_ARRAY;else if(t=="object")this._typeId=a.Port.TYPE_OBJECT;else if(t=="texture")this._typeId=a.Port.TYPE_TEXTURE;else if(t=="string")this._typeId=a.Port.TYPE_STRING;else this._typeId=a.Port.TYPE_VALUE;if(r)this._isTexture=r.uiAttribs.objType==="texture";this._op.on("uiParamPanel",this._updateVarNamesDropdown.bind(this));this._op.on("uiErrorChange",this._updateTitle.bind(this));this._op.patch.on("variableRename",this._renameVar.bind(this));this._op.patch.on("variableDeleted",e=>{if(this._op.isCurrentUiOp())this._op.refreshParams()});i.setUiAttribs({_variableSelect:true});i.setUiAttribs({_variableSelectGet:true});this._varnamePort.onChange=this._changeVar.bind(this);this._op.patch.addEventListener("variablesChanged",this._init.bind(this));this._op.onDelete=()=>{if(this._variable&&this._listenerId)this._variable.off(this._listenerId)};this._op.init=()=>{this._init()}}get variable(){return this._variable}_changeVar(){if(this._variable&&this._listenerId){this._variable.off(this._listenerId)}this._init()}_renameVar(e,t){if(e!=this._varnamePort.get())return;this._varnamePort.set(t);this._updateVarNamesDropdown();this._updateTitle();this._listenerId=this._variable.on("change",this._setValueOut.bind(this))}_updateVarNamesDropdown(){if(CABLES.UI&&CABLES.UI.loaded){const t=[];const i=this._op.patch.getVars();for(const e in i)if(i[e].type==this._type&&e!="0")t.push(e);this._op.varName.uiAttribs.values=t}}_setValueOut(e){if(this._valueOutPort)if(this._typeId==a.Port.TYPE_NUMBER||this._typeId==a.Port.TYPE_STRING)this._valueOutPort.set(e);else if(this._typeId==a.Port.TYPE_ARRAY||this._typeId==a.Port.TYPE_OBJECT||this._isTexture)this._valueOutPort.setRef(e);else console.log("unkown type?")}_updateTitle(){if(this._variable){this._op.setUiError("unknownvar",null);this._op.setTitle("var get");this._op.setUiAttrib({extendTitle:"#"+this._varnamePort.get()});if(this._valueOutPort)this._setValueOut(this._variable.getValue())}else{this._op.setUiError("unknownvar","unknown variable! - there is no setVariable with this name ("+this._varnamePort.get()+")");this._op.setUiAttrib({extendTitle:"#invalid"});if(this._valueOutPort)this._setValueOut(0)}}_init(){this._updateVarNamesDropdown();if(this._variable&&this._listenerId)this._variable.off(this._listenerId);this._variable=this._op.patch.getVar(this._op.varName.get());if(this._variable)this._listenerId=this._variable.on("change",this._setValueOut.bind(this));this._updateTitle();this._op.patch.emitEvent("opVariableNameChanged",this._op,this._varnamePort.get())}}})();var e=CABLES=typeof CABLES==="undefined"?{}:CABLES;for(var t in i)e[t]=i[t];if(i.__esModule)Object.defineProperty(e,"__esModule",{value:true})})();(()=>{var r={};(()=>{r.d=(e,t)=>{for(var i in t){if(r.o(t,i)&&!r.o(e,i)){Object.defineProperty(e,i,{enumerable:true,get:t[i]})}}}})();(()=>{r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t)})();(()=>{r.r=e=>{if(typeof Symbol!=="undefined"&&Symbol.toStringTag){Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}Object.defineProperty(e,"__esModule",{value:true})}})();var i={};(()=>{"use strict";r.r(i);r.d(i,{WireframeCube:()=>e,WireframeRect:()=>t});class e{constructor(e){this.cgl=e;this.geom=new CGL.Geometry("marker");this.geom.setPointVertices([-1,-1,1,1,-1,1,1,1,1,-1,1,1,-1,-1,-1,1,-1,-1,-1,1,-1,1,1,-1,1,-1,-1,1,1,-1,-1,1,-1,-1,-1,-1,1,1,1,1,-1,1,-1,1,1,-1,-1,1,1,1,-1,1,1,1,-1,1,-1,-1,1,1,1,-1,1,1,-1,-1,-1,-1,1,-1,-1,-1]);this.mesh=new CGL.Mesh(this.cgl,this.geom,this.cgl.gl.LINES);this.mesh.setGeom(this.geom);this.colorShader=new CGL.UniColorShader(this.cgl);this.colorShader.setColor([0,1,1,1]);this._vScale=vec3.create()}render(e,t,i){this.cgl.pushModelMatrix();this.cgl.pushShader(this.colorShader.shader);this.cgl.pushDepthTest(false);if(e==undefined)e=1;if(t==undefined)t=e;if(i==undefined)i=e;vec3.set(this._vScale,e,t,i);mat4.scale(this.cgl.mvMatrix,this.cgl.mvMatrix,this._vScale);this.mesh.render(this.cgl.getShader());this.cgl.popDepthTest();this.cgl.popShader();this.cgl.popModelMatrix()}}class t{constructor(e){this.cgl=e;this.geom=new CGL.Geometry("marker");const t=-1;const i=1;this.geom.setPointVertices([t,t,0,i,t,0,i,t,0,i,i,0,i,i,0,t,i,0,t,i,0,t,t,0]);this.mesh=new CGL.Mesh(this.cgl,this.geom,this.cgl.gl.LINES);this.mesh.setGeom(this.geom);this.colorShader=new CGL.UniColorShader(this.cgl);this.colorShader.setColor([0,1,1,1]);this._vScale=vec3.create()}render(e,t,i){this.cgl.pushModelMatrix();this.cgl.pushShader(this.colorShader.shader);this.cgl.pushDepthTest(false);vec3.set(this._vScale,e||1,t||e||1,i||e||1);mat4.scale(this.cgl.mvMatrix,this.cgl.mvMatrix,this._vScale);this.mesh.render(this.cgl.getShader());this.cgl.popDepthTest();this.cgl.popShader();this.cgl.popModelMatrix()}}})();var e=CGL=typeof CGL==="undefined"?{}:CGL;for(var t in i)e[t]=i[t];if(i.__esModule)Object.defineProperty(e,"__esModule",{value:true})})();(()=>{var r={};(()=>{r.d=(e,t)=>{for(var i in t){if(r.o(t,i)&&!r.o(e,i)){Object.defineProperty(e,i,{enumerable:true,get:t[i]})}}}})();(()=>{r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t)})();(()=>{r.r=e=>{if(typeof Symbol!=="undefined"&&Symbol.toStringTag){Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})}Object.defineProperty(e,"__esModule",{value:true})}})();var i={};(()=>{"use strict";r.r(i);r.d(i,{PixelReader:()=>t});const e=CABLES.SHARED;class t{constructor(){this._log=new e.Logger("LoadingStatus");this.pixelData=null;this._finishedFence=true;this._size=0;this._pbo=null}_fence(n){const a=n.gl;this._finishedFence=false;return new Promise(function(t,i){if(n.aborted)return;let r=a.fenceSync(a.SYNC_GPU_COMMANDS_COMPLETE,0);if(!r)return;a.flush();function s(){if(n.aborted)return;const e=a.clientWaitSync(r,0,0);if(e==a.WAIT_FAILED){console.error("fence wait failed");if(i)i()}else if(e==a.TIMEOUT_EXPIRED){return setTimeout(s,0)}else if(e==a.CONDITION_SATISFIED){t();a.deleteSync(r)}else if(e==a.ALREADY_SIGNALED){t();a.deleteSync(r)}else{this._log.log("unknown fence status",e)}}s()})}read(i,r,e,s,n,a,o,t){if(CABLES.UI)if(!CABLES.UI.loaded||performance.now()-CABLES.UI.loadedTime<1e3)return;if(!this._finishedFence)return;const l=i.gl;let h=1;if(i.aborted)return;if(!r)return;if(e===CGL.Texture.TYPE_FLOAT)e=CGL.Texture.PFORMATSTR_RGBA32F;let u=CGL.Texture.isPixelFormatFloat(e);if(u)h=4;if(CGL.Texture.isPixelFormatHalfFloat(e))h=2;const c=CGL.Texture.setUpGlPixelFormat(i,e);const g=c.numColorChannels*a*o;if(a==0||o==0||g==0)return;if(!this._pixelData||this._size!=g*h){if(h>1)this._pixelData=new Float32Array(g);else this._pixelData=new Uint8Array(g);this._size=g*h}let f=l.UNSIGNED_BYTE;if(h>1)f=l.FLOAT;if(this._size==0||!this._pixelData){this._log.error("readpixel size 0",this._size,a,o);return}if(this._finishedFence){this._pbo=l.createBuffer();l.bindBuffer(l.PIXEL_PACK_BUFFER,this._pbo);l.bufferData(l.PIXEL_PACK_BUFFER,this._pixelData.byteLength,l.DYNAMIC_READ);l.bindFramebuffer(l.FRAMEBUFFER,r);l.bindBuffer(l.PIXEL_PACK_BUFFER,this._pbo);i.profileData.profileFencedPixelRead++;if(this._size!=g*h)this._log.error("buffer size invalid",g,a,o,h);let e=c.glDataType;if(h>1)e=i.gl.FLOAT;let t=c.glDataFormat;l.readPixels(s,n,a,o,t,e,0);l.bindBuffer(l.PIXEL_PACK_BUFFER,null);l.bindFramebuffer(l.FRAMEBUFFER,null)}let d=this._pixelData.byteLength;if(this._finishedFence&&this._pbo)this._fence(i).then(e=>{this._wasTriggered=false;this._finishedFence=true;if(!e&&this._pixelData&&this._pixelData.byteLength==d){l.bindBuffer(l.PIXEL_PACK_BUFFER,this._pbo);l.getBufferSubData(l.PIXEL_PACK_BUFFER,0,this._pixelData);l.bindBuffer(l.PIXEL_PACK_BUFFER,null);if(t)t(this._pixelData)}l.deleteBuffer(this._pbo);this._pbo=null});return true}}})();var e=CGL=typeof CGL==="undefined"?{}:CGL;for(var t in i)e[t]=i[t];if(i.__esModule)Object.defineProperty(e,"__esModule",{value:true})})();
+var CABLES = CABLES || {}; CABLES.build = {"timestamp":1755073419466,"created":"2025-08-13T08:23:39.466Z","git":{"branch":"master","commit":"5ac55484344fd962b81b053230809aa18281d23f","date":"1751875203","message":"sidebar colorpicker opacity cables-gl/cables/issues/7458"}};
