@@ -188,6 +188,7 @@ export const formatImages = (visuals, options = {}) => {
   
   // Add filters if any are specified
   const filters = [];
+  filters.push('no_upscale()'); // Prevent upscaling of low-resolution images
   if (quality) filters.push(`quality(${quality})`);
   if (format) filters.push(`format(${format})`);
   
@@ -233,6 +234,7 @@ export const formatImage = (project, options = {}) => {
     
     // Add filters if any are specified
     const filters = [];
+    filters.push('no_upscale()'); // Prevent upscaling of low-resolution images
     if (quality) filters.push(`quality(${quality})`);
     if (format) filters.push(`format(${format})`);
     
@@ -303,6 +305,7 @@ export const createImageUrl = (filename, options = {}) => {
   
   // Add filters if any are specified
   const filters = [];
+  filters.push('no_upscale()'); // Prevent upscaling of low-resolution images
   if (quality) filters.push(`quality(${quality})`);
   if (format) filters.push(`format(${format})`);
   if (crop) filters.push(`crop(${crop})`);
