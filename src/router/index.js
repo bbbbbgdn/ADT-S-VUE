@@ -95,12 +95,17 @@ router.beforeEach((to, from, next) => {
 });
 
 // Global after-navigation hook - safety net only
-router.afterEach(() => {
+router.afterEach((to, from) => {
   // Make sure we're at the top of the page after navigation
   window.scrollTo(0, 0);
   
   // Reset the scroll behavior to smooth after navigation
   document.documentElement.style.scrollBehavior = 'smooth';
+  
+  // Track page view with Rybbit
+  if (window.rybbit && typeof window.rybbit.pageview === 'function') {
+    window.rybbit.pageview();
+  }
   
   // We'll let the PageTransition component handle removing the class
   // This is just a safety timeout for any edge cases
