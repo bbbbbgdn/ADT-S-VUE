@@ -34,11 +34,23 @@
         :style="seamlessContentStyle"
       >
         <div
-          v-for="(image, index) in seamlessImages"
+          v-for="(image, index) in seamlessImagesWithPlaceholders"
           :key="`${image.url}-${index}-${image.cycle}`"
           class="gallery-item"
           :style="galleryItemStyle"
         >
+          <!-- Placeholder div to maintain aspect ratio and prevent layout jumps -->
+          <div
+            v-if="image.dimensions"
+            class="image-placeholder"
+            :style="{
+              width: image.placeholderDimensions.width + 'px',
+              height: image.placeholderDimensions.height + 'px',
+              'aspect-ratio': image.dimensions.aspectRatio,
+              '--aspect-ratio': image.dimensions.aspectRatio
+            }"
+          ></div>
+
           <img
             v-lazy-load="{
               url: image.url,
@@ -65,11 +77,23 @@
       <!-- Original layout for big galleries -->
       <div
         v-else
-        v-for="(image, index) in processedImages"
+        v-for="(image, index) in imagesWithDimensions"
         :key="`${image.url}-${index}`"
         class="gallery-item"
         :style="galleryItemStyle"
       >
+        <!-- Placeholder div to maintain aspect ratio and prevent layout jumps -->
+        <div
+          v-if="image.dimensions"
+          class="image-placeholder"
+          :style="{
+            width: '100%',
+            height: '100%',
+            'aspect-ratio': image.dimensions.aspectRatio,
+            '--aspect-ratio': image.dimensions.aspectRatio
+          }"
+        ></div>
+
         <img
           v-lazy-load="{
             url: image.url,
@@ -121,6 +145,7 @@
 <script>
 import ButtonBase from './BaseButton.vue';
 import { createImageUrl, getOptimalImageDimensions } from '../utils/storyblok';
+import { extractImageDimensions, calculatePlaceholderDimensions } from '../utils/imageDimensions';
 import { useRouter, useRoute } from 'vue-router';
 
 export default {
@@ -136,6 +161,8 @@ export default {
     isActive: { type: Boolean, default: false },
     // When true, disables hover-based seamless animation and enables manual click-and-drag scrolling
     allowDrag: { type: Boolean, default: false },
+    // When true, clicking navigates to next photo instead of navigating to show page
+    enablePhotoNavigation: { type: Boolean, default: false },
     imageHeight: {
       type: String,
       default: '115rem' // 2x smaller than original 230rem for small galleries
@@ -210,6 +237,8 @@ export default {
       loadedImages: new Set(), // Track which images have loaded
       isBatchLoading: false, // Whether we're in batch loading mode
       batchTimeout: null, // Timeout for batch loading
+      // Navigation state data
+      isNavigating: false, // Prevent multiple navigation clicks during animation
 
     };
   },
@@ -220,8 +249,31 @@ export default {
   },
   methods: {
     handleGalleryClick(event) {
-      console.log('Gallery click - isActive:', this.isActive, 'shouldPreventClick:', this.shouldPreventClick, 'hasDragged:', this.hasDragged, 'enableNavigation:', this.enableNavigation);
-      
+      console.log('Gallery click - isActive:', this.isActive, 'shouldPreventClick:', this.shouldPreventClick, 'hasDragged:', this.hasDragged, 'enableNavigation:', this.enableNavigation, 'enablePhotoNavigation:', this.enablePhotoNavigation);
+
+      // If photo navigation is enabled, handle photo navigation instead of page navigation
+      if (this.enablePhotoNavigation) {
+        // Prevent default navigation
+        event.preventDefault();
+        event.stopPropagation();
+
+        // Check if we should prevent click due to drag or ongoing navigation
+        if (this.shouldPreventClick || this.hasDragged) {
+          console.log('Preventing photo navigation due to drag');
+          return;
+        }
+
+        if (this.isNavigating) {
+          console.log('Preventing photo navigation - animation in progress');
+          return;
+        }
+
+        // Navigate to next photo
+        this.navigateToNextPhoto();
+        return;
+      }
+
+      // Original page navigation logic
       // If navigation is disabled, don't navigate
       if (!this.enableNavigation) {
         console.log('Navigation disabled for this gallery');
@@ -229,7 +281,7 @@ export default {
         event.stopPropagation();
         return;
       }
-      
+
       // SWAPPED BEHAVIOR:
       // For non-active galleries (like in Shows page), prevent navigation if dragged
       // For active galleries (like in ShowPage/ProjectPage), always allow navigation
@@ -239,10 +291,132 @@ export default {
         event.stopPropagation();
         return;
       }
-      
+
       // Only log and navigate if we're actually going to navigate
       console.log('Navigating to:', this.slug);
       this.router.push(`/shows/${this.slug}`);
+    },
+
+    // Navigate to next photo with cycling
+    navigateToNextPhoto() {
+      const gallery = this.$refs.gallery;
+      if (!gallery || !this.processedImages.length || this.isNavigating) return;
+
+      // Prevent multiple navigation clicks during animation
+      this.isNavigating = true;
+
+      // Get all gallery items to calculate their actual positions
+      const galleryItems = gallery.querySelectorAll('.gallery-item');
+      if (!galleryItems.length) {
+        this.isNavigating = false;
+        return;
+      }
+
+      const currentScrollLeft = gallery.scrollLeft;
+      const viewportLeft = currentScrollLeft;
+      const viewportRight = currentScrollLeft + gallery.clientWidth;
+
+      // Find the item that intersects the left edge of the viewport
+      let leftIntersectingItem = null;
+      let overscrollAmount = 0;
+
+      for (let i = 0; i < galleryItems.length; i++) {
+        const item = galleryItems[i];
+        const itemLeft = item.offsetLeft;
+        const itemRight = itemLeft + item.offsetWidth;
+
+        // Check if this item intersects the left edge of the viewport
+        if (itemLeft < viewportLeft && itemRight > viewportLeft) {
+          leftIntersectingItem = item;
+          overscrollAmount = viewportLeft - itemLeft; // How much of the item is cut off on the left
+          break;
+        }
+      }
+
+      // If no item intersects the left edge, find the first item that's partially or fully visible
+      if (!leftIntersectingItem) {
+        for (let i = 0; i < galleryItems.length; i++) {
+          const item = galleryItems[i];
+          const itemLeft = item.offsetLeft;
+          const itemRight = itemLeft + item.offsetWidth;
+
+          if (itemRight > viewportLeft) {
+            leftIntersectingItem = item;
+            overscrollAmount = 0; // No overscroll if item starts at or after viewport left
+            break;
+          }
+        }
+      }
+
+      // Fallback: use first item
+      if (!leftIntersectingItem) {
+        leftIntersectingItem = galleryItems[0];
+        overscrollAmount = 0;
+      }
+
+      // Calculate the exact scroll distance to align the current photo's edge with viewport start
+      const itemLeft = leftIntersectingItem.offsetLeft;
+      const itemWidth = leftIntersectingItem.offsetWidth;
+      const itemRight = itemLeft + itemWidth;
+
+      // Scroll by (full width of current photo - overscroll amount)
+      // This will fully reveal the current photo and align the next photo's left edge with viewport left edge
+      const remainingWidth = itemWidth - overscrollAmount;
+      let targetScrollLeft = currentScrollLeft + remainingWidth;
+
+      // Handle cycling: if we're at or near the end, cycle back to beginning
+      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+
+      if (targetScrollLeft >= maxScroll) {
+        // We're at or near the end, cycle back to beginning
+        targetScrollLeft = 0;
+      }
+
+      // Use more precise scrolling method
+      this.performPreciseScroll(gallery, targetScrollLeft);
+
+      // Fallback: reset navigation flag after timeout in case animation fails
+      setTimeout(() => {
+        if (this.isNavigating) {
+          console.warn('Navigation animation timeout - resetting flag');
+          this.isNavigating = false;
+        }
+      }, 1000); // 1 second timeout
+
+      console.log(`Precise navigation - Item at ${itemLeft}-${itemRight}, overscroll: ${overscrollAmount}px, scrolling to: ${targetScrollLeft} (current: ${currentScrollLeft})`);
+    },
+
+    // Perform precise scrolling with completion detection
+    performPreciseScroll(gallery, targetScrollLeft) {
+      const startScrollLeft = gallery.scrollLeft;
+      const distance = targetScrollLeft - startScrollLeft;
+      const duration = 150; // 300ms animation duration
+      const startTime = performance.now();
+
+      const animateScroll = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Use ease-out timing function for smooth animation
+        const easeOutProgress = 1 - Math.pow(1 - progress, 0);
+        const currentPosition = startScrollLeft + (distance * easeOutProgress);
+
+        gallery.scrollLeft = currentPosition;
+
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        } else {
+          // Animation completed
+          this.isNavigating = false;
+
+          // Ensure we reached the exact target position
+          if (Math.abs(gallery.scrollLeft - targetScrollLeft) > 1) {
+            gallery.scrollLeft = targetScrollLeft;
+          }
+        }
+      };
+
+      requestAnimationFrame(animateScroll);
     },
     
     // Auto-scroll methods
@@ -1431,6 +1605,35 @@ export default {
 
       console.debug(`[ImageGallery] Gallery ${this.internalGalleryId} speed multiplier: ${this.speedMultiplier.toFixed(3)} (randomness: ${(this.speedRandomness * 100).toFixed(0)}%)`);
       return this.speedMultiplier;
+    },
+
+    // Extract dimensions from processed images for placeholder sizing
+    imagesWithDimensions() {
+      return this.processedImages.map(image => ({
+        ...image,
+        dimensions: extractImageDimensions(image.url)
+      }));
+    },
+
+    // Calculate placeholder dimensions for seamless images
+    seamlessImagesWithPlaceholders() {
+      if (!this.enableHoverScroll || !this.seamlessImages.length) {
+        return [];
+      }
+
+      return this.seamlessImages.map(image => {
+        const originalImage = this.processedImages[image.originalIndex];
+        const dimensions = originalImage ? extractImageDimensions(originalImage.url) : null;
+        const placeholderDimensions = dimensions ?
+          calculatePlaceholderDimensions(dimensions, this.imageHeight, this.imageWidth) :
+          { width: 'auto', height: this.imageHeight };
+
+        return {
+          ...image,
+          dimensions,
+          placeholderDimensions
+        };
+      });
     }
   },
     mounted() {
@@ -1639,12 +1842,20 @@ export default {
   cursor: grab !important;
 }
 
+.gallery-container .gallery.manual-scroll {
+  cursor: ew-resize !important;
+}
+
 .gallery-container .gallery.dragging {
   cursor: grabbing !important;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+
+.gallery-container .gallery.manual-scroll.dragging {
+  cursor: ew-resize !important;
 }
 
 .gallery-container .gallery.dragging .gallery-image {
@@ -1667,13 +1878,21 @@ export default {
   transition: none !important;
 }
 
-/* Ensure clickable galleries also use grab cursor */
+/* Ensure clickable galleries also use appropriate cursor */
 .gallery-container.clickable .gallery {
   cursor: grab !important;
 }
 
+.gallery-container.clickable .gallery.manual-scroll {
+  cursor: ew-resize !important;
+}
+
 .gallery-container.clickable .gallery.dragging {
   cursor: grabbing !important;
+}
+
+.gallery-container.clickable .gallery.manual-scroll.dragging {
+  cursor: ew-resize !important;
 }
 
 
@@ -1757,6 +1976,23 @@ export default {
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
+}
+
+/* Placeholder to maintain aspect ratio and prevent layout jumps */
+.image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(248, 248, 248, 0.1); /* Subtle background to indicate loading */
+  /* Use aspect-ratio property for modern browsers */
+  aspect-ratio: var(--aspect-ratio, auto);
+  /* Ensure the placeholder maintains space even when image is loading */
+  opacity: 1;
+  z-index: 0;
+  /* Prevent any layout shifts */
+  box-sizing: border-box;
 }
 
 .gallery-image.image-loading {

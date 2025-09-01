@@ -62,7 +62,9 @@ const mainShowGalleryProps = computed(() => ({
   repeatToFill: false,
   enableNavigation: false,
   // Enable manual click-and-drag for big galleries
-  allowDrag: true
+  allowDrag: true,
+  // Enable photo navigation for main show gallery
+  enablePhotoNavigation: true
 }));
 
 const getOtherShowGalleryProps = (show) => ({
