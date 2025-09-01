@@ -12,84 +12,30 @@
         <div class="image-placeholder" v-if="!imageLoaded"></div>
       </div>
       
-      <!-- Placeholder to maintain layout when image is sticky -->
-      <div class="image-placeholder-spacer" ref="imagePlaceholder" :style="{ height: placeholderHeight + 'px' }"></div>
+
       
       <div class="profile-content" ref="profileContent">
         <div class="profile-header">
-          <MainText>Where fashion grows with nature.</MainText>
+          <MainText>{{ (story && story.content && story.content.Title) }}</MainText>
         </div>
         
         <div class="profile-description">
-            <p>
-              Atelier Dasha Tsapenko is a bio-design studio based in The Hague, The Netherlands.
-            </p>
-            
-            <p>
-              We develop materials, innovative techniques and create conceptual grown textiles, garments and collectible pieces.
-            </p>
-            
-            <p>
-              We collaborate with fungi and plants, learning from their properties. From living textiles and surfaces, natural dyes, coatings, and binders to whole grown fungal universes, our work tells stories of an interconnected world.
-            </p>
-            
-            <p>
-              We work closely together with scientists, farmers, visual artists, and local craftsmen and are deeply inspired by regenerative agriculture.
-            </p>
-            
-            <p>
-              Our founder Dasha Tsapenko also shares her vision through art direction, curation, lectures and hands-on workshops.
-            </p>
-
-            <div class="contact-section">
-            <div class="section-title">TEAM:</div>
-            Dasha Tsapenko, Maria Kitaeva
-          </div>
-          <br>
-          <div class="contact-section">
-            <div class="section-title">SELECTED CLIENTS & PARTNERS:</div>
-            Atmos, TG Botanical, YOD Group, Biobased Creations, Utrecht University, UFEG, Design Academy Eindhoven, Blue City Lab, Stichting DOEN, Haagse Hogeschool.
-          </div>
-          <br>
-        </div>
-        
-        <div class="contact-info">
-
-          <div class="contact-section">
-            <!-- <div class="section-title">EMAIL:</div> -->
-            <div class="button-divider" 
-                 ref="emailDivider"
-                 @scroll="handleDividerScroll('email')"
-                 @touchstart="handleDividerTouchStart('email')"
-                 @touchend="handleDividerTouchEnd('email')">
-              <BaseButton @click="sendEmail">tsapenkodash@gmail.com</BaseButton>
-            </div>
-          </div>
-          <br>
-          <div class="contact-section">
-            <!-- <div class="section-title">ADDRESS:</div> -->
-            <div class="button-divider" 
-                 ref="addressDivider"
-                 @scroll="handleDividerScroll('address')"
-                 @touchstart="handleDividerTouchStart('address')"
-                 @touchend="handleDividerTouchEnd('address')">
-              <BaseButton class="mailing-address" @click="openLink('https://maps.app.goo.gl/oYmEjUc4ooSpXh6fA')">
-                De Constant Rebecqueplein 20-B, 2518RA Den Haag, Netherlands
-              </BaseButton>
-            </div>
-          </div>
-          <br>
-          <div class="contact-section">
-            <!-- <div class="section-title">LINKS:</div> -->
-            <div class="button-divider" 
-                 ref="linksDivider"
-                 @scroll="handleDividerScroll('links')"
-                 @touchstart="handleDividerTouchStart('links')"
-                 @touchend="handleDividerTouchEnd('links')">
-              <div class="social-links">
-                <BaseButton @click="openLink('https://www.instagram.com/atelier__dashatsapenko/')">Instagram</BaseButton>
-                <BaseButton @click="openLink('https://www.linkedin.com/in/dasha-tsapenko-66b1838b/')">Linkedin</BaseButton>
-              </div>
+          <div class="profile-rich-text" v-if="story && story.content && story.content.info_text">
+            <div v-for="(block, index) in parsedContent" :key="index">
+              <p v-if="block.type === 'paragraph'">
+                <template v-for="(segment, segIndex) in block.segments" :key="segIndex">
+                  <BaseButton 
+                    v-if="segment.type === 'link'" 
+                    :to="segment.isExternal ? null : segment.href"
+                    @click="segment.isExternal ? handleExternalLink(segment.href) : null"
+                  >
+                    {{ segment.text }}
+                  </BaseButton>
+                  <br v-else-if="segment.type === 'break'" />
+                  <span v-else>{{ segment.text }}</span>
+                </template>
+              </p>
+              <br v-else-if="block.type === 'empty_paragraph'" />
             </div>
           </div>
         </div>
@@ -98,9 +44,9 @@
     
     <div class="footer-info">
       <div class="footer-left">
-        <span class="small-text">KVK: 70382514, VAT: NL002491950B87</span>
+        <span class="small-text">{{ (story && story.content && story.content.Extra) }}</span>
         <br>
-        <span>2025 © Atelier Dasha Tsapenko</span>
+        <span>{{ (story && story.content && story.content.footer_left) || '© Atelier Dasha Tsapenko' }}</span>
       </div>
       <div class="footer-right">
         <span>This website is still cultivating its final form.</span>
@@ -113,6 +59,10 @@
 import MainText from '../components/MainText.vue'
 import InfoText from '../components/InfoText.vue'
 import BaseButton from '../components/BaseButton.vue'
+import { renderRichText } from '@storyblok/vue'
+import { loadStory } from '../utils/storyblok'
+import { useStoryblokBridge } from '@storyblok/vue'
+import { isDraftMode } from '../utils/storyblok'
 
 export default {
   name: 'Profile',
@@ -125,25 +75,78 @@ export default {
     return {
       imageLoaded: false,
       profileImage: '/main/assets/IMG_3967.JPEG',
-      isSticky: false,
-      initialTop: 0,
-      placeholderHeight: 0,
+      story: null,
+      isLoading: false,
+      errorMessage: '',
+      renderRichText,
       // Scrollback data
       dividerScrollTimeouts: {},
       isDividerScrolling: {},
       dividerSpringAnimationIds: {}
     }
   },
+  computed: {
+    parsedContent() {
+      if (!this.story || !this.story.content || !this.story.content.info_text) {
+        return [];
+      }
+      
+      const richTextContent = this.story.content.info_text;
+      const blocks = [];
+      
+      if (richTextContent.content) {
+        richTextContent.content.forEach(block => {
+          if (block.type === 'paragraph') {
+            if (block.content && block.content.length > 0) {
+              const segments = [];
+              block.content.forEach(textNode => {
+                if (textNode.type === 'text') {
+                  const hasLink = textNode.marks && textNode.marks.find(mark => mark.type === 'link');
+                  if (hasLink) {
+                    const linkMark = hasLink;
+                    const href = linkMark.attrs.href;
+                    const isExternal = href.startsWith('http') || href.startsWith('mailto:');
+                    
+                    segments.push({
+                      type: 'link',
+                      text: textNode.text,
+                      href: href,
+                      isExternal: isExternal
+                    });
+                  } else {
+                    segments.push({
+                      type: 'text',
+                      text: textNode.text
+                    });
+                  }
+                } else if (textNode.type === 'hard_break') {
+                  segments.push({
+                    type: 'break'
+                  });
+                }
+              });
+              blocks.push({
+                type: 'paragraph',
+                segments: segments
+              });
+            } else {
+              // Empty paragraph - treat as spacing
+              blocks.push({
+                type: 'empty_paragraph'
+              });
+            }
+          }
+        });
+      }
+      
+      return blocks;
+    }
+  },
   mounted() {
     this.preloadImage();
-    this.setupStickyImage();
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('resize', this.handleResize);
+    this.fetchProfile();
   },
   beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.handleResize);
-    
     // Clean up scrollback animations
     Object.values(this.dividerSpringAnimationIds).forEach(animationId => {
       if (animationId) {
@@ -159,6 +162,43 @@ export default {
     });
   },
   methods: {
+    handleExternalLink(href) {
+      if (href.startsWith('mailto:')) {
+        window.location.href = href;
+      } else if (href.startsWith('http')) {
+        window.open(href, '_blank');
+      } else {
+        window.location.href = href;
+      }
+    },
+    applyProfileStory(newStory) {
+      this.story = newStory;
+      const cmsImage = this.story && this.story.content && this.story.content.Image && this.story.content.Image.filename;
+      if (cmsImage) {
+        this.profileImage = cmsImage;
+      }
+    },
+    async fetchProfile() {
+      try {
+        this.isLoading = true;
+        const result = await loadStory('profile');
+        if (result && result.status === 'success') {
+          this.applyProfileStory(result.data);
+          if (isDraftMode() && this.story && this.story.id) {
+            useStoryblokBridge(this.story.id, (updatedStory) => {
+              this.applyProfileStory(updatedStory);
+            });
+          }
+        } else {
+          this.errorMessage = 'Could not load profile content.';
+        }
+      } catch (e) {
+        this.errorMessage = 'Could not load profile content.';
+        console.error(e);
+      } finally {
+        this.isLoading = false;
+      }
+    },
     preloadImage() {
       if (this.$refs.profileImg && this.$refs.profileImg.complete) {
         this.imageLoaded = true;
@@ -167,77 +207,7 @@ export default {
     handleImageLoaded() {
       this.imageLoaded = true;
     },
-    setupStickyImage() {
-      this.$nextTick(() => {
-        if (this.$refs.profileImageContainer) {
-          this.initialTop = this.$refs.profileImageContainer.offsetTop;
-          this.placeholderHeight = this.$refs.profileImageContainer.offsetHeight;
-        }
-      });
-    },
-    handleScroll() {
-      if (!this.$refs.profileImageContainer) return;
-      const isDesktop = window.innerWidth > 768;
-      const container = this.$refs.profileImageContainer;
-      const placeholder = this.$refs.imagePlaceholder;
-      if (!isDesktop) {
-        // Always reset on mobile
-        this.isSticky = false;
-        container.style.position = 'static';
-        container.style.top = 'auto';
-        container.style.left = 'auto';
-        container.style.width = 'auto';
-        container.style.zIndex = 'auto';
-        if (placeholder) placeholder.style.display = 'none';
-        return;
-      }
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > this.initialTop) {
-        if (!this.isSticky) {
-          this.isSticky = true;
-          container.style.position = 'fixed';
-          container.style.top = '0';
-          container.style.left = '0';
-          container.style.width = '50%';
-          container.style.zIndex = '10';
-          if (placeholder) {
-            placeholder.style.display = 'block';
-            placeholder.style.width = '50%';
-            placeholder.style.height = this.placeholderHeight + 'px';
-          }
-        }
-      } else {
-        if (this.isSticky) {
-          this.isSticky = false;
-          container.style.position = 'static';
-          container.style.top = 'auto';
-          container.style.left = 'auto';
-          container.style.width = 'auto';
-          container.style.zIndex = 'auto';
-          if (placeholder) {
-            placeholder.style.display = 'none';
-          }
-        }
-      }
-    },
-    handleResize() {
-      // Reset sticky state on resize to recalculate positions
-      this.isSticky = false;
-      const isDesktop = window.innerWidth > 768;
-      if (this.$refs.profileImageContainer) {
-        this.$refs.profileImageContainer.style.position = 'static';
-        this.$refs.profileImageContainer.style.top = 'auto';
-        this.$refs.profileImageContainer.style.left = 'auto';
-        this.$refs.profileImageContainer.style.width = 'auto';
-        this.$refs.profileImageContainer.style.zIndex = 'auto';
-      }
-      if (this.$refs.imagePlaceholder) {
-        this.$refs.imagePlaceholder.style.display = 'none';
-      }
-      if (isDesktop) {
-        this.setupStickyImage();
-      }
-    },
+
     sendEmail() {
       window.location.href = 'mailto:tsapenkodash@gmail.com'
     },
@@ -364,10 +334,7 @@ export default {
   background-color: #f5f5f5;
 }
 
-.image-placeholder-spacer {
-  display: none;
-  flex: 0 0 50%;
-}
+
 
 .image-visible {
   opacity: 1 !important;
@@ -375,12 +342,12 @@ export default {
 
 .profile-content {
   padding: var(--space-xl) var(--space-4xl) var(--space-xl) var(--space-4xl);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
   overflow: auto;
   overflow-x: hidden;
-  padding-right: calc(var(--space-4xl) *1.5);
+  /* padding-right: calc(var(--space-4xl) *1.5); */
 }
 
 .profile-header {
@@ -390,6 +357,22 @@ export default {
 
 .profile-description {
   margin-bottom: calc(var(--space-4xl));
+}
+
+.profile-description :deep(.info-text){
+  padding: 0;
+
+}
+
+.profile-description :deep(p) {
+ margin: 0;
+ margin-bottom: 1em;
+ padding: 0;
+}
+
+.profile-rich-text .base-button {
+  margin: 0 0.25rem;
+  display: inline-flex;
 }
 
 .contact-info {

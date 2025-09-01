@@ -1,10 +1,10 @@
 <template>
   <div class="info-text-container" v-if="hasContent">
-    <div class="info-text" v-if="$slots.default">
+    <div class="info-text" v-if="$slots.default" :style="inlineStyle">
       <slot></slot>
     </div>
-    <div class="info-text" v-else-if="html" v-html="html"></div>
-    <div class="info-text" v-else-if="text">{{ text }}</div>
+    <div class="info-text" v-else-if="html" :style="inlineStyle" v-html="html"></div>
+    <div class="info-text" v-else-if="text" :style="inlineStyle">{{ text }}</div>
   </div>
 </template>
 
@@ -30,6 +30,11 @@ export default {
       return (this.text && this.text.trim().length > 0) || 
              (this.html && this.html.trim().length > 0) ||
              this.$slots.default;
+    },
+    inlineStyle() {
+      return {
+        columnCount: this.columnCount
+      };
     }
   }
 };
