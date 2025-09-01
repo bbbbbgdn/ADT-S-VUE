@@ -74,6 +74,7 @@ const isSingleLine = computed(() => {
   line-height: var(--text-4xl);
   text-indent: var(--space-3xl);
   margin-bottom: var(--space-2xl);
+  padding-top: var(--space-xl);
 }
 
 .main-text.single-line {
