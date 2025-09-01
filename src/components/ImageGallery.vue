@@ -342,10 +342,10 @@ export default {
     handleMouseDown(event) {
       // Only start dragging on left mouse button
       if (event.button !== 0) return;
-      
+
       const gallery = this.$refs.gallery;
       if (!gallery) return;
-      
+
       console.log('Mouse down - starting drag');
       this.isDragging = true;
       this.isUserInteracting = true;
@@ -354,10 +354,14 @@ export default {
       this.dragStartX = event.clientX;
       this.dragStartScrollLeft = gallery.scrollLeft;
       this.dragCurrentX = event.clientX;
-      
+
       // Pause auto-scroll during dragging
       this.stopAutoScroll();
-      
+
+      // Disable smooth scrolling and transitions during drag for precise feedback
+      gallery.style.scrollBehavior = 'auto';
+      gallery.style.transition = 'none';
+
       // Prevent text selection during drag
       event.preventDefault();
     },
@@ -390,14 +394,22 @@ export default {
     
     handleMouseUp(event) {
       if (!this.isDragging) return;
-      
+
       console.log('Mouse up - hasDragged:', this.hasDragged, 'shouldPreventClick:', this.shouldPreventClick);
+
+      const gallery = this.$refs.gallery;
+      if (gallery) {
+        // Restore smooth scrolling and transitions after drag
+        gallery.style.scrollBehavior = '';
+        gallery.style.transition = '';
+      }
+
       this.isDragging = false;
       this.isUserInteracting = false;
-      
+
       // Simply resume auto-scroll after drag ends
       this.resumeAutoScrollAfterDrag();
-      
+
       // Don't reset shouldPreventClick here - let it persist until next mouse down
       // This ensures click events are prevented after drag
     },
@@ -461,15 +473,22 @@ export default {
     
     handleMouseLeave() {
       this.isHovering = false;
-      
-      // If dragging, stop the drag
+
+      // If dragging, stop the drag and restore smooth scrolling
       if (this.isDragging) {
+        const gallery = this.$refs.gallery;
+        if (gallery) {
+          // Restore smooth scrolling and transitions after drag
+          gallery.style.scrollBehavior = '';
+          gallery.style.transition = '';
+        }
+
         this.isDragging = false;
         this.isUserInteracting = false;
         this.hasDragged = false; // Reset drag flag
         this.shouldPreventClick = false; // Reset click prevention flag
       }
-      
+
       // Stop auto-scroll when not hovering
       this.stopAutoScroll();
     },
@@ -1305,6 +1324,22 @@ export default {
 
 .gallery-container .gallery.dragging .gallery-image {
   pointer-events: none;
+}
+
+/* Disable transitions during dragging for precise feedback */
+.gallery-container .gallery.dragging {
+  scroll-behavior: auto !important;
+  transition: none !important;
+}
+
+.gallery-container .gallery.dragging .gallery-item {
+  transition: none !important;
+}
+
+/* Override auto-scroll classes during dragging */
+.gallery-container .gallery.dragging.auto-scroll-active,
+.gallery-container .gallery.dragging.auto-scrolling {
+  transition: none !important;
 }
 
 /* Ensure clickable galleries also use grab cursor */
