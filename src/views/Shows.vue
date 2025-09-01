@@ -24,7 +24,9 @@ const imageSettings = createImageSettings('thumbnail');
 
 // Computed property to get the actual height in pixels for the container
 const containerHeight = computed(() => {
-  return `${imageSettings.height}rem`;
+  // Make galleries 2x smaller vertically
+  const smallerHeight = imageSettings.height / 2;
+  return `${smallerHeight}rem`;
 });
 
 onMounted(async () => {

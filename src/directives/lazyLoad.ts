@@ -154,16 +154,25 @@ export default {
           return;
         }
         
-        // Handle gallery images
+        // Handle gallery images - don't reveal immediately, let batch loading handle it
         if (typeof options.index === 'number') {
           const state = getGalleryState(galleryId);
-          
+
           // Add to loaded images
           state.loadedImages.add(options.index)
           state.failedImages.delete(options.index)
-          
-          // Reveal image immediately
-          revealImage();
+
+          // Don't reveal image immediately - let ImageGallery component handle batch revealing
+          // to ensure strict left-to-right order and prevent content jumps
+          console.debug(`[LazyLoad] Gallery image loaded but not revealed yet: galleryId=${galleryId}, index=${options.index}`);
+
+          // Set image source but keep it hidden (batch loading will reveal it)
+          if (options.background || el.tagName !== 'IMG') {
+            el.style.backgroundImage = `url(${options.url})`
+          } else {
+            const imageElement = el as HTMLImageElement
+            imageElement.src = options.url
+          }
         }
       }
       
@@ -207,7 +216,7 @@ export default {
         // Handle gallery images with retry
         if (typeof options.index === 'number') {
           const state = getGalleryState(galleryId);
-          
+
           if (el._retryCount < el._maxRetries) {
             console.debug(`[LazyLoad] Retrying gallery image: ${el._retryCount}/${el._maxRetries}`);
             setTimeout(() => {
@@ -215,12 +224,23 @@ export default {
             }, 1000 * el._retryCount); // Exponential backoff
             return;
           } else {
-            // Max retries reached, mark as failed but still show
+            // Max retries reached, mark as failed
             el.classList.remove('image-loading')
             el.classList.add('image-loaded', 'image-error')
             state.failedImages.add(options.index)
             state.loadedImages.add(options.index) // Still add to loaded to unblock queue
-            revealImage();
+
+            // Don't reveal error images immediately - let batch loading handle it
+            console.debug(`[LazyLoad] Gallery image failed after retries: galleryId=${galleryId}, index=${options.index}`);
+
+            // Set image source for error state but keep it hidden (batch loading will reveal it)
+            if (options.background || el.tagName !== 'IMG') {
+              el.style.backgroundImage = `url(${options.url})`
+            } else {
+              const imageElement = el as HTMLImageElement
+              imageElement.src = options.url
+            }
+
             // Don't disconnect observer - let it stay active for potential retries
           }
         }

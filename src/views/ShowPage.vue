@@ -70,7 +70,7 @@ const getOtherShowGalleryProps = (show) => ({
   slug: show.slug,
   images: formatOtherShowsImages(show.content?.visuals),
   repeatCount: 1,
-  imageHeight: otherShowsImageSettings.height + 'px',
+  imageHeight: (otherShowsImageSettings.height / 2) + 'px', // Make galleries 2x smaller like Shows.vue
   imageWidth: 'auto',
   imageQuality: otherShowsImageSettings.quality,
   imageFormat: otherShowsImageSettings.format,

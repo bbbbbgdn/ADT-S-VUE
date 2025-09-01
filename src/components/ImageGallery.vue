@@ -27,7 +27,7 @@
         class="gallery-item"
         :style="galleryItemStyle"
       >
-        <img 
+        <img
           v-lazy-load="{
             url: image.url,
             index: index,
@@ -43,6 +43,7 @@
           :data-index="index"
           :data-gallery-id="internalGalleryId"
           class="gallery-image"
+          :class="{ 'batch-loading': isBatchLoading, 'image-revealed': loadedImages.has(index) }"
           @load="onImageLoad(index)"
           @error="onImageError(index)"
         />
@@ -90,9 +91,9 @@ export default {
     images: { type: Array, required: true },
     repeatCount: { type: Number, required: true },
     isActive: { type: Boolean, default: false },
-    imageHeight: { 
-      type: String, 
-      default: '230rem'
+    imageHeight: {
+      type: String,
+      default: '115rem' // 2x smaller than original 230rem for small galleries
     },
     imageWidth: { 
       type: String, 
@@ -150,6 +151,10 @@ export default {
       dragThreshold: 5, // Minimum pixels to move before considering it a drag
       hasDragged: false, // Track if user has actually dragged
       shouldPreventClick: false, // Flag to prevent click after drag
+      // Image loading state data
+      loadedImages: new Set(), // Track which images have loaded
+      isBatchLoading: false, // Whether we're in batch loading mode
+      batchTimeout: null, // Timeout for batch loading
 
     };
   },
@@ -787,22 +792,97 @@ export default {
     // Image event handlers for debugging
     onImageLoad(index) {
       console.debug(`[ImageGallery] Image ${index} loaded successfully in gallery ${this.internalGalleryId}`);
+
+      // Track loaded images for batch loading
+      this.loadedImages.add(index);
+
+      // Start batch loading mode
+      this.startBatchLoading();
+
       // Check overall loading status after each image loads
       this.$nextTick(() => {
         this.checkImageLoadingStatus();
       });
     },
     
-    onImageError(index) {
+        onImageError(index) {
       console.error(`[ImageGallery] Image ${index} failed to load in gallery ${this.internalGalleryId}`);
       // Check overall loading status after each image error
       this.$nextTick(() => {
         this.checkImageLoadingStatus();
       });
     },
-    
 
-    
+    // Batch loading methods to prevent content shift
+    startBatchLoading() {
+      if (this.isBatchLoading) return;
+
+      this.isBatchLoading = true;
+
+      // Clear any existing timeout
+      if (this.batchTimeout) {
+        clearTimeout(this.batchTimeout);
+      }
+
+      // Set a timeout to reveal images in batches - shorter delay for immediate updates
+      this.batchTimeout = setTimeout(() => {
+        this.revealLoadedImages();
+      }, 50); // Shorter delay for more responsive reveals
+
+      // Fallback: if images don't reveal after 3 seconds, force reveal them
+      setTimeout(() => {
+        if (this.isBatchLoading && this.loadedImages.size > 0) {
+          console.warn(`[ImageGallery] Force revealing images after timeout in gallery ${this.internalGalleryId}`);
+          this.revealLoadedImages();
+        }
+      }, 3000);
+    },
+
+    revealLoadedImages() {
+      if (!this.isBatchLoading) return;
+
+      console.debug(`[ImageGallery] Revealing loaded images in strict left-to-right order in gallery ${this.internalGalleryId}`);
+
+      // Reveal images in strict left-to-right order to prevent content jumps
+      const galleryImages = this.$refs.gallery?.querySelectorAll('img.gallery-image');
+      if (!galleryImages) return;
+
+      // Find the rightmost index where all images to the left are loaded
+      let rightmostRevealedIndex = -1;
+      for (let index = 0; index < this.processedImages.length; index++) {
+        if (this.loadedImages.has(index)) {
+          // Check if all images to the left are also loaded
+          let allLeftLoaded = true;
+          for (let leftIndex = 0; leftIndex < index; leftIndex++) {
+            if (!this.loadedImages.has(leftIndex)) {
+              allLeftLoaded = false;
+              break;
+            }
+          }
+
+          if (allLeftLoaded) {
+            // This image and all to its left are loaded, so reveal it
+            const img = galleryImages[index];
+            if (img && !img.classList.contains('image-revealed')) {
+              img.classList.remove('image-loading');
+              img.classList.add('image-loaded', 'image-revealed');
+              rightmostRevealedIndex = index;
+            }
+          }
+        }
+      }
+
+      console.debug(`[ImageGallery] Revealed images up to index ${rightmostRevealedIndex}`);
+
+      this.isBatchLoading = false;
+
+      // Check if all images are loaded
+      if (this.loadedImages.size >= this.processedImages.length) {
+        console.debug(`[ImageGallery] All images loaded in gallery ${this.internalGalleryId}`);
+        this.$emit('gallery-success');
+      }
+    },
+
     // Tags scroll methods
     handleTagsScroll() {
       console.log('Tags scroll event fired');
@@ -1038,17 +1118,20 @@ export default {
     mounted() {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
-    
+
+    // Start batch loading mode immediately
+    this.isBatchLoading = true;
+
     // Setup intersection observer
     this.$nextTick(() => {
       this.setupIntersectionObserver();
-      
+
       // Force a re-render after DOM is ready to ensure correct image dimensions
       this.$nextTick(() => {
         this.$forceUpdate();
       });
     });
-    
+
     // Start auto-scroll if enabled and hover scroll is enabled
     if (this.enableAutoScroll && this.enableHoverScroll) {
       this.$nextTick(() => {
@@ -1058,12 +1141,12 @@ export default {
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.updateDimensions);
-    
+
     // Clean up observer
     if (this.observer) {
       this.observer.disconnect();
     }
-    
+
     // Clean up auto-scroll
     this.stopAutoScroll();
     if (this.userInteractionTimeout) {
@@ -1080,6 +1163,11 @@ export default {
     }
     if (this.tagsSpringAnimationId) {
       cancelAnimationFrame(this.tagsSpringAnimationId);
+    }
+
+    // Clean up batch loading
+    if (this.batchTimeout) {
+      clearTimeout(this.batchTimeout);
     }
   },
   watch: {
@@ -1300,14 +1388,15 @@ export default {
   z-index: 1;
   backface-visibility: hidden;
   transform: translateZ(0);
+  /* Initially hide all images completely to prevent any layout shifts */
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  visibility: hidden;
+  /* Remove transition initially - will be added when revealing */
   /* Prevent image dragging */
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-  user-drag: none;
 }
 
 .gallery-image.image-loading {
@@ -1315,13 +1404,37 @@ export default {
 }
 
 .gallery-image.image-loaded {
-  opacity: 1;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.3s ease-in-out !important;
 }
 
 .gallery-image.image-error {
   opacity: 0.5;
   background-color: #f8f8f8;
   border: 1px dashed #ccc;
+  visibility: visible; /* Error images should be visible */
+}
+
+/* Batch loading mode - prevent immediate reveal from lazy loading directive */
+.gallery-image.batch-loading.image-loaded {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
+}
+
+/* Force hide all images during batch loading */
+.gallery-container .gallery-item .gallery-image {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
+}
+
+/* Only show images when they're ready to be revealed */
+.gallery-container .gallery-item .gallery-image.image-revealed {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.3s ease-in-out !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -1332,9 +1445,7 @@ export default {
   .gallery-image {
     height: 40vh !important;
   }
-  .gallery-tags {
-    /* padding: 0 var(--space-lg) 0 0; */
-  }
+
   
   /* Override gallery height on mobile for all image galleries */
   .gallery-container {
