@@ -54,7 +54,9 @@ export default {
         binding.value.index === 0 && 
         binding.value.resetQueue &&
         !el.classList.contains('project-card-image') &&
-        !el.classList.contains('project-card-background')) {
+        !el.classList.contains('project-card-background') &&
+        !el.classList.contains('object-bg') &&
+        !el.classList.contains('object-photo')) {
       const galleryId = binding.value.galleryId || 'default';
       console.debug(`[LazyLoad] beforeMount: Reset state for new gallery ${galleryId}`);
       galleryStates[galleryId] = { loadedImages: new Set<number>(), failedImages: new Set<number>() };
@@ -75,8 +77,9 @@ export default {
       options = binding.value as LazyLoadOptions & { galleryId?: string };
     }
     
-    // Check if this is a ProjectCard image
+    // Check if this is a ProjectCard or ObjectCard/ObjectPage image
     const isProjectCard = el.classList.contains('project-card-image') || el.classList.contains('project-card-background');
+    const isObjectImage = el.classList.contains('object-bg') || el.classList.contains('object-photo');
     
     // Check if image is already loaded and visible - if so, don't reset it
     const isAlreadyLoaded = el.classList.contains('image-loaded') && el.style.opacity === '1';
@@ -143,8 +146,8 @@ export default {
           imageElement.src = options.url
         }
         
-        // Handle ProjectCard images immediately
-        if (isProjectCard) {
+        // Handle ProjectCard and ObjectCard/ObjectPage images immediately
+        if (isProjectCard || isObjectImage) {
           revealImage();
           // Disconnect observer after successful load
           if (el._observer) {
@@ -187,10 +190,10 @@ export default {
         // Increment retry count
         el._retryCount = (el._retryCount || 0) + 1;
         
-        // Handle ProjectCard images with retry
-        if (isProjectCard) {
+        // Handle ProjectCard and ObjectCard/ObjectPage images with retry
+        if (isProjectCard || isObjectImage) {
           if (el._retryCount < el._maxRetries) {
-            console.debug(`[LazyLoad] Retrying ProjectCard: ${el._retryCount}/${el._maxRetries}`);
+            console.debug(`[LazyLoad] Retrying ${isProjectCard ? 'ProjectCard' : (isObjectImage ? 'ObjectImage' : 'Unknown')}: ${el._retryCount}/${el._maxRetries}`);
             setTimeout(() => {
               loadImage();
             }, 1000 * el._retryCount); // Exponential backoff
@@ -200,7 +203,7 @@ export default {
             el.classList.remove('image-loading')
             el.classList.add('image-loaded', 'image-error')
             revealImage();
-            // Emit error event for ProjectCard components
+            // Emit error event for ProjectCard components only
             if (isProjectCard) {
               el.dispatchEvent(new CustomEvent('image-error'));
             }
@@ -266,9 +269,9 @@ export default {
       }
     }
     
-    // For ProjectCard images, use simpler intersection observer logic
-    if (isProjectCard) {
-      console.debug(`[LazyLoad] ProjectCard: galleryId=${options.galleryId || 'default'}, index=${options.index}, url=${options.url}`);
+    // For ProjectCard and ObjectCard/ObjectPage images, use simpler intersection observer logic
+    if (isProjectCard || isObjectImage) {
+      console.debug(`[LazyLoad] ${isProjectCard ? 'ProjectCard' : 'ObjectImage'}: galleryId=${options.galleryId || 'default'}, index=${options.index}, url=${options.url}`);
       if (hasIntersectionObserver) {
         const observerOptions = {
           root: null,
@@ -277,7 +280,7 @@ export default {
         }
         el._observer = new IntersectionObserver((entries) => {
           if (entries[0].isIntersecting) {
-            console.debug(`[LazyLoad] ProjectCard IO load: url=${options.url}`);
+            console.debug(`[LazyLoad] ${isProjectCard ? 'ProjectCard' : 'ObjectImage'} IO load: url=${options.url}`);
             loadImage()
             // Disconnect observer after triggering load
             el._observer?.disconnect()
@@ -288,7 +291,7 @@ export default {
         return
       } else {
         // Fallback: load immediately if Intersection Observer is not supported
-        console.debug(`[LazyLoad] ProjectCard fallback load: url=${options.url}`);
+        console.debug(`[LazyLoad] ${isProjectCard ? 'ProjectCard' : 'ObjectImage'} fallback load: url=${options.url}`);
         loadImage()
         return
       }
