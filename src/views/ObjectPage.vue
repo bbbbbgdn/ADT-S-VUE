@@ -221,10 +221,19 @@ onUnmounted(() => {
           <!-- Right column: Object photos (vertical stack, skipping first image) -->
           <div class="object-photos">
             <div v-if="formatMainObjectImages(story.content?.visuals).length > 0" class="photos-stack">
-              <img 
-                v-for="(image, index) in formatMainObjectImages(story.content?.visuals)" 
+              <img
+                v-for="(image, index) in formatMainObjectImages(story.content?.visuals)"
                 :key="index"
-                :src="image.url" 
+                v-lazy-load="{
+                  url: image.url,
+                  index: index,
+                  galleryId: 'object-photos-stack',
+                  threshold: 0.1,
+                  rootMargin: '300px',
+                  preloadCount: 2,
+                  isBigGallery: formatMainObjectImages(story.content?.visuals).length > 3,
+                  resetQueue: index === 0
+                }"
                 :alt="image.alt || `Object photo ${index + 1}`"
                 class="object-photo"
               />
@@ -244,13 +253,18 @@ onUnmounted(() => {
         <div v-if="randomOtherObjects.length > 0" class="other-objects-container">
           <div class="other-objects-grid">
             <ObjectCard
-              v-for="object in randomOtherObjects"
+              v-for="(object, index) in randomOtherObjects"
               :key="object.id"
               :image="formatOtherObjectImage(object)"
               :objectName="object.content?.title_tag || 'Untitled Object'"
               :price="object.content?.price_tag || ''"
               :showPrice="object.content?.display_price || false"
               :slug="object.slug"
+              :gallery-index="index"
+              :gallery-id="'object-suggestions'"
+              :total-items="randomOtherObjects.length"
+              :preload-count="4"
+              :is-big-gallery="false"
             />
           </div>
         </div>
@@ -391,6 +405,23 @@ onUnmounted(() => {
   height: auto;
   object-fit: cover;
   border-radius: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Loading states for photos stack */
+.object-photo.image-loading {
+  opacity: 0;
+  filter: blur(2px);
+}
+
+.object-photo.image-loaded {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.object-photo.image-error {
+  opacity: 0.5;
+  filter: grayscale(100%);
 }
 
 .no-photos-message {
