@@ -32,13 +32,14 @@
           :key="press.id" 
           class="press-item"
           :class="{ 'press-item--active': activePressId === press.id }"
+          @click="handlePressItemRowClick(press)"
         >
           <BaseButton 
             class="media-outlet"
             variant="black"
             @mouseenter="showImage(press.id)"
             @mouseleave="hideImage"
-            @click="handlePressItemClick(press.id, press.content.URL.url)"
+            @click.stop="handlePressItemClick(press.id, press.content.URL.url)"
             :class="{ 'media-outlet--active': activePressId === press.id }"
           >
             {{ press.content.media_outlet }}
@@ -140,6 +141,15 @@ export default {
         openPressUrl(url)
       } else {
         // On desktop, just open URL
+        openPressUrl(url)
+      }
+    }
+
+    const handlePressItemRowClick = (press) => {
+      if (isMobile()) return
+      if (activePressId.value !== press.id) return
+      const url = press?.content?.URL?.url
+      if (url) {
         openPressUrl(url)
       }
     }
@@ -447,7 +457,8 @@ export default {
       handlePressTitleEnd,
       handlePressTitleScroll,
       handlePressTitleTouchStart,
-      handlePressTitleTouchEnd
+      handlePressTitleTouchEnd,
+      handlePressItemRowClick
     }
   }
 }
@@ -521,6 +532,7 @@ export default {
   display: flex;
   align-items: center;
   gap: var(--space-md);
+  cursor: default;
 }
 
 .press-item:hover .press-title {
@@ -674,6 +686,7 @@ export default {
 /* Active press item - above image */
 .press-item--active {
   z-index: 15;
+  cursor: pointer;
 }
 
 /* Mobile: Hide non-active press items when any item is active */
