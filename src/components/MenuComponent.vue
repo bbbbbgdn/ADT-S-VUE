@@ -1,7 +1,13 @@
 <template>
-  <nav class="menu transition-exempt">
-    <BaseButton 
-      v-for="item in menuItems" 
+  <nav
+    class="menu transition-exempt"
+    ref="menuElement"
+    @scroll="handleMenuScroll"
+    @touchstart="handleMenuTouchStart"
+    @touchend="handleMenuTouchEnd"
+  >
+    <BaseButton
+      v-for="item in menuItems"
       :key="item.path"
       :variant="getButtonVariant(item.path)"
       :disabled="!item.path"
@@ -30,6 +36,10 @@ export default {
     const route = useRoute()
     const currentPath = ref(route.path)
     const isMobile = ref(false)
+
+    // Scroll return properties (same as Press.vue)
+    const menuScrollTimeout = ref(null)
+    const isMenuScrolling = ref(false)
     
     // Check screen size on mount and resize
     const checkScreenSize = () => {
@@ -77,13 +87,103 @@ export default {
     const navigateTo = (path, event) => {
       // Don't navigate if we're already on this page
       if (currentPath.value === path) return;
-      
+
       // Immediately update current path to ensure active state is applied instantly
       currentPath.value = path;
-      
+
       // Use navigation manager for consistent transitions
       navigationManager.navigateTo(router, path);
     }
+
+    // Menu scroll methods (same as Press.vue)
+    const handleMenuScroll = () => {
+      console.log('Menu scroll event fired')
+
+      isMenuScrolling.value = true
+
+      // Clear existing timeout
+      if (menuScrollTimeout.value) {
+        clearTimeout(menuScrollTimeout.value)
+      }
+
+      // Set timeout to detect when scrolling stops (same as ImageGallery)
+      menuScrollTimeout.value = setTimeout(() => {
+        console.log('Menu scrolling stopped, triggering spring animation')
+        isMenuScrolling.value = false
+        animateMenuSpringReturn()
+      }, 1000) // Same 1000ms delay as ImageGallery
+    }
+
+    const handleMenuTouchStart = () => {
+      isMenuScrolling.value = true
+    }
+
+    const handleMenuTouchEnd = () => {
+      // Use same timing as ImageGallery for consistency
+      setTimeout(() => {
+        isMenuScrolling.value = false
+        animateMenuSpringReturn()
+      }, 1000) // Same 1000ms delay as ImageGallery
+    }
+
+    const animateMenuSpringReturn = () => {
+      console.log('animateMenuSpringReturn called')
+
+      const menuEl = menuElement.value
+      if (!menuEl) {
+        console.log('No menu element found')
+        return
+      }
+
+      const currentScrollLeft = menuEl.scrollLeft
+      console.log('Current menu scroll position:', currentScrollLeft)
+
+      if (currentScrollLeft === 0) {
+        console.log('Menu already at position 0')
+        return
+      }
+
+      // On mobile, don't animate - just reset immediately to avoid scroll interference
+      if (isMobile.value) {
+        console.log('Mobile: resetting menu scroll position immediately')
+        menuEl.scrollLeft = 0
+        return
+      }
+
+      // On desktop, use spring animation (same as Press.vue)
+      console.log('Desktop: starting menu spring animation')
+      startMenuSpringAnimation(currentScrollLeft, 0)
+    }
+
+    const startMenuSpringAnimation = (startPosition, targetPosition) => {
+      const menuEl = menuElement.value
+      if (!menuEl) return
+
+      const startTime = performance.now()
+      const duration = 600 // Same 600ms duration as ImageGallery
+      const distance = targetPosition - startPosition
+
+      // Cubic ease-out (same as ImageGallery)
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3)
+
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(elapsed / duration, 1)
+        const easedProgress = easeOutCubic(progress)
+        const currentPosition = startPosition + (distance * easedProgress)
+
+        menuEl.scrollLeft = currentPosition
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        }
+      }
+
+      requestAnimationFrame(animate)
+    }
+
+    // Refs for scroll handling
+    const menuElement = ref(null)
 
     return {
       menuItems,
@@ -91,7 +191,12 @@ export default {
       currentPath,
       isActive: (path) => navigationManager.isActive(route, path),
       getButtonVariant,
-      getMenuText
+      getMenuText,
+      // Menu scroll methods
+      handleMenuScroll,
+      handleMenuTouchStart,
+      handleMenuTouchEnd,
+      menuElement
     }
   }
 }
@@ -106,11 +211,15 @@ export default {
   position: relative;
   padding: var(--space-md);
   padding-top: var(--space-md);
-  overflow-x: auto;
+  overflow-X: scroll; /* Same as ImageGallery */
+  scroll-behavior: smooth; /* Same as ImageGallery */
+  -webkit-overflow-scrolling: touch; /* Same as ImageGallery */
   overflow-y: hidden;
   white-space: nowrap;
+  /* Hide scrollbars for all browsers (same as ImageGallery) */
   scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  /* overflow: -moz-scrollbars-none; Firefox (older versions) */
 }
 
 .menu::-webkit-scrollbar {
