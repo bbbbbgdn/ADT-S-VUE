@@ -37,6 +37,16 @@ const randomOtherShows = computed(() => {
     .slice(0, 4); // взяти перші 4
 });
 
+// Handle gallery loading errors (simplified for ShowPage)
+const handleGalleryError = (storyId) => {
+  console.warn(`[ShowPage] Gallery ${storyId} encountered an error`);
+};
+
+// Handle gallery loading success (simplified for ShowPage)
+const handleGallerySuccess = (storyId) => {
+  console.debug(`[ShowPage] Gallery ${storyId} loaded successfully`);
+};
+
 // Format images with preset settings
 const formatMainShowImages = (visuals) => {
   return formatImages(visuals, mainShowImageSettings);
@@ -72,14 +82,13 @@ const getOtherShowGalleryProps = (show) => ({
   location: show.content?.location_tag || '',
   date: show.content?.date_tag || '',
   slug: show.slug,
-  images: formatOtherShowsImages(show.content?.visuals),
+  images: formatImages(show.content?.visuals), // Use same formatting as Shows.vue
   repeatCount: 1,
-  imageHeight: (otherShowsImageSettings.height / 2) + 'px', // Make galleries 2x smaller like Shows.vue
+  imageHeight: `${otherShowsImageSettings.height / 2}rem`, // Same calculation as Shows.vue
   imageWidth: 'auto',
   imageQuality: otherShowsImageSettings.quality,
   imageFormat: otherShowsImageSettings.format,
   resolutionRatio: otherShowsImageSettings.resolutionRatio,
-  enableNavigation: true,
   enableAutoScroll: true,
   speedRandomness: 0.3
 });
@@ -106,6 +115,7 @@ const getOtherShowGalleryProps = (show) => ({
         <ImageGallery
           v-if="story.content?.visuals && story.content.visuals.length > 0"
           v-bind="mainShowGalleryProps"
+          :style="{ '--mobile-gallery-height': '70svh' }"
         />
         
         <!-- Fallback message if no visuals -->
@@ -126,8 +136,18 @@ const getOtherShowGalleryProps = (show) => ({
         
         <!-- Other Shows Galleries -->
         <div v-if="randomOtherShows.length > 0" class="other-shows-container">
-          <div v-for="show in randomOtherShows" :key="show.id">
-            <ImageGallery v-bind="getOtherShowGalleryProps(show)" />
+          <div
+            v-for="show in randomOtherShows"
+            :key="show.id"
+            class="story-placeholder"
+            :data-story-id="show.uuid"
+          >
+            <ImageGallery
+              v-bind="getOtherShowGalleryProps(show)"
+              :style="{ '--mobile-gallery-height': '22svh' }"
+              @gallery-error="handleGalleryError(show.uuid)"
+              @gallery-success="handleGallerySuccess(show.uuid)"
+            />
           </div>
         </div>
         
@@ -226,6 +246,10 @@ h1 {
   margin: var(--space-sm) auto;
   background-color: #f8f8f8;
   border-radius: 8px;
+}
+
+.story-placeholder {
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {

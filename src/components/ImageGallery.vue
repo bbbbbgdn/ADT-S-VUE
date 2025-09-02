@@ -2045,25 +2045,25 @@ export default {
     height: auto !important;
   }
   .gallery-image {
-    height: 40vh !important;
+    height: var(--mobile-gallery-height, 40vh) !important;
   }
 
-  
+
   /* Override gallery height on mobile for all image galleries */
   .gallery-container {
-    min-height: 60svh !important;
+    min-height: var(--mobile-gallery-height, 60svh) !important;
   }
-  
+
   .gallery-container .gallery {
-    min-height: 60svh !important;
+    min-height: var(--mobile-gallery-height, 60svh) !important;
   }
-  
+
   .gallery-container .gallery-item {
-    min-height: 60svh !important;
+    min-height: var(--mobile-gallery-height, 60svh) !important;
   }
-  
+
   .gallery-container .gallery-image {
-    min-height: 60svh !important;
+    min-height: var(--mobile-gallery-height, 60svh) !important;
   }
 }
 

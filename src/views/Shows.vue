@@ -155,6 +155,7 @@ const handleGallerySuccess = (storyId) => {
         :resolutionRatio="imageSettings.resolutionRatio"
         :enableAutoScroll="true"
         :speedRandomness="0.3"
+        :style="{ '--mobile-gallery-height': '22svh' }"
         @gallery-error="handleGalleryError(story.uuid)"
         @gallery-success="handleGallerySuccess(story.uuid)"
       />
