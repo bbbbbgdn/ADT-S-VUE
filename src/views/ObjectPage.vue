@@ -2,9 +2,10 @@
 import { useRoute, useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ObjectCard from '../components/ObjectCard.vue';
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref, nextTick } from 'vue';
 import useStoryblok from '../utils/useStoryblok';
 import { createImageSettings } from '../utils/imageSettings';
+import { extractImageDimensions, calculatePlaceholderDimensions } from '../utils/imageDimensions';
 
 // Create image settings for object photos (window-based for main images, thumbnail for suggestions)
 const mainObjectImageSettings = createImageSettings('windowBased');
@@ -33,6 +34,23 @@ const randomOtherObjects = computed(() => {
     .slice() // clone
     .sort(() => 0.5 - Math.random()) // shuffle
     .slice(0, 4); // take first 4
+});
+
+// Process main object images with dimensions for placeholders
+const mainObjectImagesWithDimensions = computed(() => {
+  const images = formatMainObjectImages(story.value?.content?.visuals || []);
+  return images.map(image => {
+    const dimensions = extractImageDimensions(image.url);
+    const placeholderDimensions = dimensions ?
+      calculatePlaceholderDimensions(dimensions, 'auto', '100%') :
+      { width: '100%', height: 'auto' };
+
+    return {
+      ...image,
+      dimensions,
+      placeholderDimensions
+    };
+  });
 });
 
 // Format images for main object photos (skip first image as it's for the card)
@@ -71,6 +89,50 @@ const formatTextWithLineBreaks = (text) => {
   return text.replace(/\n/g, '<br>');
 };
 
+// Simplified image loading methods - reveal images as they load
+const onImageLoad = (index) => {
+  console.debug(`[ObjectPage] Image ${index} loaded successfully`);
+
+  // Mark image as loaded
+  loadedImages.value.add(index);
+
+  // Reveal this specific image immediately
+  revealImage(index);
+
+  // Check if we should exit batch loading mode
+  if (loadedImages.value.size >= mainObjectImagesWithDimensions.value.length) {
+    console.debug(`[ObjectPage] All images loaded`);
+    isBatchLoading.value = false;
+  }
+};
+
+const onImageError = (index) => {
+  console.error(`[ObjectPage] Image ${index} failed to load`);
+
+  // Still mark as loaded to prevent blocking other images
+  loadedImages.value.add(index);
+
+  // Reveal this image (it will show as error state)
+  revealImage(index);
+
+  // Check if we should exit batch loading mode
+  if (loadedImages.value.size >= mainObjectImagesWithDimensions.value.length) {
+    isBatchLoading.value = false;
+  }
+};
+
+const revealImage = (index) => {
+  // Use nextTick to ensure DOM is updated
+  nextTick(() => {
+    const img = document.querySelector(`.object-photo[data-index="${index}"]`);
+    if (img && !img.classList.contains('image-revealed')) {
+      img.classList.remove('image-loading');
+      img.classList.add('image-loaded', 'image-revealed');
+      console.debug(`[ObjectPage] Revealed image at index ${index}`);
+    }
+  });
+};
+
 // Simple sticky order section functionality
 const orderSectionRef = ref(null);
 const OtherRef = ref(null);
@@ -78,6 +140,10 @@ const isSticky = ref(false);
 const isTransitioning = ref(false);
 const translateY = ref(0);
 const originalOffsetTop = ref(0);
+
+// Image loading state data for batch loading
+const loadedImages = ref(new Set()); // Track which images have loaded
+const isBatchLoading = ref(false); // Whether we're in batch loading mode
 
 const handleScroll = () => {
   if (!orderSectionRef.value || !OtherRef.value) return;
@@ -133,6 +199,7 @@ const handleScroll = () => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
   window.addEventListener('resize', handleScroll);
+
   // Get initial position after mount
   setTimeout(() => {
     if (orderSectionRef.value) {
@@ -220,23 +287,52 @@ onUnmounted(() => {
           
           <!-- Right column: Object photos (vertical stack, skipping first image) -->
           <div class="object-photos">
-            <div v-if="formatMainObjectImages(story.content?.visuals).length > 0" class="photos-stack">
-              <img
-                v-for="(image, index) in formatMainObjectImages(story.content?.visuals)"
+            <div v-if="mainObjectImagesWithDimensions.length > 0" class="photos-stack">
+              <div
+                v-for="(image, index) in mainObjectImagesWithDimensions"
                 :key="index"
-                v-lazy-load="{
-                  url: image.url,
-                  index: index,
-                  galleryId: 'object-photos-stack',
-                  threshold: 0.1,
-                  rootMargin: '300px',
-                  preloadCount: 2,
-                  isBigGallery: formatMainObjectImages(story.content?.visuals).length > 3,
-                  resetQueue: index === 0
-                }"
-                :alt="image.alt || `Object photo ${index + 1}`"
-                class="object-photo"
-              />
+                class="photo-item"
+              >
+                <!-- Placeholder div to maintain aspect ratio and prevent layout jumps -->
+                <div
+                  v-if="image.dimensions"
+                  class="image-placeholder"
+                  :style="{
+                    width: image.placeholderDimensions.width,
+                    height: image.placeholderDimensions.height,
+                    'aspect-ratio': image.dimensions.aspectRatio,
+                    '--aspect-ratio': image.dimensions.aspectRatio
+                  }"
+                ></div>
+
+                <!-- Fallback placeholder when dimensions aren't available -->
+                <div
+                  v-else
+                  class="image-placeholder image-placeholder-fallback"
+                  :style="{
+                    width: '100%',
+                    height: '300px' // Default height for fallback
+                  }"
+                ></div>
+
+                <img
+                  v-lazy-load="{
+                    url: image.url,
+                    index: index,
+                    galleryId: 'object-photos-stack',
+                    threshold: 0.1,
+                    rootMargin: '300px',
+                    preloadCount: 2,
+                    isBigGallery: mainObjectImagesWithDimensions.length > 3,
+                    resetQueue: index === 0
+                  }"
+                  :alt="image.alt || `Object photo ${index + 1}`"
+                  :data-index="index"
+                  class="object-photo"
+                  @load="onImageLoad(index)"
+                  @error="onImageError(index)"
+                />
+              </div>
             </div>
             <div v-else class="no-photos-message">
               <p>No additional photos available</p>
@@ -375,10 +471,7 @@ onUnmounted(() => {
   /* transition: transform 0.1s ease-out; */
 }
 
-.order-section.transitioning {
-  /* Smooth transition during scroll off-screen */
-  /* transition: transform 0.05s ease-out; */
-}
+/* .order-section.transitioning - Smooth transition during scroll off-screen: transition: transform 0.05s ease-out; */
 
 .purchase-info {
   /* font-size: var(--text-sm); */
@@ -400,28 +493,68 @@ onUnmounted(() => {
   /* gap: var(--space-md); */
 }
 
+.photo-item {
+  position: relative;
+  margin-bottom: var(--space-md);
+}
+
+.image-placeholder {
+  position: relative;
+  width: 100%;
+  background-color: rgba(248, 248, 248, 0.1); /* Subtle background to indicate loading */
+  /* Use aspect-ratio property for modern browsers */
+  aspect-ratio: var(--aspect-ratio, auto);
+  /* Ensure the placeholder maintains space even when image is loading */
+  opacity: 1;
+  z-index: 0;
+  /* Prevent any layout shifts */
+  box-sizing: border-box;
+}
+
+.image-placeholder-fallback {
+  background-color: rgba(248, 248, 248, 0.2); /* Slightly more visible for fallback */
+}
+
 .object-photo {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   border-radius: 0;
-  transition: opacity 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Initially hide all images completely to prevent any layout shifts */
+  opacity: 0;
+  visibility: hidden;
+  /* Smooth transition when revealing */
+  transition: opacity 0.3s ease-in-out;
+  /* Prevent image dragging */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
 /* Loading states for photos stack */
 .object-photo.image-loading {
   opacity: 0;
-  filter: blur(2px);
+  visibility: hidden;
 }
 
 .object-photo.image-loaded {
-  opacity: 1;
-  filter: blur(0);
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .object-photo.image-error {
   opacity: 0.5;
-  filter: grayscale(100%);
+  visibility: visible; /* Error images should be visible */
+}
+
+/* Revealed state - highest priority */
+.object-photo.image-revealed {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .no-photos-message {
@@ -441,12 +574,7 @@ onUnmounted(() => {
   z-index: 2;
 }
 
-/* Other objects suggestions */
-.other-objects-container {
-
-  /* margin-top: var(--space-4xl); */
- 
-}
+/* Other objects suggestions - margin-top: var(--space-4xl); */
 
 .other-objects-grid {
   display: grid;
@@ -524,13 +652,7 @@ onUnmounted(() => {
     /* padding: var(--space-sm); */
   }
   
-  .object-tags {
-    /* justify-content: center; */
-  }
-
-  .order-section{
-    /* padding-bottom: var(--space-4xl); */
-  }
+  /* .object-tags justify-content: center; */
   
   /* Disable sticky behavior on mobile */
   .order-section.sticky {
@@ -548,13 +670,5 @@ onUnmounted(() => {
   }
 }
 
-@media screen and (max-width: 480px) {
-  .other-objects-grid {
-    /* grid-template-columns: 1fr; */
-  }
-  
-  /* .order-section {
-    justify-content: center;
-  } */
-}
+/* @media screen and (max-width: 480px) .other-objects-grid grid-template-columns: 1fr; */
 </style>
