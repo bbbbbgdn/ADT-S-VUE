@@ -84,6 +84,17 @@ export const loadStory = async (path, options = {}) => {
       retryCount++;
       error = err;
       console.error(`Failed to load story (attempt ${retryCount}/${maxRetries}): ${path}`, err);
+
+      // If it's a 404, do not retry to avoid unnecessary delay
+      const statusCode = (err && (err.status || err.code || err?.response?.status)) || null;
+      if (Number(statusCode) === 404) {
+        return {
+          data: null,
+          status: 'error',
+          error: err,
+          fromCache: false
+        };
+      }
       
       if (retryCount < maxRetries) {
         // Wait before retrying (exponential backoff)

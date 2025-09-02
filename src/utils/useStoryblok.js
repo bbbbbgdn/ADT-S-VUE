@@ -70,25 +70,32 @@ export default function useStoryblok(options = {}) {
       story.value = result.data;
     } else {
       errorMessage.value = `Could not load ${type} "${slug}"`;
-      
-      // Try to get a fallback
-      const fallback = storyblokUtils.getFallbackProject();
-      if (fallback) {
-        story.value = fallback.data;
-        errorMessage.value = `${type} "${slug}" could not be loaded. Showing "${fallback.slug}" instead.`;
-        
-        // Redirect to the fallback after a delay
-        setTimeout(() => {
-          router.replace(`/${type}s/${fallback.slug}`);
-        }, 5000);
-      } else if (onError) {
+
+      // If custom error handler is provided, use it instead of fallback
+      if (onError) {
         // Call the error handler if provided
         onError(result.error, slug);
+        // Stop further processing to avoid rendering blank interim state
+        isLoading.value = false;
+        contentReady.value = false;
+        return;
       } else {
-        // Default error handling - redirect to list page
-        setTimeout(() => {
-          navigationManager.navigateTo(router, `/${type}s`);
-        }, 5000);
+        // Try to get a fallback only if no custom error handler
+        const fallback = storyblokUtils.getFallbackProject();
+        if (fallback) {
+          story.value = fallback.data;
+          errorMessage.value = `${type} "${slug}" could not be loaded. Showing "${fallback.slug}" instead.`;
+
+          // Redirect to the fallback after a delay
+          setTimeout(() => {
+            router.replace(`/${type}s/${fallback.slug}`);
+          }, 5000);
+        } else {
+          // Default error handling - redirect to list page
+          setTimeout(() => {
+            navigationManager.navigateTo(router, `/${type}s`);
+          }, 5000);
+        }
       }
     }
     

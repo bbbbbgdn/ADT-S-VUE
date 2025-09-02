@@ -12,6 +12,7 @@ const mainObjectImageSettings = createImageSettings('windowBased');
 const otherObjectsImageSettings = createImageSettings('thumbnail');
 
 // Use our Storyblok composable with 'object' type
+const router = useRouter();
 const {
   story,
   stories: otherObjects,
@@ -24,7 +25,12 @@ const {
 } = useStoryblok({
   type: 'object',
   preload: true,
-  watchRoute: true
+  watchRoute: true,
+  onError: (error, slug) => {
+    console.error(`Custom error handler for object ${slug}:`, error);
+    // Redirect to 404 page immediately if object not found
+    router.replace({ name: 'NotFound' });
+  }
 });
 
 // Get random other objects for suggestions (excluding current object)

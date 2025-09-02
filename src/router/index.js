@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { transitionTiming } from '../utils/transitionConfig';
+import NotFound from '../views/NotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -72,26 +73,27 @@ const router = createRouter({
     // },
     {
       path: '/:pathMatch(.*)*',
-      redirect: '/'
+      name: 'NotFound',
+      component: NotFound
     }
   ]
 });
 
 // Apply transition for all navigation events
 router.beforeEach((to, from, next) => {
+  // Skip transition when navigating to 404 page
+  if (to.name === 'NotFound') {
+    document.body.classList.remove('page-transitioning');
+    next();
+    return;
+  }
+
   // Only apply transition if we're actually changing routes
   if (to.path !== from.path) {
-    // First add the transition class to hide content
     document.body.classList.add('page-transitioning');
-    
-    // Force browser to process the class before continuing
     void document.body.offsetWidth;
-    
-    // Proceed with navigation after ensuring the transition class is applied
-    next();
-  } else {
-    next();
   }
+  next();
 });
 
 // Global after-navigation hook - safety net only
@@ -109,14 +111,18 @@ router.afterEach((to, from) => {
   
   // We'll let the PageTransition component handle removing the class
   // This is just a safety timeout for any edge cases
-  setTimeout(() => {
+  if (to.name === 'NotFound') {
     document.body.classList.remove('page-transitioning');
-    
-    // Make sure all images are properly visible
-    document.querySelectorAll('.image-loaded').forEach(img => {
-      img.style.opacity = '1';
-    });
-  }, 100); // Reduced safety timeout
+  } else {
+    setTimeout(() => {
+      document.body.classList.remove('page-transitioning');
+      
+      // Make sure all images are properly visible
+      document.querySelectorAll('.image-loaded').forEach(img => {
+        img.style.opacity = '1';
+      });
+    }, 100); // Reduced safety timeout
+  }
 });
 
 export default router;

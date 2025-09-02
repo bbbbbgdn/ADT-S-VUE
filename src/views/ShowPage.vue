@@ -14,6 +14,7 @@ const mainShowImageSettings = createImageSettings('high');
 const otherShowsImageSettings = createImageSettings('thumbnail');
 
 // Use our Storyblok composable with 'show' type
+const router = useRouter();
 const {
   story,
   stories: otherShows,
@@ -26,7 +27,12 @@ const {
 } = useStoryblok({
   type: 'show',
   preload: true,
-  watchRoute: true
+  watchRoute: true,
+  onError: (error, slug) => {
+    console.error(`Custom error handler for show ${slug}:`, error);
+    // Redirect to 404 page immediately if show not found
+    router.replace({ name: 'NotFound' });
+  }
 });
 
 const randomOtherShows = computed(() => {

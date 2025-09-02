@@ -47,6 +47,8 @@ export default {
       watchRoute: true,
       onError: (error, slug) => {
         console.error(`Custom error handler for project ${slug}:`, error);
+        // Redirect to 404 page immediately if project not found
+        router.replace({ name: 'NotFound' });
       }
     });
 
