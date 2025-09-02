@@ -91,7 +91,7 @@
                 },
                 {
                     "name": "progress",
-                    "value": 0.38188410633484166
+                    "value": 0.4645652149321267
                 },
                 {
                     "name": "Interaction Needed",
@@ -99,7 +99,7 @@
                 },
                 {
                     "name": "CurrentTime",
-                    "value": 20.255133
+                    "value": 24.640539
                 },
                 {
                     "name": "Loading",
@@ -560,7 +560,7 @@
             "portsIn": [
                 {
                     "name": "Passes",
-                    "value": 1
+                    "value": 2
                 },
                 {
                     "name": "Clamp",
@@ -642,11 +642,11 @@
                 },
                 {
                     "name": "current time",
-                    "value": 20.299999999999994
+                    "value": 149.5328
                 },
                 {
                     "name": "current frame",
-                    "value": 609
+                    "value": 4486
                 }
             ],
             "objName": "Ops.TimeLine.TimeLinePlayer"
@@ -1010,11 +1010,11 @@
                 },
                 {
                     "name": "Movement X",
-                    "value": -29
+                    "value": -24.5
                 },
                 {
                     "name": "Movement Y",
-                    "value": 0
+                    "value": 24
                 }
             ],
             "objName": "Ops.Devices.Mouse.Mouse_v4"
@@ -1911,7 +1911,7 @@
             "portsOut": [
                 {
                     "name": "Current Value",
-                    "value": 0.1759604015998134
+                    "value": 0.5323923167979496
                 },
                 {
                     "name": "Dragging",
@@ -2247,7 +2247,7 @@
                 },
                 {
                     "name": "Number",
-                    "value": -0.9338575160771704
+                    "value": -0.8316951038575667
                 }
             ],
             "objName": "Ops.Number.TriggerOnChangeNumber_v2"
@@ -2402,7 +2402,7 @@
             "portsIn": [
                 {
                     "name": "start",
-                    "value": 0.9
+                    "value": 0.6
                 },
                 {
                     "name": "end",
@@ -2443,7 +2443,7 @@
                 },
                 {
                     "name": "finished",
-                    "value": false
+                    "value": true
                 }
             ],
             "objName": "Ops.Anim.SimpleAnim"
@@ -2595,7 +2595,7 @@
             "portsIn": [
                 {
                     "name": "Amount",
-                    "value": 0.15
+                    "value": 0.2
                 },
                 {
                     "name": "Blend Mode index",
@@ -3614,7 +3614,7 @@
             "portsIn": [
                 {
                     "name": "value",
-                    "value": 0.2
+                    "value": 0.1
                 }
             ],
             "portsOut": [
@@ -3686,11 +3686,11 @@
             "portsOut": [
                 {
                     "name": "x",
-                    "value": -0.9338575160771704
+                    "value": -0.9883105573419079
                 },
                 {
                     "name": "y",
-                    "value": -0.6261127596439169
+                    "value": -0.8316951038575667
                 },
                 {
                     "name": "Button is down",
@@ -3709,11 +3709,11 @@
                 },
                 {
                     "name": "Movement X",
-                    "value": -29
+                    "value": -24.5
                 },
                 {
                     "name": "Movement Y",
-                    "value": 0
+                    "value": 24
                 }
             ],
             "objName": "Ops.Devices.Mouse.Mouse_v4"
@@ -3822,8 +3822,8 @@
         }
     ],
     "export": {
-        "time": "2025-09-01 05:05",
+        "time": "2025-09-03 00:31",
         "service": "html",
-        "exportNumber": 23
+        "exportNumber": 24
     }
 }
