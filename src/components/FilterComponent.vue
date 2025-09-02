@@ -41,7 +41,7 @@ export default {
   },
   emits: ['filter-changed'],
   setup(props, { emit }) {
-    const activeFilter = ref('all')
+    const activeFilter = ref('chronological')
 
     const setFilter = (filter) => {
       activeFilter.value = filter

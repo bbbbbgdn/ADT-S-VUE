@@ -27,22 +27,22 @@
       </BaseButton>
       
       <div class="press-items">
-        <div 
-          v-for="press in entry.items" 
-          :key="press.id" 
+        <div
+          v-for="press in entry.items"
+          :key="press.id"
           class="press-item"
           :class="{ 'press-item--active': activePressId === press.id }"
-          @click="handlePressItemRowClick(press)"
+          v-on="{ click: !isMobile() ? () => handlePressItemRowClick(press) : null }"
         >
-          <BaseButton 
+          <BaseButton
             class="media-outlet"
             variant="black"
-            @mouseenter="showImage(press.id)"
-            @mouseleave="hideImage"
-            @click.stop="handlePressItemClick(press.id, press.content.URL.url)"
+            v-on="{ mouseenter: !isMobile() ? () => showImage(press.id) : null, mouseleave: !isMobile() ? hideImage : null }"
+            @click="handlePressItemClick(press.id, press.content.URL.url)"
+
             :class="{ 'media-outlet--active': activePressId === press.id }"
           >
-            {{ press.content.media_outlet }}
+          {{ press.content.media_outlet }}
           </BaseButton>
           <div 
             class="press-title-scroll"
@@ -136,12 +136,20 @@ export default {
     }
 
     const handlePressItemClick = (pressId, url) => {
-      // On mobile, just open URL without showing image
-      if (isMobile()) {
-        openPressUrl(url)
+      console.log('handlePressItemClick called', { pressId, url, isMobile: isMobile() })
+
+      // Always open URL regardless of device type
+      if (url) {
+        console.log('Opening URL:', url)
+        try {
+          window.open(url, '_blank')
+        } catch (error) {
+          console.error('Error opening URL:', error)
+          // Fallback: try opening in same window
+          window.location.href = url
+        }
       } else {
-        // On desktop, just open URL
-        openPressUrl(url)
+        console.warn('No URL provided for press item:', pressId)
       }
     }
 
@@ -241,6 +249,8 @@ export default {
       }
     }
     function handlePressTitleScroll(pressId) {
+      console.log('handlePressTitleScroll called for pressId:', pressId, 'isMobile:', isMobile())
+
       // Clear any existing timeout for this specific press item
       if (dividerScrollTimeouts.value[pressId]) {
         clearTimeout(dividerScrollTimeouts.value[pressId])
@@ -254,48 +264,60 @@ export default {
       // Reset all other scrollable elements
       resetAllOtherScrollElements(pressId)
       
-      // Set timeout for spring return (like in ImageGallery)
+      // Set timeout for spring return (same as ImageGallery)
+      // Use 1000ms delay consistently like in Shows.vue
       dividerScrollTimeouts.value[pressId] = setTimeout(() => {
-        // Only proceed if this is still the active press item
-        if (activePressId.value === pressId) {
+        // On mobile, always animate since we don't use active states
+        // On desktop, only proceed if this is still the active press item
+        if (isMobile() || activePressId.value === pressId) {
           animatePressTitleSpringReturn(pressId)
         }
         // Clean up the timeout reference
         dividerScrollTimeouts.value[pressId] = null
-      }, 1000) // 1 second delay like in ImageGallery
+      }, 1000) // Same 1000ms delay as ImageGallery
     }
 
     function handlePressTitleTouchStart(pressId) {
-      // Immediately show image without delays
-      touchActive.value = true
-      activePressId.value = pressId
-      showImage(pressId)
-      
+      // On mobile, don't show image - just handle scrolling
+      if (!isMobile()) {
+        // Immediately show image without delays
+        touchActive.value = true
+        activePressId.value = pressId
+        showImage(pressId)
+      }
+
       // Clear any existing timeout for this specific press item when touch starts
       if (dividerScrollTimeouts.value[pressId]) {
         clearTimeout(dividerScrollTimeouts.value[pressId])
         dividerScrollTimeouts.value[pressId] = null
       }
-      
+
       // Reset all other scrollable elements
       resetAllOtherScrollElements(pressId)
     }
 
     function handlePressTitleTouchEnd(pressId) {
-      // Immediately hide image and mark touch as inactive
-      touchActive.value = false
-      hideImage()
-      
+      // On mobile, don't hide image since we don't show it
+      if (!isMobile()) {
+        // Immediately hide image and mark touch as inactive
+        touchActive.value = false
+        hideImage()
+      }
+
       // Clear any existing timeout for this specific press item
       if (dividerScrollTimeouts.value[pressId]) {
         clearTimeout(dividerScrollTimeouts.value[pressId])
         dividerScrollTimeouts.value[pressId] = null
       }
-      
-      // Start spring return immediately on touch end
-      if (activePressId.value === pressId) {
-        animatePressTitleSpringReturn(pressId)
-      }
+
+      // Start spring return after delay (same as ImageGallery)
+      setTimeout(() => {
+        // On mobile, always animate since we don't use active states
+        // On desktop, only proceed if this is still the active press item
+        if (isMobile() || activePressId.value === pressId) {
+          animatePressTitleSpringReturn(pressId)
+        }
+      }, 1000) // Same 1000ms delay as ImageGallery touch end
     }
 
     function getPressTitleScrollElement(pressId) {
@@ -305,15 +327,31 @@ export default {
     }
 
     function animatePressTitleSpringReturn(pressId) {
+      console.log('animatePressTitleSpringReturn called for pressId:', pressId, 'isMobile:', isMobile())
+
       const el = getPressTitleScrollElement(pressId)
-      if (!el) return
-      const currentScrollLeft = el.scrollLeft
-      if (currentScrollLeft === 0) {
-        // If already at position 0, hide image immediately
-        hideImage()
+      if (!el) {
+        console.log('No element found for pressId:', pressId)
         return
       }
-      // Use shorter animation duration for quicker response
+      const currentScrollLeft = el.scrollLeft
+      console.log('Current scroll position:', currentScrollLeft)
+
+      if (currentScrollLeft === 0) {
+        // If already at position 0, hide image immediately (only on desktop)
+        if (!isMobile()) {
+          hideImage()
+        }
+        return
+      }
+
+      // On mobile, don't animate - just reset immediately to avoid scroll interference
+      if (isMobile()) {
+        el.scrollLeft = 0
+        return
+      }
+
+      // Use shorter animation duration for quicker response on desktop
       startPressTitleSpringAnimation(pressId, currentScrollLeft, 0)
     }
 
@@ -324,7 +362,7 @@ export default {
       const el = getPressTitleScrollElement(pressId)
       if (!el) return
       const startTime = performance.now()
-      const duration = 300 // Reduced from 600ms for faster response
+      const duration = 600 // Same 600ms duration as ImageGallery
       const distance = targetPosition - startPosition
       const easeOutCubic = t => 1 - Math.pow(1 - t, 3)
       const animate = currentTime => {
@@ -343,6 +381,11 @@ export default {
     }
 
     function resetAllOtherScrollElements(activePressId) {
+      // On mobile, don't reset other elements to avoid scroll interference
+      if (isMobile()) {
+        return
+      }
+
       // Get all press items and reset their scroll positions
       pressItems.value.forEach(press => {
         if (press.id !== activePressId) {
@@ -370,7 +413,8 @@ export default {
         console.log('Loaded press items:', pressItems.value.map(item => ({
           id: item.id,
           year: item.content.year,
-          title: item.content.press_title
+          title: item.content.press_title,
+          url: item.content.URL?.url
         })))
       } else {
         console.warn('Failed to load press items:', result.error);
@@ -378,37 +422,45 @@ export default {
 
       // Add global touch end listener as a safety net with immediate response
       const handleGlobalTouchEnd = (event) => {
+        // On mobile, don't interfere with scrolling - let natural touch behavior work
+        if (isMobile()) {
+          return
+        }
+
         // Only handle touch events if they originated from press-title elements
         const target = event.target
-        const isPressTitleElement = target.closest('.press-title-scroll') || 
+        const isPressTitleElement = target.closest('.press-title-scroll') ||
                                    target.closest('.press-title') ||
                                    target.classList.contains('press-title') ||
                                    target.classList.contains('press-title-scroll')
-        
+
         // If not a press-title element, don't interfere
         if (!isPressTitleElement) {
           return
         }
-        
+
         // Don't interfere with button clicks (media-outlet buttons)
-        const isButton = target.closest('button') || 
+        const isButton = target.closest('button') ||
                         target.classList.contains('base-button') ||
                         target.classList.contains('media-outlet')
-        
+
         if (isButton) {
           return
         }
-        
+
         // Additional check: only handle if we're actually in a touch state
         if (!touchActive.value) {
           return
         }
-        
-        // Prevent default only for press-title elements to avoid any delays
+
+                // Prevent default only for press-title elements to avoid any delays
         event.preventDefault()
-        
+
         touchActive.value = false
-        hideImage()
+        // Use same timing as ImageGallery for consistency
+        setTimeout(() => {
+          hideImage()
+        }, 1000) // Same 1000ms delay as ImageGallery
       }
 
       document.addEventListener('touchend', handleGlobalTouchEnd, { passive: false })
@@ -458,7 +510,8 @@ export default {
       handlePressTitleScroll,
       handlePressTitleTouchStart,
       handlePressTitleTouchEnd,
-      handlePressItemRowClick
+      handlePressItemRowClick,
+      isMobile
     }
   }
 }
@@ -535,24 +588,42 @@ export default {
   cursor: default;
 }
 
-.press-item:hover .press-title {
-  background-color: black !important;
-  color: white !important;
-  cursor: pointer !important;
+@media screen and (min-width: 769px) {
+  .press-item {
+    cursor: pointer;
+  }
 }
 
-.press-item:hover .button-black {
-  background-color: var(--color-pink-primary);
-  color: black;
+@media screen and (min-width: 769px) {
+  .press-item:hover .press-title {
+    background-color: black !important;
+    color: white !important;
+    cursor: pointer !important;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .press-item:hover .button-black {
+    background-color: var(--color-pink-primary);
+    color: black;
+  }
 }
 
 .media-outlet {
   min-width: fit-content !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
 }
 
-/* Add CSS for .press-title-scroll to match .gallery-tags */
+/* Add CSS for .press-title-scroll to match .gallery-tags behavior */
 .press-title-scroll {
-  overflow-x: auto;
+  overflow-X: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbars for all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow: -moz-scrollbars-none; /* Firefox (older versions) */
   white-space: nowrap;
   max-width: 100vw;
   flex: 1;
@@ -569,27 +640,13 @@ export default {
   text-size-adjust: 100%;
 }
 
-.press-item-divider {
-  flex: 1;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  overflow: -moz-scrollbars-none;
-  touch-action: pan-x;
-}
-.press-item-divider::-webkit-scrollbar {
-  display: none;
-}
+
 @media screen and (max-width: 768px) {
   .press-item {
     flex-direction: row;
     align-items: stretch;
   }
-  .press-item-divider {
-    padding: 0 var(--space-lg) 0 0;
-  }
+
 
   .base-button {
     margin: 0 var(--space-md);
@@ -605,11 +662,11 @@ export default {
 
   /* Mobile-specific background image styles to prevent scroll interference */
   .background-image {
-    /* z-index: 1; */
     pointer-events: none;
     touch-action: none;
     background-size: cover;
-    /* z-index: -1; */
+    /* Ensure background doesn't interfere with scrolling */
+    z-index: -1;
     /* On mobile, add top padding to avoid covering year buttons */
     padding-left: 0;
     padding-top: calc(var(--space-md) + 60px); /* Adjust based on year button height */
@@ -642,6 +699,11 @@ export default {
   .press-title-scroll {
     touch-action: pan-x;
     -webkit-overflow-scrolling: touch;
+    /* Ensure scrolling works properly on mobile */
+    position: relative;
+    z-index: 10;
+    /* Make sure touch events are not blocked */
+    pointer-events: auto;
   }
 
   .media-outlet,
@@ -649,6 +711,12 @@ export default {
     margin-right: var(--space-sm);
     /* width: 100%; */
     /* max-width: 100%; */
+  }
+
+  .media-outlet {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
   }
 }
 
