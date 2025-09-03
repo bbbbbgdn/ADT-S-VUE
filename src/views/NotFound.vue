@@ -2,7 +2,7 @@
   <div class="not-found-page" :class="{ 'background-loaded': isLoaded }">
     <iframe
       class="page-background"
-      src="/404Page/index.html?text=Page not found or not yet grown. <br/>Would you be up for growing something here instead?"
+      src="/404Page/index.html?text=This page not found or just not yet grown. <br/>Would you be up for growing something here instead?"
       frameborder="0"
       allowfullscreen
       @load="onIframeLoad"
