@@ -1,24 +1,33 @@
 <template>
-  <div class="main-text" :class="{ 'single-line': isSingleLine }">
-    <template v-if="$slots.default">
-      <p v-for="(line, index) in slotTextLines" :key="index" :class="{ 'empty-line': line === '' }">
-        {{ line }}
-      </p>
-    </template>
-    <template v-else-if="text && text.length > 0">
-      <p v-for="(line, index) in textLines" :key="index" :class="{ 'empty-line': line === '' }">
-        {{ line }}
-      </p>
-    </template>
-    <p v-else class="empty-text">No content available</p>
+  <div class="main-text-container">
+    <div class="main-text" :class="{ 'single-line': isSingleLine }">
+      <template v-if="$slots.default">
+        <p v-for="(line, index) in slotTextLines" :key="index" :class="{ 'empty-line': line === '' }">
+          {{ line }}
+        </p>
+      </template>
+      <template v-else-if="text && text.length > 0">
+        <p v-for="(line, index) in textLines" :key="index" :class="{ 'empty-line': line === '' }">
+          {{ line }}
+        </p>
+      </template>
+      <p v-else class="empty-text">No content available</p>
+    </div>
+
+    <InfoText v-if="infoText" :html="infoText" />
   </div>
 </template>
 
 <script setup>
 import { computed, useSlots } from 'vue'
+import InfoText from './InfoText.vue'
 
 const props = defineProps({
   text: {
+    type: String,
+    default: ''
+  },
+  infoText: {
     type: String,
     default: ''
   },
@@ -62,6 +71,10 @@ const isSingleLine = computed(() => {
 </script>
 
 <style>
+.main-text-container {
+  margin-bottom: calc(var(--space-4xl)*3);
+}
+
 .main-text {
   width: 100%;
   padding: var(--space-md);

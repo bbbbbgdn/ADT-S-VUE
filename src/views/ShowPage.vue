@@ -3,7 +3,6 @@ import { useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import MainText from '../components/MainText.vue';
-import InfoText from '../components/InfoText.vue';
 import { renderRichText } from "@storyblok/vue";
 import useStoryblok from '../utils/useStoryblok';
 import { createImageSettings } from '../utils/imageSettings';
@@ -124,14 +123,12 @@ const getOtherShowGalleryProps = (show) => ({
         <div v-else class="no-images-message">
           <p>No images available for this show</p>
         </div>
-        
-        <!-- Using MainText with paragraph (default) -->
-        <MainText>
+        <!-- Using consolidated MainText component -->
+        <MainText
+          :infoText="renderRichText(story.content?.info_text || '')"
+        >
           {{ story.content?.main_text || 'No Description Available' }}
         </MainText>
-        
-        <InfoText :html="renderRichText(story.content?.info_text || '')" />
-        
         <div id="extra-section">
           <div class="button-container">
             <BaseButton to="/shows">Other shows</BaseButton>
@@ -165,9 +162,8 @@ const getOtherShowGalleryProps = (show) => ({
 
 <style>
 
-#extra-section {
-  margin-top: calc(var(--space-4xl)*3.25);
-}
+
+
 /* Content area that contains both loading and content */
 .content-area {
   position: relative;
