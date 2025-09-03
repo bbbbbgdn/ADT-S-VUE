@@ -2,14 +2,15 @@
   <div class="profile-page-wrapper">
     <div class="profile-container">
       <div class="profile-image" ref="profileImageContainer">
-        <img 
-          :src="profileImage" 
-          :class="{'image-visible': imageLoaded}"
-          alt="Dasha Tsapenko working with bio-material" 
-          @load="handleImageLoaded"
+        <img
+          :src="profileImage"
+          :class="['profile-image-element', { 'image-loaded': isImageLoaded }]"
+          alt="Dasha Tsapenko working with bio-material"
+          @load="onImageLoaded"
+          @error="onImageError"
           ref="profileImg"
         />
-        <div class="image-placeholder" v-if="!imageLoaded"></div>
+        <div class="image-placeholder" v-if="!isImageLoaded"></div>
       </div>
       
 
@@ -73,7 +74,7 @@ export default {
   },
   data() {
     return {
-      imageLoaded: false,
+      isImageLoaded: false,
       profileImage: '/main/assets/IMG_3967.JPEG',
       story: null,
       isLoading: false,
@@ -143,8 +144,8 @@ export default {
     }
   },
   mounted() {
-    this.preloadImage();
     this.fetchProfile();
+    this.checkImageLoaded();
   },
   beforeUnmount() {
     // Clean up scrollback animations
@@ -199,13 +200,19 @@ export default {
         this.isLoading = false;
       }
     },
-    preloadImage() {
-      if (this.$refs.profileImg && this.$refs.profileImg.complete) {
-        this.imageLoaded = true;
-      }
+    onImageLoaded() {
+      this.isImageLoaded = true;
     },
-    handleImageLoaded() {
-      this.imageLoaded = true;
+    onImageError() {
+      // Still show the image even if it fails to load
+      this.isImageLoaded = true;
+      console.warn('Profile image failed to load:', this.profileImage);
+    },
+    checkImageLoaded() {
+      // Check if image is already loaded (cached, etc.)
+      if (this.$refs.profileImg && this.$refs.profileImg.complete && this.$refs.profileImg.naturalHeight !== 0) {
+        this.isImageLoaded = true;
+      }
     },
 
     sendEmail() {
@@ -315,7 +322,7 @@ export default {
   z-index: -1;
 }
 
-.profile-image img {
+.profile-image-element {
   width: 100%;
   object-fit: contain;
   padding: 0 var(--space-md);
@@ -334,10 +341,9 @@ export default {
   background-color: #f5f5f5;
 }
 
-
-
-.image-visible {
-  opacity: 1 !important;
+/* Image becomes visible when loaded */
+.profile-image-element.image-loaded {
+  opacity: 1;
 }
 
 .profile-content {
