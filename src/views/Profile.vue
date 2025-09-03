@@ -14,7 +14,7 @@
 
         <!-- Actual image positioned absolutely over the placeholder -->
         <img
-          :src="profileImage"
+          :src="optimizedProfileImageUrl"
           :class="['profile-image-element', { 'image-loaded': isImageLoaded }]"
           alt="Dasha Tsapenko working with bio-material"
           @load="onImageLoaded"
@@ -71,10 +71,11 @@ import MainText from '../components/MainText.vue'
 import InfoText from '../components/InfoText.vue'
 import BaseButton from '../components/BaseButton.vue'
 import { renderRichText } from '@storyblok/vue'
-import { loadStory } from '../utils/storyblok'
+import { loadStory, formatImage } from '../utils/storyblok'
 import { useStoryblokBridge } from '@storyblok/vue'
 import { isDraftMode } from '../utils/storyblok'
 import { extractImageDimensions, calculatePlaceholderDimensions } from '../utils/imageDimensions'
+import { createImageSettings } from '../utils/imageSettings'
 
 export default {
   name: 'Profile',
@@ -91,6 +92,8 @@ export default {
       isLoading: false,
       errorMessage: '',
       renderRichText,
+      // Create image settings for optimal profile image loading (window-based for responsive sizing)
+      profileImageSettings: createImageSettings('windowBased'),
       // Scrollback data
       dividerScrollTimeouts: {},
       isDividerScrolling: {},
@@ -115,6 +118,25 @@ export default {
       // We'll calculate based on container width being 50% on desktop
       const containerWidth = window.innerWidth > 768 ? '50vw' : '100vw';
       return calculatePlaceholderDimensions(this.profileImageDimensions, 'auto', containerWidth);
+    },
+    // Get optimized profile image URL using the same logic as ObjectPage
+    optimizedProfileImageUrl() {
+      // If we have CMS content with an image, use it with optimization
+      if (this.story && this.story.content && this.story.content.Image && this.story.content.Image.filename) {
+        // Create a mock object for formatImage function
+        const mockObject = {
+          content: {
+            visuals: [{
+              filename: this.story.content.Image.filename,
+              alt: this.story.content.Image.alt || 'Dasha Tsapenko working with bio-material'
+            }]
+          }
+        };
+        return formatImage(mockObject, this.profileImageSettings);
+      }
+
+      // For fallback image, return as-is (since it's not from Storyblok)
+      return this.profileImage;
     },
     parsedContent() {
       if (!this.story || !this.story.content || !this.story.content.info_text) {
