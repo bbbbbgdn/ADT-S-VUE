@@ -1924,11 +1924,11 @@ export default {
   transform: translateZ(0);
 }
 
-.gallery-item:first-of-type {
+.manual-scroll .gallery-item:first-of-type {
   padding-left: var(--gallery-item-margin);
 }
 
-.gallery-item:last-of-type {
+.manual-scroll.gallery-item:last-of-type {
   padding-right: var(--gallery-item-margin);
 }
 
