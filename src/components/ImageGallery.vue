@@ -1423,7 +1423,11 @@ export default {
         };
       });
 
-      if (!this.repeatToFill) {
+      // For big galleries, always repeat to fill if there are few images
+      // For small galleries, only repeat if repeatToFill is true (default behavior)
+      const shouldRepeat = this.repeatToFill || this.isBigGallery;
+
+      if (!shouldRepeat) {
         return processed;
       }
       // Calculate the width of each image
@@ -1444,11 +1448,15 @@ export default {
         imageWidthPx = 200;
       }
       const totalWidth = processed.length * imageWidthPx;
-      const minWidth = 2 * window.innerWidth;
+
+      // For big galleries, use 1.2x viewport width to ensure adequate coverage
+      // For small galleries, use 2x viewport width as before
+      const minWidth = this.isBigGallery ? 1.2 * window.innerWidth : 2 * window.innerWidth;
+
       if (totalWidth >= minWidth) {
         return processed;
       }
-      // Repeat images until at least 2x window width
+      // Repeat images until they fill the minimum required width
       const repeatCount = Math.ceil(minWidth / totalWidth);
       let repeated = [];
       for (let i = 0; i < repeatCount; i++) {
