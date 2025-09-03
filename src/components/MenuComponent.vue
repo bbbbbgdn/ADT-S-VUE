@@ -51,7 +51,7 @@ export default {
     
     // Add resize listener
     window.addEventListener('resize', checkScreenSize)
-    
+
     // Watch for route changes
     watch(
       () => route.path,

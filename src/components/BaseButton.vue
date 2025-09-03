@@ -1,11 +1,12 @@
 <template>
-  <button 
+  <button
     v-if="hasContent"
     class="base-button"
     :class="[
       `button-${variant}`,
       { 'keep-clickable': keepClickable && variant === 'active' },
-      { 'transition-exempt': true }
+      { 'transition-exempt': true },
+      { 'button-visible': isButtonVisible }
     ]"
     :disabled="disabled"
     @click="handleClick"
@@ -17,7 +18,7 @@
 </template>
 
 <script setup>
-import { computed, useSlots } from 'vue'
+import { computed, useSlots, ref, onMounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import navigationManager from '../utils/navigationManager'
 
@@ -43,6 +44,25 @@ const emit = defineEmits(['click'])
 // Slots
 const slots = useSlots()
 const router = useRouter()
+
+// Font loading state for fade-in animation
+const isButtonVisible = ref(false)
+
+// Show button only after fonts are ready to avoid visible layout shift
+onMounted(async () => {
+  try {
+    if (document && 'fonts' in document && document.fonts.ready) {
+      await document.fonts.ready
+    } else {
+      // Fallback: wait one frame
+      await nextTick()
+    }
+  } catch (e) {
+    // In case of any error, still reveal the button
+  } finally {
+    isButtonVisible.value = true
+  }
+})
 
 // Computed
 const hasContent = computed(() => {
@@ -84,11 +104,14 @@ const handleClick = (event) => {
 
   /* white-space: nowrap; */
   border-radius: var(--button-border-radius);
-  
+
   min-height: var(--button-min-height);
   line-height: 1;
 
   text-align: left;
+
+  /* Prevent initial flash of unstyled text; fade in when fonts are ready */
+  opacity: 0;
 }
 
 .button-text {
@@ -167,5 +190,15 @@ body.page-transitioning .button-black {
     max-width: 98.5vw;
   }
    */
+}
+
+/* Fade-in once fonts are ready (animation used to bypass transition-exempt) */
+.button-visible {
+  animation: buttonFadeIn 600ms ease-out 150ms forwards;
+}
+
+@keyframes buttonFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 </style> 
