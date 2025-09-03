@@ -1,5 +1,5 @@
-<script>
-import { useRoute, useRouter } from 'vue-router';
+<script setup>
+import { useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import ProjectCard from '../components/ProjectCard.vue';
@@ -10,87 +10,70 @@ import useStoryblok from '../utils/useStoryblok';
 import { createImageSettings } from '../utils/imageSettings';
 import { computed } from 'vue';
 
-// Create image settings using our utility - high quality for main project and other projects
+// Create image settings using our utility - high quality for main project
 const mainProjectImageSettings = createImageSettings('high');
-const otherProjectsImageSettings = createImageSettings('high');
 
-export default {
-  name: 'ProjectPage',
-  components: {
-    BaseButton,
-    ImageGallery,
-    ProjectCard,
-    MainText,
-    InfoText
-  },
-  data() {
-    return {
-      renderRichText
-    };
-  },
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-
-    const {
-      story,
-      stories,
-      isLoading,
-      contentReady,
-      errorMessage,
-      formatImage,
-      formatImages,
-      navigateTo
-    } = useStoryblok({
-      type: 'project',
-      preload: true,
-      watchRoute: true,
-      onError: (error, slug) => {
-        console.error(`Custom error handler for project ${slug}:`, error);
-        // Redirect to 404 page immediately if project not found
-        router.replace({ name: 'NotFound' });
-      }
-    });
-
-    const randomProjects = computed(() => {
-      if (!stories.value || stories.value.length === 0) return [];
-      return stories.value
-        .filter(p => p.slug !== story.value?.slug)
-        .slice()
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 4);
-    });
-
-    const navigateToProject = (slug) => {
-      navigateTo(slug);
-    };
-
-    // Format images with preset settings
-    const formatMainProjectImages = (visuals) => {
-      return formatImages(visuals, mainProjectImageSettings);
-    };
-
-    const formatOtherProjectsImages = (visuals) => {
-      return formatImages(visuals, otherProjectsImageSettings);
-    };
-
-    return {
-      story,
-      stories,
-      randomProjects,
-      isLoading,
-      contentReady,
-      errorMessage,
-      formatImage,
-      formatImages,
-      formatMainProjectImages,
-      formatOtherProjectsImages,
-      mainProjectImageSettings,
-      otherProjectsImageSettings,
-      navigateToProject
-    };
+// Use our Storyblok composable with 'project' type
+const router = useRouter();
+const {
+  story,
+  stories: otherProjects,
+  isLoading,
+  contentReady,
+  errorMessage,
+  formatImage,
+  formatImages,
+  navigateTo
+} = useStoryblok({
+  type: 'project',
+  preload: true,
+  watchRoute: true,
+  onError: (error, slug) => {
+    console.error(`Custom error handler for project ${slug}:`, error);
+    // Redirect to 404 page immediately if project not found
+    router.replace({ name: 'NotFound' });
   }
+});
+
+const randomProjects = computed(() => {
+  if (!otherProjects.value || otherProjects.value.length === 0) return [];
+  return otherProjects.value
+    .slice() // клон
+    .sort(() => 0.5 - Math.random()) // перемішати
+    .slice(0, 4); // взяти перші 4
+});
+
+const navigateToProject = (slug) => {
+  navigateTo(slug);
 };
+
+// Format images with preset settings
+const formatMainProjectImages = (visuals) => {
+  return formatImages(visuals, mainProjectImageSettings);
+};
+
+// Computed properties for cleaner gallery configuration
+const mainProjectGalleryProps = computed(() => ({
+  name: story.value?.content?.title_tag || '',
+  location: story.value?.content?.location_tag || '',
+  date: story.value?.content?.date_tag || story.value?.content?.year_tag || '',
+  slug: story.value?.slug,
+  images: story.value?.content?.visuals ? formatMainProjectImages(story.value.content.visuals) : [],
+  repeatCount: 1,
+  imageHeight: 'calc(100vh - 96rem)',
+  imageQuality: mainProjectImageSettings.quality,
+  imageFormat: mainProjectImageSettings.format,
+  resolutionRatio: mainProjectImageSettings.resolutionRatio,
+  isActive: true,
+  repeatToFill: false,
+  enableNavigation: false,
+  // Enable manual click-and-drag for big galleries
+  allowDrag: true,
+  // Enable photo navigation for main project gallery
+  enablePhotoNavigation: true
+}));
+
+
 </script>
 
 <template>
@@ -110,19 +93,8 @@ export default {
         <!-- Main Project Gallery -->
         <ImageGallery
           v-if="story.content?.visuals && story.content.visuals.length > 0"
-          :slug="story.slug"
-          :name="story.content?.title_tag || ''"
-          :location="story.content?.location_tag || ''"
-          :date="story.content?.date_tag || story.content?.year_tag || ''"
-          :images="formatMainProjectImages(story.content.visuals)" 
-          :repeatCount="1"
-          :imageHeight="'calc(100vh - 96rem)'"
-          :imageQuality="mainProjectImageSettings.quality"
-          :imageFormat="mainProjectImageSettings.format"
-          :resolutionRatio="mainProjectImageSettings.resolutionRatio"
-          :isActive="true"
-          :repeatToFill="false"
-          :enableNavigation="false"
+          v-bind="mainProjectGalleryProps"
+          :style="{ '--mobile-gallery-height': '70svh' }"
         />
         
         <!-- Fallback message if no visuals -->
@@ -137,28 +109,28 @@ export default {
         
         <InfoText :html="renderRichText(story.content?.info_text || '')" />
 
+        <div id="extra-section">
+          <div class="button-container">
+            <BaseButton to="/projects">Other projects</BaseButton>
+          </div>
 
+          <div v-if="randomProjects.length > 0" class="image-grid">
+            <ProjectCard
+              v-for="project in randomProjects"
+              :key="project.id"
+              :image="formatImage(project)"
+              :projectName="project.content?.title_tag || 'Untitled Project'"
+              :year="project.content?.year_tag || ''"
+              :slug="project.slug"
+              :useImgTag="true"
+              :preload="true"
+              @click="navigateToProject(project.slug.split('/').pop())"
+            />
+          </div>
 
-        <div class="button-container">
-          <BaseButton to="/projects">Other projects</BaseButton>
-        </div>
-
-        <div v-if="randomProjects.length > 0" class="image-grid">
-          <ProjectCard
-            v-for="project in randomProjects"
-            :key="project.id"
-            :image="formatImage(project)"
-            :projectName="project.content?.title_tag || 'Untitled Project'"
-            :year="project.content?.year_tag || ''"
-            :slug="project.slug"
-            :useImgTag="true"
-            :preload="true"
-            @click="navigateToProject(project.slug.split('/').pop())"
-          />
-        </div>
-
-        <div v-else class="no-projects-message">
-          <p>No other projects available</p>
+          <div v-else class="no-projects-message">
+            <p>No other projects available</p>
+          </div>
         </div>
       </div>
     </div>
@@ -178,15 +150,6 @@ export default {
 
 .content-visible {
   opacity: 1;
-}
-
-.project-tags {
-  display: flex;
-  gap: var(--space-md);
-  margin-left: var(--space-md);
-  margin-bottom: var(--space-md);
-  flex-wrap: wrap;
-  align-items: center;
 }
 
 .button-container {
@@ -244,26 +207,19 @@ export default {
     min-height: 100% !important;
   }
 
-  .image-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  width: 100%;
-  /* padding: var(--space-md); */
-}
-
   /* Override main gallery height on mobile */
   .content-container .gallery-container {
     min-height: 60svh !important;
   }
-  
+
   .content-container .gallery-container .gallery {
     min-height: 60svh !important;
   }
-  
+
   .content-container .gallery-container .gallery-item {
     min-height: 60svh !important;
   }
-  
+
   .content-container .gallery-container .gallery-image {
     min-height: 60svh !important;
   }

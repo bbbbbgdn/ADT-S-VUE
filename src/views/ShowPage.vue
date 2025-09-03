@@ -1,5 +1,5 @@
 <script setup>
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
 import MainText from '../components/MainText.vue';
@@ -21,9 +21,7 @@ const {
   isLoading,
   contentReady,
   errorMessage,
-  formatImage,
-  formatImages,
-  navigateTo
+  formatImages
 } = useStoryblok({
   type: 'show',
   preload: true,
@@ -58,9 +56,7 @@ const formatMainShowImages = (visuals) => {
   return formatImages(visuals, mainShowImageSettings);
 };
 
-const formatOtherShowsImages = (visuals) => {
-  return formatImages(visuals, otherShowsImageSettings);
-};
+
 
 // Computed properties for cleaner gallery configuration
 const mainShowGalleryProps = computed(() => ({
@@ -136,29 +132,31 @@ const getOtherShowGalleryProps = (show) => ({
         
         <InfoText :html="renderRichText(story.content?.info_text || '')" />
         
-        <div class="button-container">
-          <BaseButton to="/shows">Other Shows</BaseButton>
-        </div>
-        
-        <!-- Other Shows Galleries -->
-        <div v-if="randomOtherShows.length > 0" class="other-shows-container">
-          <div
-            v-for="show in randomOtherShows"
-            :key="show.id"
-            class="story-placeholder"
-            :data-story-id="show.uuid"
-          >
-            <ImageGallery
-              v-bind="getOtherShowGalleryProps(show)"
-              :style="{ '--mobile-gallery-height': '22svh' }"
-              @gallery-error="handleGalleryError(show.uuid)"
-              @gallery-success="handleGallerySuccess(show.uuid)"
-            />
+        <div id="extra-section">
+          <div class="button-container">
+            <BaseButton to="/shows">Other shows</BaseButton>
           </div>
-        </div>
-        
-        <div v-else class="no-shows-message">
-          <p>No other shows available</p>
+          
+          <!-- Other Shows Galleries -->
+          <div v-if="randomOtherShows.length > 0" class="other-shows-container">
+            <div
+              v-for="show in randomOtherShows"
+              :key="show.id"
+              class="story-placeholder"
+              :data-story-id="show.uuid"
+            >
+              <ImageGallery
+                v-bind="getOtherShowGalleryProps(show)"
+                :style="{ '--mobile-gallery-height': '22svh' }"
+                @gallery-error="handleGalleryError(show.uuid)"
+                @gallery-success="handleGallerySuccess(show.uuid)"
+              />
+            </div>
+          </div>
+          
+          <div v-else class="no-shows-message">
+            <p>No other shows available</p>
+          </div>
         </div>
       </div>
     </div>
@@ -166,6 +164,10 @@ const getOtherShowGalleryProps = (show) => ({
 </template>
 
 <style>
+
+#extra-section {
+  margin-top: calc(var(--space-4xl)*3.25);
+}
 /* Content area that contains both loading and content */
 .content-area {
   position: relative;
@@ -182,24 +184,11 @@ const getOtherShowGalleryProps = (show) => ({
   opacity: 1;
 }
 
-h1 {
-  font-size: var(--text-2xl);
-  margin: var(--space-lg) 0;
-}
 
-.image-gallery {
-  }
 
-  .image-container img {
-    width: 200px;
-    height: 600px;
-    object-fit: cover;
-    border-radius: 5px;
-  }
 
-.gallery-item img{
-  /* height: 55vh; */
-}
+
+
 
 .button-container {
   margin: var(--space-md);
@@ -258,7 +247,5 @@ h1 {
   width: 100%;
 }
 
-@media screen and (max-width: 768px) {
-  /* Mobile styles can be added here if needed */
-}
+
 </style>
