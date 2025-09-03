@@ -38,15 +38,35 @@
         <!-- Brightness Control -->
         <div class="flex flex-col">
             <label for="brightness-slider" class="text-sm font-medium text-gray-700">Brightness</label>
-            <input type="range" id="brightness-slider" min="0" max="500" value="150" class="w-full h-2 my-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500">
+            <input type="range" id="brightness-slider" min="0" max="1500" value="150" class="w-full h-2 my-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500">
             <div class="flex justify-between gap-2 mt-1">
                 <input type="number" id="brightness-min" value="0" class="w-1/2 p-2 text-sm text-center border border-gray-300 rounded-lg">
-                <input type="number" id="brightness-max" value="500" class="w-1/2 p-2 text-sm text-center border border-gray-300 rounded-lg">
+                <input type="number" id="brightness-max" value="1500" class="w-1/2 p-2 text-sm text-center border border-gray-300 rounded-lg">
             </div>
             <label class="flex items-center gap-2 mt-2 text-sm text-gray-600">
                 <input type="checkbox" id="animate-brightness" checked class="w-4 h-4 text-blue-600 form-checkbox rounded-md">
                 Animate
             </label>
+            <label for="brightness-easing" class="block mt-2 text-sm font-medium text-gray-700">Easing Function</label>
+            <select id="brightness-easing" class="w-full mt-1 p-2 text-sm border border-gray-300 rounded-lg bg-white">
+                <option value="linear">Linear</option>
+                <option value="ease-in">Ease In (Quadratic)</option>
+                <option value="ease-out">Ease Out (Quadratic)</option>
+                <option value="ease-in-out">Ease In Out (Quadratic)</option>
+                <option value="cubic-in" selected>Cubic In</option>
+                <option value="cubic-out">Cubic Out</option>
+                <option value="cubic-in-out">Cubic In Out</option>
+                <option value="quartic-in">Quartic In</option>
+                <option value="quartic-out">Quartic Out</option>
+                <option value="quartic-in-out">Quartic In Out</option>
+                <option value="sinusoidal-in">Sinusoidal In</option>
+                <option value="sinusoidal-out">Sinusoidal Out</option>
+                <option value="sinusoidal-in-out">Sinusoidal In Out</option>
+                <option value="bounce-out">Bounce Out</option>
+                <option value="elastic-out">Elastic Out</option>
+            </select>
+            <label for="brightness-duration" class="block mt-2 text-sm font-medium text-gray-700">Animation Duration (seconds)</label>
+            <input type="number" id="brightness-duration" value="5" min="0.1" max="60" step="0.1" class="w-full mt-1 p-2 text-sm text-center border border-gray-300 rounded-lg">
         </div>
 
         <!-- Grayscale Control -->
@@ -96,6 +116,9 @@
         const animateGrayscaleCheckbox = document.getElementById('animate-grayscale');
         const animateContrastCheckbox = document.getElementById('animate-contrast');
 
+        const brightnessEasingSelect = document.getElementById('brightness-easing');
+        const brightnessDurationInput = document.getElementById('brightness-duration');
+
         let animatingBrightness = animateBrightnessCheckbox.checked;
         let animatingGrayscale = animateGrayscaleCheckbox.checked;
         let animatingContrast = animateContrastCheckbox.checked;
@@ -108,6 +131,37 @@
         let grayscaleDirection = 1;
         let contrastDirection = 1;
 
+        // Animation timing variables
+        let brightnessAnimationStartTime = null;
+        let lastFrameTime = null;
+
+        // Easing functions
+        const easingFunctions = {
+            linear: t => t,
+            'ease-in': t => t * t,
+            'ease-out': t => t * (2 - t),
+            'ease-in-out': t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t,
+            'cubic-in': t => t * t * t,
+            'cubic-out': t => (--t) * t * t + 1,
+            'cubic-in-out': t => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1,
+            'quartic-in': t => t * t * t * t,
+            'quartic-out': t => 1 - (--t) * t * t * t,
+            'quartic-in-out': t => t < 0.5 ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t,
+            'sinusoidal-in': t => 1 - Math.cos((t * Math.PI) / 2),
+            'sinusoidal-out': t => Math.sin((t * Math.PI) / 2),
+            'sinusoidal-in-out': t => -(Math.cos(Math.PI * t) - 1) / 2,
+            'bounce-out': t => {
+                if (t < 1 / 2.75) return 7.5625 * t * t;
+                if (t < 2 / 2.75) return 7.5625 * (t -= 1.5 / 2.75) * t + 0.75;
+                if (t < 2.5 / 2.75) return 7.5625 * (t -= 2.25 / 2.75) * t + 0.9375;
+                return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375;
+            },
+            'elastic-out': t => {
+                const c4 = (2 * Math.PI) / 3;
+                return t === 0 ? 0 : t === 1 ? 1 : Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
+            }
+        };
+
         function updateFilter() {
             filteredImage.style.filter = `brightness(${brightnessSlider.value}%) grayscale(${grayscaleSlider.value}%) contrast(${contrastSlider.value}%)`;
         }
@@ -117,18 +171,32 @@
             slider.max = maxInput.value;
         }
 
-        function animateValues() {
+        function animateValues(currentTime) {
             if (animatingBrightness) {
+                // Initialize animation timing
+                if (brightnessAnimationStartTime === null) {
+                    brightnessAnimationStartTime = currentTime;
+                    lastFrameTime = currentTime;
+                }
+
+                const duration = parseFloat(brightnessDurationInput.value) * 1000; // Convert to milliseconds
+                const elapsed = currentTime - brightnessAnimationStartTime;
+                const cycleProgress = (elapsed % duration) / duration;
+
+                // Create a triangle wave for back-and-forth animation
+                const triangleProgress = cycleProgress < 0.5 ? cycleProgress * 2 : (1 - cycleProgress) * 2;
+
                 const min = parseInt(brightnessMinInput.value);
                 const max = parseInt(brightnessMaxInput.value);
-                const progress = (currentBrightness - min) / (max - min);
-                const speed = Math.pow(progress, 3) * 5 + 1;
-                currentBrightness += brightnessDirection * speed;
-                if (currentBrightness >= max || currentBrightness <= min) {
-                    brightnessDirection *= -1;
-                }
-                currentBrightness = Math.max(min, Math.min(currentBrightness, max));
+                const selectedEasing = brightnessEasingSelect.value;
+                const easedProgress = easingFunctions[selectedEasing](triangleProgress);
+
+                currentBrightness = min + (max - min) * easedProgress;
                 brightnessSlider.value = Math.round(currentBrightness);
+            } else {
+                // Reset timing when animation is disabled
+                brightnessAnimationStartTime = null;
+                lastFrameTime = null;
             }
 
             if (animatingGrayscale) {
@@ -163,7 +231,27 @@
 
         animateBrightnessCheckbox.addEventListener('change', () => {
             animatingBrightness = animateBrightnessCheckbox.checked;
-            if (!animatingBrightness) currentBrightness = parseInt(brightnessSlider.value);
+            if (!animatingBrightness) {
+                currentBrightness = parseInt(brightnessSlider.value);
+                brightnessAnimationStartTime = null;
+                lastFrameTime = null;
+            }
+        });
+
+        brightnessDurationInput.addEventListener('input', () => {
+            // Reset animation timing when duration changes
+            if (animatingBrightness) {
+                brightnessAnimationStartTime = null;
+                lastFrameTime = null;
+            }
+        });
+
+        brightnessEasingSelect.addEventListener('change', () => {
+            // Reset animation timing when easing function changes
+            if (animatingBrightness) {
+                brightnessAnimationStartTime = null;
+                lastFrameTime = null;
+            }
         });
 
         animateGrayscaleCheckbox.addEventListener('change', () => {
@@ -190,7 +278,7 @@
         }
 
         // Initial call to start the animation loop
-        animateValues();
+        requestAnimationFrame(animateValues);
     </script>
 </body>
 </html>
