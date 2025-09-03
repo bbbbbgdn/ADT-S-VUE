@@ -2,6 +2,17 @@
   <div class="profile-page-wrapper">
     <div class="profile-container">
       <div class="profile-image" ref="profileImageContainer">
+        <!-- Placeholder div to maintain aspect ratio and prevent layout jumps -->
+        <div
+          class="image-placeholder"
+          :style="{
+            width: profileImagePlaceholderDimensions.width,
+            height: profileImagePlaceholderDimensions.height,
+            aspectRatio: profileImageDimensions ? profileImageDimensions.aspectRatio : 'auto'
+          }"
+        ></div>
+
+        <!-- Actual image positioned absolutely over the placeholder -->
         <img
           :src="profileImage"
           :class="['profile-image-element', { 'image-loaded': isImageLoaded }]"
@@ -10,7 +21,6 @@
           @error="onImageError"
           ref="profileImg"
         />
-        <div class="image-placeholder" v-if="!isImageLoaded"></div>
       </div>
       
 
@@ -64,6 +74,7 @@ import { renderRichText } from '@storyblok/vue'
 import { loadStory } from '../utils/storyblok'
 import { useStoryblokBridge } from '@storyblok/vue'
 import { isDraftMode } from '../utils/storyblok'
+import { extractImageDimensions, calculatePlaceholderDimensions } from '../utils/imageDimensions'
 
 export default {
   name: 'Profile',
@@ -87,6 +98,24 @@ export default {
     }
   },
   computed: {
+    profileImageDimensions() {
+      return extractImageDimensions(this.profileImage);
+    },
+    profileImagePlaceholderDimensions() {
+      if (!this.profileImageDimensions) {
+        // Fallback dimensions for when we can't extract from URL
+        return {
+          width: '100%',
+          height: 'auto',
+          aspectRatio: 1.5 // Default aspect ratio
+        };
+      }
+
+      // For profile image, we want it to be responsive
+      // We'll calculate based on container width being 50% on desktop
+      const containerWidth = window.innerWidth > 768 ? '50vw' : '100vw';
+      return calculatePlaceholderDimensions(this.profileImageDimensions, 'auto', containerWidth);
+    },
     parsedContent() {
       if (!this.story || !this.story.content || !this.story.content.info_text) {
         return [];
@@ -316,34 +345,49 @@ export default {
 
 .profile-image {
   flex: 0 0 50%;
-  overflow: hidden;
   position: relative;
   overflow: visible;
   z-index: -1;
 }
 
-.profile-image-element {
+.image-placeholder {
+  position: relative;
   width: 100%;
+  background-color: rgba(248, 248, 248, 0.1); /* Subtle background to indicate loading */
+  /* Use aspect-ratio property for modern browsers */
+  aspect-ratio: var(--aspect-ratio, auto);
+  /* Ensure the placeholder maintains space even when image is loading */
+  opacity: 1;
+  z-index: 0;
+  /* Prevent any layout shifts */
+  box-sizing: border-box;
+}
+
+.profile-image-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   padding: 0 var(--space-md);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   display: block;
   background: transparent;
-}
-
-.image-placeholder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #f5f5f5;
+  /* Initially hide all images completely to prevent any layout shifts */
+  visibility: hidden;
+  /* Prevent image dragging */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
 /* Image becomes visible when loaded */
 .profile-image-element.image-loaded {
   opacity: 1;
+  visibility: visible;
 }
 
 .profile-content {
