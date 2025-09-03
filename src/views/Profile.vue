@@ -443,6 +443,10 @@ export default {
  padding: 0;
 }
 
+.profile-header :deep(.main-text-container) {
+  margin-bottom: 0;
+}
+
 .profile-rich-text .base-button {
   margin: 0 0.25rem;
   display: inline-flex;
