@@ -90,7 +90,8 @@ export default {
       try {
         const response = await storyblokApi.get('cdn/stories', {
           starts_with: 'objects/',
-          version: 'published'
+          version: 'published',
+          per_page: 100
         });
         
         // Добавим проверку перед присвоением
