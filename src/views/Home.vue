@@ -1,6 +1,6 @@
 <template>
   <div class="home" :class="{ 'image-loaded': isLoaded }">
-    <div class="title-text" :class="{ 'title-fade-in': isLoaded }">Atelier Dasha Tsapenko</div>
+    <div class="title-text" :class="{ 'title-fade-in': isLoaded }">{{ homepageTitle }}</div>
     <iframe
       class="video-background"
       src="/home_video/index.html"
@@ -14,6 +14,10 @@
 
 <script setup>
 import { ref, onBeforeUnmount, onMounted } from 'vue'
+import useGlobalSettings from '../utils/useGlobalSettings'
+
+// Global settings
+const { homepageTitle } = useGlobalSettings()
 
 // Reactive data
 const isLoaded = ref(false)

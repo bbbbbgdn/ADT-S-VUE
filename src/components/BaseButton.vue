@@ -27,7 +27,7 @@ const props = defineProps({
   variant: {
     type: String,
     default: 'black',
-    validator: (value) => ['black', 'grey', 'active'].includes(value)
+    validator: (value) => ['black', 'grey', 'active', 'ongoing'].includes(value)
   },
   disabled: { type: Boolean, default: false },
   to: { 
@@ -167,6 +167,16 @@ const handleClick = (event) => {
   background-color: var(--color-pink-primary);
   color: black;
   pointer-events: none;
+}
+
+/* Ongoing Button */
+.button-ongoing {
+  background-color: #4ade80; /* Green-400 */
+  color: black !important;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* Override for active buttons that should remain clickable */

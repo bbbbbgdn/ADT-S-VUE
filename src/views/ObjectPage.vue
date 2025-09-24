@@ -4,6 +4,7 @@ import BaseButton from '../components/BaseButton.vue';
 import ObjectCard from '../components/ObjectCard.vue';
 import { computed, onMounted, onUnmounted, ref, nextTick } from 'vue';
 import useStoryblok from '../utils/useStoryblok';
+import useGlobalSettings from '../utils/useGlobalSettings';
 import { createImageSettings } from '../utils/imageSettings';
 import { extractImageDimensions, calculatePlaceholderDimensions } from '../utils/imageDimensions';
 
@@ -13,6 +14,9 @@ const otherObjectsImageSettings = createImageSettings('thumbnail');
 
 // Use our Storyblok composable with 'object' type
 const router = useRouter();
+
+// Global settings for delivery info
+const { deliveryInfo } = useGlobalSettings();
 const {
   story,
   stories: otherObjects,
@@ -284,7 +288,7 @@ onUnmounted(() => {
 
                           
             <!-- Purchase/shipping info -->
-            <div v-if="story.content?.purchase_text" class="purchase-info" v-html="formatTextWithLineBreaks(story.content.purchase_text)">
+            <div v-if="deliveryInfo" class="purchase-info" v-html="formatTextWithLineBreaks(deliveryInfo)">
             </div>
 
             </div>

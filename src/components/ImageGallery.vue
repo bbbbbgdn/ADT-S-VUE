@@ -1,9 +1,9 @@
 <template>
-  <div 
-    class="gallery-container" 
-    :class="{ 'clickable': !isActive }"
-    ref="galleryContainer"
-  >
+    <div
+      class="gallery-container"
+      :class="{ 'clickable': !isActive, 'main-gallery': isActive }"
+      ref="galleryContainer"
+    >
         <div
       class="gallery"
       ref="gallery"
@@ -123,9 +123,9 @@
       </div>
     </div>
 
-    <div 
-      v-if="shouldShowTags" 
-      class="gallery-tags" 
+    <div
+      v-if="shouldShowTags"
+      class="gallery-tags"
       @click.stop
       ref="galleryTags"
       @scroll="handleTagsScroll"
@@ -134,9 +134,19 @@
       @mouseenter="handleTagsMouseEnter"
       @mouseleave="handleTagsMouseLeave"
     >
-      <ButtonBase 
-        v-if="name && name.trim().length > 0" 
-        :to="`/shows/${slug}`" 
+      <!-- Ongoing tag with blinking dot -->
+      <ButtonBase
+        v-if="isOngoing"
+        variant="ongoing"
+        class="ongoing-tag"
+      >
+        <span class="ongoing-dot"></span>
+        <span class="ongoing-text">Ongoing</span>
+      </ButtonBase>
+
+      <ButtonBase
+        v-if="name && name.trim().length > 0"
+        :to="`/shows/${slug}`"
         :variant="isActive ? 'active' : 'black'"
         :class="{ 'button-hover': isHovering }"
       >
@@ -162,6 +172,7 @@ export default {
     slug: { type: String, required: true },
     location: String,
     date: String,
+    isOngoing: { type: Boolean, default: false },
     images: { type: Array, required: true },
     repeatCount: { type: Number, required: true },
     isActive: { type: Boolean, default: false },
@@ -1365,7 +1376,7 @@ export default {
       return this.imageWidth !== 'auto' ? { width: this.imageWidth } : {};
     },
     shouldShowTags() {
-      return (this.name && this.name.trim()) || (this.location && this.location.trim()) || (this.date && this.date.trim());
+      return this.isOngoing || (this.name && this.name.trim()) || (this.location && this.location.trim()) || (this.date && this.date.trim());
     },
     galleryStyle() {
       return {};
@@ -1962,5 +1973,77 @@ export default {
 /* Also hide scrollbars on the gallery container */
 .gallery-container::-webkit-scrollbar {
   display: none;
+}
+
+/* Ongoing tag styles */
+.ongoing-tag {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.button-ongoing .button-text {
+  display: flex !important;
+  align-items: center;
+  gap: 4.0rem;
+  transform: none !important;
+  white-space: nowrap !important;
+}
+
+/* Target the spans inside the button-text wrapper */
+.button-ongoing .button-text .ongoing-dot {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: black !important;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+  flex-shrink: 0; /* Prevent dot from shrinking */
+  display: inline-block !important;
+  vertical-align: middle;
+  margin-top: -1px; /* Fine-tune vertical alignment */
+  position: relative;
+  z-index: 1;
+}
+
+.button-ongoing .button-text .ongoing-text {
+  white-space: nowrap;
+  color: black !important;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.3;
+  }
+}
+
+/* Hover effects for gallery tags */
+.gallery-container.clickable:hover .gallery-tags .button-grey {
+  background-color: black !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+}
+
+.gallery-container.clickable:hover .gallery-tags .button-black:not(.button-hover) {
+  background-color: var(--color-pink-primary) !important;
+  color: black !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Remove hover effects for main gallery (active galleries) - they act as headers */
+.gallery-container.main-gallery .gallery-tags .button-grey,
+.gallery-container.main-gallery:hover .gallery-tags .button-grey {
+  background-color: rgba(195, 195, 195, 0.6) !important;
+  color: rgb(0, 0, 0) !important;
+  transition: none !important;
+}
+
+.gallery-container.main-gallery .gallery-tags .button-black:not(.button-hover),
+.gallery-container.main-gallery:hover .gallery-tags .button-black:not(.button-hover) {
+  background-color: black !important;
+  color: white !important;
+  transition: none !important;
 }
 </style>

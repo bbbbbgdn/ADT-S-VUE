@@ -1,21 +1,18 @@
 <template>
   <div class="objects-container">
     <FilterComponent @filter-changed="handleFilter" />
-    <div class="objects-grid">
+    
+    <!-- Loading indicator -->
+    <div v-if="isLoading" class="loading-container">
+      <p>Loading all objects... This may take a moment.</p>
+    </div>
+    
+    <div v-else class="objects-grid">
       <ObjectCard
         class="object-card"
         v-for="(story, index) in filteredStories"
         :key="story.id"
-        :image="story.content?.visuals?.[0] ? formatImage(story.content.visuals[0]) : ''"
-        :objectName="story.content?.title_tag || ''"
-        :price="story.content?.price_tag || ''"
-        :showPrice="story.content?.display_price || false"
-        :slug="story.slug"
-        :gallery-index="index"
-        :gallery-id="'objects-gallery'"
-        :total-items="filteredStories.length"
-        :preload-count="filteredStories.length > 15 ? 2 : 4"
-        :is-big-gallery="filteredStories.length > 15"
+        v-bind="getObjectCardProps(story, index)"
       />
     </div>
   </div>
@@ -25,9 +22,9 @@
 import { onMounted, ref, computed } from 'vue';
 import ObjectCard from '../components/ObjectCard.vue';
 import FilterComponent from '../components/FilterComponent.vue';
-import { useStoryblokApi } from '@storyblok/vue';
 import { createImageSettings } from '../utils/imageSettings';
 import { createImageUrl } from '../utils/storyblok';
+import { fetchAllObjects } from '../utils/storyblokPagination';
 
 export default {
   name: 'Objects',
@@ -36,19 +33,12 @@ export default {
     FilterComponent
   },
   setup() {
-    let storyblokApi = null;
     const stories = ref([]);
     const currentFilter = ref('all');
+    const isLoading = ref(true);
 
     // Use smaller, good-quality settings for object thumbnails
     const objectCardImageSettings = createImageSettings('high');
-
-    // Try to get Storyblok API only if it's available
-    try {
-      storyblokApi = useStoryblokApi();
-    } catch (error) {
-      console.warn('Storyblok API is not available:', error);
-    }
 
     const filteredStories = computed(() => {
       switch (currentFilter.value) {
@@ -77,29 +67,48 @@ export default {
       }
       return createImageUrl(visual.filename, objectCardImageSettings);
     };
+
+    const getObjectCardProps = (story, index) => {
+      const baseProps = {
+        objectName: story.content?.title_tag || '',
+        price: story.content?.price_tag || '',
+        showPrice: story.content?.display_price || false,
+        slug: story.slug,
+        'gallery-index': index,
+        'gallery-id': 'objects-gallery',
+        'total-items': filteredStories.value.length,
+        'preload-count': filteredStories.value.length > 15 ? 2 : 4,
+        'is-big-gallery': filteredStories.value.length > 15
+      };
+
+      // Only add image prop if the object has a valid image
+      if (story.content?.visuals?.[0]?.filename) {
+        baseProps.image = formatImage(story.content.visuals[0]);
+      }
+      // If no image, let ObjectCard use its default fallback
+
+      return baseProps;
+    };
   
 
 
     onMounted(async () => {
       // Check if Storyblok is available
-      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN || !storyblokApi) {
+      if (!import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN) {
         console.warn('Storyblok is not available. Objects page will be empty.');
+        isLoading.value = false;
         return;
       }
       
       try {
-        const response = await storyblokApi.get('cdn/stories', {
-          starts_with: 'objects/',
-          version: 'published',
-          per_page: 100
-        });
-        
-        // Добавим проверку перед присвоением
-        if (response.data && response.data.stories) {
-          stories.value = response.data.stories;
-        }
+        // Fetch all objects using pagination
+        const allObjects = await fetchAllObjects();
+        stories.value = allObjects;
+        console.log(`✅ Loaded ${allObjects.length} objects in total`);
       } catch (error) {
-        console.error('Error fetching stories:', error);
+        console.error('Error fetching all objects:', error);
+      } finally {
+        isLoading.value = false;
       }
     });  
 
@@ -107,7 +116,9 @@ export default {
       stories,
       filteredStories,
       formatImage,
-      handleFilter
+      handleFilter,
+      isLoading,
+      getObjectCardProps
     };
   }
 }
@@ -119,6 +130,15 @@ export default {
 
 .objects-container {
   width: 100%;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary, #666);
 }
 
 .objects-grid {

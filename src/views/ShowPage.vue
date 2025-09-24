@@ -61,8 +61,9 @@ const formatMainShowImages = (visuals) => {
 const mainShowGalleryProps = computed(() => ({
   name: story.value?.content?.title_tag || '',
   location: story.value?.content?.location_tag || '',
-  date: story.value?.content?.date_tag || '',
+  date: story.value ? formatDateRange(story.value) : '',
   slug: story.value?.slug,
+  isOngoing: story.value ? isShowOngoing(story.value) : false,
   images: story.value?.content?.visuals ? formatMainShowImages(story.value.content.visuals) : [],
   repeatCount: 1,
   imageHeight: 'calc(100vh - 96rem)',
@@ -78,11 +79,44 @@ const mainShowGalleryProps = computed(() => ({
   enablePhotoNavigation: true
 }));
 
+// Function to format date range
+const formatDateRange = (show) => {
+  const startDate = show.content?.start_date;
+  const endDate = show.content?.end_date;
+
+  if (!startDate || !endDate) {
+    return show.content?.date_tag || '';
+  }
+
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  const formatDate = (date) => {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear()).slice(-2);
+    return `${day}.${month}.${year}`;
+  };
+
+  return `${formatDate(start)}-${formatDate(end)}`;
+};
+
+// Function to check if a show is currently ongoing
+const isShowOngoing = (show) => {
+  const now = new Date();
+  const startDate = new Date(show.content?.start_date || '1970-01-01');
+  const endDate = new Date(show.content?.end_date || '2099-12-31');
+
+  // Show is ongoing if current date is between start and end dates
+  return now >= startDate && now <= endDate;
+};
+
 const getOtherShowGalleryProps = (show) => ({
   name: show.content?.title_tag || 'Untitled Show',
   location: show.content?.location_tag || '',
-  date: show.content?.date_tag || '',
+  date: formatDateRange(show),
   slug: show.slug,
+  isOngoing: isShowOngoing(show),
   images: formatImages(show.content?.visuals), // Use same formatting as Shows.vue
   repeatCount: 1,
   imageHeight: `${otherShowsImageSettings.height / 2}rem`, // Same calculation as Shows.vue

@@ -72,7 +72,7 @@
 
 <script>
 import { onMounted, ref, computed, nextTick, onBeforeUnmount, getCurrentInstance } from 'vue'
-import { useStoryblokService } from '../services/storyblok'
+import { fetchAllStories } from '../utils/storyblokPagination'
 import BaseButton from '../components/BaseButton.vue'
 
 export default {
@@ -87,13 +87,12 @@ export default {
     const dividerSpringAnimationIds = ref({})
     const { proxy } = getCurrentInstance();
 
-    // Use centralized Storyblok service
-    const { getStories } = useStoryblokService();
+    // We'll use the pagination utility instead of the service
 
     const groupedPress = computed(() => {
       // Force reactivity by accessing pressItems.value
       const items = [...pressItems.value]
-      
+
       const yearToItemsMap = {}
       items.forEach(item => {
         const year = item.content.year || 'No Year'
@@ -102,30 +101,52 @@ export default {
         }
         yearToItemsMap[year].push(item)
       })
-      
+
       // Build ordered array of { year, items }
       const entries = Object.entries(yearToItemsMap).map(([year, groupItems]) => ({
         year,
         items: groupItems
       }))
-      
+
       // Sort years explicitly as numbers where possible, keeping 'No Year' first
       entries.sort((a, b) => {
         if (a.year === 'No Year') return -1
         if (b.year === 'No Year') return 1
         return parseInt(b.year) - parseInt(a.year) // descending: newest → oldest
       })
-      
-      // Sort items within each year for stability (alphabetically by title)
+
+      // Sort items within each year by first published date (newest first)
       entries.forEach(entry => {
+        // Log items before sorting for debugging
+        console.log(`Press items for year ${entry.year}:`, entry.items.map(item => ({
+          id: item.id,
+          title: item.content.press_title,
+          first_published_at: item.first_published_at,
+          created_at: item.created_at
+        })))
+
         entry.items.sort((x, y) => {
-          const ax = x.content.press_title || ''
-          const ay = y.content.press_title || ''
-          if (ax !== ay) return ax.localeCompare(ay)
-          return String(x.id).localeCompare(String(y.id))
+          // Use first_published_at for sorting by first published date, fallback to created_at
+          const dateX = new Date(x.first_published_at || x.created_at || x.published_at || '1970-01-01')
+          const dateY = new Date(y.first_published_at || y.created_at || y.published_at || '1970-01-01')
+
+          // Sort by first published date (newest first within each year)
+          const dateDiff = dateY.getTime() - dateX.getTime()
+          if (dateDiff !== 0) return dateDiff
+
+          // Fallback to ID for stability if dates are identical
+          return String(y.id).localeCompare(String(x.id))
         })
+
+        // Log items after sorting for debugging
+        console.log(`Sorted press items for year ${entry.year}:`, entry.items.map(item => ({
+          id: item.id,
+          title: item.content.press_title,
+          first_published_at: item.first_published_at,
+          created_at: item.created_at
+        })))
       })
-      
+
       return entries
     })
 
@@ -405,19 +426,29 @@ export default {
 
 
     onMounted(async () => {
-      const result = await getStories('press/', { resolve_links: 'url' });
-      
-      if (result.success) {
-        pressItems.value = result.data;
-        // Debug: log the loaded data
-        console.log('Loaded press items:', pressItems.value.map(item => ({
+      try {
+        // Fetch all press items using pagination
+        const allPressItems = await fetchAllStories({
+          starts_with: 'press/',
+          version: 'published',
+          extraParams: { resolve_links: 'url' }
+        });
+        
+        pressItems.value = allPressItems;
+        console.log(`✅ Loaded ${allPressItems.length} press items in total`);
+        
+        // Debug: log the loaded data with creation dates
+        console.log('Press items by first published date:', pressItems.value.map(item => ({
           id: item.id,
           year: item.content.year,
           title: item.content.press_title,
-          url: item.content.URL?.url
+          url: item.content.URL?.url,
+          first_published_at: item.first_published_at,
+          created_at: item.created_at,
+          published_at: item.published_at
         })))
-      } else {
-        console.warn('Failed to load press items:', result.error);
+      } catch (error) {
+        console.error('Error fetching all press items:', error);
       }
 
       // Add global touch end listener as a safety net with immediate response

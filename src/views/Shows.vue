@@ -22,6 +22,38 @@ try {
 // Create image settings using our utility with the thumbnail preset for gallery
 const imageSettings = createImageSettings('thumbnail');
 
+  // Function to format date range
+  const formatDateRange = (show) => {
+    const startDate = show.content?.start_date;
+    const endDate = show.content?.end_date;
+
+    if (!startDate || !endDate) {
+      return show.content?.date_tag || '';
+    }
+
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const formatDate = (date) => {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = String(date.getFullYear()).slice(-2);
+      return `${day}.${month}.${year}`;
+    };
+
+    return `${formatDate(start)}-${formatDate(end)}`;
+  };
+
+  // Function to check if a show is currently ongoing
+  const isShowOngoing = (show) => {
+    const now = new Date();
+    const startDate = new Date(show.content?.start_date || '1970-01-01');
+    const endDate = new Date(show.content?.end_date || '2099-12-31');
+
+    // Show is ongoing if current date is between start and end dates
+    return now >= startDate && now <= endDate;
+  };
+
 // Computed property to get the actual height in pixels for the container
 const containerHeight = computed(() => {
   // Make galleries 2x smaller vertically
@@ -145,8 +177,9 @@ const handleGallerySuccess = (storyId) => {
         :images="formatImages(story.content?.visuals)"
         :name="story.content?.title_tag"
         :location="story.content?.location_tag"
-        :date="story.content?.date_tag"
+        :date="formatDateRange(story)"
         :slug="story.slug"
+        :isOngoing="isShowOngoing(story)"
         :repeatCount="1"
         :imageHeight="containerHeight"
         :imageWidth="'auto'"
