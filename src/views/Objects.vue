@@ -2,12 +2,8 @@
   <div class="objects-container">
     <FilterComponent @filter-changed="handleFilter" />
     
-    <!-- Loading indicator -->
-    <div v-if="isLoading" class="loading-container">
-      <p>Loading all objects... This may take a moment.</p>
-    </div>
-    
-    <div v-else class="objects-grid">
+
+    <div class="objects-grid">
       <ObjectCard
         class="object-card"
         v-for="(story, index) in filteredStories"
