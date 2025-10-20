@@ -31,7 +31,7 @@
     </div>
     
     <p class="mb-4 text-sm font-medium text-gray-600">
-        Click on the image to change it and see the appearing animation
+        Click on the image to change it
     </p>
 
     <div class="flex flex-col w-[300px] gap-4 p-4 bg-white rounded-xl shadow-lg">
@@ -43,13 +43,18 @@
                 <input type="number" id="brightness-min" value="0" class="w-1/2 p-2 text-sm text-center border border-gray-300 rounded-lg">
                 <input type="number" id="brightness-max" value="1500" class="w-1/2 p-2 text-sm text-center border border-gray-300 rounded-lg">
             </div>
+            <label class="flex items-center gap-2 mt-2 text-sm text-gray-600">
+                <input type="checkbox" id="animate-brightness" checked class="w-4 h-4 text-blue-600 form-checkbox rounded-md">
+                Animate
+            </label>
             <label for="brightness-easing" class="block mt-2 text-sm font-medium text-gray-700">Easing Function</label>
             <select id="brightness-easing" class="w-full mt-1 p-2 text-sm border border-gray-300 rounded-lg bg-white">
                 <option value="linear">Linear</option>
                 <option value="ease-in">Ease In (Quadratic)</option>
                 <option value="ease-out">Ease Out (Quadratic)</option>
                 <option value="ease-in-out">Ease In Out (Quadratic)</option>
-                <option value="cubic-out" selected>Cubic Out</option>
+                <option value="cubic-in" selected>Cubic In</option>
+                <option value="cubic-out">Cubic Out</option>
                 <option value="cubic-in-out">Cubic In Out</option>
                 <option value="quartic-in">Quartic In</option>
                 <option value="quartic-out">Quartic Out</option>
@@ -60,9 +65,8 @@
                 <option value="bounce-out">Bounce Out</option>
                 <option value="elastic-out">Elastic Out</option>
             </select>
-            <div class="flex gap-2 mt-4">
-                <button id="present-button" class="w-full px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-colors">Present</button>
-            </div>
+            <label for="brightness-duration" class="block mt-2 text-sm font-medium text-gray-700">Animation Duration (seconds)</label>
+            <input type="number" id="brightness-duration" value="5" min="0.1" max="60" step="0.1" class="w-full mt-1 p-2 text-sm text-center border border-gray-300 rounded-lg">
         </div>
 
         <!-- Grayscale Control -->
@@ -73,6 +77,10 @@
                 <input type="number" id="grayscale-min" value="0" class="w-1/2 p-2 text-sm text-center border border-gray-300 rounded-lg">
                 <input type="number" id="grayscale-max" value="100" class="w-1/2 p-2 text-sm text-center border border-gray-300 rounded-lg">
             </div>
+            <label class="flex items-center gap-2 mt-2 text-sm text-gray-600">
+                <input type="checkbox" id="animate-grayscale" class="w-4 h-4 text-blue-600 form-checkbox rounded-md">
+                Animate
+            </label>
         </div>
 
         <!-- Contrast Control -->
@@ -83,6 +91,10 @@
                 <input type="number" id="contrast-min" value="100" class="w-1/2 p-2 text-sm text-center border border-gray-300 rounded-lg">
                 <input type="number" id="contrast-max" value="100000" class="w-1/2 p-2 text-sm text-center border border-gray-300 rounded-lg">
             </div>
+            <label class="flex items-center gap-2 mt-2 text-sm text-gray-600">
+                <input type="checkbox" id="animate-contrast" class="w-4 h-4 text-blue-600 form-checkbox rounded-md">
+                Animate
+            </label>
         </div>
     </div>
 
@@ -100,25 +112,28 @@
         const contrastMinInput = document.getElementById('contrast-min');
         const contrastMaxInput = document.getElementById('contrast-max');
 
+        const animateBrightnessCheckbox = document.getElementById('animate-brightness');
+        const animateGrayscaleCheckbox = document.getElementById('animate-grayscale');
+        const animateContrastCheckbox = document.getElementById('animate-contrast');
+
         const brightnessEasingSelect = document.getElementById('brightness-easing');
+        const brightnessDurationInput = document.getElementById('brightness-duration');
 
-        const presentButton = document.getElementById('present-button');
+        let animatingBrightness = animateBrightnessCheckbox.checked;
+        let animatingGrayscale = animateGrayscaleCheckbox.checked;
+        let animatingContrast = animateContrastCheckbox.checked;
 
-        let isAnimating = false;
-        let animationStartTime = null;
-        let animationStartValue = 0;
-        let animationTargetValue = 0;
-
-        // Start with image in hidden state (very bright)
-        let currentBrightness = parseInt(brightnessMaxInput.value);
-        brightnessSlider.value = currentBrightness;
+        let currentBrightness = parseInt(brightnessSlider.value);
         let currentGrayscale = parseInt(grayscaleSlider.value);
         let currentContrast = parseInt(contrastSlider.value);
 
-        // Apply initial hidden state
-        updateFilter();
+        let brightnessDirection = 1;
+        let grayscaleDirection = 1;
+        let contrastDirection = 1;
 
-        const ANIMATION_DURATION = 2500; // 2.5 seconds in milliseconds
+        // Animation timing variables
+        let brightnessAnimationStartTime = null;
+        let lastFrameTime = null;
 
         // Easing functions
         const easingFunctions = {
@@ -157,53 +172,56 @@
         }
 
         function animateValues(currentTime) {
-            if (!isAnimating) {
-                return;
-            }
+            if (animatingBrightness) {
+                // Initialize animation timing
+                if (brightnessAnimationStartTime === null) {
+                    brightnessAnimationStartTime = currentTime;
+                    lastFrameTime = currentTime;
+                }
 
-            if (animationStartTime === null) {
-                animationStartTime = currentTime;
-            }
+                const duration = parseFloat(brightnessDurationInput.value) * 1000; // Convert to milliseconds
+                const elapsed = currentTime - brightnessAnimationStartTime;
+                const cycleProgress = (elapsed % duration) / duration;
 
-            const elapsed = currentTime - animationStartTime;
-            const progress = Math.min(elapsed / ANIMATION_DURATION, 1); // Cap at 1 (100%)
+                // Create a triangle wave for back-and-forth animation
+                const triangleProgress = cycleProgress < 0.5 ? cycleProgress * 2 : (1 - cycleProgress) * 2;
 
-            const selectedEasing = brightnessEasingSelect.value;
-            const easedProgress = easingFunctions[selectedEasing](progress);
+                const min = parseInt(brightnessMinInput.value);
+                const max = parseInt(brightnessMaxInput.value);
+                const selectedEasing = brightnessEasingSelect.value;
+                const easedProgress = easingFunctions[selectedEasing](triangleProgress);
 
-            // Interpolate between start and target values
-            currentBrightness = animationStartValue + (animationTargetValue - animationStartValue) * easedProgress;
-            brightnessSlider.value = Math.round(currentBrightness);
-
-            updateFilter();
-
-            if (progress < 1) {
-                // Animation not complete, continue
-                requestAnimationFrame(animateValues);
+                currentBrightness = min + (max - min) * easedProgress;
+                brightnessSlider.value = Math.round(currentBrightness);
             } else {
-                // Animation complete
-                isAnimating = false;
-                animationStartTime = null;
-                // Re-enable button
-                presentButton.disabled = false;
+                // Reset timing when animation is disabled
+                brightnessAnimationStartTime = null;
+                lastFrameTime = null;
             }
-        }
 
-        function startPresentAnimation() {
-            if (isAnimating) return;
+            if (animatingGrayscale) {
+                const min = parseInt(grayscaleMinInput.value);
+                const max = parseInt(grayscaleMaxInput.value);
+                currentGrayscale += grayscaleDirection * 1;
+                if (currentGrayscale >= max || currentGrayscale <= min) {
+                    grayscaleDirection *= -1;
+                }
+                currentGrayscale = Math.max(min, Math.min(currentGrayscale, max));
+                grayscaleSlider.value = Math.round(currentGrayscale);
+            }
 
-            presentButton.disabled = true;
+            if (animatingContrast) {
+                const min = parseInt(contrastMinInput.value);
+                const max = parseInt(contrastMaxInput.value);
+                currentContrast += contrastDirection * 10;
+                if (currentContrast >= max || currentContrast <= min) {
+                    contrastDirection *= -1;
+                }
+                currentContrast = Math.max(min, Math.min(currentContrast, max));
+                contrastSlider.value = Math.round(currentContrast);
+            }
 
-            // Instantly hide the image first
-            currentBrightness = parseInt(brightnessMaxInput.value);
-            brightnessSlider.value = currentBrightness;
             updateFilter();
-
-            // Then start the appearing animation
-            isAnimating = true;
-            animationStartValue = parseInt(brightnessMaxInput.value);
-            animationTargetValue = parseInt(brightnessMinInput.value); // Appear = low brightness (visible)
-
             requestAnimationFrame(animateValues);
         }
 
@@ -211,7 +229,40 @@
         grayscaleSlider.addEventListener('input', updateFilter);
         contrastSlider.addEventListener('input', updateFilter);
 
-        presentButton.addEventListener('click', startPresentAnimation);
+        animateBrightnessCheckbox.addEventListener('change', () => {
+            animatingBrightness = animateBrightnessCheckbox.checked;
+            if (!animatingBrightness) {
+                currentBrightness = parseInt(brightnessSlider.value);
+                brightnessAnimationStartTime = null;
+                lastFrameTime = null;
+            }
+        });
+
+        brightnessDurationInput.addEventListener('input', () => {
+            // Reset animation timing when duration changes
+            if (animatingBrightness) {
+                brightnessAnimationStartTime = null;
+                lastFrameTime = null;
+            }
+        });
+
+        brightnessEasingSelect.addEventListener('change', () => {
+            // Reset animation timing when easing function changes
+            if (animatingBrightness) {
+                brightnessAnimationStartTime = null;
+                lastFrameTime = null;
+            }
+        });
+
+        animateGrayscaleCheckbox.addEventListener('change', () => {
+            animatingGrayscale = animateGrayscaleCheckbox.checked;
+            if (!animatingGrayscale) currentGrayscale = parseInt(grayscaleSlider.value);
+        });
+
+        animateContrastCheckbox.addEventListener('change', () => {
+            animatingContrast = animateContrastCheckbox.checked;
+            if (!animatingContrast) currentContrast = parseInt(contrastSlider.value);
+        });
 
         brightnessMinInput.addEventListener('input', () => updateSliderLimits(brightnessSlider, brightnessMinInput, brightnessMaxInput));
         brightnessMaxInput.addEventListener('input', () => updateSliderLimits(brightnessSlider, brightnessMinInput, brightnessMaxInput));
@@ -224,10 +275,10 @@
             const timestamp = new Date().getTime();
             document.getElementById('original-image').src = `https://picsum.photos/300/400?random=1&t=${timestamp}`;
             document.getElementById('filtered-image').src = `https://picsum.photos/300/400?random=1&t=${timestamp}`;
-
-            // Trigger the appearing animation after changing the image
-            setTimeout(() => startPresentAnimation(), 100); // Small delay to ensure images start loading
         }
+
+        // Initial call to start the animation loop
+        requestAnimationFrame(animateValues);
     </script>
 </body>
 </html>
