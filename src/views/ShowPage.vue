@@ -2,11 +2,39 @@
 import { useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ImageGallery from '../components/ImageGallery.vue';
+import ShowCard from '../components/ShowCard.vue';
 import MainText from '../components/MainText.vue';
 import { renderRichText } from "@storyblok/vue";
 import useStoryblok from '../utils/useStoryblok';
 import { createImageSettings } from '../utils/imageSettings';
 import { computed } from 'vue';
+// Local helpers for main gallery date/ongoing
+const formatDateRange = (show) => {
+  const startDate = show.content?.start_date;
+  const endDate = show.content?.end_date;
+  if (!startDate || !endDate) {
+    return show.content?.date_tag || '';
+  }
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const formatDate = (date) => {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear()).slice(-2);
+    return `${day}.${month}.${year}`;
+  };
+  return `${formatDate(start)}-${formatDate(end)}`;
+};
+
+const isShowOngoing = (show) => {
+  const startDate = show.content?.start_date;
+  const endDate = show.content?.end_date;
+  if (!startDate || !endDate) return false;
+  const now = new Date();
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  return now >= start && now <= end;
+};
 
 // Create image settings using our utility - high quality for main show, thumbnail for others
 const mainShowImageSettings = createImageSettings('high');
@@ -79,54 +107,7 @@ const mainShowGalleryProps = computed(() => ({
   enablePhotoNavigation: true
 }));
 
-// Function to format date range
-const formatDateRange = (show) => {
-  const startDate = show.content?.start_date;
-  const endDate = show.content?.end_date;
-
-  if (!startDate || !endDate) {
-    return show.content?.date_tag || '';
-  }
-
-  const start = new Date(startDate);
-  const end = new Date(endDate);
-
-  const formatDate = (date) => {
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = String(date.getFullYear()).slice(-2);
-    return `${day}.${month}.${year}`;
-  };
-
-  return `${formatDate(start)}-${formatDate(end)}`;
-};
-
-// Function to check if a show is currently ongoing
-const isShowOngoing = (show) => {
-  const now = new Date();
-  const startDate = new Date(show.content?.start_date || '1970-01-01');
-  const endDate = new Date(show.content?.end_date || '2099-12-31');
-
-  // Show is ongoing if current date is between start and end dates
-  return now >= startDate && now <= endDate;
-};
-
-const getOtherShowGalleryProps = (show) => ({
-  name: show.content?.title_tag || 'Untitled Show',
-  location: show.content?.location_tag || '',
-  date: formatDateRange(show),
-  slug: show.slug,
-  isOngoing: isShowOngoing(show),
-  images: formatImages(show.content?.visuals), // Use same formatting as Shows.vue
-  repeatCount: 1,
-  imageHeight: `${otherShowsImageSettings.height / 2}rem`, // Same calculation as Shows.vue
-  imageWidth: 'auto',
-  imageQuality: otherShowsImageSettings.quality,
-  imageFormat: otherShowsImageSettings.format,
-  resolutionRatio: otherShowsImageSettings.resolutionRatio,
-  enableAutoScroll: true,
-  speedRandomness: 0.3
-});
+// helper no longer needed for ShowCard usage
 </script>
 
 <template>
@@ -176,9 +157,22 @@ const getOtherShowGalleryProps = (show) => ({
               class="story-placeholder"
               :data-story-id="show.uuid"
             >
-              <ImageGallery
-                v-bind="getOtherShowGalleryProps(show)"
-                :style="{ '--mobile-gallery-height': '22svh' }"
+              <ShowCard
+                :name="show.content?.title_tag || 'Untitled Show'"
+                :location="show.content?.location_tag || ''"
+                :slug="show.slug"
+                :images="formatImages(show.content?.visuals)"
+                :startDate="show.content?.start_date"
+                :endDate="show.content?.end_date"
+                :dateTag="show.content?.date_tag"
+                :imageHeight="`${otherShowsImageSettings.height / 2}rem`"
+                :imageWidth="'auto'"
+                :imageQuality="otherShowsImageSettings.quality"
+                :imageFormat="otherShowsImageSettings.format"
+                :resolutionRatio="otherShowsImageSettings.resolutionRatio"
+                :enableAutoScroll="true"
+                :speedRandomness="0.3"
+                :mobileGalleryHeight="'22svh'"
                 @gallery-error="handleGalleryError(show.uuid)"
                 @gallery-success="handleGallerySuccess(show.uuid)"
               />

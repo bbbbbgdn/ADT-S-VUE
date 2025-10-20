@@ -2,9 +2,11 @@
 import { useStoryblokApi } from '@storyblok/vue';
 import { ref, onMounted, computed, nextTick } from 'vue';
 import ImageGallery from '../components/ImageGallery.vue';
+import ShowCard from '../components/ShowCard.vue';
 import { useRouter } from 'vue-router';
 import { formatImages as storyblokFormatImages } from '../utils/storyblok';
 import { createImageSettings } from '../utils/imageSettings';
+// Using ShowCard's internal logic for date/ongoing when raw dates provided
 
 let storyblokApi = null;
 const stories = ref([]);
@@ -21,46 +23,7 @@ try {
 // Create image settings using our utility with the thumbnail preset for gallery
 const imageSettings = createImageSettings('thumbnail');
 
-  // Function to format date range
-  const formatDateRange = (show) => {
-    const startDate = show.content?.start_date;
-    const endDate = show.content?.end_date;
-
-    if (!startDate || !endDate) {
-      return show.content?.date_tag || '';
-    }
-
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-
-    const formatDate = (date) => {
-      const day = String(date.getDate()).padStart(2, '0');
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const year = String(date.getFullYear()).slice(-2);
-      return `${day}.${month}.${year}`;
-    };
-
-    return `${formatDate(start)}-${formatDate(end)}`;
-  };
-
-  // Function to check if a show is currently ongoing
-  const isShowOngoing = (show) => {
-    const startDate = show.content?.start_date;
-    const endDate = show.content?.end_date;
-
-    // Only consider shows with both start and end dates as potentially ongoing
-    // Year-only shows (old shows) should never be marked as ongoing
-    if (!startDate || !endDate) {
-      return false;
-    }
-
-    const now = new Date();
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-
-    // Show is ongoing if current date is between start and end dates
-    return now >= start && now <= end;
-  };
+  // Using shared helpers from utils/show.js
 
 // Computed property to get the actual height in pixels for the container
 const containerHeight = computed(() => {
@@ -145,15 +108,15 @@ const formatImages = (visuals, customOptions = {}) => {
       :data-story-id="story.uuid"
     >
       <!-- Only render ImageGallery when story is visible -->
-      <ImageGallery
+      <ShowCard
         v-if="visibleStories.has(story.uuid)"
         :images="formatImages(story.content?.visuals)"
         :name="story.content?.title_tag"
         :location="story.content?.location_tag"
-        :date="formatDateRange(story)"
         :slug="story.slug"
-        :isOngoing="isShowOngoing(story)"
-        :repeatCount="1"
+        :startDate="story.content?.start_date"
+        :endDate="story.content?.end_date"
+        :dateTag="story.content?.date_tag"
         :imageHeight="containerHeight"
         :imageWidth="'auto'"
         :imageQuality="imageSettings.quality"
@@ -161,7 +124,7 @@ const formatImages = (visuals, customOptions = {}) => {
         :resolutionRatio="imageSettings.resolutionRatio"
         :enableAutoScroll="true"
         :speedRandomness="0.3"
-        :style="{ '--mobile-gallery-height': '22svh' }"
+        :mobileGalleryHeight="'22svh'"
       />
       
       <!-- Placeholder while gallery is not visible -->
