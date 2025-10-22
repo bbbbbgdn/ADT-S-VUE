@@ -69,12 +69,7 @@ export default {
         objectName: story.content?.title_tag || '',
         price: story.content?.price_tag || '',
         showPrice: story.content?.display_price || false,
-        slug: story.slug,
-        'gallery-index': index,
-        'gallery-id': 'objects-gallery',
-        'total-items': filteredStories.value.length,
-        'preload-count': filteredStories.value.length > 15 ? 2 : 4,
-        'is-big-gallery': filteredStories.value.length > 15
+        slug: story.slug
       };
 
       // Only add image prop if the object has a valid image
