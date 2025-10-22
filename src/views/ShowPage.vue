@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
-import ImageGallery from '../components/ImageGallery.vue';
+import LazyCarousel from '../components/LazyCarousel.vue';
 import ShowCard from '../components/ShowCard.vue';
 import MainText from '../components/MainText.vue';
 import { renderRichText } from "@storyblok/vue";
@@ -83,31 +83,22 @@ const formatMainShowImages = (visuals) => {
   return formatImages(visuals, mainShowImageSettings);
 };
 
+// Computed properties for carousel
+const carouselImages = computed(() => 
+  story.value?.content?.visuals ? formatMainShowImages(story.value.content.visuals) : []
+);
 
-
-// Computed properties for cleaner gallery configuration
-const mainShowGalleryProps = computed(() => ({
-  name: story.value?.content?.title_tag || '',
-  location: story.value?.content?.location_tag || '',
-  date: story.value ? formatDateRange(story.value) : '',
-  slug: story.value?.slug,
-  isOngoing: story.value ? isShowOngoing(story.value) : false,
-  images: story.value?.content?.visuals ? formatMainShowImages(story.value.content.visuals) : [],
-  repeatCount: 1,
-  imageHeight: 'calc(100vh - 96rem)',
-  imageQuality: mainShowImageSettings.quality,
-  imageFormat: mainShowImageSettings.format,
-  resolutionRatio: mainShowImageSettings.resolutionRatio,
-  isActive: true,
-  repeatToFill: false,
-  enableNavigation: false,
-  // Enable manual click-and-drag for big galleries
-  allowDrag: true,
-  // Enable photo navigation for main show gallery
-  enablePhotoNavigation: true
-}));
-
-// helper no longer needed for ShowCard usage
+// Computed properties for tags
+const showName = computed(() => story.value?.content?.title_tag || '');
+const showLocation = computed(() => story.value?.content?.location_tag || '');
+const showDate = computed(() => story.value ? formatDateRange(story.value) : '');
+const showOngoing = computed(() => story.value ? isShowOngoing(story.value) : false);
+const showTags = computed(() => 
+  showOngoing.value ||
+  (showName.value && showName.value.trim().length > 0) ||
+  (showLocation.value && showLocation.value.trim().length > 0) ||
+  (showDate.value && showDate.value.trim().length > 0)
+);
 </script>
 
 <template>
@@ -127,12 +118,38 @@ const mainShowGalleryProps = computed(() => ({
           <p>{{ errorMessage }}</p>
         </div>
         
-        <!-- Main Show Gallery -->
-        <ImageGallery
-          v-if="story.content?.visuals && story.content.visuals.length > 0"
-          v-bind="mainShowGalleryProps"
-          :style="{ '--mobile-gallery-height': '70svh' }"
-        />
+        <!-- Main Show Carousel -->
+        <div v-if="story.content?.visuals && story.content.visuals.length > 0" class="carousel-wrapper">
+          <LazyCarousel
+            :images="carouselImages"
+            height="calc(100vh - 96rem)"
+            :style="{ '--mobile-carousel-height': '70svh' }"
+          />
+          
+          <!-- Show Tags -->
+          <div v-if="showTags" class="show-tags">
+            <BaseButton
+              v-if="showOngoing"
+              variant="ongoing"
+              class="ongoing-tag"
+            >
+              <span class="ongoing-dot"></span>
+              <span class="ongoing-text">Ongoing</span>
+            </BaseButton>
+            <BaseButton
+              v-if="showName && showName.trim().length > 0"
+              variant="black"
+            >
+              {{ showName }}
+            </BaseButton>
+            <BaseButton v-if="showLocation && showLocation.trim().length > 0" variant="grey">
+              {{ showLocation }}
+            </BaseButton>
+            <BaseButton v-if="showDate && showDate.trim().length > 0" variant="grey">
+              {{ showDate }}
+            </BaseButton>
+          </div>
+        </div>
         
         <!-- Fallback message if no visuals -->
         <div v-else class="no-images-message">
@@ -190,8 +207,6 @@ const mainShowGalleryProps = computed(() => ({
 
 <style>
 
-
-
 /* Content area that contains both loading and content */
 .content-area {
   position: relative;
@@ -208,11 +223,60 @@ const mainShowGalleryProps = computed(() => ({
   opacity: 1;
 }
 
+.carousel-wrapper {
+  width: 100%;
+  position: relative;
+}
 
+.show-tags {
+  display: flex;
+  gap: var(--gallery-tags-gap, 1rem);
+  padding: var(--gallery-tags-padding, 1rem 0);
+  flex-wrap: wrap;
+}
 
+/* Ongoing tag styles */
+.ongoing-tag {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
 
+.button-ongoing .button-text {
+  display: flex !important;
+  align-items: center;
+  gap: 4.0rem;
+  transform: none !important;
+  white-space: nowrap !important;
+}
 
+.button-ongoing .button-text .ongoing-dot {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: black !important;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+  flex-shrink: 0;
+  display: inline-block !important;
+  vertical-align: middle;
+  margin-top: -1px;
+  position: relative;
+  z-index: 1;
+}
 
+.button-ongoing .button-text .ongoing-text {
+  white-space: nowrap;
+  color: black !important;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.3;
+  }
+}
 
 .button-container {
   margin: var(--space-md);
@@ -271,5 +335,15 @@ const mainShowGalleryProps = computed(() => ({
   width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  /* Override main carousel height on mobile */
+  .content-container .carousel-wrapper .carousel {
+    min-height: var(--mobile-carousel-height, 70svh) !important;
+    height: var(--mobile-carousel-height, 70svh) !important;
+  }
 
+  .content-container .carousel-wrapper .item {
+    min-height: var(--mobile-carousel-height, 70svh) !important;
+  }
+}
 </style>
