@@ -133,7 +133,6 @@ const showTags = computed(() =>
               :projectName="project.content?.title_tag || 'Untitled Project'"
               :year="project.content?.year_tag || ''"
               :slug="project.slug"
-              :useImgTag="true"
               :preload="true"
               @click="navigateToProject(project.slug.split('/').pop())"
             />
