@@ -141,7 +141,7 @@ export default {
 }
 
 .object-card {
-  height: 50vh;
+  aspect-ratio: 1 / 1;
   width: 100%;
   overflow: hidden;
 }

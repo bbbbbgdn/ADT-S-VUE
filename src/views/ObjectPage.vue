@@ -501,7 +501,7 @@ onUnmounted(() => {
 } 
 
 .other-objects-grid > .object-card{
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   background: white;
 }
 

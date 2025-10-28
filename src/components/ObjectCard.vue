@@ -88,9 +88,11 @@ export default {
   z-index: 0;
 }
 
-/* Ensure images use contain for object cards */
-.object-card .appearing-image-container .image {
-  background-size: contain;
+/* Ensure images use contain (aspectFit) for object cards - target both image layers */
+.object-card .appearing-image-container .original-image,
+.object-card .appearing-image-container .filtered-image {
+  background-size: contain !important;
+  background-position: center !important;
 }
 
 .object-tags {
