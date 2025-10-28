@@ -311,11 +311,6 @@ onUnmounted(() => {
               :price="object.content?.price_tag || ''"
               :showPrice="object.content?.display_price || false"
               :slug="object.slug"
-              :gallery-index="index"
-              :gallery-id="'object-suggestions'"
-              :total-items="randomOtherObjects.length"
-              :preload-count="4"
-              :is-big-gallery="false"
             />
           </div>
         </div>

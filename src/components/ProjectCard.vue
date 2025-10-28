@@ -1,7 +1,6 @@
 <template>
 <div 
   class="project-card" 
-  :class="{ 'card-loaded': isCardLoaded }"
   @click="navigateToProject"
   @mouseenter="isHovering = true"
   @mouseleave="isHovering = false"
@@ -11,15 +10,11 @@
     v-if="preload"
     :src="image"
     :alt="`${projectName} thumbnail`"
-    @animation-complete="onImageLoad"
-    @error="onImageError"
   />
   <AppearingImage
     v-else
     :lazy-src="image"
     :alt="`${projectName} thumbnail`"
-    @animation-complete="onImageLoad"
-    @error="onImageError"
   />
   
   <!-- Tags are always shown -->
@@ -76,7 +71,6 @@ export default {
   setup(props, { emit }) {
     const router = useRouter();
     const isHovering = ref(false);
-    const isCardLoaded = ref(false);
     
     // Method to navigate with proper transition
     const navigateToProject = (event) => {
@@ -88,24 +82,10 @@ export default {
         emit('click', props.slug);
       }
     };
-
-    // Handle image animation complete (image has loaded and animated)
-    const onImageLoad = () => {
-      isCardLoaded.value = true;
-    };
-
-    // Handle image load error
-    const onImageError = () => {
-      // Still show the card even if image fails to load
-      isCardLoaded.value = true;
-    };
     
     return {
       navigateToProject,
-      isHovering,
-      isCardLoaded,
-      onImageLoad,
-      onImageError
+      isHovering
     };
   }
 }
@@ -120,14 +100,8 @@ export default {
   height: 100%;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.05);
-  opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   max-width: calc(100svw - var(--space-md)*2);
   cursor: pointer;
-}
-
-.project-card.card-loaded {
-  opacity: 1;
 }
 
 .project-card:hover .button-black {
