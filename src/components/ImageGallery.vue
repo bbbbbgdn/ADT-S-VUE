@@ -51,23 +51,29 @@
             }"
           ></div>
 
-          <div
-            class="gallery-image-wrapper"
+          <img
+            v-lazy-load="{
+              url: image.url,
+              index: index % processedImages.length,
+              resetQueue: index === 0,
+              threshold: 0.1,
+              rootMargin: '750px',
+              galleryId: internalGalleryId,
+              preloadCount: preloadCount,
+              isBigGallery: isBigGallery
+            }"
+            :alt="image.alt || 'Image'"
             :style="{
-              height: imageStyle.height,
-              width: imageStyle.width,
+              ...imageStyle,
               'aspect-ratio': image.dimensions ? image.dimensions.aspectRatio : undefined
             }"
             :data-index="index % processedImages.length"
             :data-gallery-id="internalGalleryId"
-          >
-            <AppearingImage
-              :lazy-src="image.url"
-              :alt="image.alt || 'Image'"
-              @animation-complete="onImageLoad(index % processedImages.length)"
-              @error="onImageError(index % processedImages.length)"
-            />
-          </div>
+            class="gallery-image"
+            :class="{ 'batch-loading': isBatchLoading, 'image-revealed': loadedImages.has(index % processedImages.length) }"
+            @load="onImageLoad(index % processedImages.length)"
+            @error="onImageError(index % processedImages.length)"
+          />
         </div>
       </div>
 
@@ -91,23 +97,29 @@
           }"
         ></div>
 
-        <div
-          class="gallery-image-wrapper"
+        <img
+          v-lazy-load="{
+            url: image.url,
+            index: index,
+            resetQueue: index === 0,
+            threshold: 0.1,
+            rootMargin: '750px',
+            galleryId: internalGalleryId,
+            preloadCount: preloadCount,
+            isBigGallery: isBigGallery
+          }"
+          :alt="image.alt || 'Image'"
           :style="{
-            height: imageStyle.height,
-            width: imageStyle.width,
+            ...imageStyle,
             'aspect-ratio': image.dimensions ? image.dimensions.aspectRatio : undefined
           }"
           :data-index="index"
           :data-gallery-id="internalGalleryId"
-        >
-          <AppearingImage
-            :lazy-src="image.url"
-            :alt="image.alt || 'Image'"
-            @animation-complete="onImageLoad(index)"
-            @error="onImageError(index)"
-          />
-        </div>
+          class="gallery-image"
+          :class="{ 'batch-loading': isBatchLoading, 'image-revealed': loadedImages.has(index) }"
+          @load="onImageLoad(index)"
+          @error="onImageError(index)"
+        />
       </div>
     </div>
 
@@ -148,14 +160,13 @@
 
 <script>
 import ButtonBase from './BaseButton.vue';
-import AppearingImage from './AppearingImage.vue';
 import { createImageUrl, getOptimalImageDimensions } from '../utils/storyblok';
 import { extractImageDimensions, calculatePlaceholderDimensions } from '../utils/imageDimensions';
 import { useRouter, useRoute } from 'vue-router';
 
 export default {
   name: 'ImageGallery',
-  components: { ButtonBase, AppearingImage },
+  components: { ButtonBase },
   props: {
     name: String,
     slug: { type: String, required: true },
@@ -1855,41 +1866,6 @@ export default {
   color: black !important;
 }
 
-/* Wrapper for both regular images and AppearingImage components */
-.gallery-image-wrapper {
-  position: relative;
-  width: auto;
-  height: 100%;
-  border-radius: 0;
-  margin: 0;
-  z-index: 1;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  /* Prevent image dragging */
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  overflow: hidden;
-  /* Ensure wrapper is always visible so AppearingImage can control its own animation */
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Make AppearingImage component fill the wrapper completely */
-.gallery-image-wrapper .appearing-image-container {
-  width: 100%;
-  height: 100%;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* Ensure no interference with AppearingImage's internal animation */
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Legacy support for regular images (if any remain) */
 .gallery-image {
   width: auto;
   object-fit: cover;
@@ -1900,8 +1876,10 @@ export default {
   z-index: 1;
   backface-visibility: hidden;
   transform: translateZ(0);
+  /* Initially hide all images completely to prevent any layout shifts */
   opacity: 0;
   visibility: hidden;
+  /* Remove transition initially - will be added when revealing */
   /* Prevent image dragging */
   -webkit-user-drag: none;
   -khtml-user-drag: none;
@@ -1926,7 +1904,6 @@ export default {
   box-sizing: border-box;
 }
 
-/* Legacy image loading states - only for regular img tags */
 .gallery-image.image-loading {
   opacity: 0;
 }
@@ -1941,21 +1918,24 @@ export default {
   opacity: 0.5;
   background-color: #f8f8f8;
   border: 1px dashed #ccc;
-  visibility: visible;
+  visibility: visible; /* Error images should be visible */
 }
 
+/* Batch loading mode - prevent immediate reveal from lazy loading directive */
 .gallery-image.batch-loading.image-loaded {
   opacity: 0 !important;
   visibility: hidden !important;
   transition: none !important;
 }
 
+/* Force hide all images during batch loading */
 .gallery-container .gallery-item .gallery-image {
   opacity: 0 !important;
   visibility: hidden !important;
   transition: none !important;
 }
 
+/* Only show images when they're ready to be revealed */
 .gallery-container .gallery-item .gallery-image.image-revealed {
   opacity: 1 !important;
   visibility: visible !important;
@@ -1967,11 +1947,10 @@ export default {
     min-height: auto !important;
     height: auto !important;
   }
-  
-  .gallery-image-wrapper,
   .gallery-image {
     height: var(--mobile-gallery-height, 40vh) !important;
   }
+
 
   /* Override gallery height on mobile for all image galleries */
   .gallery-container {
@@ -1986,7 +1965,6 @@ export default {
     min-height: var(--mobile-gallery-height, 60svh) !important;
   }
 
-  .gallery-container .gallery-image-wrapper,
   .gallery-container .gallery-image {
     min-height: var(--mobile-gallery-height, 60svh) !important;
   }

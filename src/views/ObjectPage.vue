@@ -2,7 +2,6 @@
 import { useRoute, useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ObjectCard from '../components/ObjectCard.vue';
-import AppearingImage from '../components/AppearingImage.vue';
 import { computed, onMounted, onUnmounted, ref, nextTick } from 'vue';
 import useStoryblok from '../utils/useStoryblok';
 import useGlobalSettings from '../utils/useGlobalSettings';
@@ -100,6 +99,50 @@ const formatTextWithLineBreaks = (text) => {
   return text.replace(/\n/g, '<br>');
 };
 
+// Simplified image loading methods - reveal images as they load
+const onImageLoad = (index) => {
+  console.debug(`[ObjectPage] Image ${index} loaded successfully`);
+
+  // Mark image as loaded
+  loadedImages.value.add(index);
+
+  // Reveal this specific image immediately
+  revealImage(index);
+
+  // Check if we should exit batch loading mode
+  if (loadedImages.value.size >= mainObjectImagesWithDimensions.value.length) {
+    console.debug(`[ObjectPage] All images loaded`);
+    isBatchLoading.value = false;
+  }
+};
+
+const onImageError = (index) => {
+  console.error(`[ObjectPage] Image ${index} failed to load`);
+
+  // Still mark as loaded to prevent blocking other images
+  loadedImages.value.add(index);
+
+  // Reveal this image (it will show as error state)
+  revealImage(index);
+
+  // Check if we should exit batch loading mode
+  if (loadedImages.value.size >= mainObjectImagesWithDimensions.value.length) {
+    isBatchLoading.value = false;
+  }
+};
+
+const revealImage = (index) => {
+  // Use nextTick to ensure DOM is updated
+  nextTick(() => {
+    const img = document.querySelector(`.object-photo[data-index="${index}"]`);
+    if (img && !img.classList.contains('image-revealed')) {
+      img.classList.remove('image-loading');
+      img.classList.add('image-loaded', 'image-revealed');
+      console.debug(`[ObjectPage] Revealed image at index ${index}`);
+    }
+  });
+};
+
 // Simple sticky order section functionality
 const orderSectionRef = ref(null);
 const OtherRef = ref(null);
@@ -107,6 +150,10 @@ const isSticky = ref(false);
 const isTransitioning = ref(false);
 const translateY = ref(0);
 const originalOffsetTop = ref(0);
+
+// Image loading state data for batch loading
+const loadedImages = ref(new Set()); // Track which images have loaded
+const isBatchLoading = ref(false); // Whether we're in batch loading mode
 
 const handleScroll = () => {
   if (!orderSectionRef.value || !OtherRef.value) return;
@@ -266,12 +313,7 @@ onUnmounted(() => {
                     'aspect-ratio': image.dimensions.aspectRatio,
                     '--aspect-ratio': image.dimensions.aspectRatio
                   }"
-                >
-                  <AppearingImage
-                    :lazy-src="image.url"
-                    :alt="image.alt || `Object photo ${index + 1}`"
-                  />
-                </div>
+                ></div>
 
                 <!-- Fallback placeholder when dimensions aren't available -->
                 <div
@@ -281,12 +323,25 @@ onUnmounted(() => {
                     width: '100%',
                     height: '300px' // Default height for fallback
                   }"
-                >
-                  <AppearingImage
-                    :lazy-src="image.url"
-                    :alt="image.alt || `Object photo ${index + 1}`"
-                  />
-                </div>
+                ></div>
+
+                <img
+                  v-lazy-load="{
+                    url: image.url,
+                    index: index,
+                    galleryId: 'object-photos-stack',
+                    threshold: 0.1,
+                    rootMargin: '300px',
+                    preloadCount: 2,
+                    isBigGallery: mainObjectImagesWithDimensions.length > 3,
+                    resetQueue: index === 0
+                  }"
+                  :alt="image.alt || `Object photo ${index + 1}`"
+                  :data-index="index"
+                  class="object-photo"
+                  @load="onImageLoad(index)"
+                  @error="onImageError(index)"
+                />
               </div>
             </div>
             <div v-else class="no-photos-message">
@@ -311,6 +366,11 @@ onUnmounted(() => {
               :price="object.content?.price_tag || ''"
               :showPrice="object.content?.display_price || false"
               :slug="object.slug"
+              :gallery-index="index"
+              :gallery-id="'object-suggestions'"
+              :total-items="randomOtherObjects.length"
+              :preload-count="4"
+              :is-big-gallery="false"
             />
           </div>
         </div>
@@ -465,13 +525,46 @@ onUnmounted(() => {
   background-color: rgba(248, 248, 248, 0.2); /* Slightly more visible for fallback */
 }
 
-/* AppearingImage container should fill the placeholder */
-.image-placeholder .appearing-image-container {
+.object-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  /* Initially hide all images completely to prevent any layout shifts */
+  opacity: 0;
+  visibility: hidden;
+  /* Smooth transition when revealing */
+  transition: opacity 0.3s ease-in-out;
+  /* Prevent image dragging */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+/* Loading states for photos stack */
+.object-photo.image-loading {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.object-photo.image-loaded {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.object-photo.image-error {
+  opacity: 0.5;
+  visibility: visible; /* Error images should be visible */
+}
+
+/* Revealed state - highest priority */
+.object-photo.image-revealed {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .no-photos-message {
@@ -501,7 +594,7 @@ onUnmounted(() => {
 } 
 
 .other-objects-grid > .object-card{
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
   background: white;
 }
 

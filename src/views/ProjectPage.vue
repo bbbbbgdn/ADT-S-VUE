@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
-import LazyCarousel from '../components/LazyCarousel.vue';
+import ImageGallery from '../components/ImageGallery.vue';
 import ProjectCard from '../components/ProjectCard.vue';
 import MainText from '../components/MainText.vue';
 import { renderRichText } from "@storyblok/vue";
@@ -51,20 +51,26 @@ const formatMainProjectImages = (visuals) => {
   return formatImages(visuals, mainProjectImageSettings);
 };
 
-// Computed properties for carousel
-const carouselImages = computed(() => 
-  story.value?.content?.visuals ? formatMainProjectImages(story.value.content.visuals) : []
-);
-
-// Computed properties for tags
-const projectName = computed(() => story.value?.content?.title_tag || '');
-const projectLocation = computed(() => story.value?.content?.location_tag || '');
-const projectDate = computed(() => story.value?.content?.date_tag || story.value?.content?.year_tag || '');
-const showTags = computed(() => 
-  (projectName.value && projectName.value.trim().length > 0) ||
-  (projectLocation.value && projectLocation.value.trim().length > 0) ||
-  (projectDate.value && projectDate.value.trim().length > 0)
-);
+// Computed properties for cleaner gallery configuration
+const mainProjectGalleryProps = computed(() => ({
+  name: story.value?.content?.title_tag || '',
+  location: story.value?.content?.location_tag || '',
+  date: story.value?.content?.date_tag || story.value?.content?.year_tag || '',
+  slug: story.value?.slug,
+  images: story.value?.content?.visuals ? formatMainProjectImages(story.value.content.visuals) : [],
+  repeatCount: 1,
+  imageHeight: 'calc(100vh - 96rem)',
+  imageQuality: mainProjectImageSettings.quality,
+  imageFormat: mainProjectImageSettings.format,
+  resolutionRatio: mainProjectImageSettings.resolutionRatio,
+  isActive: true,
+  repeatToFill: false,
+  enableNavigation: false,
+  // Enable manual click-and-drag for big galleries
+  allowDrag: true,
+  // Enable photo navigation for main project gallery
+  enablePhotoNavigation: true
+}));
 
 
 </script>
@@ -83,30 +89,12 @@ const showTags = computed(() =>
           <p>{{ errorMessage }}</p>
         </div>
 
-        <!-- Main Project Carousel -->
-        <div v-if="story.content?.visuals && story.content.visuals.length > 0" class="carousel-wrapper">
-          <LazyCarousel
-            :images="carouselImages"
-            height="calc(100vh - 96rem)"
-            :style="{ '--mobile-carousel-height': '70svh' }"
-          />
-          
-          <!-- Project Tags -->
-          <div v-if="showTags" class="project-tags">
-            <BaseButton
-              v-if="projectName && projectName.trim().length > 0"
-              variant="black"
-            >
-              {{ projectName }}
-            </BaseButton>
-            <BaseButton v-if="projectLocation && projectLocation.trim().length > 0" variant="grey">
-              {{ projectLocation }}
-            </BaseButton>
-            <BaseButton v-if="projectDate && projectDate.trim().length > 0" variant="grey">
-              {{ projectDate }}
-            </BaseButton>
-          </div>
-        </div>
+        <!-- Main Project Gallery -->
+        <ImageGallery
+          v-if="story.content?.visuals && story.content.visuals.length > 0"
+          v-bind="mainProjectGalleryProps"
+          :style="{ '--mobile-gallery-height': '70svh' }"
+        />
         
         <!-- Fallback message if no visuals -->
         <div v-else class="no-images-message">
@@ -133,6 +121,7 @@ const showTags = computed(() =>
               :projectName="project.content?.title_tag || 'Untitled Project'"
               :year="project.content?.year_tag || ''"
               :slug="project.slug"
+              :useImgTag="true"
               :preload="true"
               @click="navigateToProject(project.slug.split('/').pop())"
             />
@@ -160,18 +149,6 @@ const showTags = computed(() =>
 
 .content-visible {
   opacity: 1;
-}
-
-.carousel-wrapper {
-  width: 100%;
-  position: relative;
-}
-
-.project-tags {
-  display: flex;
-  gap: var(--gallery-tags-gap, 1rem);
-  padding: var(--gallery-tags-padding, 1rem 0);
-  flex-wrap: wrap;
 }
 
 .button-container {
@@ -229,14 +206,21 @@ const showTags = computed(() =>
     min-height: 100% !important;
   }
 
-  /* Override main carousel height on mobile */
-  .content-container .carousel-wrapper .carousel {
-    min-height: var(--mobile-carousel-height, 70svh) !important;
-    height: var(--mobile-carousel-height, 70svh) !important;
+  /* Override main gallery height on mobile */
+  .content-container .gallery-container {
+    min-height: 60svh !important;
   }
 
-  .content-container .carousel-wrapper .item {
-    min-height: var(--mobile-carousel-height, 70svh) !important;
+  .content-container .gallery-container .gallery {
+    min-height: 60svh !important;
+  }
+
+  .content-container .gallery-container .gallery-item {
+    min-height: 60svh !important;
+  }
+
+  .content-container .gallery-container .gallery-image {
+    min-height: 60svh !important;
   }
 }
 </style>

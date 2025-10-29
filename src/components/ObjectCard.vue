@@ -7,9 +7,21 @@
     @keydown.enter="onCardClick"
     @keydown.space.prevent="onCardClick"
   >
-    <AppearingImage
-      :lazy-src="image"
+    <img
+      v-lazy-load="{
+        url: image,
+        index: galleryIndex,
+        galleryId: galleryId,
+        threshold: 0.05,
+        rootMargin: isBigGallery ? '200px' : '400px',
+        preloadCount: isBigGallery ? 2 : 4,
+        isBigGallery: isBigGallery,
+        resetQueue: galleryIndex === 0
+      }"
       :alt="`${objectName} image`"
+      class="object-bg"
+      @load="onImageLoad"
+      @error="onImageError"
     />
 
     <div class="object-tags">
@@ -21,14 +33,12 @@
 
 <script>
 import BaseButton from './BaseButton.vue';
-import AppearingImage from './AppearingImage.vue';
 import navigationManager from '../utils/navigationManager';
 
 export default {
   name: 'ObjectCard',
   components: {
-    BaseButton,
-    AppearingImage
+    BaseButton
   },
   props: {
     objectName: {
@@ -53,9 +63,44 @@ export default {
     slug: {
       type: String,
       required: true
+    },
+    galleryIndex: {
+      type: Number,
+      default: 0
+    },
+    galleryId: {
+      type: String,
+      default: 'objects-gallery'
+    },
+    totalItems: {
+      type: Number,
+      default: 0
+    },
+    preloadCount: {
+      type: Number,
+      default: 3
+    },
+    isBigGallery: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      imageLoaded: false,
+      imageError: false
     }
   },
   methods: {
+    onImageLoad() {
+      this.imageLoaded = true;
+      this.imageError = false;
+      // You can add any additional logic after image loads
+    },
+    onImageError() {
+      this.imageError = true;
+      this.imageLoaded = false;
+    },
     onCardClick() {
       const targetPath = `/objects/${this.slug}`;
       if (this.$router) {
@@ -69,30 +114,48 @@ export default {
 </script>
 
 <style scoped>
+
+img {
+    background-color: transparent !important;
+}
+
 .object-card {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: 200px;
   overflow: hidden;
+  /* border-radius: 12px; <-- видалено */
+  /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); */
   cursor: pointer;
 }
 
-/* AppearingImage container should fill the card */
-.object-card .appearing-image-container {
+.object-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 0; /* чітко встановлено без округлення */
+  object-fit: contain;
 }
 
-/* Ensure images use contain (aspectFit) for object cards - target both image layers */
-.object-card .appearing-image-container .original-image,
-.object-card .appearing-image-container .filtered-image {
-  background-size: contain !important;
-  background-position: center !important;
+/* Loading state styles */
+.object-bg.image-loading {
+  opacity: 0;
+  filter: blur(2px);
+}
+
+.object-bg.image-loaded {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.object-bg.image-error {
+  opacity: 0.5;
+  filter: grayscale(100%);
 }
 
 .object-tags {
@@ -106,6 +169,7 @@ export default {
   z-index: 1;
   opacity: 0;
   transition: opacity 0.4s ease-in;
+  /* background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); */
 }
 
 /* Show tags on hover for desktop */
@@ -122,7 +186,19 @@ export default {
   }
 }
 
+
+/* Keep buttons black, no active state needed */
+
+
+
+/* Ensure blur looks good even if underlying image has transparency.
+   We render a blurred copy of the object image inside the grey button. */
 .object-tags :deep(.button-grey) {
   background-color: rgb(207 207 207) !important;
+  /* position: relative; */
+  /* overflow: hidden; */
 }
+
+
+
 </style>

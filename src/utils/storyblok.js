@@ -266,7 +266,7 @@ export const formatImage = (project, options = {}) => {
     }
     
     // Force a unique URL to prevent caching issues
-    // finalUrl = finalUrl + (finalUrl.includes('?') ? '&' : '?') + 'v=' + Date.now();
+    finalUrl = finalUrl + (finalUrl.includes('?') ? '&' : '?') + 'v=' + Date.now();
     
     return finalUrl;
   } else {

@@ -12,12 +12,14 @@
           }"
         ></div>
 
-        <!-- Appearing image with animation -->
-        <AppearingImage
+        <!-- Actual image positioned absolutely over the placeholder -->
+        <img
           :src="optimizedProfileImageUrl"
+          :class="['profile-image-element', { 'image-loaded': isImageLoaded }]"
           alt="Dasha Tsapenko working with bio-material"
-          class="profile-image-element"
-          @animation-complete="onAnimationComplete"
+          @load="onImageLoaded"
+          @error="onImageError"
+          ref="profileImg"
         />
       </div>
       
@@ -68,7 +70,6 @@
 import MainText from '../components/MainText.vue'
 import InfoText from '../components/InfoText.vue'
 import BaseButton from '../components/BaseButton.vue'
-import AppearingImage from '../components/AppearingImage.vue'
 import { renderRichText } from '@storyblok/vue'
 import { loadStory, formatImage } from '../utils/storyblok'
 import { useStoryblokBridge } from '@storyblok/vue'
@@ -81,8 +82,7 @@ export default {
   components: {
     MainText,
     InfoText,
-    BaseButton,
-    AppearingImage
+    BaseButton
   },
   data() {
     return {
@@ -196,6 +196,7 @@ export default {
   },
   mounted() {
     this.fetchProfile();
+    this.checkImageLoaded();
   },
   beforeUnmount() {
     // Clean up scrollback animations
@@ -250,14 +251,19 @@ export default {
         this.isLoading = false;
       }
     },
-    onAnimationComplete() {
+    onImageLoaded() {
       this.isImageLoaded = true;
-      console.log('Profile image appearing animation completed');
     },
     onImageError() {
       // Still show the image even if it fails to load
       this.isImageLoaded = true;
       console.warn('Profile image failed to load:', this.profileImage);
+    },
+    checkImageLoaded() {
+      // Check if image is already loaded (cached, etc.)
+      if (this.$refs.profileImg && this.$refs.profileImg.complete && this.$refs.profileImg.naturalHeight !== 0) {
+        this.isImageLoaded = true;
+      }
     },
 
     sendEmail() {
@@ -386,8 +392,25 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   padding:  0 var(--space-md) ;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
   display: block;
+  background: transparent;
+  /* Initially hide all images completely to prevent any layout shifts */
+  visibility: hidden;
+  /* Prevent image dragging */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+/* Image becomes visible when loaded */
+.profile-image-element.image-loaded {
+  opacity: 1;
+  visibility: visible;
 }
 
 .profile-content {

@@ -11,11 +11,6 @@ const router = createRouter({
       component: () => import('../views/ComponentsDemo.vue')
     },
     {
-      path: '/threshold',
-      name: 'ThresholdDemo',
-      component: () => import('../views/ThresholdDemo.vue')
-    },
-    {
       path: '/',
       name: 'Home',
       component: () => import('../views/Home.vue')
@@ -80,12 +75,7 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: NotFound
-    },
-    {
-      path: '/lazy',
-      name: 'lazy',
-      component: () => import('../components/LazyCarousel.vue')
-    },
+    }
   ]
 });
 
