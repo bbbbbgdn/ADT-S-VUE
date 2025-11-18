@@ -448,8 +448,11 @@ export default {
 }
 
 .profile-rich-text .base-button {
-  margin: 0 0.25rem;
+  margin: var(--space-sm) 0;
   display: inline-flex;
+}
+.profile-rich-text span {
+  /* font-size: 0; */
 }
 
 .contact-info {
