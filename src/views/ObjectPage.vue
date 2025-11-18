@@ -145,64 +145,41 @@ const revealImage = (index) => {
 
 // Simple sticky order section functionality
 const orderSectionRef = ref(null);
+const objectInfoRef = ref(null);
 const OtherRef = ref(null);
-const isSticky = ref(false);
-const isTransitioning = ref(false);
-const translateY = ref(0);
-const originalOffsetTop = ref(0);
+const isSticky = ref(false); // Sticks to bottom of object-info container
+const isFixed = ref(false); // Fixed at bottom of window
 
 // Image loading state data for batch loading
 const loadedImages = ref(new Set()); // Track which images have loaded
 const isBatchLoading = ref(false); // Whether we're in batch loading mode
 
 const handleScroll = () => {
-  if (!orderSectionRef.value || !OtherRef.value) return;
+  if (!orderSectionRef.value || !objectInfoRef.value || !OtherRef.value) return;
   
   // Disable sticky behavior on mobile devices
   if (window.innerWidth <= 768) {
     isSticky.value = false;
-    isTransitioning.value = false;
-    translateY.value = 0;
+    isFixed.value = false;
     return;
   }
   
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const windowHeight = window.innerHeight;
-  const windowBottom = scrollTop + windowHeight;
   
-  // If we haven't stored the original position yet, store it
-  if (originalOffsetTop.value === 0 && orderSectionRef.value.offsetTop > 0) {
-    originalOffsetTop.value = orderSectionRef.value.offsetTop;
-  }
+  // Get object-info container bounds
+  const objectInfoRect = objectInfoRef.value.getBoundingClientRect();
+  const objectInfoBottom = objectInfoRect.bottom; // Relative to viewport
   
-  // Get photos-stack bottom position
-  const photosStackRect = OtherRef.value.getBoundingClientRect();
-  const photosStackBottom = scrollTop + photosStackRect.bottom;
-  
-  // Start sticky when scroll passes the original position
-  const shouldStartSticky = scrollTop > originalOffsetTop.value;
-  
-  // Check if we've reached the transition point
-  const hasReachedTransitionPoint = windowBottom >= photosStackBottom;
-  
-  if (shouldStartSticky && !hasReachedTransitionPoint) {
-    // Normal sticky behavior
+  // If object-info container bottom is at or above viewport bottom, stick to container
+  // Otherwise, fix at window bottom
+  if (objectInfoBottom <= windowHeight) {
+    // Object-info container bottom is in view or above - stick to container bottom
     isSticky.value = true;
-    isTransitioning.value = false;
-    translateY.value = 0;
-  } else if (shouldStartSticky && hasReachedTransitionPoint) {
-    // Transition mode: calculate how much to move the element up
-    const overscroll = windowBottom - photosStackBottom;
-    const maxTranslate = orderSectionRef.value.offsetHeight + 20; // Element height + some padding
-    
-    isSticky.value = true;
-    isTransitioning.value = true;
-    translateY.value = -Math.min(overscroll, maxTranslate);
+    isFixed.value = false;
   } else {
-    // Not sticky
+    // Object-info container bottom is below viewport - fix at window bottom
     isSticky.value = false;
-    isTransitioning.value = false;
-    translateY.value = 0;
+    isFixed.value = true;
   }
 };
 
@@ -212,9 +189,7 @@ onMounted(() => {
 
   // Get initial position after mount
   setTimeout(() => {
-    if (orderSectionRef.value) {
-      originalOffsetTop.value = orderSectionRef.value.offsetTop;
-    }
+    handleScroll();
   }, 100);
 });
 
@@ -243,29 +218,26 @@ onUnmounted(() => {
 
         <div class="object-content">
           <!-- Left column: Object info -->
-          <div class="object-info">
+          <div class="object-info" ref="objectInfoRef">
             <!-- Object name (pink) button at top -->
         <!-- Main two-column layout -->
         <div class="object-tags">
               <BaseButton variant="active">{{ story.content?.title_tag || 'Untitled Object' }}</BaseButton>
             </div>
             
-
-            
-            <!-- Price and availability info -->
-            <div 
-              class="order-section" 
-              ref="orderSectionRef" 
-              :class="{ 'sticky': isSticky, 'transitioning': isTransitioning }"
-              :style="{ transform: `translateY(${translateY}px)` }"
-            >
-                          <!-- Object description -->
+            <!-- Object description -->
             <div class="object-description">
               <p v-if="story.content?.info_text" v-html="formatTextWithLineBreaks(story.content.info_text)"></p>
               <p v-else-if="story.content?.main_text" v-html="formatTextWithLineBreaks(story.content.main_text)"></p>
               <p v-else class="no-description">Object description in progress,<br>meanwhile feel free to contact for details!</p>
             </div>
 
+            <!-- Price and availability info -->
+            <div 
+              class="order-section" 
+              ref="orderSectionRef" 
+              :class="{ 'sticky': isSticky, 'fixed': isFixed }"
+            >
               <BaseButton
                 variant="black"
                 @click="contactDasha"
@@ -409,7 +381,7 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   /* gap: var(--space-4xl); */
-  padding: 0 var(--space-md);
+  padding: 0 0 0 var(--space-md);
   min-height: 80vh;
  
 }
@@ -418,6 +390,7 @@ onUnmounted(() => {
 .object-info {
   display: flex;
   flex-direction: column;
+  position: relative;
   /* gap: var(--space-xl); */
   /* padding-right: var(--space-xl); */
   
@@ -440,6 +413,7 @@ onUnmounted(() => {
   font-size: var(--text-lg);
   /* line-height: 1.6; */
   margin-bottom: var(--space-4xl);
+  margin-left: var(--space-3xl);
   /* margin-bottom: 20svh; */
 }
 
@@ -461,7 +435,8 @@ onUnmounted(() => {
   /* gap: var(--space-md); */
   /* flex-wrap: wrap; */
   /* align-items: center; */
-  margin: var(--space-xl)  var(--space-3xl) 0 0;
+  margin: var(--space-xl) var(--space-3xl) var(--space-3xl) var(--space-3xl);
+  margin-top: auto;
   /* transition: all 0.3s ease; */
 }
 
@@ -470,18 +445,26 @@ onUnmounted(() => {
 }
 
 .order-section.sticky {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  bottom: 0;
   left: 0;
-  right: 49.5%;
+  right: 0;
   background-color: white;
-  padding: var(--space-md);
-  margin: 0 var(--space-3xl) 0 var(--space-3xl);
+  /* padding: var(--space-md); */
+  /* margin: 0 var(--space-3xl) ; */
   z-index: 100;
-  /* transition: transform 0.1s ease-out; */
 }
 
-/* .order-section.transitioning - Smooth transition during scroll off-screen: transition: transform 0.05s ease-out; */
+.order-section.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 50%;
+  background-color: white;
+  padding: var(--space-md);
+  /* margin: var(--space-3xl) var(--space-3xl); */
+  z-index: 100;
+}
 
 .purchase-info {
   /* font-size: var(--text-sm); */
@@ -500,12 +483,13 @@ onUnmounted(() => {
 .photos-stack {
   display: flex;
   flex-direction: column;
+  margin-left: calc(var(--space-md) * -1);
   /* gap: var(--space-md); */
 }
 
 .photo-item {
   position: relative;
-  margin-bottom: var(--space-md);
+  /* margin-bottom: var(--space-md); */
 }
 
 .image-placeholder {
@@ -637,7 +621,7 @@ onUnmounted(() => {
 @media screen and (max-width: 768px) {
 
   .object-info > *:not(:first-child) {
-    margin: 0 var(--space-xl) 0 0;
+    margin: 0 var(--space-xl) var(--space-2xl) 0;
   }
 
   .object-content {
@@ -665,7 +649,8 @@ onUnmounted(() => {
   /* .object-tags justify-content: center; */
   
   /* Disable sticky behavior on mobile */
-  .order-section.sticky {
+  .order-section.sticky,
+  .order-section.fixed {
     position: static;
     top: auto;
     left: auto;
