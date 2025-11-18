@@ -93,26 +93,30 @@ const formatMainShowImages = (visuals) => {
 
 
 // Computed properties for cleaner gallery configuration
-const mainShowGalleryProps = computed(() => ({
-  name: story.value?.content?.title_tag || '',
-  location: story.value?.content?.location_tag || '',
-  date: story.value ? formatDateRange(story.value) : '',
-  slug: story.value?.slug,
-  isOngoing: story.value ? isShowOngoing(story.value) : false,
-  images: story.value?.content?.visuals ? formatMainShowImages(story.value.content.visuals) : [],
-  repeatCount: 1,
-  imageHeight: 'calc(100vh - 96rem)',
-  imageQuality: mainShowImageSettings.quality,
-  imageFormat: mainShowImageSettings.format,
-  resolutionRatio: mainShowImageSettings.resolutionRatio,
-  isActive: true,
-  repeatToFill: false,
-  enableNavigation: false,
-  // Enable manual click-and-drag for big galleries
-  allowDrag: true,
-  // Enable photo navigation for main show gallery
-  enablePhotoNavigation: true
-}));
+const mainShowGalleryProps = computed(() => {
+  const isOngoing = story.value ? isShowOngoing(story.value) : false;
+  return {
+    name: story.value?.content?.title_tag || '',
+    location: story.value?.content?.location_tag || '',
+    // Only format full date if ongoing, otherwise use dateTag
+    date: isOngoing && story.value ? formatDateRange(story.value) : (story.value?.content?.date_tag || ''),
+    slug: story.value?.slug,
+    isOngoing: isOngoing,
+    images: story.value?.content?.visuals ? formatMainShowImages(story.value.content.visuals) : [],
+    repeatCount: 1,
+    imageHeight: 'calc(100vh - 96rem)',
+    imageQuality: mainShowImageSettings.quality,
+    imageFormat: mainShowImageSettings.format,
+    resolutionRatio: mainShowImageSettings.resolutionRatio,
+    isActive: true,
+    repeatToFill: false,
+    enableNavigation: false,
+    // Enable manual click-and-drag for big galleries
+    allowDrag: true,
+    // Enable photo navigation for main show gallery
+    enablePhotoNavigation: true
+  };
+});
 
 // helper no longer needed for ShowCard usage
 </script>

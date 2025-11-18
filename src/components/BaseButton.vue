@@ -171,7 +171,7 @@ const handleClick = (event) => {
 
 /* Ongoing Button */
 .button-ongoing {
-  background-color: #4ade80; /* Green-400 */
+  background-color: rgba(0, 255, 55, 1);
   color: black !important;
   pointer-events: none;
   display: flex;

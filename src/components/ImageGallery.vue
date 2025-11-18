@@ -1991,17 +1991,9 @@ export default {
 }
 
 /* Target the spans inside the button-text wrapper */
-.button-ongoing .button-text .ongoing-dot {
-  width: 10px !important;
-  height: 10px !important;
-  background-color: black !important;
-  border-radius: 50%;
-  animation: blink 1.5s infinite;
-  flex-shrink: 0; /* Prevent dot from shrinking */
-  display: inline-block !important;
-  vertical-align: middle;
-  margin-top: -1px; /* Fine-tune vertical alignment */
-  position: relative;
+.button-ongoing .button-text .ongoing-dot::before {
+  content: '●';
+  animation: blink 5s infinite ease-in-out;
   z-index: 1;
 }
 
@@ -2011,11 +2003,20 @@ export default {
 }
 
 @keyframes blink {
-  0%, 50% {
+  0% {
     opacity: 1;
   }
-  51%, 100% {
+  25% {
     opacity: 0.3;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

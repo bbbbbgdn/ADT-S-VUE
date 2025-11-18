@@ -59,7 +59,11 @@ export default {
     },
     resolvedDate() {
       if (this.date && this.date.trim().length > 0) return this.date;
-      return this.formatDateRangeFromProps();
+      // Only format full date range if show is ongoing, otherwise use dateTag
+      if (this.resolvedIsOngoing) {
+        return this.formatDateRangeFromProps();
+      }
+      return this.dateTag || '';
     },
     resolvedIsOngoing() {
       if (this.isOngoing) return true;
