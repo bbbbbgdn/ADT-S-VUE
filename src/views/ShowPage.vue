@@ -68,6 +68,13 @@ const randomOtherShows = computed(() => {
     .slice(0, 4); // взяти перші 4
 });
 
+// Computed property to get the actual height in pixels for the container
+// Make galleries 2x smaller vertically (same as Shows.vue)
+const containerHeight = computed(() => {
+  const smallerHeight = otherShowsImageSettings.height / 2;
+  return `${smallerHeight}rem`;
+});
+
 // Handle gallery loading errors (simplified for ShowPage)
 const handleGalleryError = (storyId) => {
   console.warn(`[ShowPage] Gallery ${storyId} encountered an error`);
@@ -165,7 +172,7 @@ const mainShowGalleryProps = computed(() => ({
                 :startDate="show.content?.start_date"
                 :endDate="show.content?.end_date"
                 :dateTag="show.content?.date_tag"
-                :imageHeight="`${otherShowsImageSettings.height / 2}rem`"
+                :imageHeight="containerHeight"
                 :imageWidth="'auto'"
                 :imageQuality="otherShowsImageSettings.quality"
                 :imageFormat="otherShowsImageSettings.format"
