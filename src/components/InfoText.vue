@@ -1,10 +1,10 @@
 <template>
   <div class="info-text-container" v-if="hasContent">
-    <div class="info-text" v-if="$slots.default" :style="inlineStyle">
+    <div class="info-text" :class="{ 'single-hr': hasSingleHr }" v-if="$slots.default" :style="inlineStyle">
       <slot></slot>
     </div>
-    <div class="info-text" v-else-if="html" :style="inlineStyle" v-html="html"></div>
-    <div class="info-text" v-else-if="text" :style="inlineStyle">{{ text }}</div>
+    <div class="info-text" :class="{ 'single-hr': hasSingleHr }" v-else-if="html" :style="inlineStyle" v-html="html"></div>
+    <div class="info-text" :class="{ 'single-hr': hasSingleHr }" v-else-if="text" :style="inlineStyle">{{ text }}</div>
   </div>
 </template>
 
@@ -35,6 +35,14 @@ export default {
       return {
         columnCount: this.columnCount
       };
+    },
+    hasSingleHr() {
+      const content = this.html || this.text || '';
+      if (!content) return false;
+      
+      // Count <hr> tags (case-insensitive, with or without attributes)
+      const hrMatches = content.match(/<hr\s*[^>]*>/gi);
+      return hrMatches && hrMatches.length === 1;
     }
   }
 };
@@ -51,6 +59,7 @@ export default {
 .info-text {
   column-count: 2;
   column-gap: var(--space-3xl);
+  column-fill: auto;
   /* max-width: 1000px; */
   width: 100%;
   padding: var(--space-xl) var(--space-3xl);
@@ -79,6 +88,21 @@ export default {
 .info-text p:empty {
   min-height: 1em; /* or use margin for more space */
   display: block;
+}
+
+.info-text hr {
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 0;
+  overflow: hidden;
+}
+
+.info-text.single-hr hr {
+  break-after: column;
+  page-break-after: column;
+  -webkit-column-break-after: column;
 }
 
 .info-text .empty-text {
