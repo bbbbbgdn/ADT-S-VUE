@@ -198,7 +198,7 @@ const mainProjectGalleryProps = computed(() => ({
 
 @media screen and (max-width: 768px) {
   .image-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr !important;
     padding: var(--space-md);
   }
 
