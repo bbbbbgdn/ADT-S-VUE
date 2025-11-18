@@ -242,7 +242,7 @@ onUnmounted(() => {
                 variant="black"
                 @click="contactDasha"
               >
-                Contact Dasha
+                Contact
               </BaseButton>
               
               <BaseButton 
