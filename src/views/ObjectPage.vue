@@ -2,7 +2,7 @@
 import { useRoute, useRouter } from 'vue-router';
 import BaseButton from '../components/BaseButton.vue';
 import ObjectCard from '../components/ObjectCard.vue';
-import { computed, onMounted, onUnmounted, ref, nextTick } from 'vue';
+import { computed, onMounted, onUnmounted, ref, nextTick, watch } from 'vue';
 import useStoryblok from '../utils/useStoryblok';
 import useGlobalSettings from '../utils/useGlobalSettings';
 import { createImageSettings } from '../utils/imageSettings';
@@ -183,14 +183,31 @@ const handleScroll = () => {
   }
 };
 
+// Watch for content ready state and update scroll position
+watch([contentReady, () => story.value], () => {
+  if (contentReady.value && story.value) {
+    // Use nextTick to ensure DOM is fully rendered
+    nextTick(() => {
+      // Use requestAnimationFrame for better timing with layout
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          handleScroll();
+        });
+      });
+    });
+  }
+}, { immediate: true });
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
   window.addEventListener('resize', handleScroll);
 
-  // Get initial position after mount
-  setTimeout(() => {
-    handleScroll();
-  }, 100);
+  // Get initial position after mount - use nextTick to ensure DOM is ready
+  nextTick(() => {
+    setTimeout(() => {
+      handleScroll();
+    }, 100);
+  });
 });
 
 onUnmounted(() => {
@@ -414,6 +431,7 @@ onUnmounted(() => {
   /* line-height: 1.6; */
   margin-bottom: var(--space-4xl);
   margin-left: var(--space-3xl);
+  margin-right: var(--space-2xl);
   /* margin-bottom: 20svh; */
 }
 
