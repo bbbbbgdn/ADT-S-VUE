@@ -15,6 +15,8 @@ export default function useGlobalSettings() {
   const message404 = ref('This page not found or just not yet grown. <br/>Would you be up for growing something here instead?');
   const homepageTitle = ref('Atelier Dasha Tsapenko');
   const deliveryInfo = ref('For delivery information, please contact us.');
+  const homepageVideo = ref('');
+  const homepageFallbackImage = ref('');
   
   /**
    * Load global settings from Storyblok
@@ -48,6 +50,14 @@ export default function useGlobalSettings() {
           deliveryInfo.value = content.delivery_info;
         }
         
+        if (content.homepage_video && content.homepage_video.filename) {
+          homepageVideo.value = content.homepage_video.filename;
+        }
+        
+        if (content.homepage_fallback_image && content.homepage_fallback_image.filename) {
+          homepageFallbackImage.value = content.homepage_fallback_image.filename;
+        }
+        
         console.log('Global settings loaded successfully:', content);
       } else {
         console.warn('Failed to load global settings:', result.error);
@@ -76,6 +86,8 @@ export default function useGlobalSettings() {
     message404,
     homepageTitle,
     deliveryInfo,
+    homepageVideo,
+    homepageFallbackImage,
     
     // Methods
     loadGlobalSettings

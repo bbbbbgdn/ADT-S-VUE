@@ -46,6 +46,32 @@
 
     <script type="text/javascript">
 
+        // Store video configuration
+        let videoConfig = {
+            mainVideo: "",
+            mainVideoFallbackImage: ""
+        };
+
+        // Listen for video configuration from parent window
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'VIDEO_CONFIG') {
+                console.log('Received video config:', event.data);
+                videoConfig.mainVideo = event.data.mainVideo || "";
+                videoConfig.mainVideoFallbackImage = event.data.mainVideoFallbackImage || "";
+                
+                // If patch is already loaded, update variables
+                if (CABLES.patch) {
+                    console.log('Updating existing patch with new video config');
+                    if (videoConfig.mainVideo) {
+                        CABLES.patch.setVariable('mainVideo', videoConfig.mainVideo);
+                    }
+                    if (videoConfig.mainVideoFallbackImage) {
+                        CABLES.patch.setVariable('mainVideoFallbackImage', videoConfig.mainVideoFallbackImage);
+                    }
+                }
+            }
+        });
+
         function showError(initiator,...args)
         {
             CABLES.logErrorConsole("[" + initiator + "]", ...args);
@@ -54,15 +80,18 @@
         function patchInitialized(patch)
         {
             // You can now access the patch object (patch), register variable watchers and so on
+            console.log('Patch initialized with config:', videoConfig);
         }
 
         function patchFinishedLoading(patch)
         {
             // The patch is ready now, all assets have been loaded
+            console.log('Patch finished loading');
         }
 
         document.addEventListener("CABLES.jsLoaded", function (event)
         {
+            console.log('Creating CABLES patch with video config:', videoConfig);
             CABLES.patch = new CABLES.Patch({
                 patch: CABLES.exportedPatch,
                 "prefixAssetPath": "",
@@ -74,11 +103,10 @@
                 "onPatchLoaded": patchInitialized,
                 "onFinishedLoading": patchFinishedLoading,
                 "canvas": {"alpha":true, "premultipliedAlpha":true }, // make canvas transparent
-                variables:
-                    {
-                        // "mainVideo":"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-                        // "mainVideoFallbackImage":"https://atelierdt.b-cdn.net/homepage_fallback.jpg"
-                    }
+                variables: {
+                    "mainVideo": videoConfig.mainVideo || "",
+                    "mainVideoFallbackImage": videoConfig.mainVideoFallbackImage || ""
+                }
             });
         });
 

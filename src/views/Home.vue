@@ -2,6 +2,7 @@
   <div class="home" :class="{ 'image-loaded': isLoaded }">
     <div class="title-text" :class="{ 'title-fade-in': isLoaded }">{{ homepageTitle }}</div>
     <iframe
+      ref="videoIframe"
       class="video-background"
       src="/home_video/index.html"
       frameborder="0"
@@ -13,25 +14,52 @@
 </template>
 
 <script setup>
-import { ref, onBeforeUnmount, onMounted } from 'vue'
+import { ref, onBeforeUnmount, onMounted, watch } from 'vue'
 import useGlobalSettings from '../utils/useGlobalSettings'
 
 // Global settings
-const { homepageTitle } = useGlobalSettings()
+const { homepageTitle, homepageVideo, homepageFallbackImage, isLoading: settingsLoading } = useGlobalSettings()
 
 // Reactive data
 const isLoaded = ref(false)
+const videoIframe = ref(null)
 
 // Methods
+const sendVideoConfig = () => {
+  if (videoIframe.value && videoIframe.value.contentWindow) {
+    const config = {
+      type: 'VIDEO_CONFIG',
+      mainVideo: homepageVideo.value,
+      mainVideoFallbackImage: homepageFallbackImage.value
+    }
+    console.log('Sending video config to iframe:', config)
+    videoIframe.value.contentWindow.postMessage(config, '*')
+  }
+}
+
 const onIframeLoad = () => {
   console.log('Iframe loaded, triggering fade-in')
   isLoaded.value = true
+  
+  // Send video config once iframe is loaded and settings are ready
+  if (!settingsLoading.value && (homepageVideo.value || homepageFallbackImage.value)) {
+    setTimeout(() => {
+      sendVideoConfig()
+    }, 100)
+  }
 }
 
 const onIframeError = () => {
   console.error('Iframe error, showing content anyway')
   isLoaded.value = true
 }
+
+// Watch for settings to load and send config
+watch([settingsLoading, homepageVideo, homepageFallbackImage], ([loading, video, fallback]) => {
+  if (!loading && (video || fallback) && isLoaded.value) {
+    sendVideoConfig()
+  }
+})
 
 // Lifecycle
 onMounted(() => {
