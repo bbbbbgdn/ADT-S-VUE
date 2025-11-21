@@ -8,6 +8,7 @@
     @keydown.space.prevent="onCardClick"
   >
     <img
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
       v-lazy-load="{
         url: image,
         index: galleryIndex,
@@ -140,17 +141,16 @@ img {
   transition: opacity 0.5s ease;
   border-radius: 0; /* чітко встановлено без округлення */
   object-fit: contain;
+  opacity: 0;
 }
 
 /* Loading state styles */
 .object-bg.image-loading {
   opacity: 0;
-  filter: blur(2px);
 }
 
 .object-bg.image-loaded {
-  opacity: 1;
-  filter: blur(0);
+  opacity: 1 !important;
 }
 
 .object-bg.image-error {
