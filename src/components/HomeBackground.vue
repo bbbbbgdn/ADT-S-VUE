@@ -32,6 +32,14 @@ const canvasElement = ref(null)
 
 const isHome = computed(() => route.name === 'Home')
 
+const preventTouch = (e) => {
+  if (isHome.value) e.preventDefault()
+}
+
+const blockCablesTouch = (e) => {
+  if (!isHome.value) e.stopPropagation()
+}
+
 watch(isHome, (active) => {
   const mainContent = document.querySelector('.main-content')
   if (active) {
@@ -42,6 +50,7 @@ watch(isHome, (active) => {
     isLoaded.value = false
     if (window.CABLES?.patch?.pause) window.CABLES.patch.pause()
     if (mainContent) mainContent.style.pointerEvents = ''
+    document.body.style.touchAction = ''
   }
 })
 
@@ -68,18 +77,21 @@ const createPatch = () => {
       glCanvasResizeToWindow: true,
       onError: () => { isLoaded.value = true },
       onPatchLoaded: () => {},
-      onFinishedLoading: () => { isLoaded.value = true },
+      onFinishedLoading: () => {
+        isLoaded.value = true
+        sendVideoConfig()
+      },
       canvas: { alpha: true, premultipliedAlpha: true },
       variables: {
-        mainVideo: homepageVideo.value || '',
-        mainVideoFallbackImage: homepageFallbackImage.value || ''
+        ...(homepageVideo.value ? { mainVideo: homepageVideo.value } : {}),
+        ...(homepageFallbackImage.value ? { mainVideoFallbackImage: homepageFallbackImage.value } : {})
       }
     })
 
     cablesPatch.value = patch
     window.CABLES.patch = patch
 
-    canvasElement.value?.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false })
+    canvasElement.value?.addEventListener('touchmove', preventTouch, { passive: false })
   } catch (error) {
     console.error('Error initializing Cables patch', error)
     isLoaded.value = true
@@ -127,6 +139,12 @@ onMounted(() => {
     window.CABLES.patch.pause()
   }
 
+  const mainContent = document.querySelector('.main-content')
+  if (mainContent) {
+    mainContent.addEventListener('touchmove', blockCablesTouch, { passive: true })
+    mainContent.addEventListener('touchstart', blockCablesTouch, { passive: true })
+  }
+
   setTimeout(() => {
     if (!isLoaded.value) isLoaded.value = true
   }, 3000)
@@ -155,6 +173,7 @@ onMounted(() => {
   opacity: 1;
   z-index: 0;
   pointer-events: auto;
+  touch-action: none;
 }
 
 .video-background {
