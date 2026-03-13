@@ -19,7 +19,6 @@ import useGlobalSettings from '../utils/useGlobalSettings'
 const { homepageTitle, homepageVideo, homepageFallbackImage, isLoading: settingsLoading } = useGlobalSettings()
 
 const isLoaded = ref(false)
-const cablesPatch = ref(null)
 const cablesEventListener = ref(null)
 const homeContainer = ref(null)
 const canvasElement = ref(null)
@@ -40,15 +39,25 @@ const initCablesPatch = () => {
     return
   }
 
-  if (window.CABLES && window.CABLES.patch && cablesPatch.value) {
-    if (canvasElement.value && window.CABLES.patch.glCanvas) {
-      if (typeof window.CABLES.patch.resume === 'function') {
-        window.CABLES.patch.resume()
-      }
-      sendVideoConfig()
-      isLoaded.value = true
-      return
+  // If a patch already exists, just resume it and update variables
+  if (window.CABLES && window.CABLES.patch && window.CABLES.patch.glCanvas) {
+    if (typeof window.CABLES.patch.resume === 'function') {
+      window.CABLES.patch.resume()
     }
+    sendVideoConfig()
+    // Wait for the patch to draw at least one frame, then fade in (same as first load)
+    let faded = false
+    const doFadeIn = () => {
+      if (faded) return
+      faded = true
+      isLoaded.value = true
+    }
+    requestAnimationFrame(() => {
+      requestAnimationFrame(doFadeIn)
+    })
+    // If Cables is slow to draw, still fade in after a short delay
+    setTimeout(doFadeIn, 400)
+    return
   }
 
   const createPatch = () => {
@@ -59,10 +68,6 @@ const initCablesPatch = () => {
     }
 
     try {
-      if (window.CABLES.patch && typeof window.CABLES.patch.delete === 'function') {
-        window.CABLES.patch.delete()
-      }
-
       const patch = new window.CABLES.Patch({
         patch: window.CABLES.exportedPatch,
         prefixAssetPath: '',
@@ -85,7 +90,6 @@ const initCablesPatch = () => {
         }
       })
 
-      cablesPatch.value = patch
       window.CABLES.patch = patch
 
       if (canvasElement.value) {
