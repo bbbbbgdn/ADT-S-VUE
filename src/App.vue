@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <MenuComponent />
+    <HomeBackground />
     <main class="main-content">
       <router-view v-slot="{ Component }">
         <PageTransition>
@@ -14,13 +15,15 @@
 <script>
 import MenuComponent from './components/MenuComponent.vue'
 import PageTransition from './components/PageTransition.vue'
+import HomeBackground from './components/HomeBackground.vue'
 import { transitionCSS } from './utils/transitionConfig'
 
 export default {
   name: 'App',
   components: {
     MenuComponent,
-    PageTransition
+    PageTransition,
+    HomeBackground
   },
   data() {
     return {
@@ -28,40 +31,31 @@ export default {
     }
   },
   mounted() {
-    // Set CSS variables for transitions
-    document.documentElement.style.setProperty('--transition-duration', transitionCSS.duration);
-    document.documentElement.style.setProperty('--transition-easing', transitionCSS.easing);
-    
-    // Add smooth scrolling to the root HTML element
-    document.documentElement.style.scrollBehavior = 'smooth';
-    
-    // Safety check: If page loads with transition class stuck, remove it
+    document.documentElement.style.setProperty('--transition-duration', transitionCSS.duration)
+    document.documentElement.style.setProperty('--transition-easing', transitionCSS.easing)
+
+    document.documentElement.style.scrollBehavior = 'smooth'
+
     if (document.body.classList.contains('page-transitioning')) {
-      document.body.classList.remove('page-transitioning');
+      document.body.classList.remove('page-transitioning')
     }
-    
-    // Clean up any transition issues on before unload
+
     window.addEventListener('beforeunload', () => {
       if (document.body.classList.contains('page-transitioning')) {
-        document.body.classList.remove('page-transitioning');
+        document.body.classList.remove('page-transitioning')
       }
-    });
+    })
 
-    // Preload critical images including profile image
-    this.preloadCriticalImages();
+    this.preloadCriticalImages()
   },
   methods: {
     preloadCriticalImages() {
-      // List of critical images to preload
-      const imagesToPreload = [
-        '/main/assets/profile-image.webp'
-      ];
-      
-      // Preload each image
-      imagesToPreload.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
+      const imagesToPreload = ['/main/assets/profile-image.webp']
+
+      imagesToPreload.forEach((src) => {
+        const img = new Image()
+        img.src = src
+      })
     }
   }
 }
