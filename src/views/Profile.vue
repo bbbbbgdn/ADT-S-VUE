@@ -57,10 +57,21 @@
       <div class="footer-left">
         <span class="small-text">{{ (story && story.content && story.content.Extra) }}</span>
         <br>
-        <span>{{ (story && story.content && story.content.footer_left) || '© Atelier Dasha Tsapenko' }}</span>
+        <span>{{ currentYear }} {{ (story && story.content && story.content.footer_left) || '© Atelier Dasha Tsapenko' }}</span>
       </div>
       <div class="footer-right">
-        <span>This website is still cultivating its final form.</span>
+        <span v-if="parsedCredits.length">
+          <template v-for="(segment, segIndex) in parsedCredits" :key="segIndex">
+            <a
+              v-if="segment.type === 'link'"
+              :href="segment.href"
+              target="_blank"
+              rel="noopener noreferrer"
+            >{{ segment.text }}</a>
+            <span v-else>{{ segment.text }}</span>
+          </template>
+        </span>
+        <span v-else>Website Credits: <a href="https://hyperlink.company/" target="_blank" rel="noopener noreferrer">Hyperlink.Company</a></span>
       </div>
     </div>
   </div>
@@ -101,6 +112,9 @@ export default {
     }
   },
   computed: {
+    currentYear() {
+      return new Date().getFullYear();
+    },
     profileImageDimensions() {
       return extractImageDimensions(this.profileImage);
     },
@@ -137,6 +151,34 @@ export default {
 
       // For fallback image, return as-is (since it's not from Storyblok)
       return this.profileImage;
+    },
+    parsedCredits() {
+      if (!this.story || !this.story.content || !this.story.content.Credits) {
+        return [];
+      }
+      const credits = this.story.content.Credits;
+      const segments = [];
+      if (credits.content) {
+        credits.content.forEach(block => {
+          if (block.type === 'paragraph' && block.content) {
+            block.content.forEach(textNode => {
+              if (textNode.type === 'text') {
+                const linkMark = textNode.marks && textNode.marks.find(mark => mark.type === 'link');
+                if (linkMark) {
+                  segments.push({
+                    type: 'link',
+                    text: textNode.text,
+                    href: linkMark.attrs.href
+                  });
+                } else {
+                  segments.push({ type: 'text', text: textNode.text });
+                }
+              }
+            });
+          }
+        });
+      }
+      return segments;
     },
     parsedContent() {
       if (!this.story || !this.story.content || !this.story.content.info_text) {
