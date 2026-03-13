@@ -40,6 +40,7 @@ export default {
     // Scroll return properties (same as Press.vue)
     const menuScrollTimeout = ref(null)
     const isMenuScrolling = ref(false)
+    const touchStartData = ref(null)
     
     // Check screen size on mount and resize
     const checkScreenSize = () => {
@@ -111,19 +112,44 @@ export default {
         console.log('Menu scrolling stopped, triggering spring animation')
         isMenuScrolling.value = false
         animateMenuSpringReturn()
-      }, 1000) // Same 1000ms delay as ImageGallery
+      }, 3000)
     }
 
-    const handleMenuTouchStart = () => {
+    const handleMenuTouchStart = (event) => {
       isMenuScrolling.value = true
+      const touch = event.touches[0]
+      touchStartData.value = {
+        x: touch.clientX,
+        y: touch.clientY,
+        target: event.target
+      }
     }
 
-    const handleMenuTouchEnd = () => {
-      // Use same timing as ImageGallery for consistency
+    const handleMenuTouchEnd = (event) => {
+      // Detect taps that the browser may swallow as scroll gestures
+      if (touchStartData.value && event.changedTouches.length) {
+        const touch = event.changedTouches[0]
+        const dx = touch.clientX - touchStartData.value.x
+        const dy = touch.clientY - touchStartData.value.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+
+        if (distance < 10) {
+          const button = touchStartData.value.target.closest('.menu-button')
+          if (button && menuElement.value) {
+            const buttons = menuElement.value.querySelectorAll('.menu-button')
+            const index = Array.from(buttons).indexOf(button)
+            if (index >= 0 && index < menuItems.length) {
+              navigateTo(menuItems[index].path)
+            }
+          }
+        }
+        touchStartData.value = null
+      }
+
       setTimeout(() => {
         isMenuScrolling.value = false
         animateMenuSpringReturn()
-      }, 1000) // Same 1000ms delay as ImageGallery
+      }, 3000)
     }
 
     const animateMenuSpringReturn = () => {
