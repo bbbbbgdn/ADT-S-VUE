@@ -23,9 +23,13 @@ export const defaultSettings = {
     resolutionRatio: 2
   },
 
-  // Dynamic setting based on window width (1/2 of window width)
+  // Dynamic setting based on window width, scaled by device pixel ratio for sharp rendering
   windowBased: {
-    width: () => typeof window !== 'undefined' ? Math.round(window.innerWidth) : 1920,
+    width: () => {
+      if (typeof window === 'undefined') return 1920;
+      const dpr = Math.min(window.devicePixelRatio || 1, 3);
+      return Math.round(window.innerWidth * dpr);
+    },
     height: 0, // Auto height to maintain aspect ratio
     quality: 85,
     format: 'webp',

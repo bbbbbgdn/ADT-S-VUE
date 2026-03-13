@@ -11,7 +11,7 @@
         :key="press.id"
         class="background-image"
         :style="{ 
-          backgroundImage: `url(${press.content.Media?.filename})`,
+          backgroundImage: `url('${optimizePressImage(press.content.Media?.filename)}')`,
           opacity: currentActiveImage === press.id ? 1 : 0
         }"
       ></div>
@@ -73,6 +73,7 @@
 <script>
 import { onMounted, ref, computed, nextTick, onBeforeUnmount, getCurrentInstance } from 'vue'
 import { fetchAllStories } from '../utils/storyblokPagination'
+import { createImageUrl } from '../utils/storyblok'
 import BaseButton from '../components/BaseButton.vue'
 
 export default {
@@ -88,6 +89,13 @@ export default {
     const { proxy } = getCurrentInstance();
 
     // We'll use the pagination utility instead of the service
+
+    const optimizePressImage = (filename) => {
+      if (!filename) return ''
+      const dpr = Math.min(typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1, 3)
+      const width = typeof window !== 'undefined' ? Math.round(window.innerWidth * dpr) : 1920
+      return createImageUrl(filename, { width, height: 0, quality: 85, format: 'webp' })
+    }
 
     const groupedPress = computed(() => {
       // Force reactivity by accessing pressItems.value
@@ -542,7 +550,8 @@ export default {
       handlePressTitleTouchStart,
       handlePressTitleTouchEnd,
       handlePressItemRowClick,
-      isMobile
+      isMobile,
+      optimizePressImage
     }
   }
 }
