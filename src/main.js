@@ -4,7 +4,6 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { StoryblokVue, apiPlugin } from '@storyblok/vue';
-import DynamicComponent from './components/DynamicComponent.vue';
 import lazyLoad from './directives/lazyLoad';
 import LazyImage from './components/LazyImage.vue';
 import LazyBackground from './components/LazyBackground.vue';
@@ -25,7 +24,6 @@ if (accessToken) {
   // You can add fallback data or mock components here if needed
 }
 
-app.component('StoryblokComponent', DynamicComponent);
 app.component('LazyImage', LazyImage);
 app.component('LazyBackground', LazyBackground);
 

@@ -1,15 +1,14 @@
 <template>
-  <div class="home" :class="{ 'image-loaded': isLoaded }">
-    <div class="title-text" :class="{ 'title-fade-in': isLoaded }">{{ homepageTitle }}</div>
-    <iframe
-      ref="videoIframe"
+  <div ref="homeContainer" class="home" :class="{ 'image-loaded': isLoaded }">
+    <div class="title-text" :class="{ 'title-fade-in': isLoaded }">
+      {{ homepageTitle }}
+    </div>
+    <canvas
+      ref="canvasElement"
+      id="home-glcanvas"
       class="video-background"
-      src="/home_video/index.html"
-      frameborder="0"
-      allowfullscreen
-      @load="onIframeLoad"
-      @error="onIframeError"
-    ></iframe>
+      tabindex="1"
+    ></canvas>
   </div>
 </template>
 
@@ -17,56 +16,147 @@
 import { ref, onBeforeUnmount, onMounted, watch } from 'vue'
 import useGlobalSettings from '../utils/useGlobalSettings'
 
-// Global settings
 const { homepageTitle, homepageVideo, homepageFallbackImage, isLoading: settingsLoading } = useGlobalSettings()
 
-// Reactive data
 const isLoaded = ref(false)
-const videoIframe = ref(null)
+const cablesPatch = ref(null)
+const cablesEventListener = ref(null)
+const homeContainer = ref(null)
+const canvasElement = ref(null)
 
-// Methods
 const sendVideoConfig = () => {
-  if (videoIframe.value && videoIframe.value.contentWindow) {
-    const config = {
-      type: 'VIDEO_CONFIG',
-      mainVideo: homepageVideo.value,
-      mainVideoFallbackImage: homepageFallbackImage.value
+  if (window.CABLES && window.CABLES.patch) {
+    if (homepageVideo.value) {
+      window.CABLES.patch.setVariable('mainVideo', homepageVideo.value)
     }
-    console.log('Sending video config to iframe:', config)
-    videoIframe.value.contentWindow.postMessage(config, '*')
+    if (homepageFallbackImage.value) {
+      window.CABLES.patch.setVariable('mainVideoFallbackImage', homepageFallbackImage.value)
+    }
   }
 }
 
-const onIframeLoad = () => {
-  console.log('Iframe loaded, triggering fade-in')
-  isLoaded.value = true
-  
-  // Send video config once iframe is loaded and settings are ready
-  if (!settingsLoading.value && (homepageVideo.value || homepageFallbackImage.value)) {
-    setTimeout(() => {
+const initCablesPatch = () => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  if (window.CABLES && window.CABLES.patch && cablesPatch.value) {
+    if (canvasElement.value && window.CABLES.patch.glCanvas) {
+      if (typeof window.CABLES.patch.resume === 'function') {
+        window.CABLES.patch.resume()
+      }
       sendVideoConfig()
-    }, 100)
+      isLoaded.value = true
+      return
+    }
   }
+
+  const createPatch = () => {
+    if (!window.CABLES || !window.CABLES.exportedPatch) {
+      console.error('Cables is loaded but exported patch is missing')
+      isLoaded.value = true
+      return
+    }
+
+    try {
+      if (window.CABLES.patch && typeof window.CABLES.patch.delete === 'function') {
+        window.CABLES.patch.delete()
+      }
+
+      const patch = new window.CABLES.Patch({
+        patch: window.CABLES.exportedPatch,
+        prefixAssetPath: '',
+        assetPath: '/home_video/assets/',
+        jsPath: '/home_video/js/',
+        glCanvasId: 'home-glcanvas',
+        glCanvasResizeToWindow: true,
+        onError: function () {
+          console.error('Cables patch error', arguments)
+          isLoaded.value = true
+        },
+        onPatchLoaded: function () {},
+        onFinishedLoading: function () {
+          isLoaded.value = true
+        },
+        canvas: { alpha: true, premultipliedAlpha: true },
+        variables: {
+          mainVideo: homepageVideo.value || '',
+          mainVideoFallbackImage: homepageFallbackImage.value || ''
+        }
+      })
+
+      cablesPatch.value = patch
+      window.CABLES.patch = patch
+
+      if (canvasElement.value) {
+        canvasElement.value.addEventListener(
+          'touchmove',
+          (e) => {
+            e.preventDefault()
+          },
+          { passive: false }
+        )
+      }
+    } catch (error) {
+      console.error('Error while initializing Cables patch', error)
+      isLoaded.value = true
+    }
+  }
+
+  if (window.CABLES && window.CABLES.exportedPatch) {
+    createPatch()
+    return
+  }
+
+  const handleCablesLoaded = () => {
+    createPatch()
+  }
+
+  cablesEventListener.value = handleCablesLoaded
+  document.addEventListener('CABLES.jsLoaded', handleCablesLoaded)
+
+  const existingScript = document.querySelector('script[data-cables-home]')
+  if (existingScript) {
+    if (window.CABLES && window.CABLES.exportedPatch) {
+      createPatch()
+    }
+    return
+  }
+
+  const script = document.createElement('script')
+  script.src = '/home_video/js/patch.js'
+  script.async = true
+  script.dataset.cablesHome = 'true'
+  script.onerror = () => {
+    console.error('Failed to load Cables patch script')
+    isLoaded.value = true
+  }
+  document.body.appendChild(script)
 }
 
-const onIframeError = () => {
-  console.error('Iframe error, showing content anyway')
-  isLoaded.value = true
-}
-
-// Watch for settings to load and send config
 watch([settingsLoading, homepageVideo, homepageFallbackImage], ([loading, video, fallback]) => {
   if (!loading && (video || fallback) && isLoaded.value) {
     sendVideoConfig()
   }
 })
 
-// Lifecycle
 onMounted(() => {
-  // Fallback: if iframe doesn't load within 3 seconds, still show the content
+  isLoaded.value = false
+
+  if (canvasElement.value) {
+    canvasElement.value.style.display = 'block'
+    canvasElement.value.style.visibility = 'visible'
+  }
+  if (homeContainer.value) {
+    homeContainer.value.style.display = 'flex'
+    homeContainer.value.style.visibility = 'visible'
+  }
+
+  initCablesPatch()
+
   setTimeout(() => {
     if (!isLoaded.value) {
-      console.log('Iframe load timeout, showing content anyway')
+      console.log('Cables load timeout, showing content anyway')
       isLoaded.value = true
     }
   }, 3000)
@@ -74,9 +164,26 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   isLoaded.value = false
-  const homeElement = document.querySelector('.home')
-  if (homeElement) {
-    homeElement.style.display = 'none'
+
+  if (canvasElement.value) {
+    canvasElement.value.style.display = 'none'
+    canvasElement.value.style.visibility = 'hidden'
+  }
+  if (homeContainer.value) {
+    homeContainer.value.style.display = 'none'
+    homeContainer.value.style.visibility = 'hidden'
+    homeContainer.value.style.opacity = '0'
+  }
+
+  if (window.CABLES && window.CABLES.patch) {
+    if (typeof window.CABLES.patch.pause === 'function') {
+      window.CABLES.patch.pause()
+    }
+  }
+
+  if (cablesEventListener.value) {
+    document.removeEventListener('CABLES.jsLoaded', cablesEventListener.value)
+    cablesEventListener.value = null
   }
 })
 </script>
@@ -105,6 +212,12 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 100%;
   border: none;
+  outline: none;
+}
+
+.video-background:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .home:not(.image-loaded) {
@@ -147,4 +260,4 @@ h1 {
 .title-fade-in {
   opacity: 1;
 }
-</style> 
+</style>

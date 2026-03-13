@@ -2,9 +2,11 @@
   <div class="app">
     <MenuComponent />
     <main class="main-content">
-      <PageTransition>
-        <router-view></router-view>
-      </PageTransition>
+      <router-view v-slot="{ Component }">
+        <PageTransition>
+          <component :is="Component" />
+        </PageTransition>
+      </router-view>
     </main>
   </div>
 </template>
