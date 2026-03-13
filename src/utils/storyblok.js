@@ -265,9 +265,6 @@ export const formatImage = (project, options = {}) => {
       finalUrl = `${filename}${transform}`;
     }
     
-    // Force a unique URL to prevent caching issues
-    finalUrl = finalUrl + (finalUrl.includes('?') ? '&' : '?') + 'v=' + Date.now();
-    
     return finalUrl;
   } else {
     console.warn(`No visuals found for project: ${project.name || project.slug}`);

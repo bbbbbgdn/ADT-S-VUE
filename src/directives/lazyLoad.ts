@@ -140,7 +140,7 @@ export default {
         console.debug(`[LazyLoad] Loaded: galleryId=${galleryId}, index=${options.index}, url=${options.url}, isProjectCard=${isProjectCard}`);
         
         if (options.background || el.tagName !== 'IMG') {
-          el.style.backgroundImage = `url(${options.url})`
+          el.style.backgroundImage = `url('${options.url}')`
         } else {
           const imageElement = el as HTMLImageElement
           imageElement.src = options.url
@@ -171,7 +171,7 @@ export default {
 
           // Set image source but keep it hidden (batch loading will reveal it)
           if (options.background || el.tagName !== 'IMG') {
-            el.style.backgroundImage = `url(${options.url})`
+            el.style.backgroundImage = `url('${options.url}')`
           } else {
             const imageElement = el as HTMLImageElement
             imageElement.src = options.url
@@ -238,7 +238,7 @@ export default {
 
             // Set image source for error state but keep it hidden (batch loading will reveal it)
             if (options.background || el.tagName !== 'IMG') {
-              el.style.backgroundImage = `url(${options.url})`
+              el.style.backgroundImage = `url('${options.url}')`
             } else {
               const imageElement = el as HTMLImageElement
               imageElement.src = options.url
