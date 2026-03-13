@@ -2,9 +2,9 @@
   <div
     ref="homeContainer"
     class="home"
-    :class="{ 'image-loaded': isLoaded }"
+    :class="{ active: isHome, loaded: isLoaded }"
   >
-    <div class="title-text" :class="{ 'title-fade-in': isLoaded }">
+    <div class="title-text" :class="{ visible: isHome && isLoaded }">
       {{ homepageTitle }}
     </div>
     <canvas
@@ -17,12 +17,11 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import useGlobalSettings from '../utils/useGlobalSettings'
 
 const route = useRoute()
-
 const { homepageTitle, homepageVideo, homepageFallbackImage, isLoading: settingsLoading } = useGlobalSettings()
 
 const isLoaded = ref(false)
@@ -31,49 +30,30 @@ const cablesEventListener = ref(null)
 const homeContainer = ref(null)
 const canvasElement = ref(null)
 
-const setVisibility = (visible) => {
-  if (!homeContainer.value || !canvasElement.value) return
+const isHome = computed(() => route.name === 'Home')
 
+watch(isHome, (active) => {
   const mainContent = document.querySelector('.main-content')
-
-  if (visible) {
-    homeContainer.value.style.display = 'flex'
-    homeContainer.value.style.visibility = 'visible'
-    homeContainer.value.style.opacity = '1'
-    homeContainer.value.style.zIndex = '0'
-    homeContainer.value.style.pointerEvents = 'auto'
-
-    canvasElement.value.style.display = 'block'
-    canvasElement.value.style.visibility = 'visible'
-
-    if (mainContent) {
-      mainContent.style.pointerEvents = 'none'
-    }
+  if (active) {
+    if (cablesPatch.value) isLoaded.value = true
+    if (window.CABLES?.patch?.resume) window.CABLES.patch.resume()
+    if (mainContent) mainContent.style.pointerEvents = 'none'
   } else {
-    homeContainer.value.style.opacity = '0'
-    homeContainer.value.style.pointerEvents = 'none'
-    homeContainer.value.style.zIndex = '-1'
-
-    if (mainContent) {
-      mainContent.style.pointerEvents = 'auto'
-    }
+    isLoaded.value = false
+    if (window.CABLES?.patch?.pause) window.CABLES.patch.pause()
+    if (mainContent) mainContent.style.pointerEvents = ''
   }
-}
+})
 
 const sendVideoConfig = () => {
-  if (window.CABLES && window.CABLES.patch) {
-    if (homepageVideo.value) {
-      window.CABLES.patch.setVariable('mainVideo', homepageVideo.value)
-    }
-    if (homepageFallbackImage.value) {
-      window.CABLES.patch.setVariable('mainVideoFallbackImage', homepageFallbackImage.value)
-    }
+  if (window.CABLES?.patch) {
+    if (homepageVideo.value) window.CABLES.patch.setVariable('mainVideo', homepageVideo.value)
+    if (homepageFallbackImage.value) window.CABLES.patch.setVariable('mainVideoFallbackImage', homepageFallbackImage.value)
   }
 }
 
 const createPatch = () => {
-  if (!window.CABLES || !window.CABLES.exportedPatch) {
-    console.error('Cables is loaded but exported patch is missing')
+  if (!window.CABLES?.exportedPatch) {
     isLoaded.value = true
     return
   }
@@ -86,14 +66,9 @@ const createPatch = () => {
       jsPath: '/home_video/js/',
       glCanvasId: 'home-glcanvas',
       glCanvasResizeToWindow: true,
-      onError: function () {
-        console.error('Cables patch error', arguments)
-        isLoaded.value = true
-      },
-      onPatchLoaded: function () {},
-      onFinishedLoading: function () {
-        isLoaded.value = true
-      },
+      onError: () => { isLoaded.value = true },
+      onPatchLoaded: () => {},
+      onFinishedLoading: () => { isLoaded.value = true },
       canvas: { alpha: true, premultipliedAlpha: true },
       variables: {
         mainVideo: homepageVideo.value || '',
@@ -104,54 +79,32 @@ const createPatch = () => {
     cablesPatch.value = patch
     window.CABLES.patch = patch
 
-    if (canvasElement.value) {
-      canvasElement.value.addEventListener(
-        'touchmove',
-        (e) => {
-          e.preventDefault()
-        },
-        { passive: false }
-      )
-    }
+    canvasElement.value?.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false })
   } catch (error) {
-    console.error('Error while initializing Cables patch', error)
+    console.error('Error initializing Cables patch', error)
     isLoaded.value = true
   }
 }
 
 const initCablesPatch = () => {
-  if (typeof window === 'undefined') {
+  if (window.CABLES?.patch && cablesPatch.value) {
+    window.CABLES.patch.resume?.()
+    sendVideoConfig()
+    isLoaded.value = true
     return
   }
 
-  if (window.CABLES && window.CABLES.patch && cablesPatch.value) {
-    if (canvasElement.value && window.CABLES.patch.glCanvas) {
-      if (typeof window.CABLES.patch.resume === 'function') {
-        window.CABLES.patch.resume()
-      }
-      sendVideoConfig()
-      isLoaded.value = true
-      return
-    }
-  }
-
-  if (window.CABLES && window.CABLES.exportedPatch) {
+  if (window.CABLES?.exportedPatch) {
     createPatch()
     return
   }
 
-  const handleCablesLoaded = () => {
-    createPatch()
-  }
-
+  const handleCablesLoaded = () => createPatch()
   cablesEventListener.value = handleCablesLoaded
   document.addEventListener('CABLES.jsLoaded', handleCablesLoaded)
 
-  const existingScript = document.querySelector('script[data-cables-home]')
-  if (existingScript) {
-    if (window.CABLES && window.CABLES.exportedPatch) {
-      createPatch()
-    }
+  if (document.querySelector('script[data-cables-home]')) {
+    if (window.CABLES?.exportedPatch) createPatch()
     return
   }
 
@@ -159,56 +112,23 @@ const initCablesPatch = () => {
   script.src = '/home_video/js/patch.js'
   script.async = true
   script.dataset.cablesHome = 'true'
-  script.onerror = () => {
-    console.error('Failed to load Cables patch script')
-    isLoaded.value = true
-  }
+  script.onerror = () => { isLoaded.value = true }
   document.body.appendChild(script)
 }
 
-const handleRouteChange = (currentRouteName) => {
-  const isHome = currentRouteName === 'Home'
-
-  if (isHome) {
-    isLoaded.value = true
-    setVisibility(true)
-    if (window.CABLES && window.CABLES.patch && typeof window.CABLES.patch.resume === 'function') {
-      window.CABLES.patch.resume()
-    }
-  } else {
-    isLoaded.value = false
-    if (window.CABLES && window.CABLES.patch && typeof window.CABLES.patch.pause === 'function') {
-      window.CABLES.patch.pause()
-    }
-    setVisibility(false)
-  }
-}
-
-watch(
-  () => route.name,
-  (newName) => {
-    handleRouteChange(newName)
-  }
-)
-
 watch([settingsLoading, homepageVideo, homepageFallbackImage], ([loading, video, fallback]) => {
-  if (!loading && (video || fallback) && isLoaded.value) {
-    sendVideoConfig()
-  }
+  if (!loading && (video || fallback) && isLoaded.value) sendVideoConfig()
 })
 
 onMounted(() => {
-  isLoaded.value = false
-
   initCablesPatch()
 
-  handleRouteChange(route.name)
+  if (!isHome.value && window.CABLES?.patch?.pause) {
+    window.CABLES.patch.pause()
+  }
 
   setTimeout(() => {
-    if (!isLoaded.value) {
-      console.log('Cables load timeout, showing content anyway')
-      isLoaded.value = true
-    }
+    if (!isLoaded.value) isLoaded.value = true
   }, 3000)
 })
 </script>
@@ -227,7 +147,14 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.5s ease-in-out;
+}
+
+.home.active.loaded {
+  opacity: 1;
+  z-index: 0;
+  pointer-events: auto;
 }
 
 .video-background {
@@ -245,44 +172,22 @@ onMounted(() => {
   box-shadow: none;
 }
 
-.home:not(.image-loaded) {
-  opacity: 0;
-}
-
-.image-loaded {
-  opacity: 1;
-}
-
-.content {
-  text-align: center;
-  color: white;
-  padding: var(--space-md);
-  border-radius: 8px;
-}
-
-h1 {
-  font-size: var(--text-3xl);
-  margin: 0;
-}
-
 .title-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: var(--text-4xl);
-  font-weight: 670;
+  font-weight: bold;
   color: rgba(0, 0, 0, 1);
   z-index: 0;
   white-space: nowrap;
-  font-weight: bold;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.8s ease-in-out 0.1s;
 }
 
-.title-fade-in {
+.title-text.visible {
   opacity: 1;
 }
 </style>
-
